@@ -28,6 +28,9 @@ void SStream_Init(SStream *ss)
 	ss->buffer[0] = '\0';
 }
 
+/**
+ * Copy the string \p s to the buffer of \p ss and terminate it with a '\\0' byte.
+ */
 void SStream_concat0(SStream *ss, const char *s)
 {
 #ifndef CAPSTONE_DIET
@@ -39,6 +42,9 @@ void SStream_concat0(SStream *ss, const char *s)
 #endif
 }
 
+/**
+ * Copy the single char \p c to the buffer of \p ss.
+ */
 void SStream_concat1(SStream *ss, const char c)
 {
 #ifndef CAPSTONE_DIET
@@ -48,6 +54,9 @@ void SStream_concat1(SStream *ss, const char c)
 #endif
 }
 
+/**
+ * Copy all strings given to the buffer of \p ss.
+ */
 void SStream_concat(SStream *ss, const char *fmt, ...)
 {
 #ifndef CAPSTONE_DIET

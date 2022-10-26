@@ -49,6 +49,12 @@ typedef enum ARMCC_CondCodes { // Meaning (integer)          Meaning (floating-p
 	ARMCC_AL             // Always (unconditional)     Always (unconditional)
 } ARMCC_CondCodes;
 
+enum VPTCodes {
+  ARMVCC_None = 0,
+  ARMVCC_Then,
+  ARMVCC_Else
+};
+
 inline static ARMCC_CondCodes ARMCC_getOppositeCondition(ARMCC_CondCodes CC)
 {
 	switch (CC) {

@@ -1,7 +1,7 @@
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2019 */
 
-#ifdef CAPSTONE_HAS_ARM
+#ifndef CAPSTONE_HAS_ARM
 
 #include <stdio.h>	// debug
 #include <string.h>
@@ -470,12 +470,18 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id) {
 }
 
 #ifndef CAPSTONE_DIET
-// map instruction to its characteristics
+///< A LLVM<->CS Mapping entry of an operand.
 typedef struct insn_op {
-	uint8_t access[7];
+	uint8_t /* cs_op_type */ type; ///< Operand type (e.g.: reg, imm, mem)
+	uint8_t /* cs_ac_type */ access; ///< The access type (read, write)
 } insn_op;
 
-static const insn_op insn_ops[] = {
+///< Operands of an instruction.
+typedef struct {
+	insn_op ops[8]; ///< NULL terminated array of operands.
+} insn_ops;
+
+static const insn_ops insn_ops[] = {
 	{
 		// NULL item
 		{ 0 }

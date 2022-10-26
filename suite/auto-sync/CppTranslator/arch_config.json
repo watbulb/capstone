@@ -1,0 +1,19 @@
+{
+  "ARM": {
+    "files_to_translate": [
+      {
+        "in": "../vendor/llvm_root/llvm/lib/Target/ARM/Disassembler/ARMDisassembler.cpp",
+        "out": "../build/trans_out/ARMDisassembler.cpp"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.cpp",
+        "out": "../build/trans_out/ARMInstPrinter.cpp"
+      }
+    ],
+    "files_for_template_search": [
+      "../build/llvm_inc/ARMGenDisassemblerTables.inc",
+      "../build/llvm_inc/ARMGenAsmWriter.inc",
+      "../vendor/llvm_root/llvm/lib/Target/ARM/Disassembler/ARMDisassembler.cpp",
+      "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.cpp"
+    ]
+  }
+}
