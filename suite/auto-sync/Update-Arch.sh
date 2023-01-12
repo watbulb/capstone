@@ -81,6 +81,9 @@ $tblgen --printerLang=C++ --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$ll
 echo "[*] Generate RegisterInfo tables..."
 $tblgen --printerLang=CCS --gen-register-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenRegisterInfo.inc"
 
+echo "[*] Generate InstrInfo tables..."
+$tblgen --printerLang=CCS --gen-instr-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenInstrInfo.inc"
+
 # Todo run Subtarget feature
 
 echo "[*] Generate Mapping tables..."
