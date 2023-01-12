@@ -96,6 +96,7 @@ cs_root=$(git rev-parse --show-toplevel)
 cs_arch_dir="$cs_root/arch/$arch/"
 echo "[*] Copy files to $cs_arch_dir"
 cp cs_inc/$arch* $cs_arch_dir
+cp trans_out/$arch* $cs_arch_dir
 cp $arch*.inc $cs_arch_dir 
 
 # Give advice how to fix the translated C++ files.
