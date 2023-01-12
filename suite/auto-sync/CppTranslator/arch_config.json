@@ -3,10 +3,10 @@
     "files_to_translate": [
       {
         "in": "../vendor/llvm_root/llvm/lib/Target/ARM/Disassembler/ARMDisassembler.cpp",
-        "out": "../build/trans_out/ARMDisassembler.cpp"
+        "out": "../build/trans_out/ARMDisassembler.c"
       },{
         "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.cpp",
-        "out": "../build/trans_out/ARMInstPrinter.cpp"
+        "out": "../build/trans_out/ARMInstPrinter.c"
       }
     ],
     "files_for_template_search": [
