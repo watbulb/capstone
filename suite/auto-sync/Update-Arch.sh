@@ -47,7 +47,7 @@ setup_build_dir() {
 
 supported="ARM"
 
-if [ $# -ne 2 ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+if [ $# -ne 2 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
   echo "$0 <arch> <path-llvm-project>"
   echo "\nCurrently supported architectures: $supported"
   exit
@@ -70,11 +70,11 @@ fi
 setup_build_dir
 check_llvm $llvm_root $tblgen
 
-echo "[*] Generate disassembler tables..."
+echo "[*] Generate disassembler..."
 $tblgen --printerLang=CCS --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenDisassemblerTables.inc"
 $tblgen --printerLang=C++ --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "llvm_inc/"$arch"GenDisassemblerTables.inc"
 
-echo "[*] Generate AsmWriter tables..."
+echo "[*] Generate AsmWriter..."
 $tblgen --printerLang=CCS --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenAsmWriter.inc"
 $tblgen --printerLang=C++ --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "llvm_inc/"$arch"GenAsmWriter.inc"
 
@@ -88,7 +88,7 @@ $tblgen --printerLang=CCS --gen-asm-matcher -I "$llvm_root/llvm/include/" -I "$l
 
 echo "[*] Translate LLVM source files..."
 cd ../CppTranslator/
-source ./.venv/bin/activate
+. ./.venv/bin/activate
 ./CppTranslator.py -a "$arch" -g "../vendor/tree-sitter-cpp/" -l "../build/ts_libs/ts-cpp.so"
 cd ../build
 
