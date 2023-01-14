@@ -274,7 +274,7 @@ static const insn_map insns[] = {
 		{ 0 }, { 0 }, { 0 }, 0, 0
 #endif
 	},
-#include "ARMMappingInsn.inc"
+#include "ARMGenCSMappingInsn.inc"
 };
 
 // look for @id in @insns
@@ -347,7 +347,7 @@ void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
 #ifndef CAPSTONE_DIET
 static const char * const insn_name_maps[] = {
 	NULL, // ARM_INS_INVALID
-#include "ARMMappingInsnName.inc"
+#include "ARMGenCSMappingInsnName.inc"
 };
 #endif
 
@@ -456,7 +456,7 @@ static const insn_ops insn_ops[] = {
 		{ 0 }
 	},
 
-#include "ARMMappingInsnOp.inc"
+#include "ARMGenCSMappingInsnOp.inc"
 };
 
 // given internal insn id, return operand access info

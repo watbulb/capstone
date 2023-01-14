@@ -460,7 +460,7 @@ typedef struct cs_arm {
 typedef enum arm_insn {
 	ARM_INS_INVALID = 0,
 
-	#include "../arch/ARM/ARMInsnEnum.inc"
+	#include "../arch/ARM/ARMGenCSInsnEnum.inc"
 
 	ARM_INS_ENDING,	// <-- mark the end of the list of instructions
 } arm_insn;
@@ -478,7 +478,7 @@ typedef enum arm_insn_group {
 	ARM_GRP_BRANCH_RELATIVE, ///< = CS_GRP_BRANCH_RELATIVE
 
 	// Architecture-specific groups
-	#include "../arch/ARM/ARMFeatureEnum.inc"
+	#include "../arch/ARM/ARMGenCSFeatureEnum.inc"
 
 	ARM_GRP_ENDING,
 } arm_insn_group;
