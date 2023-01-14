@@ -84,7 +84,8 @@ $tblgen --printerLang=CCS --gen-register-info -I "$llvm_root/llvm/include/" -I "
 echo "[*] Generate InstrInfo tables..."
 $tblgen --printerLang=CCS --gen-instr-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenInstrInfo.inc"
 
-# Todo run Subtarget feature
+echo "[*] Generate SubtargetInfo tables..."
+$tblgen --printerLang=CCS --gen-subtarget -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenSubtargetInfo.inc"
 
 echo "[*] Generate Mapping tables..."
 $tblgen --printerLang=CCS --gen-asm-matcher -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td"
