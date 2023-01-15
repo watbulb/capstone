@@ -252,9 +252,13 @@ class TemplateCollector:
             if len(p.split(b" ")) == 2:
                 # Typename specified for parameter. Remove it.
                 # If it was more than one space, it is likely an operation like `size + 1`
-                res.append(p.split(b" ")[1])
-            else:
-                res.append(p)
+                p = p.split(b" ")[1]
+            # true and false get resolved to 1 and 0
+            if p == "true":
+                p = "1"
+            elif p == "false":
+                p = "0"
+            res.append(p)
         return res
 
     @staticmethod
