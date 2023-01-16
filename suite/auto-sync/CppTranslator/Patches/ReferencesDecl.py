@@ -10,13 +10,20 @@ class ReferencesDecl(Patch):
     """
     Patch   TYPE &Param
     to      TYPE *Param
+
+    Param is optional
     """
 
     def __init__(self, priority: int):
         super().__init__(priority)
 
     def get_search_pattern(self) -> str:
-        return "(reference_declarator) @reference_decl"
+        return (
+            "["
+            "(reference_declarator)"
+            "(type_identifier) (abstract_reference_declarator)"
+            "] @reference_decl"
+            )
 
     def get_main_capture_name(self) -> str:
         return "reference_decl"
