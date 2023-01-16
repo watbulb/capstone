@@ -1,6 +1,3 @@
-import logging as log
-import re
-
 from tree_sitter import Node
 
 from Patches.HelperMethods import get_text
@@ -17,14 +14,14 @@ class MethodTypeQualifier(Patch):
 
     def get_search_pattern(self) -> str:
         return (
-            "   (function_declarator"
-            "       ("
-            "       (qualified_identifier)*"
-            "       (identifier)*"
-            "       ) @id"
-            "       (parameter_list) @param_list"
-            "       (type_qualifier)"
-            "   )"
+            "(function_declarator"
+            "    (["
+            "        (qualified_identifier)"
+            "        (identifier)"
+            "    ]) @id"
+            "    (parameter_list) @param_list"
+            "    (type_qualifier)"
+            ")"
             "@method_type_qualifier"
         )
 
