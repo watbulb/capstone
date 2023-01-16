@@ -179,6 +179,8 @@ typedef enum arm_op_type {
 	ARM_OP_PIMM, ///< P-Immediate (coprocessor registers)
 	ARM_OP_SETEND,	///< operand for SETEND instruction
 	ARM_OP_SYSREG,	///< MSR/MRS special register operand
+	ARM_OP_VPRED_R, ///< Vector predicate. Leaves inactive lanes of output vector register unchanged.
+	ARM_OP_VPRED_N, ///< Vector predicate. Don't preserved inactive lanes of output register.
 } arm_op_type;
 
 /// Operand type for SETEND instruction
