@@ -40,6 +40,7 @@ from Patches.STIFeatureBits import STIFeatureBits
 from Patches.STParameter import SubtargetInfoParam
 from Patches.SetOpcode import SetOpcode
 from Patches.SignExtend32 import SignExtend32
+from Patches.SizeAssignments import SizeAssignment
 from Patches.StreamOperation import StreamOperations
 from Patches.TemplateDeclaration import TemplateDeclaration
 from Patches.TemplateDefinition import TemplateDefinition
@@ -70,6 +71,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        SizeAssignment.__name__: 0,
         FieldFromInstr.__name__: 0,
         FeatureBitsDecl.__name__: 0,
         FeatureBits.__name__: 0,
@@ -245,6 +247,8 @@ class Translator:
                 patch = StreamOperations(p)
             elif ptype == SubtargetInfoParam.__name__:
                 patch = SubtargetInfoParam(p)
+            elif ptype == SizeAssignment.__name__:
+                patch = SizeAssignment(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit()
