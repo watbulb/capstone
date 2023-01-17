@@ -50,4 +50,4 @@ class CreateOperand0(Patch):
         args = get_text(src, op_create_args.start_byte, op_create_args.end_byte)
         if args[0] == b"(" and args[-1] == b")":
             args = args
-        return fcn + b"0(" + inst + b", " + args + b")"
+        return b"MCOperand_" + fcn + b"0(" + inst + b", " + args + b")"

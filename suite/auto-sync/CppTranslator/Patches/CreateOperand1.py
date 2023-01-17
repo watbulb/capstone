@@ -3,7 +3,7 @@ import re
 
 from tree_sitter import Node
 
-from Patches.HelperMethods import get_text
+from Patches.HelperMethods import get_text, get_MCInst_var_name
 from Patches.Patch import Patch
 
 
@@ -54,4 +54,17 @@ class CreateOperand1(Patch):
         fcn = re.sub(b"create", b"Create", get_text(src, op_create_fcn.start_byte, op_create_fcn.end_byte))
         inst = get_text(src, inst_var.start_byte, inst_var.end_byte)
         args = get_text(src, op_create_args.start_byte, op_create_args.end_byte)
-        return b"MCInst_insert0(" + inst + b", " + insert_arg_t + b", " + fcn + b"1(Inst, " + args + b"))"
+        return (
+            b"MCInst_insert0("
+            + inst
+            + b", "
+            + insert_arg_t
+            + b", "
+            + b"MCOperand_"
+            + fcn
+            + b"1("
+            + get_MCInst_var_name(src, inst_var)
+            + b", "
+            + args
+            + b"))"
+        )

@@ -25,6 +25,21 @@ def get_function_params_of_node(n: Node) -> Node:
     return param_list
 
 
+def get_MCInst_var_name(src: bytes, n: Node) -> bytes:
+    """Searches for the name of the parameter of type MCInst and returns it."""
+    params = get_function_params_of_node(n)
+    mcinst_var_name = b""
+    for p in params.named_children:
+        p_text = get_text(src, p.start_byte, p.end_byte)
+        if b"MCInst" in p_text:
+            mcinst_var_name = p_text.split((b"&" if b"&" in p_text else b"*"))[1]
+            break
+    if mcinst_var_name == b"":
+        log.debug("Could not find `MCInst` variable name. Defaulting to `Inst`.")
+        mcinst_var_name = b"Inst"
+    return mcinst_var_name
+
+
 def template_param_list_to_dict(param_list: Node) -> [dict]:
     if param_list.type != "template_parameter_list":
         log.fatal(f"Node of type {param_list.type} given. Not 'template_parameter_list'.")
