@@ -6,6 +6,7 @@
 
 #include "capstone/capstone.h"
 #include "../../MCRegisterInfo.h"
+#include "../../MCInst.h"
 
 void ARM_init(MCRegisterInfo *MRI);
 

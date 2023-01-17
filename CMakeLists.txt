@@ -147,6 +147,7 @@ if(CAPSTONE_ARM_SUPPORT)
     add_definitions(-DCAPSTONE_HAS_ARM)
     set(SOURCES_ARM
         arch/ARM/ARMDisassembler.c
+        arch/ARM/ARMDisassemblerExtension.c
         arch/ARM/ARMInstPrinter.c
         arch/ARM/ARMMapping.c
         arch/ARM/ARMModule.c
@@ -162,12 +163,15 @@ if(CAPSTONE_ARM_SUPPORT)
         arch/ARM/ARMGenInstrInfo.inc
         arch/ARM/ARMGenRegisterInfo.inc
         arch/ARM/ARMGenSubtargetInfo.inc
-        arch/ARM/ARMMappingInsn.inc
-        arch/ARM/ARMMappingInsnOp.inc
+        arch/ARM/ARMGenCSFeatureEnum.inc
+        arch/ARM/ARMGenCSFeatureName.inc
+        arch/ARM/ARMGenCSInsnEnum.inc
+        arch/ARM/ARMGenCSMappingInsn.inc
+        arch/ARM/ARMGenCSMappingInsnOp.inc
+        arch/ARM/ARMGenCSMappingInsnName.inc
         arch/ARM/ARMGenRegisterName.inc
         arch/ARM/ARMGenRegisterName_digit.inc
         arch/ARM/ARMGenSystemRegister.inc
-        arch/ARM/ARMMappingInsnName.inc
     )
     set(TEST_SOURCES ${TEST_SOURCES} test_arm.c)
 endif()
