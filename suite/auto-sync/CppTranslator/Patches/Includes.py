@@ -97,6 +97,8 @@ def get_ARM_includes(filename: str) -> bytes:
             + b"#define GET_SUBTARGETINFO_ENUM\n"
             + b'#include "ARMGenSubtargetInfo.inc"\n\n'
             + b'#include "ARMGenSystemRegister.inc"\n\n'
+            + b'#define GET_INSTRINFO_ENUM\n\n'
+            + b'#include "ARMGenInstrInfo.inc"\n\n'
         )
     log.fatal(f"No includes given for ARM source file: {filename}")
     exit()
