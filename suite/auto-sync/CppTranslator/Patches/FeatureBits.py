@@ -3,7 +3,7 @@ import re
 
 from tree_sitter import Node
 
-from Patches.HelperMethods import get_text
+from Patches.HelperMethods import get_text, get_function_params_of_node
 from Patches.Patch import Patch
 
 
@@ -33,4 +33,14 @@ class FeatureBits(Patch):
         # Get flag name of feature bit.
         qualified_id: Node = captures[2][0]
         flag = get_text(src, qualified_id.start_byte, qualified_id.end_byte)
-        return self.arch + b"_getFeatureBits(Inst->csh->mode, " + flag + b")"
+        params: Node = get_function_params_of_node(captures[0][0])
+        mcinst_var_name = b""
+        for p in params.named_children:
+            p_text = get_text(src, p.start_byte, p.end_byte)
+            if b"MCInst" in p_text:
+                mcinst_var_name = p_text.split((b"&" if b"&" in p_text else b"*"))[1]
+                break
+        if mcinst_var_name == b"":
+            log.debug("Could not find `MCInst` variable name. Defaulting to `Inst`.")
+            mcinst_var_name = b"Inst"
+        return self.arch + b"_getFeatureBits(" + mcinst_var_name + b"->csh->mode, " + flag + b")"
