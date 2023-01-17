@@ -16,7 +16,7 @@ class UsingDeclaration(Patch):
         super().__init__(priority)
 
     def get_search_pattern(self) -> str:
-        return "((using_declaration)* (alias_declaration)*) @using_declaration"
+        return "([(using_declaration) (alias_declaration)]) @using_declaration"
 
     def get_main_capture_name(self) -> str:
         return "using_declaration"
