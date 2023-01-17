@@ -1,3 +1,5 @@
+import re
+
 from tree_sitter import Node
 import logging as log
 
@@ -62,3 +64,44 @@ def parameter_declaration_to_dict(param_decl: Node) -> dict:
 def get_text(src: bytes, start_byte: int, end_byte: int) -> bytes:
     """Workaround for https://github.com/tree-sitter/py-tree-sitter/issues/122"""
     return src[start_byte:end_byte]
+
+
+def namespace_enum(src: bytes, ns_id: bytes, enum: Node) -> bytes:
+    """
+    Alters an enum in the way that it prepends the namespace id to every enum member.
+    Example: naemspace_id = "ARM"
+             enum { X } -> enum { ARM_X }
+    """
+    enumerator_list: Node = None
+    for c in enum.named_children:
+        if c.type == "enumerator_list":
+            enumerator_list = c
+
+    if not enumerator_list:
+        log.fatal("Could not find enumerator_list.")
+        exit(1)
+
+    res = get_text(src, enum.start_byte, enum.end_byte)
+    for e in enumerator_list.named_children:
+        if e.type == "enumerator":
+            enum_entry_text = get_text(src, e.start_byte, e.end_byte)
+            res = re.sub(enum_entry_text, ns_id + b"_" + enum_entry_text, res)
+    return res
+
+
+def namespace_fcn_def(src: bytes, ns_id: bytes, fcn_def: Node) -> bytes:
+    fcn_id: Node = None
+    for c in fcn_def.named_children:
+        if c.type == "function_declarator":
+            fcn_id = c.named_children[0]
+            break
+        elif c.named_children and c.named_children[0].type == "function_declarator":
+            fcn_id = c.named_children[0].named_children[0]
+            break
+    if not fcn_id:
+        log.fatal("Could not find function declarator in one of the first children.")
+        exit(1)
+    fcn_id_text = get_text(src, fcn_id.start_byte, fcn_id.end_byte)
+    fcn_def_text = get_text(src, fcn_def.start_byte, fcn_def.end_byte)
+    res = re.sub(fcn_id_text, ns_id + b"_" + fcn_id_text, fcn_def_text)
+    return res

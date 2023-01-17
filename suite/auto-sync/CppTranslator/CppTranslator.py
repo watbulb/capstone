@@ -10,7 +10,6 @@ import sys
 
 from tree_sitter.binding import Query
 
-from Patches import GetOperandRegImm
 from Patches.Assert import Assert
 from Patches.CheckDecoderStatus import CheckDecoderStatus
 from Patches.ClassesDef import ClassesDef
@@ -31,7 +30,9 @@ from Patches.IsPredicate import IsPredicate
 from Patches.LLVMFallThrough import LLVMFallThrough
 from Patches.MethodToFunctions import MethodToFunction
 from Patches.MethodTypeQualifier import MethodTypeQualifier
-from Patches.Namespace import Namespace
+from Patches.NamespaceLLVM import NamespaceLLVM
+from Patches.NamespaceAnon import NamespaceAnon
+from Patches.NamespaceArch import NamespaceArch
 from Patches.OutStreamParam import OutStreamParam
 from Patches.QualifiedIdentifier import QualifiedIdentifier
 from Patches.Patch import Patch
@@ -86,7 +87,6 @@ class Translator:
         SignExtend32.__name__: 0,
         DecoderParameter.__name__: 0,
         UsingDeclaration.__name__: 0,
-        Namespace.__name__: 0,
         DecoderCast.__name__: 0,
         IsPredicate.__name__: 0,
         IsOptionalDef.__name__: 0,
@@ -97,6 +97,9 @@ class Translator:
         OutStreamParam.__name__: 0,
         StreamOperations.__name__: 0,
         MethodToFunction.__name__: 0,
+        NamespaceAnon.__name__: 0,  # ◁─────┐ "llvm" and anonoymous namespaces must be removed first,
+        NamespaceLLVM.__name__: 0,  # ◁─────┤ so they don't match in NamespaceArch.
+        NamespaceArch.__name__: 1,  # ──────┘
         ClassesDef.__name__: 0,  # ◁────────┐ Declarations must be extracted first from the classes.
         MethodTypeQualifier.__name__: 1,  # ┘
         # All previous patches can contain qualified identifiers (Ids with the "::" operator) in their search patterns.
@@ -223,8 +226,8 @@ class Translator:
                 patch = MethodTypeQualifier(p)
             elif ptype == UsingDeclaration.__name__:
                 patch = UsingDeclaration(p)
-            elif ptype == Namespace.__name__:
-                patch = Namespace(p)
+            elif ptype == NamespaceLLVM.__name__:
+                patch = NamespaceLLVM(p)
             elif ptype == DecoderCast.__name__:
                 patch = DecoderCast(p)
             elif ptype == IsPredicate.__name__:
@@ -249,6 +252,10 @@ class Translator:
                 patch = SubtargetInfoParam(p)
             elif ptype == SizeAssignment.__name__:
                 patch = SizeAssignment(p)
+            elif ptype == NamespaceArch.__name__:
+                patch = NamespaceArch(p)
+            elif ptype == NamespaceAnon.__name__:
+                patch = NamespaceAnon(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit()

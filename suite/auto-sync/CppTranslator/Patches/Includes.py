@@ -97,8 +97,16 @@ def get_ARM_includes(filename: str) -> bytes:
             + b"#define GET_SUBTARGETINFO_ENUM\n"
             + b'#include "ARMGenSubtargetInfo.inc"\n\n'
             + b'#include "ARMGenSystemRegister.inc"\n\n'
-            + b'#define GET_INSTRINFO_ENUM\n\n'
+            + b"#define GET_INSTRINFO_ENUM\n\n"
             + b'#include "ARMGenInstrInfo.inc"\n\n'
+        )
+    elif filename == "ARMBaseInfo.h":
+        return (
+            b"#include <capston/arm.h>\n\n"
+            + b"// Defines symbolic names for ARM registers. This defines a mapping from\n"
+            + b"// registername to register number."
+            + b"#define GET_REGINFO_ENUM\n"
+            + b"#include ARMGenRegisterInfo.inc\n\n"
         )
     log.fatal(f"No includes given for ARM source file: {filename}")
     exit()
