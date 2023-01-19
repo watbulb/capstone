@@ -76,8 +76,6 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "../../utils.h"\n'
             + b'#include "ARMDisassembler.h"\n'
             + b'#include "ARMMapping.h"\n\n'
-            + b"#define GET_SUBTARGETINFO_ENUM\n"
-            + b'#include "ARMGenSubtargetInfo.inc"\n\n'
             + b"#define GET_INSTRINFO_MC_DESC\n"
             + b'#include "ARMGenInstrInfo.inc"\n\n'
             + b"#define GET_INSTRINFO_ENUM\n"
