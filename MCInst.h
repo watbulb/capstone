@@ -20,6 +20,7 @@
 #define CS_MCINST_H
 
 #include "include/capstone/capstone.h"
+#include "MCInstrDesc.h"
 #include "MCRegisterInfo.h"
 
 typedef struct MCInst MCInst;
@@ -140,5 +141,7 @@ unsigned MCInst_getNumOperands(const MCInst *inst);
 
 // This addOperand2 function doesnt free Op
 void MCInst_addOperand2(MCInst *inst, MCOperand *Op);
+
+bool MCInst_isPrediacable(const MCInst *MI, const MCInstrDesc *MIDesc);
 
 #endif

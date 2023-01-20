@@ -38,6 +38,11 @@ typedef struct ARM_ITBlock {
 	unsigned int size;
 } ARM_ITBlock;
 
+typedef struct ARM_VPTBlock {
+	unsigned char VPTStates[8];
+	unsigned int size;
+} ARM_VPTBlock;
+
 // Customize mnemonic for instructions with alternative name.
 struct customized_mnem {
 	// ID of instruction to be customized.
@@ -65,6 +70,7 @@ struct cs_struct {
 	PostPrinter_t post_printer;
 	cs_err errnum;
 	ARM_ITBlock ITBlock;	// for Arm only
+	ARM_VPTBlock VPTBlock;  // for ARM only
 	cs_opt_value detail, imm_unsigned;
 	int syntax;	// asm syntax for simple printer such as ARM, Mips & PPC
 	bool doing_mem;	// handling memory operand in InstPrinter code

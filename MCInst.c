@@ -179,3 +179,16 @@ void MCOperand_CreateImm0(MCInst *mcInst, int64_t Val)
 	op->Kind = kImmediate;
 	op->ImmVal = Val;
 }
+
+/// Check if any operand of is precicable
+bool MCInst_isPrediacable(const MCInst *MI, const MCInstrDesc *MIDesc) {
+	const MCOperandInfo *OpInfo = MIDesc->OpInfo;
+	unsigned NumOps = MCInst_getNumOperands(MI);
+	for (unsigned i = 0; i < NumOps; ++i) {
+		if (MCOperandInfo_isPredicate(&OpInfo[i])) {
+			return true;
+		}
+	}
+	return false;
+}
+
