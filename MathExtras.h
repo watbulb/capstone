@@ -206,13 +206,12 @@ static inline unsigned CountTrailingZeros_32(uint32_t Value) {
 // Count trailing zeros as in:
 // https://graphics.stanford.edu/~seander/bithacks.html#ZerosOnRightParallel
 static inline unsigned CountTrailingZeros_8(uint8_t Value) {
-	uint8_t v;
 	uint8_t c = 8;
-	v &= -signed(v);
-	if (v) c--;
-	if (v & 0x0F) c -= 4;
-	if (v & 0x33) c -= 2;
-	if (v & 0x55) c -= 1;
+	Value &= -((int8_t)Value);
+	if (Value) c--;
+	if (Value & 0x0F) c -= 4;
+	if (Value & 0x33) c -= 2;
+	if (Value & 0x55) c -= 1;
 	return c;
 }
 
