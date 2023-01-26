@@ -16,6 +16,7 @@ from Patches.ClassesDef import ClassesDef
 from Patches.CreateOperand0 import CreateOperand0
 from Patches.CreateOperand1 import CreateOperand1
 from Patches.DeclarationInConditionClause import DeclarationInConditionalClause
+from Patches.DecodeInstruction import DecodeInstruction
 from Patches.DecoderCast import DecoderCast
 from Patches.DecoderParameter import DecoderParameter
 from Patches.FallThrough import FallThrough
@@ -74,6 +75,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        DecodeInstruction.__name__: 0,
         FallThrough.__name__: 0,
         SizeAssignment.__name__: 0,
         FieldFromInstr.__name__: 0,
@@ -264,6 +266,8 @@ class Translator:
                 patch = PredicateBlockFunctions(p)
             elif ptype == FallThrough.__name__:
                 patch = FallThrough(p)
+            elif ptype == DecodeInstruction.__name__:
+                patch = DecodeInstruction(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
