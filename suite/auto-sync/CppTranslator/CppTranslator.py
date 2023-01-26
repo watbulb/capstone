@@ -34,6 +34,7 @@ from Patches.NamespaceLLVM import NamespaceLLVM
 from Patches.NamespaceAnon import NamespaceAnon
 from Patches.NamespaceArch import NamespaceArch
 from Patches.OutStreamParam import OutStreamParam
+from Patches.PredicateBlockFunctions import PredicateBlockFunctions
 from Patches.QualifiedIdentifier import QualifiedIdentifier
 from Patches.Patch import Patch
 from Patches.ReferencesDecl import ReferencesDecl
@@ -97,9 +98,10 @@ class Translator:
         OutStreamParam.__name__: 0,
         StreamOperations.__name__: 0,
         MethodToFunction.__name__: 0,
-        NamespaceAnon.__name__: 0,  # ◁─────┐ "llvm" and anonoymous namespaces must be removed first,
+        NamespaceAnon.__name__: 0,  # ◁─────┐ "llvm" and anonymous namespaces must be removed first,
         NamespaceLLVM.__name__: 0,  # ◁─────┤ so they don't match in NamespaceArch.
         NamespaceArch.__name__: 1,  # ──────┘
+        PredicateBlockFunctions.__name__: 0,
         ClassesDef.__name__: 0,  # ◁────────┐ Declarations must be extracted first from the classes.
         MethodTypeQualifier.__name__: 1,  # ┘
         # All previous patches can contain qualified identifiers (Ids with the "::" operator) in their search patterns.
@@ -256,6 +258,8 @@ class Translator:
                 patch = NamespaceArch(p)
             elif ptype == NamespaceAnon.__name__:
                 patch = NamespaceAnon(p)
+            elif ptype == PredicateBlockFunctions.__name__:
+                patch = PredicateBlockFunctions(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit()
