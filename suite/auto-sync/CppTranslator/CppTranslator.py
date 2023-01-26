@@ -143,26 +143,26 @@ class Translator:
     def load_config(self, conf_path: Path) -> None:
         if not Path.exists(conf_path):
             log.fatal(f"Could not load arch config file at '{conf_path}'")
-            exit()
+            exit(1)
         with open(conf_path) as f:
             conf = json.loads(f.read())
         if self.arch not in conf:
             log.fatal(f"{self.arch} has not configuration. Please the them in {conf_path}!")
-            exit()
+            exit(1)
         self.conf = conf[self.arch]
 
     def ts_compile_cpp(self) -> None:
         log.info("Compile Cpp language")
         if not Path.exists(self.ts_grammar_path):
             log.fatal(f"Could not load the tree-sitter grammar at '{self.ts_grammar_path}'")
-            exit()
+            exit(1)
         Language.build_library(str(self.ts_so_path), [self.ts_grammar_path])
 
     def ts_set_language(self) -> None:
         log.info(f"Load language '{self.ts_so_path}'")
         if not Path.exists(self.ts_so_path):
             log.fatal(f"Could not load the tree-sitter language shared object at '{self.ts_so_path}'")
-            exit()
+            exit(1)
         self.ts_cpp_lang = Language(self.ts_so_path, "cpp")
 
     def init_parser(self) -> None:
@@ -175,7 +175,7 @@ class Translator:
         log.debug(f"Read {src_path}")
         if not Path.exists(src_path):
             log.fatal(f"Could not open the source file '{src_path}'")
-            exit()
+            exit(1)
         with open(src_path) as f:
             self.src = bytes(f.read(), "utf8")
 
@@ -262,7 +262,7 @@ class Translator:
                 patch = PredicateBlockFunctions(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
-                exit()
+                exit(1)
             self.patches.append(patch)
 
     def parse(self, src_path: Path) -> None:

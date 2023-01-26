@@ -215,7 +215,7 @@ class TemplateCollector:
         for sf in self.searchable_files:
             if not Path.exists(sf):
                 log.fatal(f"TemplateCollector: Could not find '{sf}' for search.")
-                exit()
+                exit(1)
             log.debug(f"TemplateCollector: Read {sf}")
             with open(sf) as f:
                 file = {"path": sf, "content": bytes(f.read(), "utf8")}

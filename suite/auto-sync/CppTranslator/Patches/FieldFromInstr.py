@@ -58,10 +58,10 @@ class FieldFromInstr(Patch):
                 inst_width = 2
             else:
                 log.fatal(f"Type {inst_type} no handled.")
-                exit()
+                exit(1)
         else:
             log.fatal(f"fieldFromInstruction() called from unhandled function/method '{fcn_def_text}'.")
-            exit()
+            exit(1)
         return re.sub(
             rb"fieldFromInstruction",
             b"fieldFromInstruction_%d" % inst_width,

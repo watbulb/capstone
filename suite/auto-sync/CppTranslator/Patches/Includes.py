@@ -49,7 +49,7 @@ class Includes(Patch):
             return res + get_ARM_includes(filename) + get_general_macros()
         else:
             log.fatal(f"Includes of {self.arch} not handled.")
-            exit()
+            exit(1)
 
 
 def get_general_inc() -> bytes:
@@ -99,7 +99,7 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "ARMGenInstrInfo.inc"\n\n'
         )
     log.fatal(f"No includes given for ARM source file: {filename}")
-    exit()
+    exit(1)
 
 
 def get_general_macros():

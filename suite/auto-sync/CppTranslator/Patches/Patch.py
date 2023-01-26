@@ -20,14 +20,14 @@ class Patch:
         :return: The search pattern which matches a part in the syntax tree which will be patched.
         """
         log.fatal("Method must be overloaded.")
-        exit()
+        exit(1)
 
     def get_main_capture_name(self) -> str:
         """
         :return: The name of the capture which matches the complete syntax to be patched.
         """
         log.fatal("Method must be overloaded.")
-        exit()
+        exit(1)
 
     def get_patch(self, captures: [(Node, str)], src: bytes, **kwargs) -> bytes:
         """
@@ -39,4 +39,4 @@ class Patch:
         :return: The patched version of the code.
         """
         log.fatal("Method must be overloaded.")
-        exit()
+        exit(1)

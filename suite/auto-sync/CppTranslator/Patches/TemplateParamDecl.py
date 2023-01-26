@@ -44,4 +44,4 @@ class TemplateParamDecl(Patch):
             res = b"const " + args.strip(b"<>") + b" *" + p_id
             return res
         log.fatal(f"Template type {templ_type} not handled as parameter")
-        exit()
+        exit(1)
