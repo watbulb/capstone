@@ -18,6 +18,7 @@ from Patches.CreateOperand1 import CreateOperand1
 from Patches.DeclarationInConditionClause import DeclarationInConditionalClause
 from Patches.DecoderCast import DecoderCast
 from Patches.DecoderParameter import DecoderParameter
+from Patches.FallThrough import FallThrough
 from Patches.FeatureBits import FeatureBits
 from Patches.FeatureBitsDecl import FeatureBitsDecl
 from Patches.FieldFromInstr import FieldFromInstr
@@ -73,6 +74,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        FallThrough.__name__: 0,
         SizeAssignment.__name__: 0,
         FieldFromInstr.__name__: 0,
         FeatureBitsDecl.__name__: 0,
@@ -260,6 +262,8 @@ class Translator:
                 patch = NamespaceAnon(p)
             elif ptype == PredicateBlockFunctions.__name__:
                 patch = PredicateBlockFunctions(p)
+            elif ptype == FallThrough.__name__:
+                patch = FallThrough(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
