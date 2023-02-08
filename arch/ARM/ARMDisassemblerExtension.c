@@ -136,7 +136,7 @@ bool Check(DecodeStatus *Out, DecodeStatus In)
 /// isValidCoprocessorNumber - decide whether an explicit coprocessor
 /// number is legal in generic instructions like CDP. The answer can
 /// vary with the subtarget.
-inline bool isValidCoprocessorNumber(MCInst *Inst, unsigned Num)
+bool isValidCoprocessorNumber(MCInst *Inst, unsigned Num)
 {
   // In Armv7 and Armv8-M CP10 and CP11 clash with VFP/NEON, however, the
   // coprocessor is still valid for CDP/MCR/MRC and friends. Allowing it is
@@ -157,7 +157,7 @@ inline bool isValidCoprocessorNumber(MCInst *Inst, unsigned Num)
 }
 
 // Imported from ARMMCTargetDesc.h
-inline bool ARM_isVpred(arm_op_type op)
+bool ARM_isVpred(arm_op_type op)
 {
   return op == ARM_OP_VPRED_R || op == ARM_OP_VPRED_N;
 }
@@ -170,7 +170,7 @@ inline bool ARM_isVpred(arm_op_type op)
 // This table shows the VPT instruction variants, i.e. the different
 // mask field encodings, see also B5.6. Predication/conditional execution in
 // the ArmARM.
-inline bool isVPTOpcode(int Opc)
+bool isVPTOpcode(int Opc)
 {
   return Opc == ARM_MVE_VPTv16i8 || Opc == ARM_MVE_VPTv16u8 ||
 	 Opc == ARM_MVE_VPTv16s8 || Opc == ARM_MVE_VPTv8i16 ||
@@ -195,4 +195,11 @@ bool ARM_isCDECoproc(size_t Coproc, const MCInst *MI)
     return false;
 
   return ARM_getFeatureBits(MI->csh->mode, ARM_FeatureCoprocCDE0 + Coproc);
+}
+
+/// getAM5FP16Opc - This function encodes the addrmode5fp16 opc field.
+unsigned ARM_AM_getAM5FP16Opc(ARM_AM_AddrOpc Opc, unsigned char Offset)
+{
+  bool isSub = Opc == ARM_AM_sub;
+  return ((int)isSub << 8) | Offset;
 }

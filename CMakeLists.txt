@@ -156,6 +156,7 @@ if(CAPSTONE_ARM_SUPPORT)
         arch/ARM/ARMAddressingModes.h
         arch/ARM/ARMBaseInfo.h
         arch/ARM/ARMDisassembler.h
+        arch/ARM/ARMDisassemblerExtension.h
         arch/ARM/ARMInstPrinter.h
         arch/ARM/ARMMapping.h
         arch/ARM/ARMGenAsmWriter.inc

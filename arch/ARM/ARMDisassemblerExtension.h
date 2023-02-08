@@ -5,13 +5,16 @@
 #ifndef CS_ARM_DISASSEMBLER_EXTENSION_H
 #define CS_ARM_DISASSEMBLER_EXTENSION_H
 
+#include "../../MCDisassembler.h"
+#include "../../MCRegisterInfo.h"
+#include "../../MathExtras.h"
+#include "../../cs_priv.h"
+#include "ARMAddressingModes.h"
 #include "ARMBaseInfo.h"
 #include "ARMDisassembler.h"
 #include "capstone/capstone.h"
-#include "../../MathExtras.h"
-#include "../../MCRegisterInfo.h"
-#include "../../MCDisassembler.h"
-#include "../../cs_priv.h"
+
+unsigned ARM_AM_getAM5FP16Opc(ARM_AM_AddrOpc Opc, unsigned char Offset);
 
 bool ITBlock_push_back(ARM_ITBlock *it, char v);
 
@@ -27,11 +30,11 @@ void ITBlock_setITState(ARM_ITBlock *it, char Firstcond, char Mask);
 
 bool Check(DecodeStatus *Out, DecodeStatus In);
 
-inline bool isValidCoprocessorNumber(MCInst *Inst, unsigned Num);
+bool isValidCoprocessorNumber(MCInst *Inst, unsigned Num);
 
-inline bool ARM_isVpred(arm_op_type op);
+bool ARM_isVpred(arm_op_type op);
 
-inline bool isVPTOpcode(int Opc);
+bool isVPTOpcode(int Opc);
 
 bool ARM_isCDECoproc(size_t Coproc, const MCInst *MI);
 
