@@ -7,6 +7,9 @@
       },{
         "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.cpp",
         "out": "../build/trans_out/ARMInstPrinter.c"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.h",
+        "out": "../build/trans_out/ARMInstPrinter.h"
       }
     ],
     "files_for_template_search": [

@@ -26,9 +26,10 @@ class ClassesDef(Patch):
         field_decl_list = captures[1][0]
         functions = list()
         for field_decl in field_decl_list.named_children:
-            if field_decl.type == "field_declaration" and (
-                "function_declarator" in [t.type for t in field_decl.named_children]
-            ):
+            if (
+                field_decl.type in "field_declaration"
+                and ("function_declarator" in [t.type for t in field_decl.named_children])
+            ) or field_decl.type == "template_declaration":
                 # Keep comments
                 sibling = field_decl.prev_named_sibling
                 while sibling.type == "comment":

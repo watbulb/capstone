@@ -96,6 +96,15 @@ def get_ARM_includes(filename: str) -> bytes:
             + b"#define GET_INSTRINFO_ENUM\n"
             + b'#include "ARMGenInstrInfo.inc"\n\n'
         )
+    elif filename == "ARMInstPrinter.h":
+        return (
+            b'#include "ARMMapping.h"\n\n'
+            + b'#include "../../MCInst.h"\n'
+            + b'#include "../../SStream.h"\n'
+            + b'#include "../../MCRegisterInfo.h"\n'
+            + b'#include "../../MCInstPrinter.h"\n'
+            + b'#include "../../utils.h"\n'
+        )
     log.fatal(f"No includes given for ARM source file: {filename}")
     exit(1)
 
