@@ -112,6 +112,7 @@ set(HEADERS_ENGINE
     MCFixedLenDisassembler.h
     MCInst.h
     MCInstrDesc.h
+    MCInstPrinter.h
     MCRegisterInfo.h
     SStream.h
     utils.h
