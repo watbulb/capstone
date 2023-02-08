@@ -901,17 +901,18 @@ DecodeStatus AddThumbPredicate(MCInst *MI)
     else
       MCInst_insert0(MI, VCCPos, MCOperand_CreateReg1(MI, (ARM_P0)));
     MCInst_insert0(MI, VCCPos + 2, MCOperand_CreateReg1(MI, (0)));
-    if (OpInfo[VCCPos].OperandType == ARM_OP_VPRED_R) {
-      int TiedOp = ARMInsts[MCInst_getOpcode(MI)].getOperandConstraint(
-	  VCCPos + 3, MCOI_TIED_TO);
+    //   if (OpInfo[VCCPos].OperandType == ARM_OP_VPRED_R) {
+    //     int TiedOp = ARMInsts[MCInst_getOpcode(MI)].getOperandConstraint(
+    //  VCCPos + 3, MCOI_TIED_TO);
 
-      // Copy the operand to ensure it's not invalidated when MI grows.
-      // Must be a deep copy of the operand which is tied to this one.
-      // The constraints are given but the MCOI_TIED_TO is incorrect (needs to
-      // store the index of the tied op). Do we need this here actually?
-      MI.insert(VCCI,
-		MCOperand_insert0(MI, VCCPos, MCInst_getOperand(MI, (TiedOp))));
-    }
+    //     // Copy the operand to ensure it's not invalidated when MI grows.
+    //     // Must be a deep copy of the operand which is tied to this one.
+    //     // The constraints are given but the MCOI_TIED_TO is incorrect (needs
+    //     to
+    //     // store the index of the tied op). Do we need this here actually?
+    //     MI.insert(VCCI,
+    //   MCOperand_insert0(MI, VCCPos, MCInst_getOperand(MI, (TiedOp))));
+    //   }
   } else if (VCC != ARMVCC_None) {
     Check(&S, MCDisassembler_SoftFail);
   }
@@ -1025,7 +1026,8 @@ DecodeStatus getThumbInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 
     // Nested VPT blocks are UNPREDICTABLE. Must be checked before we add
     // the VPT predicate.
-    if (isVPTOpcode(MCInst_getOpcode(MI)) && VPTBlock_instrInVPTBlock(&(MI->csh->VPTBlock)))
+    if (isVPTOpcode(MCInst_getOpcode(MI)) &&
+	VPTBlock_instrInVPTBlock(&(MI->csh->VPTBlock)))
       Result = MCDisassembler_SoftFail;
 
     Check(&Result, AddThumbPredicate(MI));
