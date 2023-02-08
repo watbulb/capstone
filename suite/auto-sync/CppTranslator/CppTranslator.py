@@ -40,6 +40,7 @@ from Patches.PredicateBlockFunctions import PredicateBlockFunctions
 from Patches.QualifiedIdentifier import QualifiedIdentifier
 from Patches.Patch import Patch
 from Patches.ReferencesDecl import ReferencesDecl
+from Patches.STIArgument import STIArgument
 from Patches.STIFeatureBits import STIFeatureBits
 from Patches.STParameter import SubtargetInfoParam
 from Patches.SetOpcode import SetOpcode
@@ -75,6 +76,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        STIArgument.__name__: 0,
         DecodeInstruction.__name__: 0,
         FallThrough.__name__: 0,
         SizeAssignment.__name__: 0,
@@ -268,6 +270,8 @@ class Translator:
                 patch = FallThrough(p)
             elif ptype == DecodeInstruction.__name__:
                 patch = DecodeInstruction(p)
+            elif ptype == STIArgument.__name__:
+                patch = STIArgument(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
