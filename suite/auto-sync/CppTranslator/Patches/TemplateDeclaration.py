@@ -24,7 +24,7 @@ class TemplateDeclaration(Patch):
             "     ((template_parameter_list) @templ_params)"
             "     (declaration"
             "        ((storage_class_specifier)* @storage_class_id)"
-            "        ((type_identifier) @type_id)"
+            "        ([(type_identifier)(primitive_type)] @type_id)"
             "        (function_declarator"
             "            ((identifier) @fcn_name)"
             "            ((parameter_list) @fcn_params)"
