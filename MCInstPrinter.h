@@ -6,6 +6,12 @@
 
 #include <capstone/platform.h>
 
+/// Returned by getMnemonic() of the AsmPrinters.
+typedef struct {
+  const char *first; // Menmonic
+  uint64_t second;   // Bits
+} MnemonicBitsInfo;
+
 /// Map from opcode to pattern list by binary search.
 typedef struct {
   uint32_t Opcode;
