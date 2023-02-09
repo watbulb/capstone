@@ -14,7 +14,7 @@ class STIArgument(Patch):
         super().__init__(priority)
 
     def get_search_pattern(self) -> str:
-        return '(argument_list (_) (_) ((identifier) @id (#eq? @id "STI")) (_)) @sti_arg'
+        return '(argument_list (_) (_) (_)? ((identifier) @id (#eq? @id "STI")) (_)) @sti_arg'
 
     def get_main_capture_name(self) -> str:
         return "sti_arg"
