@@ -23,6 +23,7 @@ from Patches.FallThrough import FallThrough
 from Patches.FeatureBits import FeatureBits
 from Patches.FeatureBitsDecl import FeatureBitsDecl
 from Patches.FieldFromInstr import FieldFromInstr
+from Patches.GetNumOperands import GetNumOperands
 from Patches.GetOpcode import GetOpcode
 from Patches.GetOperandRegImm import GetOperandRegImm
 from Patches.GetOperand import GetOperand
@@ -76,6 +77,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        GetNumOperands.__name__: 0,
         STIArgument.__name__: 0,
         DecodeInstruction.__name__: 0,
         FallThrough.__name__: 0,
@@ -272,6 +274,8 @@ class Translator:
                 patch = DecodeInstruction(p)
             elif ptype == STIArgument.__name__:
                 patch = STIArgument(p)
+            elif ptype == GetNumOperands.__name__:
+                patch = GetNumOperands(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
