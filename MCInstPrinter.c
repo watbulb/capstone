@@ -53,13 +53,13 @@ const char *matchAliasPatterns(const MCInst *MI, const AliasMatchingData *M) {
   // return M.AsmStrings.data() + AsmStrOffset;
 }
 
+// TODO Add functionality to toggle the flag.
+bool getUseMarkup() { return false; }
+
 /// Utility functions to make adding mark ups simpler.
 const char *markup(const char *s) {
-  // TODO Decide if markup should be printed.
-  if (true)
+  if (getUseMarkup())
     return s;
   else
     return "";
 }
-
-

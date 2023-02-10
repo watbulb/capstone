@@ -59,6 +59,7 @@ typedef struct {
 } AliasMatchingData;
 
 const char *matchAliasPatterns(const MCInst *MI, const AliasMatchingData *M);
+bool getUseMarkup();
 const char *markup(const char *s);
 
 #endif // CS_MCINSTPRINTER_H
