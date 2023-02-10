@@ -78,7 +78,7 @@ class TemplateCollector:
         for x in self.sources:
             path = x["path"]
             src = x["content"]
-            log.info(f"Search for template references in {path}")
+            log.debug(f"Search for template references in {path}")
 
             tree = self.parser.parse(src, keep_text=True)
             query: Query = self.lang_cpp.query(self.get_template_pattern())
