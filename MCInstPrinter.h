@@ -4,6 +4,7 @@
 #ifndef CS_MCINSTPRINTER_H
 #define CS_MCINSTPRINTER_H
 
+#include "MCInst.h"
 #include <capstone/platform.h>
 
 /// Returned by getMnemonic() of the AsmPrinters.
@@ -48,5 +49,16 @@ typedef struct {
   AliasPatternCond_CondKind Kind;
   uint32_t Value;
 } AliasPatternCond;
+
+/// Tablegenerated data structures needed to match alias patterns.
+typedef struct {
+  const PatternsForOpcode *OpToPatterns;
+  const AliasPattern *Patterns;
+  const AliasPatternCond *PatternConds;
+  const char *AsmStrings;
+} AliasMatchingData;
+
+const char *matchAliasPatterns(const MCInst *MI, const AliasMatchingData *M);
+const char *markup(const char *s);
 
 #endif // CS_MCINSTPRINTER_H
