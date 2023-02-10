@@ -33,6 +33,7 @@ from Patches.Includes import Includes
 from Patches.IsOptionalDef import IsOptionalDef
 from Patches.IsPredicate import IsPredicate
 from Patches.LLVMFallThrough import LLVMFallThrough
+from Patches.LLVMunreachable import LLVMUnreachable
 from Patches.MethodToFunctions import MethodToFunction
 from Patches.MethodTypeQualifier import MethodTypeQualifier
 from Patches.NamespaceLLVM import NamespaceLLVM
@@ -105,7 +106,8 @@ class Translator:
         DecoderCast.__name__: 0,
         IsPredicate.__name__: 0,
         IsOptionalDef.__name__: 0,
-        Assert.__name__: 0,
+        Assert.__name__: 0,  # ◁─────────┐ The llvm_unreachable calls are replaced with asserts.
+        LLVMUnreachable.__name__: 1,  # ─┘ Those assert should stay.
         LLVMFallThrough.__name__: 0,
         DeclarationInConditionalClause.__name__: 0,
         SubtargetInfoParam.__name__: 0,
@@ -288,6 +290,8 @@ class Translator:
                 patch = PrintAnnotation(p)
             elif ptype == ConstMCInstParameter.__name__:
                 patch = ConstMCInstParameter(p)
+            elif ptype == LLVMUnreachable.__name__:
+                patch = LLVMUnreachable(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
