@@ -13,6 +13,7 @@ from tree_sitter.binding import Query
 from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
 from Patches.CheckDecoderStatus import CheckDecoderStatus
+from Patches.ClassConstructorDef import ClassConstructorDef
 from Patches.ClassesDef import ClassesDef
 from Patches.ConstMCInstParameter import ConstMCInstParameter
 from Patches.CreateOperand0 import CreateOperand0
@@ -81,6 +82,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        ClassConstructorDef.__name__: 0,
         ConstMCInstParameter.__name__: 0,
         PrintAnnotation.__name__: 0,
         GetNumOperands.__name__: 0,
@@ -292,6 +294,8 @@ class Translator:
                 patch = ConstMCInstParameter(p)
             elif ptype == LLVMUnreachable.__name__:
                 patch = LLVMUnreachable(p)
+            elif ptype == ClassConstructorDef.__name__:
+                patch = ClassConstructorDef(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
