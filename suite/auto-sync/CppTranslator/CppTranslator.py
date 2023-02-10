@@ -39,6 +39,7 @@ from Patches.NamespaceAnon import NamespaceAnon
 from Patches.NamespaceArch import NamespaceArch
 from Patches.OutStreamParam import OutStreamParam
 from Patches.PredicateBlockFunctions import PredicateBlockFunctions
+from Patches.PrintAnnotation import PrintAnnotation
 from Patches.QualifiedIdentifier import QualifiedIdentifier
 from Patches.Patch import Patch
 from Patches.ReferencesDecl import ReferencesDecl
@@ -78,6 +79,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        PrintAnnotation.__name__: 0,
         GetNumOperands.__name__: 0,
         STIArgument.__name__: 0,
         DecodeInstruction.__name__: 0,
@@ -280,6 +282,8 @@ class Translator:
                 patch = GetNumOperands(p)
             elif ptype == AddOperand.__name__:
                 patch = AddOperand(p)
+            elif ptype == PrintAnnotation.__name__:
+                patch = PrintAnnotation(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
