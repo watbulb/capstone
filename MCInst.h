@@ -35,6 +35,10 @@ struct MCOperand {
 		kRegister,                ///< Register operand.
 		kImmediate,               ///< Immediate operand.
 		kFPImmediate,             ///< Floating-point immediate operand.
+		kDFPImmediate,            ///< Double-Floating-point immediate operand.
+		kExpr,                    ///< Relocatable immediate operand.
+		kInst                     ///< Sub-instruction operand.
+
 	} MachineOperandType;
 	unsigned char Kind;
 
@@ -52,6 +56,10 @@ bool MCOperand_isReg(const MCOperand *op);
 bool MCOperand_isImm(const MCOperand *op);
 
 bool MCOperand_isFPImm(const MCOperand *op);
+
+bool MCOperand_isDFPImm(const MCOperand *op);
+
+bool MCOperand_isExpr(const MCOperand *op);
 
 bool MCOperand_isInst(const MCOperand *op);
 

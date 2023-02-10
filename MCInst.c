@@ -110,6 +110,21 @@ bool MCOperand_isFPImm(const MCOperand *op)
 	return op->Kind == kFPImmediate;
 }
 
+bool MCOperand_isDFPImm(const MCOperand *op)
+{
+	return op->Kind == kDFPImmediate;
+}
+
+bool MCOperand_isExpr(const MCOperand *op)
+{
+	return op->Kind == kExpr;
+}
+
+bool MCOperand_isInst(const MCOperand *op)
+{
+	return op->Kind == kInst;
+}
+
 /// getReg - Returns the register number.
 unsigned MCOperand_getReg(const MCOperand *op)
 {
