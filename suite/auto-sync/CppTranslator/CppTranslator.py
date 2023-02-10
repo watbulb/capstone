@@ -58,6 +58,7 @@ from Patches.TemplateDeclaration import TemplateDeclaration
 from Patches.TemplateDefinition import TemplateDefinition
 from Patches.TemplateParamDecl import TemplateParamDecl
 from Patches.TemplateRefs import TemplateRefs
+from Patches.UseMarkup import UseMarkup
 from Patches.UsingDeclaration import UsingDeclaration
 from TemplateCollector import TemplateCollector
 
@@ -83,6 +84,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        UseMarkup.__name__: 0,
         ConstMCOperand.__name__: 0,
         ClassConstructorDef.__name__: 0,
         ConstMCInstParameter.__name__: 0,
@@ -300,6 +302,8 @@ class Translator:
                 patch = ClassConstructorDef(p)
             elif ptype == ConstMCOperand.__name__:
                 patch = ConstMCOperand(p)
+            elif ptype == UseMarkup.__name__:
+                patch = UseMarkup(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
