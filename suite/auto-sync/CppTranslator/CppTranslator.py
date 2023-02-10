@@ -10,6 +10,7 @@ import sys
 
 from tree_sitter.binding import Query
 
+from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
 from Patches.CheckDecoderStatus import CheckDecoderStatus
 from Patches.ClassesDef import ClassesDef
@@ -87,7 +88,8 @@ class Translator:
         FeatureBits.__name__: 0,
         STIFeatureBits.__name__: 0,
         Includes.__name__: 0,
-        CreateOperand0.__name__: 0,
+        CreateOperand0.__name__: 0,  # ◁───┐ `CreateOperand0` removes most calls to MI.addOperand().
+        AddOperand.__name__: 1,  # ────────┘ The ones left are fixed with the `AddOperand` patch.
         CreateOperand1.__name__: 0,
         GetOpcode.__name__: 0,
         SetOpcode.__name__: 0,
@@ -276,6 +278,8 @@ class Translator:
                 patch = STIArgument(p)
             elif ptype == GetNumOperands.__name__:
                 patch = GetNumOperands(p)
+            elif ptype == AddOperand.__name__:
+                patch = AddOperand(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
