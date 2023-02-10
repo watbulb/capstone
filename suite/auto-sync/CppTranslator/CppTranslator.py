@@ -16,6 +16,7 @@ from Patches.CheckDecoderStatus import CheckDecoderStatus
 from Patches.ClassConstructorDef import ClassConstructorDef
 from Patches.ClassesDef import ClassesDef
 from Patches.ConstMCInstParameter import ConstMCInstParameter
+from Patches.ConstMCOperand import ConstMCOperand
 from Patches.CreateOperand0 import CreateOperand0
 from Patches.CreateOperand1 import CreateOperand1
 from Patches.DeclarationInConditionClause import DeclarationInConditionalClause
@@ -82,6 +83,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        ConstMCOperand.__name__: 0,
         ClassConstructorDef.__name__: 0,
         ConstMCInstParameter.__name__: 0,
         PrintAnnotation.__name__: 0,
@@ -296,6 +298,8 @@ class Translator:
                 patch = LLVMUnreachable(p)
             elif ptype == ClassConstructorDef.__name__:
                 patch = ClassConstructorDef(p)
+            elif ptype == ConstMCOperand.__name__:
+                patch = ConstMCOperand(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
