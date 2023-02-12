@@ -188,3 +188,13 @@ void printUInt32(SStream *O, uint32_t val)
 	else
 		SStream_concat(O, "%u", val);
 }
+
+void printFloat(SStream *O, float val)
+{
+	SStream_concat(O, "%f", val);
+}
+
+void printFloatBang(SStream *O, float val)
+{
+	SStream_concat(O, "#%f", val);
+}
