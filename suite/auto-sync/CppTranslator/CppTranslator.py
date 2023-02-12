@@ -33,6 +33,7 @@ from Patches.GetOperandRegImm import GetOperandRegImm
 from Patches.GetOperand import GetOperand
 from Patches.GetSubReg import GetSubReg
 from Patches.Includes import Includes
+from Patches.InlineToStaticInline import InlineToStaticInline
 from Patches.IsOptionalDef import IsOptionalDef
 from Patches.IsPredicate import IsPredicate
 from Patches.LLVMFallThrough import LLVMFallThrough
@@ -85,6 +86,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        InlineToStaticInline.__name__: 0,
         GetSubReg.__name__: 0,
         UseMarkup.__name__: 0,
         ConstMCOperand.__name__: 0,
@@ -308,6 +310,8 @@ class Translator:
                 patch = UseMarkup(p)
             elif ptype == GetSubReg.__name__:
                 patch = GetSubReg(p)
+            elif ptype == InlineToStaticInline.__name__:
+                patch = InlineToStaticInline(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
