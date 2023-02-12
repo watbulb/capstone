@@ -31,6 +31,7 @@ from Patches.GetNumOperands import GetNumOperands
 from Patches.GetOpcode import GetOpcode
 from Patches.GetOperandRegImm import GetOperandRegImm
 from Patches.GetOperand import GetOperand
+from Patches.GetSubReg import GetSubReg
 from Patches.Includes import Includes
 from Patches.IsOptionalDef import IsOptionalDef
 from Patches.IsPredicate import IsPredicate
@@ -84,6 +85,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        GetSubReg.__name__: 0,
         UseMarkup.__name__: 0,
         ConstMCOperand.__name__: 0,
         ClassConstructorDef.__name__: 0,
@@ -304,6 +306,8 @@ class Translator:
                 patch = ConstMCOperand(p)
             elif ptype == UseMarkup.__name__:
                 patch = UseMarkup(p)
+            elif ptype == GetSubReg.__name__:
+                patch = GetSubReg(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
