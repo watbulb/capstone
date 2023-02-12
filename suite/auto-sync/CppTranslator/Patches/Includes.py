@@ -103,8 +103,10 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "../../SStream.h"\n'
             + b'#include "../../MCRegisterInfo.h"\n'
             + b'#include "../../MCInstPrinter.h"\n'
-            + b'#include "../../utils.h"\n'
+            + b'#include "../../utils.h"\n\n'
         )
+    elif filename == "ARMAddressingModes.h":
+        return b"#include <assert.h>\n" + b'#include "../../MathExtras.h"\n\n'
     log.fatal(f"No includes given for ARM source file: {filename}")
     exit(1)
 

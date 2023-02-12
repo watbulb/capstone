@@ -10,6 +10,9 @@
       },{
         "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.h",
         "out": "../build/trans_out/ARMInstPrinter.h"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMAddressingModes.h",
+        "out": "../build/trans_out/ARMAddressingModes.h"
       }
     ],
     "files_for_template_search": [

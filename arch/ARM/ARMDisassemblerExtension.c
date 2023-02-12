@@ -196,10 +196,3 @@ bool ARM_isCDECoproc(size_t Coproc, const MCInst *MI)
 
   return ARM_getFeatureBits(MI->csh->mode, ARM_FeatureCoprocCDE0 + Coproc);
 }
-
-/// getAM5FP16Opc - This function encodes the addrmode5fp16 opc field.
-unsigned ARM_AM_getAM5FP16Opc(ARM_AM_AddrOpc Opc, unsigned char Offset)
-{
-  bool isSub = Opc == ARM_AM_sub;
-  return ((int)isSub << 8) | Offset;
-}
