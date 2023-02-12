@@ -348,12 +348,39 @@ class Translator:
             )
         self.tree = self.parser.parse(new_src, self.tree, keep_text=True)
 
+    def apply_patch(self, patch: Patch) -> bool:
+        """Tests if the given patch should be applied for the current architecture or file."""
+        has_apply_only = len(patch.apply_only_to["files"]) > 0 or len(patch.apply_only_to["archs"]) > 0
+        has_do_not_apply = len(patch.do_not_apply["files"]) > 0 or len(patch.do_not_apply["archs"]) > 0
+
+        if not (has_apply_only or has_do_not_apply):
+            # Lists empty.
+            return True
+
+        if has_apply_only:
+            if self.arch in patch.apply_only_to["archs"]:
+                return True
+            elif self.current_src_path_in.name in patch.apply_only_to["files"]:
+                return True
+            return False
+        elif has_do_not_apply:
+            if self.arch in patch.do_not_apply["archs"]:
+                return False
+            elif self.current_src_path_in.name in patch.do_not_apply["files"]:
+                return False
+            return True
+        log.fatal("Logical error.")
+        exit(1)
+
     def translate(self) -> None:
         for self.current_src_path_in, self.current_src_path_out in zip(self.src_paths, self.out_paths):
             log.info(f"Translate '{self.current_src_path_in}'")
             self.parse(self.current_src_path_in)
             patch: Patch
             for patch in self.patches:
+                if not self.apply_patch(patch):
+                    log.debug(f"Skip patch {patch.__class__.__name__}")
+                    continue
                 pattern: str = patch.get_search_pattern()
 
                 # Each patch has a capture which includes the whole subtree searched for.
