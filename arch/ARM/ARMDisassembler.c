@@ -627,7 +627,7 @@ DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 			    MCInst *MI, uint16_t *Size, uint64_t Address,
 			    void *Info)
 {
-  if (ARM_getFeatureBits(MI->csh->mode, ARM_ModeThumb))
+  if (MI->csh->mode & CS_MODE_THUMB)
     return getThumbInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
   return getARMInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
 }
