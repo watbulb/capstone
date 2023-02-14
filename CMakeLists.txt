@@ -100,6 +100,7 @@ set(SOURCES_ENGINE
     cs.c
     MCInst.c
     MCInstrDesc.c
+    MCInstPrinter.c
     MCRegisterInfo.c
     SStream.c
     utils.c
@@ -160,6 +161,7 @@ if(CAPSTONE_ARM_SUPPORT)
         arch/ARM/ARMDisassemblerExtension.h
         arch/ARM/ARMInstPrinter.h
         arch/ARM/ARMMapping.h
+        arch/ARM/ARMModule.h
         arch/ARM/ARMGenAsmWriter.inc
         arch/ARM/ARMGenDisassemblerTables.inc
         arch/ARM/ARMGenInstrInfo.inc
@@ -171,8 +173,6 @@ if(CAPSTONE_ARM_SUPPORT)
         arch/ARM/ARMGenCSMappingInsn.inc
         arch/ARM/ARMGenCSMappingInsnOp.inc
         arch/ARM/ARMGenCSMappingInsnName.inc
-        arch/ARM/ARMGenRegisterName.inc
-        arch/ARM/ARMGenRegisterName_digit.inc
         arch/ARM/ARMGenSystemRegister.inc
     )
     set(TEST_SOURCES ${TEST_SOURCES} test_arm.c)
