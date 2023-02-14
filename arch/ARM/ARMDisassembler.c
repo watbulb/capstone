@@ -29,9 +29,6 @@
 #define GET_INSTRINFO_MC_DESC
 #include "ARMGenInstrInfo.inc"
 
-#define GET_INSTRINFO_ENUM
-#include "ARMGenInstrInfo.inc"
-
 #define CONCAT(a, b) CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
 

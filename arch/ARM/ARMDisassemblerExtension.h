@@ -10,7 +10,6 @@
 #include "../../MathExtras.h"
 #include "../../cs_priv.h"
 #include "ARMAddressingModes.h"
-#include "ARMBaseInfo.h"
 #include "ARMDisassembler.h"
 #include "capstone/capstone.h"
 

@@ -22,12 +22,8 @@
 #include "../../utils.h"
 #include "ARMAddressingModes.h"
 #include "ARMBaseInfo.h"
-#include "ARMDisassembler.h"
+#include "ARMDisassemblerExtension.h"
 #include "ARMInstPrinter.h"
-#include "ARMMapping.h"
-
-#define GET_INSTRINFO_ENUM
-#include "ARMGenInstrInfo.inc"
 
 #define CONCAT(a, b) CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b

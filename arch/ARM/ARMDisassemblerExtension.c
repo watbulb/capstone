@@ -2,6 +2,7 @@
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2019 */
 /*    Rot127 <unisono@quyllur.org>, 2022-2023 */
 
+#include "ARMBaseInfo.h"
 #include "ARMDisassemblerExtension.h"
 
 bool ITBlock_push_back(ARM_ITBlock *it, char v)
@@ -161,9 +162,6 @@ bool ARM_isVpred(arm_op_type op)
 {
   return op == ARM_OP_VPRED_R || op == ARM_OP_VPRED_N;
 }
-
-#define GET_INSTRINFO_ENUM
-#include "ARMGenInstrInfo.inc"
 
 // Imported from ARMBaseInstrInfo.h
 //

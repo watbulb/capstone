@@ -18,8 +18,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "ARMMapping.h"
-
 #include "../../MCInst.h"
 #include "../../MCInstPrinter.h"
 #include "../../MCRegisterInfo.h"

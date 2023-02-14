@@ -1,31 +1,17 @@
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2019 */
 
-#ifndef CAPSTONE_HAS_ARM
+#ifdef CAPSTONE_HAS_ARM
 
 #include <stdio.h>	// debug
 #include <string.h>
 
 #include "../../cs_priv.h"
+#include "../../MCDisassembler.h"
 
 #include "ARMMapping.h"
-
-#define GET_INSTRINFO_ENUM
-#include "ARMGenInstrInfo.inc"
-
-const char *ARM_reg_name(csh handle, unsigned int reg)
-{
-#ifndef CAPSTONE_DIET
-	if (reg >= ARR_SIZE(reg_name_maps))
-		return NULL;
-
-	return reg_name_maps[reg].name;
-#else
-	return NULL;
-#endif
-}
-
-#include "ARMGenAsmWriter.inc"
+#include "ARMBaseInfo.h"
+#include "ARMDisassembler.h"
 
 const char *ARM_reg_name(csh handle, unsigned int reg) {
 	if (handle.syntax & CS_OPT_SYNTAX_NOREGNAME) {

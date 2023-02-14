@@ -24,6 +24,9 @@
 #include "capstone/arm.h"
 #include "../../utils.h"
 
+#define GET_INSTRINFO_ENUM
+#include "ARMGenInstrInfo.inc"
+
 // Enums corresponding to ARM condition codes
 // The CondCodes constants map directly to the 4-bit encoding of the
 // condition field for predicated instructions.

@@ -1,8 +1,8 @@
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2019 */
 
-#ifndef CS_ARM_MAP_H
-#define CS_ARM_MAP_H
+#ifndef CS_ARM_MAPPING_H
+#define CS_ARM_MAPPING_H
 
 #include "../../include/capstone/capstone.h"
 #include "../../utils.h"
