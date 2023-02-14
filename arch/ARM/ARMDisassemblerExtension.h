@@ -47,4 +47,6 @@ void VPTBlock_advanceVPTState(ARM_VPTBlock *VPT);
 
 void VPTBlock_setVPTState(ARM_VPTBlock *VPT, char Mask);
 
+bool ARM_getFeatureBits(unsigned int mode, unsigned int feature);
+
 #endif // CS_ARM_DISASSEMBLER_EXTENSION_H

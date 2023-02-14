@@ -194,3 +194,19 @@ bool ARM_isCDECoproc(size_t Coproc, const MCInst *MI)
 
   return ARM_getFeatureBits(MI->csh->mode, ARM_FeatureCoprocCDE0 + Coproc);
 }
+
+// Hacky: enable all features for disassembler
+bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
+{
+
+	if ((mode & CS_MODE_MCLASS) == 0) {
+		if (feature == ARM_FeatureMClass)
+			return false;
+	}
+
+	if (feature == ARM_FeatureMClass && (mode & CS_MODE_MCLASS) == 0)
+		return false;
+
+	// we support everything
+	return true;
+}
