@@ -24,9 +24,6 @@ typedef const char *(*GetName_t)(csh handle, unsigned int id);
 
 typedef void (*GetID_t)(cs_struct *h, cs_insn *insn, unsigned int id);
 
-// return register name, given register ID
-typedef const char *(*GetRegisterName_t)(unsigned RegNo);
-
 // return registers accessed by instruction
 typedef void (*GetRegisterAccess_t)(const cs_insn *insn,
 		cs_regs regs_read, uint8_t *regs_read_count,
@@ -76,7 +73,6 @@ struct cs_struct {
 	bool doing_mem;	// handling memory operand in InstPrinter code
 	bool doing_SME_Index; // handling a SME instruction that has index
 	unsigned short *insn_cache;	// index caching for mapping.c
-	GetRegisterName_t get_regname;
 	bool skipdata;	// set this to True if we skip data when disassembling
 	uint8_t skipdata_size;	// how many bytes to skip
 	cs_opt_skipdata skipdata_setup;	// user-defined skipdata setup
