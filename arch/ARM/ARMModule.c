@@ -15,7 +15,7 @@ cs_err ARM_global_init(cs_struct *ud)
 	MCRegisterInfo *mri;
 	mri = cs_mem_malloc(sizeof(*mri));
 
-	ARM_init(mri);
+	ARM_init_mri(mri);
 
 	ud->printer = printInst;
 	ud->printer_info = mri;
@@ -28,10 +28,7 @@ cs_err ARM_global_init(cs_struct *ud)
 	ud->reg_access = ARM_reg_access;
 #endif
 
-	if (ud->mode & CS_MODE_THUMB)
-		ud->disasm = Thumb_getInstruction;
-	else
-		ud->disasm = ARM_getInstruction;
+	ud->disasm = ARM_getInstruction;
 
 	return CS_ERR_OK;
 }
@@ -40,13 +37,7 @@ cs_err ARM_option(cs_struct *handle, cs_opt_type type, size_t value)
 {
 	switch(type) {
 		case CS_OPT_MODE:
-			if (value & CS_MODE_THUMB)
-				handle->disasm = Thumb_getInstruction;
-			else
-				handle->disasm = ARM_getInstruction;
-
 			handle->mode = (cs_mode)value;
-
 			break;
 		case CS_OPT_SYNTAX:
 			handle->syntax = (int)value;

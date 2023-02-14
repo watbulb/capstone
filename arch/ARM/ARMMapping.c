@@ -192,6 +192,32 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id) {
 
 }
 
+bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len, MCInst *instr, uint16_t *size, uint64_t address, void *info) {
+  return getInstruction(handle, code, code_len, instr, size, address, info) == MCDisassembler_Success;
+}
+
+#define GET_REGINFO_MC_DESC
+#include "ARMGenRegisterInfo.inc"
+
+void ARM_init_mri(MCRegisterInfo *MRI)
+{
+	/*
+		InitMCRegisterInfo(ARMRegDesc, 289,
+		RA, PC,
+		ARMMCRegisterClasses, 103,
+		ARMRegUnitRoots, 77, ARMRegDiffLists, ARMRegStrings,
+		ARMSubRegIdxLists, 57,
+		ARMSubRegIdxRanges, ARMRegEncodingTable);
+	 */
+
+	MCRegisterInfo_InitMCRegisterInfo(MRI, ARMRegDesc, 289,
+			0, 0,
+			ARMMCRegisterClasses, 103,
+			0, 0, ARMRegDiffLists, 0,
+			ARMSubRegIdxLists, 57,
+			0);
+}
+
 #ifndef CAPSTONE_DIET
 ///< A LLVM<->CS Mapping entry of an operand.
 typedef struct insn_op {

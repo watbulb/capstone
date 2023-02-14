@@ -31,4 +31,11 @@ void ARM_reg_access(const cs_insn *insn,
 
 const BankedReg *lookupBankedRegByEncoding(uint8_t encoding);
 
-#endif
+bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len, MCInst *instr, uint16_t *size, uint64_t address, void *info);
+
+void ARM_init_mri(MCRegisterInfo *MRI);
+
+const char *
+getRegisterName(unsigned RegNo, unsigned AltIdx);
+
+#endif // CS_ARM_MAPPING_H
