@@ -44,13 +44,13 @@
 
 /// ARM disassembler for all ARM platforms.;
 DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t ByteLen,
-			    MCInst *MI, uint64_t *Size, uint64_t Address,
+			    MCInst *MI, uint16_t *Size, uint64_t Address,
 			    void *Info);
 DecodeStatus getARMInstruction(csh ud, const uint8_t *Bytes, size_t ByteLen,
-			       MCInst *MI, uint64_t *Size, uint64_t Address,
+			       MCInst *MI, uint16_t *Size, uint64_t Address,
 			       void *Info);
 DecodeStatus getThumbInstruction(csh ud, const uint8_t *Bytes, size_t ByteLen,
-				 MCInst *MI, uint64_t *Size, uint64_t Address,
+				 MCInst *MI, uint16_t *Size, uint64_t Address,
 				 void *Info);
 DecodeStatus AddThumbPredicate(MCInst *);
 void UpdateThumbVFPPredicate(DecodeStatus, MCInst *);
@@ -627,7 +627,7 @@ static DecodeStatus checkDecodedInstruction(MCInst *MI, uint32_t Insn,
 }
 
 DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
-			    MCInst *MI, uint64_t *Size, uint64_t Address,
+			    MCInst *MI, uint16_t *Size, uint64_t Address,
 			    void *Info)
 {
   if (ARM_getFeatureBits(MI->csh->mode, ARM_ModeThumb))
@@ -659,7 +659,7 @@ static inline uint16_t endianSensitiveOpcode16(MCInst *MI, const uint8_t *Bytes)
 }
 
 DecodeStatus getARMInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
-			       MCInst *MI, uint64_t *Size, uint64_t Address,
+			       MCInst *MI, uint16_t *Size, uint64_t Address,
 			       void *Info)
 {
   // We want to read exactly 4 bytes of data.
@@ -957,7 +957,7 @@ void UpdateThumbVFPPredicate(DecodeStatus S, MCInst *MI)
 }
 
 DecodeStatus getThumbInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
-				 MCInst *MI, uint64_t *Size, uint64_t Address,
+				 MCInst *MI, uint16_t *Size, uint64_t Address,
 				 void *Info)
 {
   // We want to read exactly 2 bytes of data.
