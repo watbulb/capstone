@@ -148,6 +148,7 @@ set(TEST_SOURCES test_basic.c test_detail.c test_skipdata.c test_iter.c)
 if(CAPSTONE_ARM_SUPPORT)
     add_definitions(-DCAPSTONE_HAS_ARM)
     set(SOURCES_ARM
+        arch/ARM/ARMBaseInfo.c
         arch/ARM/ARMDisassembler.c
         arch/ARM/ARMDisassemblerExtension.c
         arch/ARM/ARMInstPrinter.c

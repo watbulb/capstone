@@ -13,6 +13,9 @@
       },{
         "in": "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMAddressingModes.h",
         "out": "../build/trans_out/ARMAddressingModes.h"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/ARM/Utils/ARMBaseInfo.cpp",
+        "out": "../build/trans_out/ARMBaseInfo.cpp"
       }
     ],
     "files_for_template_search": [
