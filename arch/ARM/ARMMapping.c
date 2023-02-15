@@ -230,25 +230,24 @@ typedef struct {
 	insn_op ops[8]; ///< NULL terminated array of operands.
 } insn_ops;
 
-static const insn_ops insn_ops[] = {
+static const insn_ops insn_operands[] = {
 	{
 		// NULL item
-		{ 0 }
+		{{ 0 }}
 	},
-
 #include "ARMGenCSMappingInsnOp.inc"
 };
 
 // given internal insn id, return operand access info
-const uint8_t *ARM_get_op_access(cs_struct *h, unsigned int id)
-{
-	int i = insn_find(insns, ARR_SIZE(insns), id, &h->insn_cache);
-	if (i != 0) {
-		return insn_ops[i].access;
-	}
+// const uint8_t *ARM_get_op_access(cs_struct *h, unsigned int id)
+// {
+// 	int i = insn_find(insns, ARR_SIZE(insns), id, &h->insn_cache);
+// 	if (i != 0) {
+// 		return insn_ops[i].access;
+// 	}
 
-	return NULL;
-}
+// 	return NULL;
+// }
 
 void ARM_reg_access(const cs_insn *insn,
 		cs_regs regs_read, uint8_t *regs_read_count,
