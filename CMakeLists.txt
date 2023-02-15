@@ -161,7 +161,6 @@ if(CAPSTONE_ARM_SUPPORT)
         arch/ARM/ARMDisassemblerExtension.h
         arch/ARM/ARMInstPrinter.h
         arch/ARM/ARMMapping.h
-        arch/ARM/ARMModule.h
         arch/ARM/ARMGenAsmWriter.inc
         arch/ARM/ARMGenDisassemblerTables.inc
         arch/ARM/ARMGenInstrInfo.inc
