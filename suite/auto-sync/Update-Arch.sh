@@ -15,26 +15,28 @@ check_llvm() {
   fi
 }
 
+
+llvm_c_inc_dir="llvm_c_inc"
+llvm_inc_dir="llvm_inc"
+translator_dir="trans_out"
+ts_so_dir="ts_libs"
+
 setup_build_dir() {
-  llvm_inc_dir="llvm_inc"
   if [ ! -d "$llvm_inc_dir" ]; then
     echo "[*] Create ./$llvm_inc_dir directory"
     mkdir $llvm_inc_dir
   fi  
 
-  llvm_c_inc_dir="llvm_c_inc"
   if [ ! -d "$llvm_c_inc_dir" ]; then
     echo "[*] Create ./$llvm_c_inc_dir directory"
     mkdir $llvm_c_inc_dir
   fi
 
-  translator_dir="trans_out"
   if [ ! -d "$translator_dir" ]; then
     echo "[*] Create ./$translator_dir directory"
     mkdir $translator_dir
   fi
 
-  ts_so_dir="ts_libs"
   if [ ! -d "$ts_so_dir" ]; then
     echo "[*] Create ./$ts_so_dir directory"
     mkdir $ts_so_dir
@@ -98,9 +100,26 @@ cd ../build
 
 cs_root=$(git rev-parse --show-toplevel)
 cs_arch_dir="$cs_root/arch/$arch/"
+cs_inc_dir="$cs_root/include/capstone"
+
+echo "[*] Copy files to $cs_inc_dir"
+
+into_cs_include=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc"
+for f in $into_cs_include; do
+  cp $f "$cs_inc_dir/inc"
+done
+
 echo "[*] Copy files to $cs_arch_dir"
+
+echo $into_cs_include
+for f in $(ls | grep "\.inc"); do
+  # echo "$f"
+  if ! echo $into_cs_include | grep -q -w $f ; then
+    cp $f $cs_arch_dir
+    echo "CPIED $f"
+  fi
+done
 cp $llvm_c_inc_dir/$arch* $cs_arch_dir
 cp $translator_dir/$arch* $cs_arch_dir
-cp $arch*.inc $cs_arch_dir 
 
 # Give advice how to fix the translated C++ files.

@@ -140,6 +140,13 @@ set(HEADERS_COMMON
     include/capstone/sh.h
     include/capstone/tricore.h
     include/capstone/platform.h
+    include/capstone/sh.h
+)
+
+set(HEADERS_INC
+    include/capstone/inc/ARMGenCSRegEnum.inc
+    include/capstone/inc/ARMGenCSInsnEnum.inc
+    include/capstone/inc/ARMGenCSFeatureEnum.inc
 )
 
 set(TEST_SOURCES test_basic.c test_detail.c test_skipdata.c test_iter.c)
@@ -167,9 +174,7 @@ if(CAPSTONE_ARM_SUPPORT)
         arch/ARM/ARMGenInstrInfo.inc
         arch/ARM/ARMGenRegisterInfo.inc
         arch/ARM/ARMGenSubtargetInfo.inc
-        arch/ARM/ARMGenCSFeatureEnum.inc
         arch/ARM/ARMGenCSFeatureName.inc
-        arch/ARM/ARMGenCSInsnEnum.inc
         arch/ARM/ARMGenCSMappingInsn.inc
         arch/ARM/ARMGenCSMappingInsnOp.inc
         arch/ARM/ARMGenCSMappingInsnName.inc
@@ -699,6 +704,7 @@ if(CAPSTONE_INSTALL)
     include("GNUInstallDirs")
 
     install(FILES ${HEADERS_COMMON} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/capstone)
+    install(FILES ${HEADERS_INC} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/capstone/inc)
 
     configure_file(capstone.pc.in ${CMAKE_BINARY_DIR}/capstone.pc @ONLY)
     install(FILES ${CMAKE_BINARY_DIR}/capstone.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

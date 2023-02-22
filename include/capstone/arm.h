@@ -268,7 +268,7 @@ typedef enum arm_vectordata_type {
 
 /// ARM registers
 typedef enum arm_reg {
-	#include "../arch/ARM/ARMGenCSRegEnum.inc"
+	#include "inc/ARMGenCSRegEnum.inc"
 
 	// alias registers
 	ARM_REG_R13 = ARM_REG_SP,
@@ -350,7 +350,7 @@ typedef struct cs_arm {
 typedef enum arm_insn {
 	ARM_INS_INVALID = 0,
 
-	#include "../arch/ARM/ARMGenCSInsnEnum.inc"
+	#include "inc/ARMGenCSInsnEnum.inc"
 
 	ARM_INS_ENDING,	// <-- mark the end of the list of instructions
 } arm_insn;
@@ -368,7 +368,7 @@ typedef enum arm_insn_group {
 	ARM_GRP_BRANCH_RELATIVE, ///< = CS_GRP_BRANCH_RELATIVE
 
 	// Architecture-specific groups
-	#include "../arch/ARM/ARMGenCSFeatureEnum.inc"
+	#include "inc/ARMGenCSFeatureEnum.inc"
 
 	ARM_GRP_ENDING,
 } arm_insn_group;
