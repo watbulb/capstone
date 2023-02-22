@@ -22,10 +22,10 @@ setup_build_dir() {
     mkdir $llvm_inc_dir
   fi  
 
-  cs_inc_dir="cs_inc"
-  if [ ! -d "$cs_inc_dir" ]; then
-    echo "[*] Create ./$cs_inc_dir directory"
-    mkdir $cs_inc_dir
+  llvm_c_inc_dir="llvm_c_inc"
+  if [ ! -d "$llvm_c_inc_dir" ]; then
+    echo "[*] Create ./$llvm_c_inc_dir directory"
+    mkdir $llvm_c_inc_dir
   fi
 
   translator_dir="trans_out"
@@ -71,21 +71,21 @@ setup_build_dir
 check_llvm $llvm_root $tblgen
 
 echo "[*] Generate disassembler..."
-$tblgen --printerLang=CCS --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenDisassemblerTables.inc"
-$tblgen --printerLang=C++ --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "llvm_inc/"$arch"GenDisassemblerTables.inc"
+$tblgen --printerLang=CCS --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenDisassemblerTables.inc"
+$tblgen --printerLang=C++ --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_inc_dir"/"$arch"GenDisassemblerTables.inc"
 
 echo "[*] Generate AsmWriter..."
-$tblgen --printerLang=CCS --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenAsmWriter.inc"
-$tblgen --printerLang=C++ --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "llvm_inc/"$arch"GenAsmWriter.inc"
+$tblgen --printerLang=CCS --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenAsmWriter.inc"
+$tblgen --printerLang=C++ --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_inc_dir"/"$arch"GenAsmWriter.inc"
 
 echo "[*] Generate RegisterInfo tables..."
-$tblgen --printerLang=CCS --gen-register-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenRegisterInfo.inc"
+$tblgen --printerLang=CCS --gen-register-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenRegisterInfo.inc"
 
 echo "[*] Generate InstrInfo tables..."
-$tblgen --printerLang=CCS --gen-instr-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenInstrInfo.inc"
+$tblgen --printerLang=CCS --gen-instr-info -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenInstrInfo.inc"
 
 echo "[*] Generate SubtargetInfo tables..."
-$tblgen --printerLang=CCS --gen-subtarget -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > "cs_inc/"$arch"GenSubtargetInfo.inc"
+$tblgen --printerLang=CCS --gen-subtarget -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenSubtargetInfo.inc"
 
 echo "[*] Generate Mapping tables..."
 $tblgen --printerLang=CCS --gen-asm-matcher -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td"
@@ -99,8 +99,8 @@ cd ../build
 cs_root=$(git rev-parse --show-toplevel)
 cs_arch_dir="$cs_root/arch/$arch/"
 echo "[*] Copy files to $cs_arch_dir"
-cp cs_inc/$arch* $cs_arch_dir
-cp trans_out/$arch* $cs_arch_dir
+cp $llvm_c_inc_dir/$arch* $cs_arch_dir
+cp $translator_dir/$arch* $cs_arch_dir
 cp $arch*.inc $cs_arch_dir 
 
 # Give advice how to fix the translated C++ files.
