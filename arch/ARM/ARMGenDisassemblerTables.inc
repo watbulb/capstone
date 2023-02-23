@@ -22548,7 +22548,6 @@ static DecodeStatus fname(const uint8_t DecodeTable[], MCInst *MI, \
   uint64_t CurFieldValue = 0; \
   DecodeStatus S = MCDisassembler_Success; \
   while (true) { \
-    ptrdiff_t Loc = Ptr - DecodeTable; \
     switch (*Ptr) { \
     default: \
       return MCDisassembler_Fail; \
