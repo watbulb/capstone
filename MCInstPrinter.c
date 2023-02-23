@@ -51,6 +51,7 @@ const char *matchAliasPatterns(const MCInst *MI, const AliasMatchingData *M) {
   //        (AsmStrOffset == 0 || M.AsmStrings[AsmStrOffset - 1] == '\0') &&
   //        "bad asm string offset");
   // return M.AsmStrings.data() + AsmStrOffset;
+  return "Alias not implemented.";
 }
 
 // TODO Add functionality to toggle the flag.
