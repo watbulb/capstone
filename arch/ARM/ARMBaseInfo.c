@@ -15,6 +15,7 @@
 #include <capstone/platform.h>
 
 #include "ARMBaseInfo.h"
+#include "ARMMapping.h"
 
 #define CONCAT(a, b)	CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
