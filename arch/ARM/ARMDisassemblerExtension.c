@@ -85,7 +85,7 @@ bool VPTBlock_push_back(ARM_VPTBlock *it, char v)
   return true;
 }
 
-bool VPTBlock_instrInVPTBlock(ARM_VPTBlock *VPT) { return VPT->size == 0; }
+bool VPTBlock_instrInVPTBlock(ARM_VPTBlock *VPT) { return VPT->size > 0; }
 
 unsigned VPTBlock_getVPTPred(ARM_VPTBlock *VPT)
 {
