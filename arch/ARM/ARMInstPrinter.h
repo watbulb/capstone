@@ -87,7 +87,7 @@ void printPKHASRShiftImm(MCInst *MI, unsigned OpNum, SStream *O);
 DECLARE_printAdrLabelOperand(0) DECLARE_printAdrLabelOperand(2)
 
 #define DEFINE_printAdrLabelOperandAddr(scale)                                 \
-  static void CONCAT(printAdrLabelOperandAddr, scale)(                         \
+  static inline void CONCAT(printAdrLabelOperandAddr, scale)(                  \
       MCInst *MI, uint64_t Address, unsigned OpNum, SStream *O)          \
   {                                                                            \
     CONCAT(printAdrLabelOperand, scale)(MI, OpNum, O);                         \
