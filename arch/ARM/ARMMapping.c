@@ -20,7 +20,7 @@ const char *ARM_reg_name(csh handle, unsigned int reg) {
 	return getRegisterName(reg, ARM_NoRegAltName);
 }
 
-static const insn_map insns[] = {
+const insn_map arm_insns[] = {
 	// dummy item
 	{
 		0, 0,
@@ -37,11 +37,11 @@ static unsigned int find_insn(unsigned int id)
 {
 	// binary searching since the IDs are sorted in order
 	unsigned int left, right, m;
-	unsigned int max = ARR_SIZE(insns);
+	unsigned int max = ARR_SIZE(arm_insns);
 
 	right = max - 1;
 
-	if (id < insns[0].id || id > insns[right].id)
+	if (id < arm_insns[0].id || id > arm_insns[right].id)
 		// not found
 		return -1;
 
@@ -49,11 +49,11 @@ static unsigned int find_insn(unsigned int id)
 
 	while(left <= right) {
 		m = (left + right) / 2;
-		if (id == insns[m].id) {
+		if (id == arm_insns[m].id) {
 			return m;
 		}
 
-		if (id < insns[m].id)
+		if (id < arm_insns[m].id)
 			right = m - 1;
 		else
 			left = m + 1;
@@ -68,7 +68,7 @@ void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
 {
 	unsigned int i = find_insn(id);
 	if (i != -1) {
-		insn->id = insns[i].mapid;
+		insn->id = arm_insns[i].mapid;
 
 		// printf("id = %u, mapid = %u\n", id, insn->id);
 
@@ -77,18 +77,18 @@ void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
 			cs_struct handle;
 			handle.detail = h->detail;
 
-			memcpy(insn->detail->regs_read, insns[i].regs_use, sizeof(insns[i].regs_use));
-			insn->detail->regs_read_count = (uint8_t)count_positive(insns[i].regs_use);
+			memcpy(insn->detail->regs_read, arm_insns[i].regs_use, sizeof(arm_insns[i].regs_use));
+			insn->detail->regs_read_count = (uint8_t)count_positive(arm_insns[i].regs_use);
 
-			memcpy(insn->detail->regs_write, insns[i].regs_mod, sizeof(insns[i].regs_mod));
-			insn->detail->regs_write_count = (uint8_t)count_positive(insns[i].regs_mod);
+			memcpy(insn->detail->regs_write, arm_insns[i].regs_mod, sizeof(arm_insns[i].regs_mod));
+			insn->detail->regs_write_count = (uint8_t)count_positive(arm_insns[i].regs_mod);
 
-			memcpy(insn->detail->groups, insns[i].groups, sizeof(insns[i].groups));
-			insn->detail->groups_count = (uint8_t)count_positive8(insns[i].groups);
+			memcpy(insn->detail->groups, arm_insns[i].groups, sizeof(arm_insns[i].groups));
+			insn->detail->groups_count = (uint8_t)count_positive8(arm_insns[i].groups);
 
 			insn->detail->arm.update_flags = cs_reg_write((csh)&handle, insn, ARM_REG_CPSR);
 
-			if (insns[i].branch || insns[i].indirect_branch) {
+			if (arm_insns[i].branch || arm_insns[i].indirect_branch) {
 				// this insn also belongs to JUMP group. add JUMP group
 				insn->detail->groups[insn->detail->groups_count] = ARM_GRP_JUMP;
 				insn->detail->groups_count++;
