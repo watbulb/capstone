@@ -230,7 +230,7 @@ typedef struct {
 	insn_op ops[8]; ///< NULL terminated array of operands.
 } insn_ops;
 
-static const insn_ops insn_operands[] = {
+const insn_ops insn_operands[] = {
 	{
 		// NULL item
 		{{ 0 }}

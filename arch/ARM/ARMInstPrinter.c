@@ -505,12 +505,6 @@ void printAddrMode2Operand(MCInst *MI, unsigned Op, SStream *O)
     return;
   }
 
-#ifndef NDEBUG
-  MCOperand *MO3 = MCInst_getOperand(MI, (Op + 2));
-  unsigned IdxMode = ARM_AM_getAM2IdxMode(MCOperand_getImm(MO3));
-
-#endif
-
   printAM2PreOrOffsetIndexOp(MI, Op, O);
 }
 
@@ -976,7 +970,7 @@ void printBankedRegOperand(MCInst *MI, unsigned OpNum, SStream *O)
 
   const char *Name = TheReg->Name;
 
-  uint32_t isSPSR = (Banked & 0x20) >> 5;
+  // uint32_t isSPSR = (Banked & 0x20) >> 5;
   // if (isSPSR)
   // 	Name.replace(0, 4, "SPSR"); // convert 'spsr_' to 'SPSR_'
   SStream_concat0(O, Name);
