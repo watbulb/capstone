@@ -122,7 +122,7 @@ static const BankedReg BankedRegsList[] = {
   { "spsr_hyp", ARM_SYSREG_SPSR_HYP, 0x3E }, // 32
 };
 
-const MClassSysReg *lookupMClassSysRegByM2M3Encoding8(uint16_t encoding)
+static const MClassSysReg *lookupMClassSysRegByM2M3Encoding8(uint16_t encoding)
 {
   unsigned int i;
   static const struct IndexType Index[] = {
@@ -172,7 +172,7 @@ const MClassSysReg *lookupMClassSysRegByM2M3Encoding8(uint16_t encoding)
     return &MClassSysRegsList[Index[i].index];
 }
 
-const MClassSysReg *lookupMClassSysRegByM1Encoding12(uint16_t encoding)
+static const MClassSysReg *lookupMClassSysRegByM1Encoding12(uint16_t encoding)
 {
   unsigned int i;
   static const struct IndexType Index[] = {
@@ -222,7 +222,7 @@ const MClassSysReg *lookupMClassSysRegByM1Encoding12(uint16_t encoding)
     return &MClassSysRegsList[Index[i].index];
 }
 
-const BankedReg *lookupBankedRegByEncoding(uint8_t encoding)
+static const BankedReg *lookupBankedRegByEncoding(uint8_t encoding)
 {
   unsigned int i;
   static const struct IndexType Index[] = {
