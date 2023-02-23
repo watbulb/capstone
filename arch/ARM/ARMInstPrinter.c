@@ -33,6 +33,9 @@
 #define PRINT_ALIAS_INSTR
 #include "ARMGenAsmWriter.inc"
 
+#define GET_BANKEDREG_IMPL
+#include "ARMGenSystemRegister.inc"
+
 /// translateShiftImm - Convert shift immediate from 0-31 to 1-32 for printing.
 ///
 /// getSORegOffset returns an integer from 0-31, representing '32' as 0.
