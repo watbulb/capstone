@@ -46,8 +46,6 @@ Exit:
 
 static void snprint_insn_detail(char * buf, size_t * cur, size_t * left, cs_insn *ins)
 {
-	size_t used = 0;
-
 #define _this_printf(...) \
 	{ \
 		size_t used = 0; \
@@ -288,7 +286,6 @@ static void test_valids()
 
 	struct valid_instructions * valid = NULL;
 
-	uint64_t address = 0x1000;
 	cs_insn *insn;
 	int i;
 	int j;
@@ -323,8 +320,6 @@ static void test_valids()
 			char tmp_buf[2048];
 			size_t left = 2048;
 			size_t cur = 0;
-			size_t used = 0;
-			int success = 0;
 			char * hex_str = NULL;
 
 			struct valid_code * valid_code = NULL;
