@@ -267,7 +267,7 @@ typedef struct MClassSysReg {
 } MClassSysReg;
 
 // return true if FeaturesRequired are all present in ActiveFeatures
-static bool hasRequiredFeatures(const MClassSysReg *TheReg, int ActiveFeatures)
+inline bool hasRequiredFeatures(const MClassSysReg *TheReg, int ActiveFeatures)
 {
   return (TheReg->FeaturesRequired[0] == ActiveFeatures ||
 	  TheReg->FeaturesRequired[1] == ActiveFeatures);
