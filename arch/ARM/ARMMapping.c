@@ -193,7 +193,8 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id) {
 }
 
 bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len, MCInst *instr, uint16_t *size, uint64_t address, void *info) {
-  return getInstruction(handle, code, code_len, instr, size, address, info) == MCDisassembler_Success;
+	ARM_init_cs_detail(instr);
+	return getInstruction(handle, code, code_len, instr, size, address, info) == MCDisassembler_Success;
 }
 
 #define GET_REGINFO_MC_DESC
@@ -301,5 +302,19 @@ void ARM_reg_access(const cs_insn *insn,
 	*regs_write_count = write_count;
 }
 #endif
+
+void ARM_init_cs_detail(MCInst *MI) {
+	if (MI->flat_insn->detail) {
+		unsigned int i;
+
+		memset(MI->flat_insn->detail, 0, offsetof(cs_detail, arm) + sizeof(cs_arm));
+
+		for (i = 0; i < ARR_SIZE(MI->flat_insn->detail->arm.operands); i++) {
+			MI->flat_insn->detail->arm.operands[i].vector_index = -1;
+			MI->flat_insn->detail->arm.operands[i].neon_lane = -1;
+		}
+	}
+}
+
 
 #endif
