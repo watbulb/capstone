@@ -10,6 +10,7 @@ import sys
 
 from tree_sitter.binding import Query
 
+from Patches.AddCSDetail import AddCSDetail
 from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
 from Patches.CheckDecoderStatus import CheckDecoderStatus
@@ -46,6 +47,7 @@ from Patches.NamespaceArch import NamespaceArch
 from Patches.OutStreamParam import OutStreamParam
 from Patches.PredicateBlockFunctions import PredicateBlockFunctions
 from Patches.PrintAnnotation import PrintAnnotation
+from Patches.PrintRegImmShift import PrintRegImmShift
 from Patches.QualifiedIdentifier import QualifiedIdentifier
 from Patches.Patch import Patch
 from Patches.ReferencesDecl import ReferencesDecl
@@ -86,6 +88,7 @@ class Translator:
     patches: [Patch] = list()
 
     patch_priorities: {str: int} = {
+        PrintRegImmShift.__name__: 0,
         InlineToStaticInline.__name__: 0,
         GetSubReg.__name__: 0,
         UseMarkup.__name__: 0,
@@ -120,10 +123,11 @@ class Translator:
         LLVMUnreachable.__name__: 1,  # ─┘ Those assert should stay.
         LLVMFallThrough.__name__: 0,
         DeclarationInConditionalClause.__name__: 0,
-        SubtargetInfoParam.__name__: 0,
-        OutStreamParam.__name__: 0,
         StreamOperations.__name__: 0,
-        MethodToFunction.__name__: 0,
+        OutStreamParam.__name__: 0,  # ◁──────┐ add_cs_detail() is added to printOperand functions with a certain
+        SubtargetInfoParam.__name__: 0,  # ◁──┤ signature. This signature depends on those patches.
+        MethodToFunction.__name__: 0,  # ◁────┤
+        AddCSDetail.__name__: 1,  # ──────────┘
         NamespaceAnon.__name__: 0,  # ◁─────┐ "llvm" and anonymous namespaces must be removed first,
         NamespaceLLVM.__name__: 0,  # ◁─────┤ so they don't match in NamespaceArch.
         NamespaceArch.__name__: 1,  # ──────┘
@@ -312,6 +316,10 @@ class Translator:
                 patch = GetSubReg(p)
             elif ptype == InlineToStaticInline.__name__:
                 patch = InlineToStaticInline(p)
+            elif ptype == AddCSDetail.__name__:
+                patch = AddCSDetail(p, self.arch)
+            elif ptype == PrintRegImmShift.__name__:
+                patch = PrintRegImmShift(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
