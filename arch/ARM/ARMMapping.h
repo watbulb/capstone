@@ -51,5 +51,12 @@ const MClassSysReg *lookupMClassSysRegByM1Encoding12(uint16_t encoding);
 void ARM_init_cs_detail(MCInst *MI);
 void ARM_set_mem_access(MCInst *MI, bool status);
 static inline void set_mem_access(MCInst *MI, bool status) { ARM_set_mem_access(MI, status); }
+void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args);
+static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, ...) {
+	va_list args;
+	va_start(args, op_group);
+	ARM_add_cs_detail(MI, op_group, args);
+	va_end(args);
+}
 
 #endif // CS_ARM_MAPPING_H
