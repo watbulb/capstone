@@ -40,7 +40,7 @@
 /// translateShiftImm - Convert shift immediate from 0-31 to 1-32 for printing.
 ///
 /// getSORegOffset returns an integer from 0-31, representing '32' as 0.
-static unsigned translateShiftImm(unsigned imm)
+unsigned translateShiftImm(unsigned imm)
 {
   // lsr #32 and asr #32 exist, but should be encoded as a 0.
 

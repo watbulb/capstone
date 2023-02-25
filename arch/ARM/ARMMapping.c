@@ -13,6 +13,7 @@
 #include "ARMMapping.h"
 #include "ARMBaseInfo.h"
 #include "ARMDisassembler.h"
+#include "ARMInstPrinter.h"
 
 const char *ARM_reg_name(csh handle, unsigned int reg) {
 	if (((cs_struct *)(uintptr_t)handle)->syntax & CS_OPT_SYNTAX_NOREGNAME) {
@@ -347,7 +348,20 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 
 /// Fills cs_detail with operand shift information for the last added operand.
 static void add_cs_detail_RegImmShift(MCInst *MI, ARM_AM_ShiftOpc ShOpc, unsigned ShImm) {
-	// Fill cs_detail
+	if (!MI->csh->detail)
+		return;
+
+	if (MI->csh->doing_mem)
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].shift.type = (arm_shifter)ShOpc;
+	else
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count - 1].shift.type = (arm_shifter)ShOpc;
+
+	if (ShOpc != ARM_AM_rrx) {
+		if (MI->csh->doing_mem)
+			MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].shift.value = translateShiftImm(ShImm);
+		else
+			MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count - 1].shift.value = translateShiftImm(ShImm);
+	}
 }
 
 /// Fills cs_detail with the data of the operand.

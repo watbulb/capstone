@@ -202,4 +202,6 @@ DECLARE_printMveAddrModeRQOperand(0) DECLARE_printMveAddrModeRQOperand(3)
 
 	void printMveSaturateOp(MCInst *MI, unsigned OpNum, SStream *O);
 
+unsigned translateShiftImm(unsigned imm);
+
 #endif // CS_ARMINSTPRINTER_H
