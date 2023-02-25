@@ -8,6 +8,10 @@
 #include "../../utils.h"
 #include "ARMBaseInfo.h"
 
+typedef enum {
+	#include "ARMGenCSOpGroup.inc"
+} arm_op_group;
+
 // return name of regiser in friendly string
 const char *ARM_reg_name(csh handle, unsigned int reg);
 
