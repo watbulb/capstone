@@ -15,7 +15,7 @@
         "out": "../build/trans_out/ARMAddressingModes.h"
       },{
         "in": "../vendor/llvm_root/llvm/lib/Target/ARM/Utils/ARMBaseInfo.cpp",
-        "out": "../build/trans_out/ARMBaseInfo.cpp"
+        "out": "../build/trans_out/ARMBaseInfo.c"
       }
     ],
     "files_for_template_search": [
