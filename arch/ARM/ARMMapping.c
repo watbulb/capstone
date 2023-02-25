@@ -364,8 +364,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
-	case ARM_OP_GROUP_AdrLabelOperand_0:
-	case ARM_OP_GROUP_AdrLabelOperand_2:
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
 	case ARM_OP_GROUP_MandatoryPredicateOperand:
@@ -381,28 +379,18 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_ThumbITMask:
 	case ARM_OP_GROUP_AddrMode7Operand:
-	case ARM_OP_GROUP_AddrMode5Operand_0:
-	case ARM_OP_GROUP_AddrMode5Operand_1:
 	case ARM_OP_GROUP_CoprocOptionImm:
 	case ARM_OP_GROUP_PostIdxImm8s4Operand:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
 	case ARM_OP_GROUP_ThumbAddrModeImm5S4Operand:
 	case ARM_OP_GROUP_ThumbAddrModeRROperand:
 	case ARM_OP_GROUP_ThumbAddrModeSPOperand:
-	case ARM_OP_GROUP_AddrModeImm12Operand_0:
-	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
 	case ARM_OP_GROUP_AddrMode2Operand:
 	case ARM_OP_GROUP_T2AddrModeSoRegOperand:
-	case ARM_OP_GROUP_AddrModeImm12Operand_1:
-	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
 	case ARM_OP_GROUP_AddrMode2OffsetOperand:
 	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
 	case ARM_OP_GROUP_ThumbAddrModeImm5S1Operand:
-	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
-	case ARM_OP_GROUP_AddrMode3Operand_0:
-	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand:
-	case ARM_OP_GROUP_AddrMode3Operand_1:
 	case ARM_OP_GROUP_AddrMode3OffsetOperand:
 	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
 	case ARM_OP_GROUP_ThumbAddrModeImm5S2Operand:
@@ -422,8 +410,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_TraceSyncBOption:
 	case ARM_OP_GROUP_VPTPredicateOperand:
 	case ARM_OP_GROUP_VMOVModImmOperand:
-	case ARM_OP_GROUP_ComplexRotationOp_180_90:
-	case ARM_OP_GROUP_ComplexRotationOp_90_0:
 	case ARM_OP_GROUP_MandatoryRestrictedPredicateOperand:
 	case ARM_OP_GROUP_FBits16:
 	case ARM_OP_GROUP_FBits32:
@@ -438,27 +424,83 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrMode6OffsetOperand:
 	case ARM_OP_GROUP_VectorListTwoSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListTwoSpaced:
-	case ARM_OP_GROUP_MVEVectorList_2:
 	case ARM_OP_GROUP_VectorListThreeAllLanes:
 	case ARM_OP_GROUP_VectorListThreeSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListThreeSpaced:
 	case ARM_OP_GROUP_VectorListFourAllLanes:
 	case ARM_OP_GROUP_VectorListFourSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListFourSpaced:
+	case ARM_OP_GROUP_VPTMask:
+		return;
+	}
+}
+
+static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0) {
+	switch(op_group) {
+	default:
+			printf("ERROR: Operand group %d not handled!\n", op_group);
+			assert(0);
+	case ARM_OP_GROUP_AdrLabelOperand_0:
+	case ARM_OP_GROUP_AdrLabelOperand_2:
+	case ARM_OP_GROUP_AddrMode5Operand_0:
+	case ARM_OP_GROUP_AddrMode5Operand_1:
+	case ARM_OP_GROUP_AddrModeImm12Operand_0:
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
+	case ARM_OP_GROUP_AddrModeImm12Operand_1:
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
+	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
+	case ARM_OP_GROUP_AddrMode3Operand_0:
+	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1:
+	case ARM_OP_GROUP_MVEVectorList_2:
 	case ARM_OP_GROUP_MVEVectorList_4:
 	case ARM_OP_GROUP_AddrMode5FP16Operand_0:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
-	case ARM_OP_GROUP_VPTMask:
+		return;
+	}
+}
+
+static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0, uint64_t temp_arg_1) {
+	switch (op_group) {
+	default:
+			printf("ERROR: Operand group %d not handled!\n", op_group);
+			assert(0);
+	case ARM_OP_GROUP_ComplexRotationOp_180_90:
+	case ARM_OP_GROUP_ComplexRotationOp_90_0:
 		return;
 	}
 }
 
 void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args) {
-	if (op_group == ARM_OP_GROUP_RegImmShift) {
+	switch (op_group) {
+	case ARM_OP_GROUP_RegImmShift:
 		add_cs_detail_RegImmShift(MI, va_arg(args, ARM_AM_ShiftOpc), va_arg(args, unsigned));
+		return;
+	case ARM_OP_GROUP_AdrLabelOperand_0:
+	case ARM_OP_GROUP_AdrLabelOperand_2:
+	case ARM_OP_GROUP_AddrMode5Operand_0:
+	case ARM_OP_GROUP_AddrMode5Operand_1:
+	case ARM_OP_GROUP_AddrModeImm12Operand_0:
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
+	case ARM_OP_GROUP_AddrModeImm12Operand_1:
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
+	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
+	case ARM_OP_GROUP_AddrMode3Operand_0:
+	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1:
+	case ARM_OP_GROUP_MVEVectorList_2:
+	case ARM_OP_GROUP_MVEVectorList_4:
+	case ARM_OP_GROUP_AddrMode5FP16Operand_0:
+	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
+	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
+	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
+	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
+		add_cs_detail_template_1(MI, op_group, va_arg(args, unsigned), va_arg(args, uint64_t));
+		return;
+	case ARM_OP_GROUP_ComplexRotationOp_180_90:
+	case ARM_OP_GROUP_ComplexRotationOp_90_0:
+		add_cs_detail_template_2(MI, op_group, va_arg(args, unsigned), va_arg(args, uint64_t), va_arg(args, uint64_t));
 		return;
 	}
 	add_cs_detail_general(MI, op_group, va_arg(args, unsigned));
