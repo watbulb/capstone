@@ -367,15 +367,39 @@ static void add_cs_detail_RegImmShift(MCInst *MI, ARM_AM_ShiftOpc ShOpc, unsigne
 /// Fills cs_detail with the data of the operand.
 /// This function handles operands which's original printer function has no specialities.
 static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned OpNum) {
+	if (!MI->csh->detail)
+		return;
 	// Fill cs_detail
 	switch (op_group) {
 	default:
-			printf("ERROR: Operand group %d not handled!\n", op_group);
-			assert(0);
+		printf("ERROR: Operand group %d not handled!\n", op_group);
+		assert(0);
+	case ARM_OP_GROUP_PredicateOperand:
+	case ARM_OP_GROUP_MandatoryPredicateOperand:
+	case ARM_OP_GROUP_MandatoryInvertedPredicateOperand:
+	case ARM_OP_GROUP_MandatoryRestrictedPredicateOperand:
+	{
+		ARMCC_CondCodes CC = (ARMCC_CondCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		if ((unsigned)CC == 15 && op_group == ARM_OP_GROUP_PredicateOperand) {
+			MI->flat_insn->detail->arm.cc = ARM_CC_INVALID;
+			return;
+		}
+		if (CC == ARMCC_HS && op_group == ARM_OP_GROUP_MandatoryRestrictedPredicateOperand) {
+			MI->flat_insn->detail->arm.cc = ARM_CC_HS;
+			return;
+    }
+		MI->flat_insn->detail->arm.cc = CC + 1;
+	}
+	case ARM_OP_GROUP_VPTPredicateOperand:
+	{
+		ARMVCC_VPTCodes VCC = (ARMVCC_VPTCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		assert(VCC <= ARMVCC_Else);
+		MI->flat_insn->detail->arm.vcc = VCC;
+		return;
+	}
 	case ARM_OP_GROUP_RegImmShift:
 	case ARM_OP_GROUP_Operand:
 	case ARM_OP_GROUP_SBitModifierOperand:
-	case ARM_OP_GROUP_PredicateOperand:
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
@@ -383,7 +407,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
-	case ARM_OP_GROUP_MandatoryPredicateOperand:
 	case ARM_OP_GROUP_PImmediate:
 	case ARM_OP_GROUP_CImmediate:
 	case ARM_OP_GROUP_RegisterList:
@@ -425,9 +448,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrModeTBB:
 	case ARM_OP_GROUP_AddrModeTBH:
 	case ARM_OP_GROUP_TraceSyncBOption:
-	case ARM_OP_GROUP_VPTPredicateOperand:
 	case ARM_OP_GROUP_VMOVModImmOperand:
-	case ARM_OP_GROUP_MandatoryRestrictedPredicateOperand:
 	case ARM_OP_GROUP_FBits16:
 	case ARM_OP_GROUP_FBits32:
 	case ARM_OP_GROUP_VectorListTwoAllLanes:

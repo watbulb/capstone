@@ -334,6 +334,7 @@ typedef struct cs_arm {
 	arm_cpsmode_type cps_mode;	///< CPS mode for CPS instruction
 	arm_cpsflag_type cps_flag;	///< CPS mode for CPS instruction
 	arm_cc cc;			///< conditional code for this insn
+	int /* ARMVCC_VPTCodes */ vcc;	///< Vector conditional code for this instruction.
 	bool update_flags;	///< does this insn update flags?
 	bool writeback;		///< does this insn write-back?
 	bool post_index;	///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
