@@ -345,10 +345,13 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 	}
 }
 
+/// Fills cs_detail with operand shift information for the last added operand.
 static void add_cs_detail_RegImmShift(MCInst *MI, ARM_AM_ShiftOpc ShOpc, unsigned ShImm) {
 	// Fill cs_detail
 }
 
+/// Fills cs_detail with the data of the operand.
+/// This function handles operands which's original printer function has no specialities.
 static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned OpNum) {
 	// Fill cs_detail
 	switch (op_group) {
@@ -435,6 +438,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	}
 }
 
+/// Fills cs_detail with the data of the operand.
+/// This function handles operands which original printer function is a template
+/// with one argument.
 static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0) {
 	switch(op_group) {
 	default:
@@ -462,6 +468,9 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	}
 }
 
+/// Fills cs_detail with the data of the operand.
+/// This function handles operands which's original printer function is a template
+/// with two arguments.
 static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0, uint64_t temp_arg_1) {
 	switch (op_group) {
 	default:
@@ -473,6 +482,9 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned
 	}
 }
 
+/// Fills cs_detail with the data of the operand.
+/// Calls to this function are should not be added by hand! Please checkout the patch
+/// `AddCSDetail` of the CppTranslator.
 void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args) {
 	switch (op_group) {
 	case ARM_OP_GROUP_RegImmShift:
