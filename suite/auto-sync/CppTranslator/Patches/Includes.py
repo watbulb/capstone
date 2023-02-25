@@ -91,7 +91,7 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "ARMInstPrinter.h"\n'
             + b'#include "ARMAddressingModes.h"\n'
             + b'#include "ARMBaseInfo.h"\n'
-            + b'#include "ARMDisassemblerExtension.h\n"'
+            + b'#include "ARMDisassemblerExtension.h"\n'
             + b'#include "ARMMapping.h"\n\n'
             + b"#define GET_INSTRINFO_ENUM\n"
             + b'#include "ARMGenInstrInfo.inc"\n\n'
