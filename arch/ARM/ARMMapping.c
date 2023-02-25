@@ -316,5 +316,32 @@ void ARM_init_cs_detail(MCInst *MI) {
 	}
 }
 
+void set_mem_access(MCInst *MI, bool status)
+{
+	if (MI->csh->detail != CS_OPT_ON)
+		return;
+
+	MI->csh->doing_mem = status;
+	if (status) {
+// #ifndef CAPSTONE_DIET
+// 		uint8_t access;
+// #endif
+
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].type = ARM_OP_MEM;
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.base = ARM_REG_INVALID;
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.index = ARM_REG_INVALID;
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.scale = 1;
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.disp = 0;
+
+// #ifndef CAPSTONE_DIET
+// 		access = get_op_access(MI->csh, MCInst_getOpcode(MI), MI->ac_idx);
+// 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].access = access;
+// 		MI->ac_idx++;
+// #endif
+	} else {
+		// done, create the next operand slot
+		MI->flat_insn->detail->arm.op_count++;
+	}
+}
 
 #endif

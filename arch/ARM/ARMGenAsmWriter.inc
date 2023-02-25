@@ -10892,6 +10892,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case 19:
     // VLD1LNd16, VLD1LNd16_UPD, VLD1LNd32, VLD1LNd32_UPD, VLD1LNd8, VLD1LNd8...
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     break;
   case 20:
     // VLD3DUPd16, VLD3DUPd16_UPD, VLD3DUPd32, VLD3DUPd32_UPD, VLD3DUPd8, VLD...
@@ -11221,6 +11222,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
     printNoHashImmediate(MI, 8, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     break;
   case 46:
     // VLD3DUPd16, VLD3DUPd16_UPD, VLD3DUPd32, VLD3DUPd32_UPD, VLD3DUPd8, VLD...
@@ -11230,12 +11232,16 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VLD3LNd16_UPD, VLD3LNd32_UPD, VLD3LNd8_UPD, VLD3LNq16_UPD, VLD3LNq32_U...
     printNoHashImmediate(MI, 10, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 1, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 10, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 2, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 10, O);
     break;
   case 48:
@@ -11248,18 +11254,25 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VLD4LNd16_UPD, VLD4LNd32_UPD, VLD4LNd8_UPD, VLD4LNq16_UPD, VLD4LNq32_U...
     printNoHashImmediate(MI, 12, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 1, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 12, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 2, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 12, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 3, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 12, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 5, O);
     printAddrMode6OffsetOperand(MI, 7, O);
     return;
@@ -11278,6 +11291,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VST1LNd16, VST1LNd32, VST1LNd8
     printNoHashImmediate(MI, 3, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
     return;
     break;
@@ -11289,14 +11303,19 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VST3LNd16_UPD, VST3LNd32_UPD, VST3LNd8_UPD, VST3LNq16_UPD, VST3LNq32_U...
     printNoHashImmediate(MI, 7, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 5, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 7, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 6, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 7, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 1, O);
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
@@ -11541,10 +11560,12 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case 18:
     // VLD1LNd16, VLD1LNd16_UPD, VLD1LNd32, VLD1LNd32_UPD, VLD1LNd8, VLD1LNd8...
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     break;
   case 19:
     // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32, VLD4LNd16, VLD4L...
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     break;
   case 20:
     // VLD3DUPd16, VLD3DUPd32, VLD3DUPd8, VLD3DUPq16, VLD3DUPq32, VLD3DUPq8
@@ -11572,16 +11593,22 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VST4LNd16_UPD, VST4LNd32_UPD, VST4LNd8_UPD, VST4LNq16_UPD, VST4LNq32_U...
     printOperand(MI, 5, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 8, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 6, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 8, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 7, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 8, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 1, O);
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
@@ -11736,14 +11763,17 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32
     printOperand(MI, 1, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 6, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 2, O);
     return;
     break;
   case 27:
     // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 8, O);
     break;
   case 28:
@@ -11863,6 +11893,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case 10:
     // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 3, O);
     printAddrMode6OffsetOperand(MI, 5, O);
     return;
@@ -11870,10 +11901,13 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case 11:
     // VLD3LNd16, VLD3LNd32, VLD3LNd8, VLD3LNq16, VLD3LNq32
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 2, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 8, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 3, O);
     return;
     break;
@@ -11884,6 +11918,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case 13:
     // VLD4LNd16, VLD4LNd32, VLD4LNd8, VLD4LNq16, VLD4LNq32, VST2LNd16, VST2L...
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     break;
   case 14:
     // VMLALslsv2i32, VMLALslsv4i16, VMLALsluv2i32, VMLALsluv4i16, VMLAslfd, ...
@@ -12230,6 +12265,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VLD4LNq32:
     printNoHashImmediate(MI, 10, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 4, O);
     return;
     break;
@@ -12287,6 +12323,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VST2LNq32:
     printNoHashImmediate(MI, 4, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
     return;
     break;
@@ -12297,6 +12334,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VST2LNq32_UPD:
     printNoHashImmediate(MI, 6, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 1, O);
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
@@ -12308,10 +12346,13 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VST3LNq32:
     printNoHashImmediate(MI, 5, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 4, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 5, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
     return;
     break;
@@ -12322,14 +12363,19 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VST4LNq32:
     printNoHashImmediate(MI, 6, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 4, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 6, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
     printOperand(MI, 5, O);
     SStream_concat1(O, '[');
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 6, O);
     SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
     return;
     break;
