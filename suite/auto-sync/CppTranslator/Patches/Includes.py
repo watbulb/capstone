@@ -83,15 +83,15 @@ def get_ARM_includes(filename: str) -> bytes:
         )
     elif filename == "ARMInstPrinter.cpp":
         return (
-            b'#include "ARMInstPrinter.h"\n'
+            b'#include "../../MCInst.h"\n'
+            + b'#include "../../MCInstPrinter.h"\n'
+            + b'#include "../../MCRegisterInfo.h"\n'
+            + b'#include "../../SStream.h"\n'
+            + b'#include "../../utils.h"\n'
+            + b'#include "ARMInstPrinter.h"\n'
             + b'#include "ARMAddressingModes.h"\n'
             + b'#include "ARMBaseInfo.h"\n'
             + b'#include "ARMDisassembler.h"\n'
-            + b'#include "../../MCInst.h"\n'
-            + b'#include "../../SStream.h"\n'
-            + b'#include "../../MCRegisterInfo.h"\n'
-            + b'#include "../../MCInstPrinter.h"\n'
-            + b'#include "../../utils.h"\n'
             + b'#include "ARMMapping.h"\n\n'
             + b"#define GET_INSTRINFO_ENUM\n"
             + b'#include "ARMGenInstrInfo.inc"\n\n'
