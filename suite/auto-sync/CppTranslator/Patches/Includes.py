@@ -93,8 +93,6 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "ARMBaseInfo.h"\n'
             + b'#include "ARMDisassemblerExtension.h"\n'
             + b'#include "ARMMapping.h"\n\n'
-            + b"#define GET_INSTRINFO_ENUM\n"
-            + b'#include "ARMGenInstrInfo.inc"\n\n'
             + b"#define GET_BANKEDREG_IMPL\n"
             + b'#include "ARMGenSystemRegister.inc"\n\n'
         )

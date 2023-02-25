@@ -60,7 +60,7 @@ class AddCSDetail(Patch):
 
         comp = captures[3][0]
         comp = get_text(src, comp.start_byte, comp.end_byte)
-        return b"static void " + fcn_id + params + b"{ " + add_cs_detail + comp.strip(b"{")
+        return b"void " + fcn_id + params + b"{ " + add_cs_detail + comp.strip(b"{")
 
     def get_add_cs_detail(self, src: bytes, fcn_def: Node, fcn_id: bytes, params: bytes) -> bytes:
         op_group_enum = self.arch.encode("utf8") + b"_OP_GROUP_" + fcn_id[5:]  # Remove "print" from function id
