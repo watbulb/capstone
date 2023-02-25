@@ -5,7 +5,7 @@
 /* Auto generated file. Do not edit. */
 /* Code generator: https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */
 
-  ARM_OP_GROUP_RegShiftOffset,
+  ARM_OP_GROUP_RegImmShift,
   ARM_OP_GROUP_Operand,
   ARM_OP_GROUP_SBitModifierOperand,
   ARM_OP_GROUP_PredicateOperand,
