@@ -316,7 +316,7 @@ void ARM_init_cs_detail(MCInst *MI) {
 	}
 }
 
-void set_mem_access(MCInst *MI, bool status)
+void ARM_set_mem_access(MCInst *MI, bool status)
 {
 	if (MI->csh->detail != CS_OPT_ON)
 		return;

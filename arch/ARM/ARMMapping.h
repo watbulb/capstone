@@ -48,6 +48,7 @@ const MClassSysReg *lookupMClassSysRegByM2M3Encoding8(uint16_t encoding);
 const MClassSysReg *lookupMClassSysRegByM1Encoding12(uint16_t encoding);
 
 void ARM_init_cs_detail(MCInst *MI);
-void set_mem_access(MCInst *MI, bool status);
+void ARM_set_mem_access(MCInst *MI, bool status);
+static inline void set_mem_access(MCInst *MI, bool status) { ARM_set_mem_access(MI, status); }
 
 #endif // CS_ARM_MAPPING_H
