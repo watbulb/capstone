@@ -387,7 +387,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		if (CC == ARMCC_HS && op_group == ARM_OP_GROUP_MandatoryRestrictedPredicateOperand) {
 			MI->flat_insn->detail->arm.cc = ARM_CC_HS;
 			return;
-    }
+		}
 		MI->flat_insn->detail->arm.cc = CC + 1;
 	}
 	case ARM_OP_GROUP_VPTPredicateOperand:
@@ -518,13 +518,16 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned
 }
 
 /// Fills cs_detail with the data of the operand.
-/// Calls to this function are should not be added by hand! Please checkout the patch
-/// `AddCSDetail` of the CppTranslator.
+/// Calls to this function are should not be added by hand! Please checkout the
+/// patch `AddCSDetail` of the CppTranslator.
 void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args) {
 	switch (op_group) {
-	case ARM_OP_GROUP_RegImmShift:
-		add_cs_detail_RegImmShift(MI, va_arg(args, ARM_AM_ShiftOpc), va_arg(args, unsigned));
+	case ARM_OP_GROUP_RegImmShift: {
+		ARM_AM_ShiftOpc shift_opc = va_arg(args, ARM_AM_ShiftOpc);
+		unsigned shift_imm = va_arg(args, unsigned);
+		add_cs_detail_RegImmShift(MI, shift_opc, shift_imm);
 		return;
+	}
 	case ARM_OP_GROUP_AdrLabelOperand_0:
 	case ARM_OP_GROUP_AdrLabelOperand_2:
 	case ARM_OP_GROUP_AddrMode5Operand_0:
@@ -542,15 +545,23 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args
 	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
-	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
-		add_cs_detail_template_1(MI, op_group, va_arg(args, unsigned), va_arg(args, uint64_t));
-		return;
-	case ARM_OP_GROUP_ComplexRotationOp_180_90:
-	case ARM_OP_GROUP_ComplexRotationOp_90_0:
-		add_cs_detail_template_2(MI, op_group, va_arg(args, unsigned), va_arg(args, uint64_t), va_arg(args, uint64_t));
+	case ARM_OP_GROUP_MveAddrModeRQOperand_2: {
+		unsigned op_num = va_arg(args, unsigned);
+		uint64_t templ_arg_0 = va_arg(args, uint64_t);
+		add_cs_detail_template_1(MI, op_group, op_num, templ_arg_0);
 		return;
 	}
-	add_cs_detail_general(MI, op_group, va_arg(args, unsigned));
+	case ARM_OP_GROUP_ComplexRotationOp_180_90:
+	case ARM_OP_GROUP_ComplexRotationOp_90_0: {
+		unsigned op_num = va_arg(args, unsigned);
+		uint64_t templ_arg_0 = va_arg(args, uint64_t);
+		uint64_t templ_arg_1 = va_arg(args, uint64_t);
+		add_cs_detail_template_2(MI, op_group, op_num, templ_arg_0, templ_arg_1);
+		return;
+	}
+	}
+	unsigned op_num = va_arg(args, unsigned);
+	add_cs_detail_general(MI, op_group, op_num);
 }
 
 #endif
