@@ -1012,8 +1012,7 @@ DecodeStatus getThumbInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
     *Size = 0;
     return MCDisassembler_Fail;
   }
-
-  uint32_t Insn32 = endianSensitiveOpcode32(MI, Bytes);
+  uint32_t Insn32 = (uint32_t)Insn16 << 16 | endianSensitiveOpcode16(MI, Bytes+2);
 
   Result = decodeInstruction_4(DecoderTableMVE32, MI, Insn32, Address);
   if (Result != MCDisassembler_Fail) {
