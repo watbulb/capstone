@@ -5,6 +5,7 @@
 #define CS_MCINSTPRINTER_H
 
 #include "MCInst.h"
+#include <assert.h>
 #include <capstone/platform.h>
 
 /// Returned by getMnemonic() of the AsmPrinters.
@@ -58,7 +59,7 @@ typedef struct {
   const char *AsmStrings;
 } AliasMatchingData;
 
-const char *matchAliasPatterns(const MCInst *MI, const AliasMatchingData *M);
+const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M);
 bool getUseMarkup();
 const char *markup(const char *s);
 

@@ -12705,6 +12705,7 @@ bool printAliasInstr(MCInst *MI, uint64_t Address, SStream *OS) {
     {ARM_t2HINT, 45, 13 },
     {ARM_t2SUBS_PC_LR, 58, 1 },
     {ARM_tHINT, 59, 6 },
+    {0},
   };
 
   static const AliasPattern Patterns[] = {
@@ -12807,6 +12808,7 @@ bool printAliasInstr(MCInst *MI, uint64_t Address, SStream *OS) {
     {41, 282, 3, 3 },
     {49, 285, 3, 3 },
     {57, 288, 3, 4 },
+    {0},
   };
 
   static const AliasPatternCond Conds[] = {
@@ -13167,6 +13169,7 @@ bool printAliasInstr(MCInst *MI, uint64_t Address, SStream *OS) {
     {AliasPatternCond_K_Feature, ARM_ModeThumb},
     {AliasPatternCond_K_Feature, ARM_FeatureThumb2},
     {AliasPatternCond_K_Feature, ARM_HasV8Ops},
+    {0},
   };
 
   static const char AsmStrings[] =
