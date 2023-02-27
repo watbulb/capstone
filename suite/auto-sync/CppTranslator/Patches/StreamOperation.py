@@ -58,7 +58,9 @@ class StreamOperations(Patch):
                     res += (
                         b"SStream_concat("
                         + s_name
-                        + b", "
+                        + b', "'
+                        + b"%s" * len(string_ops)
+                        + b'", '
                         + b", ".join([get_text(src, o.start_byte, o.end_byte) for o in string_ops])
                         + b");\n"
                     )
@@ -73,7 +75,9 @@ class StreamOperations(Patch):
             res += (
                 b"SStream_concat("
                 + s_name
-                + b", "
+                + b', "'
+                + b"%s" * len(string_ops)
+                + b'", '
                 + b", ".join([get_text(src, o.start_byte, o.end_byte) for o in string_ops])
                 + b");\n"
             )
