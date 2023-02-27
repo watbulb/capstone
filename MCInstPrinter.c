@@ -152,8 +152,9 @@ bool getUseMarkup() { return false; }
 /// Utility functions to make adding mark ups simpler.
 const char *markup(const char *s)
 {
+	static const char *no_markup = "";
 	if (getUseMarkup())
 		return s;
 	else
-		return "";
+		return no_markup;
 }

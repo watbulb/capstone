@@ -55,7 +55,7 @@ void SStream_concat1(SStream *ss, const char c)
 }
 
 /**
- * Copy all strings given to the buffer of \p ss.
+ * Copy all strings given to the buffer of \p ss according to formatting \p fmt.
  */
 void SStream_concat(SStream *ss, const char *fmt, ...)
 {
