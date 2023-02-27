@@ -17,8 +17,8 @@
 
 // map instruction to its characteristics
 typedef struct insn_map {
-	unsigned short id;
-	unsigned short mapid;
+	unsigned short id; // The LLVM instruction id
+	unsigned short mapid; // The Capstone instruction id
 #ifndef CAPSTONE_DIET
 	uint16_t regs_use[12]; // list of implicit registers used by this instruction
 	uint16_t regs_mod[20]; // list of implicit registers modified by this instruction
