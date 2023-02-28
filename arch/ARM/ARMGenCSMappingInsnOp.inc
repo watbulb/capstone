@@ -24,7 +24,7 @@
 }},
 {{ /* ARM_LDRBT_POST - ARM_INS_LDRBT - ldrbt${q} $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRConstPool - ARM_INS_LDR - ldr${q} $Rt, $immediate */
@@ -34,22 +34,22 @@
 }},
 {{ /* ARM_LDRHTii - ARM_INS_LDRHT - ldrht${p} $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRSBTii - ARM_INS_LDRSBT - ldrsbt${p} $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRSHTii - ARM_INS_LDRSHT - ldrsht${p} $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRT_POST - ARM_INS_LDRT - ldrt${q} $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LSLi - ARM_INS_LSL - lsl${s}${p} $Rd, $Rm, $imm */
@@ -95,1163 +95,1163 @@
 }},
 {{ /* ARM_STRBT_POST - ARM_INS_STRBT - strbt${q} $Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRT_POST - ARM_INS_STRT - strt${q} $Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdAsm_16 - ARM_INS_VLD1 - vld1${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdAsm_32 - ARM_INS_VLD1 - vld1${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdAsm_8 - ARM_INS_VLD1 - vld1${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdWB_fixed_Asm_16 - ARM_INS_VLD1 - vld1${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdWB_fixed_Asm_32 - ARM_INS_VLD1 - vld1${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdWB_fixed_Asm_8 - ARM_INS_VLD1 - vld1${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdWB_register_Asm_16 - ARM_INS_VLD1 - vld1${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdWB_register_Asm_32 - ARM_INS_VLD1 - vld1${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1LNdWB_register_Asm_8 - ARM_INS_VLD1 - vld1${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdAsm_16 - ARM_INS_VLD2 - vld2${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdAsm_32 - ARM_INS_VLD2 - vld2${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdAsm_8 - ARM_INS_VLD2 - vld2${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdWB_fixed_Asm_16 - ARM_INS_VLD2 - vld2${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdWB_fixed_Asm_32 - ARM_INS_VLD2 - vld2${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdWB_fixed_Asm_8 - ARM_INS_VLD2 - vld2${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdWB_register_Asm_16 - ARM_INS_VLD2 - vld2${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdWB_register_Asm_32 - ARM_INS_VLD2 - vld2${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2LNdWB_register_Asm_8 - ARM_INS_VLD2 - vld2${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2LNqAsm_16 - ARM_INS_VLD2 - vld2${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNqAsm_32 - ARM_INS_VLD2 - vld2${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNqWB_fixed_Asm_16 - ARM_INS_VLD2 - vld2${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNqWB_fixed_Asm_32 - ARM_INS_VLD2 - vld2${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD2LNqWB_register_Asm_16 - ARM_INS_VLD2 - vld2${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2LNqWB_register_Asm_32 - ARM_INS_VLD2 - vld2${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdAsm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdAsm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdAsm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdWB_fixed_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdWB_fixed_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdWB_fixed_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdWB_register_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdWB_register_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPdWB_register_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqAsm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqAsm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqAsm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqWB_fixed_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqWB_fixed_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqWB_fixed_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqWB_register_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqWB_register_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPqWB_register_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdAsm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdAsm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdAsm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdWB_fixed_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdWB_fixed_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdWB_fixed_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdWB_register_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdWB_register_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3LNdWB_register_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3LNqAsm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNqAsm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNqWB_fixed_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNqWB_fixed_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3LNqWB_register_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3LNqWB_register_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3dAsm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3dAsm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3dAsm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3dWB_fixed_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3dWB_fixed_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3dWB_fixed_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3dWB_register_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3dWB_register_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3dWB_register_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3qAsm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3qAsm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3qAsm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3qWB_fixed_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3qWB_fixed_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3qWB_fixed_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD3qWB_register_Asm_16 - ARM_INS_VLD3 - vld3${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3qWB_register_Asm_32 - ARM_INS_VLD3 - vld3${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3qWB_register_Asm_8 - ARM_INS_VLD3 - vld3${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdAsm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdAsm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdAsm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdWB_fixed_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdWB_fixed_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdWB_fixed_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdWB_register_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdWB_register_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPdWB_register_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqAsm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqAsm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqAsm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqWB_fixed_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqWB_fixed_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqWB_fixed_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqWB_register_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqWB_register_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPqWB_register_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdAsm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdAsm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdAsm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdWB_fixed_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdWB_fixed_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdWB_fixed_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdWB_register_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdWB_register_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4LNdWB_register_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4LNqAsm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNqAsm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNqWB_fixed_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNqWB_fixed_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4LNqWB_register_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4LNqWB_register_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4dAsm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4dAsm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4dAsm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4dWB_fixed_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4dWB_fixed_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4dWB_fixed_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4dWB_register_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4dWB_register_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4dWB_register_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4qAsm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4qAsm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4qAsm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4qWB_fixed_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4qWB_fixed_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4qWB_fixed_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLD4qWB_register_Asm_16 - ARM_INS_VLD4 - vld4${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4qWB_register_Asm_32 - ARM_INS_VLD4 - vld4${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4qWB_register_Asm_8 - ARM_INS_VLD4 - vld4${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST1LNdAsm_16 - ARM_INS_VST1 - vst1${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST1LNdAsm_32 - ARM_INS_VST1 - vst1${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST1LNdAsm_8 - ARM_INS_VST1 - vst1${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST1LNdWB_fixed_Asm_16 - ARM_INS_VST1 - vst1${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST1LNdWB_fixed_Asm_32 - ARM_INS_VST1 - vst1${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST1LNdWB_fixed_Asm_8 - ARM_INS_VST1 - vst1${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST1LNdWB_register_Asm_16 - ARM_INS_VST1 - vst1${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST1LNdWB_register_Asm_32 - ARM_INS_VST1 - vst1${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST1LNdWB_register_Asm_8 - ARM_INS_VST1 - vst1${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST2LNdAsm_16 - ARM_INS_VST2 - vst2${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNdAsm_32 - ARM_INS_VST2 - vst2${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNdAsm_8 - ARM_INS_VST2 - vst2${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNdWB_fixed_Asm_16 - ARM_INS_VST2 - vst2${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNdWB_fixed_Asm_32 - ARM_INS_VST2 - vst2${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNdWB_fixed_Asm_8 - ARM_INS_VST2 - vst2${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNdWB_register_Asm_16 - ARM_INS_VST2 - vst2${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST2LNdWB_register_Asm_32 - ARM_INS_VST2 - vst2${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST2LNdWB_register_Asm_8 - ARM_INS_VST2 - vst2${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST2LNqAsm_16 - ARM_INS_VST2 - vst2${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNqAsm_32 - ARM_INS_VST2 - vst2${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNqWB_fixed_Asm_16 - ARM_INS_VST2 - vst2${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNqWB_fixed_Asm_32 - ARM_INS_VST2 - vst2${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST2LNqWB_register_Asm_16 - ARM_INS_VST2 - vst2${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST2LNqWB_register_Asm_32 - ARM_INS_VST2 - vst2${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3LNdAsm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNdAsm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNdAsm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNdWB_fixed_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNdWB_fixed_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNdWB_fixed_Asm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNdWB_register_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3LNdWB_register_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3LNdWB_register_Asm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3LNqAsm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNqAsm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNqWB_fixed_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNqWB_fixed_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3LNqWB_register_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3LNqWB_register_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3dAsm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3dAsm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3dAsm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3dWB_fixed_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3dWB_fixed_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3dWB_fixed_Asm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3dWB_register_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3dWB_register_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3dWB_register_Asm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3qAsm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3qAsm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3qAsm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3qWB_fixed_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3qWB_fixed_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3qWB_fixed_Asm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST3qWB_register_Asm_16 - ARM_INS_VST3 - vst3${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3qWB_register_Asm_32 - ARM_INS_VST3 - vst3${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST3qWB_register_Asm_8 - ARM_INS_VST3 - vst3${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4LNdAsm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNdAsm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNdAsm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNdWB_fixed_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNdWB_fixed_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNdWB_fixed_Asm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNdWB_register_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4LNdWB_register_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4LNdWB_register_Asm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4LNqAsm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNqAsm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNqWB_fixed_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNqWB_fixed_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4LNqWB_register_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4LNqWB_register_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr, $Rm */
   { CS_OP_IMM, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4dAsm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4dAsm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4dAsm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4dWB_fixed_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4dWB_fixed_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4dWB_fixed_Asm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4dWB_register_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4dWB_register_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4dWB_register_Asm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4qAsm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4qAsm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4qAsm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4qWB_fixed_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4qWB_fixed_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4qWB_fixed_Asm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VST4qWB_register_Asm_16 - ARM_INS_VST4 - vst4${p}.16	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4qWB_register_Asm_32 - ARM_INS_VST4 - vst4${p}.32	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VST4qWB_register_Asm_8 - ARM_INS_VST4 - vst4${p}.8	$list, $addr, $Rm */
   { CS_OP_REG, CS_AC_READ }, /* list */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
@@ -1282,13 +1282,13 @@
 }},
 {{ /* ARM_t2LDR_POST_imm - ARM_INS_LDR - ldr${p}.w $Rt, $Rn, $imm */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* imm */
   { 0 }
 }},
 {{ /* ARM_t2LDR_PRE_imm - ARM_INS_LDR - ldr${p}.w $Rt, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRpcrel - ARM_INS_LDR - ldr${p} $Rt, $addr */
@@ -1318,13 +1318,13 @@
 }},
 {{ /* ARM_t2STR_POST_imm - ARM_INS_STR - str${p}.w $Rt, $Rn, $imm */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* imm */
   { 0 }
 }},
 {{ /* ARM_t2STR_PRE_imm - ARM_INS_STR - str${p}.w $Rt, $addr! */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRConstPool - ARM_INS_LDR - ldr${p} $Rt, $immediate */
@@ -1998,141 +1998,141 @@
 }},
 {{ /* ARM_LDA - ARM_INS_LDA - lda${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDAB - ARM_INS_LDAB - ldab${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDAEX - ARM_INS_LDAEX - ldaex${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDAEXB - ARM_INS_LDAEXB - ldaexb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDAEXD - ARM_INS_LDAEXD - ldaexd${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDAEXH - ARM_INS_LDAEXH - ldaexh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDAH - ARM_INS_LDAH - ldah${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDC2L_OFFSET - ARM_INS_LDC2L - ldc2l	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDC2L_OPTION - ARM_INS_LDC2L - ldc2l	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_LDC2L_POST - ARM_INS_LDC2L - ldc2l	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDC2L_PRE - ARM_INS_LDC2L - ldc2l	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDC2_OFFSET - ARM_INS_LDC2 - ldc2	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDC2_OPTION - ARM_INS_LDC2 - ldc2	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_LDC2_POST - ARM_INS_LDC2 - ldc2	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDC2_PRE - ARM_INS_LDC2 - ldc2	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDCL_OFFSET - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDCL_OPTION - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_LDCL_POST - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDCL_PRE - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDC_OFFSET - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDC_OPTION - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_LDC_POST - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDC_PRE - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDMDA - ARM_INS_LDMDA - ldmda${p}	$Rn, $regs */
@@ -2182,238 +2182,238 @@
 {{ /* ARM_LDRBT_POST_IMM - ARM_INS_LDRBT - ldrbt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRBT_POST_REG - ARM_INS_LDRBT - ldrbt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRB_POST_IMM - ARM_INS_LDRB - ldrb${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRB_POST_REG - ARM_INS_LDRB - ldrb${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRB_PRE_IMM - ARM_INS_LDRB - ldrb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRB_PRE_REG - ARM_INS_LDRB - ldrb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRBi12 - ARM_INS_LDRB - ldrb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRBrs - ARM_INS_LDRB - ldrb${p}	$Rt, $shift */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_LDRD - ARM_INS_LDRD - ldrd${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRD_POST - ARM_INS_LDRD - ldrd${p}	$Rt, $Rt2, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRD_PRE - ARM_INS_LDRD - ldrd${p}	$Rt, $Rt2, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDREX - ARM_INS_LDREX - ldrex${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDREXB - ARM_INS_LDREXB - ldrexb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDREXD - ARM_INS_LDREXD - ldrexd${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDREXH - ARM_INS_LDREXH - ldrexh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRH - ARM_INS_LDRH - ldrh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRHTi - ARM_INS_LDRHT - ldrht${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRHTr - ARM_INS_LDRHT - ldrht${p}	$Rt, $addr, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_LDRH_POST - ARM_INS_LDRH - ldrh${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRH_PRE - ARM_INS_LDRH - ldrh${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRSB - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRSBTi - ARM_INS_LDRSBT - ldrsbt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRSBTr - ARM_INS_LDRSBT - ldrsbt${p}	$Rt, $addr, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_LDRSB_POST - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRSB_PRE - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRSH - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRSHTi - ARM_INS_LDRSHT - ldrsht${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRSHTr - ARM_INS_LDRSHT - ldrsht${p}	$Rt, $addr, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_LDRSH_POST - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRSH_PRE - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRT_POST_IMM - ARM_INS_LDRT - ldrt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDRT_POST_REG - ARM_INS_LDRT - ldrt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDR_POST_IMM - ARM_INS_LDR - ldr${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDR_POST_REG - ARM_INS_LDR - ldr${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_LDR_PRE_IMM - ARM_INS_LDR - ldr${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDR_PRE_REG - ARM_INS_LDR - ldr${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRi12 - ARM_INS_LDR - ldr${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_LDRrs - ARM_INS_LDR - ldr${p}	$Rt, $shift */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_MCR - ARM_INS_MCR - mcr${p}	$cop, $opc1, $Rt, $CRn, $CRm, $opc2 */
@@ -3792,494 +3792,494 @@
 {{ /* ARM_MVE_VLD20_16 - ARM_INS_VLD20 - vld20.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD20_16_wb - ARM_INS_VLD20 - vld20.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD20_32 - ARM_INS_VLD20 - vld20.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD20_32_wb - ARM_INS_VLD20 - vld20.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD20_8 - ARM_INS_VLD20 - vld20.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD20_8_wb - ARM_INS_VLD20 - vld20.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD21_16 - ARM_INS_VLD21 - vld21.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD21_16_wb - ARM_INS_VLD21 - vld21.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD21_32 - ARM_INS_VLD21 - vld21.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD21_32_wb - ARM_INS_VLD21 - vld21.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD21_8 - ARM_INS_VLD21 - vld21.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD21_8_wb - ARM_INS_VLD21 - vld21.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD40_16 - ARM_INS_VLD40 - vld40.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD40_16_wb - ARM_INS_VLD40 - vld40.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD40_32 - ARM_INS_VLD40 - vld40.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD40_32_wb - ARM_INS_VLD40 - vld40.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD40_8 - ARM_INS_VLD40 - vld40.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD40_8_wb - ARM_INS_VLD40 - vld40.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD41_16 - ARM_INS_VLD41 - vld41.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD41_16_wb - ARM_INS_VLD41 - vld41.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD41_32 - ARM_INS_VLD41 - vld41.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD41_32_wb - ARM_INS_VLD41 - vld41.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD41_8 - ARM_INS_VLD41 - vld41.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD41_8_wb - ARM_INS_VLD41 - vld41.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD42_16 - ARM_INS_VLD42 - vld42.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD42_16_wb - ARM_INS_VLD42 - vld42.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD42_32 - ARM_INS_VLD42 - vld42.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD42_32_wb - ARM_INS_VLD42 - vld42.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD42_8 - ARM_INS_VLD42 - vld42.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD42_8_wb - ARM_INS_VLD42 - vld42.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD43_16 - ARM_INS_VLD43 - vld43.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD43_16_wb - ARM_INS_VLD43 - vld43.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD43_32 - ARM_INS_VLD43 - vld43.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD43_32_wb - ARM_INS_VLD43 - vld43.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD43_8 - ARM_INS_VLD43 - vld43.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLD43_8_wb - ARM_INS_VLD43 - vld43.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* VQd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQdSrc */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS16 - ARM_INS_VLDRB - vldrb${vp}.s16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS16_post - ARM_INS_VLDRB - vldrb${vp}.s16	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS16_pre - ARM_INS_VLDRB - vldrb${vp}.s16	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS16_rq - ARM_INS_VLDRB - vldrb${vp}.s16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS32 - ARM_INS_VLDRB - vldrb${vp}.s32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS32_post - ARM_INS_VLDRB - vldrb${vp}.s32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS32_pre - ARM_INS_VLDRB - vldrb${vp}.s32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBS32_rq - ARM_INS_VLDRB - vldrb${vp}.s32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU16 - ARM_INS_VLDRB - vldrb${vp}.u16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU16_post - ARM_INS_VLDRB - vldrb${vp}.u16	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU16_pre - ARM_INS_VLDRB - vldrb${vp}.u16	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU16_rq - ARM_INS_VLDRB - vldrb${vp}.u16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU32 - ARM_INS_VLDRB - vldrb${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU32_post - ARM_INS_VLDRB - vldrb${vp}.u32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU32_pre - ARM_INS_VLDRB - vldrb${vp}.u32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU32_rq - ARM_INS_VLDRB - vldrb${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU8 - ARM_INS_VLDRB - vldrb${vp}.u8	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU8_post - ARM_INS_VLDRB - vldrb${vp}.u8	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU8_pre - ARM_INS_VLDRB - vldrb${vp}.u8	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRBU8_rq - ARM_INS_VLDRB - vldrb${vp}.u8	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRDU64_qi - ARM_INS_VLDRD - vldrd${vp}.u64	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRDU64_qi_pre - ARM_INS_VLDRD - vldrd${vp}.u64	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRDU64_rq - ARM_INS_VLDRD - vldrd${vp}.u64	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRDU64_rq_u - ARM_INS_VLDRD - vldrd${vp}.u64	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHS32 - ARM_INS_VLDRH - vldrh${vp}.s32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHS32_post - ARM_INS_VLDRH - vldrh${vp}.s32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHS32_pre - ARM_INS_VLDRH - vldrh${vp}.s32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHS32_rq - ARM_INS_VLDRH - vldrh${vp}.s32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHS32_rq_u - ARM_INS_VLDRH - vldrh${vp}.s32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU16 - ARM_INS_VLDRH - vldrh${vp}.u16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU16_post - ARM_INS_VLDRH - vldrh${vp}.u16	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU16_pre - ARM_INS_VLDRH - vldrh${vp}.u16	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU16_rq - ARM_INS_VLDRH - vldrh${vp}.u16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU16_rq_u - ARM_INS_VLDRH - vldrh${vp}.u16	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU32 - ARM_INS_VLDRH - vldrh${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU32_post - ARM_INS_VLDRH - vldrh${vp}.u32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU32_pre - ARM_INS_VLDRH - vldrh${vp}.u32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU32_rq - ARM_INS_VLDRH - vldrh${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRHU32_rq_u - ARM_INS_VLDRH - vldrh${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32 - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32_post - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32_pre - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32_qi - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32_qi_pre - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32_rq - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VLDRWU32_rq_u - ARM_INS_VLDRW - vldrw${vp}.u32	$Qd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VMAXAVs16 - ARM_INS_VMAXAV - vmaxav${vp}.s16	$RdaSrc, $Qm */
@@ -7157,385 +7157,385 @@
 }},
 {{ /* ARM_MVE_VST20_16 - ARM_INS_VST20 - vst20.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST20_16_wb - ARM_INS_VST20 - vst20.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST20_32 - ARM_INS_VST20 - vst20.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST20_32_wb - ARM_INS_VST20 - vst20.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST20_8 - ARM_INS_VST20 - vst20.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST20_8_wb - ARM_INS_VST20 - vst20.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST21_16 - ARM_INS_VST21 - vst21.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST21_16_wb - ARM_INS_VST21 - vst21.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST21_32 - ARM_INS_VST21 - vst21.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST21_32_wb - ARM_INS_VST21 - vst21.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST21_8 - ARM_INS_VST21 - vst21.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST21_8_wb - ARM_INS_VST21 - vst21.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST40_16 - ARM_INS_VST40 - vst40.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST40_16_wb - ARM_INS_VST40 - vst40.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST40_32 - ARM_INS_VST40 - vst40.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST40_32_wb - ARM_INS_VST40 - vst40.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST40_8 - ARM_INS_VST40 - vst40.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST40_8_wb - ARM_INS_VST40 - vst40.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST41_16 - ARM_INS_VST41 - vst41.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST41_16_wb - ARM_INS_VST41 - vst41.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST41_32 - ARM_INS_VST41 - vst41.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST41_32_wb - ARM_INS_VST41 - vst41.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST41_8 - ARM_INS_VST41 - vst41.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST41_8_wb - ARM_INS_VST41 - vst41.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST42_16 - ARM_INS_VST42 - vst42.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST42_16_wb - ARM_INS_VST42 - vst42.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST42_32 - ARM_INS_VST42 - vst42.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST42_32_wb - ARM_INS_VST42 - vst42.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST42_8 - ARM_INS_VST42 - vst42.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST42_8_wb - ARM_INS_VST42 - vst42.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST43_16 - ARM_INS_VST43 - vst43.16	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST43_16_wb - ARM_INS_VST43 - vst43.16	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST43_32 - ARM_INS_VST43 - vst43.32	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST43_32_wb - ARM_INS_VST43 - vst43.32	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST43_8 - ARM_INS_VST43 - vst43.8	$VQd, $Rn */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VST43_8_wb - ARM_INS_VST43 - vst43.8	$VQd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* VQd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB16 - ARM_INS_VSTRB - vstrb${vp}.16	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB16_post - ARM_INS_VSTRB - vstrb${vp}.16	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB16_pre - ARM_INS_VSTRB - vstrb${vp}.16	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB16_rq - ARM_INS_VSTRB - vstrb${vp}.16	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB32 - ARM_INS_VSTRB - vstrb${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB32_post - ARM_INS_VSTRB - vstrb${vp}.32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB32_pre - ARM_INS_VSTRB - vstrb${vp}.32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB32_rq - ARM_INS_VSTRB - vstrb${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRB8_rq - ARM_INS_VSTRB - vstrb${vp}.8	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRBU8 - ARM_INS_VSTRB - vstrb${vp}.8	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRBU8_post - ARM_INS_VSTRB - vstrb${vp}.8	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRBU8_pre - ARM_INS_VSTRB - vstrb${vp}.8	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRD64_qi - ARM_INS_VSTRD - vstrd${vp}.64	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRD64_qi_pre - ARM_INS_VSTRD - vstrd${vp}.64	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRD64_rq - ARM_INS_VSTRD - vstrd${vp}.64	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRD64_rq_u - ARM_INS_VSTRD - vstrd${vp}.64	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH16_rq - ARM_INS_VSTRH - vstrh${vp}.16	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH16_rq_u - ARM_INS_VSTRH - vstrh${vp}.16	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH32 - ARM_INS_VSTRH - vstrh${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH32_post - ARM_INS_VSTRH - vstrh${vp}.32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH32_pre - ARM_INS_VSTRH - vstrh${vp}.32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH32_rq - ARM_INS_VSTRH - vstrh${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRH32_rq_u - ARM_INS_VSTRH - vstrh${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRHU16 - ARM_INS_VSTRH - vstrh${vp}.16	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRHU16_post - ARM_INS_VSTRH - vstrh${vp}.16	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRHU16_pre - ARM_INS_VSTRH - vstrh${vp}.16	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRW32_qi - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRW32_qi_pre - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRW32_rq - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRW32_rq_u - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRWU32 - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRWU32_post - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSTRWU32_pre - ARM_INS_VSTRW - vstrw${vp}.32	$Qd, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Qd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_MVE_VSUB_qr_f16 - ARM_INS_VSUB - vsub${vp}.f16	$Qd, $Qn, $Rm */
@@ -7729,27 +7729,27 @@
   { 0 }
 }},
 {{ /* ARM_PLDWi12 - ARM_INS_PLDW - pldw	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_PLDWrs - ARM_INS_PLDW - pldw	$shift */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_PLDi12 - ARM_INS_PLD - pld	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_PLDrs - ARM_INS_PLD - pld	$shift */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_PLIi12 - ARM_INS_PLI - pli	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_PLIrs - ARM_INS_PLI - pli	$shift */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_QADD - ARM_INS_QADD - qadd${p}	$Rd, $Rm, $Rn */
@@ -8414,144 +8414,144 @@
 {{ /* ARM_STC2L_OFFSET - ARM_INS_STC2L - stc2l	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STC2L_OPTION - ARM_INS_STC2L - stc2l	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_STC2L_POST - ARM_INS_STC2L - stc2l	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STC2L_PRE - ARM_INS_STC2L - stc2l	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STC2_OFFSET - ARM_INS_STC2 - stc2	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STC2_OPTION - ARM_INS_STC2 - stc2	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_STC2_POST - ARM_INS_STC2 - stc2	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STC2_PRE - ARM_INS_STC2 - stc2	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STCL_OFFSET - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STCL_OPTION - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_STCL_POST - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STCL_PRE - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STC_OFFSET - ARM_INS_STC - stc${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STC_OPTION - ARM_INS_STC - stc${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_STC_POST - ARM_INS_STC - stc${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STC_PRE - ARM_INS_STC - stc${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STL - ARM_INS_STL - stl${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STLB - ARM_INS_STLB - stlb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STLEX - ARM_INS_STLEX - stlex${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STLEXB - ARM_INS_STLEXB - stlexb${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STLEXD - ARM_INS_STLEXD - stlexd${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STLEXH - ARM_INS_STLEXH - stlexh${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STLH - ARM_INS_STLH - stlh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STMDA - ARM_INS_STMDA - stmda${p}	$Rn, $regs */
@@ -8601,178 +8601,178 @@
 {{ /* ARM_STRBT_POST_IMM - ARM_INS_STRBT - strbt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRBT_POST_REG - ARM_INS_STRBT - strbt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRB_POST_IMM - ARM_INS_STRB - strb${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRB_POST_REG - ARM_INS_STRB - strb${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRB_PRE_IMM - ARM_INS_STRB - strb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRB_PRE_REG - ARM_INS_STRB - strb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRBi12 - ARM_INS_STRB - strb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRBrs - ARM_INS_STRB - strb${p}	$Rt, $shift */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_STRD - ARM_INS_STRD - strd${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRD_POST - ARM_INS_STRD - strd${p}	$Rt, $Rt2, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRD_PRE - ARM_INS_STRD - strd${p}	$Rt, $Rt2, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STREX - ARM_INS_STREX - strex${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STREXB - ARM_INS_STREXB - strexb${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STREXD - ARM_INS_STREXD - strexd${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STREXH - ARM_INS_STREXH - strexh${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRH - ARM_INS_STRH - strh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRHTi - ARM_INS_STRHT - strht${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRHTr - ARM_INS_STRHT - strht${p}	$Rt, $addr, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* base_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_STRH_POST - ARM_INS_STRH - strh${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRH_PRE - ARM_INS_STRH - strh${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRT_POST_IMM - ARM_INS_STRT - strt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STRT_POST_REG - ARM_INS_STRT - strt${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STR_POST_IMM - ARM_INS_STR - str${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STR_POST_REG - ARM_INS_STR - str${p}	$Rt, $addr, $offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_STR_PRE_IMM - ARM_INS_STR - str${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STR_PRE_REG - ARM_INS_STR - str${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRi12 - ARM_INS_STR - str${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_STRrs - ARM_INS_STR - str${p}	$Rt, $shift */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* shift */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* shift */
   { 0 }
 }},
 {{ /* ARM_SUBri - ARM_INS_SUB - sub${s}${p}	$Rd, $Rn, $imm */
@@ -8806,13 +8806,13 @@
 {{ /* ARM_SWP - ARM_INS_SWP - swp${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_SWPB - ARM_INS_SWPB - swpb${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_SXTAB - ARM_INS_SXTAB - sxtab${p}	$Rd, $Rn, $Rm$rot */
@@ -11592,115 +11592,115 @@
 }},
 {{ /* ARM_VLD1DUPd16 - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd16wb_fixed - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd16wb_register - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd32 - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd32wb_fixed - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd32wb_register - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd8 - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd8wb_fixed - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPd8wb_register - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq16 - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq16wb_fixed - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq16wb_register - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq32 - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq32wb_fixed - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq32wb_register - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq8 - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq8wb_fixed - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1DUPq8wb_register - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1LNd16 - ARM_INS_VLD1 - vld1${p}.16	\{$Vd[$lane]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* src */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
@@ -11708,15 +11708,15 @@
 {{ /* ARM_VLD1LNd16_UPD - ARM_INS_VLD1 - vld1${p}.16	\{$Vd[$lane]\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* src */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VLD1LNd32 - ARM_INS_VLD1 - vld1${p}.32	\{$Vd[$lane]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* src */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
@@ -11724,15 +11724,15 @@
 {{ /* ARM_VLD1LNd32_UPD - ARM_INS_VLD1 - vld1${p}.32	\{$Vd[$lane]\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* src */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VLD1LNd8 - ARM_INS_VLD1 - vld1${p}.8	\{$Vd[$lane]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* src */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
@@ -11740,567 +11740,567 @@
 {{ /* ARM_VLD1LNd8_UPD - ARM_INS_VLD1 - vld1${p}.8	\{$Vd[$lane]\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* src */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VLD1d16 - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d16Q - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d16Qwb_fixed - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d16Qwb_register - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d16T - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d16Twb_fixed - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d16Twb_register - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d16wb_fixed - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d16wb_register - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d32 - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d32Q - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d32Qwb_fixed - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d32Qwb_register - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d32T - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d32Twb_fixed - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d32Twb_register - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d32wb_fixed - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d32wb_register - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d64 - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d64Q - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d64Qwb_fixed - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d64Qwb_register - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d64T - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d64Twb_fixed - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d64Twb_register - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d64wb_fixed - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d64wb_register - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d8 - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d8Q - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d8Qwb_fixed - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d8Qwb_register - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d8T - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d8Twb_fixed - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d8Twb_register - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1d8wb_fixed - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1d8wb_register - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1q16 - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q16wb_fixed - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q16wb_register - ARM_INS_VLD1 - vld1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1q32 - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q32wb_fixed - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q32wb_register - ARM_INS_VLD1 - vld1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1q64 - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q64wb_fixed - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q64wb_register - ARM_INS_VLD1 - vld1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD1q8 - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q8wb_fixed - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD1q8wb_register - ARM_INS_VLD1 - vld1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd16 - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd16wb_fixed - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd16wb_register - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd16x2 - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd16x2wb_fixed - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd16x2wb_register - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd32 - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd32wb_fixed - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd32wb_register - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd32x2 - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd32x2wb_fixed - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd32x2wb_register - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd8 - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd8wb_fixed - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd8wb_register - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd8x2 - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd8x2wb_fixed - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2DUPd8x2wb_register - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2b16 - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2b16wb_fixed - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2b16wb_register - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2b32 - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2b32wb_fixed - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2b32wb_register - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2b8 - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2b8wb_fixed - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2b8wb_register - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2d16 - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2d16wb_fixed - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2d16wb_register - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2d32 - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2d32wb_fixed - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2d32wb_register - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2d8 - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2d8wb_fixed - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2d8wb_register - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2q16 - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2q16wb_fixed - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2q16wb_register - ARM_INS_VLD2 - vld2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2q32 - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2q32wb_fixed - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2q32wb_register - ARM_INS_VLD2 - vld2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD2q8 - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2q8wb_fixed - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD2q8wb_register - ARM_INS_VLD2 - vld2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
@@ -12308,7 +12308,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPd16_UPD - ARM_INS_VLD3 - vld3${p}.16	\{$Vd[], $dst2[], $dst3[]\}, $Rn$Rm */
@@ -12316,15 +12316,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPd32 - ARM_INS_VLD3 - vld3${p}.32	\{$Vd[], $dst2[], $dst3[]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPd32_UPD - ARM_INS_VLD3 - vld3${p}.32	\{$Vd[], $dst2[], $dst3[]\}, $Rn$Rm */
@@ -12332,15 +12332,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPd8 - ARM_INS_VLD3 - vld3${p}.8	\{$Vd[], $dst2[], $dst3[]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPd8_UPD - ARM_INS_VLD3 - vld3${p}.8	\{$Vd[], $dst2[], $dst3[]\}, $Rn$Rm */
@@ -12348,15 +12348,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPq16 - ARM_INS_VLD3 - vld3${p}.16	\{$Vd[], $dst2[], $dst3[]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPq16_UPD - ARM_INS_VLD3 - vld3${p}.16	\{$Vd[], $dst2[], $dst3[]\}, $Rn$Rm */
@@ -12364,15 +12364,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPq32 - ARM_INS_VLD3 - vld3${p}.32	\{$Vd[], $dst2[], $dst3[]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPq32_UPD - ARM_INS_VLD3 - vld3${p}.32	\{$Vd[], $dst2[], $dst3[]\}, $Rn$Rm */
@@ -12380,15 +12380,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPq8 - ARM_INS_VLD3 - vld3${p}.8	\{$Vd[], $dst2[], $dst3[]\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3DUPq8_UPD - ARM_INS_VLD3 - vld3${p}.8	\{$Vd[], $dst2[], $dst3[]\}, $Rn$Rm */
@@ -12396,15 +12396,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3d16 - ARM_INS_VLD3 - vld3${p}.16	\{$Vd, $dst2, $dst3\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3d16_UPD - ARM_INS_VLD3 - vld3${p}.16	\{$Vd, $dst2, $dst3\}, $Rn$Rm */
@@ -12412,15 +12412,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3d32 - ARM_INS_VLD3 - vld3${p}.32	\{$Vd, $dst2, $dst3\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3d32_UPD - ARM_INS_VLD3 - vld3${p}.32	\{$Vd, $dst2, $dst3\}, $Rn$Rm */
@@ -12428,15 +12428,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3d8 - ARM_INS_VLD3 - vld3${p}.8	\{$Vd, $dst2, $dst3\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3d8_UPD - ARM_INS_VLD3 - vld3${p}.8	\{$Vd, $dst2, $dst3\}, $Rn$Rm */
@@ -12444,15 +12444,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3q16 - ARM_INS_VLD3 - vld3${p}.16	\{$Vd, $dst2, $dst3\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3q16_UPD - ARM_INS_VLD3 - vld3${p}.16	\{$Vd, $dst2, $dst3\}, $Rn$Rm */
@@ -12460,15 +12460,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3q32 - ARM_INS_VLD3 - vld3${p}.32	\{$Vd, $dst2, $dst3\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3q32_UPD - ARM_INS_VLD3 - vld3${p}.32	\{$Vd, $dst2, $dst3\}, $Rn$Rm */
@@ -12476,15 +12476,15 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD3q8 - ARM_INS_VLD3 - vld3${p}.8	\{$Vd, $dst2, $dst3\}, $Rn */
   { CS_OP_REG, CS_AC_WRITE }, /* Vd */
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD3q8_UPD - ARM_INS_VLD3 - vld3${p}.8	\{$Vd, $dst2, $dst3\}, $Rn$Rm */
@@ -12492,8 +12492,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPd16 - ARM_INS_VLD4 - vld4${p}.16	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn */
@@ -12501,7 +12501,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPd16_UPD - ARM_INS_VLD4 - vld4${p}.16	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn$Rm */
@@ -12510,8 +12510,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPd32 - ARM_INS_VLD4 - vld4${p}.32	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn */
@@ -12519,7 +12519,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPd32_UPD - ARM_INS_VLD4 - vld4${p}.32	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn$Rm */
@@ -12528,8 +12528,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPd8 - ARM_INS_VLD4 - vld4${p}.8	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn */
@@ -12537,7 +12537,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPd8_UPD - ARM_INS_VLD4 - vld4${p}.8	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn$Rm */
@@ -12546,8 +12546,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPq16 - ARM_INS_VLD4 - vld4${p}.16	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn */
@@ -12555,7 +12555,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPq16_UPD - ARM_INS_VLD4 - vld4${p}.16	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn$Rm */
@@ -12564,8 +12564,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPq32 - ARM_INS_VLD4 - vld4${p}.32	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn */
@@ -12573,7 +12573,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPq32_UPD - ARM_INS_VLD4 - vld4${p}.32	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn$Rm */
@@ -12582,8 +12582,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPq8 - ARM_INS_VLD4 - vld4${p}.8	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn */
@@ -12591,7 +12591,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4DUPq8_UPD - ARM_INS_VLD4 - vld4${p}.8	\{$Vd[], $dst2[], $dst3[], $dst4[]\}, $Rn$Rm */
@@ -12600,8 +12600,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4d16 - ARM_INS_VLD4 - vld4${p}.16	\{$Vd, $dst2, $dst3, $dst4\}, $Rn */
@@ -12609,7 +12609,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4d16_UPD - ARM_INS_VLD4 - vld4${p}.16	\{$Vd, $dst2, $dst3, $dst4\}, $Rn$Rm */
@@ -12618,8 +12618,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4d32 - ARM_INS_VLD4 - vld4${p}.32	\{$Vd, $dst2, $dst3, $dst4\}, $Rn */
@@ -12627,7 +12627,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4d32_UPD - ARM_INS_VLD4 - vld4${p}.32	\{$Vd, $dst2, $dst3, $dst4\}, $Rn$Rm */
@@ -12636,8 +12636,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4d8 - ARM_INS_VLD4 - vld4${p}.8	\{$Vd, $dst2, $dst3, $dst4\}, $Rn */
@@ -12645,7 +12645,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4d8_UPD - ARM_INS_VLD4 - vld4${p}.8	\{$Vd, $dst2, $dst3, $dst4\}, $Rn$Rm */
@@ -12654,8 +12654,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4q16 - ARM_INS_VLD4 - vld4${p}.16	\{$Vd, $dst2, $dst3, $dst4\}, $Rn */
@@ -12663,7 +12663,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4q16_UPD - ARM_INS_VLD4 - vld4${p}.16	\{$Vd, $dst2, $dst3, $dst4\}, $Rn$Rm */
@@ -12672,8 +12672,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4q32 - ARM_INS_VLD4 - vld4${p}.32	\{$Vd, $dst2, $dst3, $dst4\}, $Rn */
@@ -12681,7 +12681,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4q32_UPD - ARM_INS_VLD4 - vld4${p}.32	\{$Vd, $dst2, $dst3, $dst4\}, $Rn$Rm */
@@ -12690,8 +12690,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLD4q8 - ARM_INS_VLD4 - vld4${p}.8	\{$Vd, $dst2, $dst3, $dst4\}, $Rn */
@@ -12699,7 +12699,7 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst2 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { 0 }
 }},
 {{ /* ARM_VLD4q8_UPD - ARM_INS_VLD4 - vld4${p}.8	\{$Vd, $dst2, $dst3, $dst4\}, $Rn$Rm */
@@ -12708,8 +12708,8 @@
   { CS_OP_REG, CS_AC_WRITE }, /* dst3 */
   { CS_OP_REG, CS_AC_WRITE }, /* dst4 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { 0 }
 }},
 {{ /* ARM_VLDMDDB_UPD - ARM_INS_VLDMDB - vldmdb${p}	$Rn!, $regs */
@@ -12748,110 +12748,110 @@
 }},
 {{ /* ARM_VLDRD - ARM_INS_VLDR - vldr${p}	$Dd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Dd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDRH - ARM_INS_VLDR - vldr${p}.16	$Sd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Sd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDRS - ARM_INS_VLDR - vldr${p}	$Sd, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Sd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPCXTNS_off - ARM_INS_VLDR - vldr${p}	fpcxtns, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPCXTNS_post - ARM_INS_VLDR - vldr${p}	fpcxtns, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPCXTNS_pre - ARM_INS_VLDR - vldr${p}	fpcxtns, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPCXTS_off - ARM_INS_VLDR - vldr${p}	fpcxts, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPCXTS_post - ARM_INS_VLDR - vldr${p}	fpcxts, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPCXTS_pre - ARM_INS_VLDR - vldr${p}	fpcxts, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPSCR_NZCVQC_off - ARM_INS_VLDR - vldr${p}	fpscr_nzcvqc, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPSCR_NZCVQC_post - ARM_INS_VLDR - vldr${p}	fpscr_nzcvqc, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPSCR_NZCVQC_pre - ARM_INS_VLDR - vldr${p}	fpscr_nzcvqc, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPSCR_off - ARM_INS_VLDR - vldr${p}	fpscr, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPSCR_post - ARM_INS_VLDR - vldr${p}	fpscr, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_FPSCR_pre - ARM_INS_VLDR - vldr${p}	fpscr, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_P0_off - ARM_INS_VLDR - vldr${p}	p0, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* P0 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_P0_post - ARM_INS_VLDR - vldr${p}	p0, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* P0 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_P0_pre - ARM_INS_VLDR - vldr${p}	p0, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* P0 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_VPR_off - ARM_INS_VLDR - vldr${p}	vpr, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_VPR_post - ARM_INS_VLDR - vldr${p}	vpr, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLDR_VPR_pre - ARM_INS_VLDR - vldr${p}	vpr, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VLLDM - ARM_INS_VLLDM - vlldm${p}	$Rn */
@@ -17069,499 +17069,499 @@
   { 0 }
 }},
 {{ /* ARM_VST1LNd16 - ARM_INS_VST1 - vst1${p}.16	\{$Vd[$lane]\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VST1LNd16_UPD - ARM_INS_VST1 - vst1${p}.16	\{$Vd[$lane]\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VST1LNd32 - ARM_INS_VST1 - vst1${p}.32	\{$Vd[$lane]\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VST1LNd32_UPD - ARM_INS_VST1 - vst1${p}.32	\{$Vd[$lane]\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VST1LNd8 - ARM_INS_VST1 - vst1${p}.8	\{$Vd[$lane]\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VST1LNd8_UPD - ARM_INS_VST1 - vst1${p}.8	\{$Vd[$lane]\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_IMM, CS_AC_READ }, /* lane */
   { 0 }
 }},
 {{ /* ARM_VST1d16 - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16Q - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16Qwb_fixed - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16Qwb_register - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16T - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16Twb_fixed - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16Twb_register - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16wb_fixed - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d16wb_register - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32 - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32Q - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32Qwb_fixed - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32Qwb_register - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32T - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32Twb_fixed - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32Twb_register - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32wb_fixed - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d32wb_register - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64 - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64Q - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64Qwb_fixed - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64Qwb_register - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64T - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64Twb_fixed - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64Twb_register - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64wb_fixed - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d64wb_register - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8 - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8Q - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8Qwb_fixed - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8Qwb_register - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8T - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8Twb_fixed - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8Twb_register - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8wb_fixed - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1d8wb_register - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q16 - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q16wb_fixed - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q16wb_register - ARM_INS_VST1 - vst1${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q32 - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q32wb_fixed - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q32wb_register - ARM_INS_VST1 - vst1${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q64 - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q64wb_fixed - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q64wb_register - ARM_INS_VST1 - vst1${p}.64	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q8 - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q8wb_fixed - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST1q8wb_register - ARM_INS_VST1 - vst1${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b16 - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b16wb_fixed - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b16wb_register - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b32 - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b32wb_fixed - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b32wb_register - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b8 - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b8wb_fixed - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2b8wb_register - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d16 - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d16wb_fixed - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d16wb_register - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d32 - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d32wb_fixed - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d32wb_register - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d8 - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d8wb_fixed - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2d8wb_register - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q16 - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q16wb_fixed - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q16wb_register - ARM_INS_VST2 - vst2${p}.16	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q32 - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q32wb_fixed - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q32wb_register - ARM_INS_VST2 - vst2${p}.32	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q8 - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q8wb_fixed - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST2q8wb_register - ARM_INS_VST2 - vst2${p}.8	$Vd, $Rn, $Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { 0 }
 }},
 {{ /* ARM_VST3d16 - ARM_INS_VST3 - vst3${p}.16	\{$Vd, $src2, $src3\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17569,15 +17569,15 @@
 }},
 {{ /* ARM_VST3d16_UPD - ARM_INS_VST3 - vst3${p}.16	\{$Vd, $src2, $src3\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
   { 0 }
 }},
 {{ /* ARM_VST3d32 - ARM_INS_VST3 - vst3${p}.32	\{$Vd, $src2, $src3\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17585,15 +17585,15 @@
 }},
 {{ /* ARM_VST3d32_UPD - ARM_INS_VST3 - vst3${p}.32	\{$Vd, $src2, $src3\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
   { 0 }
 }},
 {{ /* ARM_VST3d8 - ARM_INS_VST3 - vst3${p}.8	\{$Vd, $src2, $src3\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17601,15 +17601,15 @@
 }},
 {{ /* ARM_VST3d8_UPD - ARM_INS_VST3 - vst3${p}.8	\{$Vd, $src2, $src3\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
   { 0 }
 }},
 {{ /* ARM_VST3q16 - ARM_INS_VST3 - vst3${p}.16	\{$Vd, $src2, $src3\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17617,15 +17617,15 @@
 }},
 {{ /* ARM_VST3q16_UPD - ARM_INS_VST3 - vst3${p}.16	\{$Vd, $src2, $src3\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
   { 0 }
 }},
 {{ /* ARM_VST3q32 - ARM_INS_VST3 - vst3${p}.32	\{$Vd, $src2, $src3\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17633,15 +17633,15 @@
 }},
 {{ /* ARM_VST3q32_UPD - ARM_INS_VST3 - vst3${p}.32	\{$Vd, $src2, $src3\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
   { 0 }
 }},
 {{ /* ARM_VST3q8 - ARM_INS_VST3 - vst3${p}.8	\{$Vd, $src2, $src3\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17649,15 +17649,15 @@
 }},
 {{ /* ARM_VST3q8_UPD - ARM_INS_VST3 - vst3${p}.8	\{$Vd, $src2, $src3\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
   { 0 }
 }},
 {{ /* ARM_VST4d16 - ARM_INS_VST4 - vst4${p}.16	\{$Vd, $src2, $src3, $src4\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17666,8 +17666,8 @@
 }},
 {{ /* ARM_VST4d16_UPD - ARM_INS_VST4 - vst4${p}.16	\{$Vd, $src2, $src3, $src4\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17675,7 +17675,7 @@
   { 0 }
 }},
 {{ /* ARM_VST4d32 - ARM_INS_VST4 - vst4${p}.32	\{$Vd, $src2, $src3, $src4\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17684,8 +17684,8 @@
 }},
 {{ /* ARM_VST4d32_UPD - ARM_INS_VST4 - vst4${p}.32	\{$Vd, $src2, $src3, $src4\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17693,7 +17693,7 @@
   { 0 }
 }},
 {{ /* ARM_VST4d8 - ARM_INS_VST4 - vst4${p}.8	\{$Vd, $src2, $src3, $src4\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17702,8 +17702,8 @@
 }},
 {{ /* ARM_VST4d8_UPD - ARM_INS_VST4 - vst4${p}.8	\{$Vd, $src2, $src3, $src4\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17711,7 +17711,7 @@
   { 0 }
 }},
 {{ /* ARM_VST4q16 - ARM_INS_VST4 - vst4${p}.16	\{$Vd, $src2, $src3, $src4\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17720,8 +17720,8 @@
 }},
 {{ /* ARM_VST4q16_UPD - ARM_INS_VST4 - vst4${p}.16	\{$Vd, $src2, $src3, $src4\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17729,7 +17729,7 @@
   { 0 }
 }},
 {{ /* ARM_VST4q32 - ARM_INS_VST4 - vst4${p}.32	\{$Vd, $src2, $src3, $src4\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17738,8 +17738,8 @@
 }},
 {{ /* ARM_VST4q32_UPD - ARM_INS_VST4 - vst4${p}.32	\{$Vd, $src2, $src3, $src4\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17747,7 +17747,7 @@
   { 0 }
 }},
 {{ /* ARM_VST4q8 - ARM_INS_VST4 - vst4${p}.8	\{$Vd, $src2, $src3, $src4\}, $Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17756,8 +17756,8 @@
 }},
 {{ /* ARM_VST4q8_UPD - ARM_INS_VST4 - vst4${p}.8	\{$Vd, $src2, $src3, $src4\}, $Rn$Rm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* Rm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rm */
   { CS_OP_REG, CS_AC_READ }, /* Vd */
   { CS_OP_REG, CS_AC_READ }, /* src2 */
   { CS_OP_REG, CS_AC_READ }, /* src3 */
@@ -17800,110 +17800,110 @@
 }},
 {{ /* ARM_VSTRD - ARM_INS_VSTR - vstr${p}	$Dd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Dd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTRH - ARM_INS_VSTR - vstr${p}.16	$Sd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Sd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTRS - ARM_INS_VSTR - vstr${p}	$Sd, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Sd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPCXTNS_off - ARM_INS_VSTR - vstr${p}	fpcxtns, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPCXTNS_post - ARM_INS_VSTR - vstr${p}	fpcxtns, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPCXTNS_pre - ARM_INS_VSTR - vstr${p}	fpcxtns, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPCXTS_off - ARM_INS_VSTR - vstr${p}	fpcxts, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPCXTS_post - ARM_INS_VSTR - vstr${p}	fpcxts, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPCXTS_pre - ARM_INS_VSTR - vstr${p}	fpcxts, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPSCR_NZCVQC_off - ARM_INS_VSTR - vstr${p}	fpscr_nzcvqc, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPSCR_NZCVQC_post - ARM_INS_VSTR - vstr${p}	fpscr_nzcvqc, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPSCR_NZCVQC_pre - ARM_INS_VSTR - vstr${p}	fpscr_nzcvqc, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPSCR_off - ARM_INS_VSTR - vstr${p}	fpscr, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPSCR_post - ARM_INS_VSTR - vstr${p}	fpscr, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_FPSCR_pre - ARM_INS_VSTR - vstr${p}	fpscr, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_P0_off - ARM_INS_VSTR - vstr${p}	p0, $addr */
   { CS_OP_REG, CS_AC_READ }, /* P0 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_P0_post - ARM_INS_VSTR - vstr${p}	p0, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* P0 */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_P0_pre - ARM_INS_VSTR - vstr${p}	p0, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* P0 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_VPR_off - ARM_INS_VSTR - vstr${p}	vpr, $addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_VPR_post - ARM_INS_VSTR - vstr${p}	vpr, $Rn$addr */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSTR_VPR_pre - ARM_INS_VSTR - vstr${p}	vpr, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_VSUBD - ARM_INS_VSUB - vsub${p}.f64	$Dd, $Dn, $Dm */
@@ -19044,142 +19044,142 @@
 }},
 {{ /* ARM_t2LDA - ARM_INS_LDA - lda${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDAB - ARM_INS_LDAB - ldab${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDAEX - ARM_INS_LDAEX - ldaex${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDAEXB - ARM_INS_LDAEXB - ldaexb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDAEXD - ARM_INS_LDAEXD - ldaexd${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDAEXH - ARM_INS_LDAEXH - ldaexh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDAH - ARM_INS_LDAH - ldah${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDC2L_OFFSET - ARM_INS_LDC2L - ldc2l${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDC2L_OPTION - ARM_INS_LDC2L - ldc2l${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2LDC2L_POST - ARM_INS_LDC2L - ldc2l${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDC2L_PRE - ARM_INS_LDC2L - ldc2l${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDC2_OFFSET - ARM_INS_LDC2 - ldc2${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDC2_OPTION - ARM_INS_LDC2 - ldc2${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2LDC2_POST - ARM_INS_LDC2 - ldc2${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDC2_PRE - ARM_INS_LDC2 - ldc2${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDCL_OFFSET - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDCL_OPTION - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2LDCL_POST - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDCL_PRE - ARM_INS_LDCL - ldcl${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDC_OFFSET - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDC_OPTION - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2LDC_POST - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDC_PRE - ARM_INS_LDC - ldc${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDMDB - ARM_INS_LDMDB - ldmdb${p}	$Rn, $regs */
@@ -19206,234 +19206,234 @@
 }},
 {{ /* ARM_t2LDRBT - ARM_INS_LDRBT - ldrbt${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRB_POST - ARM_INS_LDRB - ldrb${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDRB_PRE - ARM_INS_LDRB - ldrb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRBi12 - ARM_INS_LDRB - ldrb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRBi8 - ARM_INS_LDRB - ldrb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRBpci - ARM_INS_LDRB - ldrb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRBs - ARM_INS_LDRB - ldrb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRD_POST - ARM_INS_LDRD - ldrd${p}	$Rt, $Rt2, $addr$imm */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* imm */
   { 0 }
 }},
 {{ /* ARM_t2LDRD_PRE - ARM_INS_LDRD - ldrd${p}	$Rt, $Rt2, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRDi8 - ARM_INS_LDRD - ldrd${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDREX - ARM_INS_LDREX - ldrex${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDREXB - ARM_INS_LDREXB - ldrexb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDREXD - ARM_INS_LDREXD - ldrexd${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDREXH - ARM_INS_LDREXH - ldrexh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRHT - ARM_INS_LDRHT - ldrht${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRH_POST - ARM_INS_LDRH - ldrh${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDRH_PRE - ARM_INS_LDRH - ldrh${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRHi12 - ARM_INS_LDRH - ldrh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRHi8 - ARM_INS_LDRH - ldrh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRHpci - ARM_INS_LDRH - ldrh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRHs - ARM_INS_LDRH - ldrh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSBT - ARM_INS_LDRSBT - ldrsbt${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSB_POST - ARM_INS_LDRSB - ldrsb${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDRSB_PRE - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSBi12 - ARM_INS_LDRSB - ldrsb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSBi8 - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSBpci - ARM_INS_LDRSB - ldrsb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSBs - ARM_INS_LDRSB - ldrsb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSHT - ARM_INS_LDRSHT - ldrsht${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSH_POST - ARM_INS_LDRSH - ldrsh${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDRSH_PRE - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSHi12 - ARM_INS_LDRSH - ldrsh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSHi8 - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSHpci - ARM_INS_LDRSH - ldrsh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRSHs - ARM_INS_LDRSH - ldrsh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRT - ARM_INS_LDRT - ldrt${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDR_POST - ARM_INS_LDR - ldr${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2LDR_PRE - ARM_INS_LDR - ldr${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRi12 - ARM_INS_LDR - ldr${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRi8 - ARM_INS_LDR - ldr${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRpci - ARM_INS_LDR - ldr${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LDRs - ARM_INS_LDR - ldr${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2LE - ARM_INS_LE - le	$label */
@@ -19690,47 +19690,47 @@
   { 0 }
 }},
 {{ /* ARM_t2PLDWi12 - ARM_INS_PLDW - pldw${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLDWi8 - ARM_INS_PLDW - pldw${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLDWs - ARM_INS_PLDW - pldw${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLDi12 - ARM_INS_PLD - pld${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLDi8 - ARM_INS_PLD - pld${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLDpci - ARM_INS_PLD - pld${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLDs - ARM_INS_PLD - pld${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLIi12 - ARM_INS_PLI - pli${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLIi8 - ARM_INS_PLI - pli${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLIpci - ARM_INS_PLI - pli${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2PLIs - ARM_INS_PLI - pli${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2QADD - ARM_INS_QADD - qadd${p}	$Rd, $Rm, $Rn */
@@ -20277,145 +20277,145 @@
 {{ /* ARM_t2STC2L_OFFSET - ARM_INS_STC2L - stc2l${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STC2L_OPTION - ARM_INS_STC2L - stc2l${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2STC2L_POST - ARM_INS_STC2L - stc2l${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STC2L_PRE - ARM_INS_STC2L - stc2l${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STC2_OFFSET - ARM_INS_STC2 - stc2${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STC2_OPTION - ARM_INS_STC2 - stc2${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2STC2_POST - ARM_INS_STC2 - stc2${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STC2_PRE - ARM_INS_STC2 - stc2${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STCL_OFFSET - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STCL_OPTION - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2STCL_POST - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STCL_PRE - ARM_INS_STCL - stcl${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STC_OFFSET - ARM_INS_STC - stc${p}	$cop, $CRd, $addr */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STC_OPTION - ARM_INS_STC - stc${p}	$cop, $CRd, $addr, $option */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { CS_OP_IMM, CS_AC_READ }, /* option */
   { 0 }
 }},
 {{ /* ARM_t2STC_POST - ARM_INS_STC - stc${p}	$cop, $CRd, $addr, $offset */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STC_PRE - ARM_INS_STC - stc${p}	$cop, $CRd, $addr! */
   { CS_OP_IMM, CS_AC_READ }, /* cop */
   { CS_OP_IMM, CS_AC_READ }, /* CRd */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STL - ARM_INS_STL - stl${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STLB - ARM_INS_STLB - stlb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STLEX - ARM_INS_STLEX - stlex${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STLEXB - ARM_INS_STLEXB - stlexb${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STLEXD - ARM_INS_STLEXD - stlexd${p}	$Rd, $Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STLEXH - ARM_INS_STLEXH - stlexh${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STLH - ARM_INS_STLH - stlh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STMDB - ARM_INS_STMDB - stmdb${p}	$Rn, $regs */
@@ -20442,147 +20442,147 @@
 }},
 {{ /* ARM_t2STRBT - ARM_INS_STRBT - strbt${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRB_POST - ARM_INS_STRB - strb${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STRB_PRE - ARM_INS_STRB - strb${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRBi12 - ARM_INS_STRB - strb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRBi8 - ARM_INS_STRB - strb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRBs - ARM_INS_STRB - strb${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRD_POST - ARM_INS_STRD - strd${p}	$Rt, $Rt2, $addr$imm */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
-  { CS_OP_MEM, CS_AC_READ }, /* imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* imm */
   { 0 }
 }},
 {{ /* ARM_t2STRD_PRE - ARM_INS_STRD - strd${p}	$Rt, $Rt2, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRDi8 - ARM_INS_STRD - strd${p}	$Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STREX - ARM_INS_STREX - strex${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STREXB - ARM_INS_STREXB - strexb${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STREXD - ARM_INS_STREXD - strexd${p}	$Rd, $Rt, $Rt2, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
   { CS_OP_REG, CS_AC_READ }, /* Rt2 */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STREXH - ARM_INS_STREXH - strexh${p}	$Rd, $Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rd */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRHT - ARM_INS_STRHT - strht${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRH_POST - ARM_INS_STRH - strh${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STRH_PRE - ARM_INS_STRH - strh${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRHi12 - ARM_INS_STRH - strh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRHi8 - ARM_INS_STRH - strh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRHs - ARM_INS_STRH - strh${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRT - ARM_INS_STRT - strt${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STR_POST - ARM_INS_STR - str${p}	$Rt, $Rn$offset */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* Rn */
-  { CS_OP_MEM, CS_AC_READ }, /* offset */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* Rn */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* offset */
   { 0 }
 }},
 {{ /* ARM_t2STR_PRE - ARM_INS_STR - str${p}	$Rt, $addr! */
   { CS_OP_REG, CS_AC_WRITE }, /* Rn_wb */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRi12 - ARM_INS_STR - str${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRi8 - ARM_INS_STR - str${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2STRs - ARM_INS_STR - str${p}.w	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2SUBS_PC_LR - ARM_INS_SUBS - subs${p}	pc, lr, $imm */
@@ -20669,11 +20669,11 @@
   { 0 }
 }},
 {{ /* ARM_t2TBB - ARM_INS_TBB - tbb${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2TBH - ARM_INS_TBH - tbh${p}	$addr */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_t2TEQri - ARM_INS_TEQ - teq${p}.w	$Rn, $imm */
@@ -21130,52 +21130,52 @@
 }},
 {{ /* ARM_tLDRBi - ARM_INS_LDRB - ldrb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRBr - ARM_INS_LDRB - ldrb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRHi - ARM_INS_LDRH - ldrh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRHr - ARM_INS_LDRH - ldrh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRSB - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRSH - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRi - ARM_INS_LDR - ldr${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRpci - ARM_INS_LDR - ldr${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRr - ARM_INS_LDR - ldr${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLDRspi - ARM_INS_LDR - ldr${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_WRITE }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tLSLri - ARM_INS_LSL - lsl${s}${p}	$Rd, $Rm, $imm5 */
@@ -21286,37 +21286,37 @@
 }},
 {{ /* ARM_tSTRBi - ARM_INS_STRB - strb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSTRBr - ARM_INS_STRB - strb${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSTRHi - ARM_INS_STRH - strh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSTRHr - ARM_INS_STRH - strh${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSTRi - ARM_INS_STR - str${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSTRr - ARM_INS_STR - str${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSTRspi - ARM_INS_STR - str${p}	$Rt, $addr */
   { CS_OP_REG, CS_AC_READ }, /* Rt */
-  { CS_OP_MEM, CS_AC_READ }, /* addr */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ }, /* addr */
   { 0 }
 }},
 {{ /* ARM_tSUBi3 - ARM_INS_SUB - sub${s}${p}	$Rd, $Rm, $imm3 */
