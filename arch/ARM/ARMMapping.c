@@ -17,9 +17,9 @@
 
 const char *ARM_reg_name(csh handle, unsigned int reg) {
 	if (((cs_struct *)(uintptr_t)handle)->syntax & CS_OPT_SYNTAX_NOREGNAME) {
-		return getRegisterName(reg, ARM_RegNamesRaw);
+		return getRegisterName(reg, ARM_NoRegAltName);
 	}
-	return getRegisterName(reg, ARM_NoRegAltName);
+	return getRegisterName(reg, ARM_RegNamesRaw);
 }
 
 const insn_map arm_insns[] = {
