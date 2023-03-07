@@ -27,8 +27,6 @@ bool ARM_rel_branch(cs_struct *h, unsigned int insn_id);
 
 bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int insn_id);
 
-const uint8_t *ARM_get_op_access(cs_struct *h, unsigned int id);
-
 void ARM_reg_access(const cs_insn *insn,
 		cs_regs regs_read, uint8_t *regs_read_count,
 		cs_regs regs_write, uint8_t *regs_write_count);
@@ -58,5 +56,12 @@ static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, ..
 	ARM_add_cs_detail(MI, op_group, args);
 	va_end(args);
 }
+
+const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum);
+const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum);
+
+void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum);
+void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type type);
+void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_index_reg, int scale, int lshift);
 
 #endif // CS_ARM_MAPPING_H

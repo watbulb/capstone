@@ -320,28 +320,23 @@ void ARM_init_cs_detail(MCInst *MI) {
 	}
 }
 
+/// Initializes or finishes a memory operand of Capstone (depending on \p status).
+/// A memory operand in Capstone can be assembled by two LLVM operands.
+/// E.g. the base register and the immediate disponent.
 void ARM_set_mem_access(MCInst *MI, bool status)
 {
-	if (MI->csh->detail != CS_OPT_ON)
-		return;
-
 	MI->csh->doing_mem = status;
 	if (status) {
-// #ifndef CAPSTONE_DIET
-// 		uint8_t access;
-// #endif
-
 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].type = ARM_OP_MEM;
 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.base = ARM_REG_INVALID;
 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.index = ARM_REG_INVALID;
 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.scale = 1;
 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].mem.disp = 0;
 
-// #ifndef CAPSTONE_DIET
-// 		access = get_op_access(MI->csh, MCInst_getOpcode(MI), MI->ac_idx);
-// 		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].access = access;
-// 		MI->ac_idx++;
-// #endif
+#ifndef CAPSTONE_DIET
+		uint8_t access = ARM_get_op_access(MI, MI->flat_insn->detail->arm.op_count);
+		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count].access = access;
+#endif
 	} else {
 		// done, create the next operand slot
 		MI->flat_insn->detail->arm.op_count++;
@@ -565,6 +560,70 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args
 	}
 	unsigned op_num = va_arg(args, unsigned);
 	add_cs_detail_general(MI, op_group, op_num);
+}
+
+const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum) {
+	assert(MI->Opcode < sizeof(insn_operands)/sizeof(insn_operands[0]));
+	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
+	return insn_operands[MI->Opcode].ops[OpNum].type;
+}
+
+const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
+	assert(MI->Opcode < sizeof(insn_operands)/sizeof(insn_operands[0]));
+	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
+	return insn_operands[MI->Opcode].ops[OpNum].access;
+}
+
+/// Adds a register ARM operand at position OpNum and increases the op_count by one.
+void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum) {
+	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
+	unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
+
+	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_REG;
+	MI->flat_insn->detail->arm.operands[OpNum].reg = Reg;
+	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	MI->flat_insn->detail->arm.op_count++;
+}
+
+/// Adds an immediate ARM operand at position OpNum and increases the op_count by one.
+void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type) {
+	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+	assert(imm_type == ARM_OP_IMM || imm_type == ARM_OP_PIMM || imm_type == ARM_OP_CIMM);
+	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+
+	MI->flat_insn->detail->arm.operands[OpNum].type = imm_type;
+	MI->flat_insn->detail->arm.operands[OpNum].imm = Imm;
+	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	MI->flat_insn->detail->arm.op_count++;
+}
+
+/// Adds a memory ARM operand at position OpNum. op_count is *not* increase by one.
+/// This is done by set_mem_access().
+void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_base_reg, int scale, int lshift) {
+	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
+	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
+	switch(secondary_type) {
+	default:
+		assert(0 && "Secondary type not supported yet.");
+	case CS_OP_REG: {
+		unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
+		if (is_base_reg) {
+			MI->flat_insn->detail->arm.operands[OpNum].mem.base = Reg;
+		} else {
+			MI->flat_insn->detail->arm.operands[OpNum].mem.index = Reg;
+			MI->flat_insn->detail->arm.operands[OpNum].mem.scale = scale;
+			MI->flat_insn->detail->arm.operands[OpNum].mem.lshift = lshift;
+		}
+	}
+	case CS_OP_IMM: {
+		unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		MI->flat_insn->detail->arm.operands[OpNum].mem.disp = Imm;
+	}
+	}
+
+	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_MEM;
+	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	MI->flat_insn->detail->arm.operands[OpNum].subtracted = subtracted;
 }
 
 #endif
