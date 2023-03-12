@@ -400,15 +400,15 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_Operand:
 		// TODO: PC relative immediates
 		if (op_type == CS_OP_IMM)
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM);
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
 		else if (op_type == CS_OP_REG)
-			ARM_set_detail_op_reg(MI, OpNum);
+			ARM_set_detail_op_reg(MI, OpNum, NULL);
 		else
 			assert(0 && "Op type not handled.");
 	case ARM_OP_GROUP_PImmediate:
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_PIMM);
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_PIMM, NULL);
 	case ARM_OP_GROUP_CImmediate:
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_CIMM);
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_CIMM, NULL);
 	case ARM_OP_GROUP_SBitModifierOperand:
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
@@ -585,31 +585,31 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 }
 
 /// Adds a register ARM operand at position OpNum and increases the op_count by one.
-void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum) {
+void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer trans) {
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
 	unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
 
 	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_REG;
-	MI->flat_insn->detail->arm.operands[OpNum].reg = Reg;
+	MI->flat_insn->detail->arm.operands[OpNum].reg = trans ? trans(MI, OpNum, Reg) : Reg;
 	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
 /// Adds an immediate ARM operand at position OpNum and increases the op_count by one.
-void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type) {
+void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, value_transformer trans) {
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
 	assert(imm_type == ARM_OP_IMM || imm_type == ARM_OP_PIMM || imm_type == ARM_OP_CIMM);
 	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
 	MI->flat_insn->detail->arm.operands[OpNum].type = imm_type;
-	MI->flat_insn->detail->arm.operands[OpNum].imm = Imm;
+	MI->flat_insn->detail->arm.operands[OpNum].imm = trans ? trans(MI, OpNum, Imm) : Imm;
 	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increase by one.
 /// This is done by set_mem_access().
-void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_base_reg, int scale, int lshift) {
+void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_base_reg, int scale, int lshift, value_transformer trans) {
 	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
 	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
 	switch(secondary_type) {
@@ -618,16 +618,16 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_
 	case CS_OP_REG: {
 		unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
 		if (is_base_reg) {
-			MI->flat_insn->detail->arm.operands[OpNum].mem.base = Reg;
+			MI->flat_insn->detail->arm.operands[OpNum].mem.base = trans ? trans(MI, OpNum, Reg) : Reg;
 		} else {
-			MI->flat_insn->detail->arm.operands[OpNum].mem.index = Reg;
+			MI->flat_insn->detail->arm.operands[OpNum].mem.index = trans ? trans(MI, OpNum, Reg) : Reg;
 			MI->flat_insn->detail->arm.operands[OpNum].mem.scale = scale;
 			MI->flat_insn->detail->arm.operands[OpNum].mem.lshift = lshift;
 		}
 	}
 	case CS_OP_IMM: {
 		unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
-		MI->flat_insn->detail->arm.operands[OpNum].mem.disp = Imm;
+		MI->flat_insn->detail->arm.operands[OpNum].mem.disp = trans ? trans(MI, OpNum, Imm) : Imm;
 	}
 	}
 
