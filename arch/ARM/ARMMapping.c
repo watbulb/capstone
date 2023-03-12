@@ -366,6 +366,8 @@ static void add_cs_detail_RegImmShift(MCInst *MI, ARM_AM_ShiftOpc ShOpc, unsigne
 static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned OpNum) {
 	if (!MI->csh->detail)
 		return;
+	cs_op_type op_type = ARM_get_op_type(MI, OpNum);
+
 	// Fill cs_detail
 	switch (op_group) {
 	default:
@@ -395,8 +397,15 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MI->flat_insn->detail->arm.vcc = VCC;
 		return;
 	}
-	case ARM_OP_GROUP_RegImmShift:
 	case ARM_OP_GROUP_Operand:
+		// TODO: PC relative immediates
+		if (op_type == CS_OP_IMM)
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM);
+		else if (op_type == CS_OP_REG)
+			ARM_set_detail_op_reg(MI, OpNum);
+		else
+			assert(0 && "Op type not handled.");
+		return;
 	case ARM_OP_GROUP_SBitModifierOperand:
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
