@@ -405,7 +405,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_reg(MI, OpNum);
 		else
 			assert(0 && "Op type not handled.");
-		return;
+	case ARM_OP_GROUP_PImmediate:
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_PIMM);
+	case ARM_OP_GROUP_CImmediate:
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_CIMM);
 	case ARM_OP_GROUP_SBitModifierOperand:
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
@@ -414,8 +417,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
-	case ARM_OP_GROUP_PImmediate:
-	case ARM_OP_GROUP_CImmediate:
 	case ARM_OP_GROUP_RegisterList:
 	case ARM_OP_GROUP_CPSIMod:
 	case ARM_OP_GROUP_CPSIFlag:
