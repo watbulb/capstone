@@ -320,6 +320,8 @@ void ARM_init_cs_detail(MCInst *MI) {
 	}
 }
 
+static uint64_t t_shift_3(MCInst *MI, unsigned OpNum, uint64_t v) { return v << 3; }
+
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
 /// A memory operand in Capstone can be assembled by two LLVM operands.
 /// E.g. the base register and the immediate disponent.
@@ -409,6 +411,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_PIMM, NULL);
 	case ARM_OP_GROUP_CImmediate:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_CIMM, NULL);
+	case ARM_OP_GROUP_AddrMode6Operand:
+		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
+		ARM_set_detail_op_mem(MI, OpNum + 1, false, false, 0, 0, t_shift_3);
 	case ARM_OP_GROUP_SBitModifierOperand:
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
@@ -460,7 +465,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_FBits16:
 	case ARM_OP_GROUP_FBits32:
 	case ARM_OP_GROUP_VectorListTwoAllLanes:
-	case ARM_OP_GROUP_AddrMode6Operand:
 	case ARM_OP_GROUP_VectorListTwo:
 	case ARM_OP_GROUP_VectorListFour:
 	case ARM_OP_GROUP_VectorListOneAllLanes:
