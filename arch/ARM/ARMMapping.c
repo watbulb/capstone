@@ -414,6 +414,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrMode6Operand:
 		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
 		ARM_set_detail_op_mem(MI, OpNum + 1, false, false, 0, 0, t_shift_3);
+		set_mem_access(MI, false);
+	case ARM_OP_GROUP_AddrMode7Operand:
+		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
+		set_mem_access(MI, false);
 	case ARM_OP_GROUP_SBitModifierOperand:
 		MI->flat_insn->detail->arm.update_flags = true;
 	case ARM_OP_GROUP_SORegRegOperand:
@@ -432,7 +436,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_VectorIndex:
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_ThumbITMask:
-	case ARM_OP_GROUP_AddrMode7Operand:
 	case ARM_OP_GROUP_CoprocOptionImm:
 	case ARM_OP_GROUP_PostIdxImm8s4Operand:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
