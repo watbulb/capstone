@@ -81,6 +81,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
 {
   unsigned Opcode = MCInst_getOpcode(MI);
   MCRegisterInfo *MRI = (MCRegisterInfo *)info;
+  MI->MRI = MRI;
   uint64_t Address = MI->address;
 
   switch (Opcode) {
