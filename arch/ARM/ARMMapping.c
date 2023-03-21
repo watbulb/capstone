@@ -405,6 +405,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
 		else if (op_type == CS_OP_REG)
 			ARM_set_detail_op_reg(MI, OpNum, NULL);
+		// Predicate are treated as immediated for now.
+		else if (op_type == CS_OP_PRED)
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
 		else
 			assert(0 && "Op type not handled.");
 	case ARM_OP_GROUP_PImmediate:
@@ -605,7 +608,7 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer trans) 
 
 /// Adds an immediate ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, value_transformer trans) {
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+	//assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
 	assert(imm_type == ARM_OP_IMM || imm_type == ARM_OP_PIMM || imm_type == ARM_OP_CIMM);
 	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
