@@ -64,6 +64,7 @@ typedef uint64_t (value_transformer)(MCInst *MI, unsigned OpNum, uint64_t val);
 
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer transformer);
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type type, value_transformer transformer);
+void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, value_transformer trans);
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_index_reg, int scale, int lshift, value_transformer transformer);
 
 #endif // CS_ARM_MAPPING_H

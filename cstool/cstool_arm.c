@@ -32,6 +32,9 @@ void print_insn_detail_arm(csh handle, cs_insn *ins)
 			case ARM_OP_IMM:
 				printf("\t\toperands[%u].type: IMM = 0x%x\n", i, op->imm);
 				break;
+			case ARM_OP_PRED:
+				printf("\t\toperands[%u].type: PRED = %d\n", i, op->pred);
+				break;
 			case ARM_OP_FP:
 #if defined(_KERNEL_MODE)
 				// Issue #681: Windows kernel does not support formatting float point

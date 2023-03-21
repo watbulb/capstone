@@ -308,6 +308,7 @@ typedef struct cs_arm_op {
 	union {
 		int reg;	///< register value for REG/SYSREG operand
 		int32_t imm;			///< immediate value for C-IMM, P-IMM or IMM operand
+		int pred;			///< Predicate operand value.
 		double fp;			///< floating point value for FP operand
 		arm_op_mem mem;		///< base/index/scale/disp value for MEM operand
 		arm_setend_type setend; ///< SETEND instruction's operand type

@@ -401,9 +401,8 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
 		else if (op_type == CS_OP_REG)
 			ARM_set_detail_op_reg(MI, OpNum, NULL);
-		// Predicate are treated as immediated for now.
 		else if (op_type == CS_OP_PRED)
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
+			ARM_set_detail_op_pred(MI, OpNum, NULL);
 		else
 			assert(0 && "Op type not handled.");
 		break;
@@ -616,6 +615,17 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, val
 
 	MI->flat_insn->detail->arm.operands[OpNum].type = imm_type;
 	MI->flat_insn->detail->arm.operands[OpNum].imm = trans ? trans(MI, OpNum, Imm) : Imm;
+	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	MI->flat_insn->detail->arm.op_count++;
+}
+
+/// Adds an predicate ARM operand at position OpNum and increases the op_count by one.
+void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, value_transformer trans) {
+	assert(ARM_get_op_type(MI, OpNum) == CS_OP_PRED);
+	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+
+	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_PRED;
+	MI->flat_insn->detail->arm.operands[OpNum].pred = trans ? trans(MI, OpNum, Imm) : Imm;
 	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
