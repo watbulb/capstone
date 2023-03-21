@@ -230,6 +230,7 @@ typedef enum cs_op_type {
 	CS_OP_REG,          ///< Register operand.
 	CS_OP_IMM,          ///< Immediate operand.
 	CS_OP_FP,           ///< Floating-Point operand.
+	CS_OP_PRED,         ///< Predicate operand.
 	CS_OP_MEM = 0x80,   ///< Memory operand. Can be ORed with another operand type.
 } cs_op_type;
 

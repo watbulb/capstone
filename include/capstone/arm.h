@@ -175,6 +175,7 @@ typedef enum arm_op_type {
 	ARM_OP_IMM, ///< = CS_OP_IMM (Immediate operand).
 	ARM_OP_MEM, ///< = CS_OP_MEM (Memory operand).
 	ARM_OP_FP,  ///< = CS_OP_FP (Floating-Point operand).
+	ARM_OP_PRED, ///< CS_OP_PRED (Predicate operand).
 	ARM_OP_CIMM = 64, ///< C-Immediate (coprocessor registers)
 	ARM_OP_PIMM, ///< P-Immediate (coprocessor registers)
 	ARM_OP_SETEND,	///< operand for SETEND instruction
