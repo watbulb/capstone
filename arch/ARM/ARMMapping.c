@@ -489,6 +489,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_VectorListFourSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListFourSpaced:
 	case ARM_OP_GROUP_VPTMask:
+		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
 	}
 }
@@ -499,8 +500,8 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0) {
 	switch(op_group) {
 	default:
-			printf("ERROR: Operand group %d not handled!\n", op_group);
-			assert(0);
+		printf("ERROR: Operand group %d not handled!\n", op_group);
+		assert(0);
 	case ARM_OP_GROUP_AdrLabelOperand_0:
 	case ARM_OP_GROUP_AdrLabelOperand_2:
 	case ARM_OP_GROUP_AddrMode5Operand_0:
@@ -519,6 +520,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
+		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
 	}
 }
@@ -529,10 +531,11 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0, uint64_t temp_arg_1) {
 	switch (op_group) {
 	default:
-			printf("ERROR: Operand group %d not handled!\n", op_group);
-			assert(0);
+		printf("ERROR: Operand group %d not handled!\n", op_group);
+		assert(0);
 	case ARM_OP_GROUP_ComplexRotationOp_180_90:
 	case ARM_OP_GROUP_ComplexRotationOp_90_0:
+		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
 	}
 }
