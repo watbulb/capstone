@@ -232,14 +232,10 @@ typedef struct insn_op {
 
 ///< Operands of an instruction.
 typedef struct {
-	insn_op ops[8]; ///< NULL terminated array of operands.
+	insn_op ops[16]; ///< NULL terminated array of operands.
 } insn_ops;
 
 const insn_ops insn_operands[] = {
-	{
-		// NULL item
-		{{ 0 }}
-	},
 #include "ARMGenCSMappingInsnOp.inc"
 };
 
@@ -627,7 +623,6 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, val
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increase by one.
 /// This is done by set_mem_access().
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_base_reg, int scale, int lshift, value_transformer trans) {
-	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
 	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
 	switch(secondary_type) {
 	default:
