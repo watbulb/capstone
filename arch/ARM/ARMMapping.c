@@ -410,19 +410,25 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
 		else
 			assert(0 && "Op type not handled.");
+		break;
 	case ARM_OP_GROUP_PImmediate:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_PIMM, NULL);
+		break;
 	case ARM_OP_GROUP_CImmediate:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_CIMM, NULL);
+		break;
 	case ARM_OP_GROUP_AddrMode6Operand:
 		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
 		ARM_set_detail_op_mem(MI, OpNum + 1, false, false, 0, 0, t_shift_3);
 		set_mem_access(MI, false);
+		break;
 	case ARM_OP_GROUP_AddrMode7Operand:
 		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
 		set_mem_access(MI, false);
+		break;
 	case ARM_OP_GROUP_SBitModifierOperand:
 		MI->flat_insn->detail->arm.update_flags = true;
+		break;
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
