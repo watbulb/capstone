@@ -342,6 +342,34 @@ static uint64_t t_add_pc(MCInst *MI, unsigned MIOpNum, uint64_t v) {
 	return v;
 }
 
+/// Transform a Qs register to its corresponding Ds + 0 register.
+static uint64_t t_qpr_to_dpr_list_0(MCInst *MI, unsigned MIOpNum, uint64_t v) {
+	if (v >= ARM_REG_Q0 && v <= ARM_REG_Q15)
+		return ARM_REG_D0 + (v - ARM_REG_Q0) * 2;
+	return v;
+}
+
+/// Transform a Qs register to its corresponding Ds + 1 register.
+static uint64_t t_qpr_to_dpr_list_1(MCInst *MI, unsigned MIOpNum, uint64_t v) {
+	if (v >= ARM_REG_Q0 && v <= ARM_REG_Q15)
+		return ARM_REG_D0 + 1 + (v - ARM_REG_Q0) * 2;
+	return v;
+}
+
+/// Transform a Qs register to its corresponding Ds + 2 register.
+static uint64_t t_qpr_to_dpr_list_2(MCInst *MI, unsigned MIOpNum, uint64_t v) {
+	if (v >= ARM_REG_Q0 && v <= ARM_REG_Q15)
+		return ARM_REG_D0 + 2 + (v - ARM_REG_Q0) * 2;
+	return v;
+}
+
+/// Transform a Qs register to its corresponding Ds + 3 register.
+static uint64_t t_qpr_to_dpr_list_3(MCInst *MI, unsigned MIOpNum, uint64_t v) {
+	if (v >= ARM_REG_Q0 && v <= ARM_REG_Q15)
+		return ARM_REG_D0 + 3 + (v - ARM_REG_Q0) * 2;
+	return v;
+}
+
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
 /// A memory operand in Capstone can be assembled by two LLVM operands.
 /// E.g. the base register and the immediate disponent.
@@ -465,6 +493,24 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MI
 	case ARM_OP_GROUP_SBitModifierOperand:
 		MI->flat_insn->detail->arm.update_flags = true;
 		break;
+	case ARM_OP_GROUP_VectorListOne:
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_0);
+		break;
+	case ARM_OP_GROUP_VectorListTwo:
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_0);
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_1);
+		break;
+	case ARM_OP_GROUP_VectorListThree:
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_0);
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_1);
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_2);
+		break;
+	case ARM_OP_GROUP_VectorListFour:
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_0);
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_1);
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_2);
+		ARM_set_detail_op_reg(MI, MIOpNum, t_qpr_to_dpr_list_3);
+		break;
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
@@ -514,11 +560,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MI
 	case ARM_OP_GROUP_FBits16:
 	case ARM_OP_GROUP_FBits32:
 	case ARM_OP_GROUP_VectorListTwoAllLanes:
-	case ARM_OP_GROUP_VectorListTwo:
-	case ARM_OP_GROUP_VectorListFour:
 	case ARM_OP_GROUP_VectorListOneAllLanes:
-	case ARM_OP_GROUP_VectorListOne:
-	case ARM_OP_GROUP_VectorListThree:
 	case ARM_OP_GROUP_NoHashImmediate:
 	case ARM_OP_GROUP_AddrMode6OffsetOperand:
 	case ARM_OP_GROUP_VectorListTwoSpacedAllLanes:
