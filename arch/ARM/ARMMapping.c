@@ -316,7 +316,7 @@ void ARM_init_cs_detail(MCInst *MI) {
 	}
 }
 
-static uint64_t t_shift_3(MCInst *MI, unsigned OpNum, uint64_t v) { return v << 3; }
+static uint64_t t_align_0x1000(MCInst *MI, unsigned MIOpNum, uint64_t v) { return v << 3; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
 /// A memory operand in Capstone can be assembled by two LLVM operands.
@@ -361,10 +361,10 @@ static void add_cs_detail_RegImmShift(MCInst *MI, ARM_AM_ShiftOpc ShOpc, unsigne
 
 /// Fills cs_detail with the data of the operand.
 /// This function handles operands which's original printer function has no specialities.
-static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned OpNum) {
+static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MIOpNum) {
 	if (!MI->csh->detail)
 		return;
-	cs_op_type op_type = ARM_get_op_type(MI, OpNum);
+	cs_op_type op_type = ARM_get_op_type(MI, MIOpNum);
 
 	// Fill cs_detail
 	switch (op_group) {
@@ -376,7 +376,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case ARM_OP_GROUP_MandatoryRestrictedPredicateOperand:
 	{
-		ARMCC_CondCodes CC = (ARMCC_CondCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		ARMCC_CondCodes CC = (ARMCC_CondCodes)MCOperand_getImm(MCInst_getOperand(MI, MIOpNum));
 		if ((unsigned)CC == 15 && op_group == ARM_OP_GROUP_PredicateOperand) {
 			MI->flat_insn->detail->arm.cc = ARM_CC_INVALID;
 			return;
@@ -390,7 +390,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	}
 	case ARM_OP_GROUP_VPTPredicateOperand:
 	{
-		ARMVCC_VPTCodes VCC = (ARMVCC_VPTCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		ARMVCC_VPTCodes VCC = (ARMVCC_VPTCodes)MCOperand_getImm(MCInst_getOperand(MI, MIOpNum));
 		assert(VCC <= ARMVCC_Else);
 		MI->flat_insn->detail->arm.vcc = VCC;
 		return;
@@ -398,27 +398,35 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_Operand:
 		// TODO: PC relative immediates
 		if (op_type == CS_OP_IMM)
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
+			ARM_set_detail_op_imm(MI, MIOpNum, ARM_OP_IMM, NULL);
 		else if (op_type == CS_OP_REG)
-			ARM_set_detail_op_reg(MI, OpNum, NULL);
+			ARM_set_detail_op_reg(MI, MIOpNum, NULL);
 		else if (op_type == CS_OP_PRED)
-			ARM_set_detail_op_pred(MI, OpNum, NULL);
+			ARM_set_detail_op_pred(MI, MIOpNum, NULL);
 		else
 			assert(0 && "Op type not handled.");
 		break;
 	case ARM_OP_GROUP_PImmediate:
-		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_PIMM, NULL);
+		ARM_set_detail_op_imm(MI, MIOpNum, ARM_OP_PIMM, NULL);
 		break;
 	case ARM_OP_GROUP_CImmediate:
-		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_CIMM, NULL);
+		ARM_set_detail_op_imm(MI, MIOpNum, ARM_OP_CIMM, NULL);
 		break;
 	case ARM_OP_GROUP_AddrMode6Operand:
-		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
-		ARM_set_detail_op_mem(MI, OpNum + 1, false, false, 0, 0, t_shift_3);
+		ARM_set_detail_op_mem(MI, MIOpNum, false, true, 0, 0, NULL);
+		MCOperand *Op = MCInst_getOperand(MI, MIOpNum + 1);
+		// Skip 0 immediate operand and add register disponent.
+		// See: https://github.com/llvm/llvm-project/issues/61619
+		if (MCOperand_isImm(Op) && MCOperand_getImm(Op) == 0) {
+			MI->MapOffset += 1;
+			ARM_set_detail_op_mem(MI, MIOpNum + 1, false, false, 0, 0, NULL);
+		} else {
+			ARM_set_detail_op_mem(MI, MIOpNum + 1, false, false, 0, 0, MCOperand_isImm(Op) ? t_align_0x1000 : NULL);
+		}
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_AddrMode7Operand:
-		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
+		ARM_set_detail_op_mem(MI, MIOpNum, false, true, 0, 0, NULL);
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_SBitModifierOperand:
@@ -489,7 +497,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_VectorListFourSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListFourSpaced:
 	case ARM_OP_GROUP_VPTMask:
-		printf("ERROR: Operand %d not handled.\n", OpNum);
+		printf("ERROR: Operand %d not handled.\n", MIOpNum);
 		return;
 	}
 }
@@ -497,7 +505,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 /// Fills cs_detail with the data of the operand.
 /// This function handles operands which original printer function is a template
 /// with one argument.
-static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0) {
+static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned MIOpNum, uint64_t temp_arg_0) {
 	switch(op_group) {
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
@@ -520,7 +528,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
-		printf("ERROR: Operand %d not handled.\n", OpNum);
+		printf("ERROR: Operand %d not handled.\n", MIOpNum);
 		return;
 	}
 }
@@ -528,14 +536,14 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 /// Fills cs_detail with the data of the operand.
 /// This function handles operands which's original printer function is a template
 /// with two arguments.
-static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0, uint64_t temp_arg_1) {
+static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned MIOpNum, uint64_t temp_arg_0, uint64_t temp_arg_1) {
 	switch (op_group) {
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
 		assert(0);
 	case ARM_OP_GROUP_ComplexRotationOp_180_90:
 	case ARM_OP_GROUP_ComplexRotationOp_90_0:
-		printf("ERROR: Operand %d not handled.\n", OpNum);
+		printf("ERROR: Operand %d not handled.\n", MIOpNum);
 		return;
 	}
 }
@@ -587,78 +595,91 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args
 	add_cs_detail_general(MI, op_group, op_num);
 }
 
-const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum) {
+const cs_op_type ARM_get_op_type(MCInst *MI, unsigned MIOpNum) {
 	assert(MI->Opcode < sizeof(insn_operands)/sizeof(insn_operands[0]));
-	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
-	return insn_operands[MI->Opcode].ops[OpNum].type;
+	assert(MIOpNum - MI->MapOffset < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
+	return insn_operands[MI->Opcode].ops[MIOpNum - MI->MapOffset].type;
 }
 
-const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
+const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned MIOpNum) {
 	assert(MI->Opcode < sizeof(insn_operands)/sizeof(insn_operands[0]));
-	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
-	return insn_operands[MI->Opcode].ops[OpNum].access;
+	assert(MIOpNum - MI->MapOffset < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
+	return insn_operands[MI->Opcode].ops[MIOpNum - MI->MapOffset].access;
 }
 
-/// Adds a register ARM operand at position OpNum and increases the op_count by one.
-void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer trans) {
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
-	unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
+/// Adds an register ARM operand at MCInst.operands[MIOpNum] to detail.
+// MI->op_count is increase by one.
+void ARM_set_detail_op_reg(MCInst *MI, unsigned MIOpNum, value_transformer trans) {
+	assert(ARM_get_op_type(MI, MIOpNum) == CS_OP_REG);
+	unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, MIOpNum));
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_REG;
-	MI->flat_insn->detail->arm.operands[OpNum].reg = trans ? trans(MI, OpNum, Reg) : Reg;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].type = ARM_OP_REG;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].reg = trans ? trans(MI, MIOpNum, Reg) : Reg;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].access = ARM_get_op_access(MI, MIOpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
-/// Adds an immediate ARM operand at position OpNum and increases the op_count by one.
-void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, value_transformer trans) {
-	//assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+/// Adds an immediate ARM operand at MCInst.operands[MIOpNum] to detail.
+// MI->op_count is increase by one.
+void ARM_set_detail_op_imm(MCInst *MI, unsigned MIOpNum, arm_op_type imm_type, value_transformer trans) {
+	//assert(ARM_get_op_type(MI, MIOpNum) == CS_OP_IMM);
 	assert(imm_type == ARM_OP_IMM || imm_type == ARM_OP_PIMM || imm_type == ARM_OP_CIMM);
-	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+	MIOpNum += MI->MapOffset;
+	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, MIOpNum));
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = imm_type;
-	MI->flat_insn->detail->arm.operands[OpNum].imm = trans ? trans(MI, OpNum, Imm) : Imm;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].type = imm_type;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].imm = trans ? trans(MI, MIOpNum, Imm) : Imm;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].access = ARM_get_op_access(MI, MIOpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
-/// Adds an predicate ARM operand at position OpNum and increases the op_count by one.
-void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, value_transformer trans) {
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_PRED);
-	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+/// Adds an predicate ARM operand at MCInst.operands[MIOpNum] to detail.
+// MI->op_count is increase by one.
+void ARM_set_detail_op_pred(MCInst *MI, unsigned MIOpNum, value_transformer trans) {
+	assert(ARM_get_op_type(MI, MIOpNum) == CS_OP_PRED);
+	MIOpNum += MI->MapOffset;
+	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, MIOpNum));
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_PRED;
-	MI->flat_insn->detail->arm.operands[OpNum].pred = trans ? trans(MI, OpNum, Imm) : Imm;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].type = ARM_OP_PRED;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].pred = trans ? trans(MI, MIOpNum, Imm) : Imm;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].access = ARM_get_op_access(MI, MIOpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
-/// Adds a memory ARM operand at position OpNum. op_count is *not* increase by one.
+/// Adds the memory ARM operand at MCInst.operands[MIOpNum] to detail.
+/// MI->op_count is *not* increase by one.
 /// This is done by set_mem_access().
-void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_base_reg, int scale, int lshift, value_transformer trans) {
-	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
+void ARM_set_detail_op_mem(MCInst *MI, unsigned MIOpNum, bool subtracted, bool is_base_reg, int scale, int lshift, value_transformer trans) {
+	MIOpNum += MI->MapOffset;
+	cs_op_type secondary_type = ARM_get_op_type(MI, MIOpNum) & ~CS_OP_MEM;
+	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
 	switch(secondary_type) {
 	default:
 		assert(0 && "Secondary type not supported yet.");
 	case CS_OP_REG: {
-		unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
+		unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, MIOpNum));
 		if (is_base_reg) {
-			MI->flat_insn->detail->arm.operands[OpNum].mem.base = trans ? trans(MI, OpNum, Reg) : Reg;
+			MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].mem.base = trans ? trans(MI, MIOpNum, Reg) : Reg;
 		} else {
-			MI->flat_insn->detail->arm.operands[OpNum].mem.index = trans ? trans(MI, OpNum, Reg) : Reg;
-			MI->flat_insn->detail->arm.operands[OpNum].mem.scale = scale;
-			MI->flat_insn->detail->arm.operands[OpNum].mem.lshift = lshift;
+			MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].mem.index = trans ? trans(MI, MIOpNum, Reg) : Reg;
+			MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].mem.scale = scale;
+			MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].mem.lshift = lshift;
 		}
+		break;
 	}
 	case CS_OP_IMM: {
-		unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
-		MI->flat_insn->detail->arm.operands[OpNum].mem.disp = trans ? trans(MI, OpNum, Imm) : Imm;
+		unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, MIOpNum));
+		MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].mem.disp = trans ? trans(MI, MIOpNum, Imm) : Imm;
+		break;
 	}
 	}
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_MEM;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
-	MI->flat_insn->detail->arm.operands[OpNum].subtracted = subtracted;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].type = ARM_OP_MEM;
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].access = ARM_get_op_access(MI, MIOpNum);
+	MI->flat_insn->detail->arm.operands[CurrentCSOpIdx].subtracted = subtracted;
 }
 
 #endif

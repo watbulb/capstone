@@ -20,6 +20,7 @@ void MCInst_Init(MCInst *inst)
 	// unnecessary to initialize in loop . its expensive and inst->size shuold be honored
 	inst->Operands[0].Kind = kInvalid;
 	inst->Operands[0].ImmVal = 0;
+	inst->MapOffset = 0;
 
 	inst->Opcode = 0;
 	inst->OpcodePub = 0;
@@ -37,6 +38,7 @@ void MCInst_Init(MCInst *inst)
 void MCInst_clear(MCInst *inst)
 {
 	inst->size = 0;
+	inst->MapOffset = 0;
 }
 
 // do not free @Op

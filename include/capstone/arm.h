@@ -344,6 +344,9 @@ typedef struct cs_arm {
 
 	/// Number of operands of this instruction,
 	/// or 0 when instruction has no operand.
+	/// This variable also is the index of the currently edited operand when `detail` is filled.
+	/// It differs from the MCInst op_count because multiple memory operands in LLVM
+	/// get combined to one operand in Capstone.
 	uint8_t op_count;
 
 	cs_arm_op operands[36];	///< operands for this instruction.
