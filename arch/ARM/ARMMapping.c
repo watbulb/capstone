@@ -316,7 +316,31 @@ void ARM_init_cs_detail(MCInst *MI) {
 	}
 }
 
-static uint64_t t_align_0x1000(MCInst *MI, unsigned MIOpNum, uint64_t v) { return v << 3; }
+static uint64_t t_shiftl_3(MCInst *MI, unsigned MIOpNum, uint64_t v) { return v << 3; }
+
+static uint64_t t_add_pc(MCInst *MI, unsigned MIOpNum, uint64_t v) {
+	int32_t imm = (int32_t)v;
+	if (ARM_rel_branch(MI->csh, MI->Opcode)) {
+		uint32_t address;
+
+		// only do this for relative branch
+		if (MI->csh->mode & CS_MODE_THUMB) {
+			address = (uint32_t)MI->address + 4;
+			if (ARM_blx_to_arm_mode(MI->csh, MI->Opcode)) {
+				// here need to align down to the nearest 4-byte address
+#define _ALIGN_DOWN(v, align_width) ((v/align_width)*align_width)
+				address = _ALIGN_DOWN(address, 4);
+#undef _ALIGN_DOWN
+			}
+		} else {
+			address = (uint32_t)MI->address + 8;
+		}
+
+		imm += address;
+		return imm;
+	}
+	return v;
+}
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
 /// A memory operand in Capstone can be assembled by two LLVM operands.
@@ -396,11 +420,20 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MI
 		return;
 	}
 	case ARM_OP_GROUP_Operand:
-		// TODO: PC relative immediates
-		if (op_type == CS_OP_IMM)
-			ARM_set_detail_op_imm(MI, MIOpNum, ARM_OP_IMM, NULL);
+		if (op_type == CS_OP_IMM) {
+			if (MI->csh->doing_mem) {
+				ARM_set_detail_op_mem(MI, MIOpNum, false, false, 0, 0, NULL);
+			} else {
+				ARM_set_detail_op_imm(MI, MIOpNum, ARM_OP_IMM, t_add_pc);
+			}
+		}
 		else if (op_type == CS_OP_REG)
-			ARM_set_detail_op_reg(MI, MIOpNum, NULL);
+			if (MI->csh->doing_mem) {
+				bool is_index_reg = ARM_get_op_type(MI, MIOpNum) & CS_OP_MEM;
+				ARM_set_detail_op_mem(MI, MIOpNum, false, is_index_reg, 0, 0, NULL);
+			} else {
+				ARM_set_detail_op_reg(MI, MIOpNum, NULL);
+			}
 		else if (op_type == CS_OP_PRED)
 			ARM_set_detail_op_pred(MI, MIOpNum, NULL);
 		else
@@ -421,7 +454,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MI
 			MI->MapOffset += 1;
 			ARM_set_detail_op_mem(MI, MIOpNum + 1, false, false, 0, 0, NULL);
 		} else {
-			ARM_set_detail_op_mem(MI, MIOpNum + 1, false, false, 0, 0, MCOperand_isImm(Op) ? t_align_0x1000 : NULL);
+			ARM_set_detail_op_mem(MI, MIOpNum + 1, false, false, 0, 0, MCOperand_isImm(Op) ? t_shiftl_3 : NULL);
 		}
 		set_mem_access(MI, false);
 		break;
