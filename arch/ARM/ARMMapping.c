@@ -486,6 +486,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MI
 		}
 		set_mem_access(MI, false);
 		break;
+	case ARM_OP_GROUP_AddrMode6OffsetOperand:
+		if (MCOperand_getReg(MCInst_getOperand(MI, MIOpNum)) != 0)
+			ARM_set_detail_op_reg(MI, MIOpNum, NULL);
+		break;
 	case ARM_OP_GROUP_AddrMode7Operand:
 		ARM_set_detail_op_mem(MI, MIOpNum, false, true, 0, 0, NULL);
 		set_mem_access(MI, false);
@@ -562,7 +566,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned MI
 	case ARM_OP_GROUP_VectorListTwoAllLanes:
 	case ARM_OP_GROUP_VectorListOneAllLanes:
 	case ARM_OP_GROUP_NoHashImmediate:
-	case ARM_OP_GROUP_AddrMode6OffsetOperand:
 	case ARM_OP_GROUP_VectorListTwoSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListTwoSpaced:
 	case ARM_OP_GROUP_VectorListThreeAllLanes:
