@@ -492,6 +492,26 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		else
 			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
 		break;
+	case ARM_OP_GROUP_RegisterList:
+	{
+		// All operands n MI from OpNum on are registers.
+		// But the MappingInsnOps.inc has only a single entry for the whole list.
+		// So all registers in the list share those attributes.
+		unsigned access = ARM_get_op_access(MI, OpNum);
+		for (unsigned i = OpNum, e = MCInst_getNumOperands(MI); i != e; ++i) {
+			unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, i));
+
+			ARM_get_active_detail_op(MI)->type = ARM_OP_REG;
+			ARM_get_active_detail_op(MI)->reg = Reg;
+			ARM_get_active_detail_op(MI)->access = access;
+			MI->flat_insn->detail->arm.op_count++;
+		}
+		break;
+	}
+	case ARM_OP_GROUP_ThumbITMask:
+		break;
+	case ARM_OP_GROUP_MSRMaskOperand:
+		break;
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
@@ -499,7 +519,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
-	case ARM_OP_GROUP_RegisterList:
 	case ARM_OP_GROUP_CPSIMod:
 	case ARM_OP_GROUP_CPSIFlag:
 	case ARM_OP_GROUP_GPRPairOperand:
@@ -507,7 +526,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_FPImmOperand:
 	case ARM_OP_GROUP_VectorIndex:
 	case ARM_OP_GROUP_InstSyncBOption:
-	case ARM_OP_GROUP_ThumbITMask:
 	case ARM_OP_GROUP_CoprocOptionImm:
 	case ARM_OP_GROUP_PostIdxImm8s4Operand:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
@@ -526,7 +544,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_PostIdxRegOperand:
 	case ARM_OP_GROUP_PostIdxImm8Operand:
 	case ARM_OP_GROUP_BankedRegOperand:
-	case ARM_OP_GROUP_MSRMaskOperand:
 	case ARM_OP_GROUP_PKHLSLShiftImm:
 	case ARM_OP_GROUP_PKHASRShiftImm:
 	case ARM_OP_GROUP_ImmPlusOneOperand:
