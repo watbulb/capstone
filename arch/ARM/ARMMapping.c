@@ -370,6 +370,8 @@ static uint64_t t_qpr_to_dpr_list_3(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return v;
 }
 
+static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
+
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
 /// A memory operand in Capstone can be assembled by two LLVM operands.
 /// E.g. the base register and the immediate disponent.
@@ -507,6 +509,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list_2);
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list_3);
 		break;
+	case ARM_OP_GROUP_NoHashImmediate:
+		if (doing_mem(MI))
+			ARM_set_detail_op_neon_lane(MI, OpNum);
+		else
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, NULL);
+		break;
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
@@ -557,7 +565,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_FBits32:
 	case ARM_OP_GROUP_VectorListTwoAllLanes:
 	case ARM_OP_GROUP_VectorListOneAllLanes:
-	case ARM_OP_GROUP_NoHashImmediate:
 	case ARM_OP_GROUP_VectorListTwoSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListTwoSpaced:
 	case ARM_OP_GROUP_VectorListThreeAllLanes:
@@ -743,5 +750,16 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_
 	get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
 	get_active_detail_op(MI)->subtracted = subtracted;
 }
+
+/// Sets the neon_lane in the previous operand to the value of MI->operands[OpNum]
+/// Decrements op_count by 1.
+void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
+	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+	unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+
+	MI->flat_insn->detail->arm.op_count--;
+	get_active_detail_op(MI)->neon_lane = Val;
+}
+
 
 #endif
