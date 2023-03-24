@@ -475,11 +475,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	case ARM_OP_GROUP_AddrMode6Operand:
 		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
-		MCOperand *Op = MCInst_getOperand(MI, OpNum + 1);
-		// Skip 0 immediate operand and add register disponent.
-		// See: https://github.com/llvm/llvm-project/issues/61619
-		if (MCOperand_isImm(Op) && MCOperand_getImm(Op) != 0)
-			ARM_set_detail_op_mem(MI, OpNum + 1, false, false, 0, 0, t_shiftl_3);
+		ARM_set_detail_op_mem(MI, OpNum + 1, false, false, 0, 0, t_shiftl_3);
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_AddrMode6OffsetOperand:
