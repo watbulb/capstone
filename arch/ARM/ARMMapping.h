@@ -57,6 +57,7 @@ static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, ..
 	va_end(args);
 }
 
+cs_arm_op *ARM_get_active_detail_op(MCInst *MI);
 const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum);
 const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum);
 
