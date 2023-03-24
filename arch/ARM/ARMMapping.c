@@ -508,8 +508,28 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		}
 		break;
 	}
-	case ARM_OP_GROUP_ThumbITMask:
+	case ARM_OP_GROUP_ThumbITMask: {
+		unsigned Mask = (unsigned int)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		unsigned Firstcond = (unsigned int)MCOperand_getImm(MCInst_getOperand(MI, OpNum - 1));
+		unsigned CondBit0 = Firstcond & 1;
+		unsigned NumTZ = CountTrailingZeros_32(Mask);
+		unsigned Pos, e;
+		ARM_PredBlockMask PredMask = 0;
+
+		// Check the documentation of ARM_PredBlockMask how the bits are set.
+		for (Pos = 3, e = NumTZ; Pos > e; --Pos) {
+			bool Then = ((Mask >> Pos) & 1) == CondBit0;
+			if (Then)
+				PredMask <<= 1;
+			else {
+				PredMask |= 1;
+				PredMask <<= 1;
+			}
+		}
+		PredMask |= 1;
+		MI->flat_insn->detail->arm.pred_mask = PredMask;
 		break;
+	}
 	case ARM_OP_GROUP_MSRMaskOperand:
 		break;
 	case ARM_OP_GROUP_SORegRegOperand:

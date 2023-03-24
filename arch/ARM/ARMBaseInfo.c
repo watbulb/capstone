@@ -20,6 +20,41 @@
 #define CONCAT(a, b)	CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
 
+const char *get_pred_mask(ARM_PredBlockMask pred_mask) {
+	switch(pred_mask) {
+	case ARM_T:
+		return "T";
+	case ARM_TT:
+		return "TT";
+	case ARM_TE:
+		return "TE";
+	case ARM_TTT:
+		return "TTT";
+	case ARM_TTE:
+		return "TTE";
+	case ARM_TEE:
+		return "TEE";
+	case ARM_TET:
+		return "TET";
+	case ARM_TTTT:
+		return "TTTT";
+	case ARM_TTTE:
+		return "TTTE";
+	case ARM_TTEE:
+		return "TTEE";
+	case ARM_TTET:
+		return "TTET";
+	case ARM_TEEE:
+		return "TEEE";
+	case ARM_TEET:
+		return "TEET";
+	case ARM_TETT:
+		return "TETT";
+	case ARM_TETE:
+		return "TETE";
+	}
+}
+
 // lookup system register using 12-bit SYSm value.
 // Note: the search is uniqued using M1 mask
 const MClassSysReg *lookupMClassSysRegBy12bitSYSmValue(unsigned SYSm)

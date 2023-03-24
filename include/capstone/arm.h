@@ -341,7 +341,8 @@ typedef struct cs_arm {
 	bool writeback;		///< does this insn write-back?
 	bool post_index;	///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
 	arm_mem_barrier mem_barrier;	///< Option for some memory barrier instructions
-
+	// Check ARM_PredBlockMask for encoding details.
+	uint8_t /* ARM_PredBlockMask */ pred_mask;	///< Used by IT/VPT block instructions.
 	/// Number of operands of this instruction,
 	/// or 0 when instruction has no operand.
 	uint8_t op_count;

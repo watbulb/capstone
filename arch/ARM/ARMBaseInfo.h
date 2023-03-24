@@ -791,4 +791,6 @@ enum {
   ARMII_CondShift = 28
 };
 
+const char *get_pred_mask(ARM_PredBlockMask pred_mask);
+
 #endif // ARMBASEINFO_H
