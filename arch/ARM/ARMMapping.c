@@ -677,14 +677,19 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 	return insn_operands[MI->Opcode].ops[OpNum].access;
 }
 
+cs_arm_op *get_active_detail_op(MCInst *MI) {
+	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
+	return &MI->flat_insn->detail->arm.operands[CurrentCSOpIdx];
+}
+
 /// Adds a register ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer trans) {
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
 	unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_REG;
-	MI->flat_insn->detail->arm.operands[OpNum].reg = trans ? trans(MI, OpNum, Reg) : Reg;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	get_active_detail_op(MI)->type = ARM_OP_REG;
+	get_active_detail_op(MI)->reg = trans ? trans(MI, OpNum, Reg) : Reg;
+	get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -694,9 +699,9 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, val
 	assert(imm_type == ARM_OP_IMM || imm_type == ARM_OP_PIMM || imm_type == ARM_OP_CIMM);
 	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = imm_type;
-	MI->flat_insn->detail->arm.operands[OpNum].imm = trans ? trans(MI, OpNum, Imm) : Imm;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	get_active_detail_op(MI)->type = imm_type;
+	get_active_detail_op(MI)->imm = trans ? trans(MI, OpNum, Imm) : Imm;
+	get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -705,9 +710,9 @@ void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, value_transformer trans)
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_PRED);
 	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_PRED;
-	MI->flat_insn->detail->arm.operands[OpNum].pred = trans ? trans(MI, OpNum, Imm) : Imm;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
+	get_active_detail_op(MI)->type = ARM_OP_PRED;
+	get_active_detail_op(MI)->pred = trans ? trans(MI, OpNum, Imm) : Imm;
+	get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -721,22 +726,22 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_
 	case CS_OP_REG: {
 		unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
 		if (is_base_reg) {
-			MI->flat_insn->detail->arm.operands[OpNum].mem.base = trans ? trans(MI, OpNum, Reg) : Reg;
+			get_active_detail_op(MI)->mem.base = trans ? trans(MI, OpNum, Reg) : Reg;
 		} else {
-			MI->flat_insn->detail->arm.operands[OpNum].mem.index = trans ? trans(MI, OpNum, Reg) : Reg;
-			MI->flat_insn->detail->arm.operands[OpNum].mem.scale = scale;
-			MI->flat_insn->detail->arm.operands[OpNum].mem.lshift = lshift;
+			get_active_detail_op(MI)->mem.index = trans ? trans(MI, OpNum, Reg) : Reg;
+			get_active_detail_op(MI)->mem.scale = scale;
+			get_active_detail_op(MI)->mem.lshift = lshift;
 		}
 	}
 	case CS_OP_IMM: {
 		unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
-		MI->flat_insn->detail->arm.operands[OpNum].mem.disp = trans ? trans(MI, OpNum, Imm) : Imm;
+		get_active_detail_op(MI)->mem.disp = trans ? trans(MI, OpNum, Imm) : Imm;
 	}
 	}
 
-	MI->flat_insn->detail->arm.operands[OpNum].type = ARM_OP_MEM;
-	MI->flat_insn->detail->arm.operands[OpNum].access = ARM_get_op_access(MI, OpNum);
-	MI->flat_insn->detail->arm.operands[OpNum].subtracted = subtracted;
+	get_active_detail_op(MI)->type = ARM_OP_MEM;
+	get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
+	get_active_detail_op(MI)->subtracted = subtracted;
 }
 
 #endif
