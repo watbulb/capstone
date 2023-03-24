@@ -102,9 +102,6 @@ struct MCInst {
 	uint8_t op1_size; // size of 1st operand - for X86 Intel syntax
 	unsigned Opcode;  // private opcode
 	MCOperand Operands[48];
-	// Due to llvm/llvm-project/issues/61619 the Operands saved in MCInst and
-	// the operands in the mapping tables are mis-aligned.
-	int MapOffset;
 	cs_insn *flat_insn;	// insn to be exposed to public
 	uint64_t address;	// address of this insn
 	cs_struct *csh;	// save the main csh
