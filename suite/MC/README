@@ -1,10 +1,47 @@
-Input files for testing Capstone engine.
+## Input files for testing Capstone engine.
 
-Format of input files:
+Input files used to test instructions of architectures and modes.
 
+### Update test files
+
+Run the update script with the paths to LLVM's `MC` test directories
+
+```
+cd capstone/suite/MC
+./update.py -a <ARCH> -d llvm-project/llvm/test/MC
+./update.py -a <ARCH> -d llvm-project/llvm/test/MC/Disassembler
+```
+
+You can update more fine grained. Check the help to get the possible options.
+```
+./update.py -h
+```
+
+### Test file formatting
+
+**Format of input files:**
+```
 # ARCH, MODE, OPTION
 hexcode = assembly
+```
 
-Format of issue file:
+**Example**
+```
+# CS_ARCH_ARM, CS_MODE_ARM+CS_MODE_V8, None
+0xa0,0x0b,0x71,0xee = vadd.f64 d16, d17, d16
+...
+```
+
+**Format of issue file:**
+
+```
 # ARCH, MODE, OPTION
 hexcode = assembly | regs_read | regs_read_count | regs_write | regs_write_count | groups | groups_count
+```
+
+**Example**
+```
+!# CS_ARCH_ARM64, CS_MODE_ARM, CS_OPT_DETAIL
+0xc0,0x1e,0x0c,0x4e == mov v0.s[1], w22 ; operands[0].vas: 0xb ; operands[0].vector_index: 1
+...
+```
