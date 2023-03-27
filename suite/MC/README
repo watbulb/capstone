@@ -8,14 +8,11 @@ Run the update script with the paths to LLVM's `MC` test directories
 
 ```
 cd capstone/suite/MC
-./update.py -a <ARCH> -d llvm-project/llvm/test/MC
-./update.py -a <ARCH> -d llvm-project/llvm/test/MC/Disassembler
+./Update.py -a <ARCH> -d llvm-project/llvm/test/MC
+./Update.py -a <ARCH> -d llvm-project/llvm/test/MC/Disassembler
 ```
 
 You can update more fine grained. Check the help to get the possible options.
-```
-./update.py -h
-```
 
 ### Test file formatting
 
@@ -35,7 +32,7 @@ hexcode = assembly
 **Format of issue file:**
 
 ```
-# ARCH, MODE, OPTION
+!# ARCH, MODE, OPTION
 hexcode = assembly | regs_read | regs_read_count | regs_write | regs_write_count | groups | groups_count
 ```
 
