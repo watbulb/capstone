@@ -3,6 +3,7 @@
 /*    Rot127 <unisono@quyllur.org>, 2022-2023 */
 
 #include "ARMAddressingModes.h"
+#include "ARMDisassemblerExtension.h"
 #ifdef CAPSTONE_HAS_ARM
 
 #include <stdio.h>
@@ -530,8 +531,69 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MI->flat_insn->detail->arm.pred_mask = PredMask;
 		break;
 	}
-	case ARM_OP_GROUP_MSRMaskOperand:
-		break;
+	case ARM_OP_GROUP_MSRMaskOperand: {
+		MCOperand *Op = MCInst_getOperand(MI, OpNum);
+		unsigned SpecRegRBit = (unsigned)MCOperand_getImm(Op) >> 4;
+		unsigned Mask = (unsigned)MCOperand_getImm(Op) & 0xf;
+		unsigned reg;
+
+		if (ARM_getFeatureBits(MI->csh->mode, ARM_FeatureMClass)) {
+			const MClassSysReg *TheReg;
+			unsigned SYSm = (unsigned)MCOperand_getImm(Op) & 0xFFF;  // 12-bit SYMm
+			unsigned Opcode = MCInst_getOpcode(MI);
+
+			if (Opcode == ARM_t2MSR_M && ARM_getFeatureBits(MI->csh->mode, ARM_FeatureDSP)) {
+				TheReg = lookupMClassSysRegBy12bitSYSmValue(SYSm);
+				if (TheReg && MClassSysReg_isInRequiredFeatures(TheReg, ARM_FeatureDSP)) {
+					ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+					return;
+				}
+			}
+
+			SYSm &= 0xff;
+			if (Opcode == ARM_t2MSR_M && ARM_getFeatureBits(MI->csh->mode, ARM_HasV7Ops)) {
+				TheReg = lookupMClassSysRegAPSRNonDeprecated(SYSm);
+				if (TheReg) {
+					ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+					return;
+				}
+			}
+
+			TheReg = lookupMClassSysRegBy8bitSYSmValue(SYSm);
+			if (TheReg) {
+				ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+				return;
+			}
+
+			if (MI->csh->detail)
+				MCOperand_CreateImm0(MI, SYSm);
+
+			return;
+		}
+
+		if (!SpecRegRBit && (Mask == 8 || Mask == 4 || Mask == 12)) {
+			switch (Mask) {
+				default: assert(0 && "Unexpected mask value!");
+				case 4:  ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_G); return;
+				case 8:  ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_NZCVQ); return;
+				case 12: ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_NZCVQG); return;
+			}
+		}
+
+		reg = 0;
+		if (Mask) {
+			if (Mask & 8)
+				reg += ARM_SYSREG_SPSR_F;
+			if (Mask & 4)
+				reg += ARM_SYSREG_SPSR_S;
+			if (Mask & 2)
+				reg += ARM_SYSREG_SPSR_X;
+			if (Mask & 1)
+				reg += ARM_SYSREG_SPSR_C;
+
+			ARM_set_detail_op_sysreg(MI, reg);
+		}
+	}
 	case ARM_OP_GROUP_SORegRegOperand:
 	case ARM_OP_GROUP_ModImmOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
@@ -698,7 +760,7 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 	return insn_operands[MI->Opcode].ops[OpNum].access;
 }
 
-cs_arm_op *ARM_get_active_detail_op(MCInst *MI) {
+inline cs_arm_op *ARM_get_active_detail_op(MCInst *MI) {
 	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
 	return &MI->flat_insn->detail->arm.operands[CurrentCSOpIdx];
 }
@@ -773,6 +835,13 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
 
 	MI->flat_insn->detail->arm.op_count--;
 	ARM_get_active_detail_op(MI)->neon_lane = Val;
+}
+
+/// Adds a System Register and increments op_count by one.
+void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg sys_reg) {
+		ARM_get_active_detail_op(MI)->type = ARM_OP_SYSREG;
+		ARM_get_active_detail_op(MI)->reg = sys_reg;
+		MI->flat_insn->detail->arm.op_count++;
 }
 
 
