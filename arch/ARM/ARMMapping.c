@@ -383,6 +383,14 @@ static uint64_t t_16_minux_v(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return 16 - v;
 }
 
+static uint64_t t_and_0xff(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return v & 0xff;
+}
+
+static uint64_t t_post_idx_imm_8s4(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return (v & 256) ? ((v & 0xff) << 2) : -((v & 0xff) << 2);
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -710,6 +718,15 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			return;
 		add_cs_detail_RegImmShift(MI, ShOpc, ShImm);
 		break;
+	case ARM_OP_GROUP_PostIdxRegOperand:
+		ARM_set_detail_op_reg(MI, OpNum, NULL);
+		break;
+	case ARM_OP_GROUP_PostIdxImm8Operand:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_and_0xff);
+		break;
+	case ARM_OP_GROUP_PostIdxImm8s4Operand:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_post_idx_imm_8s4);
+		break;
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
@@ -721,7 +738,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_VectorIndex:
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_CoprocOptionImm:
-	case ARM_OP_GROUP_PostIdxImm8s4Operand:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
 	case ARM_OP_GROUP_ThumbAddrModeImm5S4Operand:
 	case ARM_OP_GROUP_ThumbAddrModeRROperand:
@@ -735,8 +751,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrMode3OffsetOperand:
 	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
 	case ARM_OP_GROUP_ThumbAddrModeImm5S2Operand:
-	case ARM_OP_GROUP_PostIdxRegOperand:
-	case ARM_OP_GROUP_PostIdxImm8Operand:
 	case ARM_OP_GROUP_BankedRegOperand:
 	case ARM_OP_GROUP_PKHLSLShiftImm:
 	case ARM_OP_GROUP_PKHASRShiftImm:
