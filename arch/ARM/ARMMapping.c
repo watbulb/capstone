@@ -395,6 +395,10 @@ static uint64_t t_getAM2Op(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return ARM_AM_getAM2Op(v);
 }
 
+static uint64_t t_getAM3Offset(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return ARM_AM_getAM3Offset(v);
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -779,7 +783,19 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_reg(MI, OpNum, NULL);
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm2), ARM_AM_getAM2Offset(imm2));
 	}
-	case ARM_OP_GROUP_AddrMode3OffsetOperand:
+	case ARM_OP_GROUP_AddrMode3OffsetOperand: {
+		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+		MCOperand *MO2 = MCInst_getOperand(MI, OpNum + 1);
+		ARM_AM_AddrOpc subtracted = ARM_AM_getAM3Op(MCOperand_getImm(MO2));
+		if (MCOperand_getReg(MO1)) {
+			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
+			ARM_set_detail_op_reg(MI, OpNum, NULL);
+			break;
+		}
+		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_getAM3Offset);
+		break;
+	}
 	case ARM_OP_GROUP_ThumbAddrModeRROperand:
 	case ARM_OP_GROUP_ThumbAddrModeSPOperand:
 	case ARM_OP_GROUP_ThumbAddrModeImm5S1Operand:
