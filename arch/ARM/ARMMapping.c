@@ -554,6 +554,25 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MI->flat_insn->detail->arm.pred_mask = PredMask;
 		break;
 	}
+	case ARM_OP_GROUP_VPTMask: {
+	  unsigned Mask = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
+	  unsigned NumTZ = CountTrailingZeros_32(Mask);
+		ARM_PredBlockMask PredMask = 0;
+
+		// Check the documentation of ARM_PredBlockMask how the bits are set.
+	  for (unsigned Pos = 3, e = NumTZ; Pos > e; --Pos) {
+	    bool T = ((Mask >> Pos) & 1) == 0;
+	    if (T)
+				PredMask <<= 1;
+	    else {
+				PredMask |= 1;
+				PredMask <<= 1;
+			}
+	  }
+		PredMask |= 1;
+		MI->flat_insn->detail->arm.pred_mask = PredMask;
+		break;
+	}
 	case ARM_OP_GROUP_MSRMaskOperand: {
 		MCOperand *Op = MCInst_getOperand(MI, OpNum);
 		unsigned SpecRegRBit = (unsigned)MCOperand_getImm(Op) >> 4;
@@ -694,7 +713,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_VectorListFourAllLanes:
 	case ARM_OP_GROUP_VectorListFourSpacedAllLanes:
 	case ARM_OP_GROUP_VectorListFourSpaced:
-	case ARM_OP_GROUP_VPTMask:
 		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
 	}
