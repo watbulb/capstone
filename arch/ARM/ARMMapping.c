@@ -391,6 +391,10 @@ static uint64_t t_post_idx_imm_8s4(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return (v & 256) ? ((v & 0xff) << 2) : -((v & 0xff) << 2);
 }
 
+static uint64_t t_getAM2Op(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return ARM_AM_getAM2Op(v);
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -727,6 +731,65 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_PostIdxImm8s4Operand:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_post_idx_imm_8s4);
 		break;
+	case ARM_OP_GROUP_AddrModeTBB:
+	case ARM_OP_GROUP_AddrModeTBH:
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, false, 0, 0, NULL);
+		ARM_set_detail_op_mem(MI, OpNum, false, true, 0, 0, NULL);
+		if (op_group == ARM_OP_GROUP_AddrModeTBH) {
+				ARM_get_detail_op(MI, 0)->shift.type = ARM_SFT_LSL;
+				ARM_get_detail_op(MI, 0)->shift.value = 1;
+				ARM_get_detail_op(MI, 0)->mem.lshift = 1;
+			}
+		set_mem_access(MI, false);
+		break;
+	case ARM_OP_GROUP_AddrMode2Operand: {
+	  MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+	  if (!MCOperand_isReg(MO1))
+			// Handled in printOperand
+			break;
+
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, false, 0, 0, NULL);
+		unsigned int imm3 = MCOperand_getImm(MCInst_getOperand(MI, OpNum + 2));
+		unsigned ShOff = ARM_AM_getAM2Offset(imm3);
+		ARM_AM_AddrOpc subtracted = ARM_AM_getAM2Op(imm3);
+		if (!MCOperand_getReg(MCInst_getOperand(MI, OpNum + 2)) && ShOff) {
+			ARM_get_detail_op(MI, 0)->shift.type = (arm_shifter)subtracted;
+			ARM_get_detail_op(MI, 0)->shift.value = ShOff;
+			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
+			set_mem_access(MI, false);
+			break;
+		}
+		ARM_set_detail_op_mem(MI, OpNum + 1, subtracted == ARM_AM_sub, true, 0, 0, NULL);
+		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm3), ARM_AM_getAM2Offset(imm3));
+		set_mem_access(MI, false);
+		break;
+	}
+	case ARM_OP_GROUP_AddrMode2OffsetOperand: {
+		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+		MCOperand *MO2 = MCInst_getOperand(MI, OpNum + 1);
+		uint64_t imm2 = MCOperand_getImm(MO2);
+		ARM_AM_AddrOpc subtracted = ARM_AM_getAM2Op(imm2);
+		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
+		if (!MCOperand_isReg(MO1)) {
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_getAM2Op);
+			break;
+		}
+		ARM_set_detail_op_reg(MI, OpNum, NULL);
+		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm2), ARM_AM_getAM2Offset(imm2));
+	}
+	case ARM_OP_GROUP_AddrMode3OffsetOperand:
+	case ARM_OP_GROUP_ThumbAddrModeRROperand:
+	case ARM_OP_GROUP_ThumbAddrModeSPOperand:
+	case ARM_OP_GROUP_ThumbAddrModeImm5S1Operand:
+	case ARM_OP_GROUP_ThumbAddrModeImm5S2Operand:
+	case ARM_OP_GROUP_ThumbAddrModeImm5S4Operand:
+	case ARM_OP_GROUP_T2AddrModeSoRegOperand:
+	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
+	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand:
+	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
+		break;
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
@@ -739,26 +802,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_CoprocOptionImm:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
-	case ARM_OP_GROUP_ThumbAddrModeImm5S4Operand:
-	case ARM_OP_GROUP_ThumbAddrModeRROperand:
-	case ARM_OP_GROUP_ThumbAddrModeSPOperand:
-	case ARM_OP_GROUP_AddrMode2Operand:
-	case ARM_OP_GROUP_T2AddrModeSoRegOperand:
-	case ARM_OP_GROUP_AddrMode2OffsetOperand:
-	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
-	case ARM_OP_GROUP_ThumbAddrModeImm5S1Operand:
-	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand:
-	case ARM_OP_GROUP_AddrMode3OffsetOperand:
-	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
-	case ARM_OP_GROUP_ThumbAddrModeImm5S2Operand:
 	case ARM_OP_GROUP_BankedRegOperand:
 	case ARM_OP_GROUP_PKHLSLShiftImm:
 	case ARM_OP_GROUP_PKHASRShiftImm:
 	case ARM_OP_GROUP_SetendOperand:
 	case ARM_OP_GROUP_MveSaturateOp:
 	case ARM_OP_GROUP_ShiftImmOperand:
-	case ARM_OP_GROUP_AddrModeTBB:
-	case ARM_OP_GROUP_AddrModeTBH:
 	case ARM_OP_GROUP_TraceSyncBOption:
 		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
