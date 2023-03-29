@@ -357,15 +357,15 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 {
 	MI->csh->doing_mem = status;
 	if (status) {
-		ARM_get_active_detail_op(MI)->type = ARM_OP_MEM;
-		ARM_get_active_detail_op(MI)->mem.base = ARM_REG_INVALID;
-		ARM_get_active_detail_op(MI)->mem.index = ARM_REG_INVALID;
-		ARM_get_active_detail_op(MI)->mem.scale = 1;
-		ARM_get_active_detail_op(MI)->mem.disp = 0;
+		ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
+		ARM_get_detail_op(MI, 0)->mem.base = ARM_REG_INVALID;
+		ARM_get_detail_op(MI, 0)->mem.index = ARM_REG_INVALID;
+		ARM_get_detail_op(MI, 0)->mem.scale = 1;
+		ARM_get_detail_op(MI, 0)->mem.disp = 0;
 
 #ifndef CAPSTONE_DIET
 		uint8_t access = ARM_get_op_access(MI, MI->flat_insn->detail->arm.op_count);
-		ARM_get_active_detail_op(MI)->access = access;
+		ARM_get_detail_op(MI, 0)->access = access;
 #endif
 	} else {
 		// done, create the next operand slot
@@ -379,15 +379,15 @@ static void add_cs_detail_RegImmShift(MCInst *MI, ARM_AM_ShiftOpc ShOpc, unsigne
 		return;
 
 	if (doing_mem(MI))
-		ARM_get_active_detail_op(MI)->shift.type = (arm_shifter)ShOpc;
+		ARM_get_detail_op(MI, 0)->shift.type = (arm_shifter)ShOpc;
 	else
-		MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count - 1].shift.type = (arm_shifter)ShOpc;
+		ARM_get_detail_op(MI, -1)->shift.type = (arm_shifter)ShOpc;
 
 	if (ShOpc != ARM_AM_rrx) {
 		if (doing_mem(MI))
-			ARM_get_active_detail_op(MI)->shift.value = translateShiftImm(ShImm);
+			ARM_get_detail_op(MI, 0)->shift.value = translateShiftImm(ShImm);
 		else
-			MI->flat_insn->detail->arm.operands[MI->flat_insn->detail->arm.op_count - 1].shift.value = translateShiftImm(ShImm);
+			ARM_get_detail_op(MI, -1)->shift.value = translateShiftImm(ShImm);
 	}
 }
 
@@ -502,9 +502,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		for (unsigned i = OpNum, e = MCInst_getNumOperands(MI); i != e; ++i) {
 			unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, i));
 
-			ARM_get_active_detail_op(MI)->type = ARM_OP_REG;
-			ARM_get_active_detail_op(MI)->reg = Reg;
-			ARM_get_active_detail_op(MI)->access = access;
+			ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
+			ARM_get_detail_op(MI, 0)->reg = Reg;
+			ARM_get_detail_op(MI, 0)->access = access;
 			MI->flat_insn->detail->arm.op_count++;
 		}
 		break;
@@ -760,9 +760,10 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 	return insn_operands[MI->Opcode].ops[OpNum].access;
 }
 
-inline cs_arm_op *ARM_get_active_detail_op(MCInst *MI) {
+/// Returns the operand at detail->arm.operands[op_count + offset]
+inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset) {
 	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
-	return &MI->flat_insn->detail->arm.operands[CurrentCSOpIdx];
+	return &MI->flat_insn->detail->arm.operands[CurrentCSOpIdx + offset];
 }
 
 /// Adds a register ARM operand at position OpNum and increases the op_count by one.
@@ -770,9 +771,9 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer trans) 
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
 	unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
 
-	ARM_get_active_detail_op(MI)->type = ARM_OP_REG;
-	ARM_get_active_detail_op(MI)->reg = trans ? trans(MI, OpNum, Reg) : Reg;
-	ARM_get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
+	ARM_get_detail_op(MI, 0)->reg = trans ? trans(MI, OpNum, Reg) : Reg;
+	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -782,9 +783,9 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type imm_type, val
 	assert(imm_type == ARM_OP_IMM || imm_type == ARM_OP_PIMM || imm_type == ARM_OP_CIMM);
 	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
-	ARM_get_active_detail_op(MI)->type = imm_type;
-	ARM_get_active_detail_op(MI)->imm = trans ? trans(MI, OpNum, Imm) : Imm;
-	ARM_get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->type = imm_type;
+	ARM_get_detail_op(MI, 0)->imm = trans ? trans(MI, OpNum, Imm) : Imm;
+	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -793,9 +794,9 @@ void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, value_transformer trans)
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_PRED);
 	unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
-	ARM_get_active_detail_op(MI)->type = ARM_OP_PRED;
-	ARM_get_active_detail_op(MI)->pred = trans ? trans(MI, OpNum, Imm) : Imm;
-	ARM_get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->type = ARM_OP_PRED;
+	ARM_get_detail_op(MI, 0)->pred = trans ? trans(MI, OpNum, Imm) : Imm;
+	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -809,22 +810,22 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_
 	case CS_OP_REG: {
 		unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, OpNum));
 		if (is_base_reg) {
-			ARM_get_active_detail_op(MI)->mem.base = trans ? trans(MI, OpNum, Reg) : Reg;
+			ARM_get_detail_op(MI, 0)->mem.base = trans ? trans(MI, OpNum, Reg) : Reg;
 		} else {
-			ARM_get_active_detail_op(MI)->mem.index = trans ? trans(MI, OpNum, Reg) : Reg;
-			ARM_get_active_detail_op(MI)->mem.scale = scale;
-			ARM_get_active_detail_op(MI)->mem.lshift = lshift;
+			ARM_get_detail_op(MI, 0)->mem.index = trans ? trans(MI, OpNum, Reg) : Reg;
+			ARM_get_detail_op(MI, 0)->mem.scale = scale;
+			ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
 		}
 	}
 	case CS_OP_IMM: {
 		unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
-		ARM_get_active_detail_op(MI)->mem.disp = trans ? trans(MI, OpNum, Imm) : Imm;
+		ARM_get_detail_op(MI, 0)->mem.disp = trans ? trans(MI, OpNum, Imm) : Imm;
 	}
 	}
 
-	ARM_get_active_detail_op(MI)->type = ARM_OP_MEM;
-	ARM_get_active_detail_op(MI)->access = ARM_get_op_access(MI, OpNum);
-	ARM_get_active_detail_op(MI)->subtracted = subtracted;
+	ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
+	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->subtracted = subtracted;
 }
 
 /// Sets the neon_lane in the previous operand to the value of MI->operands[OpNum]
@@ -834,13 +835,13 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
 	unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
 	MI->flat_insn->detail->arm.op_count--;
-	ARM_get_active_detail_op(MI)->neon_lane = Val;
+	ARM_get_detail_op(MI, 0)->neon_lane = Val;
 }
 
 /// Adds a System Register and increments op_count by one.
 void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg sys_reg) {
-		ARM_get_active_detail_op(MI)->type = ARM_OP_SYSREG;
-		ARM_get_active_detail_op(MI)->reg = sys_reg;
+		ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
+		ARM_get_detail_op(MI, 0)->reg = sys_reg;
 		MI->flat_insn->detail->arm.op_count++;
 }
 
