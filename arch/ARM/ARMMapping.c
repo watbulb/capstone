@@ -679,6 +679,14 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_ImmPlusOneOperand:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_plus_one);
 		break;
+	case ARM_OP_GROUP_RotImmOperand: {
+		unsigned Imm = (unsigned int)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+		if (Imm == 0)
+			return;
+		ARM_get_detail_op(MI, -1)->shift.type = ARM_SFT_ROR;
+		ARM_get_detail_op(MI, -1)->shift.value = Imm * 8;
+		break;
+	}
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
@@ -713,7 +721,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_SetendOperand:
 	case ARM_OP_GROUP_MveSaturateOp:
 	case ARM_OP_GROUP_ShiftImmOperand:
-	case ARM_OP_GROUP_RotImmOperand:
 	case ARM_OP_GROUP_AddrModeTBB:
 	case ARM_OP_GROUP_AddrModeTBH:
 	case ARM_OP_GROUP_TraceSyncBOption:
