@@ -371,6 +371,10 @@ static uint64_t t_vmov_mod_imm(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return Val;
 }
 
+static uint64_t t_plus_one(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return v + 1;
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -672,6 +676,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_FPImmOperand:
 		ARM_set_detail_op_float(MI, OpNum, NULL);
 		break;
+	case ARM_OP_GROUP_ImmPlusOneOperand:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_plus_one);
+		break;
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
@@ -703,7 +710,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_BankedRegOperand:
 	case ARM_OP_GROUP_PKHLSLShiftImm:
 	case ARM_OP_GROUP_PKHASRShiftImm:
-	case ARM_OP_GROUP_ImmPlusOneOperand:
 	case ARM_OP_GROUP_SetendOperand:
 	case ARM_OP_GROUP_MveSaturateOp:
 	case ARM_OP_GROUP_ShiftImmOperand:
