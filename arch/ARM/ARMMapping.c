@@ -365,6 +365,12 @@ static uint64_t t_mod_imm_rot(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return Rot;
 }
 
+static uint64_t t_vmov_mod_imm(MCInst *MI, unsigned OpNum, uint64_t v) {
+  unsigned EltBits;
+  uint64_t Val = ARM_AM_decodeVMOVModImm(v, &EltBits);
+	return Val;
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -631,6 +637,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_mod_imm_rot);
 		break;
 	}
+	case ARM_OP_GROUP_VMOVModImmOperand:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_vmov_mod_imm);
+		break;
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
@@ -671,7 +680,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrModeTBB:
 	case ARM_OP_GROUP_AddrModeTBH:
 	case ARM_OP_GROUP_TraceSyncBOption:
-	case ARM_OP_GROUP_VMOVModImmOperand:
 	case ARM_OP_GROUP_FBits16:
 	case ARM_OP_GROUP_FBits32:
 	case ARM_OP_GROUP_VectorListTwoAllLanes:
