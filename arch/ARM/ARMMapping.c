@@ -348,6 +348,23 @@ static uint64_t t_qpr_to_dpr_list_3(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return v;
 }
 
+static uint64_t t_mod_imm_rotate(MCInst *MI, unsigned OpNum, uint64_t v) {
+  unsigned Bits = v & 0xFF;
+  unsigned Rot = (v & 0xF00) >> 7;
+  int32_t Rotated = ARM_AM_rotr32(Bits, Rot);
+	return Rotated;
+}
+
+static uint64_t t_mod_imm_bits(MCInst *MI, unsigned OpNum, uint64_t v) {
+  unsigned Bits = v & 0xFF;
+	return Bits;
+}
+
+static uint64_t t_mod_imm_rot(MCInst *MI, unsigned OpNum, uint64_t v) {
+  unsigned Rot = (v & 0xF00) >> 7;
+	return Rot;
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -603,7 +620,17 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_reg(MI, OpNum, NULL);
 		break;
 	}
-	case ARM_OP_GROUP_ModImmOperand:
+	case ARM_OP_GROUP_ModImmOperand: {
+		int64_t imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+	  int32_t Rotated = t_mod_imm_rotate(MI, OpNum, imm);
+	  if (ARM_AM_getSOImmVal(Rotated) == imm) {
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_mod_imm_rotate);
+			return;
+		}
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_mod_imm_bits);
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_mod_imm_rot);
+		break;
+	}
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
