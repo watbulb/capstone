@@ -702,6 +702,14 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_32_minux_v);
 		break;
 	case ARM_OP_GROUP_SORegImmOperand:
+		ARM_set_detail_op_reg(MI, OpNum, NULL);
+		uint64_t imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum + 1));
+		ARM_AM_ShiftOpc ShOpc = ARM_AM_getSORegShOp(imm);
+		unsigned ShImm = ARM_AM_getSORegOffset(imm);
+		if (ShOpc == ARM_AM_no_shift || (ShOpc == ARM_AM_lsl && !ShImm))
+			return;
+		add_cs_detail_RegImmShift(MI, ShOpc, ShImm);
+		break;
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
