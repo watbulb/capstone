@@ -375,6 +375,14 @@ static uint64_t t_plus_one(MCInst *MI, unsigned OpNum, uint64_t v) {
 	return v + 1;
 }
 
+static uint64_t t_32_minux_v(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return 32 - v;
+}
+
+static uint64_t t_16_minux_v(MCInst *MI, unsigned OpNum, uint64_t v) {
+	return 16 - v;
+}
+
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -687,6 +695,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_get_detail_op(MI, -1)->shift.value = Imm * 8;
 		break;
 	}
+	case ARM_OP_GROUP_FBits16:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_16_minux_v);
+		break;
+	case ARM_OP_GROUP_FBits32:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_32_minux_v);
+		break;
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
@@ -724,8 +738,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrModeTBB:
 	case ARM_OP_GROUP_AddrModeTBH:
 	case ARM_OP_GROUP_TraceSyncBOption:
-	case ARM_OP_GROUP_FBits16:
-	case ARM_OP_GROUP_FBits32:
 		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
 	}
