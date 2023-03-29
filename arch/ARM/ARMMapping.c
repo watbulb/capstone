@@ -640,6 +640,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_VMOVModImmOperand:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_vmov_mod_imm);
 		break;
+	case ARM_OP_GROUP_FPImmOperand:
+		ARM_set_detail_op_float(MI, OpNum, NULL);
+		break;
 	case ARM_OP_GROUP_SORegImmOperand:
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
@@ -649,7 +652,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_CPSIFlag:
 	case ARM_OP_GROUP_GPRPairOperand:
 	case ARM_OP_GROUP_MemBOption:
-	case ARM_OP_GROUP_FPImmOperand:
 	case ARM_OP_GROUP_VectorIndex:
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_CoprocOptionImm:
@@ -883,10 +885,18 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
 
 /// Adds a System Register and increments op_count by one.
 void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg sys_reg) {
-		ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
-		ARM_get_detail_op(MI, 0)->reg = sys_reg;
-		MI->flat_insn->detail->arm.op_count++;
+	ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
+	ARM_get_detail_op(MI, 0)->reg = sys_reg;
+	MI->flat_insn->detail->arm.op_count++;
 }
 
+/// Transforms the immediate of the operand to a float and stores it.
+/// Increments the op_counter by one.
+void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, value_transformer trans) {
+	uint64_t imm = (unsigned int)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
+	ARM_get_detail_op(MI, 0)->type = ARM_OP_FP;
+	ARM_get_detail_op(MI, 0)->fp = trans ? trans(MI, OpNum, imm) : ARM_AM_getFPImmFloat(imm);
+	MI->flat_insn->detail->arm.op_count++;
+}
 
 #endif
