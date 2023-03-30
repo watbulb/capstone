@@ -859,7 +859,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MI->flat_insn->detail->arm.cps_flag = IFlags == 0 ? ARM_CPSFLAG_NONE : IFlags;
 		break;
 	}
-	case ARM_OP_GROUP_GPRPairOperand:
+	case ARM_OP_GROUP_GPRPairOperand: {
+		unsigned Reg = ARM_get_op_val(MI, OpNum);
+		ARM_set_detail_op_reg(MI, OpNum, MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_gsub_0));
+		ARM_set_detail_op_reg(MI, OpNum, MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_gsub_1));
+		break;
+	}
 	case ARM_OP_GROUP_MemBOption:
 	case ARM_OP_GROUP_VectorIndex:
 	case ARM_OP_GROUP_InstSyncBOption:
