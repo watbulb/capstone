@@ -824,6 +824,22 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		set_mem_access(MI, false);
 		break;
+	case ARM_OP_GROUP_PKHLSLShiftImm: {
+		unsigned Imm = ARM_get_op_val(MI, OpNum);
+		if (Imm == 0)
+				return;
+		ARM_get_detail_op(MI, 0)->shift.type = ARM_SFT_LSL;
+		ARM_get_detail_op(MI, 0)->shift.value = Imm;
+		break;
+	}
+	case ARM_OP_GROUP_PKHASRShiftImm: {
+		unsigned Imm = ARM_get_op_val(MI, OpNum);
+		if (Imm == 0)
+				Imm = 32;
+		ARM_get_detail_op(MI, 0)->shift.type = ARM_SFT_ASR;
+		ARM_get_detail_op(MI, 0)->shift.value = Imm;
+		break;
+	}
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
@@ -836,8 +852,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_CoprocOptionImm:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
 	case ARM_OP_GROUP_BankedRegOperand:
-	case ARM_OP_GROUP_PKHLSLShiftImm:
-	case ARM_OP_GROUP_PKHASRShiftImm:
 	case ARM_OP_GROUP_SetendOperand:
 	case ARM_OP_GROUP_MveSaturateOp:
 	case ARM_OP_GROUP_ShiftImmOperand:
