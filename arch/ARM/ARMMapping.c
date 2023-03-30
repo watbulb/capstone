@@ -901,10 +901,27 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_get_detail_op(MI, 0)->mem.scale = 1;
 		ARM_get_detail_op(MI, 0)->mem.disp = OffImm;
 		ARM_get_detail_op(MI, 0)->access = CS_AC_READ;
+		MI->flat_insn->detail->arm.op_count++;
 		break;
 	}
-	case ARM_OP_GROUP_BankedRegOperand:
-	case ARM_OP_GROUP_SetendOperand:
+	case ARM_OP_GROUP_BankedRegOperand: {
+		uint32_t Banked = ARM_get_op_val(MI, OpNum);
+		const BankedReg *TheReg = lookupBankedRegByEncoding(Banked);
+		ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+		break;
+	}
+	case ARM_OP_GROUP_SetendOperand: {
+		bool be = ARM_get_op_val(MI, OpNum) != 0;
+		if (be) {
+			ARM_get_detail_op(MI, 0)->type = ARM_OP_SETEND;
+			ARM_get_detail_op(MI, 0)->setend = ARM_SETEND_BE;
+		} else {
+			ARM_get_detail_op(MI, 0)->type = ARM_OP_SETEND;
+			ARM_get_detail_op(MI, 0)->setend = ARM_SETEND_LE;
+		}
+		MI->flat_insn->detail->arm.op_count++;
+		break;
+	}
 	case ARM_OP_GROUP_MveSaturateOp:
 	case ARM_OP_GROUP_TraceSyncBOption:
 		printf("ERROR: Operand %d not handled.\n", OpNum);
