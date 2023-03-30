@@ -673,13 +673,16 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_FBits32:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, 32 - ARM_get_op_val(MI, OpNum));
 		break;
+	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_SORegImmOperand:
 		ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
 		uint64_t imm = ARM_get_op_val(MI, OpNum + 1);
 		ARM_AM_ShiftOpc ShOpc = ARM_AM_getSORegShOp(imm);
 		unsigned ShImm = ARM_AM_getSORegOffset(imm);
-		if (ShOpc == ARM_AM_no_shift || (ShOpc == ARM_AM_lsl && !ShImm))
-			return;
+		if (op_group == ARM_OP_GROUP_SORegImmOperand) {
+			if (ShOpc == ARM_AM_no_shift || (ShOpc == ARM_AM_lsl && !ShImm))
+				return;
+		}
 		add_cs_detail_RegImmShift(MI, ShOpc, ShImm);
 		break;
 	case ARM_OP_GROUP_PostIdxRegOperand:
@@ -821,7 +824,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		set_mem_access(MI, false);
 		break;
-	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
