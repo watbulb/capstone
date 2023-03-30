@@ -869,6 +869,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MI->flat_insn->detail->arm.mem_barrier = ARM_get_op_val(MI, OpNum) + 1;
 		break;
 	case ARM_OP_GROUP_InstSyncBOption:
+	case ARM_OP_GROUP_TraceSyncBOption:
 		// TODO?
 		break;
 	case ARM_OP_GROUP_ShiftImmOperand: {
@@ -922,10 +923,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MI->flat_insn->detail->arm.op_count++;
 		break;
 	}
-	case ARM_OP_GROUP_MveSaturateOp:
-	case ARM_OP_GROUP_TraceSyncBOption:
-		printf("ERROR: Operand %d not handled.\n", OpNum);
-		return;
+	case ARM_OP_GROUP_MveSaturateOp: {
+		uint32_t Val = ARM_get_op_val(MI, OpNum);
+		Val = Val == 1 ? 48 : 64;
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, Val);
+		break;
+	}
 	}
 }
 
