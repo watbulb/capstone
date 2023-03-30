@@ -795,9 +795,16 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, RegNum);
 		set_mem_access(MI, false);
 	}
-	case ARM_OP_GROUP_T2AddrModeSoRegOperand:
 	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
-	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand:
+	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand: {
+		int32_t OffImm = ARM_get_op_val(MI, OpNum);
+		if (OffImm == INT32_MIN)
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, 0);
+		else
+			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, OffImm);
+		break;
+	}
+	case ARM_OP_GROUP_T2AddrModeSoRegOperand:
 	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
 		break;
 	case ARM_OP_GROUP_T2SOOperand:
