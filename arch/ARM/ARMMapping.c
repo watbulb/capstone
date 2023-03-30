@@ -814,6 +814,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		}
 	}
 	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
+		int64_t Imm = ARM_get_op_val(MI, OpNum + 1);
+		if (Imm)
+			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ARM_get_op_val(MI, OpNum));
+		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_T2SOOperand:
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
