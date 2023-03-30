@@ -782,7 +782,19 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		set_mem_access(MI, false);
 		break;
 	}
-	case ARM_OP_GROUP_ThumbAddrModeRROperand:
+	case ARM_OP_GROUP_ThumbAddrModeRROperand: {
+		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+		if (!MCOperand_isReg(MO1))
+			// Handled in printOperand
+			break;
+
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
+		arm_reg RegNum = ARM_get_op_val(MI, OpNum + 1);
+		if (RegNum)
+			ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, RegNum);
+		set_mem_access(MI, false);
+	}
 	case ARM_OP_GROUP_T2AddrModeSoRegOperand:
 	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
 	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand:
