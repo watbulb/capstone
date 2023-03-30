@@ -58,17 +58,16 @@ static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, ..
 }
 
 cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset);
+uint64_t ARM_get_op_val(MCInst *MI, unsigned OpNum);
 const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum);
 const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum);
 
-typedef uint64_t (value_transformer)(MCInst *MI, unsigned OpNum, uint64_t val);
-
-void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, value_transformer transformer);
-void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg sys_reg);
-void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type type, value_transformer transformer);
-void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, value_transformer trans);
-void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, value_transformer trans);
-void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool subtracted, bool is_index_reg, int scale, int lshift, value_transformer transformer);
+void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg);
+void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg);
+void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int64_t Imm);
+void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm);
+void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, uint64_t Pred);
+void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int scale, int lshift, uint64_t Val);
 void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum);
 
 #endif // CS_ARM_MAPPING_H
