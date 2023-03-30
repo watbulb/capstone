@@ -841,6 +841,8 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	}
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_get_op_val(MI, OpNum) * 4);
+		break;
 	case ARM_OP_GROUP_ThumbSRImm:
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
 	case ARM_OP_GROUP_CPSIMod:
