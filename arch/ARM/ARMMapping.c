@@ -866,14 +866,31 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	}
 	case ARM_OP_GROUP_MemBOption:
-	case ARM_OP_GROUP_VectorIndex:
+		MI->flat_insn->detail->arm.mem_barrier = ARM_get_op_val(MI, OpNum) + 1;
+		break;
 	case ARM_OP_GROUP_InstSyncBOption:
+		// TODO?
+		break;
+	case ARM_OP_GROUP_ShiftImmOperand: {
+		unsigned ShiftOp = ARM_get_op_val(MI, OpNum);
+		bool isASR = (ShiftOp & (1 << 5)) != 0;
+		unsigned Amt = ShiftOp & 0x1f;
+		if (isASR) {
+			unsigned tmp = Amt == 0 ? 32 : Amt;
+			ARM_get_detail_op(MI, -1)->shift.type = ARM_SFT_ASR;
+			ARM_get_detail_op(MI, -1)->shift.type = tmp;
+		} else if (Amt) {
+			ARM_get_detail_op(MI, -1)->shift.type = ARM_SFT_LSL;
+			ARM_get_detail_op(MI, -1)->shift.type = Amt;
+		}
+		break;
+	}
+	case ARM_OP_GROUP_VectorIndex:
 	case ARM_OP_GROUP_CoprocOptionImm:
 	case ARM_OP_GROUP_ThumbLdrLabelOperand:
 	case ARM_OP_GROUP_BankedRegOperand:
 	case ARM_OP_GROUP_SetendOperand:
 	case ARM_OP_GROUP_MveSaturateOp:
-	case ARM_OP_GROUP_ShiftImmOperand:
 	case ARM_OP_GROUP_TraceSyncBOption:
 		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
