@@ -886,8 +886,23 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	}
 	case ARM_OP_GROUP_VectorIndex:
+		ARM_get_detail_op(MI, -1)->vector_index = ARM_get_op_val(MI, OpNum);
+		break;
 	case ARM_OP_GROUP_CoprocOptionImm:
-	case ARM_OP_GROUP_ThumbLdrLabelOperand:
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_get_op_val(MI, OpNum));
+		break;
+	case ARM_OP_GROUP_ThumbLdrLabelOperand: {
+		int32_t OffImm = ARM_get_op_val(MI, OpNum);
+		if (OffImm == INT32_MIN)
+			OffImm = 0;
+		ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
+		ARM_get_detail_op(MI, 0)->mem.base = ARM_REG_PC;
+		ARM_get_detail_op(MI, 0)->mem.index = ARM_REG_INVALID;
+		ARM_get_detail_op(MI, 0)->mem.scale = 1;
+		ARM_get_detail_op(MI, 0)->mem.disp = OffImm;
+		ARM_get_detail_op(MI, 0)->access = CS_AC_READ;
+		break;
+	}
 	case ARM_OP_GROUP_BankedRegOperand:
 	case ARM_OP_GROUP_SetendOperand:
 	case ARM_OP_GROUP_MveSaturateOp:
