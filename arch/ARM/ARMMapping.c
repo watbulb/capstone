@@ -460,7 +460,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	case ARM_OP_GROUP_AddrMode6Operand:
 		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum));
-		ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ARM_get_op_val(MI, OpNum) << 3);
+		ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ARM_get_op_val(MI, OpNum + 1) << 3);
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_AddrMode6OffsetOperand: {
@@ -695,7 +695,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrModeTBH:
 		set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
-		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum));
+		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
 		if (op_group == ARM_OP_GROUP_AddrModeTBH) {
 				ARM_get_detail_op(MI, 0)->shift.type = ARM_SFT_LSL;
 				ARM_get_detail_op(MI, 0)->shift.value = 1;
@@ -722,7 +722,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			break;
 		}
 		ARM_get_detail_op(MI, 0)->shift.type = subtracted == ARM_AM_sub;
-		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum));
+		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm3), ARM_AM_getAM2Offset(imm3));
 		set_mem_access(MI, false);
 		break;
@@ -792,7 +792,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		arm_reg RegNum = ARM_get_op_val(MI, OpNum + 1);
 		if (RegNum)
-			ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, RegNum);
+			ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, RegNum);
 		set_mem_access(MI, false);
 	}
 	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
