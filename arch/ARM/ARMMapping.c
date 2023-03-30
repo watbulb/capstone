@@ -843,10 +843,22 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_ThumbS4ImmOperand:
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_get_op_val(MI, OpNum) * 4);
 		break;
-	case ARM_OP_GROUP_ThumbSRImm:
+	case ARM_OP_GROUP_ThumbSRImm: {
+		unsigned Imm = ARM_get_op_val(MI, OpNum);
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, Imm == 0 ? 32 : Imm);
+		break;
+	}
 	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
-	case ARM_OP_GROUP_CPSIMod:
-	case ARM_OP_GROUP_CPSIFlag:
+	case ARM_OP_GROUP_CPSIMod: {
+		unsigned Imm = ARM_get_op_val(MI, OpNum);
+		MI->flat_insn->detail->arm.cps_mode = Imm;
+		break;
+	}
+	case ARM_OP_GROUP_CPSIFlag: {
+		unsigned IFlags = ARM_get_op_val(MI, OpNum);
+		MI->flat_insn->detail->arm.cps_flag = IFlags == 0 ? ARM_CPSFLAG_NONE : IFlags;
+		break;
+	}
 	case ARM_OP_GROUP_GPRPairOperand:
 	case ARM_OP_GROUP_MemBOption:
 	case ARM_OP_GROUP_VectorIndex:
