@@ -986,7 +986,37 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	}
 	case ARM_OP_GROUP_AddrMode5Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_1:
-	case ARM_OP_GROUP_AddrMode5FP16Operand_0:
+	case ARM_OP_GROUP_AddrMode5FP16Operand_0: {
+		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+		if (!MCOperand_isReg(MO1))
+			// Handled in printOperand
+			break;
+
+		ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
+		ARM_get_detail_op(MI, 0)->mem.base = ARM_get_op_val(MI, OpNum);
+		ARM_get_detail_op(MI, 0)->mem.index = ARM_REG_INVALID;
+		ARM_get_detail_op(MI, 0)->mem.scale = 1;
+		ARM_get_detail_op(MI, 0)->mem.disp = 0;
+		ARM_get_detail_op(MI, 0)->access = CS_AC_READ;
+		ARM_AM_AddrOpc Op = ARM_AM_getAM5Op(ARM_get_op_val(MI, OpNum + 1));
+		unsigned ImmOffs = ARM_AM_getAM5Offset(ARM_get_op_val(MI, OpNum + 1));
+		bool AlwaysPrintImm0 = temp_arg_0 == 0;
+		if (AlwaysPrintImm0 || ImmOffs || Op == ARM_AM_sub) {
+			if (op_group == ARM_OP_GROUP_AddrMode5FP16Operand_0) {
+				if (Op)
+					ARM_get_detail_op(MI, 0)->mem.disp = ImmOffs * 2;
+				else
+					ARM_get_detail_op(MI, 0)->mem.disp = -(int)ImmOffs * 2;
+			} else {
+				if (Op)
+					ARM_get_detail_op(MI, 0)->mem.disp = ImmOffs;
+				else
+					ARM_get_detail_op(MI, 0)->mem.disp = -(int)ImmOffs * 4;
+			}
+		}
+		MI->flat_insn->detail->arm.op_count++;
+		break;
+	}
 	case ARM_OP_GROUP_AddrModeImm12Operand_0:
 	case ARM_OP_GROUP_AddrModeImm12Operand_1:
 	case ARM_OP_GROUP_MVEVectorList_2:
