@@ -1019,12 +1019,21 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		MI->flat_insn->detail->arm.op_count++;
 		break;
 	}
-	case ARM_OP_GROUP_MVEVectorList_2:
-	case ARM_OP_GROUP_MVEVectorList_4:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
-	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
+	case ARM_OP_GROUP_MveAddrModeRQOperand_3: {
+		unsigned Shift = temp_arg_0;
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
+		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum));
+		if (Shift > 0) {
+			add_cs_detail_RegImmShift(MI, ARM_AM_uxtw, Shift);
+		}
+		set_mem_access(MI, false);
+	}
+	case ARM_OP_GROUP_MVEVectorList_2:
+	case ARM_OP_GROUP_MVEVectorList_4:
 		printf("ERROR: Operand %d not handled.\n", OpNum);
 		return;
 	}
