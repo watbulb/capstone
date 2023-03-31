@@ -971,10 +971,14 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
 		assert(0);
-	case ARM_OP_GROUP_ComplexRotationOp_180_90:
 	case ARM_OP_GROUP_ComplexRotationOp_90_0:
-		printf("ERROR: Operand %d not handled.\n", OpNum);
-		return;
+	case ARM_OP_GROUP_ComplexRotationOp_180_90: {
+		unsigned Angle = temp_arg_0;
+		unsigned Remainder = temp_arg_1;
+		unsigned Imm = (ARM_get_op_val(MI, OpNum) * Angle) + Remainder;
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, Imm);
+		break;
+	}
 	}
 }
 
