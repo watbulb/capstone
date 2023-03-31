@@ -962,7 +962,28 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, OffImm);
 		break;
 	}
-	case ARM_OP_GROUP_AddrMode3Operand_0:
+	case ARM_OP_GROUP_AddrMode3Operand_0: {
+		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+		if (!MCOperand_isReg(MO1))
+			// Handled in printOperand
+			break;
+
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
+
+		MCOperand *MO2 = MCInst_getOperand(MI, OpNum + 1);
+		if (!MCOperand_isReg(MO2)) {
+			set_mem_access(MI, false);
+			break;
+		}
+		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
+		ARM_AM_AddrOpc Sign = ARM_AM_getAM3Op(ARM_get_op_val(MI, OpNum + 2));
+		if (Sign == ARM_AM_sub) {
+			ARM_get_detail_op(MI, 0)->mem.scale = -1;
+			ARM_get_detail_op(MI, 0)->subtracted = true;
+		}
+		set_mem_access(MI, false);
+	}
 	case ARM_OP_GROUP_AddrMode5Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_1:
 	case ARM_OP_GROUP_AddrMode5FP16Operand_0:
