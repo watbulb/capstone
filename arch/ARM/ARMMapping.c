@@ -940,20 +940,29 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
 		assert(0);
-	case ARM_OP_GROUP_AdrLabelOperand_0:
-	case ARM_OP_GROUP_AdrLabelOperand_2:
-	case ARM_OP_GROUP_AddrMode5Operand_0:
-	case ARM_OP_GROUP_AddrMode5Operand_1:
-	case ARM_OP_GROUP_AddrModeImm12Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
-	case ARM_OP_GROUP_AddrModeImm12Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
+	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1: {
+		set_mem_access(MI, true);
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
+		int32_t Imm = ARM_get_op_val(MI, OpNum + 1);
+		if (Imm == INT32_MIN)
+			Imm = 0;
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, Imm);
+		set_mem_access(MI, false);
+		break;
+	}
+	case ARM_OP_GROUP_AdrLabelOperand_0:
+	case ARM_OP_GROUP_AdrLabelOperand_2:
 	case ARM_OP_GROUP_AddrMode3Operand_0:
-	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1:
+	case ARM_OP_GROUP_AddrMode5Operand_0:
+	case ARM_OP_GROUP_AddrMode5Operand_1:
+	case ARM_OP_GROUP_AddrMode5FP16Operand_0:
+	case ARM_OP_GROUP_AddrModeImm12Operand_0:
+	case ARM_OP_GROUP_AddrModeImm12Operand_1:
 	case ARM_OP_GROUP_MVEVectorList_2:
 	case ARM_OP_GROUP_MVEVectorList_4:
-	case ARM_OP_GROUP_AddrMode5FP16Operand_0:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_3:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_1:
