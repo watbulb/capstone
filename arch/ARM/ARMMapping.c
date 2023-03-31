@@ -954,7 +954,14 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		break;
 	}
 	case ARM_OP_GROUP_AdrLabelOperand_0:
-	case ARM_OP_GROUP_AdrLabelOperand_2:
+	case ARM_OP_GROUP_AdrLabelOperand_2: {
+		unsigned Scale = temp_arg_0;
+		int32_t OffImm = ARM_get_op_val(MI, OpNum) << Scale;
+		if (OffImm == INT32_MIN)
+			OffImm = 0;
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, OffImm);
+		break;
+	}
 	case ARM_OP_GROUP_AddrMode3Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_1:
