@@ -940,6 +940,8 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
 		assert(0);
+	case ARM_OP_GROUP_AddrModeImm12Operand_0:
+	case ARM_OP_GROUP_AddrModeImm12Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
@@ -1017,8 +1019,6 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		MI->flat_insn->detail->arm.op_count++;
 		break;
 	}
-	case ARM_OP_GROUP_AddrModeImm12Operand_0:
-	case ARM_OP_GROUP_AddrModeImm12Operand_1:
 	case ARM_OP_GROUP_MVEVectorList_2:
 	case ARM_OP_GROUP_MVEVectorList_4:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
