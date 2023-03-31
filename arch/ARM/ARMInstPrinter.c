@@ -478,6 +478,7 @@ void printAM2PreOrOffsetIndexOp(MCInst *MI, unsigned Op, SStream *O)
 
 void printAddrModeTBB(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_AddrModeTBB, Op);
   MCOperand *MO1 = MCInst_getOperand(MI, (Op));
   MCOperand *MO2 = MCInst_getOperand(MI, (Op + 1));
   SStream_concat(O, "%s", markup("<mem:"));
@@ -491,6 +492,7 @@ void printAddrModeTBB(MCInst *MI, unsigned Op, SStream *O)
 
 void printAddrModeTBH(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_AddrModeTBH, Op);
   MCOperand *MO1 = MCInst_getOperand(MI, (Op));
   MCOperand *MO2 = MCInst_getOperand(MI, (Op + 1));
   SStream_concat(O, "%s", markup("<mem:"));
