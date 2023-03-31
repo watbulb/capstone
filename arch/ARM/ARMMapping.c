@@ -1033,9 +1033,15 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		set_mem_access(MI, false);
 	}
 	case ARM_OP_GROUP_MVEVectorList_2:
-	case ARM_OP_GROUP_MVEVectorList_4:
-		printf("ERROR: Operand %d not handled.\n", OpNum);
-		return;
+	case ARM_OP_GROUP_MVEVectorList_4: {
+		unsigned NumRegs = temp_arg_0;
+		arm_reg Reg = ARM_get_op_val(MI, OpNum);
+		for (unsigned i = 0; i < NumRegs; ++i) {
+			arm_reg SubReg = MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_qsub_0 + i);
+			ARM_set_detail_op_reg(MI, OpNum, SubReg);
+		}
+		break;
+	}
 	}
 }
 
