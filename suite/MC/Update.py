@@ -165,6 +165,31 @@ def get_test_parameters(cs_file: Path) -> str:
     return line
 
 
+def decimal_to_hex_fix(asm: str) -> str:
+    """
+    Replaces every immediate number in the asm string with its hex form.
+    If it is larger than the hex threshold.
+    """
+    # Defined in utils.h
+    hex_threshold = 9
+    matches = re.findall(r"([#\s]-?\d+)", asm)
+    if not matches:
+        return asm
+
+    for m in matches:
+        num = int(m[1:])
+        neg_num = num < 0
+        sign = ""
+        if neg_num:
+            num = num * -1
+            sign = "-"
+        if num < hex_threshold:
+            continue
+        prefix = m[0]
+        asm = re.sub(m, rf"{prefix}{sign}{hex(num)}", asm)
+    return asm
+
+
 def extract_tests(llvm_file: Path) -> str:
     """
     Extracts all compatible test cases in the given llvm_file
@@ -194,6 +219,7 @@ def extract_tests(llvm_file: Path) -> str:
         match = match[0]
         asm = re.sub(r"\s+", " ", match[0])
         asm = asm.strip(" ")
+        asm = decimal_to_hex_fix(asm)
         hexbytes = re.sub(r"\s", "", match[1])
         result += f"{hexbytes} = {asm}\n"
     f.close()
