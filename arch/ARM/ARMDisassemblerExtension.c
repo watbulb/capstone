@@ -199,6 +199,12 @@ bool ARM_isCDECoproc(size_t Coproc, const MCInst *MI)
 bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
 {
 
+	if (feature == ARM_ModeThumb) {
+		if (mode & CS_MODE_THUMB)
+			return true;
+		return false;
+	}
+
 	if ((mode & CS_MODE_MCLASS) == 0) {
 		if (feature == ARM_FeatureMClass)
 			return false;
