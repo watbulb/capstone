@@ -213,7 +213,6 @@ void printInst(MCInst *MI, SStream *O, void *info)
   case ARM_VSTMSDB_UPD:
   case ARM_VSTMDDB_UPD:
     if (MCOperand_getReg(MCInst_getOperand(MI, (0))) == ARM_SP) {
-      SStream_concat1(O, '\t');
       SStream_concat0(O, "vpush");
       printPredicateOperand(MI, 2, O);
       SStream_concat0(O, "\t");
