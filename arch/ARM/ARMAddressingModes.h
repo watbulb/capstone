@@ -722,11 +722,6 @@ static inline unsigned ARM_AM_encodeNEONi32splat(unsigned Value)
 	return Value;
 }
 
-typedef union {
-	uint32_t u32;
-	float f;
-} bit_cast;
-
 //===--------------------------------------------------------------------===//
 // Floating-point Immediates
 //
@@ -748,9 +743,7 @@ static inline float ARM_AM_getFPImmFloat(unsigned Imm)
 	I |= ((Exp & 0x4) != 0 ? 0x1f : 0) << 25;
 	I |= (Exp & 0x3) << 23;
 	I |= Mantissa << 19;
-	bit_cast cast;
-	cast.u32 = I;
-	return cast.f;
+	return BitsToFloat(I);
 }
 
 #endif
