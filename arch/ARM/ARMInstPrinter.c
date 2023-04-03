@@ -1453,7 +1453,6 @@ void printFPImmOperand(MCInst *MI, unsigned OpNum, SStream *O)
   add_cs_detail(MI, ARM_OP_GROUP_FPImmOperand, OpNum);
   MCOperand *MO = MCInst_getOperand(MI, (OpNum));
   SStream_concat(O, "%s", markup("<imm:"));
-  SStream_concat1(O, '#');
   printFloatBang(O, ARM_AM_getFPImmFloat(MCOperand_getImm(MO)));
   SStream_concat0(O, markup(">"));
 }
