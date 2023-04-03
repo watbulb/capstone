@@ -150,6 +150,6 @@ unsigned MCInst_getNumOperands(const MCInst *inst);
 // This addOperand2 function doesnt free Op
 void MCInst_addOperand2(MCInst *inst, MCOperand *Op);
 
-bool MCInst_isPrediacable(const MCInst *MI, const MCInstrDesc *MIDesc);
+bool MCInst_isPrediacable(const MCInstrDesc *MIDesc);
 
 #endif
