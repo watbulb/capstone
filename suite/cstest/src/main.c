@@ -406,13 +406,13 @@ static void test_file(const char *filename)
 				tmp = (char *)malloc(sizeof(char) * 100);
 				sprintf(tmp, "Line %d", i+1);
 				tests = (struct CMUnitTest *)realloc(tests, sizeof(struct CMUnitTest) * (number_of_tests + 1));
-				tests[number_of_tests] = (struct CMUnitTest)cmocka_unit_test_setup_teardown(test_MC, setup_MC, teardown_MC);
+				tests[number_of_tests] = (struct CMUnitTest)cmocka_unit_test_setup_teardown(test_MC, NULL, NULL);
 				tests[number_of_tests].name = tmp;
 				number_of_tests ++;
 			}
 		}
 
-		_cmocka_run_group_tests("Testing MC", tests, number_of_tests, NULL, NULL);
+		_cmocka_run_group_tests("Testing MC", tests, number_of_tests, setup_MC, teardown_MC);
 	}
 
 	printf("[+] DONE: %s\n", filename);
