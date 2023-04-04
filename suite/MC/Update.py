@@ -299,6 +299,22 @@ def parse_args() -> argparse.Namespace:
     return arguments
 
 
+def print_note():
+    print("""
+        Please note!
+        Some test files need hand-made changes.
+
+        ARM: Due to default settings in LLVM's MCInstPrinter, some branch
+             instructions don't print "addr + offset + imm" but only "addr + imm"
+             as jump target.
+             These tests fail and have to be fixed.
+             The offsets are +8 (ARM) or +4 (Thumb).
+             You can also use llvm-objdump to decode the bytes and determine
+             the correct assembly string.
+        """)
+
+
 if __name__ == "__main__":
     args = parse_args()
     update(args.llvm_dir, args.arch, args.excluded_files, args.included_files)
+    print_note()
