@@ -1162,7 +1162,7 @@ void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, uint64_t Pred) {
 	MI->flat_insn->detail->arm.op_count++;
 }
 
-/// Adds a memory ARM operand at position OpNum. op_count is *not* increase by one.
+/// Adds a memory ARM operand at position OpNum. op_count is *not* increased by one.
 /// This is done by set_mem_access().
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int scale, int lshift, uint64_t Val) {
 	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
