@@ -22,6 +22,8 @@
 
 const char *get_pred_mask(ARM_PredBlockMask pred_mask) {
 	switch(pred_mask) {
+	default:
+		assert(0 && "pred_mask not handled.");
 	case ARM_T:
 		return "T";
 	case ARM_TT:
