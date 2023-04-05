@@ -116,9 +116,9 @@ const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M)
 
 	// // Try all patterns for this opcode.
 	uint32_t AsmStrOffset = ~0U;
-	const AliasPattern *Patterns = M->Patterns + M->OpToPatterns->PatternStart;
+	const AliasPattern *Patterns = M->Patterns + M->OpToPatterns[i].PatternStart;
 	for (const AliasPattern *P = Patterns;
-		 P != Patterns + M->OpToPatterns->NumPatterns; ++P) {
+		 P != Patterns + M->OpToPatterns[i].NumPatterns; ++P) {
 		// Check operand count first.
 		if (MCInst_getNumOperands(MI) != P->NumOperands)
 			return NULL;
