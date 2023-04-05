@@ -737,9 +737,11 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_AM_AddrOpc subtracted = ARM_AM_getAM2Op(imm2);
 		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 		if (!MCOperand_isReg(MO1)) {
+			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_AM_getAM2Op(ARM_get_op_val(MI, OpNum)));
-			break;
+			return;
 		}
+		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 		ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm2), ARM_AM_getAM2Offset(imm2));
 	}
@@ -750,10 +752,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		if (MCOperand_getReg(MO1)) {
 			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 			ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
-			break;
+			return;
 		}
 		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
-		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_AM_getAM3Offset(ARM_get_op_val(MI, OpNum)));
+		ARM_set_detail_op_imm(MI, OpNum + 1, ARM_OP_IMM, ARM_AM_getAM3Offset(ARM_get_op_val(MI, OpNum + 1)));
 		break;
 	}
 	case ARM_OP_GROUP_ThumbAddrModeSPOperand:
@@ -1131,7 +1133,7 @@ inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset) {
 
 /// Adds a register ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg) {
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
+	assert((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_REG);
 
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
 	ARM_get_detail_op(MI, 0)->reg = Reg;
@@ -1141,7 +1143,7 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg) {
 
 /// Adds an immediate ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int64_t Imm) {
-	//assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+	assert((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM);
 	assert(ImmType == ARM_OP_IMM || ImmType == ARM_OP_PIMM || ImmType == ARM_OP_CIMM);
 
 	ARM_get_detail_op(MI, 0)->type = ImmType;
