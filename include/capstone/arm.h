@@ -146,28 +146,6 @@ typedef enum arm_sysreg {
 	ARM_SYSREG_SPSR_HYP,
 } arm_sysreg;
 
-/// The memory barrier constants map directly to the 4-bit encoding of
-/// the option field for Memory Barrier operations.
-typedef enum arm_mem_barrier {
-	ARM_MB_INVALID = 0,
-	ARM_MB_RESERVED_0,
-	ARM_MB_OSHLD,
-	ARM_MB_OSHST,
-	ARM_MB_OSH,
-	ARM_MB_RESERVED_4,
-	ARM_MB_NSHLD,
-	ARM_MB_NSHST,
-	ARM_MB_NSH,
-	ARM_MB_RESERVED_8,
-	ARM_MB_ISHLD,
-	ARM_MB_ISHST,
-	ARM_MB_ISH,
-	ARM_MB_RESERVED_12,
-	ARM_MB_LD,
-	ARM_MB_ST,
-	ARM_MB_SY,
-} arm_mem_barrier;
-
 /// Operand type for instruction's operands
 typedef enum arm_op_type {
 	ARM_OP_INVALID = 0, ///< = CS_OP_INVALID (Uninitialized).
@@ -340,7 +318,7 @@ typedef struct cs_arm {
 	bool update_flags;	///< does this insn update flags?
 	bool writeback;		///< does this insn write-back?
 	bool post_index;	///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
-	arm_mem_barrier mem_barrier;	///< Option for some memory barrier instructions
+	int /* arm_mem_bo_opt */ mem_barrier;	///< Option for some memory barrier instructions
 	// Check ARM_PredBlockMask for encoding details.
 	uint8_t /* ARM_PredBlockMask */ pred_mask;	///< Used by IT/VPT block instructions.
 	/// Number of operands of this instruction,

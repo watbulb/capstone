@@ -866,7 +866,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	}
 	case ARM_OP_GROUP_MemBOption:
-		MI->flat_insn->detail->arm.mem_barrier = ARM_get_op_val(MI, OpNum) + 1;
+		MI->flat_insn->detail->arm.mem_barrier = ARM_get_op_val(MI, OpNum);
 		break;
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_TraceSyncBOption:
