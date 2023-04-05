@@ -208,6 +208,9 @@ bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
 	if (feature == ARM_FeatureMClass && (mode & CS_MODE_MCLASS) == 0)
 		return false;
 
+	if (feature == ARM_HasV8Ops && (mode & CS_MODE_V8) == 0)
+		return false;
+
 	// we support everything
 	return true;
 }

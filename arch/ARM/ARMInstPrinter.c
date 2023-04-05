@@ -706,7 +706,7 @@ DEFINE_printMveAddrModeRQOperand(0) DEFINE_printMveAddrModeRQOperand(3)
     ARM_AM_AddrOpc Op = ARM_AM_getAM5Op(MCOperand_getImm(MO2));                \
     if (AlwaysPrintImm0 || ImmOffs || Op == ARM_AM_sub) {                      \
       SStream_concat(O, "%s%s%s%s", ", ", markup("<imm:"), "#", ARM_AM_getAddrOpcStr(Op));  \
-		  printUInt32(0, ImmOffs * 4);                                             \
+		  printUInt32(O, ImmOffs * 4);                                             \
       SStream_concat0(O, markup(">"));                                         \
     }                                                                          \
     SStream_concat(O, "%s", "]");                                                    \
@@ -1084,15 +1084,13 @@ void printNoHashImmediate(MCInst *MI, unsigned OpNum, SStream *O)
 void printPImmediate(MCInst *MI, unsigned OpNum, SStream *O)
 {
   add_cs_detail(MI, ARM_OP_GROUP_PImmediate, OpNum);
-  SStream_concat(O, "%s", "p");
-  printInt64(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
+  SStream_concat(O, "%s%d", "p", MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
 }
 
 void printCImmediate(MCInst *MI, unsigned OpNum, SStream *O)
 {
   add_cs_detail(MI, ARM_OP_GROUP_CImmediate, OpNum);
-  SStream_concat(O, "%s", "c");
-  printInt64(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
+  SStream_concat(O, "%s%d", "c", MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
 }
 
 void printCoprocOptionImm(MCInst *MI, unsigned OpNum, SStream *O)
