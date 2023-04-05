@@ -117,7 +117,7 @@ struct MCInst {
 	// This is copied from cs_x86 struct
 	uint8_t x86_prefix[4];
 	uint8_t imm_size;	// immediate size for X86_OP_IMM operand
-	bool writeback;	// writeback for ARM
+	bool writeback;	// Has writeback operand
 	// operand access index for list of registers sharing the same access right (for ARM)
 	uint8_t ac_idx;
 	uint8_t popcode_adjust;   // Pseudo X86 instruction adjust

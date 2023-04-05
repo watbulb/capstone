@@ -16,3 +16,10 @@ bool MCOperandInfo_isOptionalDef(const MCOperandInfo *m)
 {
 	return m->Flags & (1 << MCOI_OptionalDef);
 }
+
+/// Checks if operand is tied to another one.
+bool MCOperandInfo_isTiedToOp(const MCOperandInfo *m) {
+	if (m->Constraints & (1 << MCOI_TIED_TO))
+		return true;
+	return false;
+}

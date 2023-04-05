@@ -621,13 +621,31 @@ static DecodeStatus checkDecodedInstruction(MCInst *MI, uint32_t Insn,
   }
 }
 
+static void ARM_setWriteback(MCInst *MI) {
+  const MCOperandInfo *OpInfo = ARMInsts[MCInst_getOpcode(MI)].OpInfo;
+  unsigned short NumOps = ARMInsts[MCInst_getOpcode(MI)].NumOperands;
+
+  unsigned i;
+  for (i = 0; i < NumOps; ++i) {
+    if (MCOperandInfo_isTiedToOp(&OpInfo[i])) {
+			MI->writeback = true;
+      if (MI->flat_insn->detail)
+        MI->flat_insn->detail->arm.writeback = true;
+			return;
+		}
+  }
+}
+
 DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 			    MCInst *MI, uint16_t *Size, uint64_t Address,
 			    void *Info)
 {
+  DecodeStatus Result = MCDisassembler_Fail;
   if (MI->csh->mode & CS_MODE_THUMB)
-    return getThumbInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
-  return getARMInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
+    Result = getThumbInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
+  Result = getARMInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
+  ARM_setWriteback(MI);
+  return Result;
 }
 
 static inline uint32_t endianSensitiveOpcode32(MCInst *MI, const uint8_t *Bytes)
