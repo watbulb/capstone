@@ -973,7 +973,7 @@ void printMSRMaskOperand(MCInst *MI, unsigned OpNum, SStream *O)
   unsigned Mask = MCOperand_getImm(Op) & 0xf;
 
   if (!SpecRegRBit && (Mask == 8 || Mask == 4 || Mask == 12)) {
-    SStream_concat0(O, "APSR_");
+    SStream_concat0(O, "apsr_");
     switch (Mask) {
     default:
       assert(0 && "Unexpected mask value!");
