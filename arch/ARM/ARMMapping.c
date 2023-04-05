@@ -1165,11 +1165,13 @@ void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, uint64_t Pred) {
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increase by one.
 /// This is done by set_mem_access().
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int scale, int lshift, uint64_t Val) {
+	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
 	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
 	switch(secondary_type) {
 	default:
 		assert(0 && "Secondary type not supported yet.");
 	case CS_OP_REG: {
+		assert(secondary_type == CS_OP_REG);
 		if (!is_index_reg)
 			ARM_get_detail_op(MI, 0)->mem.base = Val;
 		else {
@@ -1177,9 +1179,12 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int sc
 			ARM_get_detail_op(MI, 0)->mem.scale = scale;
 			ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
 		}
+		break;
 	}
 	case CS_OP_IMM: {
+		assert(secondary_type == CS_OP_IMM);
 		ARM_get_detail_op(MI, 0)->mem.disp = Val;
+		break;
 	}
 	}
 
