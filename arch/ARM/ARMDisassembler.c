@@ -643,7 +643,8 @@ DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
   DecodeStatus Result = MCDisassembler_Fail;
   if (MI->csh->mode & CS_MODE_THUMB)
     Result = getThumbInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
-  Result = getARMInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
+  else
+    Result = getARMInstruction(ud, Bytes, BytesLen, MI, Size, Address, Info);
   ARM_setWriteback(MI);
   return Result;
 }
