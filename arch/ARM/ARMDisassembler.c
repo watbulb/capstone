@@ -889,7 +889,7 @@ DecodeStatus AddThumbPredicate(MCInst *MI)
       break;
   }
 
-  if (MCInst_isPrediacable(&ARMInsts[MCInst_getOpcode(MI)])) {
+  if (MCInst_isPredicable(&ARMInsts[MCInst_getOpcode(MI)])) {
     MCInst_insert0(MI, i, MCOperand_CreateImm1(MI, (CC)));
 
     if (CC == ARMCC_AL)
@@ -956,7 +956,7 @@ void UpdateThumbVFPPredicate(DecodeStatus S, MCInst *MI)
   unsigned short NumOps = ARMInsts[MCInst_getOpcode(MI)].NumOperands;
   for (unsigned i = 0; i < NumOps; ++i) {
     if (MCOperandInfo_isPredicate(&OpInfo[i])) {
-      if (CC != ARMCC_AL && !MCInst_isPrediacable(&ARMInsts[MCInst_getOpcode(MI)]))
+      if (CC != ARMCC_AL && !MCInst_isPredicable(&ARMInsts[MCInst_getOpcode(MI)]))
 	Check(&S, MCDisassembler_SoftFail);
       MCOperand_setImm(MCInst_getOperand(MI, i), CC);
 
@@ -1509,7 +1509,7 @@ static DecodeStatus DecodePredicateOperand(MCInst *Inst, unsigned Val,
   if (MCInst_getOpcode(Inst) == ARM_tBcc && Val == 0xE)
     return MCDisassembler_Fail;
   if (Val != ARMCC_AL &&
-      !MCInst_isPrediacable(&ARMInsts[MCInst_getOpcode(Inst)]))
+      !MCInst_isPredicable(&ARMInsts[MCInst_getOpcode(Inst)]))
     Check(&S, MCDisassembler_SoftFail);
   MCOperand_CreateImm0(Inst, (Val));
   if (Val == ARMCC_AL) {
