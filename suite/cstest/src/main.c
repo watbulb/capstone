@@ -134,20 +134,19 @@ static int getDetail;
 static int mc_mode;
 static int e_flag;
 
-static int setup_MC(void **state)
-{
+static int setup_state(void **state) {
 	csh *handle;
 	char **list_params;	
 	int size_params;
 	int arch, mode;
-	int i, index, tmp_counter;
+	int i, index;
 
 	if (failed_setup) {
 		fprintf(stderr, "[  ERROR   ] --- Invalid file to setup\n");
 		return -1;
 	}
 
-	tmp_counter = 0;
+	int tmp_counter = 0;
 	while (tmp_counter < size_lines && list_lines[tmp_counter][0] != '#')
 		tmp_counter++;
 
@@ -196,18 +195,13 @@ static int setup_MC(void **state)
 		failed_setup = 1;
 		return -1;
 	}
-	
-	for (i = 0; i < ARR_SIZE(options); ++i) {
-		if (strstr(list_params[2], options[i].str)) {
-			if (cs_option(*handle, options[i].first_value, options[i].second_value) != CS_ERR_OK) {
-				fprintf(stderr, "[  ERROR   ] --- Option is not supported for this arch/mode\n");
-				failed_setup = 1;
-				return -1;
-			}
-		}
-	}
-
 	*state = (void *)handle;
+	free_strs(list_params, size_params);
+	return 0;
+}
+
+static int setup_MC(void **state)
+{
 	counter++;
 	if (e_flag == 0)
 		while (counter < size_lines && strncmp(list_lines[counter], "0x", 2))
@@ -216,7 +210,6 @@ static int setup_MC(void **state)
 		while (counter < size_lines && strncmp(list_lines[counter], "// 0x", 5))
 			counter++;
 
-	free_strs(list_params, size_params);
 	return 0;
 }
 
@@ -228,7 +221,7 @@ static void test_MC(void **state)
 		test_single_MC((csh *)*state, mc_mode, list_lines[counter]);
 }
 
-static int teardown_MC(void **state)
+static int teardown_state(void **state)
 {
 	cs_close(*state);
 	free(*state);
@@ -406,13 +399,13 @@ static void test_file(const char *filename)
 				tmp = (char *)malloc(sizeof(char) * 100);
 				sprintf(tmp, "Line %d", i+1);
 				tests = (struct CMUnitTest *)realloc(tests, sizeof(struct CMUnitTest) * (number_of_tests + 1));
-				tests[number_of_tests] = (struct CMUnitTest)cmocka_unit_test_setup_teardown(test_MC, NULL, NULL);
+				tests[number_of_tests] = (struct CMUnitTest)cmocka_unit_test_setup_teardown(test_MC, setup_MC, NULL);
 				tests[number_of_tests].name = tmp;
 				number_of_tests ++;
 			}
 		}
 
-		_cmocka_run_group_tests("Testing MC", tests, number_of_tests, setup_MC, teardown_MC);
+		_cmocka_run_group_tests("Testing MC", tests, number_of_tests, setup_state, teardown_state);
 	}
 
 	printf("[+] DONE: %s\n", filename);
