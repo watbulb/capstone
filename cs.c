@@ -813,6 +813,10 @@ cs_err CAPSTONE_API cs_option(csh ud, cs_opt_type type, size_t value)
 				return CS_ERR_OPTION;
 			}
 			break;
+		case CS_OPT_NO_BRANCH_OFFSET:
+			if (handle->PrintBranchImmNotAsAddress)
+				return CS_ERR_OK;
+			break;
 	}
 
 	return arch_configs[handle->arch].arch_option(handle, type, value);

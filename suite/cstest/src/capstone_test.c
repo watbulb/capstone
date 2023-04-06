@@ -35,6 +35,7 @@ void test_single_MC(csh *handle, int mc_mode, char *line)
 		code[i] = (unsigned char)strtol(list_byte[i], NULL, 16);
 	}
 
+	((struct cs_struct *)(uintptr_t)*handle)->PrintBranchImmNotAsAddress = true;
 	count = cs_disasm(*handle, code, size_byte, offset, 0, &insn);
 	if (count == 0) {
 		fprintf(stderr, "[  ERROR   ] --- %s --- Failed to disassemble given code!\n", list_part[0]);

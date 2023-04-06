@@ -344,7 +344,7 @@ void printOperand(MCInst *MI, unsigned OpNo, SStream *O)
 void printOperandAddr(MCInst *MI, uint64_t Address, unsigned OpNum, SStream *O)
 {
   MCOperand *Op = MCInst_getOperand(MI, (OpNum));
-  if (!MCOperand_isImm(Op) || getUseMarkup())
+  if (!MCOperand_isImm(Op) || MI->csh->PrintBranchImmNotAsAddress || getUseMarkup())
     return printOperand(MI, OpNum, O);
   int64_t Imm = MCOperand_getImm(Op);
   // For ARM instructions the PC offset is 8 bytes, for Thumb instructions it
