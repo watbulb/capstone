@@ -1394,7 +1394,7 @@ void printT2AddrModeImm8OffsetOperand(MCInst *MI, unsigned OpNum,
   if (OffImm == INT32_MIN)
     SStream_concat0(O, "#-0");
   else if (OffImm < 0) {
-    printInt32Bang(O, -OffImm);
+    printInt32Bang(O, OffImm);
   } else {
     printInt32Bang(O, OffImm);
   }
