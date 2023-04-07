@@ -149,7 +149,6 @@ void printInst(MCInst *MI, SStream *O, void *info)
     if (MCOperand_getReg(MCInst_getOperand(MI, (0))) == ARM_SP &&
 	MCInst_getNumOperands(MI) > 5) {
       // Should only print PUSH if there are at least two registers in the list.
-      SStream_concat1(O, '\t');
       SStream_concat0(O, "push");
       printPredicateOperand(MI, 2, O);
       if (Opcode == ARM_t2STMDB_UPD)
@@ -197,7 +196,6 @@ void printInst(MCInst *MI, SStream *O, void *info)
   case ARM_LDR_POST_IMM:
     if (MCOperand_getReg(MCInst_getOperand(MI, (2))) == ARM_SP &&
 	MCOperand_getImm(MCInst_getOperand(MI, (4))) == 4) {
-      SStream_concat1(O, '\t');
       SStream_concat0(O, "pop");
       printPredicateOperand(MI, 5, O);
       SStream_concat0(O, "\t{");
@@ -989,9 +987,9 @@ void printMSRMaskOperand(MCInst *MI, unsigned OpNum, SStream *O)
   }
 
   if (SpecRegRBit)
-    SStream_concat0(O, "SPSR");
+    SStream_concat0(O, "spsr");
   else
-    SStream_concat0(O, "CPSR");
+    SStream_concat0(O, "cpsr");
 
   if (Mask) {
     SStream_concat0(O, "_");
