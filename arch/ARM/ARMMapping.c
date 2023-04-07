@@ -549,20 +549,20 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	}
 	case ARM_OP_GROUP_VPTMask: {
-	  unsigned Mask = ARM_get_op_val(MI, OpNum);
-	  unsigned NumTZ = CountTrailingZeros_32(Mask);
+		unsigned Mask = ARM_get_op_val(MI, OpNum);
+		unsigned NumTZ = CountTrailingZeros_32(Mask);
 		ARM_PredBlockMask PredMask = 0;
 
 		// Check the documentation of ARM_PredBlockMask how the bits are set.
-	  for (unsigned Pos = 3, e = NumTZ; Pos > e; --Pos) {
-	    bool T = ((Mask >> Pos) & 1) == 0;
-	    if (T)
-				PredMask <<= 1;
-	    else {
+		for (unsigned Pos = 3, e = NumTZ; Pos > e; --Pos) {
+			bool T = ((Mask >> Pos) & 1) == 0;
+			if (T)
+					PredMask <<= 1;
+			else {
 				PredMask |= 1;
 				PredMask <<= 1;
 			}
-	  }
+		}
 		PredMask |= 1;
 		MI->flat_insn->detail->arm.pred_mask = PredMask;
 		break;
