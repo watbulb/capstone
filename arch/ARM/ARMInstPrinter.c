@@ -182,7 +182,6 @@ void printInst(MCInst *MI, SStream *O, void *info)
     if (MCOperand_getReg(MCInst_getOperand(MI, (0))) == ARM_SP &&
 	MCInst_getNumOperands(MI) > 5) {
       // Should only print POP if there are at least two registers in the list.
-      SStream_concat1(O, '\t');
       SStream_concat0(O, "pop");
       printPredicateOperand(MI, 2, O);
       if (Opcode == ARM_t2LDMIA_UPD)
