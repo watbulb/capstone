@@ -161,6 +161,7 @@ MCOperand *MCOperand_CreateReg1(MCInst *mcInst, unsigned Reg)
 {
 	MCOperand *op = &(mcInst->Operands[MCINST_CACHE]);
 
+	op->MachineOperandType = kRegister;
 	op->Kind = kRegister;
 	op->RegVal = Reg;
 
@@ -172,6 +173,7 @@ void MCOperand_CreateReg0(MCInst *mcInst, unsigned Reg)
 	MCOperand *op = &(mcInst->Operands[mcInst->size]);
 	mcInst->size++;
 
+	op->MachineOperandType = kRegister;
 	op->Kind = kRegister;
 	op->RegVal = Reg;
 }
@@ -180,6 +182,7 @@ MCOperand *MCOperand_CreateImm1(MCInst *mcInst, int64_t Val)
 {
 	MCOperand *op = &(mcInst->Operands[MCINST_CACHE]);
 
+	op->MachineOperandType = kImmediate;
 	op->Kind = kImmediate;
 	op->ImmVal = Val;
 
@@ -191,6 +194,7 @@ void MCOperand_CreateImm0(MCInst *mcInst, int64_t Val)
 	MCOperand *op = &(mcInst->Operands[mcInst->size]);
 	mcInst->size++;
 
+	op->MachineOperandType = kImmediate;
 	op->Kind = kImmediate;
 	op->ImmVal = Val;
 }
