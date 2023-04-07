@@ -211,6 +211,10 @@ bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
 	if (feature == ARM_HasV8Ops && (mode & CS_MODE_V8) == 0)
 		return false;
 
+	if (feature >= ARM_FeatureCoprocCDE0 && feature <= ARM_FeatureCoprocCDE7)
+		// We currently have no way to detect CDE (Custom-Datapath-Extension) coprocessors.
+		return false;
+
 	// we support everything
 	return true;
 }
