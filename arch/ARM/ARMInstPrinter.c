@@ -1470,7 +1470,7 @@ void printImmPlusOneOperand(MCInst *MI, unsigned OpNum, SStream *O)
   add_cs_detail(MI, ARM_OP_GROUP_ImmPlusOneOperand, OpNum);
   unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
   SStream_concat(O, "%s", markup("<imm:"));
-  printUInt32(O, Imm + 1);
+  printUInt32Bang(O, Imm + 1);
   SStream_concat0(O, markup(">"));
 }
 
