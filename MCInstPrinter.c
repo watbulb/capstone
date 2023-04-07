@@ -47,7 +47,7 @@ static bool matchAliasCondition(MCInst *MI, const MCRegisterInfo *MRI,
 
 	// Get and consume an operand.
 	MCOperand *Opnd = MCInst_getOperand(MI, *OpIdx);
-	++OpIdx;
+	++(*OpIdx);
 
 	// Check the specific condition for the operand.
 	switch (C->Kind) {
@@ -118,7 +118,7 @@ const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M)
 	uint32_t AsmStrOffset = ~0U;
 	const AliasPattern *Patterns = M->Patterns + M->OpToPatterns[i].PatternStart;
 	for (const AliasPattern *P = Patterns;
-		 P != Patterns + M->OpToPatterns[i].NumPatterns; ++P) {
+		P != Patterns + M->OpToPatterns[i].NumPatterns; ++P) {
 		// Check operand count first.
 		if (MCInst_getNumOperands(MI) != P->NumOperands)
 			return NULL;
@@ -127,18 +127,17 @@ const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M)
 		const AliasPatternCond *Conds = M->PatternConds + P->AliasCondStart;
 		unsigned OpIdx = 0;
 		bool OrPredicateResult = false;
+		bool allMatch = true;
 		for (const AliasPatternCond *C = Conds; C != Conds + P->NumConds; ++C) {
-			if (!matchAliasCondition(MI, MI->MRI, &OpIdx, M, C,
-									&OrPredicateResult)) {
-				AsmStrOffset = ~0U;
+			if (!matchAliasCondition(MI, MI->MRI, &OpIdx, M, C, &OrPredicateResult)) {
+				allMatch = false;
 				break;
 			}
 		}
-		if (AsmStrOffset == ~0U)
-			continue;
-		
-		AsmStrOffset = P->AsmStrOffset;
-		break;
+		if (allMatch) {
+			AsmStrOffset = P->AsmStrOffset;
+			break;
+		}
 	}
 	// If no alias matched, don't print an alias.
 	if (AsmStrOffset == ~0U)
