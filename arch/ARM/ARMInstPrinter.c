@@ -386,7 +386,7 @@ void printThumbLdrLabelOperand(MCInst *MI, unsigned OpNum, SStream *O)
     OffImm = 0;
   if (isSub) {
     SStream_concat(O, "%s", markup("<imm:"));
-    printInt32Bang(O, -OffImm);
+    printInt32Bang(O, OffImm);
     SStream_concat0(O, markup(">"));
   } else {
     SStream_concat(O, "%s", markup("<imm:"));
