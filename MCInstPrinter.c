@@ -128,14 +128,17 @@ const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M)
 		unsigned OpIdx = 0;
 		bool OrPredicateResult = false;
 		for (const AliasPatternCond *C = Conds; C != Conds + P->NumConds; ++C) {
-			if (matchAliasCondition(MI, MI->MRI, &OpIdx, M, C,
+			if (!matchAliasCondition(MI, MI->MRI, &OpIdx, M, C,
 									&OrPredicateResult)) {
-				AsmStrOffset = P->AsmStrOffset;
+				AsmStrOffset = ~0U;
 				break;
 			}
 		}
-		if (AsmStrOffset != ~0U)
-			break;
+		if (AsmStrOffset == ~0U)
+			continue;
+		
+		AsmStrOffset = P->AsmStrOffset;
+		break;
 	}
 	// If no alias matched, don't print an alias.
 	if (AsmStrOffset == ~0U)
