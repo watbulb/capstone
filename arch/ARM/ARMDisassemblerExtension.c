@@ -208,6 +208,14 @@ bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
 	if (feature == ARM_FeatureMClass && (mode & CS_MODE_MCLASS) == 0)
 		return false;
 
+	if ((feature == ARM_HasMVEIntegerOps ||
+			feature == ARM_HasMVEFloatOps ||
+			feature == ARM_FeatureMVEVectorCostFactor1 ||
+			feature == ARM_FeatureMVEVectorCostFactor2 ||
+			feature == ARM_FeatureMVEVectorCostFactor4)
+			&& (mode & CS_MODE_MCLASS) == 0)
+		return false;
+
 	if (feature == ARM_HasV8Ops && (mode & CS_MODE_V8) == 0)
 		return false;
 
