@@ -834,11 +834,11 @@ void printShiftImmOperand(MCInst *MI, unsigned OpNum, SStream *O)
   bool isASR = (ShiftOp & (1 << 5)) != 0;
   unsigned Amt = ShiftOp & 0x1f;
   if (isASR) {
-    SStream_concat(O, "%s%s%s%s", ", asr ", markup("<imm:"), "#");
+    SStream_concat(O, "%s%s%s", ", asr ", markup("<imm:"), "#");
     printUInt32(O, Amt == 0 ? 32 : Amt);
     SStream_concat0(O, markup(">"));
   } else if (Amt) {
-    SStream_concat(O, "%s%s%s%s", ", lsl ", markup("<imm:"), "#");
+    SStream_concat(O, "%s%s%s", ", lsl ", markup("<imm:"), "#");
     printUInt32(O, Amt);
     SStream_concat0(O, markup(">"));
   }
@@ -864,7 +864,7 @@ void printPKHASRShiftImm(MCInst *MI, unsigned OpNum, SStream *O)
   if (Imm == 0)
     Imm = 32;
 
-  SStream_concat(O, "%s%s%s%s", ", asr ", markup("<imm:"), "#");
+  SStream_concat(O, "%s%s%s", ", asr ", markup("<imm:"), "#");
   printUInt32(O, Imm);
   SStream_concat0(O, markup(">"));
 }
