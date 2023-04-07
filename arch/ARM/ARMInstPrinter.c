@@ -1122,7 +1122,7 @@ void printPCLabel(MCInst *MI, unsigned OpNum, SStream *O)
     if (OffImm == INT32_MIN)                                                   \
       SStream_concat0(O, "#-0");                                               \
     else if (OffImm < 0) {                                                     \
-      printInt32Bang(O, -OffImm);                                              \
+      printInt32Bang(O, OffImm);                                               \
     } else {                                                                   \
       printInt32Bang(O, OffImm);                                               \
     }                                                                          \
@@ -1276,7 +1276,7 @@ void printT2SOOperand(MCInst *MI, unsigned OpNum, SStream *O)
       OffImm = 0;                                                              \
     if (isSub) {                                                               \
       SStream_concat(O, "%s%s", ", ", markup("<imm:"));                                \
-      printInt32Bang(O, -OffImm);                                              \
+      printInt32Bang(O, OffImm);                                              \
       SStream_concat0(O, markup(">"));                                         \
     } else if (AlwaysPrintImm0 || OffImm > 0) {                                \
       SStream_concat(O, "%s%s", ", ", markup("<imm:"));                                \
@@ -1308,12 +1308,12 @@ DEFINE_printAddrModeImm12Operand(false) DEFINE_printAddrModeImm12Operand(true)
     if (OffImm == INT32_MIN)                                                   \
       OffImm = 0;                                                              \
     if (isSub) {                                                               \
-      SStream_concat(O, "%s%s%s", ", ", markup("<imm:"), "#-"); \
-      printUInt32(O, -OffImm);                 \
+      SStream_concat(O, "%s%s", ", ", markup("<imm:")); \
+      printUInt32Bang(O, OffImm);                 \
       SStream_concat0(O, markup(">"));                                         \
     } else if (AlwaysPrintImm0 || OffImm > 0) {                                \
-      SStream_concat(O, "%s%s%s", ", ", markup("<imm:"), "#"); \
-      printInt32(O, OffImm);                   \
+      SStream_concat(O, "%s%s", ", ", markup("<imm:")); \
+      printInt32Bang(O, OffImm);                   \
       SStream_concat0(O, markup(">"));                                         \
     }                                                                          \
     SStream_concat(O, "%s", "]");                                                    \
@@ -1348,7 +1348,7 @@ DEFINE_printAddrModeImm12Operand(false) DEFINE_printAddrModeImm12Operand(true)
       OffImm = 0;                                                              \
     if (isSub) {                                                               \
       SStream_concat(O, "%s%s%s", ", ", markup("<imm:"), "#-"); \
-      printInt32(O, -OffImm);                 \
+      printInt32(O, OffImm);                 \
       SStream_concat0(O, markup(">"));                                         \
     } else if (AlwaysPrintImm0 || OffImm > 0) {                                \
       SStream_concat(O, "%s%s%s", ", ", markup("<imm:"), "#"); \
@@ -1410,7 +1410,7 @@ void printT2AddrModeImm8s4OffsetOperand(MCInst *MI, unsigned OpNum,
   if (OffImm == INT32_MIN)
     SStream_concat0(O, "#-0");
   else if (OffImm < 0) {
-    printInt32Bang(O, -OffImm);
+    printInt32Bang(O, OffImm);
   } else {
     printInt32Bang(O, OffImm);
   }
