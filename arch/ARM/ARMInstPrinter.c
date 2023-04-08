@@ -93,13 +93,13 @@ void printInst(MCInst *MI, SStream *O, void *info)
     MCOperand *MO2 = MCInst_getOperand(MI, (2));
     MCOperand *MO3 = MCInst_getOperand(MI, (3));
 
-    SStream_concat1(O, '\t');
+    SStream_concat1(O, ' ');
     SStream_concat0(
 	O, ARM_AM_getShiftOpcStr(ARM_AM_getSORegShOp(MCOperand_getImm(MO3))));
     printSBitModifierOperand(MI, 6, O);
     printPredicateOperand(MI, 4, O);
 
-    SStream_concat0(O, "\t");
+    SStream_concat0(O, " ");
 
     printRegName(O, MCOperand_getReg(Dst));
     SStream_concat0(O, ", ");
@@ -118,13 +118,12 @@ void printInst(MCInst *MI, SStream *O, void *info)
     MCOperand *MO1 = MCInst_getOperand(MI, (1));
     MCOperand *MO2 = MCInst_getOperand(MI, (2));
 
-    SStream_concat1(O, '\t');
     SStream_concat0(
 	O, ARM_AM_getShiftOpcStr(ARM_AM_getSORegShOp(MCOperand_getImm(MO2))));
     printSBitModifierOperand(MI, 5, O);
     printPredicateOperand(MI, 3, O);
 
-    SStream_concat0(O, "\t");
+    SStream_concat0(O, " ");
 
     printRegName(O, MCOperand_getReg(Dst));
     SStream_concat0(O, ", ");
@@ -153,7 +152,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
       printPredicateOperand(MI, 2, O);
       if (Opcode == ARM_t2STMDB_UPD)
 	SStream_concat0(O, ".w");
-      SStream_concat0(O, "\t");
+      SStream_concat0(O, " ");
 
       printRegisterList(MI, 4, O);
       ;
@@ -164,10 +163,10 @@ void printInst(MCInst *MI, SStream *O, void *info)
   case ARM_STR_PRE_IMM:
     if (MCOperand_getReg(MCInst_getOperand(MI, (2))) == ARM_SP &&
 	MCOperand_getImm(MCInst_getOperand(MI, (3))) == -4) {
-      SStream_concat1(O, '\t');
+      SStream_concat1(O, ' ');
       SStream_concat0(O, "push");
       printPredicateOperand(MI, 4, O);
-      SStream_concat0(O, "\t{");
+      SStream_concat0(O, " {");
       printRegName(O, MCOperand_getReg(MCInst_getOperand(MI, (1))));
       SStream_concat0(O, "}");
       ;
@@ -185,7 +184,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
       printPredicateOperand(MI, 2, O);
       if (Opcode == ARM_t2LDMIA_UPD)
 	SStream_concat0(O, ".w");
-      SStream_concat0(O, "\t");
+      SStream_concat0(O, " ");
 
       printRegisterList(MI, 4, O);
       ;
@@ -198,7 +197,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
 	MCOperand_getImm(MCInst_getOperand(MI, (4))) == 4) {
       SStream_concat0(O, "pop");
       printPredicateOperand(MI, 5, O);
-      SStream_concat0(O, "\t{");
+      SStream_concat0(O, " {");
       printRegName(O, MCOperand_getReg(MCInst_getOperand(MI, (0))));
       SStream_concat0(O, "}");
       ;
@@ -212,7 +211,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
     if (MCOperand_getReg(MCInst_getOperand(MI, (0))) == ARM_SP) {
       SStream_concat0(O, "vpush");
       printPredicateOperand(MI, 2, O);
-      SStream_concat0(O, "\t");
+      SStream_concat0(O, " ");
 
       printRegisterList(MI, 4, O);
       ;
@@ -224,10 +223,10 @@ void printInst(MCInst *MI, SStream *O, void *info)
   case ARM_VLDMSIA_UPD:
   case ARM_VLDMDIA_UPD:
     if (MCOperand_getReg(MCInst_getOperand(MI, (0))) == ARM_SP) {
-      SStream_concat1(O, '\t');
+      SStream_concat1(O, ' ');
       SStream_concat0(O, "vpop");
       printPredicateOperand(MI, 2, O);
-      SStream_concat0(O, "\t");
+      SStream_concat0(O, " ");
 
       printRegisterList(MI, 4, O);
       ;
@@ -243,10 +242,10 @@ void printInst(MCInst *MI, SStream *O, void *info)
 	Writeback = false;
     }
 
-    SStream_concat0(O, "\tldm");
+    SStream_concat0(O, " ldm");
 
     printPredicateOperand(MI, 1, O);
-    SStream_concat0(O, "\t");
+    SStream_concat0(O, " ");
 
     printRegName(O, BaseReg);
     if (Writeback)
@@ -297,7 +296,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
   }
   case ARM_TSB:
   case ARM_t2TSB:
-    SStream_concat0(O, "\ttsb\tcsync");
+    SStream_concat0(O, " tsb csync");
     return;
   case ARM_t2DSB:
     switch (MCOperand_getImm(MCInst_getOperand(MI, (0)))) {
@@ -306,10 +305,10 @@ void printInst(MCInst *MI, SStream *O, void *info)
 	printInstruction(MI, Address, O);
       break;
     case 0:
-      SStream_concat0(O, "\tssbb");
+      SStream_concat0(O, " ssbb");
       break;
     case 4:
-      SStream_concat0(O, "\tpssbb");
+      SStream_concat0(O, " pssbb");
       break;
     };
     return;
