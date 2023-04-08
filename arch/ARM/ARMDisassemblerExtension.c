@@ -54,22 +54,14 @@ void ITBlock_advanceITState(ARM_ITBlock *it)
 void ITBlock_setITState(ARM_ITBlock *it, char Firstcond, char Mask)
 {
   // (3 - the number of trailing zeros) is the number of then / else.
-  unsigned CondBit0 = Firstcond & 1;
-  unsigned NumTZ = CountTrailingZeros_32(Mask);
-  unsigned char CCBits = (unsigned char)Firstcond & 0xf;
-  unsigned Pos;
-
-  // assert(NumTZ <= 3 && "Invalid IT mask!");
+  unsigned NumTZ = CountTrailingZeros_8(Mask);
+  unsigned char CCBits = (unsigned char)(Firstcond & 0xf);
+  assert(NumTZ <= 3 && "Invalid IT mask!");
   // push condition codes onto the stack the correct order for the pops
-  for (Pos = NumTZ + 1; Pos <= 3; ++Pos) {
-    bool T = ((Mask >> Pos) & 1) == (int)CondBit0;
-
-    if (T)
-      ITBlock_push_back(it, CCBits);
-    else
-      ITBlock_push_back(it, CCBits ^ 1);
+  for (unsigned Pos = NumTZ+1; Pos <= 3; ++Pos) {
+    unsigned Else = (Mask >> Pos) & 1;
+    ITBlock_push_back(it, CCBits ^ Else);
   }
-
   ITBlock_push_back(it, CCBits);
 }
 

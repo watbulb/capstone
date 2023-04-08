@@ -557,7 +557,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		for (unsigned Pos = 3, e = NumTZ; Pos > e; --Pos) {
 			bool T = ((Mask >> Pos) & 1) == 0;
 			if (T)
-					PredMask <<= 1;
+				PredMask <<= 1;
 			else {
 				PredMask |= 1;
 				PredMask <<= 1;
