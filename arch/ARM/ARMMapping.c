@@ -360,6 +360,8 @@ static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 /// E.g. the base register and the immediate disponent.
 void ARM_set_mem_access(MCInst *MI, bool status)
 {
+	if (!MI->flat_insn->detail)
+		return;
 	MI->csh->doing_mem = status;
 	if (status) {
 		ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
