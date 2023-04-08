@@ -219,7 +219,18 @@ bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
 			&& (mode & CS_MODE_MCLASS) == 0)
 		return false;
 
-	if (feature == ARM_HasV8Ops && (mode & CS_MODE_V8) == 0)
+	if ((feature == ARM_HasV8Ops ||
+       feature == ARM_HasV8_1MMainlineOps ||
+       feature == ARM_HasV8_1aOps ||
+       feature == ARM_HasV8_2aOps ||
+       feature == ARM_HasV8_3aOps ||
+       feature == ARM_HasV8_4aOps ||
+       feature == ARM_HasV8_5aOps ||
+       feature == ARM_HasV8_6aOps ||
+       feature == ARM_HasV8_7aOps ||
+       feature == ARM_HasV8_8aOps ||
+       feature == ARM_HasV8_9aOps
+       ) && (mode & CS_MODE_V8) == 0)
 		return false;
 
 	if (feature >= ARM_FeatureCoprocCDE0 && feature <= ARM_FeatureCoprocCDE7)
