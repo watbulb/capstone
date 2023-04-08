@@ -136,6 +136,9 @@ void print_insn_detail_arm(csh handle, cs_insn *ins)
 	if (arm->mem_barrier)
 		printf("\tMemory-barrier: %u\n", arm->mem_barrier);
 
+	if (arm->pred_mask)
+		printf("\tPredicate Mask: 0x%x\n", arm->pred_mask);
+
 	// Print out all registers accessed by this instruction (either implicit or explicit)
 	if (!cs_regs_access(handle, ins,
 				regs_read, &regs_read_count,
