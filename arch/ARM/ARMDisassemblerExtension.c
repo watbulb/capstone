@@ -205,6 +205,9 @@ bool ARM_getFeatureBits(unsigned int mode, unsigned int feature)
 		return false;
 	}
 
+	if (feature == ARM_FeatureDFB)
+		return false;
+
 	if (feature == ARM_FeatureMClass && (mode & CS_MODE_MCLASS) == 0)
 		return false;
 
