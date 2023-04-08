@@ -944,10 +944,16 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		assert(0);
 	case ARM_OP_GROUP_AddrModeImm12Operand_0:
 	case ARM_OP_GROUP_AddrModeImm12Operand_1:
-	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
-	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1: {
+		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+		if (!MCOperand_isReg(MO1))
+			// Handled in printOperand
+			return;
+	}
+	// fallthrough
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_1: {
 		set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		int32_t Imm = ARM_get_op_val(MI, OpNum + 1);
