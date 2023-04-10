@@ -1346,12 +1346,12 @@ DEFINE_printAddrModeImm12Operand(false) DEFINE_printAddrModeImm12Operand(true)
     if (OffImm == INT32_MIN)                                                   \
       OffImm = 0;                                                              \
     if (isSub) {                                                               \
-      SStream_concat(O, "%s%s%s", ", ", markup("<imm:"), "#-"); \
-      printInt32(O, OffImm);                 \
+      SStream_concat(O, "%s%s", ", ", markup("<imm:")); \
+      printInt32Bang(O, OffImm);                 \
       SStream_concat0(O, markup(">"));                                         \
     } else if (AlwaysPrintImm0 || OffImm > 0) {                                \
-      SStream_concat(O, "%s%s%s", ", ", markup("<imm:"), "#"); \
-      printInt32(O, OffImm);                   \
+      SStream_concat(O, "%s%s", ", ", markup("<imm:")); \
+      printInt32Bang(O, OffImm);                   \
       SStream_concat0(O, markup(">"));                                         \
     }                                                                          \
     SStream_concat(O, "%s", "]");                                                    \
