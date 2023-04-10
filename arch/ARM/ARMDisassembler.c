@@ -915,18 +915,17 @@ DecodeStatus AddThumbPredicate(MCInst *MI)
     else
       MCInst_insert0(MI, VCCPos, MCOperand_CreateReg1(MI, (ARM_P0)));
     MCInst_insert0(MI, VCCPos + 2, MCOperand_CreateReg1(MI, (0)));
-    //   if (OpInfo[VCCPos].OperandType == ARM_OP_VPRED_R) {
-    //     int TiedOp = ARMInsts[MCInst_getOpcode(MI)].getOperandConstraint(
-    //  VCCPos + 3, MCOI_TIED_TO);
-
-    //     // Copy the operand to ensure it's not invalidated when MI grows.
-    //     // Must be a deep copy of the operand which is tied to this one.
-    //     // The constraints are given but the MCOI_TIED_TO is incorrect (needs
-    //     to
-    //     // store the index of the tied op). Do we need this here actually?
-    //     MI.insert(VCCI,
-    //   MCOperand_insert0(MI, VCCPos, MCInst_getOperand(MI, (TiedOp))));
-    //   }
+    if (OpInfo[VCCPos].OperandType == ARM_OP_VPRED_R) {
+      int TiedOp = MCOperandInfo_getOperandConstraint(
+        &ARMInsts[MCInst_getOpcode(MI)],
+        VCCPos + 3, MCOI_TIED_TO);
+      assert(TiedOp >= 0 &&
+             "Inactive register in vpred_r is not tied to an output!");
+      // Copy the operand to ensure it's not invalidated when MI grows.
+      MCOperand *Op = malloc(sizeof(MCOperand));
+      memcpy(Op, MCInst_getOperand(MI, TiedOp), sizeof(MCOperand));
+      MCInst_insert0(MI, VCCPos + 3, Op);
+    }
   } else if (VCC != ARMVCC_None) {
     Check(&S, MCDisassembler_SoftFail);
   }
