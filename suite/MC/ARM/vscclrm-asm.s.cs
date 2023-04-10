@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB, None
+# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8, None
 0x9f,0xec,0x04,0x0a = vscclrm {s0, s1, s2, s3, vpr}
 0xdf,0xec,0x06,0x1a = vscclrm {s3, s4, s5, s6, s7, s8, vpr}
 0x9f,0xec,0x0c,0x9a = vscclrm {s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, vpr}
