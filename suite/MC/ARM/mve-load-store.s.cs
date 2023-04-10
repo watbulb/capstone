@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB, None
+# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
 0x90,0xed,0x00,0x1e = vldrb.u8 q0, [r0]
 0x90,0xed,0x00,0x3e = vldrb.u8 q1, [r0]
 0x9b,0xed,0x00,0x1e = vldrb.u8 q0, [r11]

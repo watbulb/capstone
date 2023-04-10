@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB, None
+# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
 0x31,0xfe,0x08,0x0f = vcmp.f16 eq, q0, q4
 0x35,0xfe,0x8e,0x0f = vcmp.f16 ne, q2, q7
 0x31,0xfe,0x00,0x1f = vcmp.f16 ge, q0, q0

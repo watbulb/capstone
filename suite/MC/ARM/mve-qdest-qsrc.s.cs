@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB, None
+# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
 0x3f,0xee,0x09,0x2e = vcvtb.f16.f32 q1, q4
 0x3f,0xfe,0x03,0x1e = vcvtt.f32.f16 q0, q1
 0xb2,0xee,0xc0,0x0b = vcvtt.f64.f16 d0, s0
