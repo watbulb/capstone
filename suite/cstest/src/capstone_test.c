@@ -61,6 +61,7 @@ void test_single_MC(csh *handle, int mc_mode, char *line)
 	strcpy(tmp_mc, list_part[1]);
 	replace_hex(tmp_mc);
 	replace_negative(tmp_mc, mc_mode);
+	replace_tabs(tmp_mc);
 
 	strcpy(tmp, insn[0].mnemonic);
 	if (strlen(insn[0].op_str) > 0) {
@@ -72,6 +73,7 @@ void test_single_MC(csh *handle, int mc_mode, char *line)
 	strcpy(origin, tmp);
 	replace_hex(tmp);
 	replace_negative(tmp, mc_mode);
+	replace_tabs(tmp);
 
 	// Skip ARM because the duplicate disassembly messes with the IT/VPT states
 	// and laeds to wrong results.
