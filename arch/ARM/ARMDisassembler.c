@@ -913,7 +913,7 @@ DecodeStatus AddThumbPredicate(MCInst *MI)
     if (VCC == ARMVCC_None)
       MCInst_insert0(MI, VCCPos + 1, MCOperand_CreateReg1(MI, (0)));
     else
-      MCInst_insert0(MI, VCCPos, MCOperand_CreateReg1(MI, (ARM_P0)));
+      MCInst_insert0(MI, VCCPos + 1, MCOperand_CreateReg1(MI, (ARM_P0)));
     MCInst_insert0(MI, VCCPos + 2, MCOperand_CreateReg1(MI, (0)));
     if (OpInfo[VCCPos].OperandType == ARM_OP_VPRED_R) {
       int TiedOp = MCOperandInfo_getOperandConstraint(
