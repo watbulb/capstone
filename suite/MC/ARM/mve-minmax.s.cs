@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_M, None
+# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
 0x02,0xff,0x58,0x0f = vmaxnm.f32 q0, q1, q4
 0x30,0xff,0x52,0x6f = vminnm.f16 q3, q0, q1
 0x00,0xef,0x5e,0x66 = vmin.s8 q3, q0, q7
