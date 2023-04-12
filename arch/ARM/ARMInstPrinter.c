@@ -247,7 +247,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
     printPredicateOperand(MI, 1, O);
     SStream_concat0(O, " ");
 
-    printRegName(O, BaseReg);
+    printOperand(MI, 0, O);
     if (Writeback)
       SStream_concat0(O, "!");
     SStream_concat0(O, ", ");

@@ -287,6 +287,7 @@ void ARM_init_cs_detail(MCInst *MI) {
 
 		memset(MI->flat_insn->detail, 0, offsetof(cs_detail, arm) + sizeof(cs_arm));
 
+		MI->flat_insn->detail->arm.wb_op_idx = -1;
 		for (i = 0; i < ARR_SIZE(MI->flat_insn->detail->arm.operands); i++) {
 			MI->flat_insn->detail->arm.operands[i].vector_index = -1;
 			MI->flat_insn->detail->arm.operands[i].neon_lane = -1;
@@ -1074,6 +1075,13 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned
 	}
 }
 
+/// Check if operand with OpNum is a writeback register and
+/// set the WRITE attribute for the last detail operand added.
+static void ARM_set_attr_writeback(MCInst *MI, unsigned OpNum) {
+	if (MI->flat_insn->detail->arm.wb_op_idx == OpNum)
+		ARM_get_detail_op(MI, -1)->access |= CS_AC_WRITE;
+}
+
 /// Fills cs_detail with the data of the operand.
 /// Calls to this function are should not be added by hand! Please checkout the
 /// patch `AddCSDetail` of the CppTranslator.
@@ -1106,6 +1114,7 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args
 		unsigned op_num = va_arg(args, unsigned);
 		uint64_t templ_arg_0 = va_arg(args, uint64_t);
 		add_cs_detail_template_1(MI, op_group, op_num, templ_arg_0);
+		ARM_set_attr_writeback(MI, op_num);
 		return;
 	}
 	case ARM_OP_GROUP_ComplexRotationOp_180_90:
@@ -1114,11 +1123,13 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args
 		uint64_t templ_arg_0 = va_arg(args, uint64_t);
 		uint64_t templ_arg_1 = va_arg(args, uint64_t);
 		add_cs_detail_template_2(MI, op_group, op_num, templ_arg_0, templ_arg_1);
+		ARM_set_attr_writeback(MI, op_num);
 		return;
 	}
 	}
 	unsigned op_num = va_arg(args, unsigned);
 	add_cs_detail_general(MI, op_group, op_num);
+	ARM_set_attr_writeback(MI, op_num);
 }
 
 const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum) {

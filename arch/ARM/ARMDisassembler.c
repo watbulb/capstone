@@ -629,8 +629,13 @@ static void ARM_setWriteback(MCInst *MI) {
   for (i = 0; i < NumOps; ++i) {
     if (MCOperandInfo_isTiedToOp(&OpInfo[i])) {
 			MI->writeback = true;
-      if (MI->flat_insn->detail)
+      if (MI->flat_insn->detail) {
         MI->flat_insn->detail->arm.writeback = true;
+				int idx = MCOperandInfo_getOperandConstraint(
+					&ARMInsts[MCInst_getOpcode(MI)], i, MCOI_TIED_TO);
+				if (MI->flat_insn->detail->arm.wb_op_idx == -1 && idx != -1)
+					MI->flat_insn->detail->arm.wb_op_idx = idx;
+			}
 			return;
 		}
   }
