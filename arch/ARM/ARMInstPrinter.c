@@ -101,12 +101,12 @@ void printInst(MCInst *MI, SStream *O, void *info)
 
     SStream_concat0(O, " ");
 
-    printRegName(O, MCOperand_getReg(Dst));
+    printOperand(MI, 0, O);
     SStream_concat0(O, ", ");
-    printRegName(O, MCOperand_getReg(MO1));
+    printOperand(MI, 1, O);
 
     SStream_concat0(O, ", ");
-    printRegName(O, MCOperand_getReg(MO2));
+    printOperand(MI, 2, O);
 
     ;
     return;
@@ -125,9 +125,9 @@ void printInst(MCInst *MI, SStream *O, void *info)
 
     SStream_concat0(O, " ");
 
-    printRegName(O, MCOperand_getReg(Dst));
+    printOperand(MI, 0, O);
     SStream_concat0(O, ", ");
-    printRegName(O, MCOperand_getReg(MO1));
+    printOperand(MI, 1, O);
 
     if (ARM_AM_getSORegShOp(MCOperand_getImm(MO2)) == ARM_AM_rrx) {
       ;
@@ -167,7 +167,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
       SStream_concat0(O, "push");
       printPredicateOperand(MI, 4, O);
       SStream_concat0(O, " {");
-      printRegName(O, MCOperand_getReg(MCInst_getOperand(MI, (1))));
+      printOperand(MI, 1, O);
       SStream_concat0(O, "}");
       ;
       return;
@@ -198,7 +198,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
       SStream_concat0(O, "pop");
       printPredicateOperand(MI, 5, O);
       SStream_concat0(O, " {");
-      printRegName(O, MCOperand_getReg(MCInst_getOperand(MI, (0))));
+      printOperand(MI, 0, O);
       SStream_concat0(O, "}");
       ;
       return;
