@@ -2,6 +2,17 @@
 
 Input files used to test instructions of architectures and modes.
 
+The test cases are taken from `llvm/test/MC`. Note that the LLVM tests
+are for **encoding** of instructions (`asm_string -> bytes`).
+
+We test the decoding (`bytes -> asm_string`).
+A few tests might decode to a different asm string than
+used to encode the instruction (because the behavior
+of instructions can be equivalent).
+
+Fix the obvious broken tests first and test the rest
+against `llvm-objdump`.
+
 ### Update test files
 
 Run the update script with the paths to LLVM's `MC` test directories
