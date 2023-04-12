@@ -195,7 +195,7 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id) {
 
 bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len, MCInst *instr, uint16_t *size, uint64_t address, void *info) {
 	ARM_init_cs_detail(instr);
-	return getInstruction(handle, code, code_len, instr, size, address, info) == MCDisassembler_Success;
+	return getInstruction(handle, code, code_len, instr, size, address, info) != MCDisassembler_Fail;
 }
 
 #define GET_REGINFO_MC_DESC
