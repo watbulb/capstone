@@ -74,6 +74,7 @@ void test_single_MC(csh *handle, int mc_mode, char *line)
 	replace_hex(tmp);
 	replace_negative(tmp, mc_mode);
 	replace_tabs(tmp);
+	for (p = tmp; *p; ++p) *p = tolower(*p);
 
 	// Skip ARM because the duplicate disassembly messes with the IT/VPT states
 	// and laeds to wrong results.
