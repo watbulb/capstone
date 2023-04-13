@@ -88,9 +88,6 @@ void printInst(MCInst *MI, SStream *O, void *info)
   // Check for MOVs and print canonical forms, instead.
   case ARM_MOVsr: {
     // FIXME: Thumb variants?
-    MCOperand *Dst = MCInst_getOperand(MI, (0));
-    MCOperand *MO1 = MCInst_getOperand(MI, (1));
-    MCOperand *MO2 = MCInst_getOperand(MI, (2));
     MCOperand *MO3 = MCInst_getOperand(MI, (3));
 
     SStream_concat1(O, ' ');
@@ -114,8 +111,6 @@ void printInst(MCInst *MI, SStream *O, void *info)
 
   case ARM_MOVsi: {
     // FIXME: Thumb variants?
-    MCOperand *Dst = MCInst_getOperand(MI, (0));
-    MCOperand *MO1 = MCInst_getOperand(MI, (1));
     MCOperand *MO2 = MCInst_getOperand(MI, (2));
 
     SStream_concat0(

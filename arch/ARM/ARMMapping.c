@@ -211,7 +211,6 @@ void ARM_init_mri(MCRegisterInfo *MRI)
 			0);
 }
 
-#ifndef CAPSTONE_DIET
 ///< A LLVM<->CS Mapping entry of an operand.
 typedef struct insn_op {
 	uint8_t /* cs_op_type */ type; ///< Operand type (e.g.: reg, imm, mem)
@@ -228,6 +227,7 @@ const insn_ops insn_operands[] = {
 #include "ARMGenCSMappingInsnOp.inc"
 };
 
+#ifndef CAPSTONE_DIET
 void ARM_reg_access(const cs_insn *insn,
 		cs_regs regs_read, uint8_t *regs_read_count,
 		cs_regs regs_write, uint8_t *regs_write_count)
