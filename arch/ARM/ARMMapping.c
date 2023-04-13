@@ -824,7 +824,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		int64_t Imm = ARM_get_op_val(MI, OpNum + 1);
 		if (Imm)
-			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ARM_get_op_val(MI, OpNum));
+			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, Imm * 4);
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_PKHLSLShiftImm: {
@@ -960,7 +960,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		int32_t Imm = ARM_get_op_val(MI, OpNum + 1);
 		if (Imm == INT32_MIN)
 			Imm = 0;
-		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, Imm);
+		ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, Imm);
 		set_mem_access(MI, false);
 		break;
 	}
@@ -987,7 +987,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 			set_mem_access(MI, false);
 			break;
 		}
-		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
+		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
 		ARM_AM_AddrOpc Sign = ARM_AM_getAM3Op(ARM_get_op_val(MI, OpNum + 2));
 		if (Sign == ARM_AM_sub) {
 			ARM_get_detail_op(MI, 0)->mem.scale = -1;
@@ -1035,11 +1035,12 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		unsigned Shift = temp_arg_0;
 		set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
-		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum));
+		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
 		if (Shift > 0) {
 			add_cs_detail_RegImmShift(MI, ARM_AM_uxtw, Shift);
 		}
 		set_mem_access(MI, false);
+		break;
 	}
 	case ARM_OP_GROUP_MVEVectorList_2:
 	case ARM_OP_GROUP_MVEVectorList_4: {
