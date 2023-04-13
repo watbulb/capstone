@@ -496,6 +496,7 @@ void printAddrModeTBH(MCInst *MI, unsigned Op, SStream *O)
 
 void printAddrMode2Operand(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_AddrMode2Operand, Op);
   MCOperand *MO1 = MCInst_getOperand(MI, (Op));
 
   if (!MCOperand_isReg(
