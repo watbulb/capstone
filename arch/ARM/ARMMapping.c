@@ -450,8 +450,6 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			} else {
 				ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
 			}
-		else if (op_type == CS_OP_PRED)
-			ARM_set_detail_op_pred(MI, OpNum, ARM_get_op_val(MI, OpNum));
 		else
 			assert(0 && "Op type not handled.");
 		break;
@@ -1167,16 +1165,6 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int6
 
 	ARM_get_detail_op(MI, 0)->type = ImmType;
 	ARM_get_detail_op(MI, 0)->imm = Imm;
-	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
-	MI->flat_insn->detail->arm.op_count++;
-}
-
-/// Adds an predicate ARM operand at position OpNum and increases the op_count by one.
-void ARM_set_detail_op_pred(MCInst *MI, unsigned OpNum, uint64_t Pred) {
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_PRED);
-
-	ARM_get_detail_op(MI, 0)->type = ARM_OP_PRED;
-	ARM_get_detail_op(MI, 0)->pred = Pred;
 	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
