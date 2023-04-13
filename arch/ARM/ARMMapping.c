@@ -426,14 +426,14 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			return;
 		}
 		MI->flat_insn->detail->arm.cc = CC + 1;
-		return;
+		break;
 	}
 	case ARM_OP_GROUP_VPTPredicateOperand:
 	{
 		ARMVCC_VPTCodes VCC = (ARMVCC_VPTCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 		assert(VCC <= ARMVCC_Else);
 		MI->flat_insn->detail->arm.vcc = VCC;
-		return;
+		break;
 	}
 	case ARM_OP_GROUP_Operand:
 		if (op_type == CS_OP_IMM) {
@@ -630,6 +630,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 
 			ARM_set_detail_op_sysreg(MI, reg);
 		}
+		break;
 	}
 	case ARM_OP_GROUP_SORegRegOperand: {
 		int64_t imm = MCOperand_getImm(MCInst_getOperand(MI, OpNum + 2));
@@ -745,6 +746,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 		ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm2), ARM_AM_getAM2Offset(imm2));
+		break;
 	}
 	case ARM_OP_GROUP_AddrMode3OffsetOperand: {
 		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
@@ -800,6 +802,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		if (RegNum)
 			ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, RegNum);
 		set_mem_access(MI, false);
+		break;
 	}
 	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
 	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand: {
@@ -818,6 +821,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			ARM_get_detail_op(MI, 2)->shift.type = ARM_SFT_LSL;
 			ARM_get_detail_op(MI, 2)->shift.value = ShAmt;
 		}
+		break;
 	}
 	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
 		set_mem_access(MI, true);
@@ -994,6 +998,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 			ARM_get_detail_op(MI, 0)->subtracted = true;
 		}
 		set_mem_access(MI, false);
+		break;
 	}
 	case ARM_OP_GROUP_AddrMode5Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_1:
