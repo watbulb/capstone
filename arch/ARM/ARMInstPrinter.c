@@ -354,6 +354,7 @@ void printOperandAddr(MCInst *MI, uint64_t Address, unsigned OpNum, SStream *O)
   uint64_t Target = Address + Imm + Offset;
 
   Target &= 0xffffffff;
+  ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, Target);
   printUInt64(O, Target);
 }
 
@@ -576,6 +577,8 @@ void printAM3PreOrOffsetIndexOp(MCInst *MI, unsigned Op, SStream *O,
   void CONCAT(printAddrMode3Operand, AlwaysPrintImm0)(MCInst * MI,             \
 						      unsigned Op, SStream *O) \
   {                                                                            \
+    add_cs_detail(MI, CONCAT(ARM_OP_GROUP_AddrMode3Operand,                    \
+        AlwaysPrintImm0), Op, AlwaysPrintImm0);                                \
     MCOperand *MO1 = MCInst_getOperand(MI, (Op));                              \
     if (!MCOperand_isReg(MO1)) {                                               \
       printOperand(MI, Op, O);                                                 \
@@ -1127,6 +1130,7 @@ DEFINE_printAdrLabelOperand(0) DEFINE_printAdrLabelOperand(2)
 
     void printThumbS4ImmOperand(MCInst *MI, unsigned OpNum, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_ThumbS4ImmOperand, OpNum);
   SStream_concat(O, "%s", markup("<imm:"));
   printInt64Bang(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))) * 4);
   SStream_concat0(O, markup(">"));
@@ -1159,6 +1163,7 @@ void printThumbITMask(MCInst *MI, unsigned OpNum, SStream *O)
 
 void printThumbAddrModeRROperand(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_ThumbAddrModeRROperand, Op);
   MCOperand *MO1 = MCInst_getOperand(MI, (Op));
   MCOperand *MO2 = MCInst_getOperand(MI, (Op + 1));
 
@@ -1207,21 +1212,25 @@ void printThumbAddrModeImm5SOperand(MCInst *MI, unsigned Op, SStream *O,
 
 void printThumbAddrModeImm5S1Operand(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_ThumbAddrModeImm5S1Operand, Op);
   printThumbAddrModeImm5SOperand(MI, Op, O, 1);
 }
 
 void printThumbAddrModeImm5S2Operand(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_ThumbAddrModeImm5S2Operand, Op);
   printThumbAddrModeImm5SOperand(MI, Op, O, 2);
 }
 
 void printThumbAddrModeImm5S4Operand(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_ThumbAddrModeImm5S4Operand, Op);
   printThumbAddrModeImm5SOperand(MI, Op, O, 4);
 }
 
 void printThumbAddrModeSPOperand(MCInst *MI, unsigned Op, SStream *O)
 {
+  add_cs_detail(MI, ARM_OP_GROUP_ThumbAddrModeSPOperand, Op);
   printThumbAddrModeImm5SOperand(MI, Op, O, 4);
 }
 
