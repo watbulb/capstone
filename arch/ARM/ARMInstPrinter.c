@@ -1092,7 +1092,7 @@ void printCoprocOptionImm(MCInst *MI, unsigned OpNum, SStream *O)
 {
   add_cs_detail(MI, ARM_OP_GROUP_CoprocOptionImm, OpNum);
   SStream_concat(O, "%s", "{");
-  printUInt32(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
+  printInt64(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
   SStream_concat0(O, "}");
 }
 
@@ -1141,7 +1141,7 @@ void printThumbSRImm(MCInst *MI, unsigned OpNum, SStream *O)
   add_cs_detail(MI, ARM_OP_GROUP_ThumbSRImm, OpNum);
   unsigned Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
   SStream_concat(O, "%s", markup("<imm:"));
-  printInt32Bang(O, (Imm == 0 ? 32 : Imm));
+  printUInt32Bang(O, (Imm == 0 ? 32 : Imm));
   SStream_concat0(O, markup(">"));
 }
 
@@ -1203,7 +1203,7 @@ void printThumbAddrModeImm5SOperand(MCInst *MI, unsigned Op, SStream *O,
   unsigned ImmOffs = MCOperand_getImm(MO2);
   if (ImmOffs) {
     SStream_concat(O, "%s%s", ", ", markup("<imm:"));
-    printInt32Bang(O, ImmOffs * Scale);
+    printUInt32Bang(O, ImmOffs * Scale);
     SStream_concat0(O, markup(">"));
   }
   SStream_concat(O, "%s", "]");
@@ -1538,7 +1538,7 @@ void printFBits16(MCInst *MI, unsigned OpNum, SStream *O)
 {
   add_cs_detail(MI, ARM_OP_GROUP_FBits16, OpNum);
   SStream_concat(O, "%s%s", markup("<imm:"), "#");
-	printUInt32(O, 16 - MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
+	printInt64(O, 16 - MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
   SStream_concat0(O, markup(">"));
 }
 
@@ -1546,7 +1546,7 @@ void printFBits32(MCInst *MI, unsigned OpNum, SStream *O)
 {
   add_cs_detail(MI, ARM_OP_GROUP_FBits32, OpNum);
   SStream_concat(O, "%s%s", markup("<imm:"), "#");
-	printUInt32(O, 32 - MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
+	printInt64(O, 32 - MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
   SStream_concat0(O, markup(">"));
 }
 
@@ -1554,7 +1554,7 @@ void printVectorIndex(MCInst *MI, unsigned OpNum, SStream *O)
 {
   add_cs_detail(MI, ARM_OP_GROUP_VectorIndex, OpNum);
   SStream_concat(O, "%s", "[");
-  printUInt32(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
+  printInt64(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
   SStream_concat0(O, "]");
 }
 
@@ -1782,7 +1782,7 @@ DEFINE_printMVEVectorList(2) DEFINE_printMVEVectorList(4)
 	MI, CONCAT(CONCAT(ARM_OP_GROUP_ComplexRotationOp, Angle), Remainder),  \
 	OpNo, Angle, Remainder);                                               \
     unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, (OpNo)));            \
-    printInt32Bang(O, (Val * Angle) + Remainder);                              \
+    printUInt32Bang(O, (Val * Angle) + Remainder);                              \
   }
     DEFINE_printComplexRotationOp(90, 0) DEFINE_printComplexRotationOp(180, 90)
 
