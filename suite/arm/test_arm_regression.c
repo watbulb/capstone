@@ -122,7 +122,7 @@ static void snprint_insn_detail(char * buf, size_t * cur, size_t * left, cs_insn
 		_this_printf("\tUpdate-flags: True\n");
 	}
 
-	if (arm->writeback) {
+	if (ins->detail->writeback) {
 		_this_printf("\tWrite-back: True\n");
 	}
 

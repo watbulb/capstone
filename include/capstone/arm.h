@@ -337,8 +337,6 @@ typedef struct cs_arm {
 	arm_cc cc;			///< conditional code for this insn
 	int /* ARMVCC_VPTCodes */ vcc;	///< Vector conditional code for this instruction.
 	bool update_flags;	///< does this insn update flags?
-	bool writeback;		///< does this insn write-back?
-	unsigned wb_op_idx;	///< Index of the MCOperand which is written .
 	bool post_index;	///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
 	int /* arm_mem_bo_opt */ mem_barrier;	///< Option for some memory barrier instructions
 	// Check ARM_PredBlockMask for encoding details.

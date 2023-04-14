@@ -26,12 +26,13 @@ void MCInst_Init(MCInst *inst)
 	inst->size = 0;
 	inst->has_imm = false;
 	inst->op1_size = 0;
-	inst->writeback = false;
 	inst->ac_idx = 0;
 	inst->popcode_adjust = 0;
 	inst->assembly[0] = '\0';
 	inst->wasm_data.type = WASM_OP_INVALID;
 	inst->xAcquireRelease = 0;
+	for (int i = 0; i < MAX_WB_OPS; ++i)
+		inst->wb_op_idx[i] = -1;
 }
 
 void MCInst_clear(MCInst *inst)
@@ -207,6 +208,45 @@ bool MCInst_isPredicable(const MCInstrDesc *MIDesc) {
 		if (MCOperandInfo_isPredicate(&OpInfo[i])) {
 			return true;
 		}
+	}
+	return false;
+}
+
+/// Checks if tied operands exist in the instruction and sets
+/// - The writeback flag in detail
+/// - Saves the indices of the tied destination operands.
+void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc) {
+  const MCOperandInfo *OpInfo = InstDesc[MCInst_getOpcode(MI)].OpInfo;
+  unsigned short NumOps = InstDesc[MCInst_getOpcode(MI)].NumOperands;
+
+  unsigned i;
+  for (i = 0; i < NumOps; ++i) {
+    if (MCOperandInfo_isTiedToOp(&OpInfo[i])) {
+			int idx = MCOperandInfo_getOperandConstraint(
+				&InstDesc[MCInst_getOpcode(MI)], i, MCOI_TIED_TO);
+
+			if (idx == -1)
+				continue;
+
+			if(i >= MAX_WB_OPS) {
+				printf("ERROR: Could not set writeback info. More then %d writebacks.\n", MAX_WB_OPS);
+				return;
+			}
+			MI->wb_op_idx[i] = idx;
+
+      if (MI->flat_insn->detail)
+				MI->flat_insn->detail->writeback = true;
+
+		}
+  }
+}
+
+/// Check if operand with OpNum is a writeback (tied destination)
+/// operand.
+bool MCInst_opIsWriteback(const MCInst *MI, unsigned OpNum) {
+	for (int i = 0; i < MAX_WB_OPS; ++i) {
+		if (MI->wb_op_idx[i] == OpNum)
+			return true;
 	}
 	return false;
 }

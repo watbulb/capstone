@@ -137,7 +137,7 @@ static void print_insn_detail(csh cs_handle, cs_insn *ins)
 	if (arm->update_flags)
 		printf("\tUpdate-flags: True\n");
 
-	if (arm->writeback)
+	if (ins->detail->writeback)
 		printf("\tWrite-back: True\n");
 
 	if (arm->cps_mode)
