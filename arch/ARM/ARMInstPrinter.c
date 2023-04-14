@@ -243,8 +243,13 @@ void printInst(MCInst *MI, SStream *O, void *info)
     SStream_concat0(O, " ");
 
     printOperand(MI, 0, O);
-    if (Writeback)
+    if (Writeback) {
       SStream_concat0(O, "!");
+      if (MI->flat_insn->detail) {
+        ARM_get_detail_op(MI, -1)->access |= CS_AC_WRITE;
+        MI->flat_insn->detail->writeback = true;
+      }
+    }
     SStream_concat0(O, ", ");
     printRegisterList(MI, 3, O);
     ;
