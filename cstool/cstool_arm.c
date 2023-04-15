@@ -109,7 +109,7 @@ void print_insn_detail_arm(csh handle, cs_insn *ins)
 			printf("\t\tSubtracted: True\n");
 	}
 
-	if (arm->cc != ARM_CC_AL && arm->cc != ARM_CC_INVALID)
+	if (arm->cc != ARMCC_AL && arm->cc != ARMCC_UNDEF)
 		printf("\tCode condition: %u\n", arm->cc);
 
 	if (arm->update_flags)

@@ -367,11 +367,11 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	{
 		ARMCC_CondCodes CC = (ARMCC_CondCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 		if ((unsigned)CC == 15 && op_group == ARM_OP_GROUP_PredicateOperand) {
-			MI->flat_insn->detail->arm.cc = ARM_CC_INVALID;
+			MI->flat_insn->detail->arm.cc = ARMCC_UNDEF;
 			return;
 		}
 		if (CC == ARMCC_HS && op_group == ARM_OP_GROUP_MandatoryRestrictedPredicateOperand) {
-			MI->flat_insn->detail->arm.cc = ARM_CC_HS;
+			MI->flat_insn->detail->arm.cc = ARMCC_HS;
 			return;
 		}
 		MI->flat_insn->detail->arm.cc = CC + 1;

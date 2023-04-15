@@ -114,7 +114,7 @@ static void snprint_insn_detail(char * buf, size_t * cur, size_t * left, cs_insn
 		}
 	}
 
-	if (arm->cc != ARM_CC_AL && arm->cc != ARM_CC_INVALID) {
+	if (arm->cc != ARMCC_AL && arm->cc != ARMCC_UNDEF) {
 		_this_printf("\tCode condition: %u\n", arm->cc);
 	}
 

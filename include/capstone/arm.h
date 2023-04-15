@@ -3,16 +3,247 @@
 
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2015 */
+/*    Rot127 <unisono@quyllur.org>, 2022-2023 */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <assert.h>
+#include <string.h>
 
 #include "platform.h"
 
 #ifdef _MSC_VER
 #pragma warning(disable:4201)
 #endif
+
+// Enums corresponding to ARM condition codes
+// The CondCodes constants map directly to the 4-bit encoding of the
+// condition field for predicated instructions.
+typedef enum CondCodes {
+  // Meaning (integer)          Meaning (floating-point)
+  ARMCC_EQ, // Equal                      Equal
+  ARMCC_NE, // Not equal                  Not equal, or unordered
+  ARMCC_HS, // Carry set                  >, ==, or unordered
+  ARMCC_LO, // Carry clear                Less than
+  ARMCC_MI, // Minus, negative            Less than
+  ARMCC_PL, // Plus, positive or zero     >, ==, or unordered
+  ARMCC_VS, // Overflow                   Unordered
+  ARMCC_VC, // No overflow                Not unordered
+  ARMCC_HI, // Unsigned higher            Greater than, or unordered
+  ARMCC_LS, // Unsigned lower or same     Less than or equal
+  ARMCC_GE, // Greater than or equal      Greater than or equal
+  ARMCC_LT, // Less than                  Less than, or unordered
+  ARMCC_GT, // Greater than               Greater than
+  ARMCC_LE, // Less than or equal         <, ==, or unordered
+  ARMCC_AL, // Always (unconditional)     Always (unconditional)
+  ARMCC_UNDEF = 15, // Undefined
+} ARMCC_CondCodes;
+
+inline static ARMCC_CondCodes ARMCC_getOppositeCondition(ARMCC_CondCodes CC)
+{
+  switch (CC) {
+  default:
+    // llvm_unreachable("Unknown condition code");
+    assert(0);
+  case ARMCC_EQ:
+    return ARMCC_NE;
+  case ARMCC_NE:
+    return ARMCC_EQ;
+  case ARMCC_HS:
+    return ARMCC_LO;
+  case ARMCC_LO:
+    return ARMCC_HS;
+  case ARMCC_MI:
+    return ARMCC_PL;
+  case ARMCC_PL:
+    return ARMCC_MI;
+  case ARMCC_VS:
+    return ARMCC_VC;
+  case ARMCC_VC:
+    return ARMCC_VS;
+  case ARMCC_HI:
+    return ARMCC_LS;
+  case ARMCC_LS:
+    return ARMCC_HI;
+  case ARMCC_GE:
+    return ARMCC_LT;
+  case ARMCC_LT:
+    return ARMCC_GE;
+  case ARMCC_GT:
+    return ARMCC_LE;
+  case ARMCC_LE:
+    return ARMCC_GT;
+  }
+}
+
+/// getSwappedCondition - assume the flags are set by MI(a,b), return
+/// the condition code if we modify the instructions such that flags are
+/// set by MI(b,a).
+inline static ARMCC_CondCodes ARMCC_getSwappedCondition(ARMCC_CondCodes CC)
+{
+  switch (CC) {
+  default:
+    return ARMCC_AL;
+  case ARMCC_EQ:
+    return ARMCC_EQ;
+  case ARMCC_NE:
+    return ARMCC_NE;
+  case ARMCC_HS:
+    return ARMCC_LS;
+  case ARMCC_LO:
+    return ARMCC_HI;
+  case ARMCC_HI:
+    return ARMCC_LO;
+  case ARMCC_LS:
+    return ARMCC_HS;
+  case ARMCC_GE:
+    return ARMCC_LE;
+  case ARMCC_LT:
+    return ARMCC_GT;
+  case ARMCC_GT:
+    return ARMCC_LT;
+  case ARMCC_LE:
+    return ARMCC_GE;
+  }
+}
+
+typedef enum VPTCodes {
+  ARMVCC_None = 0,
+  ARMVCC_Then,
+  ARMVCC_Else
+} ARMVCC_VPTCodes;
+
+/// Mask values for IT and VPT Blocks, to be used by MCOperands.
+/// Note that this is different from the "real" encoding used by the
+/// instructions. In this encoding, the lowest set bit indicates the end of
+/// the encoding, and above that, "1" indicates an else, while "0" indicates
+/// a then.
+///   Tx = x100
+///   Txy = xy10
+///   Txyz = xyz1
+typedef enum PredBlockMask {
+  ARM_T = 0b1000,
+  ARM_TT = 0b0100,
+  ARM_TE = 0b1100,
+  ARM_TTT = 0b0010,
+  ARM_TTE = 0b0110,
+  ARM_TEE = 0b1110,
+  ARM_TET = 0b1010,
+  ARM_TTTT = 0b0001,
+  ARM_TTTE = 0b0011,
+  ARM_TTEE = 0b0111,
+  ARM_TTET = 0b0101,
+  ARM_TEEE = 0b1111,
+  ARM_TEET = 0b1101,
+  ARM_TETT = 0b1001,
+  ARM_TETE = 0b1011
+} ARM_PredBlockMask;
+
+// Expands a PredBlockMask by adding an E or a T at the end, depending on Kind.
+// e.g ExpandPredBlockMask(T, Then) = TT, ExpandPredBlockMask(TT, Else) = TTE,
+// and so on.
+inline static const char *ARMVPTPredToString(ARMVCC_VPTCodes CC)
+{
+  switch (CC) {
+  case ARMVCC_None:
+    return "none";
+  case ARMVCC_Then:
+    return "t";
+  case ARMVCC_Else:
+    return "e";
+  }
+  assert(0 && "Unknown VPT code");
+}
+
+inline static unsigned ARMVectorCondCodeFromString(const char CC)
+{
+  switch (CC) {
+  default:
+    return ~0U;
+  case 't':
+    return ARMVCC_Then;
+  case 'e':
+    return ARMVCC_Else;
+  }
+}
+
+inline static const char *ARMCondCodeToString(ARMCC_CondCodes CC)
+{
+  switch (CC) {
+  case ARMCC_EQ:
+    return "eq";
+  case ARMCC_NE:
+    return "ne";
+  case ARMCC_HS:
+    return "hs";
+  case ARMCC_LO:
+    return "lo";
+  case ARMCC_MI:
+    return "mi";
+  case ARMCC_PL:
+    return "pl";
+  case ARMCC_VS:
+    return "vs";
+  case ARMCC_VC:
+    return "vc";
+  case ARMCC_HI:
+    return "hi";
+  case ARMCC_LS:
+    return "ls";
+  case ARMCC_GE:
+    return "ge";
+  case ARMCC_LT:
+    return "lt";
+  case ARMCC_GT:
+    return "gt";
+  case ARMCC_LE:
+    return "le";
+  case ARMCC_AL:
+    return "al";
+  }
+  assert(0 && "Unknown condition code");
+}
+
+inline static unsigned ARMCondCodeFromString(const char *CC)
+{
+  if (strcmp("eq", CC) == 0)
+    return ARMCC_EQ;
+  else if (strcmp("ne", CC) == 0)
+    return ARMCC_NE;
+  else if (strcmp("hs", CC) == 0)
+    return ARMCC_HS;
+  else if (strcmp("cs", CC) == 0)
+    return ARMCC_HS;
+  else if (strcmp("lo", CC) == 0)
+    return ARMCC_LO;
+  else if (strcmp("cc", CC) == 0)
+    return ARMCC_LO;
+  else if (strcmp("mi", CC) == 0)
+    return ARMCC_MI;
+  else if (strcmp("pl", CC) == 0)
+    return ARMCC_PL;
+  else if (strcmp("vs", CC) == 0)
+    return ARMCC_VS;
+  else if (strcmp("vc", CC) == 0)
+    return ARMCC_VC;
+  else if (strcmp("hi", CC) == 0)
+    return ARMCC_HI;
+  else if (strcmp("ls", CC) == 0)
+    return ARMCC_LS;
+  else if (strcmp("ge", CC) == 0)
+    return ARMCC_GE;
+  else if (strcmp("lt", CC) == 0)
+    return ARMCC_LT;
+  else if (strcmp("gt", CC) == 0)
+    return ARMCC_GT;
+  else if (strcmp("le", CC) == 0)
+    return ARMCC_LE;
+  else if (strcmp("al", CC) == 0)
+    return ARMCC_AL;
+  return (~0U);
+}
 
 /// ARM shift type
 typedef enum arm_shifter {
@@ -28,26 +259,6 @@ typedef enum arm_shifter {
 	ARM_SFT_ROR_REG,	///< shift with register
 	ARM_SFT_RRX_REG,	///< shift with register
 } arm_shifter;
-
-/// ARM condition code
-typedef enum arm_cc {
-	ARM_CC_INVALID = 0,
-	ARM_CC_EQ,            ///< Equal                      Equal
-	ARM_CC_NE,            ///< Not equal                  Not equal, or unordered
-	ARM_CC_HS,            ///< Carry set                  >, ==, or unordered
-	ARM_CC_LO,            ///< Carry clear                Less than
-	ARM_CC_MI,            ///< Minus, negative            Less than
-	ARM_CC_PL,            ///< Plus, positive or zero     >, ==, or unordered
-	ARM_CC_VS,            ///< Overflow                   Unordered
-	ARM_CC_VC,            ///< No overflow                Not unordered
-	ARM_CC_HI,            ///< Unsigned higher            Greater than, or unordered
-	ARM_CC_LS,            ///< Unsigned lower or same     Less than or equal
-	ARM_CC_GE,            ///< Greater than or equal      Greater than or equal
-	ARM_CC_LT,            ///< Less than                  Less than, or unordered
-	ARM_CC_GT,            ///< Greater than               Greater than
-	ARM_CC_LE,            ///< Less than or equal         <, ==, or unordered
-	ARM_CC_AL             ///< Always (unconditional)     Always (unconditional)
-} arm_cc;
 
 /// The memory barrier constants map directly to the 4-bit encoding of
 /// the option field for Memory Barrier operations.
@@ -334,8 +545,8 @@ typedef struct cs_arm {
 	arm_vectordata_type vector_data; ///< Data type for elements of vector instructions
 	arm_cpsmode_type cps_mode;	///< CPS mode for CPS instruction
 	arm_cpsflag_type cps_flag;	///< CPS mode for CPS instruction
-	arm_cc cc;			///< conditional code for this insn
-	int /* ARMVCC_VPTCodes */ vcc;	///< Vector conditional code for this instruction.
+	ARMCC_CondCodes cc;		///< conditional code for this insn
+	ARMVCC_VPTCodes vcc;	///< Vector conditional code for this instruction.
 	bool update_flags;	///< does this insn update flags?
 	bool post_index;	///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
 	int /* arm_mem_bo_opt */ mem_barrier;	///< Option for some memory barrier instructions
