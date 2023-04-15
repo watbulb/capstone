@@ -241,6 +241,8 @@ void ARM_init_cs_detail(MCInst *MI) {
 			MI->flat_insn->detail->arm.operands[i].vector_index = -1;
 			MI->flat_insn->detail->arm.operands[i].neon_lane = -1;
 		}
+		MI->flat_insn->detail->arm.cc = ARMCC_UNDEF;
+		MI->flat_insn->detail->arm.vcc = ARMVCC_None;
 	}
 }
 
@@ -381,7 +383,8 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	{
 		ARMVCC_VPTCodes VCC = (ARMVCC_VPTCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 		assert(VCC <= ARMVCC_Else);
-		MI->flat_insn->detail->arm.vcc = VCC;
+		if (VCC != ARMVCC_None)
+			MI->flat_insn->detail->arm.vcc = VCC;
 		break;
 	}
 	case ARM_OP_GROUP_Operand:

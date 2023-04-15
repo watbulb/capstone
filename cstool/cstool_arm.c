@@ -112,6 +112,9 @@ void print_insn_detail_arm(csh handle, cs_insn *ins)
 	if (arm->cc != ARMCC_AL && arm->cc != ARMCC_UNDEF)
 		printf("\tCode condition: %u\n", arm->cc);
 
+	if (arm->vcc != ARMVCC_None)
+		printf("\tVector code condition: %u\n", arm->vcc);
+
 	if (arm->update_flags)
 		printf("\tUpdate-flags: True\n");
 
