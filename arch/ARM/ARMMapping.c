@@ -36,67 +36,8 @@ const insn_map arm_insns[] = {
 #include "ARMGenCSMappingInsn.inc"
 };
 
-// look for @id in @insns
-// return -1 if not found
-static unsigned int find_insn(unsigned int id)
-{
-	// binary searching since the IDs are sorted in order
-	unsigned int left, right, m;
-	unsigned int max = ARR_SIZE(arm_insns);
-
-	right = max - 1;
-
-	if (id < arm_insns[0].id || id > arm_insns[right].id)
-		// not found
-		return -1;
-
-	left = 0;
-
-	while(left <= right) {
-		m = (left + right) / 2;
-		if (id == arm_insns[m].id) {
-			return m;
-		}
-
-		if (id < arm_insns[m].id)
-			right = m - 1;
-		else
-			left = m + 1;
-	}
-
-	return -1;
-}
-
-void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
-{
-	unsigned int i = find_insn(id);
-	if (i != -1) {
-		insn->id = arm_insns[i].mapid;
-
-		if (h->detail) {
-#ifndef CAPSTONE_DIET
-			cs_struct handle;
-			handle.detail = h->detail;
-
-			memcpy(insn->detail->regs_read, arm_insns[i].regs_use, sizeof(arm_insns[i].regs_use));
-			insn->detail->regs_read_count = (uint8_t)count_positive(arm_insns[i].regs_use);
-
-			memcpy(insn->detail->regs_write, arm_insns[i].regs_mod, sizeof(arm_insns[i].regs_mod));
-			insn->detail->regs_write_count = (uint8_t)count_positive(arm_insns[i].regs_mod);
-
-			memcpy(insn->detail->groups, arm_insns[i].groups, sizeof(arm_insns[i].groups));
-			insn->detail->groups_count = (uint8_t)count_positive8(arm_insns[i].groups);
-
-			insn->detail->arm.update_flags = cs_reg_write((csh)&handle, insn, ARM_REG_CPSR);
-
-			if (arm_insns[i].branch || arm_insns[i].indirect_branch) {
-				// this insn also belongs to JUMP group. add JUMP group
-				insn->detail->groups[insn->detail->groups_count] = ARM_GRP_JUMP;
-				insn->detail->groups_count++;
-			}
-#endif
-		}
-	}
+void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id) {
+	// Not used by ARM. Information is set after disassembly.
 }
 
 #ifndef CAPSTONE_DIET
@@ -193,9 +134,18 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id) {
 
 }
 
+void ARM_set_instr_map_data(MCInst *MI) {
+	map_cs_id(MI, arm_insns, ARR_SIZE(arm_insns));
+	map_implicit_reads(MI, arm_insns);
+	map_implicit_writes(MI, arm_insns);
+	map_groups(MI, arm_insns);
+}
+
 bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len, MCInst *instr, uint16_t *size, uint64_t address, void *info) {
 	ARM_init_cs_detail(instr);
-	return getInstruction(handle, code, code_len, instr, size, address, info) != MCDisassembler_Fail;
+	bool Result = getInstruction(handle, code, code_len, instr, size, address, info) != MCDisassembler_Fail;
+	ARM_set_instr_map_data(instr);
+	return Result;
 }
 
 #define GET_REGINFO_MC_DESC
@@ -476,7 +426,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_SBitModifierOperand:
 		// The tablegen files often define CPSR as in-register.
 		// and not list them in implicit writes.
-		MCInst_addImplicitWrite(MI, ARM_CPSR);
+		map_add_implicit_write(MI, ARM_CPSR);
 		MI->flat_insn->detail->arm.update_flags = true;
 		break;
 	case ARM_OP_GROUP_VectorListOne:

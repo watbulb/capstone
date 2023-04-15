@@ -20,9 +20,9 @@ typedef struct insn_map {
 	unsigned short id; // The LLVM instruction id
 	unsigned short mapid; // The Capstone instruction id
 #ifndef CAPSTONE_DIET
-	uint16_t regs_use[12]; // list of implicit registers used by this instruction
-	uint16_t regs_mod[20]; // list of implicit registers modified by this instruction
-	unsigned char groups[8]; // list of group this instruction belong to
+	uint16_t regs_use[MAX_IMPL_R_REGS]; ///< list of implicit registers used by this instruction
+	uint16_t regs_mod[MAX_IMPL_W_REGS]; ///< list of implicit registers modified by this instruction
+	unsigned char groups[MAX_NUM_GROUPS]; ///< list of group this instruction belong to
 	bool branch;	// branch instruction?
 	bool indirect_branch;	// indirect branch instruction?
 #endif
@@ -76,6 +76,18 @@ struct IndexType {
 // binary search for encoding in IndexType array
 // return -1 if not found, or index if found
 unsigned int binsearch_IndexTypeEncoding(const struct IndexType *index, size_t size, uint16_t encoding);
+
+void map_add_implicit_write(MCInst *MI, uint32_t Reg);
+
+void map_implicit_reads(MCInst *MI, const insn_map *imap);
+
+void map_implicit_writes(MCInst *MI, const insn_map *imap);
+
+void map_groups(MCInst *MI, const insn_map *imap);
+
+unsigned int find_cs_id(unsigned MC_Opcode, const insn_map *imap, unsigned imap_size);
+
+void map_cs_id(MCInst *MI, const insn_map *imap, unsigned int imap_size);
 
 #endif
 

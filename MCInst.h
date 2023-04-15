@@ -158,6 +158,4 @@ void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc);
 
 bool MCInst_opIsWriteback(const MCInst *MI, unsigned OpNum);
 
-void MCInst_addImplicitWrite(MCInst *MI, uint32_t Reg);
-
 #endif

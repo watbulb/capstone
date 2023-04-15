@@ -327,6 +327,7 @@ typedef struct cs_opt_skipdata {
 
 #define MAX_IMPL_W_REGS 20
 #define MAX_IMPL_R_REGS 20
+#define MAX_NUM_GROUPS 8
 
 /// NOTE: All information in cs_detail is only available when CS_OPT_DETAIL = CS_OPT_ON
 /// Initialized as memset(., 0, offsetof(cs_detail, ARCH)+sizeof(cs_ARCH))
@@ -340,7 +341,7 @@ typedef struct cs_detail {
 	uint16_t regs_write[MAX_IMPL_W_REGS]; ///< list of implicit registers modified by this insn
 	uint8_t regs_write_count; ///< number of implicit registers modified by this insn
 
-	uint8_t groups[8]; ///< list of group this instruction belong to
+	uint8_t groups[MAX_NUM_GROUPS]; ///< list of group this instruction belong to
 	uint8_t groups_count; ///< number of groups this insn belongs to
 
 	bool writeback;		///< Instruction has writeback operands.

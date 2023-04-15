@@ -109,7 +109,7 @@ char *get_detail_arm(csh *handle, cs_mode mode, cs_insn *ins)
 	if (arm->update_flags)
 		add_str(&result, " ; Update-flags: True");
 
-	if (arm->writeback)
+	if (ins->detail->writeback)
 		add_str(&result, " ; Write-back: True");
 
 	if (arm->cps_mode)
