@@ -251,3 +251,19 @@ bool MCInst_opIsWriteback(const MCInst *MI, unsigned OpNum) {
 	return false;
 }
 
+/// Adds a register to the reg_writes[]. It will not add the same register twice.
+void MCInst_addImplicitWrite(MCInst *MI, uint32_t Reg) {
+	if (!MI->flat_insn->detail)
+		return;
+
+	uint16_t *regs_write = MI->flat_insn->detail->regs_write;
+	for (int i = 0; i < MAX_IMPL_W_REGS; ++i) {
+		if (i == MI->flat_insn->detail->regs_write_count) {
+			regs_write[i] = Reg;
+			MI->flat_insn->detail->regs_write_count++;
+			return;
+		}
+		if (regs_write[i] == Reg)
+			return;
+	}
+}

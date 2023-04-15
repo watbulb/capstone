@@ -474,6 +474,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_SBitModifierOperand:
+		// The tablegen files often define CPSR as in-register.
+		// and not list them in implicit writes.
+		MCInst_addImplicitWrite(MI, ARM_CPSR);
 		MI->flat_insn->detail->arm.update_flags = true;
 		break;
 	case ARM_OP_GROUP_VectorListOne:

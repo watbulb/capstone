@@ -325,16 +325,19 @@ typedef struct cs_opt_skipdata {
 #include "sh.h"
 #include "tricore.h"
 
+#define MAX_IMPL_W_REGS 20
+#define MAX_IMPL_R_REGS 20
+
 /// NOTE: All information in cs_detail is only available when CS_OPT_DETAIL = CS_OPT_ON
 /// Initialized as memset(., 0, offsetof(cs_detail, ARCH)+sizeof(cs_ARCH))
 /// by ARCH_getInstruction in arch/ARCH/ARCHDisassembler.c
 /// if cs_detail changes, in particular if a field is added after the union,
 /// then update arch/ARCH/ARCHDisassembler.c accordingly
 typedef struct cs_detail {
-	uint16_t regs_read[16]; ///< list of implicit registers read by this insn
+	uint16_t regs_read[MAX_IMPL_R_REGS]; ///< list of implicit registers read by this insn
 	uint8_t regs_read_count; ///< number of implicit registers read by this insn
 
-	uint16_t regs_write[20]; ///< list of implicit registers modified by this insn
+	uint16_t regs_write[MAX_IMPL_W_REGS]; ///< list of implicit registers modified by this insn
 	uint8_t regs_write_count; ///< number of implicit registers modified by this insn
 
 	uint8_t groups[8]; ///< list of group this instruction belong to
