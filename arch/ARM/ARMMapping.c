@@ -781,11 +781,14 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			default: assert(0 && "Cannot determine scale. Operand group not handled.");
 			case ARM_OP_GROUP_ThumbAddrModeImm5S1Operand:
 				Scale = 1;
+				break;
 			case ARM_OP_GROUP_ThumbAddrModeImm5S2Operand:
 				Scale = 2;
+				break;
 			case ARM_OP_GROUP_ThumbAddrModeImm5S4Operand:
 			case ARM_OP_GROUP_ThumbAddrModeSPOperand:
 				Scale = 4;
+				break;
 			}
 			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ImmOffs * Scale);
 		}
