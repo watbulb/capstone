@@ -374,7 +374,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			MI->flat_insn->detail->arm.cc = ARMCC_HS;
 			return;
 		}
-		MI->flat_insn->detail->arm.cc = CC + 1;
+		MI->flat_insn->detail->arm.cc = CC;
 		break;
 	}
 	case ARM_OP_GROUP_VPTPredicateOperand:
