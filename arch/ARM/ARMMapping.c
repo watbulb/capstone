@@ -1093,8 +1093,8 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops)/sizeof(insn_operands[MI->Opcode].ops[0]));
 
 	cs_ac_type access = insn_operands[MI->Opcode].ops[OpNum].access;
-	if (MCInst_opIsWriteback(MI, OpNum))
-		access |= CS_AC_WRITE;
+	if (MCInst_opIsTied(MI, OpNum))
+		access |= (access == CS_AC_READ) ? CS_AC_WRITE : CS_AC_READ;
 	return access;
 }
 

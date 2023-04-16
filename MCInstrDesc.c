@@ -28,10 +28,11 @@ bool MCOperandInfo_isTiedToOp(const MCOperandInfo *m) {
 /// it is present. Returns -1 if it is not present.
 int MCOperandInfo_getOperandConstraint(const MCInstrDesc *InstrDesc, unsigned OpNum,
 						MCOI_OperandConstraint Constraint) {
+	const MCOperandInfo OpInfo = InstrDesc->OpInfo[OpNum];
 	if (OpNum < InstrDesc->NumOperands &&
-		(InstrDesc->OpInfo[OpNum].Constraints & (1 << Constraint))) {
+		(OpInfo.Constraints & (1 << Constraint))) {
 		unsigned ValuePos = 4 + Constraint * 4;
-		return (int)(InstrDesc[OpNum].OpInfo->Constraints >> ValuePos) & 0x0f;
+		return (OpInfo.Constraints >> ValuePos) & 0xf;
 	}
 	return -1;
 }

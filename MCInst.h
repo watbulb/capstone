@@ -93,7 +93,7 @@ void MCOperand_CreateImm0(MCInst *inst, int64_t Val);
 // create Imm operand in the last-unused slot
 MCOperand *MCOperand_CreateImm1(MCInst *inst, int64_t Val);
 
-#define MAX_WB_OPS 6
+#define MAX_MC_OPS 48
 
 /// MCInst - Instances of this class represent a single low-level machine
 /// instruction.
@@ -103,7 +103,7 @@ struct MCInst {
 	bool has_imm;	// indicate this instruction has an X86_OP_IMM operand - used for ATT syntax
 	uint8_t op1_size; // size of 1st operand - for X86 Intel syntax
 	unsigned Opcode;  // private opcode
-	MCOperand Operands[48];
+	MCOperand Operands[MAX_MC_OPS];
 	cs_insn *flat_insn;	// insn to be exposed to public
 	uint64_t address;	// address of this insn
 	cs_struct *csh;	// save the main csh
@@ -119,7 +119,7 @@ struct MCInst {
 	// This is copied from cs_x86 struct
 	uint8_t x86_prefix[4];
 	uint8_t imm_size;	// immediate size for X86_OP_IMM operand
-	int8_t wb_op_idx[MAX_WB_OPS];	///< Indices of tied destination operands (writebacks).
+	int8_t tied_op_idx[MAX_MC_OPS];	///< Tied operand indices. Index = Src op; Value: Dest op
 	// operand access index for list of registers sharing the same access right (for ARM)
 	uint8_t ac_idx;
 	uint8_t popcode_adjust;   // Pseudo X86 instruction adjust
@@ -156,6 +156,6 @@ bool MCInst_isPredicable(const MCInstrDesc *MIDesc);
 
 void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc);
 
-bool MCInst_opIsWriteback(const MCInst *MI, unsigned OpNum);
+bool MCInst_opIsTied(const MCInst *MI, unsigned OpNum);
 
 #endif

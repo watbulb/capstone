@@ -31,8 +31,8 @@ void MCInst_Init(MCInst *inst)
 	inst->assembly[0] = '\0';
 	inst->wasm_data.type = WASM_OP_INVALID;
 	inst->xAcquireRelease = 0;
-	for (int i = 0; i < MAX_WB_OPS; ++i)
-		inst->wb_op_idx[i] = -1;
+	for (int i = 0; i < MAX_MC_OPS; ++i)
+		inst->tied_op_idx[i] = -1;
 }
 
 void MCInst_clear(MCInst *inst)
@@ -222,30 +222,28 @@ void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc) {
   unsigned i;
   for (i = 0; i < NumOps; ++i) {
     if (MCOperandInfo_isTiedToOp(&OpInfo[i])) {
-			int idx = MCOperandInfo_getOperandConstraint(
-				&InstDesc[MCInst_getOpcode(MI)], i, MCOI_TIED_TO);
+		int idx = MCOperandInfo_getOperandConstraint(
+			&InstDesc[MCInst_getOpcode(MI)], i, MCOI_TIED_TO);
 
-			if (idx == -1)
-				continue;
+		if (idx == -1)
+			continue;
 
-			if(i >= MAX_WB_OPS) {
-				printf("ERROR: Could not set writeback info. More then %d writebacks.\n", MAX_WB_OPS);
-				return;
-			}
-			MI->wb_op_idx[i] = idx;
+		if(i >= MAX_MC_OPS) {
+			assert(0 && "Maximum number of MC operands reached.");
+		}
+		MI->tied_op_idx[i] = idx;
 
       if (MI->flat_insn->detail)
-				MI->flat_insn->detail->writeback = true;
-
-		}
+		MI->flat_insn->detail->writeback = true;
+	}
   }
 }
 
 /// Check if operand with OpNum is a writeback (tied destination)
 /// operand.
-bool MCInst_opIsWriteback(const MCInst *MI, unsigned OpNum) {
-	for (int i = 0; i < MAX_WB_OPS; ++i) {
-		if (MI->wb_op_idx[i] == OpNum)
+bool MCInst_opIsTied(const MCInst *MI, unsigned OpNum) {
+	for (int i = 0; i < MAX_MC_OPS; ++i) {
+		if (MI->tied_op_idx[i] == OpNum)
 			return true;
 	}
 	return false;
