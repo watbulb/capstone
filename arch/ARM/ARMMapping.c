@@ -915,12 +915,16 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	// fallthrough
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_1: {
+		bool AlwaysPrintImm0 = temp_arg_0;
 		set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		int32_t Imm = ARM_get_op_val(MI, OpNum + 1);
 		if (Imm == INT32_MIN)
 			Imm = 0;
 		ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, Imm);
+		if (AlwaysPrintImm0)
+			map_add_implicit_write(MI, ARM_get_op_val(MI, OpNum));
+
 		set_mem_access(MI, false);
 		break;
 	}
@@ -933,7 +937,9 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, OffImm);
 		break;
 	}
-	case ARM_OP_GROUP_AddrMode3Operand_0: {
+	case ARM_OP_GROUP_AddrMode3Operand_0:
+	case ARM_OP_GROUP_AddrMode3Operand_1: {
+		bool AlwaysPrintImm0 = temp_arg_0;
 		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
 		if (!MCOperand_isReg(MO1))
 			// Handled in printOperand
@@ -943,13 +949,15 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 
 		MCOperand *MO2 = MCInst_getOperand(MI, OpNum + 1);
-		if (!MCOperand_isReg(MO2)) {
+		ARM_AM_AddrOpc Sign = ARM_AM_getAM3Op(ARM_get_op_val(MI, OpNum + 2));
+
+		if (MCOperand_isReg(MO2)) {
+			ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
+			ARM_get_detail_op(MI, 0)->subtracted = Sign == ARM_AM_sub;
 			set_mem_access(MI, false);
 			break;
 		}
-		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
-		ARM_AM_AddrOpc Sign = ARM_AM_getAM3Op(ARM_get_op_val(MI, OpNum + 2));
-		if (Sign == ARM_AM_sub) {
+		if (AlwaysPrintImm0 || Sign == ARM_AM_sub) {
 			ARM_get_detail_op(MI, 0)->mem.scale = -1;
 			ARM_get_detail_op(MI, 0)->subtracted = true;
 		}
@@ -959,31 +967,38 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 	case ARM_OP_GROUP_AddrMode5Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_1:
 	case ARM_OP_GROUP_AddrMode5FP16Operand_0: {
+		bool AlwaysPrintImm0 = temp_arg_0;
 		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
+
 		if (!MCOperand_isReg(MO1))
 			// Handled in printOperand
 			break;
 
-		ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
-		ARM_get_detail_op(MI, 0)->mem.base = ARM_get_op_val(MI, OpNum);
-		ARM_get_detail_op(MI, 0)->mem.index = ARM_REG_INVALID;
-		ARM_get_detail_op(MI, 0)->mem.scale = 1;
-		ARM_get_detail_op(MI, 0)->mem.disp = 0;
-		ARM_get_detail_op(MI, 0)->access = CS_AC_READ;
-		ARM_AM_AddrOpc Op = ARM_AM_getAM5Op(ARM_get_op_val(MI, OpNum + 1));
+		if (AlwaysPrintImm0)
+			map_add_implicit_write(MI, ARM_get_op_val(MI, OpNum));
+
+		cs_arm_op *Op = ARM_get_detail_op(MI, 0);
+		Op->type = ARM_OP_MEM;
+		Op->mem.base = ARM_get_op_val(MI, OpNum);
+		Op->mem.index = ARM_REG_INVALID;
+		Op->mem.scale = 1;
+		Op->mem.disp = 0;
+		Op->access = CS_AC_READ;
+
+		ARM_AM_AddrOpc SubFlag = ARM_AM_getAM5Op(ARM_get_op_val(MI, OpNum + 1));
 		unsigned ImmOffs = ARM_AM_getAM5Offset(ARM_get_op_val(MI, OpNum + 1));
-		bool AlwaysPrintImm0 = temp_arg_0 == 0;
-		if (AlwaysPrintImm0 || ImmOffs || Op == ARM_AM_sub) {
+
+		if (AlwaysPrintImm0 || ImmOffs || SubFlag == ARM_AM_sub) {
 			if (op_group == ARM_OP_GROUP_AddrMode5FP16Operand_0) {
-				if (Op)
-					ARM_get_detail_op(MI, 0)->mem.disp = ImmOffs * 2;
+				if (SubFlag)
+					Op->mem.disp = ImmOffs * 2;
 				else
-					ARM_get_detail_op(MI, 0)->mem.disp = -(int)ImmOffs * 2;
+					Op->mem.disp = -(int)ImmOffs * 2;
 			} else {
-				if (Op)
-					ARM_get_detail_op(MI, 0)->mem.disp = ImmOffs;
+				if (SubFlag)
+					Op->mem.disp = ImmOffs;
 				else
-					ARM_get_detail_op(MI, 0)->mem.disp = -(int)ImmOffs * 4;
+					Op->mem.disp = -(int)ImmOffs * 4;
 			}
 		}
 		MI->flat_insn->detail->arm.op_count++;
@@ -1048,14 +1063,15 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args
 	}
 	case ARM_OP_GROUP_AdrLabelOperand_0:
 	case ARM_OP_GROUP_AdrLabelOperand_2:
+	case ARM_OP_GROUP_AddrMode3Operand_0:
+	case ARM_OP_GROUP_AddrMode3Operand_1:
 	case ARM_OP_GROUP_AddrMode5Operand_0:
 	case ARM_OP_GROUP_AddrMode5Operand_1:
 	case ARM_OP_GROUP_AddrModeImm12Operand_0:
-	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
 	case ARM_OP_GROUP_AddrModeImm12Operand_1:
+	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_1:
 	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_0:
-	case ARM_OP_GROUP_AddrMode3Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8s4Operand_1:
 	case ARM_OP_GROUP_MVEVectorList_2:
 	case ARM_OP_GROUP_MVEVectorList_4:
@@ -1151,8 +1167,7 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int sc
 			// added to the modified list.
 			// Here we check for this case and add the memory register
 			// to the modified list.
-			if (MCInst_opIsTying(MI, OpNum))
-				map_add_implicit_write(MI, ARM_get_op_val(MI, OpNum));
+			map_add_implicit_write(MI, ARM_get_op_val(MI, OpNum));
 		}
 		break;
 	}
