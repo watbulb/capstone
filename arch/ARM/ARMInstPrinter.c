@@ -1787,7 +1787,7 @@ DEFINE_printMVEVectorList(2) DEFINE_printMVEVectorList(4)
 	MI, CONCAT(CONCAT(ARM_OP_GROUP_ComplexRotationOp, Angle), Remainder),  \
 	OpNo, Angle, Remainder);                                               \
     unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, (OpNo)));            \
-    printUInt32Bang(O, (Val * Angle) + Remainder);                              \
+    SStream_concat(O, "#%d", (Val * Angle) + Remainder);                              \
   }
     DEFINE_printComplexRotationOp(90, 0) DEFINE_printComplexRotationOp(180, 90)
 
