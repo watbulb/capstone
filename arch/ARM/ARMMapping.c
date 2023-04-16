@@ -657,10 +657,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, ARM_get_op_val(MI, OpNum + 1));
 		if (op_group == ARM_OP_GROUP_AddrModeTBH) {
-				ARM_get_detail_op(MI, 0)->shift.type = ARM_SFT_LSL;
-				ARM_get_detail_op(MI, 0)->shift.value = 1;
-				ARM_get_detail_op(MI, 0)->mem.lshift = 1;
-			}
+			ARM_get_detail_op(MI, 0)->shift.type = ARM_SFT_LSL;
+			ARM_get_detail_op(MI, 0)->shift.value = 1;
+			ARM_get_detail_op(MI, 0)->mem.lshift = 1;
+		}
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_AddrMode2Operand: {
@@ -1141,6 +1141,18 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int sc
 			ARM_get_detail_op(MI, 0)->mem.index = Val;
 			ARM_get_detail_op(MI, 0)->mem.scale = scale;
 			ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
+		}
+			
+		if (MCInst_opIsTying(MI, OpNum)) {
+			// Especially base registers can be writeback registers.
+			// For this they tie an MC operand which has write
+			// access. But this one is never processed in the printer
+			// (because it is never emitted). Therefor it is never
+			// added to the modified list.
+			// Here we check for this case and add the memory register
+			// to the modified list.
+			if (MCInst_opIsTying(MI, OpNum))
+				map_add_implicit_write(MI, ARM_get_op_val(MI, OpNum));
 		}
 		break;
 	}

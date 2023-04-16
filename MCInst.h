@@ -158,4 +158,6 @@ void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc);
 
 bool MCInst_opIsTied(const MCInst *MI, unsigned OpNum);
 
+bool MCInst_opIsTying(const MCInst *MI, unsigned OpNum);
+
 #endif

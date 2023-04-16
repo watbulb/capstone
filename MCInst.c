@@ -239,13 +239,21 @@ void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc) {
   }
 }
 
-/// Check if operand with OpNum is a writeback (tied destination)
-/// operand.
+/// Check if operand with OpNum is tied by another operand
+/// (operand is tying destination).
 bool MCInst_opIsTied(const MCInst *MI, unsigned OpNum) {
+	assert(OpNum < MAX_MC_OPS && "Maximum number of MC operands exceeded.");
 	for (int i = 0; i < MAX_MC_OPS; ++i) {
 		if (MI->tied_op_idx[i] == OpNum)
 			return true;
 	}
 	return false;
+}
+
+/// Check if operand with OpNum is tying another operand
+/// (operand is tying src).
+bool MCInst_opIsTying(const MCInst *MI, unsigned OpNum) {
+	assert(OpNum < MAX_MC_OPS && "Maximum number of MC operands exceeded.");
+	return MI->tied_op_idx[OpNum] != -1;
 }
 
