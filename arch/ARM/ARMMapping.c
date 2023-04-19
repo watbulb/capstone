@@ -26,13 +26,6 @@ const char *ARM_reg_name(csh handle, unsigned int reg) {
 }
 
 const insn_map arm_insns[] = {
-	// dummy item
-	{
-		0, 0,
-#ifndef CAPSTONE_DIET
-		{ 0 }, { 0 }, { 0 }, 0, 0
-#endif
-	},
 #include "ARMGenCSMappingInsn.inc"
 };
 
