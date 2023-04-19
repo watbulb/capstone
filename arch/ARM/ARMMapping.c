@@ -437,28 +437,44 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 0));
 		break;
 	case ARM_OP_GROUP_VectorListTwo:
-	case ARM_OP_GROUP_VectorListTwoAllLanes:
-	case ARM_OP_GROUP_VectorListTwoSpacedAllLanes:
-	case ARM_OP_GROUP_VectorListTwoSpaced:
-		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 0));
-		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 1));
+	case ARM_OP_GROUP_VectorListTwoAllLanes: {
+		unsigned Reg = ARM_get_op_val(MI, OpNum);
+		ARM_set_detail_op_reg(MI, OpNum, MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_dsub_0));
+		ARM_set_detail_op_reg(MI, OpNum, MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_dsub_1));
 		break;
+	}
+	case ARM_OP_GROUP_VectorListTwoSpacedAllLanes:
+	case ARM_OP_GROUP_VectorListTwoSpaced: {
+		unsigned Reg = ARM_get_op_val(MI, OpNum);
+		ARM_set_detail_op_reg(MI, OpNum, MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_dsub_0));
+		ARM_set_detail_op_reg(MI, OpNum, MCRegisterInfo_getSubReg(MI->MRI, Reg, ARM_dsub_2));
+		break;
+	}
 	case ARM_OP_GROUP_VectorListThree:
 	case ARM_OP_GROUP_VectorListThreeAllLanes:
-	case ARM_OP_GROUP_VectorListThreeSpacedAllLanes:
-	case ARM_OP_GROUP_VectorListThreeSpaced:
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 0));
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 1));
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 2));
 		break;
+	case ARM_OP_GROUP_VectorListThreeSpacedAllLanes:
+	case ARM_OP_GROUP_VectorListThreeSpaced:
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 0));
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 2));
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 4));
+		break;
 	case ARM_OP_GROUP_VectorListFour:
 	case ARM_OP_GROUP_VectorListFourAllLanes:
-	case ARM_OP_GROUP_VectorListFourSpacedAllLanes:
-	case ARM_OP_GROUP_VectorListFourSpaced:
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 0));
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 1));
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 2));
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 3));
+		break;
+	case ARM_OP_GROUP_VectorListFourSpacedAllLanes:
+	case ARM_OP_GROUP_VectorListFourSpaced:
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 0));
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 2));
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 4));
+		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 6));
 		break;
 	case ARM_OP_GROUP_NoHashImmediate:
 		if (doing_mem(MI))
