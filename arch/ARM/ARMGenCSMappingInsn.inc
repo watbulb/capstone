@@ -3704,7 +3704,7 @@
 {
   ARM_t2LDRConstPool /* 616 */, ARM_INS_LDR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -4280,7 +4280,7 @@
 {
   ARM_ADDrr /* 712 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4328,7 +4328,7 @@
 {
   ARM_ANDri /* 720 */, ARM_INS_AND,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4394,19 +4394,19 @@
 {
   ARM_BFC /* 731 */, ARM_INS_BFC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6T2, 0 }, 0, 0
   #endif
 },
 {
   ARM_BFI /* 732 */, ARM_INS_BFI,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6T2, 0 }, 0, 0
   #endif
 },
 {
   ARM_BICri /* 733 */, ARM_INS_AND,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4472,7 +4472,7 @@
 {
   ARM_BXJ /* 744 */, ARM_INS_BXJ,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 1, 1
+    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_FEATURE_IsARM, 0 }, 1, 1
   #endif
 },
 {
@@ -4694,7 +4694,7 @@
 {
   ARM_CLZ /* 781 */, ARM_INS_CLZ,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5T, 0 }, 0, 0
   #endif
 },
 {
@@ -4706,7 +4706,7 @@
 {
   ARM_CMNzrr /* 783 */, ARM_INS_CMN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4724,13 +4724,13 @@
 {
   ARM_CMPri /* 786 */, ARM_INS_CMN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_CMPrr /* 787 */, ARM_INS_CMP,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4748,7 +4748,7 @@
 {
   ARM_CPS1p /* 790 */, ARM_INS_CPS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4766,37 +4766,37 @@
 {
   ARM_CRC32B /* 793 */, ARM_INS_CRC32B,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
   #endif
 },
 {
   ARM_CRC32CB /* 794 */, ARM_INS_CRC32CB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
   #endif
 },
 {
   ARM_CRC32CH /* 795 */, ARM_INS_CRC32CH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
   #endif
 },
 {
   ARM_CRC32CW /* 796 */, ARM_INS_CRC32CW,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
   #endif
 },
 {
   ARM_CRC32H /* 797 */, ARM_INS_CRC32H,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
   #endif
 },
 {
   ARM_CRC32W /* 798 */, ARM_INS_CRC32W,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCRC, 0 }, 0, 0
   #endif
 },
 {
@@ -4814,13 +4814,13 @@
 {
   ARM_DSB /* 801 */, ARM_INS_DFB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasDFB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasDB, 0 }, 0, 0
   #endif
 },
 {
   ARM_EORri /* 802 */, ARM_INS_EOR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -4850,7 +4850,7 @@
 {
   ARM_FCONSTD /* 807 */, ARM_INS_FCONSTD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasVFP3, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasVFP3, ARM_FEATURE_HasDPVFP, 0 }, 0, 0
   #endif
 },
 {
@@ -4910,13 +4910,13 @@
 {
   ARM_HINT /* 817 */, ARM_INS_CLRBHB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCLRBHB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_HLT /* 818 */, ARM_INS_HLT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, 0 }, 0, 0
   #endif
 },
 {
@@ -4934,25 +4934,25 @@
 {
   ARM_LDA /* 821 */, ARM_INS_LDA,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDAB /* 822 */, ARM_INS_LDAB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDAEX /* 823 */, ARM_INS_LDAEX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDAEXB /* 824 */, ARM_INS_LDAEXB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
   #endif
 },
 {
@@ -4964,13 +4964,13 @@
 {
   ARM_LDAEXH /* 826 */, ARM_INS_LDAEXH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDAH /* 827 */, ARM_INS_LDAH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
   #endif
 },
 {
@@ -5096,7 +5096,7 @@
 {
   ARM_LDMIA /* 848 */, ARM_INS_LDM,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5156,7 +5156,7 @@
 {
   ARM_LDRBi12 /* 858 */, ARM_INS_LDRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5168,7 +5168,7 @@
 {
   ARM_LDRD /* 860 */, ARM_INS_LDRD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
@@ -5180,19 +5180,19 @@
 {
   ARM_LDRD_PRE /* 862 */, ARM_INS_LDRD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDREX /* 863 */, ARM_INS_LDREX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDREXB /* 864 */, ARM_INS_LDREXB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5204,13 +5204,13 @@
 {
   ARM_LDREXH /* 866 */, ARM_INS_LDREXH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDRH /* 867 */, ARM_INS_LDRH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5240,7 +5240,7 @@
 {
   ARM_LDRSB /* 872 */, ARM_INS_LDRSB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5270,7 +5270,7 @@
 {
   ARM_LDRSH /* 877 */, ARM_INS_LDRSH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5336,13 +5336,13 @@
 {
   ARM_LDRcp /* 888 */, ARM_INS_LDR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_LDRi12 /* 889 */, ARM_INS_LDR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -5360,7 +5360,7 @@
 {
   ARM_MCR2 /* 892 */, ARM_INS_MCR2,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_PreV8, 0 }, 0, 0
   #endif
 },
 {
@@ -5384,7 +5384,7 @@
 {
   ARM_MLS /* 896 */, ARM_INS_MLS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6T2, 0 }, 0, 0
   #endif
 },
 {
@@ -5396,7 +5396,7 @@
 {
   ARM_MOVTi16 /* 898 */, ARM_INS_MOVT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6T2, 0 }, 0, 0
   #endif
 },
 {
@@ -5408,7 +5408,7 @@
 {
   ARM_MOVi16 /* 900 */, ARM_INS_MOV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6T2, 0 }, 0, 0
   #endif
 },
 {
@@ -5444,7 +5444,7 @@
 {
   ARM_MRC2 /* 906 */, ARM_INS_MRC2,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_PreV8, 0 }, 0, 0
   #endif
 },
 {
@@ -5468,7 +5468,7 @@
 {
   ARM_MRSbanked /* 910 */, ARM_INS_MRS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasVirtualization, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasVirtualization, 0 }, 0, 0
   #endif
 },
 {
@@ -5480,13 +5480,13 @@
 {
   ARM_MSR /* 912 */, ARM_INS_MSR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
+    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_MSRbanked /* 913 */, ARM_INS_MSR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasVirtualization, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasVirtualization, 0 }, 0, 0
   #endif
 },
 {
@@ -5498,7 +5498,7 @@
 {
   ARM_MUL /* 915 */, ARM_INS_MUL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -5936,13 +5936,13 @@
 {
   ARM_MVE_VBICimmi16 /* 988 */, ARM_INS_VAND,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, 0 }, 0, 0
   #endif
 },
 {
   ARM_MVE_VBICimmi32 /* 989 */, ARM_INS_VAND,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, 0 }, 0, 0
   #endif
 },
 {
@@ -8282,19 +8282,19 @@
 {
   ARM_MVE_VORR /* 1379 */, ARM_INS_VMOV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, 0 }, 0, 0
   #endif
 },
 {
   ARM_MVE_VORRimmi16 /* 1380 */, ARM_INS_VORN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, 0 }, 0, 0
   #endif
 },
 {
   ARM_MVE_VORRimmi32 /* 1381 */, ARM_INS_VORN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasMVEInt, 0 }, 0, 0
   #endif
 },
 {
@@ -10550,7 +10550,7 @@
 {
   ARM_MVNi /* 1757 */, ARM_INS_MOV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -10622,7 +10622,7 @@
 {
   ARM_ORRri /* 1769 */, ARM_INS_ORN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -10646,13 +10646,13 @@
 {
   ARM_PKHBT /* 1773 */, ARM_INS_PKHBT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_PKHTB /* 1774 */, ARM_INS_PKHTB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -10694,85 +10694,85 @@
 {
   ARM_QADD /* 1781 */, ARM_INS_QADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QADD16 /* 1782 */, ARM_INS_QADD16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QADD8 /* 1783 */, ARM_INS_QADD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QASX /* 1784 */, ARM_INS_QASX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QDADD /* 1785 */, ARM_INS_QDADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QDSUB /* 1786 */, ARM_INS_QDSUB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QSAX /* 1787 */, ARM_INS_QSAX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QSUB /* 1788 */, ARM_INS_QSUB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QSUB16 /* 1789 */, ARM_INS_QSUB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_QSUB8 /* 1790 */, ARM_INS_QSUB8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_RBIT /* 1791 */, ARM_INS_RBIT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6T2, 0 }, 0, 0
   #endif
 },
 {
   ARM_REV /* 1792 */, ARM_INS_REV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV6, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_REV16 /* 1793 */, ARM_INS_REV16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV6, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_REVSH /* 1794 */, ARM_INS_REVSH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV6, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -10832,7 +10832,7 @@
 {
   ARM_RSBrr /* 1804 */, ARM_INS_RSB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -10874,19 +10874,19 @@
 {
   ARM_SADD16 /* 1811 */, ARM_INS_SADD16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SADD8 /* 1812 */, ARM_INS_SADD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SASX /* 1813 */, ARM_INS_SASX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -10898,7 +10898,7 @@
 {
   ARM_SBCri /* 1815 */, ARM_INS_ADC,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_CPSR, 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { ARM_REG_CPSR, 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -10928,7 +10928,7 @@
 {
   ARM_SDIV /* 1820 */, ARM_INS_SDIV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDivideInThumb, ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasDivideInARM, 0 }, 0, 0
   #endif
 },
 {
@@ -10940,7 +10940,7 @@
 {
   ARM_SETEND /* 1822 */, ARM_INS_SETEND,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11012,37 +11012,37 @@
 {
   ARM_SHADD16 /* 1834 */, ARM_INS_SHADD16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SHADD8 /* 1835 */, ARM_INS_SHADD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SHASX /* 1836 */, ARM_INS_SHASX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SHSAX /* 1837 */, ARM_INS_SHSAX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SHSUB16 /* 1838 */, ARM_INS_SHSUB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SHSUB8 /* 1839 */, ARM_INS_SHSUB8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11054,25 +11054,25 @@
 {
   ARM_SMLABB /* 1841 */, ARM_INS_SMLABB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLABT /* 1842 */, ARM_INS_SMLABT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLAD /* 1843 */, ARM_INS_SMLAD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLADX /* 1844 */, ARM_INS_SMLADX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -11084,13 +11084,13 @@
 {
   ARM_SMLALBB /* 1846 */, ARM_INS_SMLALBB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLALBT /* 1847 */, ARM_INS_SMLALBT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
@@ -11108,49 +11108,49 @@
 {
   ARM_SMLALTB /* 1850 */, ARM_INS_SMLALTB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLALTT /* 1851 */, ARM_INS_SMLALTT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLATB /* 1852 */, ARM_INS_SMLATB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLATT /* 1853 */, ARM_INS_SMLATT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLAWB /* 1854 */, ARM_INS_SMLAWB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLAWT /* 1855 */, ARM_INS_SMLAWT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLSD /* 1856 */, ARM_INS_SMLSD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMLSDX /* 1857 */, ARM_INS_SMLSDX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -11168,61 +11168,61 @@
 {
   ARM_SMMLA /* 1860 */, ARM_INS_SMMLA,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMMLAR /* 1861 */, ARM_INS_SMMLAR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMMLS /* 1862 */, ARM_INS_SMMLS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMMLSR /* 1863 */, ARM_INS_SMMLSR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMMUL /* 1864 */, ARM_INS_SMMUL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMMULR /* 1865 */, ARM_INS_SMMULR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMUAD /* 1866 */, ARM_INS_SMUAD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMUADX /* 1867 */, ARM_INS_SMUADX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMULBB /* 1868 */, ARM_INS_SMULBB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMULBT /* 1869 */, ARM_INS_SMULBT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
@@ -11234,37 +11234,37 @@
 {
   ARM_SMULTB /* 1871 */, ARM_INS_SMULTB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMULTT /* 1872 */, ARM_INS_SMULTT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMULWB /* 1873 */, ARM_INS_SMULWB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMULWT /* 1874 */, ARM_INS_SMULWT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMUSD /* 1875 */, ARM_INS_SMUSD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SMUSDX /* 1876 */, ARM_INS_SMUSDX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -11318,31 +11318,31 @@
 {
   ARM_SSAT /* 1885 */, ARM_INS_SSAT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SSAT16 /* 1886 */, ARM_INS_SSAT16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SSAX /* 1887 */, ARM_INS_SSAX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SSUB16 /* 1888 */, ARM_INS_SSUB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SSUB8 /* 1889 */, ARM_INS_SSUB8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11444,25 +11444,25 @@
 {
   ARM_STL /* 1906 */, ARM_INS_STL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
   #endif
 },
 {
   ARM_STLB /* 1907 */, ARM_INS_STLB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
   #endif
 },
 {
   ARM_STLEX /* 1908 */, ARM_INS_STLEX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
   #endif
 },
 {
   ARM_STLEXB /* 1909 */, ARM_INS_STLEXB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
   #endif
 },
 {
@@ -11474,13 +11474,13 @@
 {
   ARM_STLEXH /* 1911 */, ARM_INS_STLEXH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, ARM_FEATURE_HasV7Clrex, 0 }, 0, 0
   #endif
 },
 {
   ARM_STLH /* 1912 */, ARM_INS_STLH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasAcquireRelease, 0 }, 0, 0
   #endif
 },
 {
@@ -11504,7 +11504,7 @@
 {
   ARM_STMDB_UPD /* 1916 */, ARM_INS_PUSH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11516,7 +11516,7 @@
 {
   ARM_STMIA_UPD /* 1918 */, ARM_INS_STM,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11558,19 +11558,19 @@
 {
   ARM_STRB_PRE_IMM /* 1925 */, ARM_INS_STRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STRB_PRE_REG /* 1926 */, ARM_INS_STRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STRBi12 /* 1927 */, ARM_INS_STRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11582,7 +11582,7 @@
 {
   ARM_STRD /* 1929 */, ARM_INS_STRD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV5TE, 0 }, 0, 0
   #endif
 },
 {
@@ -11594,19 +11594,19 @@
 {
   ARM_STRD_PRE /* 1931 */, ARM_INS_STRD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STREX /* 1932 */, ARM_INS_STREX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STREXB /* 1933 */, ARM_INS_STREXB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11618,13 +11618,13 @@
 {
   ARM_STREXH /* 1935 */, ARM_INS_STREXH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STRH /* 1936 */, ARM_INS_STRH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11648,7 +11648,7 @@
 {
   ARM_STRH_PRE /* 1940 */, ARM_INS_STRH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11678,19 +11678,19 @@
 {
   ARM_STR_PRE_IMM /* 1945 */, ARM_INS_STR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STR_PRE_REG /* 1946 */, ARM_INS_STR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_STRi12 /* 1947 */, ARM_INS_STR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11702,13 +11702,13 @@
 {
   ARM_SUBri /* 1949 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_SUBrr /* 1950 */, ARM_INS_SUB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11744,37 +11744,37 @@
 {
   ARM_SXTAB /* 1956 */, ARM_INS_SXTAB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SXTAB16 /* 1957 */, ARM_INS_SXTAB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SXTAH /* 1958 */, ARM_INS_SXTAH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SXTB /* 1959 */, ARM_INS_SXTB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SXTB16 /* 1960 */, ARM_INS_SXTB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_SXTH /* 1961 */, ARM_INS_SXTH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -11804,7 +11804,7 @@
 {
   ARM_TRAP /* 1966 */, ARM_INS_TRAP,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_UseNaClTrap, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11828,7 +11828,7 @@
 {
   ARM_TSTrr /* 1970 */, ARM_INS_TST,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11846,19 +11846,19 @@
 {
   ARM_UADD16 /* 1973 */, ARM_INS_UADD16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UADD8 /* 1974 */, ARM_INS_UADD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UASX /* 1975 */, ARM_INS_UASX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
@@ -11876,49 +11876,49 @@
 {
   ARM_UDIV /* 1978 */, ARM_INS_UDIV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDivideInThumb, ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasDivideInARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UHADD16 /* 1979 */, ARM_INS_UHADD16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UHADD8 /* 1980 */, ARM_INS_UHADD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UHASX /* 1981 */, ARM_INS_UHASX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UHSAX /* 1982 */, ARM_INS_UHSAX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UHSUB16 /* 1983 */, ARM_INS_UHSUB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UHSUB8 /* 1984 */, ARM_INS_UHSUB8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UMAAL /* 1985 */, ARM_INS_UMAAL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -11936,115 +11936,115 @@
 {
   ARM_UQADD16 /* 1988 */, ARM_INS_UQADD16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UQADD8 /* 1989 */, ARM_INS_UQADD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UQASX /* 1990 */, ARM_INS_UQASX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UQSAX /* 1991 */, ARM_INS_UQSAX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UQSUB16 /* 1992 */, ARM_INS_UQSUB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UQSUB8 /* 1993 */, ARM_INS_UQSUB8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_USAD8 /* 1994 */, ARM_INS_USAD8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_USADA8 /* 1995 */, ARM_INS_USADA8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_USAT /* 1996 */, ARM_INS_USAT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_USAT16 /* 1997 */, ARM_INS_USAT16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_USAX /* 1998 */, ARM_INS_USAX,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_USUB16 /* 1999 */, ARM_INS_USUB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_USUB8 /* 2000 */, ARM_INS_USUB8,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
   #endif
 },
 {
   ARM_UXTAB /* 2001 */, ARM_INS_UXTAB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_UXTAB16 /* 2002 */, ARM_INS_UXTAB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_UXTAH /* 2003 */, ARM_INS_UXTAH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_UXTB /* 2004 */, ARM_INS_UXTB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_UXTB16 /* 2005 */, ARM_INS_UXTB16,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDSP, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
   ARM_UXTH /* 2006 */, ARM_INS_UXTH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
   #endif
 },
 {
@@ -17642,7 +17642,7 @@
 {
   ARM_VMOVS /* 2939 */, ARM_INS_VMOV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasVFP2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_HasFPRegs, 0 }, 0, 0
   #endif
 },
 {
@@ -23642,7 +23642,7 @@
 {
   ARM_t2ADCri /* 3939 */, ARM_INS_ADC,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_CPSR, 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { ARM_REG_CPSR, 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -23744,7 +23744,7 @@
 {
   ARM_t2B /* 3956 */, ARM_INS_B,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsThumb2, 0 }, 1, 0
+    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsThumb, ARM_FEATURE_HasV8MBaseline, 0 }, 1, 0
   #endif
 },
 {
@@ -23792,7 +23792,7 @@
 {
   ARM_t2BICri /* 3964 */, ARM_INS_AND,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -23834,7 +23834,7 @@
 {
   ARM_t2CDP /* 3971 */, ARM_INS_CDP,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_PreV8, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_PreV8, 0 }, 0, 0
   #endif
 },
 {
@@ -23882,7 +23882,7 @@
 {
   ARM_t2CMPri /* 3979 */, ARM_INS_CMN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -23912,7 +23912,7 @@
 {
   ARM_t2CPS3p /* 3984 */, ARM_INS_CPS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
@@ -23978,7 +23978,7 @@
 {
   ARM_t2DBG /* 3995 */, ARM_INS_DBG,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV7, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24008,13 +24008,13 @@
 {
   ARM_t2DMB /* 4000 */, ARM_INS_DMB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasDB, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2DSB /* 4001 */, ARM_INS_DFB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDFB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasDB, 0 }, 0, 0
   #endif
 },
 {
@@ -24044,13 +24044,13 @@
 {
   ARM_t2HVC /* 4006 */, ARM_INS_HVC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_GRP_CALL, ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_GRP_CALL, ARM_FEATURE_IsThumb2, ARM_FEATURE_HasVirtualization, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2ISB /* 4007 */, ARM_INS_ISB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_HasDB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasDB, 0 }, 0, 0
   #endif
 },
 {
@@ -24164,61 +24164,61 @@
 {
   ARM_t2LDCL_OFFSET /* 4026 */, ARM_INS_LDCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDCL_OPTION /* 4027 */, ARM_INS_LDCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDCL_POST /* 4028 */, ARM_INS_LDCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDCL_PRE /* 4029 */, ARM_INS_LDCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDC_OFFSET /* 4030 */, ARM_INS_LDC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDC_OPTION /* 4031 */, ARM_INS_LDC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDC_POST /* 4032 */, ARM_INS_LDC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDC_PRE /* 4033 */, ARM_INS_LDC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDMDB /* 4034 */, ARM_INS_LDMDB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2LDMDB_UPD /* 4035 */, ARM_INS_LDMDB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24248,7 +24248,7 @@
 {
   ARM_t2LDRB_PRE /* 4040 */, ARM_INS_LDRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24260,7 +24260,7 @@
 {
   ARM_t2LDRBi8 /* 4042 */, ARM_INS_LDRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24332,7 +24332,7 @@
 {
   ARM_t2LDRH_PRE /* 4054 */, ARM_INS_LDRH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24344,7 +24344,7 @@
 {
   ARM_t2LDRHi8 /* 4056 */, ARM_INS_LDRH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24374,7 +24374,7 @@
 {
   ARM_t2LDRSB_PRE /* 4061 */, ARM_INS_LDRSB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24386,7 +24386,7 @@
 {
   ARM_t2LDRSBi8 /* 4063 */, ARM_INS_LDRSB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24416,7 +24416,7 @@
 {
   ARM_t2LDRSH_PRE /* 4068 */, ARM_INS_LDRSH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24428,7 +24428,7 @@
 {
   ARM_t2LDRSHi8 /* 4070 */, ARM_INS_LDRSH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24458,7 +24458,7 @@
 {
   ARM_t2LDR_PRE /* 4075 */, ARM_INS_LDR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24470,7 +24470,7 @@
 {
   ARM_t2LDRi8 /* 4077 */, ARM_INS_LDR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24524,19 +24524,19 @@
 {
   ARM_t2MCR /* 4086 */, ARM_INS_MCR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2MCR2 /* 4087 */, ARM_INS_MCR2,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_PreV8, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2MCRR /* 4088 */, ARM_INS_MCRR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24596,19 +24596,19 @@
 {
   ARM_t2MRC /* 4098 */, ARM_INS_MRC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2MRC2 /* 4099 */, ARM_INS_MRC2,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_PreV8, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2MRRC /* 4100 */, ARM_INS_MRRC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24620,7 +24620,7 @@
 {
   ARM_t2MRS_AR /* 4102 */, ARM_INS_MRS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
@@ -24638,7 +24638,7 @@
 {
   ARM_t2MRSsys_AR /* 4105 */, ARM_INS_MRS,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
@@ -24668,7 +24668,7 @@
 {
   ARM_t2MVNi /* 4110 */, ARM_INS_MOV,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24704,7 +24704,7 @@
 {
   ARM_t2ORRri /* 4116 */, ARM_INS_ORN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -24980,13 +24980,13 @@
 {
   ARM_t2SB /* 4162 */, ARM_INS_SB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasSB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasSB, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SBCri /* 4163 */, ARM_INS_ADC,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_CPSR, 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { ARM_REG_CPSR, 0 }, { ARM_REG_CPSR, 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25016,13 +25016,13 @@
 {
   ARM_t2SEL /* 4168 */, ARM_INS_SEL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV6, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasDSP, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SETPAN /* 4169 */, ARM_INS_SETPAN,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasV8_1a, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasV8, ARM_FEATURE_HasV8_1a, 0 }, 0, 0
   #endif
 },
 {
@@ -25070,7 +25070,7 @@
 {
   ARM_t2SMC /* 4177 */, ARM_INS_SMC,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_SP, 0 }, { 0 }, { ARM_GRP_CALL, ARM_FEATURE_IsARM, ARM_FEATURE_HasTrustZone, 0 }, 0, 0
+    { ARM_REG_SP, 0 }, { 0 }, { ARM_GRP_CALL, ARM_FEATURE_IsThumb2, ARM_FEATURE_HasTrustZone, 0 }, 0, 0
   #endif
 },
 {
@@ -25292,25 +25292,25 @@
 {
   ARM_t2SRSDB /* 4214 */, ARM_INS_SRSDB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SRSDB_UPD /* 4215 */, ARM_INS_SRSDB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SRSIA /* 4216 */, ARM_INS_SRSIA,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SRSIA_UPD /* 4217 */, ARM_INS_SRSIA,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
@@ -25394,49 +25394,49 @@
 {
   ARM_t2STCL_OFFSET /* 4231 */, ARM_INS_STCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STCL_OPTION /* 4232 */, ARM_INS_STCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STCL_POST /* 4233 */, ARM_INS_STCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STCL_PRE /* 4234 */, ARM_INS_STCL,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STC_OFFSET /* 4235 */, ARM_INS_STC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STC_OPTION /* 4236 */, ARM_INS_STC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STC_POST /* 4237 */, ARM_INS_STC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2STC_PRE /* 4238 */, ARM_INS_STC,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25484,7 +25484,7 @@
 {
   ARM_t2STMDB /* 4246 */, ARM_INS_STMDB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25532,7 +25532,7 @@
 {
   ARM_t2STRBi8 /* 4254 */, ARM_INS_STRB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25610,7 +25610,7 @@
 {
   ARM_t2STRHi8 /* 4267 */, ARM_INS_STRH,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25646,7 +25646,7 @@
 {
   ARM_t2STRi8 /* 4273 */, ARM_INS_STR,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25658,19 +25658,19 @@
 {
   ARM_t2SUBS_PC_LR /* 4275 */, ARM_INS_ERET,
   #ifndef CAPSTONE_DIET
-    { 0 }, { ARM_REG_PC, 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_HasVirtualization, 0 }, 0, 0
+    { 0 }, { ARM_REG_PC, 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SUBri /* 4276 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SUBri12 /* 4277 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -25688,13 +25688,13 @@
 {
   ARM_t2SUBspImm /* 4280 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
   ARM_t2SUBspImm12 /* 4281 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb2, 0 }, 0, 0
   #endif
 },
 {
@@ -26102,7 +26102,7 @@
 {
   ARM_tB /* 4349 */, ARM_INS_B,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsARM, 0 }, 1, 0
+    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsThumb, 0 }, 1, 0
   #endif
 },
 {
@@ -26114,13 +26114,13 @@
 {
   ARM_tBKPT /* 4351 */, ARM_INS_BKPT,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
   #endif
 },
 {
   ARM_tBL /* 4352 */, ARM_INS_BL,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_SP, 0 }, { ARM_REG_LR, 0 }, { ARM_GRP_CALL, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsARM, 0 }, 0, 0
+    { ARM_REG_SP, 0 }, { ARM_REG_LR, 0 }, { ARM_GRP_CALL, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsThumb, 0 }, 0, 0
   #endif
 },
 {
@@ -26132,13 +26132,13 @@
 {
   ARM_tBLXi /* 4354 */, ARM_INS_BLX,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_SP, 0 }, { ARM_REG_LR, 0 }, { ARM_GRP_CALL, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsARM, ARM_FEATURE_HasV5T, 0 }, 0, 0
+    { ARM_REG_SP, 0 }, { ARM_REG_LR, 0 }, { ARM_GRP_CALL, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsThumb, ARM_FEATURE_HasV5T, ARM_FEATURE_IsNotMClass, 0 }, 0, 0
   #endif
 },
 {
   ARM_tBLXr /* 4355 */, ARM_INS_BLX,
   #ifndef CAPSTONE_DIET
-    { ARM_REG_SP, 0 }, { ARM_REG_LR, 0 }, { ARM_GRP_CALL, ARM_FEATURE_IsARM, ARM_FEATURE_HasV5T, 0 }, 0, 0
+    { ARM_REG_SP, 0 }, { ARM_REG_LR, 0 }, { ARM_GRP_CALL, ARM_FEATURE_IsThumb, ARM_FEATURE_HasV5T, 0 }, 0, 0
   #endif
 },
 {
@@ -26156,7 +26156,7 @@
 {
   ARM_tBcc /* 4358 */, ARM_INS_B,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsARM, 0 }, 1, 0
+    { 0 }, { 0 }, { ARM_GRP_JUMP, ARM_GRP_BRANCH_RELATIVE, ARM_FEATURE_IsThumb, 0 }, 1, 0
   #endif
 },
 {
@@ -26210,7 +26210,7 @@
 {
   ARM_tHINT /* 4367 */, ARM_INS_CLRBHB,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_HasV8, ARM_FEATURE_HasCLRBHB, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_HasV6M, 0 }, 0, 0
   #endif
 },
 {
@@ -26474,13 +26474,13 @@
 {
   ARM_tSUBi3 /* 4411 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
   #endif
 },
 {
   ARM_tSUBi8 /* 4412 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
   #endif
 },
 {
@@ -26492,7 +26492,7 @@
 {
   ARM_tSUBspi /* 4414 */, ARM_INS_ADD,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, ARM_FEATURE_UseNegativeImmediates, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
   #endif
 },
 {
@@ -26516,7 +26516,7 @@
 {
   ARM_tTRAP /* 4418 */, ARM_INS_TRAP,
   #ifndef CAPSTONE_DIET
-    { 0 }, { 0 }, { ARM_FEATURE_IsARM, ARM_FEATURE_UseNaClTrap, 0 }, 0, 0
+    { 0 }, { 0 }, { ARM_FEATURE_IsThumb, 0 }, 0, 0
   #endif
 },
 {
