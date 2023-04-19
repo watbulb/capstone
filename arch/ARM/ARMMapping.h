@@ -65,7 +65,7 @@ const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum);
 const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum);
 
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg);
-void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg);
+void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool OutReg);
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int64_t Imm);
 void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm);
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int scale, int lshift, uint64_t Val);

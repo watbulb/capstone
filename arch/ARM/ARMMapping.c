@@ -544,6 +544,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		unsigned SpecRegRBit = (unsigned)MCOperand_getImm(Op) >> 4;
 		unsigned Mask = (unsigned)MCOperand_getImm(Op) & 0xf;
 		unsigned reg;
+		bool IsOutReg = OpNum == 0;
 
 		if (ARM_getFeatureBits(MI->csh->mode, ARM_FeatureMClass)) {
 			const MClassSysReg *TheReg;
@@ -553,7 +554,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			if (Opcode == ARM_t2MSR_M && ARM_getFeatureBits(MI->csh->mode, ARM_FeatureDSP)) {
 				TheReg = lookupMClassSysRegBy12bitSYSmValue(SYSm);
 				if (TheReg && MClassSysReg_isInRequiredFeatures(TheReg, ARM_FeatureDSP)) {
-					ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+					ARM_set_detail_op_sysreg(MI, TheReg->sysreg, IsOutReg);
 					return;
 				}
 			}
@@ -562,14 +563,14 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			if (Opcode == ARM_t2MSR_M && ARM_getFeatureBits(MI->csh->mode, ARM_HasV7Ops)) {
 				TheReg = lookupMClassSysRegAPSRNonDeprecated(SYSm);
 				if (TheReg) {
-					ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+					ARM_set_detail_op_sysreg(MI, TheReg->sysreg, IsOutReg);
 					return;
 				}
 			}
 
 			TheReg = lookupMClassSysRegBy8bitSYSmValue(SYSm);
 			if (TheReg) {
-				ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+				ARM_set_detail_op_sysreg(MI, TheReg->sysreg, IsOutReg);
 				return;
 			}
 
@@ -582,9 +583,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		if (!SpecRegRBit && (Mask == 8 || Mask == 4 || Mask == 12)) {
 			switch (Mask) {
 				default: assert(0 && "Unexpected mask value!");
-				case 4:  ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_G); return;
-				case 8:  ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_NZCVQ); return;
-				case 12: ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_NZCVQG); return;
+				case 4:  ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_G, IsOutReg); return;
+				case 8:  ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_NZCVQ, IsOutReg); return;
+				case 12: ARM_set_detail_op_sysreg(MI, ARM_SYSREG_APSR_NZCVQG, IsOutReg); return;
 			}
 		}
 
@@ -599,7 +600,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 			if (Mask & 1)
 				reg += ARM_SYSREG_SPSR_C;
 
-			ARM_set_detail_op_sysreg(MI, reg);
+			ARM_set_detail_op_sysreg(MI, reg, IsOutReg);
 		}
 		break;
 	}
@@ -890,7 +891,8 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_BankedRegOperand: {
 		uint32_t Banked = ARM_get_op_val(MI, OpNum);
 		const BankedReg *TheReg = lookupBankedRegByEncoding(Banked);
-		ARM_set_detail_op_sysreg(MI, TheReg->sysreg);
+		bool IsOutReg = OpNum == 0;
+		ARM_set_detail_op_sysreg(MI, TheReg->sysreg, IsOutReg);
 		break;
 	}
 	case ARM_OP_GROUP_SetendOperand: {
@@ -1228,11 +1230,12 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
 }
 
 /// Adds a System Register and increments op_count by one.
-void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg) {
+void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg) {
 	if (!MI->flat_insn->detail)
 		return;
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
 	ARM_get_detail_op(MI, 0)->reg = SysReg;
+	ARM_get_detail_op(MI, 0)->access = IsOutReg ? CS_AC_WRITE : CS_AC_READ;
 	MI->flat_insn->detail->arm.op_count++;
 }
 
