@@ -825,7 +825,14 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, Imm == 0 ? 32 : Imm);
 		break;
 	}
-	case ARM_OP_GROUP_BitfieldInvMaskImmOperand:
+	case ARM_OP_GROUP_BitfieldInvMaskImmOperand: {
+		uint32_t v = ~ARM_get_op_val(MI, OpNum);
+		int32_t lsb = CountTrailingZeros_32(v);
+		int32_t width = (32 - countLeadingZeros(v)) - lsb;
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, lsb);
+		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, width);
+		break;
+	}
 	case ARM_OP_GROUP_CPSIMod: {
 		unsigned Imm = ARM_get_op_val(MI, OpNum);
 		MI->flat_insn->detail->arm.cps_mode = Imm;
