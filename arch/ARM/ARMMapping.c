@@ -40,6 +40,21 @@ static const char * const insn_name_maps[] = {
 };
 #endif
 
+#ifndef CAPSTONE_DIET
+static arm_reg arm_flag_regs[] = {
+	ARM_REG_APSR,
+	ARM_REG_APSR_NZCV,
+	ARM_REG_CPSR,
+	ARM_REG_FPCXTNS,
+	ARM_REG_FPCXTS,
+	ARM_REG_FPEXC,
+	ARM_REG_FPINST,
+	ARM_REG_FPSCR,
+	ARM_REG_FPSCR_NZCV,
+	ARM_REG_FPSCR_NZCVQC,
+};
+#endif // CAPSTONE_DIET
+
 const char *ARM_insn_name(csh handle, unsigned int id)
 {
 #ifndef CAPSTONE_DIET
@@ -124,13 +139,31 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id) {
 
 	// not found
 	return false;
+}
 
+void ARM_check_updates_flags(MCInst *MI) {
+#ifndef CAPSTONE_DIET
+	if (!MI->flat_insn->detail)
+		return;
+	cs_detail *detail = MI->flat_insn->detail;
+	for (int i = 0; i < detail->regs_write_count; ++i) {
+		if (detail->regs_write[i] == 0)
+			return;
+		for (int j = 0; j < ARR_SIZE(arm_flag_regs); ++j) {
+			if (detail->regs_write[i] == arm_flag_regs[j]) {
+				detail->arm.update_flags = true;
+				return;
+			}
+		}
+	}
+#endif // CAPSTONE_DIET
 }
 
 void ARM_set_instr_map_data(MCInst *MI) {
 	map_cs_id(MI, arm_insns, ARR_SIZE(arm_insns));
 	map_implicit_reads(MI, arm_insns);
 	map_implicit_writes(MI, arm_insns);
+	ARM_check_updates_flags(MI);
 	map_groups(MI, arm_insns);
 }
 
