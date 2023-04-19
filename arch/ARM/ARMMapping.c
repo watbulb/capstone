@@ -704,17 +704,13 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	}
 	case ARM_OP_GROUP_AddrMode2OffsetOperand: {
-		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
-		MCOperand *MO2 = MCInst_getOperand(MI, OpNum + 1);
-		uint64_t imm2 = MCOperand_getImm(MO2);
+		uint64_t imm2 = ARM_get_op_val(MI, OpNum + 1);
 		ARM_AM_AddrOpc subtracted = ARM_AM_getAM2Op(imm2);
 		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
-		if (!MCOperand_isReg(MO1)) {
-			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_AM_getAM2Op(ARM_get_op_val(MI, OpNum)));
+		if (!ARM_get_op_val(MI, OpNum)) {
+			ARM_set_detail_op_imm(MI, OpNum + 1, ARM_OP_IMM, ARM_AM_getAM2Offset(imm2));
 			return;
 		}
-		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 		ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm2), ARM_AM_getAM2Offset(imm2));
 		break;
