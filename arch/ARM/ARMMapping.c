@@ -862,10 +862,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		if (isASR) {
 			unsigned tmp = Amt == 0 ? 32 : Amt;
 			ARM_get_detail_op(MI, -1)->shift.type = ARM_SFT_ASR;
-			ARM_get_detail_op(MI, -1)->shift.type = tmp;
+			ARM_get_detail_op(MI, -1)->shift.value = tmp;
 		} else if (Amt) {
 			ARM_get_detail_op(MI, -1)->shift.type = ARM_SFT_LSL;
-			ARM_get_detail_op(MI, -1)->shift.type = Amt;
+			ARM_get_detail_op(MI, -1)->shift.value = Amt;
 		}
 		break;
 	}
