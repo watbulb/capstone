@@ -899,6 +899,8 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 /// This function handles operands which original printer function is a template
 /// with one argument.
 static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0) {
+	if (!MI->flat_insn->detail)
+		return;
 	switch(op_group) {
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
@@ -1035,6 +1037,8 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group, unsigned
 /// This function handles operands which's original printer function is a template
 /// with two arguments.
 static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned OpNum, uint64_t temp_arg_0, uint64_t temp_arg_1) {
+	if (!MI->flat_insn->detail)
+		return;
 	switch (op_group) {
 	default:
 		printf("ERROR: Operand group %d not handled!\n", op_group);
@@ -1054,6 +1058,8 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group, unsigned
 /// Calls to this function are should not be added by hand! Please checkout the
 /// patch `AddCSDetail` of the CppTranslator.
 void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group, va_list args) {
+	if (!MI->flat_insn->detail)
+		return;
 	switch (op_group) {
 	case ARM_OP_GROUP_RegImmShift: {
 		ARM_AM_ShiftOpc shift_opc = va_arg(args, ARM_AM_ShiftOpc);
@@ -1116,12 +1122,16 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 
 /// Returns the operand at detail->arm.operands[op_count + offset]
 inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset) {
+	if (!MI->flat_insn->detail)
+		return NULL;
 	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
 	return &MI->flat_insn->detail->arm.operands[CurrentCSOpIdx + offset];
 }
 
 /// Adds a register ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg) {
+	if (!MI->flat_insn->detail)
+		return;
 	assert((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_REG);
 
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
@@ -1132,6 +1142,8 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg) {
 
 /// Adds an immediate ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int64_t Imm) {
+	if (!MI->flat_insn->detail)
+		return;
 	assert((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM);
 	assert(ImmType == ARM_OP_IMM || ImmType == ARM_OP_PIMM || ImmType == ARM_OP_CIMM);
 
@@ -1144,6 +1156,8 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int6
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increased by one.
 /// This is done by set_mem_access().
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int scale, int lshift, uint64_t Val) {
+	if (!MI->flat_insn->detail)
+		return;
 	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
 	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
 	switch(secondary_type) {
@@ -1185,6 +1199,8 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int sc
 /// Sets the neon_lane in the previous operand to the value of MI->operands[OpNum]
 /// Decrements op_count by 1.
 void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
+	if (!MI->flat_insn->detail)
+		return;
 	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
 	unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
@@ -1194,6 +1210,8 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum) {
 
 /// Adds a System Register and increments op_count by one.
 void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg) {
+	if (!MI->flat_insn->detail)
+		return;
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
 	ARM_get_detail_op(MI, 0)->reg = SysReg;
 	MI->flat_insn->detail->arm.op_count++;
@@ -1202,6 +1220,8 @@ void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg) {
 /// Transforms the immediate of the operand to a float and stores it.
 /// Increments the op_counter by one.
 void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm) {
+	if (!MI->flat_insn->detail)
+		return;
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_FP;
 	ARM_get_detail_op(MI, 0)->fp = ARM_AM_getFPImmFloat(Imm);
 	MI->flat_insn->detail->arm.op_count++;

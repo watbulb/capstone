@@ -407,7 +407,7 @@ static void print_details(csh handle, cs_arch arch, cs_mode md, cs_insn *ins)
 		default: break;
 	}
 
-	if (ins->detail->groups_count) {
+	if (ins->detail && ins->detail->groups_count) {
 		int j;
 
 		printf("\tGroups: ");
