@@ -106,6 +106,9 @@ char *get_detail_arm(csh *handle, cs_mode mode, cs_insn *ins)
 	if (arm->cc != ARMCC_AL && arm->cc != ARMCC_UNDEF)
 		add_str(&result, " ; Code condition: %u", arm->cc);
 
+	if (arm->pred_mask)
+		add_str(&result, " ; Predicate Mask: 0x%x", arm->pred_mask);
+
 	if (arm->vcc != ARMVCC_None)
 		add_str(&result, " ; Vector code condition: %u", arm->vcc);
 
