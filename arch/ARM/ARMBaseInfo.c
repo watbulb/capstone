@@ -57,6 +57,9 @@ const char *get_pred_mask(ARM_PredBlockMask pred_mask) {
 	}
 }
 
+#define GET_MCLASSSYSREG_IMPL
+#include "ARMGenSystemRegister.inc"
+
 // lookup system register using 12-bit SYSm value.
 // Note: the search is uniqued using M1 mask
 const MClassSysReg *lookupMClassSysRegBy12bitSYSmValue(unsigned SYSm)

@@ -92,6 +92,11 @@ $tblgen --printerLang=CCS --gen-subtarget -I "$llvm_root/llvm/include/" -I "$llv
 echo "[*] Generate Mapping tables..."
 $tblgen --printerLang=CCS --gen-asm-matcher -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td"
 
+echo "[*] Generate System Register tables..."
+$tblgen --printerLang=CCS --gen-searchable-tables -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td"
+cp __ARCH__GenCSSystemRegisterEnum.inc $arch"GenCSSystemRegisterEnum.inc"
+cp __ARCH__GenSystemRegister.inc $arch"GenSystemRegister.inc"
+
 echo "[*] Translate LLVM source files..."
 cd ../CppTranslator/
 . ./.venv/bin/activate
@@ -104,7 +109,7 @@ cs_inc_dir="$cs_root/include/capstone"
 
 echo "[*] Copy files to $cs_inc_dir"
 
-into_cs_include=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc"
+into_cs_include=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc"
 for f in $into_cs_include; do
   cp $f "$cs_inc_dir/inc"
 done

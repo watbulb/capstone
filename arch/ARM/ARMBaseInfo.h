@@ -73,6 +73,7 @@ typedef struct BankedReg {
 } BankedReg;
 
 #define GET_BANKEDREG_DECL
+#define GET_MCLASSSYSREG_DECL
 #include "ARMGenSystemRegister.inc"
 
 typedef enum IMod { ARM_PROC_IE = 2, ARM_PROC_ID = 3 } ARM_PROC_IMod;
