@@ -44,11 +44,17 @@ class Configurator:
         self.init_parser()
         return self.parser
 
-    def get_config(self) -> dict:
+    def get_arch_config(self) -> dict:
         if self.config:
-            return self.config
+            return self.config[self.arch]
         self.load_config()
-        return self.config
+        return self.config[self.arch]
+
+    def get_general_config(self) -> dict:
+        if self.config:
+            return self.config["General"]
+        self.load_config()
+        return self.config["General"]
 
     def load_config(self) -> None:
         if not Path.exists(self.config_path):
@@ -59,7 +65,7 @@ class Configurator:
         if self.arch not in conf:
             log.fatal(f"{self.arch} has no configuration. Please add them in {self.config_path}!")
             exit(1)
-        self.config = conf[self.arch]
+        self.config = conf
 
     def ts_compile_cpp(self) -> None:
         log.info("Compile Cpp language")

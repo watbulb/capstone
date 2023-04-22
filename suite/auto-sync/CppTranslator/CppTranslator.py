@@ -157,12 +157,14 @@ class Translator:
     ):
         self.configurator = configure
         self.arch = self.configurator.get_arch()
-        self.conf = self.configurator.get_config()
+        self.conf = self.configurator.get_arch_config()
+        self.conf_general = self.configurator.get_general_config()
         self.ts_cpp_lang = self.configurator.get_cpp_lang()
         self.parser = self.configurator.get_parser()
 
         self.src_paths: [Path] = [Path(sp["in"]) for sp in self.conf["files_to_translate"]]
-        self.out_paths: [Path] = [Path(sp["out"]) for sp in self.conf["files_to_translate"]]
+        t_out_dir = self.conf_general["translation_out_dir"]
+        self.out_paths: [Path] = [Path(t_out_dir + sp["out"]) for sp in self.conf["files_to_translate"]]
 
         self.collect_template_instances()
         self.init_patches()
