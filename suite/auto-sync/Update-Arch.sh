@@ -20,6 +20,7 @@ llvm_c_inc_dir="llvm_c_inc"
 llvm_inc_dir="llvm_inc"
 translator_dir="trans_out"
 ts_so_dir="ts_libs"
+diff_dir="diff_out"
 
 setup_build_dir() {
   if [ ! -d "$llvm_inc_dir" ]; then
@@ -40,6 +41,11 @@ setup_build_dir() {
   if [ ! -d "$ts_so_dir" ]; then
     echo "[*] Create ./$ts_so_dir directory"
     mkdir $ts_so_dir
+  fi
+
+  if [ ! -d "$diff_dir" ]; then
+    echo "[*] Create ./$diff_dir directory"
+    mkdir $diff_dir
   fi  
 }
 

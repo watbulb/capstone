@@ -151,10 +151,7 @@ class Translator:
         TemplateDefinition.__name__: 6,
     }
 
-    def __init__(
-        self,
-        configure: Configurator
-    ):
+    def __init__(self, configure: Configurator):
         self.configurator = configure
         self.arch = self.configurator.get_arch()
         self.conf = self.configurator.get_arch_config()

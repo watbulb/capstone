@@ -1,7 +1,17 @@
 {
   "General": {
-    "cs_arch_src": "../../../arch",
-    "translation_out_dir": "../build/trans_out/"
+    "cs_arch_src": "../../../arch/",
+    "translation_out_dir": "../build/trans_out/",
+    "diff_out_dir": "../build/diff_out/",
+    "nodes_to_diff": [
+      {
+        "node_type": "function_definition",
+        "identifier_node_type": "function_declarator/identifier"
+      }, {
+        "node_type": "preproc_function_def",
+        "identifier_node_type": "identifier"
+      }
+    ]
   },
   "ARM": {
     "files_to_translate": [
