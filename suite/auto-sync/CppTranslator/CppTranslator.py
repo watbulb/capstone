@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json
+
 import subprocess
 from pathlib import Path
 
@@ -10,6 +10,8 @@ import sys
 
 from tree_sitter.binding import Query
 
+from Configurator import Configurator
+from Helper import convert_loglevel
 from Patches.AddCSDetail import AddCSDetail
 from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
@@ -151,54 +153,19 @@ class Translator:
 
     def __init__(
         self,
-        arch: str,
-        conf_path: Path,
-        ts_grammar_path: Path,
-        ts_compile_path: Path,
+        configure: Configurator
     ):
-        self.ts_grammar_path: Path = ts_grammar_path
-        self.ts_so_path: Path = ts_compile_path
-        self.arch = arch
+        self.configurator = configure
+        self.arch = self.configurator.get_arch()
+        self.conf = self.configurator.get_config()
+        self.ts_cpp_lang = self.configurator.get_cpp_lang()
+        self.parser = self.configurator.get_parser()
 
-        self.load_config(conf_path)
         self.src_paths: [Path] = [Path(sp["in"]) for sp in self.conf["files_to_translate"]]
         self.out_paths: [Path] = [Path(sp["out"]) for sp in self.conf["files_to_translate"]]
 
-        self.ts_compile_cpp()
-        self.ts_set_language()
-        self.init_parser()
         self.collect_template_instances()
         self.init_patches()
-
-    def load_config(self, conf_path: Path) -> None:
-        if not Path.exists(conf_path):
-            log.fatal(f"Could not load arch config file at '{conf_path}'")
-            exit(1)
-        with open(conf_path) as f:
-            conf = json.loads(f.read())
-        if self.arch not in conf:
-            log.fatal(f"{self.arch} has not configuration. Please the them in {conf_path}!")
-            exit(1)
-        self.conf = conf[self.arch]
-
-    def ts_compile_cpp(self) -> None:
-        log.info("Compile Cpp language")
-        if not Path.exists(self.ts_grammar_path):
-            log.fatal(f"Could not load the tree-sitter grammar at '{self.ts_grammar_path}'")
-            exit(1)
-        Language.build_library(str(self.ts_so_path), [self.ts_grammar_path])
-
-    def ts_set_language(self) -> None:
-        log.info(f"Load language '{self.ts_so_path}'")
-        if not Path.exists(self.ts_so_path):
-            log.fatal(f"Could not load the tree-sitter language shared object at '{self.ts_so_path}'")
-            exit(1)
-        self.ts_cpp_lang = Language(self.ts_so_path, "cpp")
-
-    def init_parser(self) -> None:
-        log.debug("Init parser")
-        self.parser = Parser()
-        self.parser.set_language(self.ts_cpp_lang)
 
     def read_src_file(self, src_path: Path) -> None:
         """Reads the file at src_path into self.src"""
@@ -212,7 +179,6 @@ class Translator:
     def init_patches(self):
         log.debug("Init patches")
         priorities = dict(sorted(self.patch_priorities.items(), key=lambda item: item[1]))
-        patch: Patch = None
         for ptype, p in priorities.items():
             if ptype == CheckDecoderStatus.__name__:
                 patch = CheckDecoderStatus(p)
@@ -439,22 +405,6 @@ class Translator:
             subprocess.run(["clang-format-13", "-style=file", "-i", out_file])
 
 
-def convert_loglevel(level: str) -> int:
-    if level == "debug":
-        return log.DEBUG
-    elif level == "info":
-        return log.INFO
-    elif level == "warning":
-        return log.WARNING
-    elif level == "error":
-        return log.ERROR
-    elif level == "fatal":
-        return log.FATAL
-    elif level == "critical":
-        return log.CRITICAL
-    raise ValueError(f'Unknown loglevel "{level}"')
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="CppTranslator",
@@ -469,7 +419,7 @@ def parse_args() -> argparse.Namespace:
         default="info",
     )
     parser.add_argument(
-        "-c", dest="arch_config", help="Config file for architectures.", default="arch_config.json", type=Path
+        "-c", dest="config_path", help="Config file for architectures.", default="arch_config.json", type=Path
     )
     parser.add_argument(
         "-g", dest="grammar", help="Path to the tree-sitter C++ grammar.", default="vendor/tree-sitter-cpp", type=Path
@@ -488,5 +438,6 @@ if __name__ == "__main__":
         stream=sys.stdout,
         format="%(levelname)-5s - %(message)s",
     )
-    translator = Translator(args.arch, args.arch_config, args.grammar, args.lang_so)
+    configurator = Configurator(args.arch, args.config_path, args.grammar, args.lang_so)
+    translator = Translator(configurator)
     translator.translate()
