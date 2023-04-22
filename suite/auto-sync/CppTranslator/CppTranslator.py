@@ -406,6 +406,13 @@ class Translator:
             log.info(f"Format {out_file}")
             subprocess.run(["clang-format-13", "-style=file", "-i", out_file])
 
+    def remark_manual_files(self) -> None:
+        manual_edited = self.conf["manually_edited_files"]
+        if len(manual_edited) > 0:
+            log.warning("The following files are to complex to translate! Please check them by hand.")
+        for f in manual_edited:
+            log.warning(f)
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -443,3 +450,4 @@ if __name__ == "__main__":
     configurator = Configurator(args.arch, args.config_path, args.grammar, args.lang_so)
     translator = Translator(configurator)
     translator.translate()
+    translator.remark_manual_files()

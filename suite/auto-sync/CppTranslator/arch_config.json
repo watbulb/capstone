@@ -27,6 +27,9 @@
       "../build/llvm_inc/ARMGenAsmWriter.inc",
       "../vendor/llvm_root/llvm/lib/Target/ARM/Disassembler/ARMDisassembler.cpp",
       "../vendor/llvm_root/llvm/lib/Target/ARM/MCTargetDesc/ARMInstPrinter.cpp"
+    ],
+    "manually_edited_files": [
+      "../vendor/llvm_root/llvm/lib/Target/ARM/Disassembler/ARMBaseInfo.h"
     ]
   }
 }
