@@ -1,3 +1,4 @@
+import hashlib
 import logging as log
 import shutil
 import termcolor
@@ -74,15 +75,43 @@ def find_id_by_type(node: Node, node_types: [str], type_must_match: bool) -> byt
 
 
 def print_prominent_warning(msg: str) -> None:
-    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "yellow") + "\n")
+    print("\n" + separator_line_1("yellow"))
     print(termcolor.colored("WARNING", "yellow", attrs=["bold"]) + "\n")
     print(msg)
-    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "yellow"))
-    input("Press enter to continue...")
+    print(separator_line_1("yellow"))
+    input("Press enter to continue...\n")
+
+
+def term_width() -> int:
+    return shutil.get_terminal_size()[0]
 
 
 def print_prominent_info(msg: str) -> None:
-    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "blue") + "\n")
+    print("\n" + separator_line_1("blue"))
     print(msg)
-    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "blue"))
-    input("Press enter to continue...")
+    print(separator_line_1("blue"))
+    input("Press enter to continue...\n")
+
+
+def bold(msg: str, color: str = None) -> str:
+    if color:
+        return termcolor.colored(msg, attrs=["bold"], color=color)
+    return termcolor.colored(msg, attrs=["bold"])
+
+
+def colored(msg: str, color: str) -> str:
+    return termcolor.colored(msg, color=color)
+
+
+def separator_line_1(color: str = None) -> str:
+    return f"{bold(f'⎼' * int(term_width() / 2), color)}\n"
+
+
+def separator_line_2(color: str = None) -> str:
+    return f"{bold(f'═' * int(term_width() / 2), color)}\n"
+
+
+def get_sha256(data: bytes) -> str:
+    h = hashlib.sha256()
+    h.update(data)
+    return h.hexdigest()

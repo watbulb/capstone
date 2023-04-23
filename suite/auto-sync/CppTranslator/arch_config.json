@@ -1,8 +1,13 @@
 {
   "General": {
+    "patch_persistence_file": "./saved_patches.json",
     "cs_arch_src": "../../../arch/",
     "translation_out_dir": "../build/trans_out/",
     "diff_out_dir": "../build/diff_out/",
+    "diff_color_new": "green",
+    "diff_color_old": "light_blue",
+    "diff_color_saved": "yellow",
+    "diff_color_edited": "light_magenta",
     "nodes_to_diff": [
       {
         "node_type": "function_definition",

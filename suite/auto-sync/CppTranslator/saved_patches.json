@@ -1,0 +1,1050 @@
+{
+  "ARMDisassembler.c": {
+    "AddThumb1SBit": {
+      "apply_type": "OLD",
+      "old_hash": "61d033b30480d2a0a3401ac41febe1745765912fab9f6f620a757a09d96fd1bd",
+      "new_hash": "058a19cb97aaf2a9178e9fbd3da4c889ef90a6a122e63c47e62c7217ab805837",
+      "edit": ""
+    },
+    "AddThumbPredicate": {
+      "apply_type": "OLD",
+      "old_hash": "cfe6f1445d7b9be90ccfe5392cdc995f01a09fb3ad40f4e2cd7df116b6de8597",
+      "new_hash": "ad3e5c1bc14983e725effffe394b3d690bd50859339f3bc10c3d0233a3d0f8f8",
+      "edit": ""
+    },
+    "DecodeBankedReg": {
+      "apply_type": "OLD",
+      "old_hash": "674e0dfea3a0c39593059ab56958292d4242beb7996c1897b17586486f5cf927",
+      "new_hash": "08b3708e153bf87972bda1e849b175687af924fc6144e5d2ea2eb85aff01934e",
+      "edit": ""
+    },
+    "DecodeCoprocessor": {
+      "apply_type": "OLD",
+      "old_hash": "ee00aa3aadf54021dd94b30c3f83f413e74a916a1190a658eeefcfd8c120f85d",
+      "new_hash": "ac49528187d74101ec2cd7a715b33c14bd8f68366d2a9b17863f40d78a2eddee",
+      "edit": ""
+    },
+    "DecodeDPRRegListOperand": {
+      "apply_type": "OLD",
+      "old_hash": "57256208928db0c04aac8a2c3ef5419924bb36df48dfefd3ea9776db5348b7b6",
+      "new_hash": "bb44204eb88192f5f778407043def52184ecb7e1d1d3e7431c3e6087776f6d29",
+      "edit": ""
+    },
+    "DecodeLOLoop": {
+      "apply_type": "OLD",
+      "old_hash": "4af808effd0ce4ae756ada4a625866494be270339c69b72f1811851ad1eda6ab",
+      "new_hash": "7bcff7c0ec09644dae4bb71272dc5afb5a5bbbd48539cf96f226248a2e35e358",
+      "edit": ""
+    },
+    "DecodeMVEOverlappingLongShift": {
+      "apply_type": "OLD",
+      "old_hash": "c78a5d66e6f27f3589d2d3c94a65d0e3a316c0859447210266c18c5fcd585440",
+      "new_hash": "9b61fc0d58da38e6b9d5b33be7de4a348b1e1a09659897451ebaa9fe54e8c592",
+      "edit": ""
+    },
+    "DecodeNEONComplexLane64Instruction": {
+      "apply_type": "OLD",
+      "old_hash": "05665b99172e631f28d6a23ac370265408f4fa73c6d9b90940b2b9fa363228eb",
+      "new_hash": "4cedee01612932daa9b93ccd2a96832897c5829f14d3a2edb75482899f54987a",
+      "edit": ""
+    },
+    "DecodePredicateOperand": {
+      "apply_type": "OLD",
+      "old_hash": "f0407faf4ba77bb21a701059bda42b883933a8b5bdd5d1e562dba2a65a255859",
+      "new_hash": "6424f3df58bf8052544e105f27aed06c83d6a7848a3f9931f3e34ae1997812f1",
+      "edit": ""
+    },
+    "DecodeRegListOperand": {
+      "apply_type": "OLD",
+      "old_hash": "f109a2da9589077da5282789f9e3bd18d8b73920f0e2226d8923ed3284f7c3d3",
+      "new_hash": "5c253ae231f60ecec8b481a6b67d57800dda7219a3fe02532321ee73e1917512",
+      "edit": ""
+    },
+    "DecodeSORegMemOperand": {
+      "apply_type": "OLD",
+      "old_hash": "ab23a587e15e074e411c62f864193c4f2a652a7382ecb7809623d78bec8f0674",
+      "new_hash": "effc58e71de0945a05bdf38766d353dafa3ec291668f8f00f44a255cbfb823dc",
+      "edit": ""
+    },
+    "DecodeSPRRegListOperand": {
+      "apply_type": "OLD",
+      "old_hash": "701c0db76b7a8e2240117e3595456513bc9628b27e61cb3341f23e6375f9bcdc",
+      "new_hash": "1492515b9a1dee7f4273138d9d0dc2b1009f237d6c552863917ef0e7c8129371",
+      "edit": ""
+    },
+    "DecodeVpredNOperand": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "2578cfe15a91a738ab2750bf9782fa9150c5b5cb04a81fe43e915e837138c09d",
+      "edit": ""
+    },
+    "UpdateThumbVFPPredicate": {
+      "apply_type": "OLD",
+      "old_hash": "d0f18c9b91d6353600d4eea3ff8f254467244aaa7beef0eee26a99e3ce837145",
+      "new_hash": "2cb4d9b440c936716edce5d6065667c58dc218d875b3b2c3415fc2d5420bee1b",
+      "edit": ""
+    },
+    "checkDecodedInstruction": {
+      "apply_type": "OLD",
+      "old_hash": "80d6d23e4ab5096e059dae95a41782de11b63c823f3a9ca493aadbf818722976",
+      "new_hash": "da30f6a24c69c527a0760847938fa5fc6e142b4f494e0f47596b3bb90c456e94",
+      "edit": ""
+    },
+    "createARMDisassembler": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "d80bc66ddad7824e610d0ec3c2736c5a5a2178dc267dbecf7c98abe1bf8dbc8f",
+      "edit": ""
+    },
+    "endianSensitiveOpcode16": {
+      "apply_type": "OLD",
+      "old_hash": "4f3271127fbe992138cce7f6f67369712b94d0ec647e9a1f492479400038cbb9",
+      "new_hash": "",
+      "edit": ""
+    },
+    "endianSensitiveOpcode32": {
+      "apply_type": "OLD",
+      "old_hash": "b586b082f100111f70a6640a8fd0d82b193a782c7f77cf9441ce6c16225db406",
+      "new_hash": "",
+      "edit": ""
+    },
+    "getARMInstruction": {
+      "apply_type": "OLD",
+      "old_hash": "c825b338c7fd9b85b611fdf1c0f9406afa2dc7214ed0255c7018fa236cbd9cb2",
+      "new_hash": "c8235c4dd3edfee5cab92edccfbfa13dd4109867d4f000dd4d8f53f4c0a85b6b",
+      "edit": ""
+    },
+    "getInstruction": {
+      "apply_type": "OLD",
+      "old_hash": "21298bfa97fb4918c5c1d1b5b608c4e2ec93d9b22be74fb7cf0056cf1efe1642",
+      "new_hash": "1418a01b1c9ebacc0c0c0122b085d012433172d31c85a030fef7f060a865b674",
+      "edit": ""
+    },
+    "getThumbInstruction": {
+      "apply_type": "OLD",
+      "old_hash": "5df13f0d03bf9b86a4b5e9e45a853667ec365791a0b3e375d0460a89c05c758b",
+      "new_hash": "b0b3bb7d6c25c862cba8e5da3f02e58818756c57bb1bb482ef4fd46342875e40",
+      "edit": ""
+    },
+    "suggestBytesToSkip": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "65c27734bf7586ac043ccb2903306d0a5865534bf04a39802d62d91e2e55137b",
+      "edit": ""
+    },
+    "tryAddingPcLoadReferenceComment": {
+      "apply_type": "OLD",
+      "old_hash": "756dec33083e5dbc93b9cd9c966498730bbffb761e605f920df573b560c083a1",
+      "new_hash": "fa7561e70955849a2ec539cb0105841c1fcf888f5f31c60dd8dab18f4f4bac6d",
+      "edit": ""
+    },
+    "tryAddingSymbolicOperand": {
+      "apply_type": "OLD",
+      "old_hash": "2c83f84aed879e87a032e877ee8c59654764dbc5643ebdb16b9b86da6ea42d02",
+      "new_hash": "71ad8455c1cc2436597516c136a2298b244eca7cbfea90640d4dab2af3fafd67",
+      "edit": ""
+    }
+  },
+  "ARMInstPrinter.c": {
+    "DEFINE_printAddrMode3Operand": {
+      "apply_type": "OLD",
+      "old_hash": "c9c59f4a9d08ce99cd49079912a0680c1fd5007b2f6cd2b7eac101d87fbbab51",
+      "new_hash": "0d7eca5b028e59d43976912ebf0e6284144c8b4325c6ac8cce842852a522c6c6",
+      "edit": ""
+    },
+    "DEFINE_printAddrMode5FP16Operand": {
+      "apply_type": "OLD",
+      "old_hash": "b1da91b7f1ffdf17c4d90d6e0d99373e27f74b65a18228903d5510da50ddfc36",
+      "new_hash": "16b76ad23870fea6d414883d116eb9996fe2e0463b1a9f9edbcb789e6d89c410",
+      "edit": ""
+    },
+    "DEFINE_printAddrMode5Operand": {
+      "apply_type": "OLD",
+      "old_hash": "9200d9452ac70a1b2ee48d7f71f4ab0077910c2a28bf10abace269fd4d6df15d",
+      "new_hash": "17838845ae5dc93d36d8abfc3619d9733ff29f9a74b52dd6230d9f49f9566ede",
+      "edit": ""
+    },
+    "DEFINE_printAddrModeImm12Operand": {
+      "apply_type": "OLD",
+      "old_hash": "1fe13b6f68599f431db29bc9f76b65ddef50e381bc4deba065105a4e04412e29",
+      "new_hash": "d6da8cbe3cc1e2540c00ab7baf540650d32dbfba685c824203f0d020a08e3a91",
+      "edit": ""
+    },
+    "DEFINE_printAdrLabelOperand": {
+      "apply_type": "OLD",
+      "old_hash": "1b2f5e7bbc1ee290a0b3ec8509817d1c4092da654bac441bf1e187becc3437b8",
+      "new_hash": "d4fc6d244c332392727f8a1d8a3595e75ab9fc736bc3c915b10b5fce15fb7968",
+      "edit": ""
+    },
+    "DEFINE_printComplexRotationOp": {
+      "apply_type": "OLD",
+      "old_hash": "28b1aabdbf8b2731468522b7e20291ca7ae90693e68e13b7c1cee35a80be0e74",
+      "new_hash": "91032b528c4a4dde07d610970f120eef94065967e4d31348c12f70ea69c1396a",
+      "edit": ""
+    },
+    "DEFINE_printMVEVectorList": {
+      "apply_type": "OLD",
+      "old_hash": "9dfb1a71d6d828c919c6bc217a346c37d622fa56d369f22f51c7889fb5285158",
+      "new_hash": "92fbf764f6efefb68befc890dca5cb5b3ea3a97d68ac43ffa2f7ec0bfda5e422",
+      "edit": ""
+    },
+    "DEFINE_printMveAddrModeRQOperand": {
+      "apply_type": "OLD",
+      "old_hash": "6abd4b1369876754b5c0662f7064a9d9ca77a2fcc55565e000ad017fbc1c5056",
+      "new_hash": "e68fef2691a4b1183c3ff98be9feb65525df46b8de61757c3656f6e9ef9f4fb0",
+      "edit": ""
+    },
+    "DEFINE_printT2AddrModeImm8Operand": {
+      "apply_type": "OLD",
+      "old_hash": "3a58fa403c6fcf233194d4da2769ddef32187c7b1291cde5b95d0a70fd4a9d51",
+      "new_hash": "08023e654842b5d3d3ae103b15bbde3992e3e237478d6c6ebdbb524732648683",
+      "edit": ""
+    },
+    "DEFINE_printT2AddrModeImm8s4Operand": {
+      "apply_type": "OLD",
+      "old_hash": "05ea5dcbb71debda56f0769e474707b2ebc19a2be34bc6f786384c089bea40ee",
+      "new_hash": "9da891e11318290fd70d306f817c499f5a2dddc58b035799c20c84be22ca6c10",
+      "edit": ""
+    },
+    "applyTargetSpecificCLOption": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "ad2a36a5f57112f2e49236e83241261e9bc460e6e645180ad4747047a444ac43",
+      "edit": ""
+    },
+    "printAM2PreOrOffsetIndexOp": {
+      "apply_type": "OLD",
+      "old_hash": "2a0821a5f81bc041031afa989bbaa812399454a86e35147d743296794e118460",
+      "new_hash": "f4b2d3763c4915eefd267ae9a155304af909a9e015cc89b529e65b4f7f93fbf1",
+      "edit": ""
+    },
+    "printAM3PreOrOffsetIndexOp": {
+      "apply_type": "OLD",
+      "old_hash": "8c8f9d337a386ed1d2bdeff449639ed881f92efe8e98a7b21e0e3eacc3525a05",
+      "new_hash": "ca007630043e4a01f4b61407ca6fe00243ddfcf3fa1731e5c118170ddf97ea31",
+      "edit": ""
+    },
+    "printAddrMode2OffsetOperand": {
+      "apply_type": "OLD",
+      "old_hash": "feed7ec24c1b7ef0ec724978a9837ec979adc22c0542f7d77f253958d074ba81",
+      "new_hash": "e16d0a7ae8dc06b254cbd18fe91fb9f4bcd9d9e92fc849ec0cdb58e4522fda27",
+      "edit": ""
+    },
+    "printAddrMode2Operand": {
+      "apply_type": "OLD",
+      "old_hash": "6875c0e357a288555795ce983b2f3e3e6e913f540bdbfdf71a49d0e908bfbf98",
+      "new_hash": "b77862dec5068c69d2ad24e1caf0980c80c7569910b9d7aba6d31d33d190509f",
+      "edit": ""
+    },
+    "printAddrMode3OffsetOperand": {
+      "apply_type": "OLD",
+      "old_hash": "ce11eda60a8b6b870365b32f050eb4349e05ee5d803b27f59778e606f0155c7f",
+      "new_hash": "64853260e6e36cdc62371f6a0752380ed44cc4d85718f8ce84d00e58daa160bb",
+      "edit": ""
+    },
+    "printAddrMode6Operand": {
+      "apply_type": "OLD",
+      "old_hash": "4c1ab7f1c571e6670abc287265ed417380fb342ebd1546fdab4e7bb8dc588533",
+      "new_hash": "640649fadd200b945996398a2e57b589ea601e059400780506ec239be7a132e2",
+      "edit": ""
+    },
+    "printAddrModeTBB": {
+      "apply_type": "OLD",
+      "old_hash": "ed2960ea4db884c12cb49acd5758292bb5717731ce7055418c884731f65a4ed3",
+      "new_hash": "c5c2ef9a4b66590e3537aec1fb1b75c0550de158c61fee2fa4b09fffbb9e804b",
+      "edit": ""
+    },
+    "printAddrModeTBH": {
+      "apply_type": "OLD",
+      "old_hash": "c9cfc026bf02c3a8f71d433e4ca351a69dcfde615ae4ea53c319c9eb49f0195c",
+      "new_hash": "7063da9c6bd8e82325891367250a10f51575f4e4a6295d7c30c8d324c81f26f9",
+      "edit": ""
+    },
+    "printBankedRegOperand": {
+      "apply_type": "OLD",
+      "old_hash": "80498e27f7e1cc84c4b2a078ee8933a265086be8c402a664da8f0d3cd4316e4d",
+      "new_hash": "79b5f99803664934b1d7352ff6795b551d96e1537a996983068f652a2374631d",
+      "edit": ""
+    },
+    "printBitfieldInvMaskImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "3663aa63f76b96661eb8ca06ff6a26d2e124be3273f6ed5730378a3ad63463f7",
+      "new_hash": "538f65f613dd43cbcd1c26ecaa1f4d57d24481d96eef3f64ea750c3cc37b5e73",
+      "edit": ""
+    },
+    "printCImmediate": {
+      "apply_type": "OLD",
+      "old_hash": "c8ed8178b65ad55fb03a9994c4724b693d1ea91b2edcd51cf1a173a5a4bc8b06",
+      "new_hash": "75ab12af66fa1818b70346f32ef5dc351302afc10029629316f5a7f08a5fb842",
+      "edit": ""
+    },
+    "printCoprocOptionImm": {
+      "apply_type": "OLD",
+      "old_hash": "aca791ba75add3d8959cf680ee2f57baaefc3e398a7dcbdbe9fcdebd1d3068a2",
+      "new_hash": "a208f4389b6535a4bad54b39b7b31129f7824750f1825fe74fb9097267b71e3b",
+      "edit": ""
+    },
+    "printFBits16": {
+      "apply_type": "OLD",
+      "old_hash": "3974b8b44f9da10463d5931565d5cab89b838a09fb4f0e8880ee20e72f895694",
+      "new_hash": "d8fb33f4c7dacc3bbd748f4c6e50f506588613f3a897d12b24173841bf0ade07",
+      "edit": ""
+    },
+    "printFBits32": {
+      "apply_type": "OLD",
+      "old_hash": "e6d9de0884cc2a3c760f8240fc18f6927806cb6ab8dfe916d9a6992afeddfbf6",
+      "new_hash": "df4574aa808377a75dcdc65763f8028af61b080ab990f2cc523edeb6c41ac2cb",
+      "edit": ""
+    },
+    "printFPImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "39537cf65c6d9c1790fc512a3a4c900148fadfabd1a88f970588c2fa2cbfa2a1",
+      "new_hash": "8e585b1f9e73b18bcca15dcda048a5b36b5eaf8528372d3a126021d0cfb44b10",
+      "edit": ""
+    },
+    "printImmPlusOneOperand": {
+      "apply_type": "OLD",
+      "old_hash": "d2ff4fd1b8292ed8e40bab5f91ad455786edab7446c1916147efab4adbce37db",
+      "new_hash": "285b8ed9f2de9a47c0668268b9dc0f1eb32dd796ba3cb03a7fb762bb71a17500",
+      "edit": ""
+    },
+    "printInst": {
+      "apply_type": "OLD",
+      "old_hash": "2dd6c947d43ba4e464f606f75753abe9b64cbdf2bff8e558f6c2fed2d8b1b4ba",
+      "new_hash": "43ff4602e763b16103b5ae45de8d4ec639e990b2035e635189ca98c538e82543",
+      "edit": ""
+    },
+    "printLdStmModeOperand": {
+      "apply_type": "OLD",
+      "old_hash": "088c3befbc8d33113664a35df781d07bd3f1edf9be6bc69691c1e713ce9df209",
+      "new_hash": "902da3c3a8d59c7d41784b50cc71448a409d4e6fcc8d96aedbbbd6966f5ecd67",
+      "edit": ""
+    },
+    "printMSRMaskOperand": {
+      "apply_type": "OLD",
+      "old_hash": "4bee37755ce723800ce5ac6cc86fd925f6d5253fa46d6eea40c8a5eaeb787aac",
+      "new_hash": "8b936e9788214a68fff5c5e1f016a43888b44eebbbd9752872dd793e8b2d9875",
+      "edit": ""
+    },
+    "printMandatoryInvertedPredicateOperand": {
+      "apply_type": "OLD",
+      "old_hash": "d89595b75c7ce86a7c9a4d1e9cb8813ea3b16624294c7e82251f42a74e0573c9",
+      "new_hash": "f466f0aef159a8585b8f819ac7ec81801f23ed8a87b32fa8565fd04ff5f60d7c",
+      "edit": ""
+    },
+    "printMandatoryPredicateOperand": {
+      "apply_type": "OLD",
+      "old_hash": "f055949e40ea6e2c156fb2666a1286884eefefd2c5ffda513d3a651fab437928",
+      "new_hash": "869c0a7b9cff8b6e49c4d1a831497d30fff928f406d16b5d319f830b5167a71c",
+      "edit": ""
+    },
+    "printMandatoryRestrictedPredicateOperand": {
+      "apply_type": "OLD",
+      "old_hash": "5cb657d162c7f209b211ff648f78d81207139da616ee2525f355f88bef392c07",
+      "new_hash": "264a03894fbecaa1905c0e813d8d97b6bb1750c4c317a6fd9e392658bcbc3576",
+      "edit": ""
+    },
+    "printMemBOption": {
+      "apply_type": "OLD",
+      "old_hash": "24431bc21332c4ac9c7183640f7c51bff3e599d3058151f9dc7e85818e815ebc",
+      "new_hash": "18bf73b651dee8ba73c5e7d7d10f171d66fd4e9e7a195d33718648bd66c81d43",
+      "edit": ""
+    },
+    "printModImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "3c7b6a987ad4f53391320e6c5e419d14bd684b7c7764c91a29557d8c8d7c0107",
+      "new_hash": "dbd342c8de8a779050d03a8e5a8df0e7f474c603c9b20b77fd2824651598c8ff",
+      "edit": ""
+    },
+    "printMveSaturateOp": {
+      "apply_type": "OLD",
+      "old_hash": "cad03dedb4cb8e6c8182e6480fb8cf260dced5359561efa969964039190285e3",
+      "new_hash": "fb7a58a2cff0c5d2012be17c757e6e335e33db97c08935614fc8a800671580a3",
+      "edit": ""
+    },
+    "printNoHashImmediate": {
+      "apply_type": "OLD",
+      "old_hash": "3437e29a62ba6b37ffcb469d2801f04104ea1f3d607e9b49643a9b86147e51a0",
+      "new_hash": "db531a81f8b0817e6c0c849a74ef3bd42d3644653da860c4cf3b4569c270b335",
+      "edit": ""
+    },
+    "printOperand": {
+      "apply_type": "OLD",
+      "old_hash": "48a077d66ee45d6140b0a13e1cdf7d5d986cb791d1e2d31f6dc4874de86c02ff",
+      "new_hash": "",
+      "edit": ""
+    },
+    "printOperandAddr": {
+      "apply_type": "OLD",
+      "old_hash": "ed9f8326b669a18dc017020d8b6a3574c7ab5f7f805e3b58b1d4f0cd2145a2a6",
+      "new_hash": "",
+      "edit": ""
+    },
+    "printPCLabel": {
+      "apply_type": "OLD",
+      "old_hash": "fe950b5f6e5f0ff52566a7ffc14437df569a268fe4e237a78d12b69a7227ab54",
+      "new_hash": "2b49444976b0c5e7d00f3812c514dc791a6263ac58519f205fce3472a509f00d",
+      "edit": ""
+    },
+    "printPImmediate": {
+      "apply_type": "OLD",
+      "old_hash": "4a43ee6711fc864d99b7ed7c58f6434d0c59e5a45675fc0e92a108c6428db349",
+      "new_hash": "5179d49146072bcd8fd7a728eacee637b9068103d03236b199ef784bf701844b",
+      "edit": ""
+    },
+    "printPKHASRShiftImm": {
+      "apply_type": "OLD",
+      "old_hash": "6b615ed209b7b1bb356105e15beb61ce072d471a87ff1752c71f72545d41c53f",
+      "new_hash": "02a59f1cadbeae76fe2ce2ef75efb955ec1c9ad62c1f0b96c038b680eca71089",
+      "edit": ""
+    },
+    "printPKHLSLShiftImm": {
+      "apply_type": "OLD",
+      "old_hash": "fd9009ea5de676628f01ff4fd8e64143fb4298425ac09172ea4e61b7dcb48cb8",
+      "new_hash": "13e473d3748a77c68b8962763976b9a086173459880b8a504774acbe769e44c5",
+      "edit": ""
+    },
+    "printPostIdxImm8Operand": {
+      "apply_type": "OLD",
+      "old_hash": "4b8046fe6db1289b7e31d6cf58847d3517e61cb8a2e907ea6408dc78236768cd",
+      "new_hash": "ced4b3fbf5ab0ed89f325d9891077d61932f8a6f3b509880b3eb50d2e1c27f4b",
+      "edit": ""
+    },
+    "printPostIdxImm8s4Operand": {
+      "apply_type": "OLD",
+      "old_hash": "12580980b030c64914ab62fc3b2a1d4b371250620b737beb351129b76c0b81b6",
+      "new_hash": "87716a7ad2eb641e91b82487d680054289cd35ae5a4fa40e62a916893430a30d",
+      "edit": ""
+    },
+    "printRegImmShift": {
+      "apply_type": "OLD",
+      "old_hash": "6ebeaf8c0a40a6291604466684886660d3d8fa6d107dc6ffd329743bc1900992",
+      "new_hash": "b2ba5ab972b569752df9a1a1459853091a566fdae7e926dbea75563253469287",
+      "edit": ""
+    },
+    "printRegName": {
+      "apply_type": "OLD",
+      "old_hash": "b6d4129355c127accb21c1be880cf782187fe433199a919793d18043f84fc71b",
+      "new_hash": "3b0a64dc0bd916f65a6dc8a5b3079b31444c749f81d9690ea2e0e6f27b865409",
+      "edit": ""
+    },
+    "printRotImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "a84552d95ee19281a3050ebb2b1a7a071856ade6505c7880b55f43a0aa15df68",
+      "new_hash": "c6127fd82c73ca06d0cf61f48a92500ee47c97e1bd13bb0dc41f5e3c710f9b43",
+      "edit": ""
+    },
+    "printShiftImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "c869d8b8c963d74bd976f7e0d652cca0cb2b625aeb94a084d73f368810fc7c70",
+      "new_hash": "30ef3f6a5766a2c25e48947f6baa4252dd0d4ef44c6473a866a633fd8b33cede",
+      "edit": ""
+    },
+    "printT2AddrModeImm0_1020s4Operand": {
+      "apply_type": "OLD",
+      "old_hash": "3f1ed1a53dc5fdd4006b6a59a709b081639014c9363052e8a7de90e8113cb0a6",
+      "new_hash": "81039440d4ecbbb7eee1bba2a748b859e5ec0ab40641fa5abde9414162148bdd",
+      "edit": ""
+    },
+    "printT2AddrModeImm8OffsetOperand": {
+      "apply_type": "OLD",
+      "old_hash": "2e951e9a2413fe9fee34bb0a42079db8208318ac1b13dfeed1131d8a3cae03a8",
+      "new_hash": "8c87d2d340d3ad8aab95eb4c07b91b4c8b638fad65f6e3f9bcc6c24c6c3429d0",
+      "edit": ""
+    },
+    "printT2AddrModeImm8s4OffsetOperand": {
+      "apply_type": "OLD",
+      "old_hash": "277ab1997f089ab31f16cfb427518a02968c01d6b7b7ce5d91b9628c9a05eb35",
+      "new_hash": "b8e1bd23f723377f27aa0172516d7626ddbfac9d62b4479d35472b61dd8050a6",
+      "edit": ""
+    },
+    "printT2AddrModeSoRegOperand": {
+      "apply_type": "OLD",
+      "old_hash": "298b745ba9557de040a6ca6353974ded63eddffdd1ded486b018212d3c593c49",
+      "new_hash": "3580206cfb0c19ae190c441e2d8d7d9f30067acd248e6cf2301b9f7db1716010",
+      "edit": ""
+    },
+    "printThumbAddrModeImm5S1Operand": {
+      "apply_type": "OLD",
+      "old_hash": "720cdf87d28e33b6111fc68e570c3342e831c6eda9470acf92bb893edc5dd852",
+      "new_hash": "d2ea14d85f6b406ea31e021a7902a24a8d4c13529d0d88ae90d2273c34ee681c",
+      "edit": ""
+    },
+    "printThumbAddrModeImm5S2Operand": {
+      "apply_type": "OLD",
+      "old_hash": "f6cbbcb3e875b77116884fa89d7219b406ff2517a6f354fcf8a9df87379163a9",
+      "new_hash": "09a095fb954ed28923816739aa1a75020cbf00b82ed818cd0a30d9c3c1ce518d",
+      "edit": ""
+    },
+    "printThumbAddrModeImm5S4Operand": {
+      "apply_type": "OLD",
+      "old_hash": "541e59360c94f088794818a8ca0e7ab6c68f40bbcd8e1ecb78216d3b7b0793ab",
+      "new_hash": "56a4a8dec6082cc712b3ebe5c27d76ea1ce315b618d0d29980bd6c1ef9f6ca30",
+      "edit": ""
+    },
+    "printThumbAddrModeImm5SOperand": {
+      "apply_type": "OLD",
+      "old_hash": "69f3afb868e44d020cf9a4d1f9981c151781b0c86d00677b28ac6ac654d28512",
+      "new_hash": "1ecc3df9745f82f0a914c15c5e75328f0a6dc0c202d362fc3db455b2becd54ac",
+      "edit": ""
+    },
+    "printThumbAddrModeRROperand": {
+      "apply_type": "OLD",
+      "old_hash": "a0f3916555664fbba36fa0c0b922b1a8db2f72cb77780db6638bc4723f9598e2",
+      "new_hash": "dca657fd3269269e383aa5004cf62f1d0c61adbbaab853c6aeebadf73b817fa6",
+      "edit": ""
+    },
+    "printThumbAddrModeSPOperand": {
+      "apply_type": "OLD",
+      "old_hash": "c6198056b93d10d342f68b6872f6992d0bfe2665c24df6e5c57b219ecf0210ca",
+      "new_hash": "7f46ce2af7b8d602405fc30ac4b3459cff56435684baebaaf250200982ab25e6",
+      "edit": ""
+    },
+    "printThumbITMask": {
+      "apply_type": "OLD",
+      "old_hash": "69a93cc2d4c9c8e32e2df5bf05e90e35164b68fdcc727053902385bfbba511ab",
+      "new_hash": "308c6708d42c48c33e109cace818746da4cc35e33dfc1240b7a5bcf89c1bd504",
+      "edit": ""
+    },
+    "printThumbLdrLabelOperand": {
+      "apply_type": "OLD",
+      "old_hash": "1cddb5bad3d13f7b5f2387addc3eb19e01147dc0f188fcc7880a13cf65253102",
+      "new_hash": "3005123fa12bf5128d3894f1a8a6ec71a3c7560ee02e86a4e69b69ac79687ca6",
+      "edit": ""
+    },
+    "printThumbS4ImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "e6901c1cb536ff6186a3723e28ddb8f982c9c6238e6f85814382e0a02b138f70",
+      "new_hash": "9ba1badd1515fa0eb9042f14cb7fafe0fec4db6ea0483d7201c9440db7e3f10b",
+      "edit": ""
+    },
+    "printThumbSRImm": {
+      "apply_type": "OLD",
+      "old_hash": "9f06e51dd5cde0a979c13e49db8cbb573653c9fd88eadc1d26199137e300f72e",
+      "new_hash": "a17d3506fcd795679584b778089910375627283de79d6676303ae5318b316050",
+      "edit": ""
+    },
+    "printVMOVModImmOperand": {
+      "apply_type": "OLD",
+      "old_hash": "b45486d6af27e0f3201d2a959ea3801db5e5fa09b2882095a113d0f4aa646697",
+      "new_hash": "16454eee8deb971f9f2fd944da30d9a8da7779be916a3eb5f65f70583d589834",
+      "edit": ""
+    },
+    "printVPTMask": {
+      "apply_type": "OLD",
+      "old_hash": "23d98ec454e88886f1fbb2dc29fb23ef23705a2a06b729d2046bb0035b2f7497",
+      "new_hash": "62d6a5f4578003bc9d94fe251dccdc63bbcc9d687beb8f927a4af8224f51c347",
+      "edit": ""
+    },
+    "printVPTPredicateOperand": {
+      "apply_type": "OLD",
+      "old_hash": "c7495070d9b75c99d7200b7e4933e8736894ebb44337795a43f22de9761689e7",
+      "new_hash": "1e9e98d0348bd3a0b49bea58b760dcf74a5c7c5db59660109cfe83d89ddd8ff7",
+      "edit": ""
+    },
+    "printVectorIndex": {
+      "apply_type": "OLD",
+      "old_hash": "b9242be2b1f24e84895d1b3c722aae1f8247bfee0f2f2293c4004bd94e90ebfa",
+      "new_hash": "37f51b8aca5d3c7dd4103cf39afabfe1f1218c2526d7d31c9e23db3e8dd24d0c",
+      "edit": ""
+    },
+    "printVectorListFourSpacedAllLanes": {
+      "apply_type": "OLD",
+      "old_hash": "166e91fa105bcd4dd30e9152264eb6f717ae115aebd2db19d264349b044dc7eb",
+      "new_hash": "d9fdf29c55985c5585fa6ae9e5b5e76f77a6a5460c150e3a10628f03688b5493",
+      "edit": ""
+    },
+    "printVectorListThreeSpacedAllLanes": {
+      "apply_type": "OLD",
+      "old_hash": "c9d6f66f03052ffa94279e30ac20f9cfccdfb02dd37c270c7011c153f66ebbe9",
+      "new_hash": "9eea9d7a79fa7aeeec57d7d1e7be829eaf856b745b6b8cd71b2cc35d25074409",
+      "edit": ""
+    },
+    "printVectorListTwoSpacedAllLanes": {
+      "apply_type": "OLD",
+      "old_hash": "aae283e427412d233ba2d783ad6c999958de2615bbd21c1543c7862398f61d15",
+      "new_hash": "0e4b72ae6eee17618fc9f66af493dd3b3c1e4e6bdf8796ccc2773b12544c74a8",
+      "edit": ""
+    },
+    "translateShiftImm": {
+      "apply_type": "OLD",
+      "old_hash": "9b97281cb79bdb5338f7c2362009089dee152b071572ac4b34737f2651a6be2b",
+      "new_hash": "7725a8c9b6d5ef19d756efb752b8b25bbf9cf87678e89e2eff4bc12041c37dac",
+      "edit": ""
+    }
+  },
+  "ARMInstPrinter.h": {
+    "DECLARE_printAddrMode3Operand": {
+      "apply_type": "OLD",
+      "old_hash": "393fbcbfa8dd4028f0407d9f2488e2e9199007fe5f4cac8bdb53783cd853bcda",
+      "new_hash": "c666d706dc70ef935ea3ce3a0b3a926dfe46aff3aceb842d125ce35f55392ca4",
+      "edit": ""
+    },
+    "DECLARE_printAddrMode5FP16Operand": {
+      "apply_type": "OLD",
+      "old_hash": "b5f19a03bfd519a25e63c3a0915288088d8c013cf3072889f27bd7f78a150f8e",
+      "new_hash": "b4f43c435aa48a3a96f11c991e2cfffbb1e86797d35ae5c3df677c71d9629bfb",
+      "edit": ""
+    },
+    "DECLARE_printAddrMode5Operand": {
+      "apply_type": "OLD",
+      "old_hash": "8e1d447e8a0a0c1d079060007fa977b19f0315ad23f051fc6268cb47a02b5a6a",
+      "new_hash": "167c618729c81f7b5d0c113f999cb0b5b18c96a8ad36bb5524269307f9b478ba",
+      "edit": ""
+    },
+    "DECLARE_printAddrModeImm12Operand": {
+      "apply_type": "OLD",
+      "old_hash": "8db80cc06b17150e50e63f8763fdfa8d47d60675d023e3a9574db7f366e31ac7",
+      "new_hash": "d5396e68a91b970a4be8ccfcb3ea144007b57118aa6a381f6433fa54074dff44",
+      "edit": ""
+    },
+    "DECLARE_printAdrLabelOperand": {
+      "apply_type": "OLD",
+      "old_hash": "d8823baab85bbfe957433207e6618fdf5ad9e7cfa03856b376da2f55d64fff74",
+      "new_hash": "6169de4fca56dcf4c28a0dcff06bfc547066b7e4507e897d2c4fa3be3cb71574",
+      "edit": ""
+    },
+    "DECLARE_printComplexRotationOp": {
+      "apply_type": "OLD",
+      "old_hash": "7edf22601536c2da376f23cf87130dd1eb1da0516564ae9500ca14eec2804b45",
+      "new_hash": "a6cf8af8f48a60260428625c56741fb44b619634b5d5bfc41a680ca9a98e029d",
+      "edit": ""
+    },
+    "DECLARE_printMVEVectorList": {
+      "apply_type": "OLD",
+      "old_hash": "184ca6b74e9475ea9c496562d8ae4514fe6fd596adff6c0043d6669d93bd8d0d",
+      "new_hash": "34fecb1960b6b89daeee285fb724612592432c9107283895ec9de129db8ede58",
+      "edit": ""
+    },
+    "DECLARE_printMveAddrModeRQOperand": {
+      "apply_type": "OLD",
+      "old_hash": "7e6b18b04bbde182ddb08f39c308cdf25f608de9d1c1869650141f71d53fc40f",
+      "new_hash": "ba7d3a23c12149f6997aecc64062daf91e137573e1ebb275a98e16c96c2cf6c6",
+      "edit": ""
+    },
+    "DECLARE_printT2AddrModeImm8Operand": {
+      "apply_type": "OLD",
+      "old_hash": "55b5d1e3f38b9373f08b1bb272c0f3591c0b5081053d3b967a84b249a2a96e83",
+      "new_hash": "678a07ac256780dc77c035939a5b1f0205ab5648d298f7612a612fe662de9f4c",
+      "edit": ""
+    },
+    "DECLARE_printT2AddrModeImm8s4Operand": {
+      "apply_type": "OLD",
+      "old_hash": "354ba33df5106d0e03225fd041c7c20304659f303bdfffa5974101d10ea91f6f",
+      "new_hash": "6eb210b770604d8c08e65896aee289e91f82b846d4efd4e0fefc697b23cd18ec",
+      "edit": ""
+    },
+    "DEFINE_printAdrLabelOperand": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "644f0c45a59d02a11d3e456a0e5ee27c70c58fe818b8544e9fe04f3cea219268",
+      "edit": ""
+    },
+    "DEFINE_printAdrLabelOperandAddr": {
+      "apply_type": "OLD",
+      "old_hash": "62ce70423869d7c5f379b9f0c2d50ad9cea69469df57e4fb35a89de84dbfd0d3",
+      "new_hash": "",
+      "edit": ""
+    }
+  },
+  "ARMAddressingModes.h": {
+    "ARM_AM_createVMOVModImm": {
+      "apply_type": "OLD",
+      "old_hash": "9fdfe761698ec14ee8ec8d867175327cde1b29ac01653bef157568f00a380094",
+      "new_hash": "2d67792843d1ccbace90c0861da72fd30785dcc30e24824ebebf5ed5e1874fc6",
+      "edit": ""
+    },
+    "ARM_AM_decodeVMOVModImm": {
+      "apply_type": "OLD",
+      "old_hash": "7f609cbb6cc3f89828b203ae15aa72302d9116f13bf61584d93217eccc8235fc",
+      "new_hash": "f68b961a7909bff7efa96ff288428c01d427c3a988cbb6af7710257cb52297e2",
+      "edit": ""
+    },
+    "ARM_AM_encodeNEONi16splat": {
+      "apply_type": "OLD",
+      "old_hash": "05a8c9026d52566a444ca430a3b625485ee00e7726e8f60f5987b2eaa10810c6",
+      "new_hash": "e3ef8dc6988f2c7f32df2de20d0939134765e5f4cfa25844b3cae2add946b17f",
+      "edit": ""
+    },
+    "ARM_AM_encodeNEONi32splat": {
+      "apply_type": "OLD",
+      "old_hash": "8a4fb58682368d6b5a303a882e30a80a9f3530bb5bfb0d667bdabed48ec2f987",
+      "new_hash": "9c8b757326264d8b6a107c9c877550ec459622aabc8612825e71243ca3cb435b",
+      "edit": ""
+    },
+    "ARM_AM_getAM2IdxMode": {
+      "apply_type": "OLD",
+      "old_hash": "59c09986a56e7e775072e34fb51efaecb0272920b85d2c9422f75342ae00610c",
+      "new_hash": "e5e5ff685e501cac90b08d0dca399739546ce0423b935da83ef1ef1a41ae7498",
+      "edit": ""
+    },
+    "ARM_AM_getAM2Offset": {
+      "apply_type": "OLD",
+      "old_hash": "eb69c387b7a7c48c974bc63a110256aff086046ddb6f1a8b315d55813f5f40bf",
+      "new_hash": "374b3176223a2d1b5f1bbb0b97b671bd91b2d97f56cf42e953c63e692ecf5509",
+      "edit": ""
+    },
+    "ARM_AM_getAM2Op": {
+      "apply_type": "OLD",
+      "old_hash": "8eacd33cf973cd4c388a67967d0ccb1571c1f5acd7a96b01c21a7c9d22b1b3e3",
+      "new_hash": "c687edb9761386a22a4a072758651a0c5af02866c326b3a9011c506af3bf1427",
+      "edit": ""
+    },
+    "ARM_AM_getAM2Opc": {
+      "apply_type": "OLD",
+      "old_hash": "ecb3ca71c7968e3d4f1ea909db42309e772787021764998ab85c222e814c07f1",
+      "new_hash": "5325b632f45d04837b3ed437bbc19505c39f011d54e5da4705391b42a8b4db7e",
+      "edit": ""
+    },
+    "ARM_AM_getAM2ShiftOpc": {
+      "apply_type": "OLD",
+      "old_hash": "c8948f4fcc5c119e386121c1001a9054fed8defbee9061cd72f2ba0365d5979d",
+      "new_hash": "8c3d7da54409e99564f7529006f9afdeaca7a12cfd913abb52cd7eef0c500ccf",
+      "edit": ""
+    },
+    "ARM_AM_getAM3IdxMode": {
+      "apply_type": "OLD",
+      "old_hash": "dd2adc35fe94347c445c80fa60e4840d3ceca15439d143ad6a0f5cc250f70f26",
+      "new_hash": "d87713cc6706e0acadaa0088c23726caefb0a2f6aeb54fe8a07696cb2058af76",
+      "edit": ""
+    },
+    "ARM_AM_getAM3Offset": {
+      "apply_type": "OLD",
+      "old_hash": "968fa24b564182bb2c961214bc8700c12f498b6555af347b69e7d8f92bec19cf",
+      "new_hash": "8349811ce80fb52f135d10ec018d4374d67a4ea77256dc0a9de93f8b5d2dc6f2",
+      "edit": ""
+    },
+    "ARM_AM_getAM3Op": {
+      "apply_type": "OLD",
+      "old_hash": "313f8eef19d721a770f3d18494d35101a59c102aa226ee8ecb0c7e2a2ad8b59e",
+      "new_hash": "36ea89fbdc3c7cd6587c0c5e47b7a874a7228a3cb1dd59656424c2c412452c95",
+      "edit": ""
+    },
+    "ARM_AM_getAM3Opc": {
+      "apply_type": "OLD",
+      "old_hash": "8f433ccf76fac71ae471e1ea22ae7b3cbffa483568438af578a722abc0581de1",
+      "new_hash": "fdf5cb5f3a1ea00e00180076837bd26769a6278c0c60dac58dcdef0da2076f83",
+      "edit": ""
+    },
+    "ARM_AM_getAM4ModeImm": {
+      "apply_type": "OLD",
+      "old_hash": "c8a8be68c51dbcf729e716f046460f372dc15915d77762b29298a3a009651280",
+      "new_hash": "ee0f8e9aa301b62463a5d1889606791901476e4d0aff4919f19d7565d8c292b5",
+      "edit": ""
+    },
+    "ARM_AM_getAM4SubMode": {
+      "apply_type": "OLD",
+      "old_hash": "6e78833268c0a19ea6de6ae3d033005926f93926b57b9a58602e9c6e3a4e6d6c",
+      "new_hash": "0e7dad52f74b4a007a10a4df1c2cf7e2ee7cb0f93109ac1fa1f974b155cef7b8",
+      "edit": ""
+    },
+    "ARM_AM_getAM5FP16Offset": {
+      "apply_type": "OLD",
+      "old_hash": "54e6ff39be8d31e9198ce0a58a34f6be2d6f79f30d4b9708eac808bc9522ffc7",
+      "new_hash": "e81b4c7f1f316ec048c33a8b8bb11acde25e1f6517095d39a8346fa7f72cd73c",
+      "edit": ""
+    },
+    "ARM_AM_getAM5FP16Op": {
+      "apply_type": "OLD",
+      "old_hash": "cfa02ca36fbe0391ea693aaf88673e0808d025312e887dbedfefec315fc09090",
+      "new_hash": "83b6e981d6ed34bbe1889bbcf1b3b32911665cd18edbbf884d4d78ce9a0dfb58",
+      "edit": ""
+    },
+    "ARM_AM_getAM5FP16Opc": {
+      "apply_type": "OLD",
+      "old_hash": "d91ea006d522c662c406547dff40c0748caf334c63be727ae491256e5d14aae7",
+      "new_hash": "ca7a30f81751a0513268a03b421e3c5b6e82c9b33d578db882f79690384af32a",
+      "edit": ""
+    },
+    "ARM_AM_getAM5Offset": {
+      "apply_type": "OLD",
+      "old_hash": "39753b85a04c603500cd241e51b6051ab1f1161c5751f9cc9943feba8a933604",
+      "new_hash": "bc79a25f4f45a320661960582232f93d05aa139685fe5407dad5091f8b7dc018",
+      "edit": ""
+    },
+    "ARM_AM_getAM5Op": {
+      "apply_type": "OLD",
+      "old_hash": "8cb5b71316ea64e4d1397cc83b338ffdf03db131e8800f4a28c1453b04da6354",
+      "new_hash": "a6a1b4a35bd9c096b7224297adf4334e60ff7cf8d3f51a13a2ca6a1c9cebbaae",
+      "edit": ""
+    },
+    "ARM_AM_getAM5Opc": {
+      "apply_type": "OLD",
+      "old_hash": "231c744dd6ffd60fb4bc6c632b964909c522e4891ac5b3563bb1f1d41acaec5f",
+      "new_hash": "b6e1d40a407460a50769b102048f0a44911652ab88df99a3f13344dd85354c11",
+      "edit": ""
+    },
+    "ARM_AM_getAMSubModeStr": {
+      "apply_type": "OLD",
+      "old_hash": "c157d761ed7d4cc2211ec51ff102a233d9ce8fb6eab177f9f529855287326add",
+      "new_hash": "976d0af6f4748e52b52b260a8966c9ae477daefe1dea9673ee7e4ede2f1cd264",
+      "edit": ""
+    },
+    "ARM_AM_getAddrOpcStr": {
+      "apply_type": "OLD",
+      "old_hash": "874cd615fbae834cb493ec7e6c12497df8f71144d1d5f73863e24b2688a86a06",
+      "new_hash": "ff4068b7b72506c950a115e9022c77dd63766b488420f64c57e4258d9f32d218",
+      "edit": ""
+    },
+    "ARM_AM_getFPImmFloat": {
+      "apply_type": "OLD",
+      "old_hash": "b701b7192bbf232f992fb75f6b025609b6243881c56decaf3a3ec789e26b75c1",
+      "new_hash": "27e4fc2f3217e74d809adde788ca8dbe704189ea0cf57baf8e9c980d60f0ba8f",
+      "edit": ""
+    },
+    "ARM_AM_getSOImmTwoPartFirst": {
+      "apply_type": "OLD",
+      "old_hash": "dc859c73453011a9165e6511738df1809f61d9939cb0e98097cab241d307ad68",
+      "new_hash": "ef0e012f42a2833e8b7594605373ded0a938346af01f2e9e9642ab42f3f6f6c0",
+      "edit": ""
+    },
+    "ARM_AM_getSOImmTwoPartSecond": {
+      "apply_type": "OLD",
+      "old_hash": "2a4827167b657ea2b42aad88488e0d8c6e1c8eb76c92b26556e511244220ade0",
+      "new_hash": "5545725a8a16eede5ea394f2a08c1726ef997ca08b93340d2b8b3fd02e880d0f",
+      "edit": ""
+    },
+    "ARM_AM_getSOImmVal": {
+      "apply_type": "OLD",
+      "old_hash": "3e710664a0bb517892e88e114ac780ed0ec50ccf7ee095e51a09c30171a53e76",
+      "new_hash": "1d9ef15c6770db71601f75159facde5a2b1eae05ba1968c57f0d79c180e4446b",
+      "edit": ""
+    },
+    "ARM_AM_getSOImmValImm": {
+      "apply_type": "OLD",
+      "old_hash": "bb0e902aa755a8d041eee1d7798bf0087a57f6beeb17e9d93a0370d62e0c1f14",
+      "new_hash": "86aaaf11a33a1b7f71aa58824675fac2c52fc017031ade13f595964cfbdd0231",
+      "edit": ""
+    },
+    "ARM_AM_getSOImmValRot": {
+      "apply_type": "OLD",
+      "old_hash": "e922391e2bcc7bacc4df2b7fb70bbb1ebfe21f0604ab8c2898b24a231a3eadce",
+      "new_hash": "c9b1eda0b78fee9cbc5e1c7ccbf85be0eb9f67517fc6febcf3820d122add2fc9",
+      "edit": ""
+    },
+    "ARM_AM_getSOImmValRotate": {
+      "apply_type": "OLD",
+      "old_hash": "d99a15b29de55ea3ab1cc517ddc7c305dfa05ca1ac634598b886eec9d94510d6",
+      "new_hash": "9e1e6a2f28bb8077ea754c0a52162b5e619434c99a52a41cd710c0779496d9a7",
+      "edit": ""
+    },
+    "ARM_AM_getSORegOffset": {
+      "apply_type": "OLD",
+      "old_hash": "a1f9f169b6579833d965db979941ee0b72d322f651df219222ca45d0ca24f6e7",
+      "new_hash": "bbae7e4abeadd5577b7df0dad8b72ada71db2ad23334e252b08b58cb0a8a384c",
+      "edit": ""
+    },
+    "ARM_AM_getSORegOpc": {
+      "apply_type": "OLD",
+      "old_hash": "86f5d2f46956379d3bcd34a438f4e3c0b5ae9220e21d029ddc073577cbf58427",
+      "new_hash": "91c051c4c716ba82ad1924467e341f89737f7ada4c8eebfd82bd97f45a903cc4",
+      "edit": ""
+    },
+    "ARM_AM_getSORegShOp": {
+      "apply_type": "OLD",
+      "old_hash": "1a394d97f642a946279b28f8e7f12e5dd567c5a6d09ec02da795bc42960a5a87",
+      "new_hash": "4895d0a19453540cb229fd40bf80c57e0661d27866185a7c88da52fc9bff4d83",
+      "edit": ""
+    },
+    "ARM_AM_getShiftOpcEncoding": {
+      "apply_type": "OLD",
+      "old_hash": "03ae70c5bcff989251e9bb2a0f8170edc12ad2e0125cf65afc05db258533ad59",
+      "new_hash": "ea95c39930cd15005f62c2a114303106ab12b27904ef0435e01247ef6ea07390",
+      "edit": ""
+    },
+    "ARM_AM_getShiftOpcStr": {
+      "apply_type": "OLD",
+      "old_hash": "310df3d5ae220c1ecad099a175f78ec2495dd6d6c5f63c7f2f2fc71221ed26cd",
+      "new_hash": "20efbff0be623aa55da4bd9a2fd00260d5c9003aa6391b2f023ccca536df3d35",
+      "edit": ""
+    },
+    "ARM_AM_getT2SOImmTwoPartFirst": {
+      "apply_type": "OLD",
+      "old_hash": "5cca2dad2270acf4ec53e8b4774d462ff47cb879c25931c4d01af076e434ca52",
+      "new_hash": "8d2c400b2985feb233d0360167edc810276484e6e78d0d7ef27a5e97d34eb44d",
+      "edit": ""
+    },
+    "ARM_AM_getT2SOImmTwoPartSecond": {
+      "apply_type": "OLD",
+      "old_hash": "28f2af7ddacdf2b78e988b62fe5008a9f40ce64a06303022f126c5a146dc178d",
+      "new_hash": "3dd8143101176322e5b359e973ed9c30ffb3f5899a2996f28e48cd70d8ccd5e0",
+      "edit": ""
+    },
+    "ARM_AM_getT2SOImmVal": {
+      "apply_type": "OLD",
+      "old_hash": "0169fc2c1a915a598f8d2844353b80ea10374675156fd83960a01f37c74a3940",
+      "new_hash": "f078fa9fadd3ea56aa317feef8c80fb99dc8bb0b3687b2627911015f5182f5cb",
+      "edit": ""
+    },
+    "ARM_AM_getT2SOImmValRotate": {
+      "apply_type": "OLD",
+      "old_hash": "8eb81913eec730999f452e363bb6e2eefc12d95993b7ef85956b00c33f039e84",
+      "new_hash": "a93626a7cac581cdaa8129884cfe169daf9c15fe0c55b2565b567fad3b9aba0d",
+      "edit": ""
+    },
+    "ARM_AM_getT2SOImmValRotateVal": {
+      "apply_type": "OLD",
+      "old_hash": "5e2aa248184c27af379dbfc1bafe403e3f0367de297d49beb893afc875362866",
+      "new_hash": "2fb63be264aea276ed6e83eefe8432482fc5353b8535231e19275f1c555a4e5c",
+      "edit": ""
+    },
+    "ARM_AM_getT2SOImmValSplatVal": {
+      "apply_type": "OLD",
+      "old_hash": "8646ff69d711508d3a895b5e403f41adf8ac1d884bd8db53d43276d41d3709d6",
+      "new_hash": "d65aeb9204ec89f72cfc31ea7928d9a88e3db93bfe6585136d2f9d8ddfe4b06e",
+      "edit": ""
+    },
+    "ARM_AM_getThumbImm16ValShift": {
+      "apply_type": "OLD",
+      "old_hash": "229b81888f240c882d5efeb5fd16648625adc3f473cc01efd555580cc07f56f6",
+      "new_hash": "3cd58f1503a0e0b9eb2dd8076157c76de7934aeb38f03cc283c589506befcceb",
+      "edit": ""
+    },
+    "ARM_AM_getThumbImmNonShiftedVal": {
+      "apply_type": "OLD",
+      "old_hash": "3822416499583204306abfa37f6af89e8e00e0f492c29aca032335238d134fd7",
+      "new_hash": "2c14aa490b5b29924f0b8034329f649ce2531f7dd02cfccd95bbe9b1b7e0438d",
+      "edit": ""
+    },
+    "ARM_AM_getThumbImmValShift": {
+      "apply_type": "OLD",
+      "old_hash": "806606dfa55d5119e8b652c2c6bfa8fddd88f46921b5a993e33e4d0878bf608f",
+      "new_hash": "9e1b4e6593903b9038adbebe450f6ae9bd715d1bb161e90d5d8edaed3e2aa3f2",
+      "edit": ""
+    },
+    "ARM_AM_getVMOVModImmOpCmode": {
+      "apply_type": "OLD",
+      "old_hash": "3dc201029cbfc7eaf84bc2778c2d677a0906da9b0378f50d0a4499e19e2eccdc",
+      "new_hash": "6713eccf00c4127a96b8147da41c2eb7d8d91896dedd7ff01f97b6b8c91ab492",
+      "edit": ""
+    },
+    "ARM_AM_getVMOVModImmVal": {
+      "apply_type": "OLD",
+      "old_hash": "b7e474123c49f78fc16b20a129d160ebd473d5a5e00a0ca8dd91834e94d602f8",
+      "new_hash": "cb1525c3552784d93be28f8330c116273df1685eb7ed974edb744d32621a1dee",
+      "edit": ""
+    },
+    "ARM_AM_isNEONBytesplat": {
+      "apply_type": "OLD",
+      "old_hash": "8332f2fd86baed5a2427550d62ee833cd3c6054a99a4cef38e7fba2e2d889c6b",
+      "new_hash": "53190f9c11fc5a7e0c1e38474b72156d69c5b3893d538a4c76d090e6f6034a0a",
+      "edit": ""
+    },
+    "ARM_AM_isNEONi16splat": {
+      "apply_type": "OLD",
+      "old_hash": "a0938026315cc63cb531a85471e6d45f58eb50a4058a622c25472f453b2b8619",
+      "new_hash": "ed7913d0870dddcaba870eacf9900ca478c2765e98c7b633aa38c017f788540b",
+      "edit": ""
+    },
+    "ARM_AM_isNEONi32splat": {
+      "apply_type": "OLD",
+      "old_hash": "e82588ad097f60ed35e179264ba1e3e7644ea64a7162622f944692bd9adab37e",
+      "new_hash": "68a2abcf5851ca856a6d3c5d07ac26c03a9494413a6ec64aafe71ea798925704",
+      "edit": ""
+    },
+    "ARM_AM_isSOImmTwoPartVal": {
+      "apply_type": "OLD",
+      "old_hash": "8239a5ed54d74daa8eb26ee113f07c2de10b04e50c13a2b982a8b11fd675ea66",
+      "new_hash": "6b3311cd77780eeadd31847ddbd9639cc3b611f93974d98dd043950ba8a3c8c7",
+      "edit": ""
+    },
+    "ARM_AM_isSOImmTwoPartValNeg": {
+      "apply_type": "OLD",
+      "old_hash": "caa5671e598be177e85348dc91e7750ba7b04655689c17a9351a298b6a23a34e",
+      "new_hash": "68f35cade60b703f13a10cf189e11372bf2b1f9f18764b3106f2ede8aec25e18",
+      "edit": ""
+    },
+    "ARM_AM_isT2SOImmTwoPartVal": {
+      "apply_type": "OLD",
+      "old_hash": "1aa47632e6692739f8c8742da6229978117c1372c8fdd2359595b9b1211d61d4",
+      "new_hash": "e58c2dcdc2852f9b7740d31cde8d50b8e73990df22abe27c7d95d31b6c1da052",
+      "edit": ""
+    },
+    "ARM_AM_isThumbImm16ShiftedVal": {
+      "apply_type": "OLD",
+      "old_hash": "465b428de9df7274b97fe809f14d9daaf182980700aa88178a021716848215cb",
+      "new_hash": "f315b8605717067366212b14452161e948d95e7db4bd2a5c514c3605d9a46635",
+      "edit": ""
+    },
+    "ARM_AM_isThumbImmShiftedVal": {
+      "apply_type": "OLD",
+      "old_hash": "cf9a79c66fbc0cdc23188e8fae364995e78bbbb80e7f232c02c9e706b806e059",
+      "new_hash": "50adbafd445a6a8c8b8bacb526c04be5c4c792595f5a47e76e5c8700181a5e7f",
+      "edit": ""
+    },
+    "ARM_AM_rotl32": {
+      "apply_type": "OLD",
+      "old_hash": "49814ded27d6461862f6fe0c61f1ea90e34e8e384295fafeba8d3798698c8836",
+      "new_hash": "1c4e01d119292eea41f99f0d876e8cfce8fa817837b2b8a0ca93da1aae775b3c",
+      "edit": ""
+    },
+    "ARM_AM_rotr32": {
+      "apply_type": "OLD",
+      "old_hash": "0d1d02c7bc72b178174913e3a39a36d680a83234954a6018b54102b9a8ca7f0a",
+      "new_hash": "7372b1713eac46155f82a51f57ca7fc8dee71efda6b88f36693d57c30552570d",
+      "edit": ""
+    },
+    "CONCAT": {
+      "apply_type": "OLD",
+      "old_hash": "9d54def8e6c2e86efddf81ae412925c77492de8e619f178600b2b92cb8294a44",
+      "new_hash": "e4820f6346c51882017758424dbd39c22bb34a7c43a2aa02295c421e610963dc",
+      "edit": ""
+    }
+  },
+  "ARMBaseInfo.c": {
+    "ARMSysReg_lookupMClassSysRegAPSRNonDeprecated": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "f1e5c7a6e9f0fe119ebdcaa7721963f76d6c2688421bb7f4662d2f95c8df24fa",
+      "edit": ""
+    },
+    "ARMSysReg_lookupMClassSysRegBy12bitSYSmValue": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "b26bc6b029d0c9e932b3c6827a6a1ca701a444fa8fa41853273a48b91237e2aa",
+      "edit": ""
+    },
+    "ARMSysReg_lookupMClassSysRegBy8bitSYSmValue": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "a8331cfddec5b9db2ac0701ab98aebdc67b9c8562570d3b2bfa9c4b237ab3830",
+      "edit": ""
+    },
+    "CONCAT": {
+      "apply_type": "OLD",
+      "old_hash": "9d54def8e6c2e86efddf81ae412925c77492de8e619f178600b2b92cb8294a44",
+      "new_hash": "e4820f6346c51882017758424dbd39c22bb34a7c43a2aa02295c421e610963dc",
+      "edit": ""
+    },
+    "expandPredBlockMask": {
+      "apply_type": "OLD",
+      "old_hash": "",
+      "new_hash": "0a0748953209b936db838b674881815abf5fde7b038db54cf1eeeec83e7613cf",
+      "edit": ""
+    },
+    "get_pred_mask": {
+      "apply_type": "OLD",
+      "old_hash": "a348dd9c0d807c04527d4797b31f4ecf45eaa6ee6d8168b95d86f023620a61bb",
+      "new_hash": "",
+      "edit": ""
+    },
+    "lookupMClassSysRegAPSRNonDeprecated": {
+      "apply_type": "OLD",
+      "old_hash": "b424a3c3bb4fd75e9e0cdb11fd783c942519fa25fe31e930fde1e033bc7c695a",
+      "new_hash": "",
+      "edit": ""
+    },
+    "lookupMClassSysRegBy12bitSYSmValue": {
+      "apply_type": "OLD",
+      "old_hash": "eea213a2863c54ffa542d667b376919e4a1b8094f3f41cf950e9a1cc2fd73b1c",
+      "new_hash": "",
+      "edit": ""
+    },
+    "lookupMClassSysRegBy8bitSYSmValue": {
+      "apply_type": "OLD",
+      "old_hash": "544a8a7ac86577daa605ad976141d8166491017176b0e3a73d2e79581dff8501",
+      "new_hash": "",
+      "edit": ""
+    }
+  }
+}
