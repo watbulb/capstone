@@ -462,6 +462,8 @@ typedef struct cs_arm_op {
 	int8_t neon_lane;
 } cs_arm_op;
 
+#define MAX_ARM_OPS 36
+
 /// Instruction structure
 typedef struct cs_arm {
 	bool usermode;	///< User-mode registers to be loaded (for LDM/STM instructions)
@@ -480,7 +482,7 @@ typedef struct cs_arm {
 	/// or 0 when instruction has no operand.
 	uint8_t op_count;
 
-	cs_arm_op operands[36];	///< operands for this instruction.
+	cs_arm_op operands[MAX_ARM_OPS];	///< operands for this instruction.
 } cs_arm;
 
 /// ARM instruction

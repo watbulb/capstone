@@ -64,6 +64,7 @@ void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg);
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int64_t Imm);
 void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm);
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int scale, int lshift, uint64_t Val);
+void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val, bool subtracted);
 void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum);
 
 void ARM_check_updates_flags(MCInst *MI);

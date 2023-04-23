@@ -327,10 +327,6 @@ static uint64_t t_vmov_mod_imm(uint64_t v) {
 	return Val;
 }
 
-inline static uint64_t t_post_idx_imm_8s4(uint64_t v) {
-	return (v & 256) ? ((v & 0xff) << 2) : -((v & 0xff) << 2);
-}
-
 static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
 
 /// Initializes or finishes a memory operand of Capstone (depending on \p status).
@@ -444,8 +440,9 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		break;
 	case ARM_OP_GROUP_AddrMode6OffsetOperand: {
 		arm_reg reg = ARM_get_op_val(MI, OpNum);
-		if (reg != 0)
-			ARM_set_detail_op_reg(MI, OpNum, reg);
+		if (reg != 0) {
+			ARM_set_detail_op_mem_offset(MI, OpNum, reg, false);
+		}
 		break;
 	}
 	case ARM_OP_GROUP_AddrMode7Operand:
@@ -685,15 +682,23 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		}
 		add_cs_detail_RegImmShift(MI, ShOpc, ShImm);
 		break;
-	case ARM_OP_GROUP_PostIdxRegOperand:
-		ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
+	case ARM_OP_GROUP_PostIdxRegOperand: {
+		bool sub = ARM_get_op_val(MI, OpNum + 1) ? false : true;
+		ARM_set_detail_op_mem_offset(MI, OpNum, ARM_get_op_val(MI, OpNum), sub);
 		break;
-	case ARM_OP_GROUP_PostIdxImm8Operand:
-		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, ARM_get_op_val(MI, OpNum) & 0xff);
+	}
+	case ARM_OP_GROUP_PostIdxImm8Operand: {
+		unsigned Imm = ARM_get_op_val(MI, OpNum);
+		bool sub = !(Imm & 256);
+		ARM_set_detail_op_mem_offset(MI, OpNum, (Imm & 0xff), sub);
 		break;
-	case ARM_OP_GROUP_PostIdxImm8s4Operand:
-		ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, t_post_idx_imm_8s4(ARM_get_op_val(MI, OpNum)));
+	}
+	case ARM_OP_GROUP_PostIdxImm8s4Operand: {
+		unsigned Imm = ARM_get_op_val(MI, OpNum);
+		bool sub = !(Imm & 256);
+		ARM_set_detail_op_mem_offset(MI, OpNum, (Imm & 0xff) << 2, sub);
 		break;
+	}
 	case ARM_OP_GROUP_AddrModeTBB:
 	case ARM_OP_GROUP_AddrModeTBH:
 		set_mem_access(MI, true);
@@ -733,12 +738,11 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_AddrMode2OffsetOperand: {
 		uint64_t imm2 = ARM_get_op_val(MI, OpNum + 1);
 		ARM_AM_AddrOpc subtracted = ARM_AM_getAM2Op(imm2);
-		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
 		if (!ARM_get_op_val(MI, OpNum)) {
-			ARM_set_detail_op_imm(MI, OpNum + 1, ARM_OP_IMM, ARM_AM_getAM2Offset(imm2));
+			ARM_set_detail_op_mem_offset(MI, OpNum + 1, ARM_AM_getAM2Offset(imm2), subtracted == ARM_AM_sub);
 			return;
 		}
-		ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
+		ARM_set_detail_op_mem_offset(MI, OpNum, ARM_get_op_val(MI, OpNum), subtracted == ARM_AM_sub);
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm2), ARM_AM_getAM2Offset(imm2));
 		break;
 	}
@@ -747,12 +751,10 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 		MCOperand *MO2 = MCInst_getOperand(MI, OpNum + 1);
 		ARM_AM_AddrOpc subtracted = ARM_AM_getAM3Op(MCOperand_getImm(MO2));
 		if (MCOperand_getReg(MO1)) {
-			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
-			ARM_set_detail_op_reg(MI, OpNum, ARM_get_op_val(MI, OpNum));
+			ARM_set_detail_op_mem_offset(MI, OpNum, ARM_get_op_val(MI, OpNum), subtracted == ARM_AM_sub);
 			return;
 		}
-		ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
-		ARM_set_detail_op_imm(MI, OpNum + 1, ARM_OP_IMM, ARM_AM_getAM3Offset(ARM_get_op_val(MI, OpNum + 1)));
+		ARM_set_detail_op_mem_offset(MI, OpNum + 1, ARM_AM_getAM3Offset(ARM_get_op_val(MI, OpNum + 1)), subtracted == ARM_AM_sub);
 		break;
 	}
 	case ARM_OP_GROUP_ThumbAddrModeSPOperand:
@@ -805,9 +807,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group, unsigned Op
 	case ARM_OP_GROUP_T2AddrModeImm8s4OffsetOperand: {
 		int32_t OffImm = ARM_get_op_val(MI, OpNum);
 		if (OffImm == INT32_MIN)
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, 0);
-		else
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM, OffImm);
+			ARM_set_detail_op_mem_offset(MI, OpNum, 0, false);
+		else {
+			bool sub = OffImm < 0;
+			OffImm = OffImm < 0 ? OffImm * -1 : OffImm;
+			ARM_set_detail_op_mem_offset(MI, OpNum, OffImm, sub);
+		}
 		break;
 	}
 	case ARM_OP_GROUP_T2AddrModeSoRegOperand: {
@@ -1168,18 +1173,21 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum) {
 }
 
 /// Returns the operand at detail->arm.operands[op_count + offset]
+/// Or NULL if the operand does not exists at this index.
 inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset) {
 	if (!MI->flat_insn->detail)
 		return NULL;
-	unsigned CurrentCSOpIdx = MI->flat_insn->detail->arm.op_count;
-	return &MI->flat_insn->detail->arm.operands[CurrentCSOpIdx + offset];
+	int OpIdx = MI->flat_insn->detail->arm.op_count + offset;
+	assert(OpIdx >= 0 && OpIdx < MAX_MC_OPS);
+	return &MI->flat_insn->detail->arm.operands[OpIdx];
 }
 
 /// Adds a register ARM operand at position OpNum and increases the op_count by one.
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg) {
 	if (!MI->flat_insn->detail)
 		return;
-	assert((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_REG);
+	assert(!(ARM_get_op_type(MI, OpNum) & CS_OP_MEM));
+	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
 
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
 	ARM_get_detail_op(MI, 0)->reg = Reg;
@@ -1191,13 +1199,35 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg) {
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType, int64_t Imm) {
 	if (!MI->flat_insn->detail)
 		return;
-	assert((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM);
+	assert(!(ARM_get_op_type(MI, OpNum) & CS_OP_MEM));
+	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
 	assert(ImmType == ARM_OP_IMM || ImmType == ARM_OP_PIMM || ImmType == ARM_OP_CIMM);
 
 	ARM_get_detail_op(MI, 0)->type = ImmType;
 	ARM_get_detail_op(MI, 0)->imm = Imm;
 	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
+}
+
+/// Adds the operand as to the previously added memory operand.
+void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val, bool subtracted) {
+	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
+
+	if (!doing_mem(MI)) {
+		assert((ARM_get_detail_op(MI, -1) != NULL) && (ARM_get_detail_op(MI, -1)->type == CS_OP_MEM));
+		MI->flat_insn->detail->arm.op_count--;
+	}
+
+	if ((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM)
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, Val);
+	else if ((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_REG)
+		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, Val);
+	else
+		assert(0 && "Memory type incorrect.");
+	ARM_get_detail_op(MI, 0)->subtracted = subtracted;
+
+	if (!doing_mem(MI))
+		MI->flat_insn->detail->arm.op_count++;
 }
 
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increased by one.
@@ -1216,8 +1246,10 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg, int sc
 			ARM_get_detail_op(MI, 0)->mem.base = Val;
 		else {
 			ARM_get_detail_op(MI, 0)->mem.index = Val;
-			ARM_get_detail_op(MI, 0)->mem.scale = scale;
-			ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
+			if (scale)
+				ARM_get_detail_op(MI, 0)->mem.scale = scale;
+			if (lshift)
+				ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
 		}
 			
 		if (MCInst_opIsTying(MI, OpNum)) {
