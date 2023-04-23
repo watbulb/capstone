@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
 import subprocess
 from pathlib import Path
 
+import termcolor
 from tree_sitter import Language, Parser, Tree, Node
 import argparse
 import logging as log
@@ -11,7 +11,7 @@ import sys
 from tree_sitter.binding import Query
 
 from Configurator import Configurator
-from Helper import convert_loglevel
+from Helper import convert_loglevel, print_prominent_warning
 from Patches.AddCSDetail import AddCSDetail
 from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
@@ -405,10 +405,17 @@ class Translator:
 
     def remark_manual_files(self) -> None:
         manual_edited = self.conf["manually_edited_files"]
+        msg = ""
         if len(manual_edited) > 0:
-            log.warning("The following files are to complex to translate! Please check them by hand.")
+            msg += (
+                termcolor.colored(
+                    "The following files are too complex to translate! Please check them by hand.", attrs=["bold"]
+                )
+                + "\n"
+            )
         for f in manual_edited:
-            log.warning(f)
+            msg += f
+        print_prominent_warning(msg)
 
 
 def parse_args() -> argparse.Namespace:

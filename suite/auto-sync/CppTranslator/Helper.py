@@ -1,6 +1,8 @@
 import logging as log
+import shutil
+import termcolor
 
-from tree_sitter import TreeCursor, Node
+from tree_sitter import Node
 
 
 def convert_loglevel(level: str) -> int:
@@ -69,3 +71,18 @@ def find_id_by_type(node: Node, node_types: [str], type_must_match: bool) -> byt
 
     # None of our children matched the type list.
     return b""
+
+
+def print_prominent_warning(msg: str) -> None:
+    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "yellow") + "\n")
+    print(termcolor.colored("WARNING", "yellow", attrs=["bold"]) + "\n")
+    print(msg)
+    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "yellow"))
+    input("Press enter to continue...")
+
+
+def print_prominent_info(msg: str) -> None:
+    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "blue") + "\n")
+    print(msg)
+    print("\n" + termcolor.colored("#" * shutil.get_terminal_size()[0], "blue"))
+    input("Press enter to continue...")
