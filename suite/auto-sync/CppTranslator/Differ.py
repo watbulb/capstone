@@ -257,7 +257,8 @@ class Differ:
             if identifier in nodes_to_diff.keys() or identifier in duplicates:
                 # This happens if the chosen identifier is not unique.
                 print_prominent_info(f"Identifier {bold(identifier)} already added. Nodes will not be diffed!")
-                nodes_to_diff.pop(identifier)
+                if identifier in nodes_to_diff.keys():
+                    nodes_to_diff.pop(identifier)
                 duplicates.append(identifier)
                 continue
             log.debug(f"Add node to diff: {identifier}")
