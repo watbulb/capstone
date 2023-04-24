@@ -107,6 +107,8 @@ echo "[*] Translate LLVM source files..."
 cd ../CppTranslator/
 . ./.venv/bin/activate
 ./CppTranslator.py -a "$arch" -g "../vendor/tree-sitter-cpp/" -l "../build/ts_libs/ts-cpp.so"
+echo "[*] Run differ..."
+./Differ.py -a "$arch" -g "../vendor/tree-sitter-cpp"
 cd ../build
 
 cs_root=$(git rev-parse --show-toplevel)
@@ -131,6 +133,6 @@ for f in $(ls | grep "\.inc"); do
   fi
 done
 cp $llvm_c_inc_dir/$arch* $cs_arch_dir
-cp $translator_dir/$arch* $cs_arch_dir
+cp $diff_dir/$arch* $cs_arch_dir
 
 # Give advice how to fix the translated C++ files.
