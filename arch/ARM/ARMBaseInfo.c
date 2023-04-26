@@ -9,19 +9,20 @@
 // This file provides basic encoding and assembly information for ARM.
 //
 //===----------------------------------------------------------------------===//
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <capstone/platform.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "ARMBaseInfo.h"
 #include "ARMMapping.h"
 
-#define CONCAT(a, b)	CONCAT_(a, b)
+#define CONCAT(a, b) CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
 
-const char *get_pred_mask(ARM_PredBlockMask pred_mask) {
-	switch(pred_mask) {
+const char *get_pred_mask(ARM_PredBlockMask pred_mask)
+{
+	switch (pred_mask) {
 	default:
 		assert(0 && "pred_mask not handled.");
 	case ARM_T:

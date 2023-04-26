@@ -3,12 +3,12 @@
 
 #ifdef CAPSTONE_HAS_ARM
 
-#include "../../cs_priv.h"
+#include "ARMModule.h"
 #include "../../MCRegisterInfo.h"
+#include "../../cs_priv.h"
 #include "ARMDisassembler.h"
 #include "ARMInstPrinter.h"
 #include "ARMMapping.h"
-#include "ARMModule.h"
 
 cs_err ARM_global_init(cs_struct *ud)
 {
@@ -35,15 +35,15 @@ cs_err ARM_global_init(cs_struct *ud)
 
 cs_err ARM_option(cs_struct *handle, cs_opt_type type, size_t value)
 {
-	switch(type) {
-		case CS_OPT_MODE:
-			handle->mode = (cs_mode)value;
-			break;
-		case CS_OPT_SYNTAX:
-			handle->syntax = (int)value;
-			break;
-		default:
-			break;
+	switch (type) {
+	case CS_OPT_MODE:
+		handle->mode = (cs_mode)value;
+		break;
+	case CS_OPT_SYNTAX:
+		handle->syntax = (int)value;
+		break;
+	default:
+		break;
 	}
 
 	return CS_ERR_OK;

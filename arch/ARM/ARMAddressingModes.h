@@ -13,15 +13,15 @@
 #ifndef LLVM_LIB_TARGET_ARM_MCTARGETDESC_ARMADDRESSINGMODES_H
 #define LLVM_LIB_TARGET_ARM_MCTARGETDESC_ARMADDRESSINGMODES_H
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <capstone/platform.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#include <assert.h>
 #include "../../MathExtras.h"
+#include <assert.h>
 
-#define CONCAT(a, b)	CONCAT_(a, b)
+#define CONCAT(a, b) CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
 
 /// ARM_AM - ARM Addressing Mode Stuff
@@ -35,10 +35,7 @@ typedef enum ShiftOpc {
 	ARM_AM_uxtw
 } ARM_AM_ShiftOpc;
 
-typedef enum AddrOpc {
-	ARM_AM_sub = 0,
-	ARM_AM_add
-} ARM_AM_AddrOpc;
+typedef enum AddrOpc { ARM_AM_sub = 0, ARM_AM_add } ARM_AM_AddrOpc;
 
 static inline const char *ARM_AM_getAddrOpcStr(ARM_AM_AddrOpc Op)
 {
@@ -48,24 +45,36 @@ static inline const char *ARM_AM_getAddrOpcStr(ARM_AM_AddrOpc Op)
 static inline const char *ARM_AM_getShiftOpcStr(ARM_AM_ShiftOpc Op)
 {
 	switch (Op) {
-		default: assert(0 && "Unknown shift opc!");
-		case ARM_AM_asr: return "asr";
-		case ARM_AM_lsl: return "lsl";
-		case ARM_AM_lsr: return "lsr";
-		case ARM_AM_ror: return "ror";
-		case ARM_AM_rrx: return "rrx";
-		case ARM_AM_uxtw: return "uxtw";
+	default:
+		assert(0 && "Unknown shift opc!");
+	case ARM_AM_asr:
+		return "asr";
+	case ARM_AM_lsl:
+		return "lsl";
+	case ARM_AM_lsr:
+		return "lsr";
+	case ARM_AM_ror:
+		return "ror";
+	case ARM_AM_rrx:
+		return "rrx";
+	case ARM_AM_uxtw:
+		return "uxtw";
 	}
 }
 
 static inline unsigned ARM_AM_getShiftOpcEncoding(ARM_AM_ShiftOpc Op)
 {
 	switch (Op) {
-		default: assert(0 && "Unknown shift opc!");
-		case ARM_AM_asr: return 2;
-		case ARM_AM_lsl: return 0;
-		case ARM_AM_lsr: return 1;
-		case ARM_AM_ror: return 3;
+	default:
+		assert(0 && "Unknown shift opc!");
+	case ARM_AM_asr:
+		return 2;
+	case ARM_AM_lsl:
+		return 0;
+	case ARM_AM_lsr:
+		return 1;
+	case ARM_AM_ror:
+		return 3;
 	}
 }
 
@@ -80,11 +89,16 @@ typedef enum AMSubMode {
 static inline const char *ARM_AM_getAMSubModeStr(ARM_AM_AMSubMode Mode)
 {
 	switch (Mode) {
-		default: assert(0 && "Unknown addressing sub-mode!");
-		case ARM_AM_ia: return "ia";
-		case ARM_AM_ib: return "ib";
-		case ARM_AM_da: return "da";
-		case ARM_AM_db: return "db";
+	default:
+		assert(0 && "Unknown addressing sub-mode!");
+	case ARM_AM_ia:
+		return "ia";
+	case ARM_AM_ib:
+		return "ib";
+	case ARM_AM_da:
+		return "da";
+	case ARM_AM_db:
+		return "db";
 	}
 }
 
@@ -123,10 +137,7 @@ static inline unsigned ARM_AM_getSORegOpc(ARM_AM_ShiftOpc ShOp, unsigned Imm)
 	return ShOp | (Imm << 3);
 }
 
-static inline unsigned ARM_AM_getSORegOffset(unsigned Op)
-{
-	return Op >> 3;
-}
+static inline unsigned ARM_AM_getSORegOffset(unsigned Op) { return Op >> 3; }
 
 static inline ARM_AM_ShiftOpc ARM_AM_getSORegShOp(unsigned Op)
 {
@@ -155,7 +166,8 @@ static inline unsigned ARM_AM_getSOImmValRotate(unsigned Imm)
 {
 	// 8-bit (or less) immediates are trivially shifter_operands with a rotate
 	// of zero.
-	if ((Imm & ~255U) == 0) return 0;
+	if ((Imm & ~255U) == 0)
+		return 0;
 
 	// Use CTZ to compute the rotate amount.
 	unsigned TZ = CountTrailingZeros_32(Imm);
@@ -190,7 +202,8 @@ static inline int ARM_AM_getSOImmVal(unsigned Arg)
 {
 	// 8-bit (or less) immediates are trivially shifter_operands with a rotate
 	// of zero.
-	if ((Arg & ~255U) == 0) return Arg;
+	if ((Arg & ~255U) == 0)
+		return Arg;
 
 	unsigned RotAmt = ARM_AM_getSOImmValRotate(Arg);
 
@@ -256,7 +269,8 @@ static inline unsigned ARM_AM_getThumbImmValShift(unsigned Imm)
 {
 	// 8-bit (or less) immediates are trivially immediate operand with a shift
 	// of zero.
-	if ((Imm & ~255U) == 0) return 0;
+	if ((Imm & ~255U) == 0)
+		return 0;
 
 	// Use CTZ to compute the shift amount.
 	return CountTrailingZeros_32(Imm);
@@ -277,7 +291,8 @@ static inline unsigned ARM_AM_getThumbImm16ValShift(unsigned Imm)
 {
 	// 16-bit (or less) immediates are trivially immediate operand with a shift
 	// of zero.
-	if ((Imm & ~65535U) == 0) return 0;
+	if ((Imm & ~65535U) == 0)
+		return 0;
 
 	// Use CTZ to compute the shift amount.
 	return CountTrailingZeros_32(Imm);
@@ -371,7 +386,8 @@ static inline int ARM_AM_getT2SOImmVal(unsigned Arg)
 
 static inline unsigned ARM_AM_getT2SOImmValRotate(unsigned V)
 {
-	if ((V & ~255U) == 0) return 0;
+	if ((V & ~255U) == 0)
+		return 0;
 	// Use CTZ to compute the rotate amount.
 	unsigned RotAmt = CountTrailingZeros_32(V);
 	return (32 - RotAmt) & 31;
@@ -390,7 +406,8 @@ static inline bool ARM_AM_isT2SOImmTwoPartVal(unsigned Imm)
 		return false;
 
 	// If this can be handled as an immediate, accept.
-	if (ARM_AM_getT2SOImmVal(V) != -1) return true;
+	if (ARM_AM_getT2SOImmVal(V) != -1)
+		return true;
 
 	// Likewise, try masking out a splat value first.
 	V = Imm;
@@ -399,7 +416,8 @@ static inline bool ARM_AM_isT2SOImmTwoPartVal(unsigned Imm)
 	else if (ARM_AM_getT2SOImmValSplatVal(V & 0x00ff00ffU) != -1)
 		V &= ~0x00ff00ffU;
 	// If what's left can be handled as an immediate, accept.
-	if (ARM_AM_getT2SOImmVal(V) != -1) return true;
+	if (ARM_AM_getT2SOImmVal(V) != -1)
+		return true;
 
 	// Otherwise, do not accept.
 	return false;
@@ -411,7 +429,8 @@ static inline unsigned ARM_AM_getT2SOImmTwoPartFirst(unsigned Imm)
 	// Try a shifter operand as one part
 	unsigned V = ARM_AM_rotr32(~255, ARM_AM_getT2SOImmValRotate(Imm)) & Imm;
 	// If the rest is encodable as an immediate, then return it.
-	if (ARM_AM_getT2SOImmVal(V) != -1) return V;
+	if (ARM_AM_getT2SOImmVal(V) != -1)
+		return V;
 
 	// Try masking out a splat value first.
 	if (ARM_AM_getT2SOImmValSplatVal(Imm & 0xff00ff00U) != -1)
@@ -449,8 +468,8 @@ static inline unsigned ARM_AM_getT2SOImmTwoPartSecond(unsigned Imm)
 // and code rewriting), this operand will have the form:  FI#, reg0, <offs>
 // with no shift amount for the frame offset.
 //
-static inline unsigned ARM_AM_getAM2Opc(ARM_AM_AddrOpc Opc, unsigned Imm12, ARM_AM_ShiftOpc SO,
-	unsigned IdxMode)
+static inline unsigned ARM_AM_getAM2Opc(ARM_AM_AddrOpc Opc, unsigned Imm12,
+										ARM_AM_ShiftOpc SO, unsigned IdxMode)
 {
 
 	bool isSub = Opc == ARM_AM_sub;
@@ -491,8 +510,8 @@ static inline unsigned ARM_AM_getAM2IdxMode(unsigned AM2Opc)
 // in bit 8, the immediate in bits 0-7. The fourth operand 9-10 encodes the
 // index mode.
 /// getAM3Opc - This function encodes the addrmode3 opc field.
-static inline unsigned ARM_AM_getAM3Opc(ARM_AM_AddrOpc Opc, unsigned char Offset,
-	unsigned IdxMode)
+static inline unsigned ARM_AM_getAM3Opc(ARM_AM_AddrOpc Opc,
+										unsigned char Offset, unsigned IdxMode)
 {
 	bool isSub = Opc == ARM_AM_sub;
 	return ((int)isSub << 8) | Offset | (IdxMode << 9);
@@ -548,7 +567,8 @@ static inline unsigned ARM_AM_getAM4ModeImm(ARM_AM_AMSubMode SubMode)
 // The first operand is always a Reg.  The second operand encodes the
 // operation (add or subtract) in bit 8 and the immediate in bits 0-7.
 /// getAM5Opc - This function encodes the addrmode5 opc field.
-static inline unsigned ARM_AM_getAM5Opc(ARM_AM_AddrOpc Opc, unsigned char Offset)
+static inline unsigned ARM_AM_getAM5Opc(ARM_AM_AddrOpc Opc,
+										unsigned char Offset)
 {
 	bool isSub = Opc == ARM_AM_sub;
 	return ((int)isSub << 8) | Offset;
@@ -575,7 +595,8 @@ static inline ARM_AM_AddrOpc ARM_AM_getAM5Op(unsigned AM5Opc)
 // The first operand is always a Reg.  The second operand encodes the
 // operation (add or subtract) in bit 8 and the immediate in bits 0-7.
 /// getAM5FP16Opc - This function encodes the addrmode5fp16 opc field.
-static inline unsigned ARM_AM_getAM5FP16Opc(ARM_AM_AddrOpc Opc, unsigned char Offset)
+static inline unsigned ARM_AM_getAM5FP16Opc(ARM_AM_AddrOpc Opc,
+											unsigned char Offset)
 {
 	bool isSub = Opc == ARM_AM_sub;
 	return ((int)isSub << 8) | Offset;
@@ -632,7 +653,8 @@ static inline unsigned ARM_AM_getVMOVModImmVal(unsigned ModImm)
 /// decodeVMOVModImm - Decode a NEON/MVE modified immediate value into the
 /// element value and the element size in bits.  (If the element size is
 /// smaller than the vector, it is splatted into all the elements.)
-static inline uint64_t ARM_AM_decodeVMOVModImm(unsigned ModImm, unsigned *EltBits)
+static inline uint64_t ARM_AM_decodeVMOVModImm(unsigned ModImm,
+											   unsigned *EltBits)
 {
 	unsigned OpCmode = ARM_AM_getVMOVModImmOpCmode(ModImm);
 	unsigned Imm8 = ARM_AM_getVMOVModImmVal(ModImm);
@@ -676,7 +698,8 @@ static inline bool ARM_AM_isNEONBytesplat(unsigned Value, unsigned Size)
 
 	unsigned count = 0;
 	for (unsigned i = 0; i < Size; ++i) {
-		if (Value & 0xff) count++;
+		if (Value & 0xff)
+			count++;
 		Value >>= 8;
 	}
 	return count == 1;
