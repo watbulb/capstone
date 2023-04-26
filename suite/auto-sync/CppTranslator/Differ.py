@@ -417,14 +417,14 @@ class Differ:
         It writes the choice to a file, so the previous choice can be applied again if nothing changed.
         """
         # Sort list of nodes descending.
-        # This is needed because
+        # This is necessary because
         #   a) we need to apply the patches backwards (so the coordinates in the file don't change.
-        #   b) If there is an old node, which is not present in the new file, we insert the old node
-        #      at the position before the previous new node.
+        #   b) If there is an old node, which is not present in the new file, we search for
+        #      a node which is adjacent (random node order wouldn't allow this).
         new_nodes = {k: v for k, v in sorted(new_nodes.items(), key=lambda item: item[1].start_byte, reverse=True)}
         old_nodes = {k: v for k, v in sorted(old_nodes.items(), key=lambda item: item[1].start_byte, reverse=True)}
 
-        # Collect all nodes ids of this file
+        # Collect all node ids of this file
         node_ids = set()
         for new_node_id, old_node_id in zip(new_nodes.keys(), old_nodes.keys()):
             node_ids.add(new_node_id)
