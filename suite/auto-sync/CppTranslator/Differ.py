@@ -426,10 +426,11 @@ class Differ:
 
         node_ids = sorted(node_ids)
         self.patches = list()
-        i = 0
+        matching_nodes_count = 0
         # Counts the number of old nodes which have no equivalent new node.
         consec_old = 0
         choice: ApplyType = None
+        i = 0
         while i < len(node_ids):
             self.cur_nid = node_ids[i]
             self.cur_new_node = None
@@ -444,7 +445,8 @@ class Differ:
 
             diff_lines = list(self.differ.compare(o, n))
             if self.no_difference(diff_lines):
-                log.info(f"Nodes {bold(self.cur_nid)} match.")
+                log.debug(f"Nodes {bold(self.cur_nid)} match.")
+                matching_nodes_count += 1
                 i += 1
                 continue
 
@@ -503,6 +505,7 @@ class Differ:
                 i -= 1
                 continue
             i += 1
+        log.info(f"Number of matching nodes = {matching_nodes_count}")
         return self.patches
 
     def diff(self) -> None:
