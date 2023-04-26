@@ -42,15 +42,18 @@ class PatchCoord:
 
     def __lt__(self, other):
         if not (
-            (self.start_byte < other.start_byte and self.end_byte < other.end_byte)
-            or (self.start_byte > other.start_byte and self.end_byte > other.end_byte)
+            (self.start_byte <= other.start_byte and self.end_byte <= other.end_byte)
+            or (self.start_byte >= other.start_byte and self.end_byte >= other.end_byte)
         ):
             raise IndexError(
                 f"Coordinates overlap. No comparison possible.\n"
                 f"a.start_byte = {self.start_byte} a.end_byte = {self.end_byte}\n"
                 f"b.start_byte = {other.start_byte} b.end_byte = {other.end_byte}\n"
             )
-        return self.end_byte <= other.start_byte
+        return self.end_byte < other.start_byte
+
+    def __str__(self) -> str:
+        return f"s: {self.start_byte} e: {self.end_byte}"
 
     @staticmethod
     def get_coordinates_from_node(node: Node):
@@ -117,7 +120,13 @@ class Patch:
         self.old_hash = get_sha256(self.old)
 
     def __lt__(self, other):
-        return self.coord < other.coord
+        try:
+            return self.coord < other.coord
+        except IndexError as e:
+            raise IndexError(f"Nodes overlap: {self} - {other}")
+
+    def __str__(self) -> str:
+        return f"{self.node_id} @ {self.coord}"
 
 
 class Differ:
@@ -456,12 +465,20 @@ class Differ:
                 patch_coord = PatchCoord.get_coordinates_from_node(self.cur_new_node)
             else:
                 consec_old += 1
-                # If the old node has no equivalent new node, set the patch coordinates before the previous new node.
+                # If the old node has no equivalent new node,
+                # we search for the next adjacent old node which exist also in new nodes.
+                # The single old node is insert before the found new one.
+                old_node_ids = list(old_nodes.keys())
+                j = old_node_ids.index(self.cur_nid)
+                while j >= 0 and (old_node_ids[j] not in new_nodes.keys()):
+                    j -= 1
+                ref_new: Node = new_nodes[old_node_ids[j]] if old_node_ids[j] in new_nodes.keys() else new_nodes[0]
+                ref_end_byte = ref_new.start_byte
                 patch_coord = PatchCoord(
-                    patch_coord.start_byte - 1,
-                    patch_coord.start_byte - 1,
-                    patch_coord.start_point,
-                    patch_coord.start_point,
+                    ref_end_byte - 1,
+                    ref_end_byte - 1,
+                    ref_end_byte,
+                    ref_end_byte,
                 )
 
             save_exists = False

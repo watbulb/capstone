@@ -19,6 +19,9 @@
       },{
         "node_type": "preproc_include",
         "identifier_node_type": ["string_literal", "system_lib_string"]
+      },{
+        "node_type": "preproc_define",
+        "identifier_node_type": ["identifier"]
       }
     ]
   },

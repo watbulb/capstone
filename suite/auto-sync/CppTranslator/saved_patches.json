@@ -167,6 +167,36 @@
       "old_hash": "ca97dd129bda8d7161b6732f2c1b80c70e1d64be483c824f46f54ce4e1f172a3",
       "new_hash": "",
       "edit": ""
+    },
+    "/* Capstone's C++ file translator: */": {
+      "apply_type": "NEW",
+      "old_hash": "",
+      "new_hash": "b1ea27f4adc10229946cced84510362e2b8561030cfe6dee4df30b1fa8df4458",
+      "edit": ""
+    },
+    "/* For multiple similiar edits, please create a Patch for the translator. */": {
+      "apply_type": "NEW",
+      "old_hash": "",
+      "new_hash": "31b4c019cfb61410081d33444965f1c2fffd36d91105400ac4ed3325e9092a25",
+      "edit": ""
+    },
+    "/* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */": {
+      "apply_type": "NEW",
+      "old_hash": "",
+      "new_hash": "98bc99aadc54580ddc91940c36e2b15287de7946ca6d731b81e2b56f40a2c0a0",
+      "edit": ""
+    },
+    "// end namespace llvm": {
+      "apply_type": "NEW",
+      "old_hash": "11db4f68c44ac574388a19898cbd3a0df9f6058e57c1b137e91cc7f591087353",
+      "new_hash": "",
+      "edit": ""
+    },
+    "/// ARM disassembler for all ARM platforms.": {
+      "apply_type": "NEW",
+      "old_hash": "",
+      "new_hash": "3c4bb90e3955714234a70a4478737cd7fc9199907554d722d53a1667e5ae9266",
+      "edit": ""
     }
   },
   "ARMInstPrinter.c": {
