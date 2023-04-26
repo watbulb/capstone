@@ -115,3 +115,18 @@ def get_sha256(data: bytes) -> str:
     h = hashlib.sha256()
     h.update(data)
     return h.hexdigest()
+
+
+def get_header() -> str:
+    return (
+        "/* Capstone Disassembly Engine, http://www.capstone-engine.org */\n"
+        "/* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2022, */\n"
+        "/*    Rot127 <unisono@quyllur.org> 2022-2023 */\n"
+        "/* Automatically translated source file from LLVM. */\n\n"
+        "/* LLVM-commit: <commit> */\n"
+        "/* LLVM-tag: <tag> */\n\n"
+        "/* Only small edits allowed. */\n"
+        "/* For multiple similiar edits, please create a Patch for the translator. */\n\n"
+        "/* Capstone's C++ file translator: */\n"
+        "/* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */\n\n"
+    )
