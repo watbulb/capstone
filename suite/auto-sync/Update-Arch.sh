@@ -122,17 +122,13 @@ cd "$cs_root/suite/auto-sync/build"
 cs_arch_dir="$cs_root/arch/$arch/"
 cs_inc_dir="$cs_root/include/capstone"
 
-echo "[*] Copy files to $cs_inc_dir"
-
 into_cs_include=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc"
 for f in $into_cs_include; do
   sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
   sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
   cp $f "$cs_inc_dir/inc"
-  echo "COPIED $f"
+  echo "[*] Copy $f"
 done
-
-echo "[*] Copy files to $cs_arch_dir"
 
 echo $into_cs_include
 for f in $(ls | grep "\.inc"); do
@@ -141,19 +137,21 @@ for f in $(ls | grep "\.inc"); do
     sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
     sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
     cp $f $cs_arch_dir
-    echo "COPIED $f"
+    echo "[*] Copy $f"
   fi
 done
 for f in $(ls $llvm_c_inc_dir/$arch*); do
   sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
   sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
   cp $f $cs_arch_dir
+  echo "[*] Copy $f"
 done
 
 for f in $(ls $diff_dir/$arch*); do
   sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
   sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
   cp $f $cs_arch_dir
+  echo "[*] Copy $f"
 done
 
 # Give advice how to fix the translated C++ files.
