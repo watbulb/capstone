@@ -501,6 +501,10 @@ class Differ:
             self.print_diff(diff_lines, self.cur_nid, i + 1, len(node_ids))
             choice = self.get_user_choice(save_exists, None if not saved else saved["apply_type"])
             if choice == ApplyType.OLD:
+                if not self.cur_old_node:
+                    # No data in old node. Skip
+                    i += 1
+                    continue
                 self.add_patch(ApplyType.OLD, consec_old, old_filepath, patch_coord)
             elif choice == ApplyType.NEW:
                 # Already in file. Only save patch.
