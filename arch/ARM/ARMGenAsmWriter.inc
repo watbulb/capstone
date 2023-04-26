@@ -1,8 +1,15 @@
 /* Capstone Disassembly Engine, http://www.capstone-engine.org */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2022, */
 /*    Rot127 <unisono@quyllur.org> 2022-2023 */
-/* Automatically generated file by the LLVM TableGen Disassembler Backend. */
+/* Automatically generated file by Capstone's LLVM TableGen Disassembler Backend. */
+
+/* LLVM-commit: 464bda7750a3ba9e23823fc707d7e7b6fc38438d */
+/* LLVM-tag: llvmorg-16.0.2-5-g464bda7750a3 */
+
 /* Do not edit. */
+
+/* Capstone's LLVM TableGen Backends: */
+/* https://github.com/capstone-engine/llvm-capstone */
 
 #include <capstone/platform.h>
 #include <assert.h>
@@ -289,455 +296,454 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
   /* 2680 */ "DBG_INSTR_REF\0"
   /* 2694 */ "DBG_PHI\0"
   /* 2702 */ "DBG_LABEL\0"
-  /* 2712 */ "@ COMPILER BARRIER\0"
-  /* 2731 */ "LIFETIME_START\0"
-  /* 2746 */ "DBG_VALUE_LIST\0"
-  /* 2761 */ "vcx1a\0"
-  /* 2767 */ "vcx2a\0"
-  /* 2773 */ "vcx3a\0"
-  /* 2779 */ "vaba\0"
-  /* 2784 */ "cx1da\0"
-  /* 2790 */ "cx2da\0"
-  /* 2796 */ "cx3da\0"
-  /* 2802 */ "lda\0"
-  /* 2806 */ "ldmda\0"
-  /* 2812 */ "stmda\0"
-  /* 2818 */ "vrmlaldavha\0"
-  /* 2830 */ "vrmlsldavha\0"
-  /* 2842 */ "rfeia\0"
-  /* 2848 */ "vldmia\0"
-  /* 2855 */ "vstmia\0"
-  /* 2862 */ "srsia\0"
-  /* 2868 */ "vcmla\0"
-  /* 2874 */ "smmla\0"
-  /* 2880 */ "vnmla\0"
-  /* 2886 */ "vmla\0"
-  /* 2891 */ "vfma\0"
-  /* 2896 */ "vfnma\0"
-  /* 2902 */ "vminnma\0"
-  /* 2910 */ "vmaxnma\0"
-  /* 2918 */ "vmina\0"
-  /* 2924 */ "vrsra\0"
-  /* 2930 */ "vsra\0"
-  /* 2935 */ "vrinta\0"
-  /* 2942 */ "tta\0"
-  /* 2946 */ "vcvta\0"
-  /* 2952 */ "vmladava\0"
-  /* 2961 */ "vmlaldava\0"
-  /* 2971 */ "vmlsldava\0"
-  /* 2981 */ "vmlsdava\0"
-  /* 2990 */ "vaddva\0"
-  /* 2997 */ "vaddlva\0"
-  /* 3005 */ "vmaxa\0"
-  /* 3011 */ "ldab\0"
-  /* 3016 */ "sxtab\0"
-  /* 3022 */ "uxtab\0"
-  /* 3028 */ "smlabb\0"
-  /* 3035 */ "smlalbb\0"
-  /* 3043 */ "smulbb\0"
-  /* 3050 */ "tbb\0"
-  /* 3054 */ "rfedb\0"
-  /* 3060 */ "vldmdb\0"
-  /* 3067 */ "vstmdb\0"
-  /* 3074 */ "srsdb\0"
-  /* 3080 */ "ldmib\0"
-  /* 3086 */ "stmib\0"
-  /* 3092 */ "vshllb\0"
-  /* 3099 */ "vqdmullb\0"
-  /* 3108 */ "vmullb\0"
-  /* 3115 */ "stlb\0"
-  /* 3120 */ "vmovlb\0"
-  /* 3127 */ "dmb\0"
-  /* 3131 */ "vqshrnb\0"
-  /* 3139 */ "vqrshrnb\0"
-  /* 3148 */ "vrshrnb\0"
-  /* 3156 */ "vshrnb\0"
-  /* 3163 */ "vqshrunb\0"
-  /* 3172 */ "vqrshrunb\0"
-  /* 3182 */ "vqmovunb\0"
-  /* 3191 */ "vqmovnb\0"
-  /* 3199 */ "vmovnb\0"
-  /* 3206 */ "swpb\0"
-  /* 3211 */ "vldrb\0"
-  /* 3217 */ "vstrb\0"
-  /* 3223 */ "dsb\0"
-  /* 3227 */ "isb\0"
-  /* 3231 */ "ldrsb\0"
-  /* 3237 */ "tsb\0"
-  /* 3241 */ "smlatb\0"
-  /* 3248 */ "pkhtb\0"
-  /* 3254 */ "smlaltb\0"
-  /* 3262 */ "smultb\0"
-  /* 3269 */ "vcvtb\0"
-  /* 3275 */ "sxtb\0"
-  /* 3280 */ "uxtb\0"
-  /* 3285 */ "qdsub\0"
-  /* 3291 */ "vhsub\0"
-  /* 3297 */ "vqsub\0"
-  /* 3303 */ "vsub\0"
-  /* 3308 */ "smlawb\0"
-  /* 3315 */ "smulwb\0"
-  /* 3322 */ "ldaexb\0"
-  /* 3329 */ "stlexb\0"
-  /* 3336 */ "ldrexb\0"
-  /* 3343 */ "strexb\0"
-  /* 3350 */ "vsbc\0"
-  /* 3355 */ "vadc\0"
-  /* 3360 */ "ldc\0"
-  /* 3364 */ "bfc\0"
-  /* 3368 */ "vbic\0"
-  /* 3373 */ "vshlc\0"
-  /* 3379 */ "smc\0"
-  /* 3383 */ "mrc\0"
-  /* 3387 */ "mrrc\0"
-  /* 3392 */ "rsc\0"
-  /* 3396 */ "stc\0"
-  /* 3400 */ "svc\0"
-  /* 3404 */ "smlad\0"
-  /* 3410 */ "smuad\0"
-  /* 3416 */ "vabd\0"
-  /* 3421 */ "vhcadd\0"
-  /* 3428 */ "vcadd\0"
-  /* 3434 */ "qdadd\0"
-  /* 3440 */ "vrhadd\0"
-  /* 3447 */ "vhadd\0"
-  /* 3453 */ "vpadd\0"
-  /* 3459 */ "vqadd\0"
-  /* 3465 */ "vadd\0"
-  /* 3470 */ "smlald\0"
-  /* 3477 */ "pld\0"
-  /* 3481 */ "smlsld\0"
-  /* 3488 */ "vand\0"
-  /* 3493 */ "vldrd\0"
-  /* 3499 */ "vstrd\0"
-  /* 3505 */ "smlsd\0"
-  /* 3511 */ "smusd\0"
-  /* 3517 */ "ldaexd\0"
-  /* 3524 */ "stlexd\0"
-  /* 3531 */ "ldrexd\0"
-  /* 3538 */ "strexd\0"
-  /* 3545 */ "vacge\0"
-  /* 3551 */ "vcge\0"
-  /* 3556 */ "vcle\0"
-  /* 3561 */ "vrecpe\0"
-  /* 3568 */ "vcmpe\0"
-  /* 3574 */ "vrsqrte\0"
-  /* 3582 */ "bf\0"
-  /* 3585 */ "vbif\0"
-  /* 3590 */ "dbg\0"
-  /* 3594 */ "pacg\0"
-  /* 3599 */ "vqneg\0"
-  /* 3605 */ "vneg\0"
-  /* 3610 */ "sg\0"
-  /* 3613 */ "autg\0"
-  /* 3618 */ "ldah\0"
-  /* 3623 */ "vqdmlah\0"
-  /* 3631 */ "vqrdmlah\0"
-  /* 3640 */ "sxtah\0"
-  /* 3646 */ "uxtah\0"
-  /* 3652 */ "tbh\0"
-  /* 3656 */ "vqdmladh\0"
-  /* 3665 */ "vqrdmladh\0"
-  /* 3675 */ "vqdmlsdh\0"
-  /* 3684 */ "vqrdmlsdh\0"
-  /* 3694 */ "stlh\0"
-  /* 3699 */ "vqdmulh\0"
-  /* 3707 */ "vqrdmulh\0"
-  /* 3716 */ "vrmulh\0"
-  /* 3723 */ "vmulh\0"
-  /* 3729 */ "vldrh\0"
-  /* 3735 */ "vstrh\0"
-  /* 3741 */ "vqdmlash\0"
-  /* 3750 */ "vqrdmlash\0"
-  /* 3760 */ "vqrdmlsh\0"
-  /* 3769 */ "ldrsh\0"
-  /* 3775 */ "push\0"
-  /* 3780 */ "revsh\0"
-  /* 3786 */ "sxth\0"
-  /* 3791 */ "uxth\0"
-  /* 3796 */ "vrmlaldavh\0"
-  /* 3807 */ "vrmlsldavh\0"
-  /* 3818 */ "ldaexh\0"
-  /* 3825 */ "stlexh\0"
-  /* 3832 */ "ldrexh\0"
-  /* 3839 */ "strexh\0"
-  /* 3846 */ "vsbci\0"
-  /* 3852 */ "vadci\0"
-  /* 3858 */ "bfi\0"
-  /* 3862 */ "pli\0"
-  /* 3866 */ "vsli\0"
-  /* 3871 */ "vsri\0"
-  /* 3876 */ "bxj\0"
-  /* 3880 */ "ldc2l\0"
-  /* 3886 */ "stc2l\0"
-  /* 3892 */ "umaal\0"
-  /* 3898 */ "vabal\0"
-  /* 3904 */ "vpadal\0"
-  /* 3911 */ "vqdmlal\0"
-  /* 3919 */ "smlal\0"
-  /* 3925 */ "umlal\0"
-  /* 3931 */ "vmlal\0"
-  /* 3937 */ "vtbl\0"
-  /* 3942 */ "vsubl\0"
-  /* 3948 */ "ldcl\0"
-  /* 3953 */ "stcl\0"
-  /* 3958 */ "vabdl\0"
-  /* 3964 */ "vpaddl\0"
-  /* 3971 */ "vaddl\0"
-  /* 3977 */ "vpsel\0"
-  /* 3983 */ "bfl\0"
-  /* 3987 */ "sqshl\0"
-  /* 3993 */ "uqshl\0"
-  /* 3999 */ "vqshl\0"
-  /* 4005 */ "uqrshl\0"
-  /* 4012 */ "vqrshl\0"
-  /* 4019 */ "vrshl\0"
-  /* 4025 */ "vshl\0"
-  /* 4030 */ "# FEntry call\0"
-  /* 4044 */ "sqshll\0"
-  /* 4051 */ "uqshll\0"
-  /* 4058 */ "uqrshll\0"
-  /* 4066 */ "vshll\0"
-  /* 4072 */ "lsll\0"
-  /* 4077 */ "vqdmull\0"
-  /* 4085 */ "smull\0"
-  /* 4091 */ "umull\0"
-  /* 4097 */ "vmull\0"
-  /* 4103 */ "sqrshrl\0"
-  /* 4111 */ "srshrl\0"
-  /* 4118 */ "urshrl\0"
-  /* 4125 */ "asrl\0"
-  /* 4130 */ "lsrl\0"
-  /* 4135 */ "vbsl\0"
-  /* 4140 */ "vqdmlsl\0"
-  /* 4148 */ "vmlsl\0"
-  /* 4154 */ "stl\0"
-  /* 4158 */ "vcmul\0"
-  /* 4164 */ "smmul\0"
-  /* 4170 */ "vnmul\0"
-  /* 4176 */ "vmul\0"
-  /* 4181 */ "vmovl\0"
-  /* 4187 */ "vlldm\0"
-  /* 4193 */ "vminnm\0"
-  /* 4200 */ "vmaxnm\0"
-  /* 4207 */ "vscclrm\0"
-  /* 4215 */ "vrintm\0"
-  /* 4222 */ "vlstm\0"
-  /* 4228 */ "vcvtm\0"
-  /* 4234 */ "vrsubhn\0"
-  /* 4242 */ "vsubhn\0"
-  /* 4249 */ "vraddhn\0"
-  /* 4257 */ "vaddhn\0"
-  /* 4264 */ "vpmin\0"
-  /* 4270 */ "vmin\0"
-  /* 4275 */ "cmn\0"
-  /* 4279 */ "vqshrn\0"
-  /* 4286 */ "vqrshrn\0"
-  /* 4294 */ "vrshrn\0"
-  /* 4301 */ "vshrn\0"
-  /* 4307 */ "vorn\0"
-  /* 4312 */ "vtrn\0"
-  /* 4317 */ "vrintn\0"
-  /* 4324 */ "vcvtn\0"
-  /* 4330 */ "vqshrun\0"
-  /* 4338 */ "vqrshrun\0"
-  /* 4347 */ "vqmovun\0"
-  /* 4355 */ "vmvn\0"
-  /* 4360 */ "vqmovn\0"
-  /* 4367 */ "vmovn\0"
-  /* 4373 */ "trap\0"
-  /* 4378 */ "cdp\0"
-  /* 4382 */ "vzip\0"
-  /* 4387 */ "vcmp\0"
-  /* 4392 */ "pop\0"
-  /* 4396 */ "pac\tr12, lr, sp\0"
-  /* 4412 */ "pacbti\tr12, lr, sp\0"
-  /* 4431 */ "aut\tr12, lr, sp\0"
-  /* 4447 */ "lctp\0"
-  /* 4452 */ "vctp\0"
-  /* 4457 */ "vrintp\0"
-  /* 4464 */ "vcvtp\0"
-  /* 4470 */ "vddup\0"
-  /* 4476 */ "vidup\0"
-  /* 4482 */ "vdup\0"
-  /* 4487 */ "vdwdup\0"
-  /* 4494 */ "viwdup\0"
-  /* 4501 */ "vswp\0"
-  /* 4506 */ "vuzp\0"
-  /* 4511 */ "vceq\0"
-  /* 4516 */ "teq\0"
-  /* 4520 */ "smmlar\0"
-  /* 4527 */ "mcr\0"
-  /* 4531 */ "adr\0"
-  /* 4535 */ "vldr\0"
-  /* 4540 */ "sqrshr\0"
-  /* 4547 */ "srshr\0"
-  /* 4553 */ "urshr\0"
-  /* 4559 */ "vrshr\0"
-  /* 4565 */ "vshr\0"
-  /* 4570 */ "smmulr\0"
-  /* 4577 */ "veor\0"
-  /* 4582 */ "ror\0"
-  /* 4586 */ "mcrr\0"
-  /* 4591 */ "vorr\0"
-  /* 4596 */ "asr\0"
-  /* 4600 */ "smmlsr\0"
-  /* 4607 */ "vmsr\0"
-  /* 4612 */ "vbrsr\0"
-  /* 4618 */ "vrintr\0"
-  /* 4625 */ "vstr\0"
-  /* 4630 */ "vcvtr\0"
-  /* 4636 */ "vmlas\0"
-  /* 4642 */ "vfmas\0"
-  /* 4648 */ "vqabs\0"
-  /* 4654 */ "vabs\0"
-  /* 4659 */ "subs\0"
-  /* 4664 */ "vcls\0"
-  /* 4669 */ "smmls\0"
-  /* 4675 */ "vnmls\0"
-  /* 4681 */ "vmls\0"
-  /* 4686 */ "vfms\0"
-  /* 4691 */ "vfnms\0"
-  /* 4697 */ "bxns\0"
-  /* 4702 */ "blxns\0"
-  /* 4708 */ "vrecps\0"
-  /* 4715 */ "vmrs\0"
-  /* 4720 */ "asrs\0"
-  /* 4725 */ "lsrs\0"
-  /* 4730 */ "vrsqrts\0"
-  /* 4738 */ "movs\0"
-  /* 4743 */ "ssat\0"
-  /* 4748 */ "usat\0"
-  /* 4753 */ "ttat\0"
-  /* 4758 */ "smlabt\0"
-  /* 4765 */ "pkhbt\0"
-  /* 4771 */ "smlalbt\0"
-  /* 4779 */ "smulbt\0"
-  /* 4786 */ "ldrbt\0"
-  /* 4792 */ "strbt\0"
-  /* 4798 */ "ldrsbt\0"
-  /* 4805 */ "eret\0"
-  /* 4810 */ "vacgt\0"
-  /* 4816 */ "vcgt\0"
-  /* 4821 */ "ldrht\0"
-  /* 4827 */ "strht\0"
-  /* 4833 */ "ldrsht\0"
-  /* 4840 */ "rbit\0"
-  /* 4845 */ "vbit\0"
-  /* 4850 */ "vclt\0"
-  /* 4855 */ "vshllt\0"
-  /* 4862 */ "vqdmullt\0"
-  /* 4871 */ "vmullt\0"
-  /* 4878 */ "vmovlt\0"
-  /* 4885 */ "vcnt\0"
-  /* 4890 */ "hint\0"
-  /* 4895 */ "vqshrnt\0"
-  /* 4903 */ "vqrshrnt\0"
-  /* 4912 */ "vrshrnt\0"
-  /* 4920 */ "vshrnt\0"
-  /* 4927 */ "vqshrunt\0"
-  /* 4936 */ "vqrshrunt\0"
-  /* 4946 */ "vqmovunt\0"
-  /* 4955 */ "vqmovnt\0"
-  /* 4963 */ "vmovnt\0"
-  /* 4970 */ "vpnot\0"
-  /* 4976 */ "vpt\0"
-  /* 4980 */ "ldrt\0"
-  /* 4985 */ "vsqrt\0"
-  /* 4991 */ "strt\0"
-  /* 4996 */ "vpst\0"
-  /* 5001 */ "vtst\0"
-  /* 5006 */ "smlatt\0"
-  /* 5013 */ "smlaltt\0"
-  /* 5021 */ "smultt\0"
-  /* 5028 */ "ttt\0"
-  /* 5032 */ "vcvtt\0"
-  /* 5038 */ "bxaut\0"
-  /* 5044 */ "vjcvt\0"
-  /* 5050 */ "vcvt\0"
-  /* 5055 */ "movt\0"
-  /* 5060 */ "smlawt\0"
-  /* 5067 */ "smulwt\0"
-  /* 5074 */ "vext\0"
-  /* 5079 */ "vqshlu\0"
-  /* 5086 */ "vabav\0"
-  /* 5092 */ "vmladav\0"
-  /* 5100 */ "vmlaldav\0"
-  /* 5109 */ "vmlsldav\0"
-  /* 5118 */ "vmlsdav\0"
-  /* 5126 */ "vminnmav\0"
-  /* 5135 */ "vmaxnmav\0"
-  /* 5144 */ "vminav\0"
-  /* 5151 */ "vmaxav\0"
-  /* 5158 */ "vaddv\0"
-  /* 5164 */ "rev\0"
-  /* 5168 */ "sdiv\0"
-  /* 5173 */ "udiv\0"
-  /* 5178 */ "vdiv\0"
-  /* 5183 */ "vaddlv\0"
-  /* 5190 */ "vminnmv\0"
-  /* 5198 */ "vmaxnmv\0"
-  /* 5206 */ "vminv\0"
-  /* 5212 */ "vmov\0"
-  /* 5217 */ "vmaxv\0"
-  /* 5223 */ "vsubw\0"
-  /* 5229 */ "vaddw\0"
-  /* 5235 */ "pldw\0"
-  /* 5240 */ "vldrw\0"
-  /* 5246 */ "vstrw\0"
-  /* 5252 */ "movw\0"
-  /* 5257 */ "vrmlaldavhax\0"
-  /* 5270 */ "vrmlsldavhax\0"
-  /* 5283 */ "fldmiax\0"
-  /* 5291 */ "fstmiax\0"
-  /* 5299 */ "vpmax\0"
-  /* 5305 */ "vmax\0"
-  /* 5310 */ "shsax\0"
-  /* 5316 */ "uhsax\0"
-  /* 5322 */ "uqsax\0"
-  /* 5328 */ "ssax\0"
-  /* 5333 */ "usax\0"
-  /* 5338 */ "vmladavax\0"
-  /* 5348 */ "vmlaldavax\0"
-  /* 5359 */ "vmlsldavax\0"
-  /* 5370 */ "vmlsdavax\0"
-  /* 5380 */ "fldmdbx\0"
-  /* 5388 */ "fstmdbx\0"
-  /* 5396 */ "vtbx\0"
-  /* 5401 */ "smladx\0"
-  /* 5408 */ "smuadx\0"
-  /* 5415 */ "smlaldx\0"
-  /* 5423 */ "smlsldx\0"
-  /* 5431 */ "smlsdx\0"
-  /* 5438 */ "smusdx\0"
-  /* 5445 */ "ldaex\0"
-  /* 5451 */ "stlex\0"
-  /* 5457 */ "ldrex\0"
-  /* 5463 */ "clrex\0"
-  /* 5469 */ "strex\0"
-  /* 5475 */ "sbfx\0"
-  /* 5480 */ "ubfx\0"
-  /* 5485 */ "vqdmladhx\0"
-  /* 5495 */ "vqrdmladhx\0"
-  /* 5506 */ "vqdmlsdhx\0"
-  /* 5516 */ "vqrdmlsdhx\0"
-  /* 5527 */ "vrmlaldavhx\0"
-  /* 5539 */ "vrmlsldavhx\0"
-  /* 5551 */ "blx\0"
-  /* 5555 */ "bflx\0"
-  /* 5560 */ "rrx\0"
-  /* 5564 */ "shasx\0"
-  /* 5570 */ "uhasx\0"
-  /* 5576 */ "uqasx\0"
-  /* 5582 */ "sasx\0"
-  /* 5587 */ "uasx\0"
-  /* 5592 */ "vrintx\0"
-  /* 5599 */ "vmladavx\0"
-  /* 5608 */ "vmlaldavx\0"
-  /* 5618 */ "vmlsldavx\0"
-  /* 5628 */ "vmlsdavx\0"
-  /* 5637 */ "vclz\0"
-  /* 5642 */ "vrintz\0"
+  /* 2712 */ "LIFETIME_START\0"
+  /* 2727 */ "DBG_VALUE_LIST\0"
+  /* 2742 */ "vcx1a\0"
+  /* 2748 */ "vcx2a\0"
+  /* 2754 */ "vcx3a\0"
+  /* 2760 */ "vaba\0"
+  /* 2765 */ "cx1da\0"
+  /* 2771 */ "cx2da\0"
+  /* 2777 */ "cx3da\0"
+  /* 2783 */ "lda\0"
+  /* 2787 */ "ldmda\0"
+  /* 2793 */ "stmda\0"
+  /* 2799 */ "vrmlaldavha\0"
+  /* 2811 */ "vrmlsldavha\0"
+  /* 2823 */ "rfeia\0"
+  /* 2829 */ "vldmia\0"
+  /* 2836 */ "vstmia\0"
+  /* 2843 */ "srsia\0"
+  /* 2849 */ "vcmla\0"
+  /* 2855 */ "smmla\0"
+  /* 2861 */ "vnmla\0"
+  /* 2867 */ "vmla\0"
+  /* 2872 */ "vfma\0"
+  /* 2877 */ "vfnma\0"
+  /* 2883 */ "vminnma\0"
+  /* 2891 */ "vmaxnma\0"
+  /* 2899 */ "vmina\0"
+  /* 2905 */ "vrsra\0"
+  /* 2911 */ "vsra\0"
+  /* 2916 */ "vrinta\0"
+  /* 2923 */ "tta\0"
+  /* 2927 */ "vcvta\0"
+  /* 2933 */ "vmladava\0"
+  /* 2942 */ "vmlaldava\0"
+  /* 2952 */ "vmlsldava\0"
+  /* 2962 */ "vmlsdava\0"
+  /* 2971 */ "vaddva\0"
+  /* 2978 */ "vaddlva\0"
+  /* 2986 */ "vmaxa\0"
+  /* 2992 */ "ldab\0"
+  /* 2997 */ "sxtab\0"
+  /* 3003 */ "uxtab\0"
+  /* 3009 */ "smlabb\0"
+  /* 3016 */ "smlalbb\0"
+  /* 3024 */ "smulbb\0"
+  /* 3031 */ "tbb\0"
+  /* 3035 */ "rfedb\0"
+  /* 3041 */ "vldmdb\0"
+  /* 3048 */ "vstmdb\0"
+  /* 3055 */ "srsdb\0"
+  /* 3061 */ "ldmib\0"
+  /* 3067 */ "stmib\0"
+  /* 3073 */ "vshllb\0"
+  /* 3080 */ "vqdmullb\0"
+  /* 3089 */ "vmullb\0"
+  /* 3096 */ "stlb\0"
+  /* 3101 */ "vmovlb\0"
+  /* 3108 */ "dmb\0"
+  /* 3112 */ "vqshrnb\0"
+  /* 3120 */ "vqrshrnb\0"
+  /* 3129 */ "vrshrnb\0"
+  /* 3137 */ "vshrnb\0"
+  /* 3144 */ "vqshrunb\0"
+  /* 3153 */ "vqrshrunb\0"
+  /* 3163 */ "vqmovunb\0"
+  /* 3172 */ "vqmovnb\0"
+  /* 3180 */ "vmovnb\0"
+  /* 3187 */ "swpb\0"
+  /* 3192 */ "vldrb\0"
+  /* 3198 */ "vstrb\0"
+  /* 3204 */ "dsb\0"
+  /* 3208 */ "isb\0"
+  /* 3212 */ "ldrsb\0"
+  /* 3218 */ "tsb\0"
+  /* 3222 */ "smlatb\0"
+  /* 3229 */ "pkhtb\0"
+  /* 3235 */ "smlaltb\0"
+  /* 3243 */ "smultb\0"
+  /* 3250 */ "vcvtb\0"
+  /* 3256 */ "sxtb\0"
+  /* 3261 */ "uxtb\0"
+  /* 3266 */ "qdsub\0"
+  /* 3272 */ "vhsub\0"
+  /* 3278 */ "vqsub\0"
+  /* 3284 */ "vsub\0"
+  /* 3289 */ "smlawb\0"
+  /* 3296 */ "smulwb\0"
+  /* 3303 */ "ldaexb\0"
+  /* 3310 */ "stlexb\0"
+  /* 3317 */ "ldrexb\0"
+  /* 3324 */ "strexb\0"
+  /* 3331 */ "vsbc\0"
+  /* 3336 */ "vadc\0"
+  /* 3341 */ "ldc\0"
+  /* 3345 */ "bfc\0"
+  /* 3349 */ "vbic\0"
+  /* 3354 */ "vshlc\0"
+  /* 3360 */ "smc\0"
+  /* 3364 */ "mrc\0"
+  /* 3368 */ "mrrc\0"
+  /* 3373 */ "rsc\0"
+  /* 3377 */ "stc\0"
+  /* 3381 */ "svc\0"
+  /* 3385 */ "smlad\0"
+  /* 3391 */ "smuad\0"
+  /* 3397 */ "vabd\0"
+  /* 3402 */ "vhcadd\0"
+  /* 3409 */ "vcadd\0"
+  /* 3415 */ "qdadd\0"
+  /* 3421 */ "vrhadd\0"
+  /* 3428 */ "vhadd\0"
+  /* 3434 */ "vpadd\0"
+  /* 3440 */ "vqadd\0"
+  /* 3446 */ "vadd\0"
+  /* 3451 */ "smlald\0"
+  /* 3458 */ "pld\0"
+  /* 3462 */ "smlsld\0"
+  /* 3469 */ "vand\0"
+  /* 3474 */ "vldrd\0"
+  /* 3480 */ "vstrd\0"
+  /* 3486 */ "smlsd\0"
+  /* 3492 */ "smusd\0"
+  /* 3498 */ "ldaexd\0"
+  /* 3505 */ "stlexd\0"
+  /* 3512 */ "ldrexd\0"
+  /* 3519 */ "strexd\0"
+  /* 3526 */ "vacge\0"
+  /* 3532 */ "vcge\0"
+  /* 3537 */ "vcle\0"
+  /* 3542 */ "vrecpe\0"
+  /* 3549 */ "vcmpe\0"
+  /* 3555 */ "vrsqrte\0"
+  /* 3563 */ "bf\0"
+  /* 3566 */ "vbif\0"
+  /* 3571 */ "dbg\0"
+  /* 3575 */ "pacg\0"
+  /* 3580 */ "vqneg\0"
+  /* 3586 */ "vneg\0"
+  /* 3591 */ "sg\0"
+  /* 3594 */ "autg\0"
+  /* 3599 */ "ldah\0"
+  /* 3604 */ "vqdmlah\0"
+  /* 3612 */ "vqrdmlah\0"
+  /* 3621 */ "sxtah\0"
+  /* 3627 */ "uxtah\0"
+  /* 3633 */ "tbh\0"
+  /* 3637 */ "vqdmladh\0"
+  /* 3646 */ "vqrdmladh\0"
+  /* 3656 */ "vqdmlsdh\0"
+  /* 3665 */ "vqrdmlsdh\0"
+  /* 3675 */ "stlh\0"
+  /* 3680 */ "vqdmulh\0"
+  /* 3688 */ "vqrdmulh\0"
+  /* 3697 */ "vrmulh\0"
+  /* 3704 */ "vmulh\0"
+  /* 3710 */ "vldrh\0"
+  /* 3716 */ "vstrh\0"
+  /* 3722 */ "vqdmlash\0"
+  /* 3731 */ "vqrdmlash\0"
+  /* 3741 */ "vqrdmlsh\0"
+  /* 3750 */ "ldrsh\0"
+  /* 3756 */ "push\0"
+  /* 3761 */ "revsh\0"
+  /* 3767 */ "sxth\0"
+  /* 3772 */ "uxth\0"
+  /* 3777 */ "vrmlaldavh\0"
+  /* 3788 */ "vrmlsldavh\0"
+  /* 3799 */ "ldaexh\0"
+  /* 3806 */ "stlexh\0"
+  /* 3813 */ "ldrexh\0"
+  /* 3820 */ "strexh\0"
+  /* 3827 */ "vsbci\0"
+  /* 3833 */ "vadci\0"
+  /* 3839 */ "bfi\0"
+  /* 3843 */ "pli\0"
+  /* 3847 */ "vsli\0"
+  /* 3852 */ "vsri\0"
+  /* 3857 */ "bxj\0"
+  /* 3861 */ "ldc2l\0"
+  /* 3867 */ "stc2l\0"
+  /* 3873 */ "umaal\0"
+  /* 3879 */ "vabal\0"
+  /* 3885 */ "vpadal\0"
+  /* 3892 */ "vqdmlal\0"
+  /* 3900 */ "smlal\0"
+  /* 3906 */ "umlal\0"
+  /* 3912 */ "vmlal\0"
+  /* 3918 */ "vtbl\0"
+  /* 3923 */ "vsubl\0"
+  /* 3929 */ "ldcl\0"
+  /* 3934 */ "stcl\0"
+  /* 3939 */ "vabdl\0"
+  /* 3945 */ "vpaddl\0"
+  /* 3952 */ "vaddl\0"
+  /* 3958 */ "vpsel\0"
+  /* 3964 */ "bfl\0"
+  /* 3968 */ "sqshl\0"
+  /* 3974 */ "uqshl\0"
+  /* 3980 */ "vqshl\0"
+  /* 3986 */ "uqrshl\0"
+  /* 3993 */ "vqrshl\0"
+  /* 4000 */ "vrshl\0"
+  /* 4006 */ "vshl\0"
+  /* 4011 */ "# FEntry call\0"
+  /* 4025 */ "sqshll\0"
+  /* 4032 */ "uqshll\0"
+  /* 4039 */ "uqrshll\0"
+  /* 4047 */ "vshll\0"
+  /* 4053 */ "lsll\0"
+  /* 4058 */ "vqdmull\0"
+  /* 4066 */ "smull\0"
+  /* 4072 */ "umull\0"
+  /* 4078 */ "vmull\0"
+  /* 4084 */ "sqrshrl\0"
+  /* 4092 */ "srshrl\0"
+  /* 4099 */ "urshrl\0"
+  /* 4106 */ "asrl\0"
+  /* 4111 */ "lsrl\0"
+  /* 4116 */ "vbsl\0"
+  /* 4121 */ "vqdmlsl\0"
+  /* 4129 */ "vmlsl\0"
+  /* 4135 */ "stl\0"
+  /* 4139 */ "vcmul\0"
+  /* 4145 */ "smmul\0"
+  /* 4151 */ "vnmul\0"
+  /* 4157 */ "vmul\0"
+  /* 4162 */ "vmovl\0"
+  /* 4168 */ "vlldm\0"
+  /* 4174 */ "vminnm\0"
+  /* 4181 */ "vmaxnm\0"
+  /* 4188 */ "vscclrm\0"
+  /* 4196 */ "vrintm\0"
+  /* 4203 */ "vlstm\0"
+  /* 4209 */ "vcvtm\0"
+  /* 4215 */ "vrsubhn\0"
+  /* 4223 */ "vsubhn\0"
+  /* 4230 */ "vraddhn\0"
+  /* 4238 */ "vaddhn\0"
+  /* 4245 */ "vpmin\0"
+  /* 4251 */ "vmin\0"
+  /* 4256 */ "cmn\0"
+  /* 4260 */ "vqshrn\0"
+  /* 4267 */ "vqrshrn\0"
+  /* 4275 */ "vrshrn\0"
+  /* 4282 */ "vshrn\0"
+  /* 4288 */ "vorn\0"
+  /* 4293 */ "vtrn\0"
+  /* 4298 */ "vrintn\0"
+  /* 4305 */ "vcvtn\0"
+  /* 4311 */ "vqshrun\0"
+  /* 4319 */ "vqrshrun\0"
+  /* 4328 */ "vqmovun\0"
+  /* 4336 */ "vmvn\0"
+  /* 4341 */ "vqmovn\0"
+  /* 4348 */ "vmovn\0"
+  /* 4354 */ "trap\0"
+  /* 4359 */ "cdp\0"
+  /* 4363 */ "vzip\0"
+  /* 4368 */ "vcmp\0"
+  /* 4373 */ "pop\0"
+  /* 4377 */ "pac\tr12, lr, sp\0"
+  /* 4393 */ "pacbti\tr12, lr, sp\0"
+  /* 4412 */ "aut\tr12, lr, sp\0"
+  /* 4428 */ "lctp\0"
+  /* 4433 */ "vctp\0"
+  /* 4438 */ "vrintp\0"
+  /* 4445 */ "vcvtp\0"
+  /* 4451 */ "vddup\0"
+  /* 4457 */ "vidup\0"
+  /* 4463 */ "vdup\0"
+  /* 4468 */ "vdwdup\0"
+  /* 4475 */ "viwdup\0"
+  /* 4482 */ "vswp\0"
+  /* 4487 */ "vuzp\0"
+  /* 4492 */ "vceq\0"
+  /* 4497 */ "teq\0"
+  /* 4501 */ "smmlar\0"
+  /* 4508 */ "mcr\0"
+  /* 4512 */ "adr\0"
+  /* 4516 */ "vldr\0"
+  /* 4521 */ "sqrshr\0"
+  /* 4528 */ "srshr\0"
+  /* 4534 */ "urshr\0"
+  /* 4540 */ "vrshr\0"
+  /* 4546 */ "vshr\0"
+  /* 4551 */ "smmulr\0"
+  /* 4558 */ "veor\0"
+  /* 4563 */ "ror\0"
+  /* 4567 */ "mcrr\0"
+  /* 4572 */ "vorr\0"
+  /* 4577 */ "asr\0"
+  /* 4581 */ "smmlsr\0"
+  /* 4588 */ "vmsr\0"
+  /* 4593 */ "vbrsr\0"
+  /* 4599 */ "vrintr\0"
+  /* 4606 */ "vstr\0"
+  /* 4611 */ "vcvtr\0"
+  /* 4617 */ "vmlas\0"
+  /* 4623 */ "vfmas\0"
+  /* 4629 */ "vqabs\0"
+  /* 4635 */ "vabs\0"
+  /* 4640 */ "subs\0"
+  /* 4645 */ "vcls\0"
+  /* 4650 */ "smmls\0"
+  /* 4656 */ "vnmls\0"
+  /* 4662 */ "vmls\0"
+  /* 4667 */ "vfms\0"
+  /* 4672 */ "vfnms\0"
+  /* 4678 */ "bxns\0"
+  /* 4683 */ "blxns\0"
+  /* 4689 */ "vrecps\0"
+  /* 4696 */ "vmrs\0"
+  /* 4701 */ "asrs\0"
+  /* 4706 */ "lsrs\0"
+  /* 4711 */ "vrsqrts\0"
+  /* 4719 */ "movs\0"
+  /* 4724 */ "ssat\0"
+  /* 4729 */ "usat\0"
+  /* 4734 */ "ttat\0"
+  /* 4739 */ "smlabt\0"
+  /* 4746 */ "pkhbt\0"
+  /* 4752 */ "smlalbt\0"
+  /* 4760 */ "smulbt\0"
+  /* 4767 */ "ldrbt\0"
+  /* 4773 */ "strbt\0"
+  /* 4779 */ "ldrsbt\0"
+  /* 4786 */ "eret\0"
+  /* 4791 */ "vacgt\0"
+  /* 4797 */ "vcgt\0"
+  /* 4802 */ "ldrht\0"
+  /* 4808 */ "strht\0"
+  /* 4814 */ "ldrsht\0"
+  /* 4821 */ "rbit\0"
+  /* 4826 */ "vbit\0"
+  /* 4831 */ "vclt\0"
+  /* 4836 */ "vshllt\0"
+  /* 4843 */ "vqdmullt\0"
+  /* 4852 */ "vmullt\0"
+  /* 4859 */ "vmovlt\0"
+  /* 4866 */ "vcnt\0"
+  /* 4871 */ "hint\0"
+  /* 4876 */ "vqshrnt\0"
+  /* 4884 */ "vqrshrnt\0"
+  /* 4893 */ "vrshrnt\0"
+  /* 4901 */ "vshrnt\0"
+  /* 4908 */ "vqshrunt\0"
+  /* 4917 */ "vqrshrunt\0"
+  /* 4927 */ "vqmovunt\0"
+  /* 4936 */ "vqmovnt\0"
+  /* 4944 */ "vmovnt\0"
+  /* 4951 */ "vpnot\0"
+  /* 4957 */ "vpt\0"
+  /* 4961 */ "ldrt\0"
+  /* 4966 */ "vsqrt\0"
+  /* 4972 */ "strt\0"
+  /* 4977 */ "vpst\0"
+  /* 4982 */ "vtst\0"
+  /* 4987 */ "smlatt\0"
+  /* 4994 */ "smlaltt\0"
+  /* 5002 */ "smultt\0"
+  /* 5009 */ "ttt\0"
+  /* 5013 */ "vcvtt\0"
+  /* 5019 */ "bxaut\0"
+  /* 5025 */ "vjcvt\0"
+  /* 5031 */ "vcvt\0"
+  /* 5036 */ "movt\0"
+  /* 5041 */ "smlawt\0"
+  /* 5048 */ "smulwt\0"
+  /* 5055 */ "vext\0"
+  /* 5060 */ "vqshlu\0"
+  /* 5067 */ "vabav\0"
+  /* 5073 */ "vmladav\0"
+  /* 5081 */ "vmlaldav\0"
+  /* 5090 */ "vmlsldav\0"
+  /* 5099 */ "vmlsdav\0"
+  /* 5107 */ "vminnmav\0"
+  /* 5116 */ "vmaxnmav\0"
+  /* 5125 */ "vminav\0"
+  /* 5132 */ "vmaxav\0"
+  /* 5139 */ "vaddv\0"
+  /* 5145 */ "rev\0"
+  /* 5149 */ "sdiv\0"
+  /* 5154 */ "udiv\0"
+  /* 5159 */ "vdiv\0"
+  /* 5164 */ "vaddlv\0"
+  /* 5171 */ "vminnmv\0"
+  /* 5179 */ "vmaxnmv\0"
+  /* 5187 */ "vminv\0"
+  /* 5193 */ "vmov\0"
+  /* 5198 */ "vmaxv\0"
+  /* 5204 */ "vsubw\0"
+  /* 5210 */ "vaddw\0"
+  /* 5216 */ "pldw\0"
+  /* 5221 */ "vldrw\0"
+  /* 5227 */ "vstrw\0"
+  /* 5233 */ "movw\0"
+  /* 5238 */ "vrmlaldavhax\0"
+  /* 5251 */ "vrmlsldavhax\0"
+  /* 5264 */ "fldmiax\0"
+  /* 5272 */ "fstmiax\0"
+  /* 5280 */ "vpmax\0"
+  /* 5286 */ "vmax\0"
+  /* 5291 */ "shsax\0"
+  /* 5297 */ "uhsax\0"
+  /* 5303 */ "uqsax\0"
+  /* 5309 */ "ssax\0"
+  /* 5314 */ "usax\0"
+  /* 5319 */ "vmladavax\0"
+  /* 5329 */ "vmlaldavax\0"
+  /* 5340 */ "vmlsldavax\0"
+  /* 5351 */ "vmlsdavax\0"
+  /* 5361 */ "fldmdbx\0"
+  /* 5369 */ "fstmdbx\0"
+  /* 5377 */ "vtbx\0"
+  /* 5382 */ "smladx\0"
+  /* 5389 */ "smuadx\0"
+  /* 5396 */ "smlaldx\0"
+  /* 5404 */ "smlsldx\0"
+  /* 5412 */ "smlsdx\0"
+  /* 5419 */ "smusdx\0"
+  /* 5426 */ "ldaex\0"
+  /* 5432 */ "stlex\0"
+  /* 5438 */ "ldrex\0"
+  /* 5444 */ "clrex\0"
+  /* 5450 */ "strex\0"
+  /* 5456 */ "sbfx\0"
+  /* 5461 */ "ubfx\0"
+  /* 5466 */ "vqdmladhx\0"
+  /* 5476 */ "vqrdmladhx\0"
+  /* 5487 */ "vqdmlsdhx\0"
+  /* 5497 */ "vqrdmlsdhx\0"
+  /* 5508 */ "vrmlaldavhx\0"
+  /* 5520 */ "vrmlsldavhx\0"
+  /* 5532 */ "blx\0"
+  /* 5536 */ "bflx\0"
+  /* 5541 */ "rrx\0"
+  /* 5545 */ "shasx\0"
+  /* 5551 */ "uhasx\0"
+  /* 5557 */ "uqasx\0"
+  /* 5563 */ "sasx\0"
+  /* 5568 */ "uasx\0"
+  /* 5573 */ "vrintx\0"
+  /* 5580 */ "vmladavx\0"
+  /* 5589 */ "vmlaldavx\0"
+  /* 5599 */ "vmlsldavx\0"
+  /* 5609 */ "vmlsdavx\0"
+  /* 5618 */ "vclz\0"
+  /* 5623 */ "vrintz\0"
 };
 #endif // CAPSTONE_DIET
 
@@ -756,19 +762,19 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// SUBREG_TO_REG
     0U,	// COPY_TO_REGCLASS
     2671U,	// DBG_VALUE
-    2747U,	// DBG_VALUE_LIST
+    2728U,	// DBG_VALUE_LIST
     2681U,	// DBG_INSTR_REF
     2695U,	// DBG_PHI
     2703U,	// DBG_LABEL
     0U,	// REG_SEQUENCE
     0U,	// COPY
     2664U,	// BUNDLE
-    2732U,	// LIFETIME_START
+    2713U,	// LIFETIME_START
     2638U,	// LIFETIME_END
     2651U,	// PSEUDO_PROBE
     0U,	// ARITH_FENCE
     0U,	// STACKMAP
-    4031U,	// FENTRY_CALL
+    4012U,	// FENTRY_CALL
     0U,	// PATCHPOINT
     0U,	// LOAD_STACK_GUARD
     0U,	// PREALLOCATED_SETUP
@@ -784,6 +790,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2205U,	// PATCHABLE_EVENT_CALL
     2181U,	// PATCHABLE_TYPED_EVENT_CALL
     0U,	// ICALL_BRANCH_FUNNEL
+    0U,	// MEMBARRIER
     0U,	// G_ASSERT_SEXT
     0U,	// G_ASSERT_ZEXT
     0U,	// G_ASSERT_ALIGN
@@ -845,6 +852,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// G_ATOMICRMW_FSUB
     0U,	// G_ATOMICRMW_FMAX
     0U,	// G_ATOMICRMW_FMIN
+    0U,	// G_ATOMICRMW_UINC_WRAP
+    0U,	// G_ATOMICRMW_UDEC_WRAP
     0U,	// G_FENCE
     0U,	// G_BRCOND
     0U,	// G_BRINDIRECT
@@ -997,8 +1006,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// ADDSrsr
     0U,	// ADJCALLSTACKDOWN
     0U,	// ADJCALLSTACKUP
-    12789U,	// ASRi
-    12789U,	// ASRr
+    12770U,	// ASRi
+    12770U,	// ASRr
     0U,	// B
     0U,	// BCCZi64
     0U,	// BCCi64
@@ -1018,8 +1027,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// CMP_SWAP_8
     0U,	// CONSTPOOL_ENTRY
     0U,	// COPY_STRUCT_BYVAL_I32
-    2713U,	// CompilerBarrier
-    67130091U,	// ITasm
+    67130072U,	// ITasm
     0U,	// Int_eh_sjlj_dispatchsetup
     0U,	// Int_eh_sjlj_longjmp
     0U,	// Int_eh_sjlj_setjmp
@@ -1030,22 +1038,22 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// JUMPTABLE_TBB
     0U,	// JUMPTABLE_TBH
     0U,	// LDMIA_RET
-    29363U,	// LDRBT_POST
-    29113U,	// LDRConstPool
-    29398U,	// LDRHTii
+    29344U,	// LDRBT_POST
+    29094U,	// LDRConstPool
+    29379U,	// LDRHTii
     0U,	// LDRLIT_ga_abs
     0U,	// LDRLIT_ga_pcrel
     0U,	// LDRLIT_ga_pcrel_ldr
-    29375U,	// LDRSBTii
-    29410U,	// LDRSHTii
-    29557U,	// LDRT_POST
+    29356U,	// LDRSBTii
+    29391U,	// LDRSHTii
+    29538U,	// LDRT_POST
     0U,	// LEApcrel
     0U,	// LEApcrelJT
     0U,	// LOADDUAL
-    12337U,	// LSLi
-    12337U,	// LSLr
-    12796U,	// LSRi
-    12796U,	// LSRr
+    12318U,	// LSLi
+    12318U,	// LSLr
+    12777U,	// LSRi
+    12777U,	// LSRr
     0U,	// MEMCPY
     0U,	// MLAv5
     0U,	// MOVCCi
@@ -1080,10 +1088,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// PICSTR
     0U,	// PICSTRB
     0U,	// PICSTRH
-    12775U,	// RORi
-    12775U,	// RORr
+    12756U,	// RORi
+    12756U,	// RORr
     0U,	// RRX
-    38329U,	// RRXi
+    38310U,	// RRXi
     0U,	// RSBSri
     0U,	// RSBSrsi
     0U,	// RSBSrsr
@@ -1102,11 +1110,11 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// SMULLv5
     0U,	// SPACE
     0U,	// STOREDUAL
-    29369U,	// STRBT_POST
+    29350U,	// STRBT_POST
     0U,	// STRBi_preidx
     0U,	// STRBr_preidx
     0U,	// STRH_preidx
-    29568U,	// STRT_POST
+    29549U,	// STRT_POST
     0U,	// STRi_preidx
     0U,	// STRr_preidx
     0U,	// SUBS_PC_LR
@@ -1357,16 +1365,16 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// t2DoLoopStart
     0U,	// t2DoLoopStartTP
     0U,	// t2LDMIA_RET
-    27789U,	// t2LDRBpcrel
-    29113U,	// t2LDRConstPool
-    28307U,	// t2LDRHpcrel
+    27770U,	// t2LDRBpcrel
+    29094U,	// t2LDRConstPool
+    28288U,	// t2LDRHpcrel
     0U,	// t2LDRLIT_ga_pcrel
-    27808U,	// t2LDRSBpcrel
-    28346U,	// t2LDRSHpcrel
-    673247673U,	// t2LDR_POST_imm
-    740356537U,	// t2LDR_PRE_imm
+    27789U,	// t2LDRSBpcrel
+    28327U,	// t2LDRSHpcrel
+    673247654U,	// t2LDR_POST_imm
+    740356518U,	// t2LDR_PRE_imm
     0U,	// t2LDRpci_pic
-    29113U,	// t2LDRpcrel
+    29094U,	// t2LDRpcrel
     0U,	// t2LEApcrel
     0U,	// t2LEApcrelJT
     0U,	// t2LoopDec
@@ -1380,21 +1388,21 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// t2MOVCClsr
     0U,	// t2MOVCCr
     0U,	// t2MOVCCror
-    62083U,	// t2MOVSsi
-    45699U,	// t2MOVSsr
+    62064U,	// t2MOVSsi
+    45680U,	// t2MOVSsr
     0U,	// t2MOVTi16_ga_pcrel
     0U,	// t2MOV_ga_pcrel
     0U,	// t2MOVi16_ga_pcrel
     0U,	// t2MOVi32imm
-    62558U,	// t2MOVsi
-    46174U,	// t2MOVsr
+    62539U,	// t2MOVsi
+    46155U,	// t2MOVsr
     0U,	// t2MVNCCi
     0U,	// t2RSBSri
     0U,	// t2RSBSrs
     0U,	// t2STRB_preidx
     0U,	// t2STRH_preidx
-    673247763U,	// t2STR_POST_imm
-    740356627U,	// t2STR_PRE_imm
+    673247744U,	// t2STR_POST_imm
+    740356608U,	// t2STR_PRE_imm
     0U,	// t2STR_preidx
     0U,	// t2SUBSri
     0U,	// t2SUBSrr
@@ -1428,7 +1436,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// tCMP_SWAP_32
     0U,	// tCMP_SWAP_8
     0U,	// tLDMIA_UPD
-    29113U,	// tLDRConstPool
+    29094U,	// tLDRConstPool
     0U,	// tLDRLIT_ga_abs
     0U,	// tLDRLIT_ga_pcrel
     0U,	// tLDR_postidx
@@ -1449,127 +1457,127 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// tTBB_JT
     0U,	// tTBH_JT
     0U,	// tTPsoft
-    2632989U,	// ADCri
-    2632989U,	// ADCrr
-    2690333U,	// ADCrsi
-    77085U,	// ADCrsr
-    2633057U,	// ADDri
-    2633057U,	// ADDrr
-    2690401U,	// ADDrsi
-    77153U,	// ADDrsr
-    2650548U,	// ADR
+    2632970U,	// ADCri
+    2632970U,	// ADCrr
+    2690314U,	// ADCrsi
+    77066U,	// ADCrsr
+    2633038U,	// ADDri
+    2633038U,	// ADDrr
+    2690382U,	// ADDrsi
+    77134U,	// ADDrsr
+    2650529U,	// ADR
     808535656U,	// AESD
     808535664U,	// AESE
     875644501U,	// AESIMC
     875644511U,	// AESMC
-    2633122U,	// ANDri
-    2633122U,	// ANDrr
-    2690466U,	// ANDrsi
-    77218U,	// ANDrsr
+    2633103U,	// ANDri
+    2633103U,	// ANDrr
+    2690447U,	// ANDrsi
+    77199U,	// ANDrsr
     943285726U,	// BF16VDOTI_VDOTD
     943285726U,	// BF16VDOTI_VDOTQ
     943285726U,	// BF16VDOTS_VDOTD
     943285726U,	// BF16VDOTS_VDOTQ
-    876639163U,	// BF16_VCVT
-    809561286U,	// BF16_VCVTB
-    809563049U,	// BF16_VCVTT
-    2682149U,	// BFC
-    2666259U,	// BFI
-    2633002U,	// BICri
-    2633002U,	// BICrr
-    2690346U,	// BICrsi
-    77098U,	// BICrsr
+    876639144U,	// BF16_VCVT
+    809561267U,	// BF16_VCVTB
+    809563030U,	// BF16_VCVTT
+    2682130U,	// BFC
+    2666240U,	// BFI
+    2632983U,	// BICri
+    2632983U,	// BICrr
+    2690327U,	// BICrsi
+    77079U,	// BICrsr
     4802500U,	// BKPT
     4818832U,	// BL
     4802554U,	// BLX
-    2733488U,	// BLX_pred
+    2733469U,	// BLX_pred
     4818938U,	// BLXi
-    1009364836U,	// BL_pred
+    1009364817U,	// BL_pred
     4802550U,	// BX
-    2731813U,	// BXJ
-    5362954U,	// BX_RET
-    2733322U,	// BX_pred
-    1009363911U,	// Bcc
+    2731794U,	// BXJ
+    5362935U,	// BX_RET
+    2733303U,	// BX_pred
+    1009363892U,	// Bcc
     811196418U,	// CDE_CX1
-    1076406987U,	// CDE_CX1A
+    1076406968U,	// CDE_CX1A
     1147266872U,	// CDE_CX1D
-    1076407009U,	// CDE_CX1DA
+    1076406990U,	// CDE_CX1DA
     811197011U,	// CDE_CX2
-    1076415185U,	// CDE_CX2A
+    1076415166U,	// CDE_CX2A
     1214375742U,	// CDE_CX2D
-    1076415207U,	// CDE_CX2DA
+    1076415188U,	// CDE_CX2DA
     811197017U,	// CDE_CX3
-    1076497111U,	// CDE_CX3A
+    1076497092U,	// CDE_CX3A
     1214375748U,	// CDE_CX3D
-    1076497133U,	// CDE_CX3DA
+    1076497114U,	// CDE_CX3DA
     945415894U,	// CDE_VCX1A_fpdp
     945415894U,	// CDE_VCX1A_fpsp
-    1076505290U,	// CDE_VCX1A_vec
+    1076505271U,	// CDE_VCX1A_vec
     811196417U,	// CDE_VCX1_fpdp
     811196417U,	// CDE_VCX1_fpsp
     1076513044U,	// CDE_VCX1_vec
     945415901U,	// CDE_VCX2A_fpdp
     945415901U,	// CDE_VCX2A_fpsp
-    1076521680U,	// CDE_VCX2A_vec
+    1076521661U,	// CDE_VCX2A_vec
     811197010U,	// CDE_VCX2_fpdp
     811197010U,	// CDE_VCX2_fpsp
     1076504917U,	// CDE_VCX2_vec
     945415908U,	// CDE_VCX3A_fpdp
     945415908U,	// CDE_VCX3A_fpsp
-    1076529878U,	// CDE_VCX3A_vec
+    1076529859U,	// CDE_VCX3A_vec
     811197016U,	// CDE_VCX3_fpdp
     811197016U,	// CDE_VCX3_fpsp
     1076521322U,	// CDE_VCX3_vec
-    1277825307U,	// CDP
+    1277825288U,	// CDP
     1349165631U,	// CDP2
-    5464U,	// CLREX
-    2651655U,	// CLZ
-    2650292U,	// CMNri
-    2650292U,	// CMNzrr
-    2683060U,	// CMNzrsi
-    2666676U,	// CMNzrsr
-    2650405U,	// CMPri
-    2650405U,	// CMPrr
-    2683173U,	// CMPrsi
-    2666789U,	// CMPrsr
+    5445U,	// CLREX
+    2651636U,	// CLZ
+    2650273U,	// CMNri
+    2650273U,	// CMNzrr
+    2683041U,	// CMNzrsi
+    2666657U,	// CMNzrsr
+    2650386U,	// CMPri
+    2650386U,	// CMPrr
+    2683154U,	// CMPrsi
+    2666770U,	// CMPrsr
     4802484U,	// CPS1p
-    1412092520U,	// CPS2p
-    1412092520U,	// CPS3p
+    1412092501U,	// CPS2p
+    1412092501U,	// CPS3p
     875644665U,	// CRC32B
     875644673U,	// CRC32CB
     875644783U,	// CRC32CH
     875644903U,	// CRC32CW
     875644775U,	// CRC32H
     875644895U,	// CRC32W
-    2731527U,	// DBG
+    2731508U,	// DBG
     190232U,	// DMB
     190237U,	// DSB
-    2634211U,	// EORri
-    2634211U,	// EORrr
-    2691555U,	// EORrsi
-    78307U,	// EORrsr
-    4838086U,	// ERET
-    1215329373U,	// FCONSTD
-    7894109U,	// FCONSTH
-    8418397U,	// FCONSTS
-    875066629U,	// FLDMXDB_UPD
-    2733220U,	// FLDMXIA
-    875066532U,	// FLDMXIA_UPD
-    9032300U,	// FMSTAT
-    875066637U,	// FSTMXDB_UPD
-    2733228U,	// FSTMXIA
-    875066540U,	// FSTMXIA_UPD
-    2732827U,	// HINT
+    2634192U,	// EORri
+    2634192U,	// EORrr
+    2691536U,	// EORrsi
+    78288U,	// EORrsr
+    4838067U,	// ERET
+    1215329354U,	// FCONSTD
+    7894090U,	// FCONSTH
+    8418378U,	// FCONSTS
+    875066610U,	// FLDMXDB_UPD
+    2733201U,	// FLDMXIA
+    875066513U,	// FLDMXIA_UPD
+    9032281U,	// FMSTAT
+    875066618U,	// FSTMXDB_UPD
+    2733209U,	// FSTMXIA
+    875066521U,	// FSTMXIA_UPD
+    2732808U,	// HINT
     4802495U,	// HLT
     4802355U,	// HVC
     198434U,	// ISB
-    2648819U,	// LDA
-    2649028U,	// LDAB
-    2651462U,	// LDAEX
-    2649339U,	// LDAEXB
-    1479044542U,	// LDAEXD
-    2649835U,	// LDAEXH
-    2649635U,	// LDAH
+    2648800U,	// LDA
+    2649009U,	// LDAB
+    2651443U,	// LDAEX
+    2649320U,	// LDAEXB
+    1479044523U,	// LDAEXD
+    2649816U,	// LDAEXH
+    2649616U,	// LDAH
     1553115010U,	// LDC2L_OFFSET
     1620223874U,	// LDC2L_OPTION
     1620223874U,	// LDC2L_POST
@@ -1578,291 +1586,291 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1620222502U,	// LDC2_OPTION
     1620222502U,	// LDC2_POST
     1687331366U,	// LDC2_PRE
-    1277734765U,	// LDCL_OFFSET
-    1277734765U,	// LDCL_OPTION
-    1277734765U,	// LDCL_POST
-    1277734765U,	// LDCL_PRE
-    1277734177U,	// LDC_OFFSET
-    1277734177U,	// LDC_OPTION
-    1277734177U,	// LDC_POST
-    1277734177U,	// LDC_PRE
-    2730743U,	// LDMDA
-    875064055U,	// LDMDA_UPD
-    2730998U,	// LDMDB
-    875064310U,	// LDMDB_UPD
-    2732126U,	// LDMIA
-    875065438U,	// LDMIA_UPD
-    2731017U,	// LDMIB
-    875064329U,	// LDMIB_UPD
-    2675379U,	// LDRBT_POST_IMM
-    2675379U,	// LDRBT_POST_REG
-    2673805U,	// LDRB_POST_IMM
-    2673805U,	// LDRB_POST_REG
-    2665613U,	// LDRB_PRE_IMM
-    2673805U,	// LDRB_PRE_REG
-    2681997U,	// LDRBi12
-    2665613U,	// LDRBrs
-    2674087U,	// LDRD
-    2756007U,	// LDRD_POST
-    2756007U,	// LDRD_PRE
-    2651474U,	// LDREX
-    2649353U,	// LDREXB
-    1479044556U,	// LDREXD
-    2649849U,	// LDREXH
-    2666131U,	// LDRH
-    2667222U,	// LDRHTi
-    2675414U,	// LDRHTr
-    2674323U,	// LDRH_POST
-    2674323U,	// LDRH_PRE
-    2665632U,	// LDRSB
-    2667199U,	// LDRSBTi
-    2675391U,	// LDRSBTr
-    2673824U,	// LDRSB_POST
-    2673824U,	// LDRSB_PRE
-    2666170U,	// LDRSH
-    2667234U,	// LDRSHTi
-    2675426U,	// LDRSHTr
-    2674362U,	// LDRSH_POST
-    2674362U,	// LDRSH_PRE
-    2675573U,	// LDRT_POST_IMM
-    2675573U,	// LDRT_POST_REG
-    2675129U,	// LDR_POST_IMM
-    2675129U,	// LDR_POST_REG
-    2666937U,	// LDR_PRE_IMM
-    2675129U,	// LDR_PRE_REG
-    2683321U,	// LDRcp
-    2683321U,	// LDRi12
-    2666937U,	// LDRrs
-    1277825456U,	// MCR
+    1277734746U,	// LDCL_OFFSET
+    1277734746U,	// LDCL_OPTION
+    1277734746U,	// LDCL_POST
+    1277734746U,	// LDCL_PRE
+    1277734158U,	// LDC_OFFSET
+    1277734158U,	// LDC_OPTION
+    1277734158U,	// LDC_POST
+    1277734158U,	// LDC_PRE
+    2730724U,	// LDMDA
+    875064036U,	// LDMDA_UPD
+    2730979U,	// LDMDB
+    875064291U,	// LDMDB_UPD
+    2732107U,	// LDMIA
+    875065419U,	// LDMIA_UPD
+    2730998U,	// LDMIB
+    875064310U,	// LDMIB_UPD
+    2675360U,	// LDRBT_POST_IMM
+    2675360U,	// LDRBT_POST_REG
+    2673786U,	// LDRB_POST_IMM
+    2673786U,	// LDRB_POST_REG
+    2665594U,	// LDRB_PRE_IMM
+    2673786U,	// LDRB_PRE_REG
+    2681978U,	// LDRBi12
+    2665594U,	// LDRBrs
+    2674068U,	// LDRD
+    2755988U,	// LDRD_POST
+    2755988U,	// LDRD_PRE
+    2651455U,	// LDREX
+    2649334U,	// LDREXB
+    1479044537U,	// LDREXD
+    2649830U,	// LDREXH
+    2666112U,	// LDRH
+    2667203U,	// LDRHTi
+    2675395U,	// LDRHTr
+    2674304U,	// LDRH_POST
+    2674304U,	// LDRH_PRE
+    2665613U,	// LDRSB
+    2667180U,	// LDRSBTi
+    2675372U,	// LDRSBTr
+    2673805U,	// LDRSB_POST
+    2673805U,	// LDRSB_PRE
+    2666151U,	// LDRSH
+    2667215U,	// LDRSHTi
+    2675407U,	// LDRSHTr
+    2674343U,	// LDRSH_POST
+    2674343U,	// LDRSH_PRE
+    2675554U,	// LDRT_POST_IMM
+    2675554U,	// LDRT_POST_REG
+    2675110U,	// LDR_POST_IMM
+    2675110U,	// LDR_POST_REG
+    2666918U,	// LDR_PRE_IMM
+    2675110U,	// LDR_PRE_REG
+    2683302U,	// LDRcp
+    2683302U,	// LDRi12
+    2666918U,	// LDRrs
+    1277825437U,	// MCR
     812294725U,	// MCR2
-    1277743595U,	// MCRR
+    1277743576U,	// MCRR
     812294731U,	// MCRR2
-    2689847U,	// MLA
-    2667072U,	// MLS
-    10081374U,	// MOVPCLR
-    2683840U,	// MOVTi16
-    2659422U,	// MOVi
-    2651269U,	// MOVi16
-    2659422U,	// MOVr
-    2659422U,	// MOVr_TC
-    2634846U,	// MOVsi
-    2692190U,	// MOVsr
-    1076497720U,	// MRC
+    2689828U,	// MLA
+    2667053U,	// MLS
+    10081355U,	// MOVPCLR
+    2683821U,	// MOVTi16
+    2659403U,	// MOVi
+    2651250U,	// MOVi16
+    2659403U,	// MOVr
+    2659403U,	// MOVr_TC
+    2634827U,	// MOVsi
+    2692171U,	// MOVsr
+    1076497701U,	// MRC
     3793452U,	// MRC2
-    1747504444U,	// MRRC
+    1747504425U,	// MRRC
     205362U,	// MRRC2
-    2732653U,	// MRS
-    2650733U,	// MRSbanked
-    2732653U,	// MRSsys
-    1814589953U,	// MSR
-    1881698817U,	// MSRbanked
-    1814589953U,	// MSRi
-    2633793U,	// MUL
-    2674718U,	// MVE_ASRLi
-    2674718U,	// MVE_ASRLr
+    2732634U,	// MRS
+    2650714U,	// MRSbanked
+    2732634U,	// MRSsys
+    1814589934U,	// MSR
+    1881698798U,	// MSRbanked
+    1814589934U,	// MSRi
+    2633774U,	// MUL
+    2674699U,	// MVE_ASRLi
+    2674699U,	// MVE_ASRLr
     875643877U,	// MVE_DLSTP_16
     875643124U,	// MVE_DLSTP_32
     875643486U,	// MVE_DLSTP_64
     875644536U,	// MVE_DLSTP_8
-    1143591264U,	// MVE_LCTP
+    1143591245U,	// MVE_LCTP
     10577828U,	// MVE_LETP
-    2674665U,	// MVE_LSLLi
-    2674665U,	// MVE_LSLLr
-    2674723U,	// MVE_LSRL
-    875098557U,	// MVE_SQRSHR
-    2756616U,	// MVE_SQRSHRL
-    875098004U,	// MVE_SQSHL
-    2674637U,	// MVE_SQSHLL
-    875098564U,	// MVE_SRSHR
-    2674704U,	// MVE_SRSHRL
-    875098022U,	// MVE_UQRSHL
-    2756571U,	// MVE_UQRSHLL
-    875098010U,	// MVE_UQSHL
-    2674644U,	// MVE_UQSHLL
-    875098570U,	// MVE_URSHR
-    2674711U,	// MVE_URSHRL
-    11154399U,	// MVE_VABAVs16
-    11678687U,	// MVE_VABAVs32
-    12202975U,	// MVE_VABAVs8
-    12727263U,	// MVE_VABAVu16
-    13251551U,	// MVE_VABAVu32
-    13775839U,	// MVE_VABAVu8
-    8015193U,	// MVE_VABDf16
-    8539481U,	// MVE_VABDf32
-    11160921U,	// MVE_VABDs16
-    11685209U,	// MVE_VABDs32
-    12209497U,	// MVE_VABDs8
-    12733785U,	// MVE_VABDu16
-    13258073U,	// MVE_VABDu32
-    13782361U,	// MVE_VABDu8
-    8081967U,	// MVE_VABSf16
-    8606255U,	// MVE_VABSf32
-    11227695U,	// MVE_VABSs16
-    11751983U,	// MVE_VABSs32
-    12276271U,	// MVE_VABSs8
-    14314780U,	// MVE_VADC
-    14298893U,	// MVE_VADCI
-    11692982U,	// MVE_VADDLVs32acc
-    11686976U,	// MVE_VADDLVs32no_acc
-    13265846U,	// MVE_VADDLVu32acc
-    13259840U,	// MVE_VADDLVu32no_acc
-    11160495U,	// MVE_VADDVs16acc
-    11228199U,	// MVE_VADDVs16no_acc
-    11684783U,	// MVE_VADDVs32acc
-    11752487U,	// MVE_VADDVs32no_acc
-    12209071U,	// MVE_VADDVs8acc
-    12276775U,	// MVE_VADDVs8no_acc
-    12733359U,	// MVE_VADDVu16acc
-    12801063U,	// MVE_VADDVu16no_acc
-    13257647U,	// MVE_VADDVu32acc
-    13325351U,	// MVE_VADDVu32no_acc
-    13781935U,	// MVE_VADDVu8acc
-    13849639U,	// MVE_VADDVu8no_acc
-    8015242U,	// MVE_VADD_qr_f16
-    8539530U,	// MVE_VADD_qr_f32
-    14830986U,	// MVE_VADD_qr_i16
-    14306698U,	// MVE_VADD_qr_i32
-    15355274U,	// MVE_VADD_qr_i8
-    8015242U,	// MVE_VADDf16
-    8539530U,	// MVE_VADDf32
-    14830986U,	// MVE_VADDi16
-    14306698U,	// MVE_VADDi32
-    15355274U,	// MVE_VADDi8
-    2772385U,	// MVE_VAND
-    2772265U,	// MVE_VBIC
-    14830889U,	// MVE_VBICimmi16
-    14306601U,	// MVE_VBICimmi32
-    676357U,	// MVE_VBRSR16
-    1200645U,	// MVE_VBRSR32
-    1724933U,	// MVE_VBRSR8
-    8007013U,	// MVE_VCADDf16
-    8531301U,	// MVE_VCADDf32
-    14822757U,	// MVE_VCADDi16
-    14298469U,	// MVE_VCADDi32
-    15347045U,	// MVE_VCADDi8
-    11227705U,	// MVE_VCLSs16
-    11751993U,	// MVE_VCLSs32
-    12276281U,	// MVE_VCLSs8
-    14898694U,	// MVE_VCLZs16
-    14374406U,	// MVE_VCLZs32
-    15422982U,	// MVE_VCLZs8
-    8022837U,	// MVE_VCMLAf16
-    8547125U,	// MVE_VCMLAf32
-    1954165028U,	// MVE_VCMPf16
-    1954165028U,	// MVE_VCMPf16r
-    1954689316U,	// MVE_VCMPf32
-    1954689316U,	// MVE_VCMPf32r
-    1960980772U,	// MVE_VCMPi16
-    1960980772U,	// MVE_VCMPi16r
-    1960456484U,	// MVE_VCMPi32
-    1960456484U,	// MVE_VCMPi32r
-    1961505060U,	// MVE_VCMPi8
-    1961505060U,	// MVE_VCMPi8r
-    1957310756U,	// MVE_VCMPs16
-    1957310756U,	// MVE_VCMPs16r
-    1957835044U,	// MVE_VCMPs32
-    1957835044U,	// MVE_VCMPs32r
-    1958359332U,	// MVE_VCMPs8
-    1958359332U,	// MVE_VCMPs8r
-    1958883620U,	// MVE_VCMPu16
-    1958883620U,	// MVE_VCMPu16r
-    1959407908U,	// MVE_VCMPu32
-    1959407908U,	// MVE_VCMPu32r
-    1959932196U,	// MVE_VCMPu8
-    1959932196U,	// MVE_VCMPu8r
-    8007743U,	// MVE_VCMULf16
-    8532031U,	// MVE_VCMULf32
-    873156965U,	// MVE_VCTP16
-    873681253U,	// MVE_VCTP32
-    888361317U,	// MVE_VCTP64
-    874205541U,	// MVE_VCTP8
-    821710022U,	// MVE_VCVTf16f32bh
-    821711785U,	// MVE_VCVTf16f32th
-    1224889275U,	// MVE_VCVTf16s16_fix
-    1157845947U,	// MVE_VCVTf16s16n
-    1225413563U,	// MVE_VCVTf16u16_fix
-    1158370235U,	// MVE_VCVTf16u16n
-    18042054U,	// MVE_VCVTf32f16bh
-    18043817U,	// MVE_VCVTf32f16th
-    1226462139U,	// MVE_VCVTf32s32_fix
-    1159418811U,	// MVE_VCVTf32s32n
-    1226986427U,	// MVE_VCVTf32u32_fix
-    1159943099U,	// MVE_VCVTf32u32n
-    1227510715U,	// MVE_VCVTs16f16_fix
-    1160465283U,	// MVE_VCVTs16f16a
-    1160466565U,	// MVE_VCVTs16f16m
-    1160466661U,	// MVE_VCVTs16f16n
-    1160466801U,	// MVE_VCVTs16f16p
-    1160467387U,	// MVE_VCVTs16f16z
-    1228035003U,	// MVE_VCVTs32f32_fix
-    1160989571U,	// MVE_VCVTs32f32a
-    1160990853U,	// MVE_VCVTs32f32m
-    1160990949U,	// MVE_VCVTs32f32n
-    1160991089U,	// MVE_VCVTs32f32p
-    1160991675U,	// MVE_VCVTs32f32z
-    1228559291U,	// MVE_VCVTu16f16_fix
-    1161513859U,	// MVE_VCVTu16f16a
-    1161515141U,	// MVE_VCVTu16f16m
-    1161515237U,	// MVE_VCVTu16f16n
-    1161515377U,	// MVE_VCVTu16f16p
-    1161515963U,	// MVE_VCVTu16f16z
-    1229083579U,	// MVE_VCVTu32f32_fix
-    1162038147U,	// MVE_VCVTu32f32a
-    1162039429U,	// MVE_VCVTu32f32m
-    1162039525U,	// MVE_VCVTu32f32n
-    1162039665U,	// MVE_VCVTu32f32p
-    1162040251U,	// MVE_VCVTu32f32z
-    12726647U,	// MVE_VDDUPu16
-    13250935U,	// MVE_VDDUPu32
-    13775223U,	// MVE_VDDUPu8
-    741763U,	// MVE_VDUP16
-    1266051U,	// MVE_VDUP32
-    1790339U,	// MVE_VDUP8
-    12743048U,	// MVE_VDWDUPu16
-    13267336U,	// MVE_VDWDUPu32
-    13791624U,	// MVE_VDWDUPu8
-    2773474U,	// MVE_VEOR
-    8008227U,	// MVE_VFMA_qr_Sf16
-    8532515U,	// MVE_VFMA_qr_Sf32
-    8006476U,	// MVE_VFMA_qr_f16
-    8530764U,	// MVE_VFMA_qr_f32
-    8006476U,	// MVE_VFMAf16
-    8530764U,	// MVE_VFMAf32
-    8008271U,	// MVE_VFMSf16
-    8532559U,	// MVE_VFMSf32
-    11160952U,	// MVE_VHADD_qr_s16
-    11685240U,	// MVE_VHADD_qr_s32
-    12209528U,	// MVE_VHADD_qr_s8
-    12733816U,	// MVE_VHADD_qr_u16
-    13258104U,	// MVE_VHADD_qr_u32
-    13782392U,	// MVE_VHADD_qr_u8
-    11160952U,	// MVE_VHADDs16
-    11685240U,	// MVE_VHADDs32
-    12209528U,	// MVE_VHADDs8
-    12733816U,	// MVE_VHADDu16
-    13258104U,	// MVE_VHADDu32
-    13782392U,	// MVE_VHADDu8
-    11152734U,	// MVE_VHCADDs16
-    11677022U,	// MVE_VHCADDs32
-    12201310U,	// MVE_VHCADDs8
-    11160796U,	// MVE_VHSUB_qr_s16
-    11685084U,	// MVE_VHSUB_qr_s32
-    12209372U,	// MVE_VHSUB_qr_s8
-    12733660U,	// MVE_VHSUB_qr_u16
-    13257948U,	// MVE_VHSUB_qr_u32
-    13782236U,	// MVE_VHSUB_qr_u8
-    11160796U,	// MVE_VHSUBs16
-    11685084U,	// MVE_VHSUBs32
-    12209372U,	// MVE_VHSUBs8
-    12733660U,	// MVE_VHSUBu16
-    13257948U,	// MVE_VHSUBu32
-    13782236U,	// MVE_VHSUBu8
-    12726653U,	// MVE_VIDUPu16
-    13250941U,	// MVE_VIDUPu32
-    13775229U,	// MVE_VIDUPu8
-    12743055U,	// MVE_VIWDUPu16
-    13267343U,	// MVE_VIWDUPu32
-    13791631U,	// MVE_VIWDUPu8
+    2674646U,	// MVE_LSLLi
+    2674646U,	// MVE_LSLLr
+    2674704U,	// MVE_LSRL
+    875098538U,	// MVE_SQRSHR
+    2756597U,	// MVE_SQRSHRL
+    875097985U,	// MVE_SQSHL
+    2674618U,	// MVE_SQSHLL
+    875098545U,	// MVE_SRSHR
+    2674685U,	// MVE_SRSHRL
+    875098003U,	// MVE_UQRSHL
+    2756552U,	// MVE_UQRSHLL
+    875097991U,	// MVE_UQSHL
+    2674625U,	// MVE_UQSHLL
+    875098551U,	// MVE_URSHR
+    2674692U,	// MVE_URSHRL
+    11154380U,	// MVE_VABAVs16
+    11678668U,	// MVE_VABAVs32
+    12202956U,	// MVE_VABAVs8
+    12727244U,	// MVE_VABAVu16
+    13251532U,	// MVE_VABAVu32
+    13775820U,	// MVE_VABAVu8
+    8015174U,	// MVE_VABDf16
+    8539462U,	// MVE_VABDf32
+    11160902U,	// MVE_VABDs16
+    11685190U,	// MVE_VABDs32
+    12209478U,	// MVE_VABDs8
+    12733766U,	// MVE_VABDu16
+    13258054U,	// MVE_VABDu32
+    13782342U,	// MVE_VABDu8
+    8081948U,	// MVE_VABSf16
+    8606236U,	// MVE_VABSf32
+    11227676U,	// MVE_VABSs16
+    11751964U,	// MVE_VABSs32
+    12276252U,	// MVE_VABSs8
+    14314761U,	// MVE_VADC
+    14298874U,	// MVE_VADCI
+    11692963U,	// MVE_VADDLVs32acc
+    11686957U,	// MVE_VADDLVs32no_acc
+    13265827U,	// MVE_VADDLVu32acc
+    13259821U,	// MVE_VADDLVu32no_acc
+    11160476U,	// MVE_VADDVs16acc
+    11228180U,	// MVE_VADDVs16no_acc
+    11684764U,	// MVE_VADDVs32acc
+    11752468U,	// MVE_VADDVs32no_acc
+    12209052U,	// MVE_VADDVs8acc
+    12276756U,	// MVE_VADDVs8no_acc
+    12733340U,	// MVE_VADDVu16acc
+    12801044U,	// MVE_VADDVu16no_acc
+    13257628U,	// MVE_VADDVu32acc
+    13325332U,	// MVE_VADDVu32no_acc
+    13781916U,	// MVE_VADDVu8acc
+    13849620U,	// MVE_VADDVu8no_acc
+    8015223U,	// MVE_VADD_qr_f16
+    8539511U,	// MVE_VADD_qr_f32
+    14830967U,	// MVE_VADD_qr_i16
+    14306679U,	// MVE_VADD_qr_i32
+    15355255U,	// MVE_VADD_qr_i8
+    8015223U,	// MVE_VADDf16
+    8539511U,	// MVE_VADDf32
+    14830967U,	// MVE_VADDi16
+    14306679U,	// MVE_VADDi32
+    15355255U,	// MVE_VADDi8
+    2772366U,	// MVE_VAND
+    2772246U,	// MVE_VBIC
+    14830870U,	// MVE_VBICimmi16
+    14306582U,	// MVE_VBICimmi32
+    676338U,	// MVE_VBRSR16
+    1200626U,	// MVE_VBRSR32
+    1724914U,	// MVE_VBRSR8
+    8006994U,	// MVE_VCADDf16
+    8531282U,	// MVE_VCADDf32
+    14822738U,	// MVE_VCADDi16
+    14298450U,	// MVE_VCADDi32
+    15347026U,	// MVE_VCADDi8
+    11227686U,	// MVE_VCLSs16
+    11751974U,	// MVE_VCLSs32
+    12276262U,	// MVE_VCLSs8
+    14898675U,	// MVE_VCLZs16
+    14374387U,	// MVE_VCLZs32
+    15422963U,	// MVE_VCLZs8
+    8022818U,	// MVE_VCMLAf16
+    8547106U,	// MVE_VCMLAf32
+    1954165009U,	// MVE_VCMPf16
+    1954165009U,	// MVE_VCMPf16r
+    1954689297U,	// MVE_VCMPf32
+    1954689297U,	// MVE_VCMPf32r
+    1960980753U,	// MVE_VCMPi16
+    1960980753U,	// MVE_VCMPi16r
+    1960456465U,	// MVE_VCMPi32
+    1960456465U,	// MVE_VCMPi32r
+    1961505041U,	// MVE_VCMPi8
+    1961505041U,	// MVE_VCMPi8r
+    1957310737U,	// MVE_VCMPs16
+    1957310737U,	// MVE_VCMPs16r
+    1957835025U,	// MVE_VCMPs32
+    1957835025U,	// MVE_VCMPs32r
+    1958359313U,	// MVE_VCMPs8
+    1958359313U,	// MVE_VCMPs8r
+    1958883601U,	// MVE_VCMPu16
+    1958883601U,	// MVE_VCMPu16r
+    1959407889U,	// MVE_VCMPu32
+    1959407889U,	// MVE_VCMPu32r
+    1959932177U,	// MVE_VCMPu8
+    1959932177U,	// MVE_VCMPu8r
+    8007724U,	// MVE_VCMULf16
+    8532012U,	// MVE_VCMULf32
+    873156946U,	// MVE_VCTP16
+    873681234U,	// MVE_VCTP32
+    888361298U,	// MVE_VCTP64
+    874205522U,	// MVE_VCTP8
+    821710003U,	// MVE_VCVTf16f32bh
+    821711766U,	// MVE_VCVTf16f32th
+    1224889256U,	// MVE_VCVTf16s16_fix
+    1157845928U,	// MVE_VCVTf16s16n
+    1225413544U,	// MVE_VCVTf16u16_fix
+    1158370216U,	// MVE_VCVTf16u16n
+    18042035U,	// MVE_VCVTf32f16bh
+    18043798U,	// MVE_VCVTf32f16th
+    1226462120U,	// MVE_VCVTf32s32_fix
+    1159418792U,	// MVE_VCVTf32s32n
+    1226986408U,	// MVE_VCVTf32u32_fix
+    1159943080U,	// MVE_VCVTf32u32n
+    1227510696U,	// MVE_VCVTs16f16_fix
+    1160465264U,	// MVE_VCVTs16f16a
+    1160466546U,	// MVE_VCVTs16f16m
+    1160466642U,	// MVE_VCVTs16f16n
+    1160466782U,	// MVE_VCVTs16f16p
+    1160467368U,	// MVE_VCVTs16f16z
+    1228034984U,	// MVE_VCVTs32f32_fix
+    1160989552U,	// MVE_VCVTs32f32a
+    1160990834U,	// MVE_VCVTs32f32m
+    1160990930U,	// MVE_VCVTs32f32n
+    1160991070U,	// MVE_VCVTs32f32p
+    1160991656U,	// MVE_VCVTs32f32z
+    1228559272U,	// MVE_VCVTu16f16_fix
+    1161513840U,	// MVE_VCVTu16f16a
+    1161515122U,	// MVE_VCVTu16f16m
+    1161515218U,	// MVE_VCVTu16f16n
+    1161515358U,	// MVE_VCVTu16f16p
+    1161515944U,	// MVE_VCVTu16f16z
+    1229083560U,	// MVE_VCVTu32f32_fix
+    1162038128U,	// MVE_VCVTu32f32a
+    1162039410U,	// MVE_VCVTu32f32m
+    1162039506U,	// MVE_VCVTu32f32n
+    1162039646U,	// MVE_VCVTu32f32p
+    1162040232U,	// MVE_VCVTu32f32z
+    12726628U,	// MVE_VDDUPu16
+    13250916U,	// MVE_VDDUPu32
+    13775204U,	// MVE_VDDUPu8
+    741744U,	// MVE_VDUP16
+    1266032U,	// MVE_VDUP32
+    1790320U,	// MVE_VDUP8
+    12743029U,	// MVE_VDWDUPu16
+    13267317U,	// MVE_VDWDUPu32
+    13791605U,	// MVE_VDWDUPu8
+    2773455U,	// MVE_VEOR
+    8008208U,	// MVE_VFMA_qr_Sf16
+    8532496U,	// MVE_VFMA_qr_Sf32
+    8006457U,	// MVE_VFMA_qr_f16
+    8530745U,	// MVE_VFMA_qr_f32
+    8006457U,	// MVE_VFMAf16
+    8530745U,	// MVE_VFMAf32
+    8008252U,	// MVE_VFMSf16
+    8532540U,	// MVE_VFMSf32
+    11160933U,	// MVE_VHADD_qr_s16
+    11685221U,	// MVE_VHADD_qr_s32
+    12209509U,	// MVE_VHADD_qr_s8
+    12733797U,	// MVE_VHADD_qr_u16
+    13258085U,	// MVE_VHADD_qr_u32
+    13782373U,	// MVE_VHADD_qr_u8
+    11160933U,	// MVE_VHADDs16
+    11685221U,	// MVE_VHADDs32
+    12209509U,	// MVE_VHADDs8
+    12733797U,	// MVE_VHADDu16
+    13258085U,	// MVE_VHADDu32
+    13782373U,	// MVE_VHADDu8
+    11152715U,	// MVE_VHCADDs16
+    11677003U,	// MVE_VHCADDs32
+    12201291U,	// MVE_VHCADDs8
+    11160777U,	// MVE_VHSUB_qr_s16
+    11685065U,	// MVE_VHSUB_qr_s32
+    12209353U,	// MVE_VHSUB_qr_s8
+    12733641U,	// MVE_VHSUB_qr_u16
+    13257929U,	// MVE_VHSUB_qr_u32
+    13782217U,	// MVE_VHSUB_qr_u8
+    11160777U,	// MVE_VHSUBs16
+    11685065U,	// MVE_VHSUBs32
+    12209353U,	// MVE_VHSUBs8
+    12733641U,	// MVE_VHSUBu16
+    13257929U,	// MVE_VHSUBu32
+    13782217U,	// MVE_VHSUBu8
+    12726634U,	// MVE_VIDUPu16
+    13250922U,	// MVE_VIDUPu32
+    13775210U,	// MVE_VIDUPu8
+    12743036U,	// MVE_VIWDUPu16
+    13267324U,	// MVE_VIWDUPu32
+    13791612U,	// MVE_VIWDUPu8
     21717869U,	// MVE_VLD20_16
     22242157U,	// MVE_VLD20_16_wb
     21716999U,	// MVE_VLD20_32
@@ -1899,523 +1907,523 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     22249644U,	// MVE_VLD43_32_wb
     21726787U,	// MVE_VLD43_8
     22251075U,	// MVE_VLD43_8_wb
-    11160716U,	// MVE_VLDRBS16
-    883567756U,	// MVE_VLDRBS16_post
-    883567756U,	// MVE_VLDRBS16_pre
-    11160716U,	// MVE_VLDRBS16_rq
-    11685004U,	// MVE_VLDRBS32
-    884092044U,	// MVE_VLDRBS32_post
-    884092044U,	// MVE_VLDRBS32_pre
-    11685004U,	// MVE_VLDRBS32_rq
-    12733580U,	// MVE_VLDRBU16
-    885140620U,	// MVE_VLDRBU16_post
-    885140620U,	// MVE_VLDRBU16_pre
-    12733580U,	// MVE_VLDRBU16_rq
-    13257868U,	// MVE_VLDRBU32
-    885664908U,	// MVE_VLDRBU32_post
-    885664908U,	// MVE_VLDRBU32_pre
-    13257868U,	// MVE_VLDRBU32_rq
-    13782156U,	// MVE_VLDRBU8
-    886189196U,	// MVE_VLDRBU8_post
-    886189196U,	// MVE_VLDRBU8_pre
-    13782156U,	// MVE_VLDRBU8_rq
-    22695334U,	// MVE_VLDRDU64_qi
-    895102374U,	// MVE_VLDRDU64_qi_pre
-    22695334U,	// MVE_VLDRDU64_rq
-    22695334U,	// MVE_VLDRDU64_rq_u
-    11685522U,	// MVE_VLDRHS32
-    884092562U,	// MVE_VLDRHS32_post
-    884092562U,	// MVE_VLDRHS32_pre
-    11685522U,	// MVE_VLDRHS32_rq
-    11685522U,	// MVE_VLDRHS32_rq_u
-    12734098U,	// MVE_VLDRHU16
-    885141138U,	// MVE_VLDRHU16_post
-    885141138U,	// MVE_VLDRHU16_pre
-    12734098U,	// MVE_VLDRHU16_rq
-    12734098U,	// MVE_VLDRHU16_rq_u
-    13258386U,	// MVE_VLDRHU32
-    885665426U,	// MVE_VLDRHU32_post
-    885665426U,	// MVE_VLDRHU32_pre
-    13258386U,	// MVE_VLDRHU32_rq
-    13258386U,	// MVE_VLDRHU32_rq_u
-    13259897U,	// MVE_VLDRWU32
-    885666937U,	// MVE_VLDRWU32_post
-    885666937U,	// MVE_VLDRWU32_pre
-    13259897U,	// MVE_VLDRWU32_qi
-    885666937U,	// MVE_VLDRWU32_qi_pre
-    13259897U,	// MVE_VLDRWU32_rq
-    13259897U,	// MVE_VLDRWU32_rq_u
-    883577888U,	// MVE_VMAXAVs16
-    884102176U,	// MVE_VMAXAVs32
-    884626464U,	// MVE_VMAXAVs8
-    11160510U,	// MVE_VMAXAs16
-    11684798U,	// MVE_VMAXAs32
-    12209086U,	// MVE_VMAXAs8
-    880432144U,	// MVE_VMAXNMAVf16
-    880956432U,	// MVE_VMAXNMAVf32
-    8014687U,	// MVE_VMAXNMAf16
-    8538975U,	// MVE_VMAXNMAf32
-    880432207U,	// MVE_VMAXNMVf16
-    880956495U,	// MVE_VMAXNMVf32
-    8015977U,	// MVE_VMAXNMf16
-    8540265U,	// MVE_VMAXNMf32
-    883577954U,	// MVE_VMAXVs16
-    884102242U,	// MVE_VMAXVs32
-    884626530U,	// MVE_VMAXVs8
-    885150818U,	// MVE_VMAXVu16
-    885675106U,	// MVE_VMAXVu32
-    886199394U,	// MVE_VMAXVu8
-    11162810U,	// MVE_VMAXs16
-    11687098U,	// MVE_VMAXs32
-    12211386U,	// MVE_VMAXs8
-    12735674U,	// MVE_VMAXu16
-    13259962U,	// MVE_VMAXu32
-    13784250U,	// MVE_VMAXu8
-    883577881U,	// MVE_VMINAVs16
-    884102169U,	// MVE_VMINAVs32
-    884626457U,	// MVE_VMINAVs8
-    11160423U,	// MVE_VMINAs16
-    11684711U,	// MVE_VMINAs32
-    12208999U,	// MVE_VMINAs8
-    880432135U,	// MVE_VMINNMAVf16
-    880956423U,	// MVE_VMINNMAVf32
-    8014679U,	// MVE_VMINNMAf16
-    8538967U,	// MVE_VMINNMAf32
-    880432199U,	// MVE_VMINNMVf16
-    880956487U,	// MVE_VMINNMVf32
-    8015970U,	// MVE_VMINNMf16
-    8540258U,	// MVE_VMINNMf32
-    883577943U,	// MVE_VMINVs16
-    884102231U,	// MVE_VMINVs32
-    884626519U,	// MVE_VMINVs8
-    885150807U,	// MVE_VMINVu16
-    885675095U,	// MVE_VMINVu32
-    886199383U,	// MVE_VMINVu8
-    11161775U,	// MVE_VMINs16
-    11686063U,	// MVE_VMINs32
-    12210351U,	// MVE_VMINs8
-    12734639U,	// MVE_VMINu16
-    13258927U,	// MVE_VMINu32
-    13783215U,	// MVE_VMINu8
-    11152265U,	// MVE_VMLADAVas16
-    11676553U,	// MVE_VMLADAVas32
-    12200841U,	// MVE_VMLADAVas8
-    12725129U,	// MVE_VMLADAVau16
-    13249417U,	// MVE_VMLADAVau32
-    13773705U,	// MVE_VMLADAVau8
-    11154651U,	// MVE_VMLADAVaxs16
-    11678939U,	// MVE_VMLADAVaxs32
-    12203227U,	// MVE_VMLADAVaxs8
-    11162597U,	// MVE_VMLADAVs16
-    11686885U,	// MVE_VMLADAVs32
-    12211173U,	// MVE_VMLADAVs8
-    12735461U,	// MVE_VMLADAVu16
-    13259749U,	// MVE_VMLADAVu32
-    13784037U,	// MVE_VMLADAVu8
-    11163104U,	// MVE_VMLADAVxs16
-    11687392U,	// MVE_VMLADAVxs32
-    12211680U,	// MVE_VMLADAVxs8
-    11176850U,	// MVE_VMLALDAVas16
-    11701138U,	// MVE_VMLALDAVas32
-    12749714U,	// MVE_VMLALDAVau16
-    13274002U,	// MVE_VMLALDAVau32
-    11179237U,	// MVE_VMLALDAVaxs16
-    11703525U,	// MVE_VMLALDAVaxs32
-    11154413U,	// MVE_VMLALDAVs16
-    11678701U,	// MVE_VMLALDAVs32
-    12727277U,	// MVE_VMLALDAVu16
-    13251565U,	// MVE_VMLALDAVu32
-    11154921U,	// MVE_VMLALDAVxs16
-    11679209U,	// MVE_VMLALDAVxs32
-    14823965U,	// MVE_VMLAS_qr_i16
-    14299677U,	// MVE_VMLAS_qr_i32
-    15348253U,	// MVE_VMLAS_qr_i8
-    14822215U,	// MVE_VMLA_qr_i16
-    14297927U,	// MVE_VMLA_qr_i32
-    15346503U,	// MVE_VMLA_qr_i8
-    11152294U,	// MVE_VMLSDAVas16
-    11676582U,	// MVE_VMLSDAVas32
-    12200870U,	// MVE_VMLSDAVas8
-    11154683U,	// MVE_VMLSDAVaxs16
-    11678971U,	// MVE_VMLSDAVaxs32
-    12203259U,	// MVE_VMLSDAVaxs8
-    11162623U,	// MVE_VMLSDAVs16
-    11686911U,	// MVE_VMLSDAVs32
-    12211199U,	// MVE_VMLSDAVs8
-    11163133U,	// MVE_VMLSDAVxs16
-    11687421U,	// MVE_VMLSDAVxs32
-    12211709U,	// MVE_VMLSDAVxs8
-    11176860U,	// MVE_VMLSLDAVas16
-    11701148U,	// MVE_VMLSLDAVas32
-    11179248U,	// MVE_VMLSLDAVaxs16
-    11703536U,	// MVE_VMLSLDAVaxs32
-    11154422U,	// MVE_VMLSLDAVs16
-    11678710U,	// MVE_VMLSLDAVs32
-    11154931U,	// MVE_VMLSLDAVxs16
-    11679219U,	// MVE_VMLSLDAVxs32
-    11226161U,	// MVE_VMOVLs16bh
-    11227919U,	// MVE_VMOVLs16th
-    12274737U,	// MVE_VMOVLs8bh
-    12276495U,	// MVE_VMOVLs8th
-    12799025U,	// MVE_VMOVLu16bh
-    12800783U,	// MVE_VMOVLu16th
-    13847601U,	// MVE_VMOVLu8bh
-    13849359U,	// MVE_VMOVLu8th
-    14830720U,	// MVE_VMOVNi16bh
-    14832484U,	// MVE_VMOVNi16th
-    14306432U,	// MVE_VMOVNi32bh
-    14308196U,	// MVE_VMOVNi32th
-    1111133U,	// MVE_VMOV_from_lane_32
-    11072605U,	// MVE_VMOV_from_lane_s16
-    12121181U,	// MVE_VMOV_from_lane_s8
-    12645469U,	// MVE_VMOV_from_lane_u16
-    13694045U,	// MVE_VMOV_from_lane_u8
-    2757725U,	// MVE_VMOV_q_rr
-    2675805U,	// MVE_VMOV_rr_q
-    570461U,	// MVE_VMOV_to_lane_16
-    1094749U,	// MVE_VMOV_to_lane_32
-    1619037U,	// MVE_VMOV_to_lane_8
-    8606813U,	// MVE_VMOVimmf32
-    14898269U,	// MVE_VMOVimmi16
-    14373981U,	// MVE_VMOVimmi32
-    2036552797U,	// MVE_VMOVimmi64
-    15422557U,	// MVE_VMOVimmi8
-    11161228U,	// MVE_VMULHs16
-    11685516U,	// MVE_VMULHs32
-    12209804U,	// MVE_VMULHs8
-    12734092U,	// MVE_VMULHu16
-    13258380U,	// MVE_VMULHu32
-    13782668U,	// MVE_VMULHu8
-    23743525U,	// MVE_VMULLBp16
-    24267813U,	// MVE_VMULLBp8
-    11160613U,	// MVE_VMULLBs16
-    11684901U,	// MVE_VMULLBs32
-    12209189U,	// MVE_VMULLBs8
-    12733477U,	// MVE_VMULLBu16
-    13257765U,	// MVE_VMULLBu32
-    13782053U,	// MVE_VMULLBu8
-    23745288U,	// MVE_VMULLTp16
-    24269576U,	// MVE_VMULLTp8
-    11162376U,	// MVE_VMULLTs16
-    11686664U,	// MVE_VMULLTs32
-    12210952U,	// MVE_VMULLTs8
-    12735240U,	// MVE_VMULLTu16
-    13259528U,	// MVE_VMULLTu32
-    13783816U,	// MVE_VMULLTu8
-    8015953U,	// MVE_VMUL_qr_f16
-    8540241U,	// MVE_VMUL_qr_f32
-    14831697U,	// MVE_VMUL_qr_i16
-    14307409U,	// MVE_VMUL_qr_i32
-    15355985U,	// MVE_VMUL_qr_i8
-    8015953U,	// MVE_VMULf16
-    8540241U,	// MVE_VMULf32
-    14831697U,	// MVE_VMULi16
-    14307409U,	// MVE_VMULi32
-    15355985U,	// MVE_VMULi8
-    2838788U,	// MVE_VMVN
-    14897412U,	// MVE_VMVNimmi16
-    14373124U,	// MVE_VMVNimmi32
-    8080918U,	// MVE_VNEGf16
-    8605206U,	// MVE_VNEGf32
-    11226646U,	// MVE_VNEGs16
-    11750934U,	// MVE_VNEGs32
-    12275222U,	// MVE_VNEGs8
-    2773204U,	// MVE_VORN
-    2773488U,	// MVE_VORR
-    14832112U,	// MVE_VORRimmi16
-    14307824U,	// MVE_VORRimmi32
-    1143690091U,	// MVE_VPNOT
-    2772874U,	// MVE_VPSEL
-    1143714693U,	// MVE_VPST
-    1961603953U,	// MVE_VPTv16i8
-    1961603953U,	// MVE_VPTv16i8r
-    1958458225U,	// MVE_VPTv16s8
-    1958458225U,	// MVE_VPTv16s8r
-    1960031089U,	// MVE_VPTv16u8
-    1960031089U,	// MVE_VPTv16u8r
-    1954788209U,	// MVE_VPTv4f32
-    1954788209U,	// MVE_VPTv4f32r
-    1960555377U,	// MVE_VPTv4i32
-    1960555377U,	// MVE_VPTv4i32r
-    1957933937U,	// MVE_VPTv4s32
-    1957933937U,	// MVE_VPTv4s32r
-    1959506801U,	// MVE_VPTv4u32
-    1959506801U,	// MVE_VPTv4u32r
-    1954263921U,	// MVE_VPTv8f16
-    1954263921U,	// MVE_VPTv8f16r
-    1961079665U,	// MVE_VPTv8i16
-    1961079665U,	// MVE_VPTv8i16r
-    1957409649U,	// MVE_VPTv8s16
-    1957409649U,	// MVE_VPTv8s16r
-    1958982513U,	// MVE_VPTv8u16
-    1958982513U,	// MVE_VPTv8u16r
-    11227689U,	// MVE_VQABSs16
-    11751977U,	// MVE_VQABSs32
-    12276265U,	// MVE_VQABSs8
-    11160964U,	// MVE_VQADD_qr_s16
-    11685252U,	// MVE_VQADD_qr_s32
-    12209540U,	// MVE_VQADD_qr_s8
-    12733828U,	// MVE_VQADD_qr_u16
-    13258116U,	// MVE_VQADD_qr_u32
-    13782404U,	// MVE_VQADD_qr_u8
-    11160964U,	// MVE_VQADDs16
-    11685252U,	// MVE_VQADDs32
-    12209540U,	// MVE_VQADDs8
-    12733828U,	// MVE_VQADDu16
-    13258116U,	// MVE_VQADDu32
-    13782404U,	// MVE_VQADDu8
-    11154798U,	// MVE_VQDMLADHXs16
-    11679086U,	// MVE_VQDMLADHXs32
-    12203374U,	// MVE_VQDMLADHXs8
-    11152969U,	// MVE_VQDMLADHs16
-    11677257U,	// MVE_VQDMLADHs32
-    12201545U,	// MVE_VQDMLADHs8
-    11152936U,	// MVE_VQDMLAH_qrs16
-    11677224U,	// MVE_VQDMLAH_qrs32
-    12201512U,	// MVE_VQDMLAH_qrs8
-    11153054U,	// MVE_VQDMLASH_qrs16
-    11677342U,	// MVE_VQDMLASH_qrs32
-    12201630U,	// MVE_VQDMLASH_qrs8
-    11154819U,	// MVE_VQDMLSDHXs16
-    11679107U,	// MVE_VQDMLSDHXs32
-    12203395U,	// MVE_VQDMLSDHXs8
-    11152988U,	// MVE_VQDMLSDHs16
-    11677276U,	// MVE_VQDMLSDHs32
-    12201564U,	// MVE_VQDMLSDHs8
-    11161204U,	// MVE_VQDMULH_qr_s16
-    11685492U,	// MVE_VQDMULH_qr_s32
-    12209780U,	// MVE_VQDMULH_qr_s8
-    11161204U,	// MVE_VQDMULHi16
-    11685492U,	// MVE_VQDMULHi32
-    12209780U,	// MVE_VQDMULHi8
-    11160604U,	// MVE_VQDMULL_qr_s16bh
-    11162367U,	// MVE_VQDMULL_qr_s16th
-    11684892U,	// MVE_VQDMULL_qr_s32bh
-    11686655U,	// MVE_VQDMULL_qr_s32th
-    11160604U,	// MVE_VQDMULLs16bh
-    11162367U,	// MVE_VQDMULLs16th
-    11684892U,	// MVE_VQDMULLs32bh
-    11686655U,	// MVE_VQDMULLs32th
-    11160696U,	// MVE_VQMOVNs16bh
-    11162460U,	// MVE_VQMOVNs16th
-    11684984U,	// MVE_VQMOVNs32bh
-    11686748U,	// MVE_VQMOVNs32th
-    12733560U,	// MVE_VQMOVNu16bh
-    12735324U,	// MVE_VQMOVNu16th
-    13257848U,	// MVE_VQMOVNu32bh
-    13259612U,	// MVE_VQMOVNu32th
-    11160687U,	// MVE_VQMOVUNs16bh
-    11162451U,	// MVE_VQMOVUNs16th
-    11684975U,	// MVE_VQMOVUNs32bh
-    11686739U,	// MVE_VQMOVUNs32th
-    11226640U,	// MVE_VQNEGs16
-    11750928U,	// MVE_VQNEGs32
-    12275216U,	// MVE_VQNEGs8
-    11154808U,	// MVE_VQRDMLADHXs16
-    11679096U,	// MVE_VQRDMLADHXs32
-    12203384U,	// MVE_VQRDMLADHXs8
-    11152978U,	// MVE_VQRDMLADHs16
-    11677266U,	// MVE_VQRDMLADHs32
-    12201554U,	// MVE_VQRDMLADHs8
-    11152944U,	// MVE_VQRDMLAH_qrs16
-    11677232U,	// MVE_VQRDMLAH_qrs32
-    12201520U,	// MVE_VQRDMLAH_qrs8
-    11153063U,	// MVE_VQRDMLASH_qrs16
-    11677351U,	// MVE_VQRDMLASH_qrs32
-    12201639U,	// MVE_VQRDMLASH_qrs8
-    11154829U,	// MVE_VQRDMLSDHXs16
-    11679117U,	// MVE_VQRDMLSDHXs32
-    12203405U,	// MVE_VQRDMLSDHXs8
-    11152997U,	// MVE_VQRDMLSDHs16
-    11677285U,	// MVE_VQRDMLSDHs32
-    12201573U,	// MVE_VQRDMLSDHs8
-    11161212U,	// MVE_VQRDMULH_qr_s16
-    11685500U,	// MVE_VQRDMULH_qr_s32
-    12209788U,	// MVE_VQRDMULH_qr_s8
-    11161212U,	// MVE_VQRDMULHi16
-    11685500U,	// MVE_VQRDMULHi32
-    12209788U,	// MVE_VQRDMULHi8
-    11161517U,	// MVE_VQRSHL_by_vecs16
-    11685805U,	// MVE_VQRSHL_by_vecs32
-    12210093U,	// MVE_VQRSHL_by_vecs8
-    12734381U,	// MVE_VQRSHL_by_vecu16
-    13258669U,	// MVE_VQRSHL_by_vecu32
-    13782957U,	// MVE_VQRSHL_by_vecu8
-    11161517U,	// MVE_VQRSHL_qrs16
-    11685805U,	// MVE_VQRSHL_qrs32
-    12210093U,	// MVE_VQRSHL_qrs8
-    12734381U,	// MVE_VQRSHL_qru16
-    13258669U,	// MVE_VQRSHL_qru32
-    13782957U,	// MVE_VQRSHL_qru8
-    11152452U,	// MVE_VQRSHRNbhs16
-    11676740U,	// MVE_VQRSHRNbhs32
-    12725316U,	// MVE_VQRSHRNbhu16
-    13249604U,	// MVE_VQRSHRNbhu32
-    11154216U,	// MVE_VQRSHRNths16
-    11678504U,	// MVE_VQRSHRNths32
-    12727080U,	// MVE_VQRSHRNthu16
-    13251368U,	// MVE_VQRSHRNthu32
-    11152485U,	// MVE_VQRSHRUNs16bh
-    11154249U,	// MVE_VQRSHRUNs16th
-    11676773U,	// MVE_VQRSHRUNs32bh
-    11678537U,	// MVE_VQRSHRUNs32th
-    11162584U,	// MVE_VQSHLU_imms16
-    11686872U,	// MVE_VQSHLU_imms32
-    12211160U,	// MVE_VQSHLU_imms8
-    11161504U,	// MVE_VQSHL_by_vecs16
-    11685792U,	// MVE_VQSHL_by_vecs32
-    12210080U,	// MVE_VQSHL_by_vecs8
-    12734368U,	// MVE_VQSHL_by_vecu16
-    13258656U,	// MVE_VQSHL_by_vecu32
-    13782944U,	// MVE_VQSHL_by_vecu8
-    11161504U,	// MVE_VQSHL_qrs16
-    11685792U,	// MVE_VQSHL_qrs32
-    12210080U,	// MVE_VQSHL_qrs8
-    12734368U,	// MVE_VQSHL_qru16
-    13258656U,	// MVE_VQSHL_qru32
-    13782944U,	// MVE_VQSHL_qru8
-    11161504U,	// MVE_VQSHLimms16
-    11685792U,	// MVE_VQSHLimms32
-    12210080U,	// MVE_VQSHLimms8
-    12734368U,	// MVE_VQSHLimmu16
-    13258656U,	// MVE_VQSHLimmu32
-    13782944U,	// MVE_VQSHLimmu8
-    11152444U,	// MVE_VQSHRNbhs16
-    11676732U,	// MVE_VQSHRNbhs32
-    12725308U,	// MVE_VQSHRNbhu16
-    13249596U,	// MVE_VQSHRNbhu32
-    11154208U,	// MVE_VQSHRNths16
-    11678496U,	// MVE_VQSHRNths32
-    12727072U,	// MVE_VQSHRNthu16
-    13251360U,	// MVE_VQSHRNthu32
-    11152476U,	// MVE_VQSHRUNs16bh
-    11154240U,	// MVE_VQSHRUNs16th
-    11676764U,	// MVE_VQSHRUNs32bh
-    11678528U,	// MVE_VQSHRUNs32th
-    11160802U,	// MVE_VQSUB_qr_s16
-    11685090U,	// MVE_VQSUB_qr_s32
-    12209378U,	// MVE_VQSUB_qr_s8
-    12733666U,	// MVE_VQSUB_qr_u16
-    13257954U,	// MVE_VQSUB_qr_u32
-    13782242U,	// MVE_VQSUB_qr_u8
-    11160802U,	// MVE_VQSUBs16
-    11685090U,	// MVE_VQSUBs32
-    12209378U,	// MVE_VQSUBs8
-    12733666U,	// MVE_VQSUBu16
-    13257954U,	// MVE_VQSUBu32
-    13782242U,	// MVE_VQSUBu8
+    11160697U,	// MVE_VLDRBS16
+    883567737U,	// MVE_VLDRBS16_post
+    883567737U,	// MVE_VLDRBS16_pre
+    11160697U,	// MVE_VLDRBS16_rq
+    11684985U,	// MVE_VLDRBS32
+    884092025U,	// MVE_VLDRBS32_post
+    884092025U,	// MVE_VLDRBS32_pre
+    11684985U,	// MVE_VLDRBS32_rq
+    12733561U,	// MVE_VLDRBU16
+    885140601U,	// MVE_VLDRBU16_post
+    885140601U,	// MVE_VLDRBU16_pre
+    12733561U,	// MVE_VLDRBU16_rq
+    13257849U,	// MVE_VLDRBU32
+    885664889U,	// MVE_VLDRBU32_post
+    885664889U,	// MVE_VLDRBU32_pre
+    13257849U,	// MVE_VLDRBU32_rq
+    13782137U,	// MVE_VLDRBU8
+    886189177U,	// MVE_VLDRBU8_post
+    886189177U,	// MVE_VLDRBU8_pre
+    13782137U,	// MVE_VLDRBU8_rq
+    22695315U,	// MVE_VLDRDU64_qi
+    895102355U,	// MVE_VLDRDU64_qi_pre
+    22695315U,	// MVE_VLDRDU64_rq
+    22695315U,	// MVE_VLDRDU64_rq_u
+    11685503U,	// MVE_VLDRHS32
+    884092543U,	// MVE_VLDRHS32_post
+    884092543U,	// MVE_VLDRHS32_pre
+    11685503U,	// MVE_VLDRHS32_rq
+    11685503U,	// MVE_VLDRHS32_rq_u
+    12734079U,	// MVE_VLDRHU16
+    885141119U,	// MVE_VLDRHU16_post
+    885141119U,	// MVE_VLDRHU16_pre
+    12734079U,	// MVE_VLDRHU16_rq
+    12734079U,	// MVE_VLDRHU16_rq_u
+    13258367U,	// MVE_VLDRHU32
+    885665407U,	// MVE_VLDRHU32_post
+    885665407U,	// MVE_VLDRHU32_pre
+    13258367U,	// MVE_VLDRHU32_rq
+    13258367U,	// MVE_VLDRHU32_rq_u
+    13259878U,	// MVE_VLDRWU32
+    885666918U,	// MVE_VLDRWU32_post
+    885666918U,	// MVE_VLDRWU32_pre
+    13259878U,	// MVE_VLDRWU32_qi
+    885666918U,	// MVE_VLDRWU32_qi_pre
+    13259878U,	// MVE_VLDRWU32_rq
+    13259878U,	// MVE_VLDRWU32_rq_u
+    883577869U,	// MVE_VMAXAVs16
+    884102157U,	// MVE_VMAXAVs32
+    884626445U,	// MVE_VMAXAVs8
+    11160491U,	// MVE_VMAXAs16
+    11684779U,	// MVE_VMAXAs32
+    12209067U,	// MVE_VMAXAs8
+    880432125U,	// MVE_VMAXNMAVf16
+    880956413U,	// MVE_VMAXNMAVf32
+    8014668U,	// MVE_VMAXNMAf16
+    8538956U,	// MVE_VMAXNMAf32
+    880432188U,	// MVE_VMAXNMVf16
+    880956476U,	// MVE_VMAXNMVf32
+    8015958U,	// MVE_VMAXNMf16
+    8540246U,	// MVE_VMAXNMf32
+    883577935U,	// MVE_VMAXVs16
+    884102223U,	// MVE_VMAXVs32
+    884626511U,	// MVE_VMAXVs8
+    885150799U,	// MVE_VMAXVu16
+    885675087U,	// MVE_VMAXVu32
+    886199375U,	// MVE_VMAXVu8
+    11162791U,	// MVE_VMAXs16
+    11687079U,	// MVE_VMAXs32
+    12211367U,	// MVE_VMAXs8
+    12735655U,	// MVE_VMAXu16
+    13259943U,	// MVE_VMAXu32
+    13784231U,	// MVE_VMAXu8
+    883577862U,	// MVE_VMINAVs16
+    884102150U,	// MVE_VMINAVs32
+    884626438U,	// MVE_VMINAVs8
+    11160404U,	// MVE_VMINAs16
+    11684692U,	// MVE_VMINAs32
+    12208980U,	// MVE_VMINAs8
+    880432116U,	// MVE_VMINNMAVf16
+    880956404U,	// MVE_VMINNMAVf32
+    8014660U,	// MVE_VMINNMAf16
+    8538948U,	// MVE_VMINNMAf32
+    880432180U,	// MVE_VMINNMVf16
+    880956468U,	// MVE_VMINNMVf32
+    8015951U,	// MVE_VMINNMf16
+    8540239U,	// MVE_VMINNMf32
+    883577924U,	// MVE_VMINVs16
+    884102212U,	// MVE_VMINVs32
+    884626500U,	// MVE_VMINVs8
+    885150788U,	// MVE_VMINVu16
+    885675076U,	// MVE_VMINVu32
+    886199364U,	// MVE_VMINVu8
+    11161756U,	// MVE_VMINs16
+    11686044U,	// MVE_VMINs32
+    12210332U,	// MVE_VMINs8
+    12734620U,	// MVE_VMINu16
+    13258908U,	// MVE_VMINu32
+    13783196U,	// MVE_VMINu8
+    11152246U,	// MVE_VMLADAVas16
+    11676534U,	// MVE_VMLADAVas32
+    12200822U,	// MVE_VMLADAVas8
+    12725110U,	// MVE_VMLADAVau16
+    13249398U,	// MVE_VMLADAVau32
+    13773686U,	// MVE_VMLADAVau8
+    11154632U,	// MVE_VMLADAVaxs16
+    11678920U,	// MVE_VMLADAVaxs32
+    12203208U,	// MVE_VMLADAVaxs8
+    11162578U,	// MVE_VMLADAVs16
+    11686866U,	// MVE_VMLADAVs32
+    12211154U,	// MVE_VMLADAVs8
+    12735442U,	// MVE_VMLADAVu16
+    13259730U,	// MVE_VMLADAVu32
+    13784018U,	// MVE_VMLADAVu8
+    11163085U,	// MVE_VMLADAVxs16
+    11687373U,	// MVE_VMLADAVxs32
+    12211661U,	// MVE_VMLADAVxs8
+    11176831U,	// MVE_VMLALDAVas16
+    11701119U,	// MVE_VMLALDAVas32
+    12749695U,	// MVE_VMLALDAVau16
+    13273983U,	// MVE_VMLALDAVau32
+    11179218U,	// MVE_VMLALDAVaxs16
+    11703506U,	// MVE_VMLALDAVaxs32
+    11154394U,	// MVE_VMLALDAVs16
+    11678682U,	// MVE_VMLALDAVs32
+    12727258U,	// MVE_VMLALDAVu16
+    13251546U,	// MVE_VMLALDAVu32
+    11154902U,	// MVE_VMLALDAVxs16
+    11679190U,	// MVE_VMLALDAVxs32
+    14823946U,	// MVE_VMLAS_qr_i16
+    14299658U,	// MVE_VMLAS_qr_i32
+    15348234U,	// MVE_VMLAS_qr_i8
+    14822196U,	// MVE_VMLA_qr_i16
+    14297908U,	// MVE_VMLA_qr_i32
+    15346484U,	// MVE_VMLA_qr_i8
+    11152275U,	// MVE_VMLSDAVas16
+    11676563U,	// MVE_VMLSDAVas32
+    12200851U,	// MVE_VMLSDAVas8
+    11154664U,	// MVE_VMLSDAVaxs16
+    11678952U,	// MVE_VMLSDAVaxs32
+    12203240U,	// MVE_VMLSDAVaxs8
+    11162604U,	// MVE_VMLSDAVs16
+    11686892U,	// MVE_VMLSDAVs32
+    12211180U,	// MVE_VMLSDAVs8
+    11163114U,	// MVE_VMLSDAVxs16
+    11687402U,	// MVE_VMLSDAVxs32
+    12211690U,	// MVE_VMLSDAVxs8
+    11176841U,	// MVE_VMLSLDAVas16
+    11701129U,	// MVE_VMLSLDAVas32
+    11179229U,	// MVE_VMLSLDAVaxs16
+    11703517U,	// MVE_VMLSLDAVaxs32
+    11154403U,	// MVE_VMLSLDAVs16
+    11678691U,	// MVE_VMLSLDAVs32
+    11154912U,	// MVE_VMLSLDAVxs16
+    11679200U,	// MVE_VMLSLDAVxs32
+    11226142U,	// MVE_VMOVLs16bh
+    11227900U,	// MVE_VMOVLs16th
+    12274718U,	// MVE_VMOVLs8bh
+    12276476U,	// MVE_VMOVLs8th
+    12799006U,	// MVE_VMOVLu16bh
+    12800764U,	// MVE_VMOVLu16th
+    13847582U,	// MVE_VMOVLu8bh
+    13849340U,	// MVE_VMOVLu8th
+    14830701U,	// MVE_VMOVNi16bh
+    14832465U,	// MVE_VMOVNi16th
+    14306413U,	// MVE_VMOVNi32bh
+    14308177U,	// MVE_VMOVNi32th
+    1111114U,	// MVE_VMOV_from_lane_32
+    11072586U,	// MVE_VMOV_from_lane_s16
+    12121162U,	// MVE_VMOV_from_lane_s8
+    12645450U,	// MVE_VMOV_from_lane_u16
+    13694026U,	// MVE_VMOV_from_lane_u8
+    2757706U,	// MVE_VMOV_q_rr
+    2675786U,	// MVE_VMOV_rr_q
+    570442U,	// MVE_VMOV_to_lane_16
+    1094730U,	// MVE_VMOV_to_lane_32
+    1619018U,	// MVE_VMOV_to_lane_8
+    8606794U,	// MVE_VMOVimmf32
+    14898250U,	// MVE_VMOVimmi16
+    14373962U,	// MVE_VMOVimmi32
+    2036552778U,	// MVE_VMOVimmi64
+    15422538U,	// MVE_VMOVimmi8
+    11161209U,	// MVE_VMULHs16
+    11685497U,	// MVE_VMULHs32
+    12209785U,	// MVE_VMULHs8
+    12734073U,	// MVE_VMULHu16
+    13258361U,	// MVE_VMULHu32
+    13782649U,	// MVE_VMULHu8
+    23743506U,	// MVE_VMULLBp16
+    24267794U,	// MVE_VMULLBp8
+    11160594U,	// MVE_VMULLBs16
+    11684882U,	// MVE_VMULLBs32
+    12209170U,	// MVE_VMULLBs8
+    12733458U,	// MVE_VMULLBu16
+    13257746U,	// MVE_VMULLBu32
+    13782034U,	// MVE_VMULLBu8
+    23745269U,	// MVE_VMULLTp16
+    24269557U,	// MVE_VMULLTp8
+    11162357U,	// MVE_VMULLTs16
+    11686645U,	// MVE_VMULLTs32
+    12210933U,	// MVE_VMULLTs8
+    12735221U,	// MVE_VMULLTu16
+    13259509U,	// MVE_VMULLTu32
+    13783797U,	// MVE_VMULLTu8
+    8015934U,	// MVE_VMUL_qr_f16
+    8540222U,	// MVE_VMUL_qr_f32
+    14831678U,	// MVE_VMUL_qr_i16
+    14307390U,	// MVE_VMUL_qr_i32
+    15355966U,	// MVE_VMUL_qr_i8
+    8015934U,	// MVE_VMULf16
+    8540222U,	// MVE_VMULf32
+    14831678U,	// MVE_VMULi16
+    14307390U,	// MVE_VMULi32
+    15355966U,	// MVE_VMULi8
+    2838769U,	// MVE_VMVN
+    14897393U,	// MVE_VMVNimmi16
+    14373105U,	// MVE_VMVNimmi32
+    8080899U,	// MVE_VNEGf16
+    8605187U,	// MVE_VNEGf32
+    11226627U,	// MVE_VNEGs16
+    11750915U,	// MVE_VNEGs32
+    12275203U,	// MVE_VNEGs8
+    2773185U,	// MVE_VORN
+    2773469U,	// MVE_VORR
+    14832093U,	// MVE_VORRimmi16
+    14307805U,	// MVE_VORRimmi32
+    1143690072U,	// MVE_VPNOT
+    2772855U,	// MVE_VPSEL
+    1143714674U,	// MVE_VPST
+    1961603934U,	// MVE_VPTv16i8
+    1961603934U,	// MVE_VPTv16i8r
+    1958458206U,	// MVE_VPTv16s8
+    1958458206U,	// MVE_VPTv16s8r
+    1960031070U,	// MVE_VPTv16u8
+    1960031070U,	// MVE_VPTv16u8r
+    1954788190U,	// MVE_VPTv4f32
+    1954788190U,	// MVE_VPTv4f32r
+    1960555358U,	// MVE_VPTv4i32
+    1960555358U,	// MVE_VPTv4i32r
+    1957933918U,	// MVE_VPTv4s32
+    1957933918U,	// MVE_VPTv4s32r
+    1959506782U,	// MVE_VPTv4u32
+    1959506782U,	// MVE_VPTv4u32r
+    1954263902U,	// MVE_VPTv8f16
+    1954263902U,	// MVE_VPTv8f16r
+    1961079646U,	// MVE_VPTv8i16
+    1961079646U,	// MVE_VPTv8i16r
+    1957409630U,	// MVE_VPTv8s16
+    1957409630U,	// MVE_VPTv8s16r
+    1958982494U,	// MVE_VPTv8u16
+    1958982494U,	// MVE_VPTv8u16r
+    11227670U,	// MVE_VQABSs16
+    11751958U,	// MVE_VQABSs32
+    12276246U,	// MVE_VQABSs8
+    11160945U,	// MVE_VQADD_qr_s16
+    11685233U,	// MVE_VQADD_qr_s32
+    12209521U,	// MVE_VQADD_qr_s8
+    12733809U,	// MVE_VQADD_qr_u16
+    13258097U,	// MVE_VQADD_qr_u32
+    13782385U,	// MVE_VQADD_qr_u8
+    11160945U,	// MVE_VQADDs16
+    11685233U,	// MVE_VQADDs32
+    12209521U,	// MVE_VQADDs8
+    12733809U,	// MVE_VQADDu16
+    13258097U,	// MVE_VQADDu32
+    13782385U,	// MVE_VQADDu8
+    11154779U,	// MVE_VQDMLADHXs16
+    11679067U,	// MVE_VQDMLADHXs32
+    12203355U,	// MVE_VQDMLADHXs8
+    11152950U,	// MVE_VQDMLADHs16
+    11677238U,	// MVE_VQDMLADHs32
+    12201526U,	// MVE_VQDMLADHs8
+    11152917U,	// MVE_VQDMLAH_qrs16
+    11677205U,	// MVE_VQDMLAH_qrs32
+    12201493U,	// MVE_VQDMLAH_qrs8
+    11153035U,	// MVE_VQDMLASH_qrs16
+    11677323U,	// MVE_VQDMLASH_qrs32
+    12201611U,	// MVE_VQDMLASH_qrs8
+    11154800U,	// MVE_VQDMLSDHXs16
+    11679088U,	// MVE_VQDMLSDHXs32
+    12203376U,	// MVE_VQDMLSDHXs8
+    11152969U,	// MVE_VQDMLSDHs16
+    11677257U,	// MVE_VQDMLSDHs32
+    12201545U,	// MVE_VQDMLSDHs8
+    11161185U,	// MVE_VQDMULH_qr_s16
+    11685473U,	// MVE_VQDMULH_qr_s32
+    12209761U,	// MVE_VQDMULH_qr_s8
+    11161185U,	// MVE_VQDMULHi16
+    11685473U,	// MVE_VQDMULHi32
+    12209761U,	// MVE_VQDMULHi8
+    11160585U,	// MVE_VQDMULL_qr_s16bh
+    11162348U,	// MVE_VQDMULL_qr_s16th
+    11684873U,	// MVE_VQDMULL_qr_s32bh
+    11686636U,	// MVE_VQDMULL_qr_s32th
+    11160585U,	// MVE_VQDMULLs16bh
+    11162348U,	// MVE_VQDMULLs16th
+    11684873U,	// MVE_VQDMULLs32bh
+    11686636U,	// MVE_VQDMULLs32th
+    11160677U,	// MVE_VQMOVNs16bh
+    11162441U,	// MVE_VQMOVNs16th
+    11684965U,	// MVE_VQMOVNs32bh
+    11686729U,	// MVE_VQMOVNs32th
+    12733541U,	// MVE_VQMOVNu16bh
+    12735305U,	// MVE_VQMOVNu16th
+    13257829U,	// MVE_VQMOVNu32bh
+    13259593U,	// MVE_VQMOVNu32th
+    11160668U,	// MVE_VQMOVUNs16bh
+    11162432U,	// MVE_VQMOVUNs16th
+    11684956U,	// MVE_VQMOVUNs32bh
+    11686720U,	// MVE_VQMOVUNs32th
+    11226621U,	// MVE_VQNEGs16
+    11750909U,	// MVE_VQNEGs32
+    12275197U,	// MVE_VQNEGs8
+    11154789U,	// MVE_VQRDMLADHXs16
+    11679077U,	// MVE_VQRDMLADHXs32
+    12203365U,	// MVE_VQRDMLADHXs8
+    11152959U,	// MVE_VQRDMLADHs16
+    11677247U,	// MVE_VQRDMLADHs32
+    12201535U,	// MVE_VQRDMLADHs8
+    11152925U,	// MVE_VQRDMLAH_qrs16
+    11677213U,	// MVE_VQRDMLAH_qrs32
+    12201501U,	// MVE_VQRDMLAH_qrs8
+    11153044U,	// MVE_VQRDMLASH_qrs16
+    11677332U,	// MVE_VQRDMLASH_qrs32
+    12201620U,	// MVE_VQRDMLASH_qrs8
+    11154810U,	// MVE_VQRDMLSDHXs16
+    11679098U,	// MVE_VQRDMLSDHXs32
+    12203386U,	// MVE_VQRDMLSDHXs8
+    11152978U,	// MVE_VQRDMLSDHs16
+    11677266U,	// MVE_VQRDMLSDHs32
+    12201554U,	// MVE_VQRDMLSDHs8
+    11161193U,	// MVE_VQRDMULH_qr_s16
+    11685481U,	// MVE_VQRDMULH_qr_s32
+    12209769U,	// MVE_VQRDMULH_qr_s8
+    11161193U,	// MVE_VQRDMULHi16
+    11685481U,	// MVE_VQRDMULHi32
+    12209769U,	// MVE_VQRDMULHi8
+    11161498U,	// MVE_VQRSHL_by_vecs16
+    11685786U,	// MVE_VQRSHL_by_vecs32
+    12210074U,	// MVE_VQRSHL_by_vecs8
+    12734362U,	// MVE_VQRSHL_by_vecu16
+    13258650U,	// MVE_VQRSHL_by_vecu32
+    13782938U,	// MVE_VQRSHL_by_vecu8
+    11161498U,	// MVE_VQRSHL_qrs16
+    11685786U,	// MVE_VQRSHL_qrs32
+    12210074U,	// MVE_VQRSHL_qrs8
+    12734362U,	// MVE_VQRSHL_qru16
+    13258650U,	// MVE_VQRSHL_qru32
+    13782938U,	// MVE_VQRSHL_qru8
+    11152433U,	// MVE_VQRSHRNbhs16
+    11676721U,	// MVE_VQRSHRNbhs32
+    12725297U,	// MVE_VQRSHRNbhu16
+    13249585U,	// MVE_VQRSHRNbhu32
+    11154197U,	// MVE_VQRSHRNths16
+    11678485U,	// MVE_VQRSHRNths32
+    12727061U,	// MVE_VQRSHRNthu16
+    13251349U,	// MVE_VQRSHRNthu32
+    11152466U,	// MVE_VQRSHRUNs16bh
+    11154230U,	// MVE_VQRSHRUNs16th
+    11676754U,	// MVE_VQRSHRUNs32bh
+    11678518U,	// MVE_VQRSHRUNs32th
+    11162565U,	// MVE_VQSHLU_imms16
+    11686853U,	// MVE_VQSHLU_imms32
+    12211141U,	// MVE_VQSHLU_imms8
+    11161485U,	// MVE_VQSHL_by_vecs16
+    11685773U,	// MVE_VQSHL_by_vecs32
+    12210061U,	// MVE_VQSHL_by_vecs8
+    12734349U,	// MVE_VQSHL_by_vecu16
+    13258637U,	// MVE_VQSHL_by_vecu32
+    13782925U,	// MVE_VQSHL_by_vecu8
+    11161485U,	// MVE_VQSHL_qrs16
+    11685773U,	// MVE_VQSHL_qrs32
+    12210061U,	// MVE_VQSHL_qrs8
+    12734349U,	// MVE_VQSHL_qru16
+    13258637U,	// MVE_VQSHL_qru32
+    13782925U,	// MVE_VQSHL_qru8
+    11161485U,	// MVE_VQSHLimms16
+    11685773U,	// MVE_VQSHLimms32
+    12210061U,	// MVE_VQSHLimms8
+    12734349U,	// MVE_VQSHLimmu16
+    13258637U,	// MVE_VQSHLimmu32
+    13782925U,	// MVE_VQSHLimmu8
+    11152425U,	// MVE_VQSHRNbhs16
+    11676713U,	// MVE_VQSHRNbhs32
+    12725289U,	// MVE_VQSHRNbhu16
+    13249577U,	// MVE_VQSHRNbhu32
+    11154189U,	// MVE_VQSHRNths16
+    11678477U,	// MVE_VQSHRNths32
+    12727053U,	// MVE_VQSHRNthu16
+    13251341U,	// MVE_VQSHRNthu32
+    11152457U,	// MVE_VQSHRUNs16bh
+    11154221U,	// MVE_VQSHRUNs16th
+    11676745U,	// MVE_VQSHRUNs32bh
+    11678509U,	// MVE_VQSHRUNs32th
+    11160783U,	// MVE_VQSUB_qr_s16
+    11685071U,	// MVE_VQSUB_qr_s32
+    12209359U,	// MVE_VQSUB_qr_s8
+    12733647U,	// MVE_VQSUB_qr_u16
+    13257935U,	// MVE_VQSUB_qr_u32
+    13782223U,	// MVE_VQSUB_qr_u8
+    11160783U,	// MVE_VQSUBs16
+    11685071U,	// MVE_VQSUBs32
+    12209359U,	// MVE_VQSUBs8
+    12733647U,	// MVE_VQSUBu16
+    13257935U,	// MVE_VQSUBu32
+    13782223U,	// MVE_VQSUBu8
     1788408U,	// MVE_VREV16_8
     739609U,	// MVE_VREV32_16
     1788185U,	// MVE_VREV32_8
     739695U,	// MVE_VREV64_16
     1263983U,	// MVE_VREV64_32
     1788271U,	// MVE_VREV64_8
-    11160945U,	// MVE_VRHADDs16
-    11685233U,	// MVE_VRHADDs32
-    12209521U,	// MVE_VRHADDs8
-    12733809U,	// MVE_VRHADDu16
-    13258097U,	// MVE_VRHADDu32
-    13782385U,	// MVE_VRHADDu8
-    8080248U,	// MVE_VRINTf16A
-    8081528U,	// MVE_VRINTf16M
-    8081630U,	// MVE_VRINTf16N
-    8081770U,	// MVE_VRINTf16P
-    8082905U,	// MVE_VRINTf16X
-    8082955U,	// MVE_VRINTf16Z
-    8604536U,	// MVE_VRINTf32A
-    8605816U,	// MVE_VRINTf32M
-    8605918U,	// MVE_VRINTf32N
-    8606058U,	// MVE_VRINTf32P
-    8607193U,	// MVE_VRINTf32X
-    8607243U,	// MVE_VRINTf32Z
-    11700995U,	// MVE_VRMLALDAVHas32
-    13273859U,	// MVE_VRMLALDAVHau32
-    11703434U,	// MVE_VRMLALDAVHaxs32
-    11677397U,	// MVE_VRMLALDAVHs32
-    13250261U,	// MVE_VRMLALDAVHu32
-    11679128U,	// MVE_VRMLALDAVHxs32
-    11701007U,	// MVE_VRMLSLDAVHas32
-    11703447U,	// MVE_VRMLSLDAVHaxs32
-    11677408U,	// MVE_VRMLSLDAVHs32
-    11679140U,	// MVE_VRMLSLDAVHxs32
-    11161221U,	// MVE_VRMULHs16
-    11685509U,	// MVE_VRMULHs32
-    12209797U,	// MVE_VRMULHs8
-    12734085U,	// MVE_VRMULHu16
-    13258373U,	// MVE_VRMULHu32
-    13782661U,	// MVE_VRMULHu8
-    11161524U,	// MVE_VRSHL_by_vecs16
-    11685812U,	// MVE_VRSHL_by_vecs32
-    12210100U,	// MVE_VRSHL_by_vecs8
-    12734388U,	// MVE_VRSHL_by_vecu16
-    13258676U,	// MVE_VRSHL_by_vecu32
-    13782964U,	// MVE_VRSHL_by_vecu8
-    11161524U,	// MVE_VRSHL_qrs16
-    11685812U,	// MVE_VRSHL_qrs32
-    12210100U,	// MVE_VRSHL_qrs8
-    12734388U,	// MVE_VRSHL_qru16
-    13258676U,	// MVE_VRSHL_qru32
-    13782964U,	// MVE_VRSHL_qru8
-    14822477U,	// MVE_VRSHRNi16bh
-    14824241U,	// MVE_VRSHRNi16th
-    14298189U,	// MVE_VRSHRNi32bh
-    14299953U,	// MVE_VRSHRNi32th
-    11162064U,	// MVE_VRSHR_imms16
-    11686352U,	// MVE_VRSHR_imms32
-    12210640U,	// MVE_VRSHR_imms8
-    12734928U,	// MVE_VRSHR_immu16
-    13259216U,	// MVE_VRSHR_immu32
-    13783504U,	// MVE_VRSHR_immu8
-    14314775U,	// MVE_VSBC
-    14298887U,	// MVE_VSBCI
-    808086830U,	// MVE_VSHLC
-    11160597U,	// MVE_VSHLL_imms16bh
-    11162360U,	// MVE_VSHLL_imms16th
-    12209173U,	// MVE_VSHLL_imms8bh
-    12210936U,	// MVE_VSHLL_imms8th
-    12733461U,	// MVE_VSHLL_immu16bh
-    12735224U,	// MVE_VSHLL_immu16th
-    13782037U,	// MVE_VSHLL_immu8bh
-    13783800U,	// MVE_VSHLL_immu8th
-    11226133U,	// MVE_VSHLL_lws16bh
-    11227896U,	// MVE_VSHLL_lws16th
-    12274709U,	// MVE_VSHLL_lws8bh
-    12276472U,	// MVE_VSHLL_lws8th
-    12798997U,	// MVE_VSHLL_lwu16bh
-    12800760U,	// MVE_VSHLL_lwu16th
-    13847573U,	// MVE_VSHLL_lwu8bh
-    13849336U,	// MVE_VSHLL_lwu8th
-    11161530U,	// MVE_VSHL_by_vecs16
-    11685818U,	// MVE_VSHL_by_vecs32
-    12210106U,	// MVE_VSHL_by_vecs8
-    12734394U,	// MVE_VSHL_by_vecu16
-    13258682U,	// MVE_VSHL_by_vecu32
-    13782970U,	// MVE_VSHL_by_vecu8
-    14831546U,	// MVE_VSHL_immi16
-    14307258U,	// MVE_VSHL_immi32
-    15355834U,	// MVE_VSHL_immi8
-    11161530U,	// MVE_VSHL_qrs16
-    11685818U,	// MVE_VSHL_qrs32
-    12210106U,	// MVE_VSHL_qrs8
-    12734394U,	// MVE_VSHL_qru16
-    13258682U,	// MVE_VSHL_qru32
-    13782970U,	// MVE_VSHL_qru8
-    14822485U,	// MVE_VSHRNi16bh
-    14824249U,	// MVE_VSHRNi16th
-    14298197U,	// MVE_VSHRNi32bh
-    14299961U,	// MVE_VSHRNi32th
-    11162070U,	// MVE_VSHR_imms16
-    11686358U,	// MVE_VSHR_imms32
-    12210646U,	// MVE_VSHR_imms8
-    12734934U,	// MVE_VSHR_immu16
-    13259222U,	// MVE_VSHR_immu32
-    13783510U,	// MVE_VSHR_immu8
-    667419U,	// MVE_VSLIimm16
-    1191707U,	// MVE_VSLIimm32
-    1715995U,	// MVE_VSLIimm8
-    667424U,	// MVE_VSRIimm16
-    1191712U,	// MVE_VSRIimm32
-    1716000U,	// MVE_VSRIimm8
+    11160926U,	// MVE_VRHADDs16
+    11685214U,	// MVE_VRHADDs32
+    12209502U,	// MVE_VRHADDs8
+    12733790U,	// MVE_VRHADDu16
+    13258078U,	// MVE_VRHADDu32
+    13782366U,	// MVE_VRHADDu8
+    8080229U,	// MVE_VRINTf16A
+    8081509U,	// MVE_VRINTf16M
+    8081611U,	// MVE_VRINTf16N
+    8081751U,	// MVE_VRINTf16P
+    8082886U,	// MVE_VRINTf16X
+    8082936U,	// MVE_VRINTf16Z
+    8604517U,	// MVE_VRINTf32A
+    8605797U,	// MVE_VRINTf32M
+    8605899U,	// MVE_VRINTf32N
+    8606039U,	// MVE_VRINTf32P
+    8607174U,	// MVE_VRINTf32X
+    8607224U,	// MVE_VRINTf32Z
+    11700976U,	// MVE_VRMLALDAVHas32
+    13273840U,	// MVE_VRMLALDAVHau32
+    11703415U,	// MVE_VRMLALDAVHaxs32
+    11677378U,	// MVE_VRMLALDAVHs32
+    13250242U,	// MVE_VRMLALDAVHu32
+    11679109U,	// MVE_VRMLALDAVHxs32
+    11700988U,	// MVE_VRMLSLDAVHas32
+    11703428U,	// MVE_VRMLSLDAVHaxs32
+    11677389U,	// MVE_VRMLSLDAVHs32
+    11679121U,	// MVE_VRMLSLDAVHxs32
+    11161202U,	// MVE_VRMULHs16
+    11685490U,	// MVE_VRMULHs32
+    12209778U,	// MVE_VRMULHs8
+    12734066U,	// MVE_VRMULHu16
+    13258354U,	// MVE_VRMULHu32
+    13782642U,	// MVE_VRMULHu8
+    11161505U,	// MVE_VRSHL_by_vecs16
+    11685793U,	// MVE_VRSHL_by_vecs32
+    12210081U,	// MVE_VRSHL_by_vecs8
+    12734369U,	// MVE_VRSHL_by_vecu16
+    13258657U,	// MVE_VRSHL_by_vecu32
+    13782945U,	// MVE_VRSHL_by_vecu8
+    11161505U,	// MVE_VRSHL_qrs16
+    11685793U,	// MVE_VRSHL_qrs32
+    12210081U,	// MVE_VRSHL_qrs8
+    12734369U,	// MVE_VRSHL_qru16
+    13258657U,	// MVE_VRSHL_qru32
+    13782945U,	// MVE_VRSHL_qru8
+    14822458U,	// MVE_VRSHRNi16bh
+    14824222U,	// MVE_VRSHRNi16th
+    14298170U,	// MVE_VRSHRNi32bh
+    14299934U,	// MVE_VRSHRNi32th
+    11162045U,	// MVE_VRSHR_imms16
+    11686333U,	// MVE_VRSHR_imms32
+    12210621U,	// MVE_VRSHR_imms8
+    12734909U,	// MVE_VRSHR_immu16
+    13259197U,	// MVE_VRSHR_immu32
+    13783485U,	// MVE_VRSHR_immu8
+    14314756U,	// MVE_VSBC
+    14298868U,	// MVE_VSBCI
+    808086811U,	// MVE_VSHLC
+    11160578U,	// MVE_VSHLL_imms16bh
+    11162341U,	// MVE_VSHLL_imms16th
+    12209154U,	// MVE_VSHLL_imms8bh
+    12210917U,	// MVE_VSHLL_imms8th
+    12733442U,	// MVE_VSHLL_immu16bh
+    12735205U,	// MVE_VSHLL_immu16th
+    13782018U,	// MVE_VSHLL_immu8bh
+    13783781U,	// MVE_VSHLL_immu8th
+    11226114U,	// MVE_VSHLL_lws16bh
+    11227877U,	// MVE_VSHLL_lws16th
+    12274690U,	// MVE_VSHLL_lws8bh
+    12276453U,	// MVE_VSHLL_lws8th
+    12798978U,	// MVE_VSHLL_lwu16bh
+    12800741U,	// MVE_VSHLL_lwu16th
+    13847554U,	// MVE_VSHLL_lwu8bh
+    13849317U,	// MVE_VSHLL_lwu8th
+    11161511U,	// MVE_VSHL_by_vecs16
+    11685799U,	// MVE_VSHL_by_vecs32
+    12210087U,	// MVE_VSHL_by_vecs8
+    12734375U,	// MVE_VSHL_by_vecu16
+    13258663U,	// MVE_VSHL_by_vecu32
+    13782951U,	// MVE_VSHL_by_vecu8
+    14831527U,	// MVE_VSHL_immi16
+    14307239U,	// MVE_VSHL_immi32
+    15355815U,	// MVE_VSHL_immi8
+    11161511U,	// MVE_VSHL_qrs16
+    11685799U,	// MVE_VSHL_qrs32
+    12210087U,	// MVE_VSHL_qrs8
+    12734375U,	// MVE_VSHL_qru16
+    13258663U,	// MVE_VSHL_qru32
+    13782951U,	// MVE_VSHL_qru8
+    14822466U,	// MVE_VSHRNi16bh
+    14824230U,	// MVE_VSHRNi16th
+    14298178U,	// MVE_VSHRNi32bh
+    14299942U,	// MVE_VSHRNi32th
+    11162051U,	// MVE_VSHR_imms16
+    11686339U,	// MVE_VSHR_imms32
+    12210627U,	// MVE_VSHR_imms8
+    12734915U,	// MVE_VSHR_immu16
+    13259203U,	// MVE_VSHR_immu32
+    13783491U,	// MVE_VSHR_immu8
+    667400U,	// MVE_VSLIimm16
+    1191688U,	// MVE_VSLIimm32
+    1715976U,	// MVE_VSLIimm8
+    667405U,	// MVE_VSRIimm16
+    1191693U,	// MVE_VSRIimm32
+    1715981U,	// MVE_VSRIimm8
     24863607U,	// MVE_VST20_16
     246647U,	// MVE_VST20_16_wb
     24862737U,	// MVE_VST20_32
@@ -2452,57 +2460,57 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     254134U,	// MVE_VST43_32_wb
     24872524U,	// MVE_VST43_8
     255564U,	// MVE_VST43_8_wb
-    674962U,	// MVE_VSTRB16
-    873082002U,	// MVE_VSTRB16_post
-    873082002U,	// MVE_VSTRB16_pre
-    674962U,	// MVE_VSTRB16_rq
-    1199250U,	// MVE_VSTRB32
-    873606290U,	// MVE_VSTRB32_post
-    873606290U,	// MVE_VSTRB32_pre
-    1199250U,	// MVE_VSTRB32_rq
-    1723538U,	// MVE_VSTRB8_rq
-    1723538U,	// MVE_VSTRBU8
-    874130578U,	// MVE_VSTRBU8_post
-    874130578U,	// MVE_VSTRBU8_pre
-    15879596U,	// MVE_VSTRD64_qi
-    888286636U,	// MVE_VSTRD64_qi_pre
-    15879596U,	// MVE_VSTRD64_rq
-    15879596U,	// MVE_VSTRD64_rq_u
-    675480U,	// MVE_VSTRH16_rq
-    675480U,	// MVE_VSTRH16_rq_u
-    1199768U,	// MVE_VSTRH32
-    873606808U,	// MVE_VSTRH32_post
-    873606808U,	// MVE_VSTRH32_pre
-    1199768U,	// MVE_VSTRH32_rq
-    1199768U,	// MVE_VSTRH32_rq_u
-    675480U,	// MVE_VSTRHU16
-    873082520U,	// MVE_VSTRHU16_post
-    873082520U,	// MVE_VSTRHU16_pre
-    1201279U,	// MVE_VSTRW32_qi
-    873608319U,	// MVE_VSTRW32_qi_pre
-    1201279U,	// MVE_VSTRW32_rq
-    1201279U,	// MVE_VSTRW32_rq_u
-    1201279U,	// MVE_VSTRWU32
-    873608319U,	// MVE_VSTRWU32_post
-    873608319U,	// MVE_VSTRWU32_pre
-    8015080U,	// MVE_VSUB_qr_f16
-    8539368U,	// MVE_VSUB_qr_f32
-    14830824U,	// MVE_VSUB_qr_i16
-    14306536U,	// MVE_VSUB_qr_i32
-    15355112U,	// MVE_VSUB_qr_i8
-    8015080U,	// MVE_VSUBf16
-    8539368U,	// MVE_VSUBf32
-    14830824U,	// MVE_VSUBi16
-    14306536U,	// MVE_VSUBi32
-    15355112U,	// MVE_VSUBi8
+    674943U,	// MVE_VSTRB16
+    873081983U,	// MVE_VSTRB16_post
+    873081983U,	// MVE_VSTRB16_pre
+    674943U,	// MVE_VSTRB16_rq
+    1199231U,	// MVE_VSTRB32
+    873606271U,	// MVE_VSTRB32_post
+    873606271U,	// MVE_VSTRB32_pre
+    1199231U,	// MVE_VSTRB32_rq
+    1723519U,	// MVE_VSTRB8_rq
+    1723519U,	// MVE_VSTRBU8
+    874130559U,	// MVE_VSTRBU8_post
+    874130559U,	// MVE_VSTRBU8_pre
+    15879577U,	// MVE_VSTRD64_qi
+    888286617U,	// MVE_VSTRD64_qi_pre
+    15879577U,	// MVE_VSTRD64_rq
+    15879577U,	// MVE_VSTRD64_rq_u
+    675461U,	// MVE_VSTRH16_rq
+    675461U,	// MVE_VSTRH16_rq_u
+    1199749U,	// MVE_VSTRH32
+    873606789U,	// MVE_VSTRH32_post
+    873606789U,	// MVE_VSTRH32_pre
+    1199749U,	// MVE_VSTRH32_rq
+    1199749U,	// MVE_VSTRH32_rq_u
+    675461U,	// MVE_VSTRHU16
+    873082501U,	// MVE_VSTRHU16_post
+    873082501U,	// MVE_VSTRHU16_pre
+    1201260U,	// MVE_VSTRW32_qi
+    873608300U,	// MVE_VSTRW32_qi_pre
+    1201260U,	// MVE_VSTRW32_rq
+    1201260U,	// MVE_VSTRW32_rq_u
+    1201260U,	// MVE_VSTRWU32
+    873608300U,	// MVE_VSTRWU32_post
+    873608300U,	// MVE_VSTRWU32_pre
+    8015061U,	// MVE_VSUB_qr_f16
+    8539349U,	// MVE_VSUB_qr_f32
+    14830805U,	// MVE_VSUB_qr_i16
+    14306517U,	// MVE_VSUB_qr_i32
+    15355093U,	// MVE_VSUB_qr_i8
+    8015061U,	// MVE_VSUBf16
+    8539349U,	// MVE_VSUBf32
+    14830805U,	// MVE_VSUBi16
+    14306517U,	// MVE_VSUBi32
+    15355093U,	// MVE_VSUBi8
     875643887U,	// MVE_WLSTP_16
     875643134U,	// MVE_WLSTP_32
     875643496U,	// MVE_WLSTP_64
     875644545U,	// MVE_WLSTP_8
-    2658565U,	// MVNi
-    2658565U,	// MVNr
-    2633989U,	// MVNsi
-    2691333U,	// MVNsr
+    2658546U,	// MVNi
+    2658546U,	// MVNr
+    2633970U,	// MVNsi
+    2691314U,	// MVNsr
     875643322U,	// NEON_VMAXNMNDf
     875644217U,	// NEON_VMAXNMNDh
     875643322U,	// NEON_VMAXNMNQf
@@ -2511,32 +2519,32 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     875644205U,	// NEON_VMINNMNDh
     875643310U,	// NEON_VMINNMNQf
     875644205U,	// NEON_VMINNMNQh
-    2634225U,	// ORRri
-    2634225U,	// ORRrr
-    2691569U,	// ORRrsi
-    78321U,	// ORRrsr
-    2667166U,	// PKHBT
-    2665649U,	// PKHTB
+    2634206U,	// ORRri
+    2634206U,	// ORRrr
+    2691550U,	// ORRrsi
+    78302U,	// ORRrsr
+    2667147U,	// PKHBT
+    2665630U,	// PKHTB
     264176U,	// PLDWi12
     272368U,	// PLDWrs
     264010U,	// PLDi12
     272202U,	// PLDrs
     264056U,	// PLIi12
     272248U,	// PLIrs
-    2682245U,	// QADD
+    2682226U,	// QADD
     2681301U,	// QADD16
     2681404U,	// QADD8
-    2684362U,	// QASX
-    2682219U,	// QDADD
-    2682070U,	// QDSUB
-    2684108U,	// QSAX
-    2682083U,	// QSUB
+    2684343U,	// QASX
+    2682200U,	// QDADD
+    2682051U,	// QDSUB
+    2684089U,	// QSAX
+    2682064U,	// QSUB
     2681263U,	// QSUB16
     2681365U,	// QSUB8
-    2650857U,	// RBIT
-    2651181U,	// REV
+    2650838U,	// RBIT
+    2651162U,	// REV
     2648569U,	// REV16
-    2649797U,	// REVSH
+    2649778U,	// REVSH
     4802283U,	// RFEDA
     25249515U,	// RFEDA_UPD
     4802314U,	// RFEDB
@@ -2545,25 +2553,25 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     25249522U,	// RFEIA_UPD
     4802321U,	// RFEIB
     25249553U,	// RFEIB_UPD
-    2632866U,	// RSBri
-    2632866U,	// RSBrr
-    2690210U,	// RSBrsi
-    76962U,	// RSBrsr
-    2633025U,	// RSCri
-    2633025U,	// RSCrr
-    2690369U,	// RSCrsi
-    77121U,	// RSCrsr
+    2632847U,	// RSBri
+    2632847U,	// RSBrr
+    2690191U,	// RSBrsi
+    76943U,	// RSBrsr
+    2633006U,	// RSCri
+    2633006U,	// RSCrr
+    2690350U,	// RSCrsi
+    77102U,	// RSCrsr
     2681308U,	// SADD16
     2681410U,	// SADD8
-    2684367U,	// SASX
-    3225U,	// SB
-    2632984U,	// SBCri
-    2632984U,	// SBCrr
-    2690328U,	// SBCrsi
-    77080U,	// SBCrsr
-    2667876U,	// SBFX
-    2683953U,	// SDIV
-    2682764U,	// SEL
+    2684348U,	// SASX
+    3206U,	// SB
+    2632965U,	// SBCri
+    2632965U,	// SBCrr
+    2690309U,	// SBCrsi
+    77061U,	// SBCrsr
+    2667857U,	// SBFX
+    2683934U,	// SDIV
+    2682745U,	// SEL
     280399U,	// SETEND
     4802460U,	// SETPAN
     808534208U,	// SHA1C
@@ -2578,47 +2586,47 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     808534141U,	// SHA256SU1
     2681284U,	// SHADD16
     2681389U,	// SHADD8
-    2684349U,	// SHASX
-    2684095U,	// SHSAX
+    2684330U,	// SHASX
+    2684076U,	// SHSAX
     2681246U,	// SHSUB16
     2681350U,	// SHSUB8
-    2731316U,	// SMC
-    2665429U,	// SMLABB
-    2667159U,	// SMLABT
-    2665805U,	// SMLAD
-    2667802U,	// SMLADX
-    290640U,	// SMLAL
-    2755548U,	// SMLALBB
-    2757284U,	// SMLALBT
-    2755983U,	// SMLALD
-    2757928U,	// SMLALDX
-    2755767U,	// SMLALTB
-    2757526U,	// SMLALTT
-    2665642U,	// SMLATB
-    2667407U,	// SMLATT
-    2665709U,	// SMLAWB
-    2667461U,	// SMLAWT
-    2665906U,	// SMLSD
-    2667832U,	// SMLSDX
-    2755994U,	// SMLSLD
-    2757936U,	// SMLSLDX
-    2665275U,	// SMMLA
-    2666921U,	// SMMLAR
-    2667070U,	// SMMLS
-    2667001U,	// SMMLSR
-    2682949U,	// SMMUL
-    2683355U,	// SMMULR
-    2682195U,	// SMUAD
-    2684193U,	// SMUADX
-    2681828U,	// SMULBB
-    2683564U,	// SMULBT
-    2691062U,	// SMULL
-    2682047U,	// SMULTB
-    2683806U,	// SMULTT
-    2682100U,	// SMULWB
-    2683852U,	// SMULWT
-    2682296U,	// SMUSD
-    2684223U,	// SMUSDX
+    2731297U,	// SMC
+    2665410U,	// SMLABB
+    2667140U,	// SMLABT
+    2665786U,	// SMLAD
+    2667783U,	// SMLADX
+    290621U,	// SMLAL
+    2755529U,	// SMLALBB
+    2757265U,	// SMLALBT
+    2755964U,	// SMLALD
+    2757909U,	// SMLALDX
+    2755748U,	// SMLALTB
+    2757507U,	// SMLALTT
+    2665623U,	// SMLATB
+    2667388U,	// SMLATT
+    2665690U,	// SMLAWB
+    2667442U,	// SMLAWT
+    2665887U,	// SMLSD
+    2667813U,	// SMLSDX
+    2755975U,	// SMLSLD
+    2757917U,	// SMLSLDX
+    2665256U,	// SMMLA
+    2666902U,	// SMMLAR
+    2667051U,	// SMMLS
+    2666982U,	// SMMLSR
+    2682930U,	// SMMUL
+    2683336U,	// SMMULR
+    2682176U,	// SMUAD
+    2684174U,	// SMUADX
+    2681809U,	// SMULBB
+    2683545U,	// SMULBT
+    2691043U,	// SMULL
+    2682028U,	// SMULTB
+    2683787U,	// SMULTT
+    2682081U,	// SMULWB
+    2683833U,	// SMULWT
+    2682277U,	// SMUSD
+    2684204U,	// SMUSDX
     4802618U,	// SRSDA
     4802570U,	// SRSDA_UPD
     4802640U,	// SRSDB
@@ -2627,9 +2635,9 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     4802582U,	// SRSIA_UPD
     4802651U,	// SRSIB
     4802606U,	// SRSIB_UPD
-    2667144U,	// SSAT
+    2667125U,	// SSAT
     2681322U,	// SSAT16
-    2684113U,	// SSAX
+    2684094U,	// SSAX
     2681270U,	// SSUB16
     2681371U,	// SSUB8
     1553115017U,	// STC2L_OFFSET
@@ -2640,334 +2648,334 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1620222521U,	// STC2_OPTION
     1620222521U,	// STC2_POST
     1687331385U,	// STC2_PRE
-    1277734770U,	// STCL_OFFSET
-    1277734770U,	// STCL_OPTION
-    1277734770U,	// STCL_POST
-    1277734770U,	// STCL_PRE
-    1277734213U,	// STC_OFFSET
-    1277734213U,	// STC_OPTION
-    1277734213U,	// STC_POST
-    1277734213U,	// STC_PRE
-    2650171U,	// STL
-    2649132U,	// STLB
-    2684236U,	// STLEX
-    2682114U,	// STLEXB
-    2682309U,	// STLEXD
-    2682610U,	// STLEXH
-    2649711U,	// STLH
-    2730749U,	// STMDA
-    875064061U,	// STMDA_UPD
-    2731005U,	// STMDB
-    875064317U,	// STMDB_UPD
-    2732161U,	// STMIA
-    875065473U,	// STMIA_UPD
-    2731023U,	// STMIB
-    875064335U,	// STMIB_UPD
-    875090617U,	// STRBT_POST_IMM
-    875090617U,	// STRBT_POST_REG
-    875089043U,	// STRB_POST_IMM
-    875089043U,	// STRB_POST_REG
-    875080851U,	// STRB_PRE_IMM
-    875089043U,	// STRB_PRE_REG
-    2682003U,	// STRBi12
-    2665619U,	// STRBrs
-    2674093U,	// STRD
-    875171245U,	// STRD_POST
-    875171245U,	// STRD_PRE
-    2684254U,	// STREX
-    2682128U,	// STREXB
-    2682323U,	// STREXD
-    2682624U,	// STREXH
-    2666137U,	// STRH
-    875082460U,	// STRHTi
-    875090652U,	// STRHTr
-    875089561U,	// STRH_POST
-    875089561U,	// STRH_PRE
-    875090816U,	// STRT_POST_IMM
-    875090816U,	// STRT_POST_REG
-    875090451U,	// STR_POST_IMM
-    875090451U,	// STR_POST_REG
-    875082259U,	// STR_PRE_IMM
-    875090451U,	// STR_PRE_REG
-    2683411U,	// STRi12
-    2667027U,	// STRrs
-    2632920U,	// SUBri
-    2632920U,	// SUBrr
-    2690264U,	// SUBrsi
-    77016U,	// SUBrsr
-    2731337U,	// SVC
-    2683287U,	// SWP
-    2681991U,	// SWPB
-    2665417U,	// SXTAB
+    1277734751U,	// STCL_OFFSET
+    1277734751U,	// STCL_OPTION
+    1277734751U,	// STCL_POST
+    1277734751U,	// STCL_PRE
+    1277734194U,	// STC_OFFSET
+    1277734194U,	// STC_OPTION
+    1277734194U,	// STC_POST
+    1277734194U,	// STC_PRE
+    2650152U,	// STL
+    2649113U,	// STLB
+    2684217U,	// STLEX
+    2682095U,	// STLEXB
+    2682290U,	// STLEXD
+    2682591U,	// STLEXH
+    2649692U,	// STLH
+    2730730U,	// STMDA
+    875064042U,	// STMDA_UPD
+    2730986U,	// STMDB
+    875064298U,	// STMDB_UPD
+    2732142U,	// STMIA
+    875065454U,	// STMIA_UPD
+    2731004U,	// STMIB
+    875064316U,	// STMIB_UPD
+    875090598U,	// STRBT_POST_IMM
+    875090598U,	// STRBT_POST_REG
+    875089024U,	// STRB_POST_IMM
+    875089024U,	// STRB_POST_REG
+    875080832U,	// STRB_PRE_IMM
+    875089024U,	// STRB_PRE_REG
+    2681984U,	// STRBi12
+    2665600U,	// STRBrs
+    2674074U,	// STRD
+    875171226U,	// STRD_POST
+    875171226U,	// STRD_PRE
+    2684235U,	// STREX
+    2682109U,	// STREXB
+    2682304U,	// STREXD
+    2682605U,	// STREXH
+    2666118U,	// STRH
+    875082441U,	// STRHTi
+    875090633U,	// STRHTr
+    875089542U,	// STRH_POST
+    875089542U,	// STRH_PRE
+    875090797U,	// STRT_POST_IMM
+    875090797U,	// STRT_POST_REG
+    875090432U,	// STR_POST_IMM
+    875090432U,	// STR_POST_REG
+    875082240U,	// STR_PRE_IMM
+    875090432U,	// STR_PRE_REG
+    2683392U,	// STRi12
+    2667008U,	// STRrs
+    2632901U,	// SUBri
+    2632901U,	// SUBrr
+    2690245U,	// SUBrsi
+    76997U,	// SUBrsr
+    2731318U,	// SVC
+    2683268U,	// SWP
+    2681972U,	// SWPB
+    2665398U,	// SXTAB
     2664832U,	// SXTAB16
-    2666041U,	// SXTAH
-    2682060U,	// SXTB
+    2666022U,	// SXTAH
+    2682041U,	// SXTB
     2681232U,	// SXTB16
-    2682571U,	// SXTH
-    2650533U,	// TEQri
-    2650533U,	// TEQrr
-    2683301U,	// TEQrsi
-    2666917U,	// TEQrsr
-    4374U,	// TRAP
-    4374U,	// TRAPNaCl
+    2682552U,	// SXTH
+    2650514U,	// TEQri
+    2650514U,	// TEQrr
+    2683282U,	// TEQrsi
+    2666898U,	// TEQrsr
+    4355U,	// TRAP
+    4355U,	// TRAPNaCl
     296743U,	// TSB
-    2651019U,	// TSTri
-    2651019U,	// TSTrr
-    2683787U,	// TSTrsi
-    2667403U,	// TSTrsr
+    2651000U,	// TSTri
+    2651000U,	// TSTrr
+    2683768U,	// TSTrsi
+    2667384U,	// TSTrsr
     2681315U,	// UADD16
     2681416U,	// UADD8
-    2684372U,	// UASX
-    2667881U,	// UBFX
+    2684353U,	// UASX
+    2667862U,	// UBFX
     4802395U,	// UDF
-    2683958U,	// UDIV
+    2683939U,	// UDIV
     2681292U,	// UHADD16
     2681396U,	// UHADD8
-    2684355U,	// UHASX
-    2684101U,	// UHSAX
+    2684336U,	// UHASX
+    2684082U,	// UHSAX
     2681254U,	// UHSUB16
     2681357U,	// UHSUB8
-    2756405U,	// UMAAL
-    290646U,	// UMLAL
-    2691068U,	// UMULL
+    2756386U,	// UMAAL
+    290627U,	// UMLAL
+    2691049U,	// UMULL
     2681300U,	// UQADD16
     2681403U,	// UQADD8
-    2684361U,	// UQASX
-    2684107U,	// UQSAX
+    2684342U,	// UQASX
+    2684088U,	// UQSAX
     2681262U,	// UQSUB16
     2681364U,	// UQSUB8
     2681383U,	// USAD8
     2664959U,	// USADA8
-    2667149U,	// USAT
+    2667130U,	// USAT
     2681329U,	// USAT16
-    2684118U,	// USAX
+    2684099U,	// USAX
     2681277U,	// USUB16
     2681377U,	// USUB8
-    2665423U,	// UXTAB
+    2665404U,	// UXTAB
     2664840U,	// UXTAB16
-    2666047U,	// UXTAH
-    2682065U,	// UXTB
+    2666028U,	// UXTAH
+    2682046U,	// UXTB
     2681239U,	// UXTB16
-    2682576U,	// UXTH
-    11579195U,	// VABALsv2i64
-    11054907U,	// VABALsv4i32
-    12103483U,	// VABALsv8i16
-    13152059U,	// VABALuv2i64
-    12627771U,	// VABALuv4i32
-    13676347U,	// VABALuv8i16
-    12102364U,	// VABAsv16i8
-    11578076U,	// VABAsv2i32
-    11053788U,	// VABAsv4i16
-    11578076U,	// VABAsv4i32
-    11053788U,	// VABAsv8i16
-    12102364U,	// VABAsv8i8
-    13675228U,	// VABAuv16i8
-    13150940U,	// VABAuv2i32
-    12626652U,	// VABAuv4i16
-    13150940U,	// VABAuv4i32
-    12626652U,	// VABAuv8i16
-    13675228U,	// VABAuv8i8
-    11595639U,	// VABDLsv2i64
-    11071351U,	// VABDLsv4i32
-    12119927U,	// VABDLsv8i16
-    13168503U,	// VABDLuv2i64
-    12644215U,	// VABDLuv4i32
-    13692791U,	// VABDLuv8i16
-    8449369U,	// VABDfd
-    8449369U,	// VABDfq
-    7925081U,	// VABDhd
-    7925081U,	// VABDhq
-    12119385U,	// VABDsv16i8
-    11595097U,	// VABDsv2i32
-    11070809U,	// VABDsv4i16
-    11595097U,	// VABDsv4i32
-    11070809U,	// VABDsv8i16
-    12119385U,	// VABDsv8i8
-    13692249U,	// VABDuv16i8
-    13167961U,	// VABDuv2i32
-    12643673U,	// VABDuv4i16
-    13167961U,	// VABDuv4i32
-    12643673U,	// VABDuv8i16
-    13692249U,	// VABDuv8i8
-    1215328815U,	// VABSD
-    7893551U,	// VABSH
-    8417839U,	// VABSS
-    8417839U,	// VABSfd
-    8417839U,	// VABSfq
-    7893551U,	// VABShd
-    7893551U,	// VABShq
-    12087855U,	// VABSv16i8
-    11563567U,	// VABSv2i32
-    11039279U,	// VABSv4i16
-    11563567U,	// VABSv4i32
-    11039279U,	// VABSv8i16
-    12087855U,	// VABSv8i8
-    8449498U,	// VACGEfd
-    8449498U,	// VACGEfq
-    7925210U,	// VACGEhd
-    7925210U,	// VACGEhq
-    8450763U,	// VACGTfd
-    8450763U,	// VACGTfq
-    7926475U,	// VACGThd
-    7926475U,	// VACGThq
-    1215360394U,	// VADDD
-    7925130U,	// VADDH
-    895545506U,	// VADDHNv2i32
-    14217378U,	// VADDHNv4i16
-    14741666U,	// VADDHNv8i8
-    11595652U,	// VADDLsv2i64
-    11071364U,	// VADDLsv4i32
-    12119940U,	// VADDLsv8i16
-    13168516U,	// VADDLuv2i64
-    12644228U,	// VADDLuv4i32
-    13692804U,	// VADDLuv8i16
-    8449418U,	// VADDS
-    11596910U,	// VADDWsv2i64
-    11072622U,	// VADDWsv4i32
-    12121198U,	// VADDWsv8i16
-    13169774U,	// VADDWuv2i64
-    12645486U,	// VADDWuv4i32
-    13694062U,	// VADDWuv8i16
-    8449418U,	// VADDfd
-    8449418U,	// VADDfq
-    7925130U,	// VADDhd
-    7925130U,	// VADDhq
-    15265162U,	// VADDv16i8
-    895544714U,	// VADDv1i64
-    14216586U,	// VADDv2i32
-    895544714U,	// VADDv2i64
-    14740874U,	// VADDv4i16
-    14216586U,	// VADDv4i32
-    14740874U,	// VADDv8i16
-    15265162U,	// VADDv8i8
-    2682273U,	// VANDd
-    2682273U,	// VANDq
+    2682557U,	// UXTH
+    11579176U,	// VABALsv2i64
+    11054888U,	// VABALsv4i32
+    12103464U,	// VABALsv8i16
+    13152040U,	// VABALuv2i64
+    12627752U,	// VABALuv4i32
+    13676328U,	// VABALuv8i16
+    12102345U,	// VABAsv16i8
+    11578057U,	// VABAsv2i32
+    11053769U,	// VABAsv4i16
+    11578057U,	// VABAsv4i32
+    11053769U,	// VABAsv8i16
+    12102345U,	// VABAsv8i8
+    13675209U,	// VABAuv16i8
+    13150921U,	// VABAuv2i32
+    12626633U,	// VABAuv4i16
+    13150921U,	// VABAuv4i32
+    12626633U,	// VABAuv8i16
+    13675209U,	// VABAuv8i8
+    11595620U,	// VABDLsv2i64
+    11071332U,	// VABDLsv4i32
+    12119908U,	// VABDLsv8i16
+    13168484U,	// VABDLuv2i64
+    12644196U,	// VABDLuv4i32
+    13692772U,	// VABDLuv8i16
+    8449350U,	// VABDfd
+    8449350U,	// VABDfq
+    7925062U,	// VABDhd
+    7925062U,	// VABDhq
+    12119366U,	// VABDsv16i8
+    11595078U,	// VABDsv2i32
+    11070790U,	// VABDsv4i16
+    11595078U,	// VABDsv4i32
+    11070790U,	// VABDsv8i16
+    12119366U,	// VABDsv8i8
+    13692230U,	// VABDuv16i8
+    13167942U,	// VABDuv2i32
+    12643654U,	// VABDuv4i16
+    13167942U,	// VABDuv4i32
+    12643654U,	// VABDuv8i16
+    13692230U,	// VABDuv8i8
+    1215328796U,	// VABSD
+    7893532U,	// VABSH
+    8417820U,	// VABSS
+    8417820U,	// VABSfd
+    8417820U,	// VABSfq
+    7893532U,	// VABShd
+    7893532U,	// VABShq
+    12087836U,	// VABSv16i8
+    11563548U,	// VABSv2i32
+    11039260U,	// VABSv4i16
+    11563548U,	// VABSv4i32
+    11039260U,	// VABSv8i16
+    12087836U,	// VABSv8i8
+    8449479U,	// VACGEfd
+    8449479U,	// VACGEfq
+    7925191U,	// VACGEhd
+    7925191U,	// VACGEhq
+    8450744U,	// VACGTfd
+    8450744U,	// VACGTfq
+    7926456U,	// VACGThd
+    7926456U,	// VACGThq
+    1215360375U,	// VADDD
+    7925111U,	// VADDH
+    895545487U,	// VADDHNv2i32
+    14217359U,	// VADDHNv4i16
+    14741647U,	// VADDHNv8i8
+    11595633U,	// VADDLsv2i64
+    11071345U,	// VADDLsv4i32
+    12119921U,	// VADDLsv8i16
+    13168497U,	// VADDLuv2i64
+    12644209U,	// VADDLuv4i32
+    13692785U,	// VADDLuv8i16
+    8449399U,	// VADDS
+    11596891U,	// VADDWsv2i64
+    11072603U,	// VADDWsv4i32
+    12121179U,	// VADDWsv8i16
+    13169755U,	// VADDWuv2i64
+    12645467U,	// VADDWuv4i32
+    13694043U,	// VADDWuv8i16
+    8449399U,	// VADDfd
+    8449399U,	// VADDfq
+    7925111U,	// VADDhd
+    7925111U,	// VADDhq
+    15265143U,	// VADDv16i8
+    895544695U,	// VADDv1i64
+    14216567U,	// VADDv2i32
+    895544695U,	// VADDv2i64
+    14740855U,	// VADDv4i16
+    14216567U,	// VADDv4i32
+    14740855U,	// VADDv8i16
+    15265143U,	// VADDv8i8
+    2682254U,	// VANDd
+    2682254U,	// VANDq
     943285702U,	// VBF16MALBQ
     943285702U,	// VBF16MALBQI
     943285714U,	// VBF16MALTQ
     943285714U,	// VBF16MALTQI
-    2682153U,	// VBICd
-    14216489U,	// VBICiv2i32
-    14740777U,	// VBICiv4i16
-    14216489U,	// VBICiv4i32
-    14740777U,	// VBICiv8i16
-    2682153U,	// VBICq
-    2665986U,	// VBIFd
-    2665986U,	// VBIFq
-    2667246U,	// VBITd
-    2667246U,	// VBITq
-    2666536U,	// VBSLd
-    2666536U,	// VBSLq
+    2682134U,	// VBICd
+    14216470U,	// VBICiv2i32
+    14740758U,	// VBICiv4i16
+    14216470U,	// VBICiv4i32
+    14740758U,	// VBICiv8i16
+    2682134U,	// VBICq
+    2665967U,	// VBIFd
+    2665967U,	// VBIFq
+    2667227U,	// VBITd
+    2667227U,	// VBITq
+    2666517U,	// VBSLd
+    2666517U,	// VBSLq
     0U,	// VBSPd
     0U,	// VBSPq
     875643287U,	// VCADDv2f32
     875644160U,	// VCADDv4f16
     875643287U,	// VCADDv4f32
     875644160U,	// VCADDv8f16
-    8450464U,	// VCEQfd
-    8450464U,	// VCEQfq
-    7926176U,	// VCEQhd
-    7926176U,	// VCEQhq
-    15266208U,	// VCEQv16i8
-    14217632U,	// VCEQv2i32
-    14741920U,	// VCEQv4i16
-    14217632U,	// VCEQv4i32
-    14741920U,	// VCEQv8i16
-    15266208U,	// VCEQv8i8
-    15233440U,	// VCEQzv16i8
-    8417696U,	// VCEQzv2f32
-    14184864U,	// VCEQzv2i32
-    7893408U,	// VCEQzv4f16
-    8417696U,	// VCEQzv4f32
-    14709152U,	// VCEQzv4i16
-    14184864U,	// VCEQzv4i32
-    7893408U,	// VCEQzv8f16
-    14709152U,	// VCEQzv8i16
-    15233440U,	// VCEQzv8i8
-    8449504U,	// VCGEfd
-    8449504U,	// VCGEfq
-    7925216U,	// VCGEhd
-    7925216U,	// VCGEhq
-    12119520U,	// VCGEsv16i8
-    11595232U,	// VCGEsv2i32
-    11070944U,	// VCGEsv4i16
-    11595232U,	// VCGEsv4i32
-    11070944U,	// VCGEsv8i16
-    12119520U,	// VCGEsv8i8
-    13692384U,	// VCGEuv16i8
-    13168096U,	// VCGEuv2i32
-    12643808U,	// VCGEuv4i16
-    13168096U,	// VCGEuv4i32
-    12643808U,	// VCGEuv8i16
-    13692384U,	// VCGEuv8i8
-    12086752U,	// VCGEzv16i8
-    8416736U,	// VCGEzv2f32
-    11562464U,	// VCGEzv2i32
-    7892448U,	// VCGEzv4f16
-    8416736U,	// VCGEzv4f32
-    11038176U,	// VCGEzv4i16
-    11562464U,	// VCGEzv4i32
-    7892448U,	// VCGEzv8f16
-    11038176U,	// VCGEzv8i16
-    12086752U,	// VCGEzv8i8
-    8450769U,	// VCGTfd
-    8450769U,	// VCGTfq
-    7926481U,	// VCGThd
-    7926481U,	// VCGThq
-    12120785U,	// VCGTsv16i8
-    11596497U,	// VCGTsv2i32
-    11072209U,	// VCGTsv4i16
-    11596497U,	// VCGTsv4i32
-    11072209U,	// VCGTsv8i16
-    12120785U,	// VCGTsv8i8
-    13693649U,	// VCGTuv16i8
-    13169361U,	// VCGTuv2i32
-    12645073U,	// VCGTuv4i16
-    13169361U,	// VCGTuv4i32
-    12645073U,	// VCGTuv8i16
-    13693649U,	// VCGTuv8i8
-    12088017U,	// VCGTzv16i8
-    8418001U,	// VCGTzv2f32
-    11563729U,	// VCGTzv2i32
-    7893713U,	// VCGTzv4f16
-    8418001U,	// VCGTzv4f32
-    11039441U,	// VCGTzv4i16
-    11563729U,	// VCGTzv4i32
-    7893713U,	// VCGTzv8f16
-    11039441U,	// VCGTzv8i16
-    12088017U,	// VCGTzv8i8
-    12086757U,	// VCLEzv16i8
-    8416741U,	// VCLEzv2f32
-    11562469U,	// VCLEzv2i32
-    7892453U,	// VCLEzv4f16
-    8416741U,	// VCLEzv4f32
-    11038181U,	// VCLEzv4i16
-    11562469U,	// VCLEzv4i32
-    7892453U,	// VCLEzv8f16
-    11038181U,	// VCLEzv8i16
-    12086757U,	// VCLEzv8i8
-    12087865U,	// VCLSv16i8
-    11563577U,	// VCLSv2i32
-    11039289U,	// VCLSv4i16
-    11563577U,	// VCLSv4i32
-    11039289U,	// VCLSv8i16
-    12087865U,	// VCLSv8i8
-    12088051U,	// VCLTzv16i8
-    8418035U,	// VCLTzv2f32
-    11563763U,	// VCLTzv2i32
-    7893747U,	// VCLTzv4f16
-    8418035U,	// VCLTzv4f32
-    11039475U,	// VCLTzv4i16
-    11563763U,	// VCLTzv4i32
-    7893747U,	// VCLTzv8f16
-    11039475U,	// VCLTzv8i16
-    12088051U,	// VCLTzv8i8
-    15234566U,	// VCLZv16i8
-    14185990U,	// VCLZv2i32
-    14710278U,	// VCLZv4i16
-    14185990U,	// VCLZv4i32
-    14710278U,	// VCLZv8i16
-    15234566U,	// VCLZv8i8
+    8450445U,	// VCEQfd
+    8450445U,	// VCEQfq
+    7926157U,	// VCEQhd
+    7926157U,	// VCEQhq
+    15266189U,	// VCEQv16i8
+    14217613U,	// VCEQv2i32
+    14741901U,	// VCEQv4i16
+    14217613U,	// VCEQv4i32
+    14741901U,	// VCEQv8i16
+    15266189U,	// VCEQv8i8
+    15233421U,	// VCEQzv16i8
+    8417677U,	// VCEQzv2f32
+    14184845U,	// VCEQzv2i32
+    7893389U,	// VCEQzv4f16
+    8417677U,	// VCEQzv4f32
+    14709133U,	// VCEQzv4i16
+    14184845U,	// VCEQzv4i32
+    7893389U,	// VCEQzv8f16
+    14709133U,	// VCEQzv8i16
+    15233421U,	// VCEQzv8i8
+    8449485U,	// VCGEfd
+    8449485U,	// VCGEfq
+    7925197U,	// VCGEhd
+    7925197U,	// VCGEhq
+    12119501U,	// VCGEsv16i8
+    11595213U,	// VCGEsv2i32
+    11070925U,	// VCGEsv4i16
+    11595213U,	// VCGEsv4i32
+    11070925U,	// VCGEsv8i16
+    12119501U,	// VCGEsv8i8
+    13692365U,	// VCGEuv16i8
+    13168077U,	// VCGEuv2i32
+    12643789U,	// VCGEuv4i16
+    13168077U,	// VCGEuv4i32
+    12643789U,	// VCGEuv8i16
+    13692365U,	// VCGEuv8i8
+    12086733U,	// VCGEzv16i8
+    8416717U,	// VCGEzv2f32
+    11562445U,	// VCGEzv2i32
+    7892429U,	// VCGEzv4f16
+    8416717U,	// VCGEzv4f32
+    11038157U,	// VCGEzv4i16
+    11562445U,	// VCGEzv4i32
+    7892429U,	// VCGEzv8f16
+    11038157U,	// VCGEzv8i16
+    12086733U,	// VCGEzv8i8
+    8450750U,	// VCGTfd
+    8450750U,	// VCGTfq
+    7926462U,	// VCGThd
+    7926462U,	// VCGThq
+    12120766U,	// VCGTsv16i8
+    11596478U,	// VCGTsv2i32
+    11072190U,	// VCGTsv4i16
+    11596478U,	// VCGTsv4i32
+    11072190U,	// VCGTsv8i16
+    12120766U,	// VCGTsv8i8
+    13693630U,	// VCGTuv16i8
+    13169342U,	// VCGTuv2i32
+    12645054U,	// VCGTuv4i16
+    13169342U,	// VCGTuv4i32
+    12645054U,	// VCGTuv8i16
+    13693630U,	// VCGTuv8i8
+    12087998U,	// VCGTzv16i8
+    8417982U,	// VCGTzv2f32
+    11563710U,	// VCGTzv2i32
+    7893694U,	// VCGTzv4f16
+    8417982U,	// VCGTzv4f32
+    11039422U,	// VCGTzv4i16
+    11563710U,	// VCGTzv4i32
+    7893694U,	// VCGTzv8f16
+    11039422U,	// VCGTzv8i16
+    12087998U,	// VCGTzv8i8
+    12086738U,	// VCLEzv16i8
+    8416722U,	// VCLEzv2f32
+    11562450U,	// VCLEzv2i32
+    7892434U,	// VCLEzv4f16
+    8416722U,	// VCLEzv4f32
+    11038162U,	// VCLEzv4i16
+    11562450U,	// VCLEzv4i32
+    7892434U,	// VCLEzv8f16
+    11038162U,	// VCLEzv8i16
+    12086738U,	// VCLEzv8i8
+    12087846U,	// VCLSv16i8
+    11563558U,	// VCLSv2i32
+    11039270U,	// VCLSv4i16
+    11563558U,	// VCLSv4i32
+    11039270U,	// VCLSv8i16
+    12087846U,	// VCLSv8i8
+    12088032U,	// VCLTzv16i8
+    8418016U,	// VCLTzv2f32
+    11563744U,	// VCLTzv2i32
+    7893728U,	// VCLTzv4f16
+    8418016U,	// VCLTzv4f32
+    11039456U,	// VCLTzv4i16
+    11563744U,	// VCLTzv4i32
+    7893728U,	// VCLTzv8f16
+    11039456U,	// VCLTzv8i16
+    12088032U,	// VCLTzv8i8
+    15234547U,	// VCLZv16i8
+    14185971U,	// VCLZv2i32
+    14710259U,	// VCLZv4i16
+    14185971U,	// VCLZv4i32
+    14710259U,	// VCLZv8i16
+    15234547U,	// VCLZv8i8
     808534400U,	// VCMLAv2f32
     808534400U,	// VCMLAv2f32_indexed
     808535273U,	// VCMLAv4f16
@@ -2976,20 +2984,20 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     808534400U,	// VCMLAv4f32_indexed
     808535273U,	// VCMLAv8f16
     808535273U,	// VCMLAv8f16_indexed
-    1215328548U,	// VCMPD
-    1215327729U,	// VCMPED
-    7892465U,	// VCMPEH
-    8416753U,	// VCMPES
-    2087824881U,	// VCMPEZD
-    7974385U,	// VCMPEZH
-    8498673U,	// VCMPEZS
-    7893284U,	// VCMPH
-    8417572U,	// VCMPS
-    2087825700U,	// VCMPZD
-    7975204U,	// VCMPZH
-    8499492U,	// VCMPZS
-    1602326U,	// VCNTd
-    1602326U,	// VCNTq
+    1215328529U,	// VCMPD
+    1215327710U,	// VCMPED
+    7892446U,	// VCMPEH
+    8416734U,	// VCMPES
+    2087824862U,	// VCMPEZD
+    7974366U,	// VCMPEZH
+    8498654U,	// VCMPEZS
+    7893265U,	// VCMPH
+    8417553U,	// VCMPS
+    2087825681U,	// VCMPZD
+    7975185U,	// VCMPZH
+    8499473U,	// VCMPZS
+    1602307U,	// VCNTd
+    1602307U,	// VCNTq
     875643144U,	// VCVTANSDf
     875644017U,	// VCVTANSDh
     875643144U,	// VCVTANSQf
@@ -3004,11 +3012,11 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     875643566U,	// VCVTAUD
     875643957U,	// VCVTAUH
     875643204U,	// VCVTAUS
-    25750726U,	// VCVTBDH
-    26242246U,	// VCVTBHD
-    17853638U,	// VCVTBHS
-    821619910U,	// VCVTBSH
-    26768315U,	// VCVTDS
+    25750707U,	// VCVTBDH
+    26242227U,	// VCVTBHD
+    17853619U,	// VCVTBHS
+    821619891U,	// VCVTBSH
+    26768296U,	// VCVTDS
     875643159U,	// VCVTMNSDf
     875644032U,	// VCVTMNSDh
     875643159U,	// VCVTMNSQf
@@ -3051,134 +3059,134 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     875643611U,	// VCVTPUD
     875644002U,	// VCVTPUH
     875643249U,	// VCVTPUS
-    27292603U,	// VCVTSD
-    25752489U,	// VCVTTDH
-    26244009U,	// VCVTTHD
-    17855401U,	// VCVTTHS
-    821621673U,	// VCVTTSH
-    888697787U,	// VCVTf2h
-    1160803259U,	// VCVTf2sd
-    1160803259U,	// VCVTf2sq
-    1161851835U,	// VCVTf2ud
-    1161851835U,	// VCVTf2uq
-    1227944891U,	// VCVTf2xsd
-    1227944891U,	// VCVTf2xsq
-    1228993467U,	// VCVTf2xud
-    1228993467U,	// VCVTf2xuq
-    17855419U,	// VCVTh2f
-    1160278971U,	// VCVTh2sd
-    1160278971U,	// VCVTh2sq
-    1161327547U,	// VCVTh2ud
-    1161327547U,	// VCVTh2uq
-    1227420603U,	// VCVTh2xsd
-    1227420603U,	// VCVTh2xsq
-    1228469179U,	// VCVTh2xud
-    1228469179U,	// VCVTh2xuq
-    1159230395U,	// VCVTs2fd
-    1159230395U,	// VCVTs2fq
-    1157657531U,	// VCVTs2hd
-    1157657531U,	// VCVTs2hq
-    1159754683U,	// VCVTu2fd
-    1159754683U,	// VCVTu2fq
-    1158181819U,	// VCVTu2hd
-    1158181819U,	// VCVTu2hq
-    1226372027U,	// VCVTxs2fd
-    1226372027U,	// VCVTxs2fq
-    1224799163U,	// VCVTxs2hd
-    1224799163U,	// VCVTxs2hq
-    1226896315U,	// VCVTxu2fd
-    1226896315U,	// VCVTxu2fq
-    1225323451U,	// VCVTxu2hd
-    1225323451U,	// VCVTxu2hq
-    1215362107U,	// VDIVD
-    7926843U,	// VDIVH
-    8451131U,	// VDIVS
-    553347U,	// VDUP16d
-    553347U,	// VDUP16q
-    1077635U,	// VDUP32d
-    1077635U,	// VDUP32q
-    1601923U,	// VDUP8d
-    1601923U,	// VDUP8q
-    586115U,	// VDUPLN16d
-    586115U,	// VDUPLN16q
-    1110403U,	// VDUPLN32d
-    1110403U,	// VDUPLN32q
-    1634691U,	// VDUPLN8d
-    1634691U,	// VDUPLN8q
-    2683362U,	// VEORd
-    2683362U,	// VEORq
-    570323U,	// VEXTd16
-    1094611U,	// VEXTd32
-    1618899U,	// VEXTd8
-    570323U,	// VEXTq16
-    1094611U,	// VEXTq32
-    15774675U,	// VEXTq64
-    1618899U,	// VEXTq8
-    1215343436U,	// VFMAD
-    7908172U,	// VFMAH
+    27292584U,	// VCVTSD
+    25752470U,	// VCVTTDH
+    26243990U,	// VCVTTHD
+    17855382U,	// VCVTTHS
+    821621654U,	// VCVTTSH
+    888697768U,	// VCVTf2h
+    1160803240U,	// VCVTf2sd
+    1160803240U,	// VCVTf2sq
+    1161851816U,	// VCVTf2ud
+    1161851816U,	// VCVTf2uq
+    1227944872U,	// VCVTf2xsd
+    1227944872U,	// VCVTf2xsq
+    1228993448U,	// VCVTf2xud
+    1228993448U,	// VCVTf2xuq
+    17855400U,	// VCVTh2f
+    1160278952U,	// VCVTh2sd
+    1160278952U,	// VCVTh2sq
+    1161327528U,	// VCVTh2ud
+    1161327528U,	// VCVTh2uq
+    1227420584U,	// VCVTh2xsd
+    1227420584U,	// VCVTh2xsq
+    1228469160U,	// VCVTh2xud
+    1228469160U,	// VCVTh2xuq
+    1159230376U,	// VCVTs2fd
+    1159230376U,	// VCVTs2fq
+    1157657512U,	// VCVTs2hd
+    1157657512U,	// VCVTs2hq
+    1159754664U,	// VCVTu2fd
+    1159754664U,	// VCVTu2fq
+    1158181800U,	// VCVTu2hd
+    1158181800U,	// VCVTu2hq
+    1226372008U,	// VCVTxs2fd
+    1226372008U,	// VCVTxs2fq
+    1224799144U,	// VCVTxs2hd
+    1224799144U,	// VCVTxs2hq
+    1226896296U,	// VCVTxu2fd
+    1226896296U,	// VCVTxu2fq
+    1225323432U,	// VCVTxu2hd
+    1225323432U,	// VCVTxu2hq
+    1215362088U,	// VDIVD
+    7926824U,	// VDIVH
+    8451112U,	// VDIVS
+    553328U,	// VDUP16d
+    553328U,	// VDUP16q
+    1077616U,	// VDUP32d
+    1077616U,	// VDUP32q
+    1601904U,	// VDUP8d
+    1601904U,	// VDUP8q
+    586096U,	// VDUPLN16d
+    586096U,	// VDUPLN16q
+    1110384U,	// VDUPLN32d
+    1110384U,	// VDUPLN32q
+    1634672U,	// VDUPLN8d
+    1634672U,	// VDUPLN8q
+    2683343U,	// VEORd
+    2683343U,	// VEORq
+    570304U,	// VEXTd16
+    1094592U,	// VEXTd32
+    1618880U,	// VEXTd8
+    570304U,	// VEXTq16
+    1094592U,	// VEXTq32
+    15774656U,	// VEXTq64
+    1618880U,	// VEXTq8
+    1215343417U,	// VFMAD
+    7908153U,	// VFMAH
     875644183U,	// VFMALD
     875644183U,	// VFMALDI
     875644183U,	// VFMALQ
     875644183U,	// VFMALQI
-    8432460U,	// VFMAS
-    8432460U,	// VFMAfd
-    8432460U,	// VFMAfq
-    7908172U,	// VFMAhd
-    7908172U,	// VFMAhq
-    1215345231U,	// VFMSD
-    7909967U,	// VFMSH
+    8432441U,	// VFMAS
+    8432441U,	// VFMAfd
+    8432441U,	// VFMAfq
+    7908153U,	// VFMAhd
+    7908153U,	// VFMAhq
+    1215345212U,	// VFMSD
+    7909948U,	// VFMSH
     875644194U,	// VFMSLD
     875644194U,	// VFMSLDI
     875644194U,	// VFMSLQ
     875644194U,	// VFMSLQI
-    8434255U,	// VFMSS
-    8434255U,	// VFMSfd
-    8434255U,	// VFMSfq
-    7909967U,	// VFMShd
-    7909967U,	// VFMShq
-    1215343441U,	// VFNMAD
-    7908177U,	// VFNMAH
-    8432465U,	// VFNMAS
-    1215345236U,	// VFNMSD
-    7909972U,	// VFNMSH
-    8434260U,	// VFNMSS
+    8434236U,	// VFMSS
+    8434236U,	// VFMSfd
+    8434236U,	// VFMSfq
+    7909948U,	// VFMShd
+    7909948U,	// VFMShq
+    1215343422U,	// VFNMAD
+    7908158U,	// VFNMAH
+    8432446U,	// VFNMAS
+    1215345217U,	// VFNMSD
+    7909953U,	// VFNMSH
+    8434241U,	// VFNMSS
     875643662U,	// VFP_VMAXNMD
     875644217U,	// VFP_VMAXNMH
     875643322U,	// VFP_VMAXNMS
     875643650U,	// VFP_VMINNMD
     875644205U,	// VFP_VMINNMH
     875643310U,	// VFP_VMINNMS
-    1111133U,	// VGETLNi32
-    11072605U,	// VGETLNs16
-    12121181U,	// VGETLNs8
-    12645469U,	// VGETLNu16
-    13694045U,	// VGETLNu8
-    12119416U,	// VHADDsv16i8
-    11595128U,	// VHADDsv2i32
-    11070840U,	// VHADDsv4i16
-    11595128U,	// VHADDsv4i32
-    11070840U,	// VHADDsv8i16
-    12119416U,	// VHADDsv8i8
-    13692280U,	// VHADDuv16i8
-    13167992U,	// VHADDuv2i32
-    12643704U,	// VHADDuv4i16
-    13167992U,	// VHADDuv4i32
-    12643704U,	// VHADDuv8i16
-    13692280U,	// VHADDuv8i8
-    12119260U,	// VHSUBsv16i8
-    11594972U,	// VHSUBsv2i32
-    11070684U,	// VHSUBsv4i16
-    11594972U,	// VHSUBsv4i32
-    11070684U,	// VHSUBsv8i16
-    12119260U,	// VHSUBsv8i8
-    13692124U,	// VHSUBuv16i8
-    13167836U,	// VHSUBuv2i32
-    12643548U,	// VHSUBuv4i16
-    13167836U,	// VHSUBuv4i32
-    12643548U,	// VHSUBuv8i16
-    13692124U,	// VHSUBuv8i8
+    1111114U,	// VGETLNi32
+    11072586U,	// VGETLNs16
+    12121162U,	// VGETLNs8
+    12645450U,	// VGETLNu16
+    13694026U,	// VGETLNu8
+    12119397U,	// VHADDsv16i8
+    11595109U,	// VHADDsv2i32
+    11070821U,	// VHADDsv4i16
+    11595109U,	// VHADDsv4i32
+    11070821U,	// VHADDsv8i16
+    12119397U,	// VHADDsv8i8
+    13692261U,	// VHADDuv16i8
+    13167973U,	// VHADDuv2i32
+    12643685U,	// VHADDuv4i16
+    13167973U,	// VHADDuv4i32
+    12643685U,	// VHADDuv8i16
+    13692261U,	// VHADDuv8i8
+    12119241U,	// VHSUBsv16i8
+    11594953U,	// VHSUBsv2i32
+    11070665U,	// VHSUBsv4i16
+    11594953U,	// VHSUBsv4i32
+    11070665U,	// VHSUBsv8i16
+    12119241U,	// VHSUBsv8i8
+    13692105U,	// VHSUBuv16i8
+    13167817U,	// VHSUBuv2i32
+    12643529U,	// VHSUBuv4i16
+    13167817U,	// VHSUBuv4i32
+    12643529U,	// VHSUBuv8i16
+    13692105U,	// VHSUBuv8i8
     808535413U,	// VINSH
-    1168667573U,	// VJCVT
+    1168667554U,	// VJCVT
     2148067588U,	// VLD1DUPd16
     2148051204U,	// VLD1DUPd16wb_fixed
     2148059396U,	// VLD1DUPd16wb_register
@@ -3539,484 +3547,484 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     29690230U,	// VLD4q8_UPD
     0U,	// VLD4q8oddPseudo
     0U,	// VLD4q8oddPseudo_UPD
-    875064309U,	// VLDMDDB_UPD
-    2730785U,	// VLDMDIA
-    875064097U,	// VLDMDIA_UPD
+    875064290U,	// VLDMDDB_UPD
+    2730766U,	// VLDMDIA
+    875064078U,	// VLDMDIA_UPD
     0U,	// VLDMQIA
-    875064309U,	// VLDMSDB_UPD
-    2730785U,	// VLDMSIA
-    875064097U,	// VLDMSIA_UPD
-    2683320U,	// VLDRD
-    586168U,	// VLDRH
-    2683320U,	// VLDRS
-    2580050360U,	// VLDR_FPCXTNS_off
-    701034936U,	// VLDR_FPCXTNS_post
-    2647191992U,	// VLDR_FPCXTNS_pre
-    2580574648U,	// VLDR_FPCXTS_off
-    701559224U,	// VLDR_FPCXTS_post
-    2647716280U,	// VLDR_FPCXTS_pre
-    2581098936U,	// VLDR_FPSCR_NZCVQC_off
-    702083512U,	// VLDR_FPSCR_NZCVQC_post
-    2648240568U,	// VLDR_FPSCR_NZCVQC_pre
-    2581623224U,	// VLDR_FPSCR_off
-    702607800U,	// VLDR_FPSCR_post
-    2648764856U,	// VLDR_FPSCR_pre
-    2716398008U,	// VLDR_P0_off
-    1642639800U,	// VLDR_P0_post
-    2783490488U,	// VLDR_P0_pre
-    2582671800U,	// VLDR_VPR_off
-    703656376U,	// VLDR_VPR_post
-    2649813432U,	// VLDR_VPR_pre
-    2732124U,	// VLLDM
-    2732159U,	// VLSTM
-    8451258U,	// VMAXfd
-    8451258U,	// VMAXfq
-    7926970U,	// VMAXhd
-    7926970U,	// VMAXhq
-    12121274U,	// VMAXsv16i8
-    11596986U,	// VMAXsv2i32
-    11072698U,	// VMAXsv4i16
-    11596986U,	// VMAXsv4i32
-    11072698U,	// VMAXsv8i16
-    12121274U,	// VMAXsv8i8
-    13694138U,	// VMAXuv16i8
-    13169850U,	// VMAXuv2i32
-    12645562U,	// VMAXuv4i16
-    13169850U,	// VMAXuv4i32
-    12645562U,	// VMAXuv8i16
-    13694138U,	// VMAXuv8i8
-    8450223U,	// VMINfd
-    8450223U,	// VMINfq
-    7925935U,	// VMINhd
-    7925935U,	// VMINhq
-    12120239U,	// VMINsv16i8
-    11595951U,	// VMINsv2i32
-    11071663U,	// VMINsv4i16
-    11595951U,	// VMINsv4i32
-    11071663U,	// VMINsv8i16
-    12120239U,	// VMINsv8i8
-    13693103U,	// VMINuv16i8
-    13168815U,	// VMINuv2i32
-    12644527U,	// VMINuv4i16
-    13168815U,	// VMINuv4i32
-    12644527U,	// VMINuv8i16
-    13693103U,	// VMINuv8i8
-    1215343431U,	// VMLAD
-    7908167U,	// VMLAH
-    11587420U,	// VMLALslsv2i32
-    11063132U,	// VMLALslsv4i16
-    13160284U,	// VMLALsluv2i32
-    12635996U,	// VMLALsluv4i16
-    11579228U,	// VMLALsv2i64
-    11054940U,	// VMLALsv4i32
-    12103516U,	// VMLALsv8i16
-    13152092U,	// VMLALuv2i64
-    12627804U,	// VMLALuv4i32
-    13676380U,	// VMLALuv8i16
-    8432455U,	// VMLAS
-    8432455U,	// VMLAfd
-    8432455U,	// VMLAfq
-    7908167U,	// VMLAhd
-    7908167U,	// VMLAhq
-    8440647U,	// VMLAslfd
-    8440647U,	// VMLAslfq
-    7916359U,	// VMLAslhd
-    7916359U,	// VMLAslhq
-    14207815U,	// VMLAslv2i32
-    14732103U,	// VMLAslv4i16
-    14207815U,	// VMLAslv4i32
-    14732103U,	// VMLAslv8i16
-    15248199U,	// VMLAv16i8
-    14199623U,	// VMLAv2i32
-    14723911U,	// VMLAv4i16
-    14199623U,	// VMLAv4i32
-    14723911U,	// VMLAv8i16
-    15248199U,	// VMLAv8i8
-    1215345226U,	// VMLSD
-    7909962U,	// VMLSH
-    11587637U,	// VMLSLslsv2i32
-    11063349U,	// VMLSLslsv4i16
-    13160501U,	// VMLSLsluv2i32
-    12636213U,	// VMLSLsluv4i16
-    11579445U,	// VMLSLsv2i64
-    11055157U,	// VMLSLsv4i32
-    12103733U,	// VMLSLsv8i16
-    13152309U,	// VMLSLuv2i64
-    12628021U,	// VMLSLuv4i32
-    13676597U,	// VMLSLuv8i16
-    8434250U,	// VMLSS
-    8434250U,	// VMLSfd
-    8434250U,	// VMLSfq
-    7909962U,	// VMLShd
-    7909962U,	// VMLShq
-    8442442U,	// VMLSslfd
-    8442442U,	// VMLSslfq
-    7918154U,	// VMLSslhd
-    7918154U,	// VMLSslhq
-    14209610U,	// VMLSslv2i32
-    14733898U,	// VMLSslv4i16
-    14209610U,	// VMLSslv4i32
-    14733898U,	// VMLSslv8i16
-    15249994U,	// VMLSv16i8
-    14201418U,	// VMLSv2i32
-    14725706U,	// VMLSv4i16
-    14201418U,	// VMLSv4i32
-    14725706U,	// VMLSv8i16
-    15249994U,	// VMLSv8i8
+    875064290U,	// VLDMSDB_UPD
+    2730766U,	// VLDMSIA
+    875064078U,	// VLDMSIA_UPD
+    2683301U,	// VLDRD
+    586149U,	// VLDRH
+    2683301U,	// VLDRS
+    2580050341U,	// VLDR_FPCXTNS_off
+    701034917U,	// VLDR_FPCXTNS_post
+    2647191973U,	// VLDR_FPCXTNS_pre
+    2580574629U,	// VLDR_FPCXTS_off
+    701559205U,	// VLDR_FPCXTS_post
+    2647716261U,	// VLDR_FPCXTS_pre
+    2581098917U,	// VLDR_FPSCR_NZCVQC_off
+    702083493U,	// VLDR_FPSCR_NZCVQC_post
+    2648240549U,	// VLDR_FPSCR_NZCVQC_pre
+    2581623205U,	// VLDR_FPSCR_off
+    702607781U,	// VLDR_FPSCR_post
+    2648764837U,	// VLDR_FPSCR_pre
+    2716397989U,	// VLDR_P0_off
+    1642639781U,	// VLDR_P0_post
+    2783490469U,	// VLDR_P0_pre
+    2582671781U,	// VLDR_VPR_off
+    703656357U,	// VLDR_VPR_post
+    2649813413U,	// VLDR_VPR_pre
+    2732105U,	// VLLDM
+    2732140U,	// VLSTM
+    8451239U,	// VMAXfd
+    8451239U,	// VMAXfq
+    7926951U,	// VMAXhd
+    7926951U,	// VMAXhq
+    12121255U,	// VMAXsv16i8
+    11596967U,	// VMAXsv2i32
+    11072679U,	// VMAXsv4i16
+    11596967U,	// VMAXsv4i32
+    11072679U,	// VMAXsv8i16
+    12121255U,	// VMAXsv8i8
+    13694119U,	// VMAXuv16i8
+    13169831U,	// VMAXuv2i32
+    12645543U,	// VMAXuv4i16
+    13169831U,	// VMAXuv4i32
+    12645543U,	// VMAXuv8i16
+    13694119U,	// VMAXuv8i8
+    8450204U,	// VMINfd
+    8450204U,	// VMINfq
+    7925916U,	// VMINhd
+    7925916U,	// VMINhq
+    12120220U,	// VMINsv16i8
+    11595932U,	// VMINsv2i32
+    11071644U,	// VMINsv4i16
+    11595932U,	// VMINsv4i32
+    11071644U,	// VMINsv8i16
+    12120220U,	// VMINsv8i8
+    13693084U,	// VMINuv16i8
+    13168796U,	// VMINuv2i32
+    12644508U,	// VMINuv4i16
+    13168796U,	// VMINuv4i32
+    12644508U,	// VMINuv8i16
+    13693084U,	// VMINuv8i8
+    1215343412U,	// VMLAD
+    7908148U,	// VMLAH
+    11587401U,	// VMLALslsv2i32
+    11063113U,	// VMLALslsv4i16
+    13160265U,	// VMLALsluv2i32
+    12635977U,	// VMLALsluv4i16
+    11579209U,	// VMLALsv2i64
+    11054921U,	// VMLALsv4i32
+    12103497U,	// VMLALsv8i16
+    13152073U,	// VMLALuv2i64
+    12627785U,	// VMLALuv4i32
+    13676361U,	// VMLALuv8i16
+    8432436U,	// VMLAS
+    8432436U,	// VMLAfd
+    8432436U,	// VMLAfq
+    7908148U,	// VMLAhd
+    7908148U,	// VMLAhq
+    8440628U,	// VMLAslfd
+    8440628U,	// VMLAslfq
+    7916340U,	// VMLAslhd
+    7916340U,	// VMLAslhq
+    14207796U,	// VMLAslv2i32
+    14732084U,	// VMLAslv4i16
+    14207796U,	// VMLAslv4i32
+    14732084U,	// VMLAslv8i16
+    15248180U,	// VMLAv16i8
+    14199604U,	// VMLAv2i32
+    14723892U,	// VMLAv4i16
+    14199604U,	// VMLAv4i32
+    14723892U,	// VMLAv8i16
+    15248180U,	// VMLAv8i8
+    1215345207U,	// VMLSD
+    7909943U,	// VMLSH
+    11587618U,	// VMLSLslsv2i32
+    11063330U,	// VMLSLslsv4i16
+    13160482U,	// VMLSLsluv2i32
+    12636194U,	// VMLSLsluv4i16
+    11579426U,	// VMLSLsv2i64
+    11055138U,	// VMLSLsv4i32
+    12103714U,	// VMLSLsv8i16
+    13152290U,	// VMLSLuv2i64
+    12628002U,	// VMLSLuv4i32
+    13676578U,	// VMLSLuv8i16
+    8434231U,	// VMLSS
+    8434231U,	// VMLSfd
+    8434231U,	// VMLSfq
+    7909943U,	// VMLShd
+    7909943U,	// VMLShq
+    8442423U,	// VMLSslfd
+    8442423U,	// VMLSslfq
+    7918135U,	// VMLSslhd
+    7918135U,	// VMLSslhq
+    14209591U,	// VMLSslv2i32
+    14733879U,	// VMLSslv4i16
+    14209591U,	// VMLSslv4i32
+    14733879U,	// VMLSslv8i16
+    15249975U,	// VMLSv16i8
+    14201399U,	// VMLSv2i32
+    14725687U,	// VMLSv4i16
+    14201399U,	// VMLSv4i32
+    14725687U,	// VMLSv8i16
+    15249975U,	// VMLSv8i8
     943285690U,	// VMMLA
-    1215329373U,	// VMOVD
-    2683997U,	// VMOVDRR
+    1215329354U,	// VMOVD
+    2683978U,	// VMOVDRR
     875644323U,	// VMOVH
-    7894109U,	// VMOVHR
-    11563094U,	// VMOVLsv2i64
-    11038806U,	// VMOVLsv4i32
-    12087382U,	// VMOVLsv8i16
-    13135958U,	// VMOVLuv2i64
-    12611670U,	// VMOVLuv4i32
-    13660246U,	// VMOVLuv8i16
-    895512848U,	// VMOVNv2i32
-    14184720U,	// VMOVNv4i16
-    14709008U,	// VMOVNv8i8
-    7894109U,	// VMOVRH
-    2683997U,	// VMOVRRD
-    2667613U,	// VMOVRRS
-    2651229U,	// VMOVRS
-    8418397U,	// VMOVS
-    2651229U,	// VMOVSR
-    2667613U,	// VMOVSRR
-    15234141U,	// VMOVv16i8
-    2036364381U,	// VMOVv1i64
-    8418397U,	// VMOVv2f32
-    14185565U,	// VMOVv2i32
-    2036364381U,	// VMOVv2i64
-    8418397U,	// VMOVv4f32
-    14709853U,	// VMOVv4i16
-    14185565U,	// VMOVv4i32
-    14709853U,	// VMOVv8i16
-    15234141U,	// VMOVv8i8
-    2732652U,	// VMRS
-    2732652U,	// VMRS_FPCXTNS
-    2732652U,	// VMRS_FPCXTS
-    2732652U,	// VMRS_FPEXC
-    2732652U,	// VMRS_FPINST
-    2732652U,	// VMRS_FPINST2
-    2650732U,	// VMRS_FPSCR_NZCVQC
-    2732652U,	// VMRS_FPSID
-    2732652U,	// VMRS_MVFR0
-    2732652U,	// VMRS_MVFR1
-    2732652U,	// VMRS_MVFR2
-    2650732U,	// VMRS_P0
-    2732652U,	// VMRS_VPR
-    31568384U,	// VMSR
-    29995520U,	// VMSR_FPCXTNS
-    30519808U,	// VMSR_FPCXTS
-    33141248U,	// VMSR_FPEXC
-    33665536U,	// VMSR_FPINST
-    34189824U,	// VMSR_FPINST2
-    903377408U,	// VMSR_FPSCR_NZCVQC
-    34714112U,	// VMSR_FPSID
-    904425984U,	// VMSR_P0
-    32616960U,	// VMSR_VPR
-    1215361105U,	// VMULD
-    7925841U,	// VMULH
+    7894090U,	// VMOVHR
+    11563075U,	// VMOVLsv2i64
+    11038787U,	// VMOVLsv4i32
+    12087363U,	// VMOVLsv8i16
+    13135939U,	// VMOVLuv2i64
+    12611651U,	// VMOVLuv4i32
+    13660227U,	// VMOVLuv8i16
+    895512829U,	// VMOVNv2i32
+    14184701U,	// VMOVNv4i16
+    14708989U,	// VMOVNv8i8
+    7894090U,	// VMOVRH
+    2683978U,	// VMOVRRD
+    2667594U,	// VMOVRRS
+    2651210U,	// VMOVRS
+    8418378U,	// VMOVS
+    2651210U,	// VMOVSR
+    2667594U,	// VMOVSRR
+    15234122U,	// VMOVv16i8
+    2036364362U,	// VMOVv1i64
+    8418378U,	// VMOVv2f32
+    14185546U,	// VMOVv2i32
+    2036364362U,	// VMOVv2i64
+    8418378U,	// VMOVv4f32
+    14709834U,	// VMOVv4i16
+    14185546U,	// VMOVv4i32
+    14709834U,	// VMOVv8i16
+    15234122U,	// VMOVv8i8
+    2732633U,	// VMRS
+    2732633U,	// VMRS_FPCXTNS
+    2732633U,	// VMRS_FPCXTS
+    2732633U,	// VMRS_FPEXC
+    2732633U,	// VMRS_FPINST
+    2732633U,	// VMRS_FPINST2
+    2650713U,	// VMRS_FPSCR_NZCVQC
+    2732633U,	// VMRS_FPSID
+    2732633U,	// VMRS_MVFR0
+    2732633U,	// VMRS_MVFR1
+    2732633U,	// VMRS_MVFR2
+    2650713U,	// VMRS_P0
+    2732633U,	// VMRS_VPR
+    31568365U,	// VMSR
+    29995501U,	// VMSR_FPCXTNS
+    30519789U,	// VMSR_FPCXTS
+    33141229U,	// VMSR_FPEXC
+    33665517U,	// VMSR_FPINST
+    34189805U,	// VMSR_FPINST2
+    903377389U,	// VMSR_FPSCR_NZCVQC
+    34714093U,	// VMSR_FPSID
+    904425965U,	// VMSR_P0
+    32616941U,	// VMSR_VPR
+    1215361086U,	// VMULD
+    7925822U,	// VMULH
     875643746U,	// VMULLp64
-    24178690U,	// VMULLp8
-    11579394U,	// VMULLslsv2i32
-    11055106U,	// VMULLslsv4i16
-    13152258U,	// VMULLsluv2i32
-    12627970U,	// VMULLsluv4i16
-    11595778U,	// VMULLsv2i64
-    11071490U,	// VMULLsv4i32
-    12120066U,	// VMULLsv8i16
-    13168642U,	// VMULLuv2i64
-    12644354U,	// VMULLuv4i32
-    13692930U,	// VMULLuv8i16
-    8450129U,	// VMULS
-    8450129U,	// VMULfd
-    8450129U,	// VMULfq
-    7925841U,	// VMULhd
-    7925841U,	// VMULhq
-    24178769U,	// VMULpd
-    24178769U,	// VMULpq
-    8433745U,	// VMULslfd
-    8433745U,	// VMULslfq
-    7909457U,	// VMULslhd
-    7909457U,	// VMULslhq
-    14200913U,	// VMULslv2i32
-    14725201U,	// VMULslv4i16
-    14200913U,	// VMULslv4i32
-    14725201U,	// VMULslv8i16
-    15265873U,	// VMULv16i8
-    14217297U,	// VMULv2i32
-    14741585U,	// VMULv4i16
-    14217297U,	// VMULv4i32
-    14741585U,	// VMULv8i16
-    15265873U,	// VMULv8i8
-    2650372U,	// VMVNd
-    2650372U,	// VMVNq
-    14184708U,	// VMVNv2i32
-    14708996U,	// VMVNv4i16
-    14184708U,	// VMVNv4i32
-    14708996U,	// VMVNv8i16
-    1215327766U,	// VNEGD
-    7892502U,	// VNEGH
-    8416790U,	// VNEGS
-    8416790U,	// VNEGf32q
-    8416790U,	// VNEGfd
-    7892502U,	// VNEGhd
-    7892502U,	// VNEGhq
-    11038230U,	// VNEGs16d
-    11038230U,	// VNEGs16q
-    11562518U,	// VNEGs32d
-    11562518U,	// VNEGs32q
-    12086806U,	// VNEGs8d
-    12086806U,	// VNEGs8q
-    1215343425U,	// VNMLAD
-    7908161U,	// VNMLAH
-    8432449U,	// VNMLAS
-    1215345220U,	// VNMLSD
-    7909956U,	// VNMLSH
-    8434244U,	// VNMLSS
-    1215361099U,	// VNMULD
-    7925835U,	// VNMULH
-    8450123U,	// VNMULS
-    2683092U,	// VORNd
-    2683092U,	// VORNq
-    2683376U,	// VORRd
-    14217712U,	// VORRiv2i32
-    14742000U,	// VORRiv4i16
-    14217712U,	// VORRiv4i32
-    14742000U,	// VORRiv8i16
-    2683376U,	// VORRq
-    12119873U,	// VPADALsv16i8
-    11595585U,	// VPADALsv2i32
-    11071297U,	// VPADALsv4i16
-    11595585U,	// VPADALsv4i32
-    11071297U,	// VPADALsv8i16
-    12119873U,	// VPADALsv8i8
-    13692737U,	// VPADALuv16i8
-    13168449U,	// VPADALuv2i32
-    12644161U,	// VPADALuv4i16
-    13168449U,	// VPADALuv4i32
-    12644161U,	// VPADALuv8i16
-    13692737U,	// VPADALuv8i8
-    12087165U,	// VPADDLsv16i8
-    11562877U,	// VPADDLsv2i32
-    11038589U,	// VPADDLsv4i16
-    11562877U,	// VPADDLsv4i32
-    11038589U,	// VPADDLsv8i16
-    12087165U,	// VPADDLsv8i8
-    13660029U,	// VPADDLuv16i8
-    13135741U,	// VPADDLuv2i32
-    12611453U,	// VPADDLuv4i16
-    13135741U,	// VPADDLuv4i32
-    12611453U,	// VPADDLuv8i16
-    13660029U,	// VPADDLuv8i8
-    8449406U,	// VPADDf
-    7925118U,	// VPADDh
-    14740862U,	// VPADDi16
-    14216574U,	// VPADDi32
-    15265150U,	// VPADDi8
-    8451252U,	// VPMAXf
-    7926964U,	// VPMAXh
-    11072692U,	// VPMAXs16
-    11596980U,	// VPMAXs32
-    12121268U,	// VPMAXs8
-    12645556U,	// VPMAXu16
-    13169844U,	// VPMAXu32
-    13694132U,	// VPMAXu8
-    8450217U,	// VPMINf
-    7925929U,	// VPMINh
-    11071657U,	// VPMINs16
-    11595945U,	// VPMINs32
-    12120233U,	// VPMINs8
-    12644521U,	// VPMINu16
-    13168809U,	// VPMINu32
-    13693097U,	// VPMINu8
-    12087849U,	// VQABSv16i8
-    11563561U,	// VQABSv2i32
-    11039273U,	// VQABSv4i16
-    11563561U,	// VQABSv4i32
-    11039273U,	// VQABSv8i16
-    12087849U,	// VQABSv8i8
-    12119428U,	// VQADDsv16i8
-    907603332U,	// VQADDsv1i64
-    11595140U,	// VQADDsv2i32
-    907603332U,	// VQADDsv2i64
-    11070852U,	// VQADDsv4i16
-    11595140U,	// VQADDsv4i32
-    11070852U,	// VQADDsv8i16
-    12119428U,	// VQADDsv8i8
-    13692292U,	// VQADDuv16i8
-    22605188U,	// VQADDuv1i64
-    13168004U,	// VQADDuv2i32
-    22605188U,	// VQADDuv2i64
-    12643716U,	// VQADDuv4i16
-    13168004U,	// VQADDuv4i32
-    12643716U,	// VQADDuv8i16
-    13692292U,	// VQADDuv8i8
-    11587400U,	// VQDMLALslv2i32
-    11063112U,	// VQDMLALslv4i16
-    11579208U,	// VQDMLALv2i64
-    11054920U,	// VQDMLALv4i32
-    11587629U,	// VQDMLSLslv2i32
-    11063341U,	// VQDMLSLslv4i16
-    11579437U,	// VQDMLSLv2i64
-    11055149U,	// VQDMLSLv4i32
-    11578996U,	// VQDMULHslv2i32
-    11054708U,	// VQDMULHslv4i16
-    11578996U,	// VQDMULHslv4i32
-    11054708U,	// VQDMULHslv8i16
-    11595380U,	// VQDMULHv2i32
-    11071092U,	// VQDMULHv4i16
-    11595380U,	// VQDMULHv4i32
-    11071092U,	// VQDMULHv8i16
-    11579374U,	// VQDMULLslv2i32
-    11055086U,	// VQDMULLslv4i16
-    11595758U,	// VQDMULLv2i64
-    11071470U,	// VQDMULLv4i32
-    907571452U,	// VQMOVNsuv2i32
-    11563260U,	// VQMOVNsuv4i16
-    11038972U,	// VQMOVNsuv8i8
-    907571465U,	// VQMOVNsv2i32
-    11563273U,	// VQMOVNsv4i16
-    11038985U,	// VQMOVNsv8i8
-    22573321U,	// VQMOVNuv2i32
-    13136137U,	// VQMOVNuv4i16
-    12611849U,	// VQMOVNuv8i8
-    12086800U,	// VQNEGv16i8
-    11562512U,	// VQNEGv2i32
-    11038224U,	// VQNEGv4i16
-    11562512U,	// VQNEGv4i32
-    11038224U,	// VQNEGv8i16
-    12086800U,	// VQNEGv8i8
-    11587120U,	// VQRDMLAHslv2i32
-    11062832U,	// VQRDMLAHslv4i16
-    11587120U,	// VQRDMLAHslv4i32
-    11062832U,	// VQRDMLAHslv8i16
-    11578928U,	// VQRDMLAHv2i32
-    11054640U,	// VQRDMLAHv4i16
-    11578928U,	// VQRDMLAHv4i32
-    11054640U,	// VQRDMLAHv8i16
-    11587249U,	// VQRDMLSHslv2i32
-    11062961U,	// VQRDMLSHslv4i16
-    11587249U,	// VQRDMLSHslv4i32
-    11062961U,	// VQRDMLSHslv8i16
-    11579057U,	// VQRDMLSHv2i32
-    11054769U,	// VQRDMLSHv4i16
-    11579057U,	// VQRDMLSHv4i32
-    11054769U,	// VQRDMLSHv8i16
-    11579004U,	// VQRDMULHslv2i32
-    11054716U,	// VQRDMULHslv4i16
-    11579004U,	// VQRDMULHslv4i32
-    11054716U,	// VQRDMULHslv8i16
-    11595388U,	// VQRDMULHv2i32
-    11071100U,	// VQRDMULHv4i16
-    11595388U,	// VQRDMULHv4i32
-    11071100U,	// VQRDMULHv8i16
-    12119981U,	// VQRSHLsv16i8
-    907603885U,	// VQRSHLsv1i64
-    11595693U,	// VQRSHLsv2i32
-    907603885U,	// VQRSHLsv2i64
-    11071405U,	// VQRSHLsv4i16
-    11595693U,	// VQRSHLsv4i32
-    11071405U,	// VQRSHLsv8i16
-    12119981U,	// VQRSHLsv8i8
-    13692845U,	// VQRSHLuv16i8
-    22605741U,	// VQRSHLuv1i64
-    13168557U,	// VQRSHLuv2i32
-    22605741U,	// VQRSHLuv2i64
-    12644269U,	// VQRSHLuv4i16
-    13168557U,	// VQRSHLuv4i32
-    12644269U,	// VQRSHLuv8i16
-    13692845U,	// VQRSHLuv8i8
-    907604159U,	// VQRSHRNsv2i32
-    11595967U,	// VQRSHRNsv4i16
-    11071679U,	// VQRSHRNsv8i8
-    22606015U,	// VQRSHRNuv2i32
-    13168831U,	// VQRSHRNuv4i16
-    12644543U,	// VQRSHRNuv8i8
-    907604211U,	// VQRSHRUNv2i32
-    11596019U,	// VQRSHRUNv4i16
-    11071731U,	// VQRSHRUNv8i8
-    12119968U,	// VQSHLsiv16i8
-    907603872U,	// VQSHLsiv1i64
-    11595680U,	// VQSHLsiv2i32
-    907603872U,	// VQSHLsiv2i64
-    11071392U,	// VQSHLsiv4i16
-    11595680U,	// VQSHLsiv4i32
-    11071392U,	// VQSHLsiv8i16
-    12119968U,	// VQSHLsiv8i8
-    12121048U,	// VQSHLsuv16i8
-    907604952U,	// VQSHLsuv1i64
-    11596760U,	// VQSHLsuv2i32
-    907604952U,	// VQSHLsuv2i64
-    11072472U,	// VQSHLsuv4i16
-    11596760U,	// VQSHLsuv4i32
-    11072472U,	// VQSHLsuv8i16
-    12121048U,	// VQSHLsuv8i8
-    12119968U,	// VQSHLsv16i8
-    907603872U,	// VQSHLsv1i64
-    11595680U,	// VQSHLsv2i32
-    907603872U,	// VQSHLsv2i64
-    11071392U,	// VQSHLsv4i16
-    11595680U,	// VQSHLsv4i32
-    11071392U,	// VQSHLsv8i16
-    12119968U,	// VQSHLsv8i8
-    13692832U,	// VQSHLuiv16i8
-    22605728U,	// VQSHLuiv1i64
-    13168544U,	// VQSHLuiv2i32
-    22605728U,	// VQSHLuiv2i64
-    12644256U,	// VQSHLuiv4i16
-    13168544U,	// VQSHLuiv4i32
-    12644256U,	// VQSHLuiv8i16
-    13692832U,	// VQSHLuiv8i8
-    13692832U,	// VQSHLuv16i8
-    22605728U,	// VQSHLuv1i64
-    13168544U,	// VQSHLuv2i32
-    22605728U,	// VQSHLuv2i64
-    12644256U,	// VQSHLuv4i16
-    13168544U,	// VQSHLuv4i32
-    12644256U,	// VQSHLuv8i16
-    13692832U,	// VQSHLuv8i8
-    907604152U,	// VQSHRNsv2i32
-    11595960U,	// VQSHRNsv4i16
-    11071672U,	// VQSHRNsv8i8
-    22606008U,	// VQSHRNuv2i32
-    13168824U,	// VQSHRNuv4i16
-    12644536U,	// VQSHRNuv8i8
-    907604203U,	// VQSHRUNv2i32
-    11596011U,	// VQSHRUNv4i16
-    11071723U,	// VQSHRUNv8i8
-    12119266U,	// VQSUBsv16i8
-    907603170U,	// VQSUBsv1i64
-    11594978U,	// VQSUBsv2i32
-    907603170U,	// VQSUBsv2i64
-    11070690U,	// VQSUBsv4i16
-    11594978U,	// VQSUBsv4i32
-    11070690U,	// VQSUBsv8i16
-    12119266U,	// VQSUBsv8i8
-    13692130U,	// VQSUBuv16i8
-    22605026U,	// VQSUBuv1i64
-    13167842U,	// VQSUBuv2i32
-    22605026U,	// VQSUBuv2i64
-    12643554U,	// VQSUBuv4i16
-    13167842U,	// VQSUBuv4i32
-    12643554U,	// VQSUBuv8i16
-    13692130U,	// VQSUBuv8i8
-    895545498U,	// VRADDHNv2i32
-    14217370U,	// VRADDHNv4i16
-    14741658U,	// VRADDHNv8i8
-    13135338U,	// VRECPEd
-    8416746U,	// VRECPEfd
-    8416746U,	// VRECPEfq
-    7892458U,	// VRECPEhd
-    7892458U,	// VRECPEhq
-    13135338U,	// VRECPEq
-    8450661U,	// VRECPSfd
-    8450661U,	// VRECPSfq
-    7926373U,	// VRECPShd
-    7926373U,	// VRECPShq
+    24178671U,	// VMULLp8
+    11579375U,	// VMULLslsv2i32
+    11055087U,	// VMULLslsv4i16
+    13152239U,	// VMULLsluv2i32
+    12627951U,	// VMULLsluv4i16
+    11595759U,	// VMULLsv2i64
+    11071471U,	// VMULLsv4i32
+    12120047U,	// VMULLsv8i16
+    13168623U,	// VMULLuv2i64
+    12644335U,	// VMULLuv4i32
+    13692911U,	// VMULLuv8i16
+    8450110U,	// VMULS
+    8450110U,	// VMULfd
+    8450110U,	// VMULfq
+    7925822U,	// VMULhd
+    7925822U,	// VMULhq
+    24178750U,	// VMULpd
+    24178750U,	// VMULpq
+    8433726U,	// VMULslfd
+    8433726U,	// VMULslfq
+    7909438U,	// VMULslhd
+    7909438U,	// VMULslhq
+    14200894U,	// VMULslv2i32
+    14725182U,	// VMULslv4i16
+    14200894U,	// VMULslv4i32
+    14725182U,	// VMULslv8i16
+    15265854U,	// VMULv16i8
+    14217278U,	// VMULv2i32
+    14741566U,	// VMULv4i16
+    14217278U,	// VMULv4i32
+    14741566U,	// VMULv8i16
+    15265854U,	// VMULv8i8
+    2650353U,	// VMVNd
+    2650353U,	// VMVNq
+    14184689U,	// VMVNv2i32
+    14708977U,	// VMVNv4i16
+    14184689U,	// VMVNv4i32
+    14708977U,	// VMVNv8i16
+    1215327747U,	// VNEGD
+    7892483U,	// VNEGH
+    8416771U,	// VNEGS
+    8416771U,	// VNEGf32q
+    8416771U,	// VNEGfd
+    7892483U,	// VNEGhd
+    7892483U,	// VNEGhq
+    11038211U,	// VNEGs16d
+    11038211U,	// VNEGs16q
+    11562499U,	// VNEGs32d
+    11562499U,	// VNEGs32q
+    12086787U,	// VNEGs8d
+    12086787U,	// VNEGs8q
+    1215343406U,	// VNMLAD
+    7908142U,	// VNMLAH
+    8432430U,	// VNMLAS
+    1215345201U,	// VNMLSD
+    7909937U,	// VNMLSH
+    8434225U,	// VNMLSS
+    1215361080U,	// VNMULD
+    7925816U,	// VNMULH
+    8450104U,	// VNMULS
+    2683073U,	// VORNd
+    2683073U,	// VORNq
+    2683357U,	// VORRd
+    14217693U,	// VORRiv2i32
+    14741981U,	// VORRiv4i16
+    14217693U,	// VORRiv4i32
+    14741981U,	// VORRiv8i16
+    2683357U,	// VORRq
+    12119854U,	// VPADALsv16i8
+    11595566U,	// VPADALsv2i32
+    11071278U,	// VPADALsv4i16
+    11595566U,	// VPADALsv4i32
+    11071278U,	// VPADALsv8i16
+    12119854U,	// VPADALsv8i8
+    13692718U,	// VPADALuv16i8
+    13168430U,	// VPADALuv2i32
+    12644142U,	// VPADALuv4i16
+    13168430U,	// VPADALuv4i32
+    12644142U,	// VPADALuv8i16
+    13692718U,	// VPADALuv8i8
+    12087146U,	// VPADDLsv16i8
+    11562858U,	// VPADDLsv2i32
+    11038570U,	// VPADDLsv4i16
+    11562858U,	// VPADDLsv4i32
+    11038570U,	// VPADDLsv8i16
+    12087146U,	// VPADDLsv8i8
+    13660010U,	// VPADDLuv16i8
+    13135722U,	// VPADDLuv2i32
+    12611434U,	// VPADDLuv4i16
+    13135722U,	// VPADDLuv4i32
+    12611434U,	// VPADDLuv8i16
+    13660010U,	// VPADDLuv8i8
+    8449387U,	// VPADDf
+    7925099U,	// VPADDh
+    14740843U,	// VPADDi16
+    14216555U,	// VPADDi32
+    15265131U,	// VPADDi8
+    8451233U,	// VPMAXf
+    7926945U,	// VPMAXh
+    11072673U,	// VPMAXs16
+    11596961U,	// VPMAXs32
+    12121249U,	// VPMAXs8
+    12645537U,	// VPMAXu16
+    13169825U,	// VPMAXu32
+    13694113U,	// VPMAXu8
+    8450198U,	// VPMINf
+    7925910U,	// VPMINh
+    11071638U,	// VPMINs16
+    11595926U,	// VPMINs32
+    12120214U,	// VPMINs8
+    12644502U,	// VPMINu16
+    13168790U,	// VPMINu32
+    13693078U,	// VPMINu8
+    12087830U,	// VQABSv16i8
+    11563542U,	// VQABSv2i32
+    11039254U,	// VQABSv4i16
+    11563542U,	// VQABSv4i32
+    11039254U,	// VQABSv8i16
+    12087830U,	// VQABSv8i8
+    12119409U,	// VQADDsv16i8
+    907603313U,	// VQADDsv1i64
+    11595121U,	// VQADDsv2i32
+    907603313U,	// VQADDsv2i64
+    11070833U,	// VQADDsv4i16
+    11595121U,	// VQADDsv4i32
+    11070833U,	// VQADDsv8i16
+    12119409U,	// VQADDsv8i8
+    13692273U,	// VQADDuv16i8
+    22605169U,	// VQADDuv1i64
+    13167985U,	// VQADDuv2i32
+    22605169U,	// VQADDuv2i64
+    12643697U,	// VQADDuv4i16
+    13167985U,	// VQADDuv4i32
+    12643697U,	// VQADDuv8i16
+    13692273U,	// VQADDuv8i8
+    11587381U,	// VQDMLALslv2i32
+    11063093U,	// VQDMLALslv4i16
+    11579189U,	// VQDMLALv2i64
+    11054901U,	// VQDMLALv4i32
+    11587610U,	// VQDMLSLslv2i32
+    11063322U,	// VQDMLSLslv4i16
+    11579418U,	// VQDMLSLv2i64
+    11055130U,	// VQDMLSLv4i32
+    11578977U,	// VQDMULHslv2i32
+    11054689U,	// VQDMULHslv4i16
+    11578977U,	// VQDMULHslv4i32
+    11054689U,	// VQDMULHslv8i16
+    11595361U,	// VQDMULHv2i32
+    11071073U,	// VQDMULHv4i16
+    11595361U,	// VQDMULHv4i32
+    11071073U,	// VQDMULHv8i16
+    11579355U,	// VQDMULLslv2i32
+    11055067U,	// VQDMULLslv4i16
+    11595739U,	// VQDMULLv2i64
+    11071451U,	// VQDMULLv4i32
+    907571433U,	// VQMOVNsuv2i32
+    11563241U,	// VQMOVNsuv4i16
+    11038953U,	// VQMOVNsuv8i8
+    907571446U,	// VQMOVNsv2i32
+    11563254U,	// VQMOVNsv4i16
+    11038966U,	// VQMOVNsv8i8
+    22573302U,	// VQMOVNuv2i32
+    13136118U,	// VQMOVNuv4i16
+    12611830U,	// VQMOVNuv8i8
+    12086781U,	// VQNEGv16i8
+    11562493U,	// VQNEGv2i32
+    11038205U,	// VQNEGv4i16
+    11562493U,	// VQNEGv4i32
+    11038205U,	// VQNEGv8i16
+    12086781U,	// VQNEGv8i8
+    11587101U,	// VQRDMLAHslv2i32
+    11062813U,	// VQRDMLAHslv4i16
+    11587101U,	// VQRDMLAHslv4i32
+    11062813U,	// VQRDMLAHslv8i16
+    11578909U,	// VQRDMLAHv2i32
+    11054621U,	// VQRDMLAHv4i16
+    11578909U,	// VQRDMLAHv4i32
+    11054621U,	// VQRDMLAHv8i16
+    11587230U,	// VQRDMLSHslv2i32
+    11062942U,	// VQRDMLSHslv4i16
+    11587230U,	// VQRDMLSHslv4i32
+    11062942U,	// VQRDMLSHslv8i16
+    11579038U,	// VQRDMLSHv2i32
+    11054750U,	// VQRDMLSHv4i16
+    11579038U,	// VQRDMLSHv4i32
+    11054750U,	// VQRDMLSHv8i16
+    11578985U,	// VQRDMULHslv2i32
+    11054697U,	// VQRDMULHslv4i16
+    11578985U,	// VQRDMULHslv4i32
+    11054697U,	// VQRDMULHslv8i16
+    11595369U,	// VQRDMULHv2i32
+    11071081U,	// VQRDMULHv4i16
+    11595369U,	// VQRDMULHv4i32
+    11071081U,	// VQRDMULHv8i16
+    12119962U,	// VQRSHLsv16i8
+    907603866U,	// VQRSHLsv1i64
+    11595674U,	// VQRSHLsv2i32
+    907603866U,	// VQRSHLsv2i64
+    11071386U,	// VQRSHLsv4i16
+    11595674U,	// VQRSHLsv4i32
+    11071386U,	// VQRSHLsv8i16
+    12119962U,	// VQRSHLsv8i8
+    13692826U,	// VQRSHLuv16i8
+    22605722U,	// VQRSHLuv1i64
+    13168538U,	// VQRSHLuv2i32
+    22605722U,	// VQRSHLuv2i64
+    12644250U,	// VQRSHLuv4i16
+    13168538U,	// VQRSHLuv4i32
+    12644250U,	// VQRSHLuv8i16
+    13692826U,	// VQRSHLuv8i8
+    907604140U,	// VQRSHRNsv2i32
+    11595948U,	// VQRSHRNsv4i16
+    11071660U,	// VQRSHRNsv8i8
+    22605996U,	// VQRSHRNuv2i32
+    13168812U,	// VQRSHRNuv4i16
+    12644524U,	// VQRSHRNuv8i8
+    907604192U,	// VQRSHRUNv2i32
+    11596000U,	// VQRSHRUNv4i16
+    11071712U,	// VQRSHRUNv8i8
+    12119949U,	// VQSHLsiv16i8
+    907603853U,	// VQSHLsiv1i64
+    11595661U,	// VQSHLsiv2i32
+    907603853U,	// VQSHLsiv2i64
+    11071373U,	// VQSHLsiv4i16
+    11595661U,	// VQSHLsiv4i32
+    11071373U,	// VQSHLsiv8i16
+    12119949U,	// VQSHLsiv8i8
+    12121029U,	// VQSHLsuv16i8
+    907604933U,	// VQSHLsuv1i64
+    11596741U,	// VQSHLsuv2i32
+    907604933U,	// VQSHLsuv2i64
+    11072453U,	// VQSHLsuv4i16
+    11596741U,	// VQSHLsuv4i32
+    11072453U,	// VQSHLsuv8i16
+    12121029U,	// VQSHLsuv8i8
+    12119949U,	// VQSHLsv16i8
+    907603853U,	// VQSHLsv1i64
+    11595661U,	// VQSHLsv2i32
+    907603853U,	// VQSHLsv2i64
+    11071373U,	// VQSHLsv4i16
+    11595661U,	// VQSHLsv4i32
+    11071373U,	// VQSHLsv8i16
+    12119949U,	// VQSHLsv8i8
+    13692813U,	// VQSHLuiv16i8
+    22605709U,	// VQSHLuiv1i64
+    13168525U,	// VQSHLuiv2i32
+    22605709U,	// VQSHLuiv2i64
+    12644237U,	// VQSHLuiv4i16
+    13168525U,	// VQSHLuiv4i32
+    12644237U,	// VQSHLuiv8i16
+    13692813U,	// VQSHLuiv8i8
+    13692813U,	// VQSHLuv16i8
+    22605709U,	// VQSHLuv1i64
+    13168525U,	// VQSHLuv2i32
+    22605709U,	// VQSHLuv2i64
+    12644237U,	// VQSHLuv4i16
+    13168525U,	// VQSHLuv4i32
+    12644237U,	// VQSHLuv8i16
+    13692813U,	// VQSHLuv8i8
+    907604133U,	// VQSHRNsv2i32
+    11595941U,	// VQSHRNsv4i16
+    11071653U,	// VQSHRNsv8i8
+    22605989U,	// VQSHRNuv2i32
+    13168805U,	// VQSHRNuv4i16
+    12644517U,	// VQSHRNuv8i8
+    907604184U,	// VQSHRUNv2i32
+    11595992U,	// VQSHRUNv4i16
+    11071704U,	// VQSHRUNv8i8
+    12119247U,	// VQSUBsv16i8
+    907603151U,	// VQSUBsv1i64
+    11594959U,	// VQSUBsv2i32
+    907603151U,	// VQSUBsv2i64
+    11070671U,	// VQSUBsv4i16
+    11594959U,	// VQSUBsv4i32
+    11070671U,	// VQSUBsv8i16
+    12119247U,	// VQSUBsv8i8
+    13692111U,	// VQSUBuv16i8
+    22605007U,	// VQSUBuv1i64
+    13167823U,	// VQSUBuv2i32
+    22605007U,	// VQSUBuv2i64
+    12643535U,	// VQSUBuv4i16
+    13167823U,	// VQSUBuv4i32
+    12643535U,	// VQSUBuv8i16
+    13692111U,	// VQSUBuv8i8
+    895545479U,	// VRADDHNv2i32
+    14217351U,	// VRADDHNv4i16
+    14741639U,	// VRADDHNv8i8
+    13135319U,	// VRECPEd
+    8416727U,	// VRECPEfd
+    8416727U,	// VRECPEfq
+    7892439U,	// VRECPEhd
+    7892439U,	// VRECPEhq
+    13135319U,	// VRECPEq
+    8450642U,	// VRECPSfd
+    8450642U,	// VRECPSfq
+    7926354U,	// VRECPShd
+    7926354U,	// VRECPShq
     1599992U,	// VREV16d8
     1599992U,	// VREV16q8
     551193U,	// VREV32d16
@@ -4029,18 +4037,18 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     551279U,	// VREV64q16
     1075567U,	// VREV64q32
     1599855U,	// VREV64q8
-    12119409U,	// VRHADDsv16i8
-    11595121U,	// VRHADDsv2i32
-    11070833U,	// VRHADDsv4i16
-    11595121U,	// VRHADDsv4i32
-    11070833U,	// VRHADDsv8i16
-    12119409U,	// VRHADDsv8i8
-    13692273U,	// VRHADDuv16i8
-    13167985U,	// VRHADDuv2i32
-    12643697U,	// VRHADDuv4i16
-    13167985U,	// VRHADDuv4i32
-    12643697U,	// VRHADDuv8i16
-    13692273U,	// VRHADDuv8i8
+    12119390U,	// VRHADDsv16i8
+    11595102U,	// VRHADDsv2i32
+    11070814U,	// VRHADDsv4i16
+    11595102U,	// VRHADDsv4i32
+    11070814U,	// VRHADDsv8i16
+    12119390U,	// VRHADDsv8i8
+    13692254U,	// VRHADDuv16i8
+    13167966U,	// VRHADDuv2i32
+    12643678U,	// VRHADDuv4i16
+    13167966U,	// VRHADDuv4i32
+    12643678U,	// VRHADDuv8i16
+    13692254U,	// VRHADDuv8i8
     875643626U,	// VRINTAD
     875644148U,	// VRINTAH
     875643275U,	// VRINTANDf
@@ -4069,89 +4077,89 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     875643358U,	// VRINTPNQf
     875644253U,	// VRINTPNQh
     875643358U,	// VRINTPS
-    1215328779U,	// VRINTRD
-    7893515U,	// VRINTRH
-    8417803U,	// VRINTRS
-    1215329753U,	// VRINTXD
-    7894489U,	// VRINTXH
+    1215328760U,	// VRINTRD
+    7893496U,	// VRINTRH
+    8417784U,	// VRINTRS
+    1215329734U,	// VRINTXD
+    7894470U,	// VRINTXH
     875643406U,	// VRINTXNDf
     875644311U,	// VRINTXNDh
     875643406U,	// VRINTXNQf
     875644311U,	// VRINTXNQh
-    8418777U,	// VRINTXS
-    1215329803U,	// VRINTZD
-    7894539U,	// VRINTZH
+    8418758U,	// VRINTXS
+    1215329784U,	// VRINTZD
+    7894520U,	// VRINTZH
     875643418U,	// VRINTZNDf
     875644334U,	// VRINTZNDh
     875643418U,	// VRINTZNQf
     875644334U,	// VRINTZNQh
-    8418827U,	// VRINTZS
-    12119988U,	// VRSHLsv16i8
-    907603892U,	// VRSHLsv1i64
-    11595700U,	// VRSHLsv2i32
-    907603892U,	// VRSHLsv2i64
-    11071412U,	// VRSHLsv4i16
-    11595700U,	// VRSHLsv4i32
-    11071412U,	// VRSHLsv8i16
-    12119988U,	// VRSHLsv8i8
-    13692852U,	// VRSHLuv16i8
-    22605748U,	// VRSHLuv1i64
-    13168564U,	// VRSHLuv2i32
-    22605748U,	// VRSHLuv2i64
-    12644276U,	// VRSHLuv4i16
-    13168564U,	// VRSHLuv4i32
-    12644276U,	// VRSHLuv8i16
-    13692852U,	// VRSHLuv8i8
-    895545543U,	// VRSHRNv2i32
-    14217415U,	// VRSHRNv4i16
-    14741703U,	// VRSHRNv8i8
-    12120528U,	// VRSHRsv16i8
-    907604432U,	// VRSHRsv1i64
-    11596240U,	// VRSHRsv2i32
-    907604432U,	// VRSHRsv2i64
-    11071952U,	// VRSHRsv4i16
-    11596240U,	// VRSHRsv4i32
-    11071952U,	// VRSHRsv8i16
-    12120528U,	// VRSHRsv8i8
-    13693392U,	// VRSHRuv16i8
-    22606288U,	// VRSHRuv1i64
-    13169104U,	// VRSHRuv2i32
-    22606288U,	// VRSHRuv2i64
-    12644816U,	// VRSHRuv4i16
-    13169104U,	// VRSHRuv4i32
-    12644816U,	// VRSHRuv8i16
-    13693392U,	// VRSHRuv8i8
-    13135351U,	// VRSQRTEd
-    8416759U,	// VRSQRTEfd
-    8416759U,	// VRSQRTEfq
-    7892471U,	// VRSQRTEhd
-    7892471U,	// VRSQRTEhq
-    13135351U,	// VRSQRTEq
-    8450683U,	// VRSQRTSfd
-    8450683U,	// VRSQRTSfq
-    7926395U,	// VRSQRTShd
-    7926395U,	// VRSQRTShq
-    12102509U,	// VRSRAsv16i8
-    840477549U,	// VRSRAsv1i64
-    11578221U,	// VRSRAsv2i32
-    840477549U,	// VRSRAsv2i64
-    11053933U,	// VRSRAsv4i16
-    11578221U,	// VRSRAsv4i32
-    11053933U,	// VRSRAsv8i16
-    12102509U,	// VRSRAsv8i8
-    13675373U,	// VRSRAuv16i8
-    22588269U,	// VRSRAuv1i64
-    13151085U,	// VRSRAuv2i32
-    22588269U,	// VRSRAuv2i64
-    12626797U,	// VRSRAuv4i16
-    13151085U,	// VRSRAuv4i32
-    12626797U,	// VRSRAuv8i16
-    13675373U,	// VRSRAuv8i8
-    895545483U,	// VRSUBHNv2i32
-    14217355U,	// VRSUBHNv4i16
-    14741643U,	// VRSUBHNv8i8
-    2821312624U,	// VSCCLRMD
-    2821312624U,	// VSCCLRMS
+    8418808U,	// VRINTZS
+    12119969U,	// VRSHLsv16i8
+    907603873U,	// VRSHLsv1i64
+    11595681U,	// VRSHLsv2i32
+    907603873U,	// VRSHLsv2i64
+    11071393U,	// VRSHLsv4i16
+    11595681U,	// VRSHLsv4i32
+    11071393U,	// VRSHLsv8i16
+    12119969U,	// VRSHLsv8i8
+    13692833U,	// VRSHLuv16i8
+    22605729U,	// VRSHLuv1i64
+    13168545U,	// VRSHLuv2i32
+    22605729U,	// VRSHLuv2i64
+    12644257U,	// VRSHLuv4i16
+    13168545U,	// VRSHLuv4i32
+    12644257U,	// VRSHLuv8i16
+    13692833U,	// VRSHLuv8i8
+    895545524U,	// VRSHRNv2i32
+    14217396U,	// VRSHRNv4i16
+    14741684U,	// VRSHRNv8i8
+    12120509U,	// VRSHRsv16i8
+    907604413U,	// VRSHRsv1i64
+    11596221U,	// VRSHRsv2i32
+    907604413U,	// VRSHRsv2i64
+    11071933U,	// VRSHRsv4i16
+    11596221U,	// VRSHRsv4i32
+    11071933U,	// VRSHRsv8i16
+    12120509U,	// VRSHRsv8i8
+    13693373U,	// VRSHRuv16i8
+    22606269U,	// VRSHRuv1i64
+    13169085U,	// VRSHRuv2i32
+    22606269U,	// VRSHRuv2i64
+    12644797U,	// VRSHRuv4i16
+    13169085U,	// VRSHRuv4i32
+    12644797U,	// VRSHRuv8i16
+    13693373U,	// VRSHRuv8i8
+    13135332U,	// VRSQRTEd
+    8416740U,	// VRSQRTEfd
+    8416740U,	// VRSQRTEfq
+    7892452U,	// VRSQRTEhd
+    7892452U,	// VRSQRTEhq
+    13135332U,	// VRSQRTEq
+    8450664U,	// VRSQRTSfd
+    8450664U,	// VRSQRTSfq
+    7926376U,	// VRSQRTShd
+    7926376U,	// VRSQRTShq
+    12102490U,	// VRSRAsv16i8
+    840477530U,	// VRSRAsv1i64
+    11578202U,	// VRSRAsv2i32
+    840477530U,	// VRSRAsv2i64
+    11053914U,	// VRSRAsv4i16
+    11578202U,	// VRSRAsv4i32
+    11053914U,	// VRSRAsv8i16
+    12102490U,	// VRSRAsv8i8
+    13675354U,	// VRSRAuv16i8
+    22588250U,	// VRSRAuv1i64
+    13151066U,	// VRSRAuv2i32
+    22588250U,	// VRSRAuv2i64
+    12626778U,	// VRSRAuv4i16
+    13151066U,	// VRSRAuv4i32
+    12626778U,	// VRSRAuv8i16
+    13675354U,	// VRSRAuv8i8
+    895545464U,	// VRSUBHNv2i32
+    14217336U,	// VRSUBHNv4i16
+    14741624U,	// VRSUBHNv8i8
+    2821312605U,	// VSCCLRMD
+    2821312605U,	// VSCCLRMS
     943285932U,	// VSDOTD
     943285932U,	// VSDOTDI
     943285932U,	// VSDOTQ
@@ -4168,106 +4176,106 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     875643722U,	// VSELVSD
     875644287U,	// VSELVSH
     875643382U,	// VSELVSS
-    570461U,	// VSETLNi16
-    1094749U,	// VSETLNi32
-    1619037U,	// VSETLNi8
-    14741475U,	// VSHLLi16
-    14217187U,	// VSHLLi32
-    15265763U,	// VSHLLi8
-    11595747U,	// VSHLLsv2i64
-    11071459U,	// VSHLLsv4i32
-    12120035U,	// VSHLLsv8i16
-    13168611U,	// VSHLLuv2i64
-    12644323U,	// VSHLLuv4i32
-    13692899U,	// VSHLLuv8i16
-    15265722U,	// VSHLiv16i8
-    895545274U,	// VSHLiv1i64
-    14217146U,	// VSHLiv2i32
-    895545274U,	// VSHLiv2i64
-    14741434U,	// VSHLiv4i16
-    14217146U,	// VSHLiv4i32
-    14741434U,	// VSHLiv8i16
-    15265722U,	// VSHLiv8i8
-    12119994U,	// VSHLsv16i8
-    907603898U,	// VSHLsv1i64
-    11595706U,	// VSHLsv2i32
-    907603898U,	// VSHLsv2i64
-    11071418U,	// VSHLsv4i16
-    11595706U,	// VSHLsv4i32
-    11071418U,	// VSHLsv8i16
-    12119994U,	// VSHLsv8i8
-    13692858U,	// VSHLuv16i8
-    22605754U,	// VSHLuv1i64
-    13168570U,	// VSHLuv2i32
-    22605754U,	// VSHLuv2i64
-    12644282U,	// VSHLuv4i16
-    13168570U,	// VSHLuv4i32
-    12644282U,	// VSHLuv8i16
-    13692858U,	// VSHLuv8i8
-    895545550U,	// VSHRNv2i32
-    14217422U,	// VSHRNv4i16
-    14741710U,	// VSHRNv8i8
-    12120534U,	// VSHRsv16i8
-    907604438U,	// VSHRsv1i64
-    11596246U,	// VSHRsv2i32
-    907604438U,	// VSHRsv2i64
-    11071958U,	// VSHRsv4i16
-    11596246U,	// VSHRsv4i32
-    11071958U,	// VSHRsv8i16
-    12120534U,	// VSHRsv8i8
-    13693398U,	// VSHRuv16i8
-    22606294U,	// VSHRuv1i64
-    13169110U,	// VSHRuv2i32
-    22606294U,	// VSHRuv2i64
-    12644822U,	// VSHRuv4i16
-    13169110U,	// VSHRuv4i32
-    12644822U,	// VSHRuv8i16
-    13693398U,	// VSHRuv8i8
-    35713979U,	// VSHTOD
-    1224799163U,	// VSHTOH
-    36238267U,	// VSHTOS
-    1177580475U,	// VSITOD
-    1178104763U,	// VSITOH
-    1159230395U,	// VSITOS
-    1617691U,	// VSLIv16i8
-    15773467U,	// VSLIv1i64
-    1093403U,	// VSLIv2i32
-    15773467U,	// VSLIv2i64
-    569115U,	// VSLIv4i16
-    1093403U,	// VSLIv4i32
-    569115U,	// VSLIv8i16
-    1617691U,	// VSLIv8i8
-    1244722107U,	// VSLTOD
-    1245246395U,	// VSLTOH
-    1226372027U,	// VSLTOS
+    570442U,	// VSETLNi16
+    1094730U,	// VSETLNi32
+    1619018U,	// VSETLNi8
+    14741456U,	// VSHLLi16
+    14217168U,	// VSHLLi32
+    15265744U,	// VSHLLi8
+    11595728U,	// VSHLLsv2i64
+    11071440U,	// VSHLLsv4i32
+    12120016U,	// VSHLLsv8i16
+    13168592U,	// VSHLLuv2i64
+    12644304U,	// VSHLLuv4i32
+    13692880U,	// VSHLLuv8i16
+    15265703U,	// VSHLiv16i8
+    895545255U,	// VSHLiv1i64
+    14217127U,	// VSHLiv2i32
+    895545255U,	// VSHLiv2i64
+    14741415U,	// VSHLiv4i16
+    14217127U,	// VSHLiv4i32
+    14741415U,	// VSHLiv8i16
+    15265703U,	// VSHLiv8i8
+    12119975U,	// VSHLsv16i8
+    907603879U,	// VSHLsv1i64
+    11595687U,	// VSHLsv2i32
+    907603879U,	// VSHLsv2i64
+    11071399U,	// VSHLsv4i16
+    11595687U,	// VSHLsv4i32
+    11071399U,	// VSHLsv8i16
+    12119975U,	// VSHLsv8i8
+    13692839U,	// VSHLuv16i8
+    22605735U,	// VSHLuv1i64
+    13168551U,	// VSHLuv2i32
+    22605735U,	// VSHLuv2i64
+    12644263U,	// VSHLuv4i16
+    13168551U,	// VSHLuv4i32
+    12644263U,	// VSHLuv8i16
+    13692839U,	// VSHLuv8i8
+    895545531U,	// VSHRNv2i32
+    14217403U,	// VSHRNv4i16
+    14741691U,	// VSHRNv8i8
+    12120515U,	// VSHRsv16i8
+    907604419U,	// VSHRsv1i64
+    11596227U,	// VSHRsv2i32
+    907604419U,	// VSHRsv2i64
+    11071939U,	// VSHRsv4i16
+    11596227U,	// VSHRsv4i32
+    11071939U,	// VSHRsv8i16
+    12120515U,	// VSHRsv8i8
+    13693379U,	// VSHRuv16i8
+    22606275U,	// VSHRuv1i64
+    13169091U,	// VSHRuv2i32
+    22606275U,	// VSHRuv2i64
+    12644803U,	// VSHRuv4i16
+    13169091U,	// VSHRuv4i32
+    12644803U,	// VSHRuv8i16
+    13693379U,	// VSHRuv8i8
+    35713960U,	// VSHTOD
+    1224799144U,	// VSHTOH
+    36238248U,	// VSHTOS
+    1177580456U,	// VSITOD
+    1178104744U,	// VSITOH
+    1159230376U,	// VSITOS
+    1617672U,	// VSLIv16i8
+    15773448U,	// VSLIv1i64
+    1093384U,	// VSLIv2i32
+    15773448U,	// VSLIv2i64
+    569096U,	// VSLIv4i16
+    1093384U,	// VSLIv4i32
+    569096U,	// VSLIv8i16
+    1617672U,	// VSLIv8i8
+    1244722088U,	// VSLTOD
+    1245246376U,	// VSLTOH
+    1226372008U,	// VSLTOS
     943285910U,	// VSMMLA
-    1215329146U,	// VSQRTD
-    7893882U,	// VSQRTH
-    8418170U,	// VSQRTS
-    12102515U,	// VSRAsv16i8
-    840477555U,	// VSRAsv1i64
-    11578227U,	// VSRAsv2i32
-    840477555U,	// VSRAsv2i64
-    11053939U,	// VSRAsv4i16
-    11578227U,	// VSRAsv4i32
-    11053939U,	// VSRAsv8i16
-    12102515U,	// VSRAsv8i8
-    13675379U,	// VSRAuv16i8
-    22588275U,	// VSRAuv1i64
-    13151091U,	// VSRAuv2i32
-    22588275U,	// VSRAuv2i64
-    12626803U,	// VSRAuv4i16
-    13151091U,	// VSRAuv4i32
-    12626803U,	// VSRAuv8i16
-    13675379U,	// VSRAuv8i8
-    1617696U,	// VSRIv16i8
-    15773472U,	// VSRIv1i64
-    1093408U,	// VSRIv2i32
-    15773472U,	// VSRIv2i64
-    569120U,	// VSRIv4i16
-    1093408U,	// VSRIv4i32
-    569120U,	// VSRIv8i16
-    1617696U,	// VSRIv8i8
+    1215329127U,	// VSQRTD
+    7893863U,	// VSQRTH
+    8418151U,	// VSQRTS
+    12102496U,	// VSRAsv16i8
+    840477536U,	// VSRAsv1i64
+    11578208U,	// VSRAsv2i32
+    840477536U,	// VSRAsv2i64
+    11053920U,	// VSRAsv4i16
+    11578208U,	// VSRAsv4i32
+    11053920U,	// VSRAsv8i16
+    12102496U,	// VSRAsv8i8
+    13675360U,	// VSRAuv16i8
+    22588256U,	// VSRAuv1i64
+    13151072U,	// VSRAuv2i32
+    22588256U,	// VSRAuv2i64
+    12626784U,	// VSRAuv4i16
+    13151072U,	// VSRAuv4i32
+    12626784U,	// VSRAuv8i16
+    13675360U,	// VSRAuv8i8
+    1617677U,	// VSRIv16i8
+    15773453U,	// VSRIv1i64
+    1093389U,	// VSRIv2i32
+    15773453U,	// VSRIv2i64
+    569101U,	// VSRIv4i16
+    1093389U,	// VSRIv4i32
+    569101U,	// VSRIv8i16
+    1617677U,	// VSRIv8i8
     833661199U,	// VST1LNd16
     2914126095U,	// VST1LNd16_UPD
     834185487U,	// VST1LNd32
@@ -4526,207 +4534,207 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2915371387U,	// VST4q8_UPD
     0U,	// VST4q8oddPseudo
     0U,	// VST4q8oddPseudo_UPD
-    875064316U,	// VSTMDDB_UPD
-    2730792U,	// VSTMDIA
-    875064104U,	// VSTMDIA_UPD
+    875064297U,	// VSTMDDB_UPD
+    2730773U,	// VSTMDIA
+    875064085U,	// VSTMDIA_UPD
     0U,	// VSTMQIA
-    875064316U,	// VSTMSDB_UPD
-    2730792U,	// VSTMSIA
-    875064104U,	// VSTMSIA_UPD
-    2683410U,	// VSTRD
-    586258U,	// VSTRH
-    2683410U,	// VSTRS
-    2580050450U,	// VSTR_FPCXTNS_off
-    701035026U,	// VSTR_FPCXTNS_post
-    2647192082U,	// VSTR_FPCXTNS_pre
-    2580574738U,	// VSTR_FPCXTS_off
-    701559314U,	// VSTR_FPCXTS_post
-    2647716370U,	// VSTR_FPCXTS_pre
-    2581099026U,	// VSTR_FPSCR_NZCVQC_off
-    702083602U,	// VSTR_FPSCR_NZCVQC_post
-    2648240658U,	// VSTR_FPSCR_NZCVQC_pre
-    2581623314U,	// VSTR_FPSCR_off
-    702607890U,	// VSTR_FPSCR_post
-    2648764946U,	// VSTR_FPSCR_pre
-    2716398098U,	// VSTR_P0_off
-    1642639890U,	// VSTR_P0_post
-    2783490578U,	// VSTR_P0_pre
-    2582671890U,	// VSTR_VPR_off
-    703656466U,	// VSTR_VPR_post
-    2649813522U,	// VSTR_VPR_pre
-    1215360232U,	// VSUBD
-    7924968U,	// VSUBH
-    895545491U,	// VSUBHNv2i32
-    14217363U,	// VSUBHNv4i16
-    14741651U,	// VSUBHNv8i8
-    11595623U,	// VSUBLsv2i64
-    11071335U,	// VSUBLsv4i32
-    12119911U,	// VSUBLsv8i16
-    13168487U,	// VSUBLuv2i64
-    12644199U,	// VSUBLuv4i32
-    13692775U,	// VSUBLuv8i16
-    8449256U,	// VSUBS
-    11596904U,	// VSUBWsv2i64
-    11072616U,	// VSUBWsv4i32
-    12121192U,	// VSUBWsv8i16
-    13169768U,	// VSUBWuv2i64
-    12645480U,	// VSUBWuv4i32
-    13694056U,	// VSUBWuv8i16
-    8449256U,	// VSUBfd
-    8449256U,	// VSUBfq
-    7924968U,	// VSUBhd
-    7924968U,	// VSUBhq
-    15265000U,	// VSUBv16i8
-    895544552U,	// VSUBv1i64
-    14216424U,	// VSUBv2i32
-    895544552U,	// VSUBv2i64
-    14740712U,	// VSUBv4i16
-    14216424U,	// VSUBv4i32
-    14740712U,	// VSUBv8i16
-    15265000U,	// VSUBv8i8
+    875064297U,	// VSTMSDB_UPD
+    2730773U,	// VSTMSIA
+    875064085U,	// VSTMSIA_UPD
+    2683391U,	// VSTRD
+    586239U,	// VSTRH
+    2683391U,	// VSTRS
+    2580050431U,	// VSTR_FPCXTNS_off
+    701035007U,	// VSTR_FPCXTNS_post
+    2647192063U,	// VSTR_FPCXTNS_pre
+    2580574719U,	// VSTR_FPCXTS_off
+    701559295U,	// VSTR_FPCXTS_post
+    2647716351U,	// VSTR_FPCXTS_pre
+    2581099007U,	// VSTR_FPSCR_NZCVQC_off
+    702083583U,	// VSTR_FPSCR_NZCVQC_post
+    2648240639U,	// VSTR_FPSCR_NZCVQC_pre
+    2581623295U,	// VSTR_FPSCR_off
+    702607871U,	// VSTR_FPSCR_post
+    2648764927U,	// VSTR_FPSCR_pre
+    2716398079U,	// VSTR_P0_off
+    1642639871U,	// VSTR_P0_post
+    2783490559U,	// VSTR_P0_pre
+    2582671871U,	// VSTR_VPR_off
+    703656447U,	// VSTR_VPR_post
+    2649813503U,	// VSTR_VPR_pre
+    1215360213U,	// VSUBD
+    7924949U,	// VSUBH
+    895545472U,	// VSUBHNv2i32
+    14217344U,	// VSUBHNv4i16
+    14741632U,	// VSUBHNv8i8
+    11595604U,	// VSUBLsv2i64
+    11071316U,	// VSUBLsv4i32
+    12119892U,	// VSUBLsv8i16
+    13168468U,	// VSUBLuv2i64
+    12644180U,	// VSUBLuv4i32
+    13692756U,	// VSUBLuv8i16
+    8449237U,	// VSUBS
+    11596885U,	// VSUBWsv2i64
+    11072597U,	// VSUBWsv4i32
+    12121173U,	// VSUBWsv8i16
+    13169749U,	// VSUBWuv2i64
+    12645461U,	// VSUBWuv4i32
+    13694037U,	// VSUBWuv8i16
+    8449237U,	// VSUBfd
+    8449237U,	// VSUBfq
+    7924949U,	// VSUBhd
+    7924949U,	// VSUBhq
+    15264981U,	// VSUBv16i8
+    895544533U,	// VSUBv1i64
+    14216405U,	// VSUBv2i32
+    895544533U,	// VSUBv2i64
+    14740693U,	// VSUBv4i16
+    14216405U,	// VSUBv4i32
+    14740693U,	// VSUBv8i16
+    15264981U,	// VSUBv8i8
     943285953U,	// VSUDOTDI
     943285953U,	// VSUDOTQI
-    2666902U,	// VSWPd
-    2666902U,	// VSWPq
-    1634146U,	// VTBL1
-    1634146U,	// VTBL2
-    1634146U,	// VTBL3
+    2666883U,	// VSWPd
+    2666883U,	// VSWPq
+    1634127U,	// VTBL1
+    1634127U,	// VTBL2
+    1634127U,	// VTBL3
     0U,	// VTBL3Pseudo
-    1634146U,	// VTBL4
+    1634127U,	// VTBL4
     0U,	// VTBL4Pseudo
-    1619221U,	// VTBX1
-    1619221U,	// VTBX2
-    1619221U,	// VTBX3
+    1619202U,	// VTBX1
+    1619202U,	// VTBX2
+    1619202U,	// VTBX3
     0U,	// VTBX3Pseudo
-    1619221U,	// VTBX4
+    1619202U,	// VTBX4
     0U,	// VTBX4Pseudo
-    37811131U,	// VTOSHD
-    1227420603U,	// VTOSHH
-    38335419U,	// VTOSHS
-    1168667159U,	// VTOSIRD
-    1179677207U,	// VTOSIRH
-    1160802839U,	// VTOSIRS
-    1168667579U,	// VTOSIZD
-    1179677627U,	// VTOSIZH
-    1160803259U,	// VTOSIZS
-    1235809211U,	// VTOSLD
-    1246819259U,	// VTOSLH
-    1227944891U,	// VTOSLS
-    39383995U,	// VTOUHD
-    1228469179U,	// VTOUHH
-    39908283U,	// VTOUHS
-    1181250071U,	// VTOUIRD
-    1181774359U,	// VTOUIRH
-    1161851415U,	// VTOUIRS
-    1181250491U,	// VTOUIZD
-    1181774779U,	// VTOUIZH
-    1161851835U,	// VTOUIZS
-    1248392123U,	// VTOULD
-    1248916411U,	// VTOULH
-    1228993467U,	// VTOULS
-    569561U,	// VTRNd16
-    1093849U,	// VTRNd32
-    1618137U,	// VTRNd8
-    569561U,	// VTRNq16
-    1093849U,	// VTRNq32
-    1618137U,	// VTRNq8
-    1635210U,	// VTSTv16i8
-    1110922U,	// VTSTv2i32
-    586634U,	// VTSTv4i16
-    1110922U,	// VTSTv4i32
-    586634U,	// VTSTv8i16
-    1635210U,	// VTSTv8i8
+    37811112U,	// VTOSHD
+    1227420584U,	// VTOSHH
+    38335400U,	// VTOSHS
+    1168667140U,	// VTOSIRD
+    1179677188U,	// VTOSIRH
+    1160802820U,	// VTOSIRS
+    1168667560U,	// VTOSIZD
+    1179677608U,	// VTOSIZH
+    1160803240U,	// VTOSIZS
+    1235809192U,	// VTOSLD
+    1246819240U,	// VTOSLH
+    1227944872U,	// VTOSLS
+    39383976U,	// VTOUHD
+    1228469160U,	// VTOUHH
+    39908264U,	// VTOUHS
+    1181250052U,	// VTOUIRD
+    1181774340U,	// VTOUIRH
+    1161851396U,	// VTOUIRS
+    1181250472U,	// VTOUIZD
+    1181774760U,	// VTOUIZH
+    1161851816U,	// VTOUIZS
+    1248392104U,	// VTOULD
+    1248916392U,	// VTOULH
+    1228993448U,	// VTOULS
+    569542U,	// VTRNd16
+    1093830U,	// VTRNd32
+    1618118U,	// VTRNd8
+    569542U,	// VTRNq16
+    1093830U,	// VTRNq32
+    1618118U,	// VTRNq8
+    1635191U,	// VTSTv16i8
+    1110903U,	// VTSTv2i32
+    586615U,	// VTSTv4i16
+    1110903U,	// VTSTv4i32
+    586615U,	// VTSTv8i16
+    1635191U,	// VTSTv8i8
     943285964U,	// VUDOTD
     943285964U,	// VUDOTDI
     943285964U,	// VUDOTQ
     943285964U,	// VUDOTQI
-    41481147U,	// VUHTOD
-    1225323451U,	// VUHTOH
-    42005435U,	// VUHTOS
-    1183347643U,	// VUITOD
-    1183871931U,	// VUITOH
-    1159754683U,	// VUITOS
-    1250489275U,	// VULTOD
-    1251013563U,	// VULTOH
-    1226896315U,	// VULTOS
+    41481128U,	// VUHTOD
+    1225323432U,	// VUHTOH
+    42005416U,	// VUHTOS
+    1183347624U,	// VUITOD
+    1183871912U,	// VUITOH
+    1159754664U,	// VUITOS
+    1250489256U,	// VULTOD
+    1251013544U,	// VULTOH
+    1226896296U,	// VULTOS
     943285942U,	// VUMMLA
     943285921U,	// VUSDOTD
     943285921U,	// VUSDOTDI
     943285921U,	// VUSDOTQ
     943285921U,	// VUSDOTQI
     943285898U,	// VUSMMLA
-    569755U,	// VUZPd16
-    1618331U,	// VUZPd8
-    569755U,	// VUZPq16
-    1094043U,	// VUZPq32
-    1618331U,	// VUZPq8
-    569631U,	// VZIPd16
-    1618207U,	// VZIPd8
-    569631U,	// VZIPq16
-    1093919U,	// VZIPq32
-    1618207U,	// VZIPq8
-    2730743U,	// sysLDMDA
-    875064055U,	// sysLDMDA_UPD
-    2730998U,	// sysLDMDB
-    875064310U,	// sysLDMDB_UPD
-    2732126U,	// sysLDMIA
-    875065438U,	// sysLDMIA_UPD
-    2731017U,	// sysLDMIB
-    875064329U,	// sysLDMIB_UPD
-    2730749U,	// sysSTMDA
-    875064061U,	// sysSTMDA_UPD
-    2731005U,	// sysSTMDB
-    875064317U,	// sysSTMDB_UPD
-    2732161U,	// sysSTMIA
-    875065473U,	// sysSTMIA_UPD
-    2731023U,	// sysSTMIB
-    875064335U,	// sysSTMIB_UPD
-    2632989U,	// t2ADCri
-    43527453U,	// t2ADCrr
-    43584797U,	// t2ADCrs
-    43527521U,	// t2ADDri
-    2684015U,	// t2ADDri12
-    43527521U,	// t2ADDrr
-    43584865U,	// t2ADDrs
-    43527521U,	// t2ADDspImm
-    2684015U,	// t2ADDspImm12
-    43545012U,	// t2ADR
-    2633122U,	// t2ANDri
-    43527586U,	// t2ANDrr
-    43584930U,	// t2ANDrs
-    43528693U,	// t2ASRri
-    43528693U,	// t2ASRrr
-    4432U,	// t2AUT
-    808046110U,	// t2AUTG
-    1050258375U,	// t2B
-    2682149U,	// t2BFC
-    2666259U,	// t2BFI
-    1009282960U,	// t2BFLi
-    1009284532U,	// t2BFLr
-    1009282559U,	// t2BFi
+    569736U,	// VUZPd16
+    1618312U,	// VUZPd8
+    569736U,	// VUZPq16
+    1094024U,	// VUZPq32
+    1618312U,	// VUZPq8
+    569612U,	// VZIPd16
+    1618188U,	// VZIPd8
+    569612U,	// VZIPq16
+    1093900U,	// VZIPq32
+    1618188U,	// VZIPq8
+    2730724U,	// sysLDMDA
+    875064036U,	// sysLDMDA_UPD
+    2730979U,	// sysLDMDB
+    875064291U,	// sysLDMDB_UPD
+    2732107U,	// sysLDMIA
+    875065419U,	// sysLDMIA_UPD
+    2730998U,	// sysLDMIB
+    875064310U,	// sysLDMIB_UPD
+    2730730U,	// sysSTMDA
+    875064042U,	// sysSTMDA_UPD
+    2730986U,	// sysSTMDB
+    875064298U,	// sysSTMDB_UPD
+    2732142U,	// sysSTMIA
+    875065454U,	// sysSTMIA_UPD
+    2731004U,	// sysSTMIB
+    875064316U,	// sysSTMIB_UPD
+    2632970U,	// t2ADCri
+    43527434U,	// t2ADCrr
+    43584778U,	// t2ADCrs
+    43527502U,	// t2ADDri
+    2683996U,	// t2ADDri12
+    43527502U,	// t2ADDrr
+    43584846U,	// t2ADDrs
+    43527502U,	// t2ADDspImm
+    2683996U,	// t2ADDspImm12
+    43544993U,	// t2ADR
+    2633103U,	// t2ANDri
+    43527567U,	// t2ANDrr
+    43584911U,	// t2ANDrs
+    43528674U,	// t2ASRri
+    43528674U,	// t2ASRrr
+    4413U,	// t2AUT
+    808046091U,	// t2AUTG
+    1050258356U,	// t2B
+    2682130U,	// t2BFC
+    2666240U,	// t2BFI
+    1009282941U,	// t2BFLi
+    1009284513U,	// t2BFLr
+    1009282540U,	// t2BFi
     3962668948U,	// t2BFic
-    1009284453U,	// t2BFr
-    2633002U,	// t2BICri
-    43527466U,	// t2BICrr
-    43584810U,	// t2BICrs
+    1009284434U,	// t2BFr
+    2632983U,	// t2BICri
+    43527447U,	// t2BICrr
+    43584791U,	// t2BICrs
     1917U,	// t2BTI
-    808047535U,	// t2BXAUT
-    2731813U,	// t2BXJ
-    1050258375U,	// t2Bcc
-    1277825307U,	// t2CDP
+    808047516U,	// t2BXAUT
+    2731794U,	// t2BXJ
+    1050258356U,	// t2Bcc
+    1277825288U,	// t2CDP
     1277823290U,	// t2CDP2
-    4838744U,	// t2CLREX
-    2821312627U,	// t2CLRM
-    2651655U,	// t2CLZ
-    43544756U,	// t2CMNri
-    43544756U,	// t2CMNzrr
-    43577524U,	// t2CMNzrs
-    43544869U,	// t2CMPri
-    43544869U,	// t2CMPrr
-    43577637U,	// t2CMPrs
+    4838725U,	// t2CLREX
+    2821312608U,	// t2CLRM
+    2651636U,	// t2CLZ
+    43544737U,	// t2CMNri
+    43544737U,	// t2CMNzrr
+    43577505U,	// t2CMNzrs
+    43544850U,	// t2CMPri
+    43544850U,	// t2CMPrr
+    43577618U,	// t2CMPrs
     4802484U,	// t2CPS1p
-    1452986984U,	// t2CPS2p
-    1412092520U,	// t2CPS3p
+    1452986965U,	// t2CPS2p
+    1412092501U,	// t2CPS3p
     875644665U,	// t2CRC32B
     875644673U,	// t2CRC32CB
     875644783U,	// t2CRC32CH
@@ -4737,434 +4745,434 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     875644716U,	// t2CSINC
     875644874U,	// t2CSINV
     875644768U,	// t2CSNEG
-    2731527U,	// t2DBG
+    2731508U,	// t2DBG
     4835593U,	// t2DCPS1
     4835658U,	// t2DCPS2
     4835679U,	// t2DCPS3
     875644842U,	// t2DLS
-    4029262904U,	// t2DMB
-    4029263000U,	// t2DSB
-    2634211U,	// t2EORri
-    43528675U,	// t2EORrr
-    43586019U,	// t2EORrs
-    43627291U,	// t2HINT
+    4029262885U,	// t2DMB
+    4029262981U,	// t2DSB
+    2634192U,	// t2EORri
+    43528656U,	// t2EORrr
+    43586000U,	// t2EORrs
+    43627272U,	// t2HINT
     4802513U,	// t2HVC
-    4096371868U,	// t2ISB
-    69751531U,	// t2IT
+    4096371849U,	// t2ISB
+    69751512U,	// t2IT
     0U,	// t2Int_eh_sjlj_setjmp
     0U,	// t2Int_eh_sjlj_setjmp_nofp
-    2648819U,	// t2LDA
-    2649028U,	// t2LDAB
-    2651462U,	// t2LDAEX
-    2649339U,	// t2LDAEXB
-    2682302U,	// t2LDAEXD
-    2649835U,	// t2LDAEXH
-    2649635U,	// t2LDAH
-    1277734697U,	// t2LDC2L_OFFSET
-    1277734697U,	// t2LDC2L_OPTION
-    1277734697U,	// t2LDC2L_POST
-    1277734697U,	// t2LDC2L_PRE
+    2648800U,	// t2LDA
+    2649009U,	// t2LDAB
+    2651443U,	// t2LDAEX
+    2649320U,	// t2LDAEXB
+    2682283U,	// t2LDAEXD
+    2649816U,	// t2LDAEXH
+    2649616U,	// t2LDAH
+    1277734678U,	// t2LDC2L_OFFSET
+    1277734678U,	// t2LDC2L_OPTION
+    1277734678U,	// t2LDC2L_POST
+    1277734678U,	// t2LDC2L_PRE
     1277733152U,	// t2LDC2_OFFSET
     1277733152U,	// t2LDC2_OPTION
     1277733152U,	// t2LDC2_POST
     1277733152U,	// t2LDC2_PRE
-    1277734765U,	// t2LDCL_OFFSET
-    1277734765U,	// t2LDCL_OPTION
-    1277734765U,	// t2LDCL_POST
-    1277734765U,	// t2LDCL_PRE
-    1277734177U,	// t2LDC_OFFSET
-    1277734177U,	// t2LDC_OPTION
-    1277734177U,	// t2LDC_POST
-    1277734177U,	// t2LDC_PRE
-    2730998U,	// t2LDMDB
-    875064310U,	// t2LDMDB_UPD
-    43626590U,	// t2LDMIA
-    915959902U,	// t2LDMIA_UPD
-    2683571U,	// t2LDRBT
-    2665613U,	// t2LDRB_POST
-    2665613U,	// t2LDRB_PRE
-    43576461U,	// t2LDRBi12
-    2681997U,	// t2LDRBi8
-    43543693U,	// t2LDRBpci
-    43560077U,	// t2LDRBs
-    2674087U,	// t2LDRD_POST
-    2674087U,	// t2LDRD_PRE
-    2665895U,	// t2LDRDi8
-    2684242U,	// t2LDREX
-    2649353U,	// t2LDREXB
-    2682316U,	// t2LDREXD
-    2649849U,	// t2LDREXH
-    2683606U,	// t2LDRHT
-    2666131U,	// t2LDRH_POST
-    2666131U,	// t2LDRH_PRE
-    43576979U,	// t2LDRHi12
-    2682515U,	// t2LDRHi8
-    43544211U,	// t2LDRHpci
-    43560595U,	// t2LDRHs
-    2683583U,	// t2LDRSBT
-    2665632U,	// t2LDRSB_POST
-    2665632U,	// t2LDRSB_PRE
-    43576480U,	// t2LDRSBi12
-    2682016U,	// t2LDRSBi8
-    43543712U,	// t2LDRSBpci
-    43560096U,	// t2LDRSBs
-    2683618U,	// t2LDRSHT
-    2666170U,	// t2LDRSH_POST
-    2666170U,	// t2LDRSH_PRE
-    43577018U,	// t2LDRSHi12
-    2682554U,	// t2LDRSHi8
-    43544250U,	// t2LDRSHpci
-    43560634U,	// t2LDRSHs
-    2683765U,	// t2LDRT
-    2666937U,	// t2LDR_POST
-    2666937U,	// t2LDR_PRE
-    43577785U,	// t2LDRi12
-    2683321U,	// t2LDRi8
-    43545017U,	// t2LDRpci
-    43561401U,	// t2LDRs
+    1277734746U,	// t2LDCL_OFFSET
+    1277734746U,	// t2LDCL_OPTION
+    1277734746U,	// t2LDCL_POST
+    1277734746U,	// t2LDCL_PRE
+    1277734158U,	// t2LDC_OFFSET
+    1277734158U,	// t2LDC_OPTION
+    1277734158U,	// t2LDC_POST
+    1277734158U,	// t2LDC_PRE
+    2730979U,	// t2LDMDB
+    875064291U,	// t2LDMDB_UPD
+    43626571U,	// t2LDMIA
+    915959883U,	// t2LDMIA_UPD
+    2683552U,	// t2LDRBT
+    2665594U,	// t2LDRB_POST
+    2665594U,	// t2LDRB_PRE
+    43576442U,	// t2LDRBi12
+    2681978U,	// t2LDRBi8
+    43543674U,	// t2LDRBpci
+    43560058U,	// t2LDRBs
+    2674068U,	// t2LDRD_POST
+    2674068U,	// t2LDRD_PRE
+    2665876U,	// t2LDRDi8
+    2684223U,	// t2LDREX
+    2649334U,	// t2LDREXB
+    2682297U,	// t2LDREXD
+    2649830U,	// t2LDREXH
+    2683587U,	// t2LDRHT
+    2666112U,	// t2LDRH_POST
+    2666112U,	// t2LDRH_PRE
+    43576960U,	// t2LDRHi12
+    2682496U,	// t2LDRHi8
+    43544192U,	// t2LDRHpci
+    43560576U,	// t2LDRHs
+    2683564U,	// t2LDRSBT
+    2665613U,	// t2LDRSB_POST
+    2665613U,	// t2LDRSB_PRE
+    43576461U,	// t2LDRSBi12
+    2681997U,	// t2LDRSBi8
+    43543693U,	// t2LDRSBpci
+    43560077U,	// t2LDRSBs
+    2683599U,	// t2LDRSHT
+    2666151U,	// t2LDRSH_POST
+    2666151U,	// t2LDRSH_PRE
+    43576999U,	// t2LDRSHi12
+    2682535U,	// t2LDRSHi8
+    43544231U,	// t2LDRSHpci
+    43560615U,	// t2LDRSHs
+    2683746U,	// t2LDRT
+    2666918U,	// t2LDR_POST
+    2666918U,	// t2LDR_PRE
+    43577766U,	// t2LDRi12
+    2683302U,	// t2LDRi8
+    43544998U,	// t2LDRpci
+    43561382U,	// t2LDRs
     4818775U,	// t2LE
     10577751U,	// t2LEUpdate
-    43528241U,	// t2LSLri
-    43528241U,	// t2LSLrr
-    43528700U,	// t2LSRri
-    43528700U,	// t2LSRrr
-    1277825456U,	// t2MCR
+    43528222U,	// t2LSLri
+    43528222U,	// t2LSLrr
+    43528681U,	// t2LSRri
+    43528681U,	// t2LSRrr
+    1277825437U,	// t2MCR
     1277823295U,	// t2MCR2
-    1277743595U,	// t2MCRR
+    1277743576U,	// t2MCRR
     1277741380U,	// t2MCRR2
-    2665271U,	// t2MLA
-    2667072U,	// t2MLS
-    2683840U,	// t2MOVTi16
-    43553886U,	// t2MOVi
-    2651269U,	// t2MOVi16
-    43553886U,	// t2MOVr
-    43545201U,	// t2MOVsra_flag
-    43545206U,	// t2MOVsrl_flag
-    1076497720U,	// t2MRC
+    2665252U,	// t2MLA
+    2667053U,	// t2MLS
+    2683821U,	// t2MOVTi16
+    43553867U,	// t2MOVi
+    2651250U,	// t2MOVi16
+    43553867U,	// t2MOVr
+    43545182U,	// t2MOVsra_flag
+    43545187U,	// t2MOVsrl_flag
+    1076497701U,	// t2MRC
     1076496677U,	// t2MRC2
-    1747504444U,	// t2MRRC
+    1747504425U,	// t2MRRC
     1747503402U,	// t2MRRC2
-    2732653U,	// t2MRS_AR
-    2650733U,	// t2MRS_M
-    2650733U,	// t2MRSbanked
-    2732653U,	// t2MRSsys_AR
-    1814589953U,	// t2MSR_AR
-    1814589953U,	// t2MSR_M
-    1881698817U,	// t2MSRbanked
-    2682945U,	// t2MUL
-    2658565U,	// t2MVNi
-    43553029U,	// t2MVNr
-    43528453U,	// t2MVNs
-    2633941U,	// t2ORNri
-    2633941U,	// t2ORNrr
-    2691285U,	// t2ORNrs
-    2634225U,	// t2ORRri
-    43528689U,	// t2ORRrr
-    43586033U,	// t2ORRrs
-    4397U,	// t2PAC
-    4413U,	// t2PACBTI
-    2731531U,	// t2PACG
-    2667166U,	// t2PKHBT
-    2665649U,	// t2PKHTB
-    4163400820U,	// t2PLDWi12
-    4230509684U,	// t2PLDWi8
-    2684020U,	// t2PLDWs
-    4163399062U,	// t2PLDi12
-    4230507926U,	// t2PLDi8
-    69840278U,	// t2PLDpci
-    2682262U,	// t2PLDs
-    4163399447U,	// t2PLIi12
-    4230508311U,	// t2PLIi8
-    69840663U,	// t2PLIpci
-    2682647U,	// t2PLIs
-    2682245U,	// t2QADD
+    2732634U,	// t2MRS_AR
+    2650714U,	// t2MRS_M
+    2650714U,	// t2MRSbanked
+    2732634U,	// t2MRSsys_AR
+    1814589934U,	// t2MSR_AR
+    1814589934U,	// t2MSR_M
+    1881698798U,	// t2MSRbanked
+    2682926U,	// t2MUL
+    2658546U,	// t2MVNi
+    43553010U,	// t2MVNr
+    43528434U,	// t2MVNs
+    2633922U,	// t2ORNri
+    2633922U,	// t2ORNrr
+    2691266U,	// t2ORNrs
+    2634206U,	// t2ORRri
+    43528670U,	// t2ORRrr
+    43586014U,	// t2ORRrs
+    4378U,	// t2PAC
+    4394U,	// t2PACBTI
+    2731512U,	// t2PACG
+    2667147U,	// t2PKHBT
+    2665630U,	// t2PKHTB
+    4163400801U,	// t2PLDWi12
+    4230509665U,	// t2PLDWi8
+    2684001U,	// t2PLDWs
+    4163399043U,	// t2PLDi12
+    4230507907U,	// t2PLDi8
+    69840259U,	// t2PLDpci
+    2682243U,	// t2PLDs
+    4163399428U,	// t2PLIi12
+    4230508292U,	// t2PLIi8
+    69840644U,	// t2PLIpci
+    2682628U,	// t2PLIs
+    2682226U,	// t2QADD
     2681301U,	// t2QADD16
     2681404U,	// t2QADD8
-    2684362U,	// t2QASX
-    2682219U,	// t2QDADD
-    2682070U,	// t2QDSUB
-    2684108U,	// t2QSAX
-    2682083U,	// t2QSUB
+    2684343U,	// t2QASX
+    2682200U,	// t2QDADD
+    2682051U,	// t2QDSUB
+    2684089U,	// t2QSAX
+    2682064U,	// t2QSUB
     2681263U,	// t2QSUB16
     2681365U,	// t2QSUB8
-    2650857U,	// t2RBIT
-    43545645U,	// t2REV
+    2650838U,	// t2RBIT
+    43545626U,	// t2REV
     43543033U,	// t2REV16
-    43544261U,	// t2REVSH
-    2730991U,	// t2RFEDB
-    2730991U,	// t2RFEDBW
-    2730779U,	// t2RFEIA
-    2730779U,	// t2RFEIAW
-    43528679U,	// t2RORri
-    43528679U,	// t2RORrr
-    2659769U,	// t2RRX
-    43527330U,	// t2RSBri
-    2632866U,	// t2RSBrr
-    2690210U,	// t2RSBrs
+    43544242U,	// t2REVSH
+    2730972U,	// t2RFEDB
+    2730972U,	// t2RFEDBW
+    2730760U,	// t2RFEIA
+    2730760U,	// t2RFEIAW
+    43528660U,	// t2RORri
+    43528660U,	// t2RORrr
+    2659750U,	// t2RRX
+    43527311U,	// t2RSBri
+    2632847U,	// t2RSBrr
+    2690191U,	// t2RSBrs
     2681308U,	// t2SADD16
     2681410U,	// t2SADD8
-    2684367U,	// t2SASX
-    3225U,	// t2SB
-    2632984U,	// t2SBCri
-    43527448U,	// t2SBCrr
-    43584792U,	// t2SBCrs
-    2667876U,	// t2SBFX
-    2683953U,	// t2SDIV
-    2682764U,	// t2SEL
+    2684348U,	// t2SASX
+    3206U,	// t2SB
+    2632965U,	// t2SBCri
+    43527429U,	// t2SBCrr
+    43584773U,	// t2SBCrs
+    2667857U,	// t2SBFX
+    2683934U,	// t2SDIV
+    2682745U,	// t2SEL
     4802460U,	// t2SETPAN
-    4836891U,	// t2SG
+    4836872U,	// t2SG
     2681284U,	// t2SHADD16
     2681389U,	// t2SHADD8
-    2684349U,	// t2SHASX
-    2684095U,	// t2SHSAX
+    2684330U,	// t2SHASX
+    2684076U,	// t2SHSAX
     2681246U,	// t2SHSUB16
     2681350U,	// t2SHSUB8
-    2731316U,	// t2SMC
-    2665429U,	// t2SMLABB
-    2667159U,	// t2SMLABT
-    2665805U,	// t2SMLAD
-    2667802U,	// t2SMLADX
-    2756432U,	// t2SMLAL
-    2755548U,	// t2SMLALBB
-    2757284U,	// t2SMLALBT
-    2755983U,	// t2SMLALD
-    2757928U,	// t2SMLALDX
-    2755767U,	// t2SMLALTB
-    2757526U,	// t2SMLALTT
-    2665642U,	// t2SMLATB
-    2667407U,	// t2SMLATT
-    2665709U,	// t2SMLAWB
-    2667461U,	// t2SMLAWT
-    2665906U,	// t2SMLSD
-    2667832U,	// t2SMLSDX
-    2755994U,	// t2SMLSLD
-    2757936U,	// t2SMLSLDX
-    2665275U,	// t2SMMLA
-    2666921U,	// t2SMMLAR
-    2667070U,	// t2SMMLS
-    2667001U,	// t2SMMLSR
-    2682949U,	// t2SMMUL
-    2683355U,	// t2SMMULR
-    2682195U,	// t2SMUAD
-    2684193U,	// t2SMUADX
-    2681828U,	// t2SMULBB
-    2683564U,	// t2SMULBT
-    2666486U,	// t2SMULL
-    2682047U,	// t2SMULTB
-    2683806U,	// t2SMULTT
-    2682100U,	// t2SMULWB
-    2683852U,	// t2SMULWT
-    2682296U,	// t2SMUSD
-    2684223U,	// t2SMUSDX
-    44149763U,	// t2SRSDB
-    44674051U,	// t2SRSDB_UPD
-    44149551U,	// t2SRSIA
-    44673839U,	// t2SRSIA_UPD
-    2667144U,	// t2SSAT
+    2731297U,	// t2SMC
+    2665410U,	// t2SMLABB
+    2667140U,	// t2SMLABT
+    2665786U,	// t2SMLAD
+    2667783U,	// t2SMLADX
+    2756413U,	// t2SMLAL
+    2755529U,	// t2SMLALBB
+    2757265U,	// t2SMLALBT
+    2755964U,	// t2SMLALD
+    2757909U,	// t2SMLALDX
+    2755748U,	// t2SMLALTB
+    2757507U,	// t2SMLALTT
+    2665623U,	// t2SMLATB
+    2667388U,	// t2SMLATT
+    2665690U,	// t2SMLAWB
+    2667442U,	// t2SMLAWT
+    2665887U,	// t2SMLSD
+    2667813U,	// t2SMLSDX
+    2755975U,	// t2SMLSLD
+    2757917U,	// t2SMLSLDX
+    2665256U,	// t2SMMLA
+    2666902U,	// t2SMMLAR
+    2667051U,	// t2SMMLS
+    2666982U,	// t2SMMLSR
+    2682930U,	// t2SMMUL
+    2683336U,	// t2SMMULR
+    2682176U,	// t2SMUAD
+    2684174U,	// t2SMUADX
+    2681809U,	// t2SMULBB
+    2683545U,	// t2SMULBT
+    2666467U,	// t2SMULL
+    2682028U,	// t2SMULTB
+    2683787U,	// t2SMULTT
+    2682081U,	// t2SMULWB
+    2683833U,	// t2SMULWT
+    2682277U,	// t2SMUSD
+    2684204U,	// t2SMUSDX
+    44149744U,	// t2SRSDB
+    44674032U,	// t2SRSDB_UPD
+    44149532U,	// t2SRSIA
+    44673820U,	// t2SRSIA_UPD
+    2667125U,	// t2SSAT
     2681322U,	// t2SSAT16
-    2684113U,	// t2SSAX
+    2684094U,	// t2SSAX
     2681270U,	// t2SSUB16
     2681371U,	// t2SSUB8
-    1277734703U,	// t2STC2L_OFFSET
-    1277734703U,	// t2STC2L_OPTION
-    1277734703U,	// t2STC2L_POST
-    1277734703U,	// t2STC2L_PRE
+    1277734684U,	// t2STC2L_OFFSET
+    1277734684U,	// t2STC2L_OPTION
+    1277734684U,	// t2STC2L_POST
+    1277734684U,	// t2STC2L_PRE
     1277733168U,	// t2STC2_OFFSET
     1277733168U,	// t2STC2_OPTION
     1277733168U,	// t2STC2_POST
     1277733168U,	// t2STC2_PRE
-    1277734770U,	// t2STCL_OFFSET
-    1277734770U,	// t2STCL_OPTION
-    1277734770U,	// t2STCL_POST
-    1277734770U,	// t2STCL_PRE
-    1277734213U,	// t2STC_OFFSET
-    1277734213U,	// t2STC_OPTION
-    1277734213U,	// t2STC_POST
-    1277734213U,	// t2STC_PRE
-    2650171U,	// t2STL
-    2649132U,	// t2STLB
-    2684236U,	// t2STLEX
-    2682114U,	// t2STLEXB
-    2665925U,	// t2STLEXD
-    2682610U,	// t2STLEXH
-    2649711U,	// t2STLH
-    2731005U,	// t2STMDB
-    875064317U,	// t2STMDB_UPD
-    43626625U,	// t2STMIA
-    915959937U,	// t2STMIA_UPD
-    2683577U,	// t2STRBT
-    875080851U,	// t2STRB_POST
-    875080851U,	// t2STRB_PRE
-    43576467U,	// t2STRBi12
-    2682003U,	// t2STRBi8
-    43560083U,	// t2STRBs
-    875089325U,	// t2STRD_POST
-    875089325U,	// t2STRD_PRE
-    2665901U,	// t2STRDi8
-    2667870U,	// t2STREX
-    2682128U,	// t2STREXB
-    2665939U,	// t2STREXD
-    2682624U,	// t2STREXH
-    2683612U,	// t2STRHT
-    875081369U,	// t2STRH_POST
-    875081369U,	// t2STRH_PRE
-    43576985U,	// t2STRHi12
-    2682521U,	// t2STRHi8
-    43560601U,	// t2STRHs
-    2683776U,	// t2STRT
-    875082259U,	// t2STR_POST
-    875082259U,	// t2STR_PRE
-    43577875U,	// t2STRi12
-    2683411U,	// t2STRi8
-    43561491U,	// t2STRs
-    45199924U,	// t2SUBS_PC_LR
-    43527384U,	// t2SUBri
-    2684009U,	// t2SUBri12
-    43527384U,	// t2SUBrr
-    43584728U,	// t2SUBrs
-    43527384U,	// t2SUBspImm
-    2684009U,	// t2SUBspImm12
-    2665417U,	// t2SXTAB
+    1277734751U,	// t2STCL_OFFSET
+    1277734751U,	// t2STCL_OPTION
+    1277734751U,	// t2STCL_POST
+    1277734751U,	// t2STCL_PRE
+    1277734194U,	// t2STC_OFFSET
+    1277734194U,	// t2STC_OPTION
+    1277734194U,	// t2STC_POST
+    1277734194U,	// t2STC_PRE
+    2650152U,	// t2STL
+    2649113U,	// t2STLB
+    2684217U,	// t2STLEX
+    2682095U,	// t2STLEXB
+    2665906U,	// t2STLEXD
+    2682591U,	// t2STLEXH
+    2649692U,	// t2STLH
+    2730986U,	// t2STMDB
+    875064298U,	// t2STMDB_UPD
+    43626606U,	// t2STMIA
+    915959918U,	// t2STMIA_UPD
+    2683558U,	// t2STRBT
+    875080832U,	// t2STRB_POST
+    875080832U,	// t2STRB_PRE
+    43576448U,	// t2STRBi12
+    2681984U,	// t2STRBi8
+    43560064U,	// t2STRBs
+    875089306U,	// t2STRD_POST
+    875089306U,	// t2STRD_PRE
+    2665882U,	// t2STRDi8
+    2667851U,	// t2STREX
+    2682109U,	// t2STREXB
+    2665920U,	// t2STREXD
+    2682605U,	// t2STREXH
+    2683593U,	// t2STRHT
+    875081350U,	// t2STRH_POST
+    875081350U,	// t2STRH_PRE
+    43576966U,	// t2STRHi12
+    2682502U,	// t2STRHi8
+    43560582U,	// t2STRHs
+    2683757U,	// t2STRT
+    875082240U,	// t2STR_POST
+    875082240U,	// t2STR_PRE
+    43577856U,	// t2STRi12
+    2683392U,	// t2STRi8
+    43561472U,	// t2STRs
+    45199905U,	// t2SUBS_PC_LR
+    43527365U,	// t2SUBri
+    2683990U,	// t2SUBri12
+    43527365U,	// t2SUBrr
+    43584709U,	// t2SUBrs
+    43527365U,	// t2SUBspImm
+    2683990U,	// t2SUBspImm12
+    2665398U,	// t2SXTAB
     2664832U,	// t2SXTAB16
-    2666041U,	// t2SXTAH
-    43576524U,	// t2SXTB
+    2666022U,	// t2SXTAH
+    43576505U,	// t2SXTB
     2681232U,	// t2SXTB16
-    43577035U,	// t2SXTH
-    136866795U,	// t2TBB
-    203976261U,	// t2TBH
-    43544997U,	// t2TEQri
-    43544997U,	// t2TEQrr
-    43577765U,	// t2TEQrs
-    271166630U,	// t2TSB
-    43545483U,	// t2TSTri
-    43545483U,	// t2TSTrr
-    43578251U,	// t2TSTrs
-    2651027U,	// t2TT
-    2648959U,	// t2TTA
-    2650770U,	// t2TTAT
-    2651045U,	// t2TTT
+    43577016U,	// t2SXTH
+    136866776U,	// t2TBB
+    203976242U,	// t2TBH
+    43544978U,	// t2TEQri
+    43544978U,	// t2TEQrr
+    43577746U,	// t2TEQrs
+    271166611U,	// t2TSB
+    43545464U,	// t2TSTri
+    43545464U,	// t2TSTrr
+    43578232U,	// t2TSTrs
+    2651008U,	// t2TT
+    2648940U,	// t2TTA
+    2650751U,	// t2TTAT
+    2651026U,	// t2TTT
     2681315U,	// t2UADD16
     2681416U,	// t2UADD8
-    2684372U,	// t2UASX
-    2667881U,	// t2UBFX
+    2684353U,	// t2UASX
+    2667862U,	// t2UBFX
     4802520U,	// t2UDF
-    2683958U,	// t2UDIV
+    2683939U,	// t2UDIV
     2681292U,	// t2UHADD16
     2681396U,	// t2UHADD8
-    2684355U,	// t2UHASX
-    2684101U,	// t2UHSAX
+    2684336U,	// t2UHASX
+    2684082U,	// t2UHSAX
     2681254U,	// t2UHSUB16
     2681357U,	// t2UHSUB8
-    2756405U,	// t2UMAAL
-    2756438U,	// t2UMLAL
-    2666492U,	// t2UMULL
+    2756386U,	// t2UMAAL
+    2756419U,	// t2UMLAL
+    2666473U,	// t2UMULL
     2681300U,	// t2UQADD16
     2681403U,	// t2UQADD8
-    2684361U,	// t2UQASX
-    2684107U,	// t2UQSAX
+    2684342U,	// t2UQASX
+    2684088U,	// t2UQSAX
     2681262U,	// t2UQSUB16
     2681364U,	// t2UQSUB8
     2681383U,	// t2USAD8
     2664959U,	// t2USADA8
-    2667149U,	// t2USAT
+    2667130U,	// t2USAT
     2681329U,	// t2USAT16
-    2684118U,	// t2USAX
+    2684099U,	// t2USAX
     2681277U,	// t2USUB16
     2681377U,	// t2USUB8
-    2665423U,	// t2UXTAB
+    2665404U,	// t2UXTAB
     2664840U,	// t2UXTAB16
-    2666047U,	// t2UXTAH
-    43576529U,	// t2UXTB
+    2666028U,	// t2UXTAH
+    43576510U,	// t2UXTB
     2681239U,	// t2UXTB16
-    43577040U,	// t2UXTH
+    43577021U,	// t2UXTH
     875644847U,	// t2WLS
-    985484573U,	// tADC
-    2682209U,	// tADDhirr
-    851266913U,	// tADDi3
-    985484641U,	// tADDi8
-    2682209U,	// tADDrSP
-    2682209U,	// tADDrSPi
-    851266913U,	// tADDrr
-    2682209U,	// tADDspi
-    2682209U,	// tADDspr
-    2650548U,	// tADR
-    985484706U,	// tAND
-    851268085U,	// tASRri
-    985485813U,	// tASRrr
-    1009363911U,	// tB
-    985484586U,	// tBIC
+    985484554U,	// tADC
+    2682190U,	// tADDhirr
+    851266894U,	// tADDi3
+    985484622U,	// tADDi8
+    2682190U,	// tADDrSP
+    2682190U,	// tADDrSPi
+    851266894U,	// tADDrr
+    2682190U,	// tADDspi
+    2682190U,	// tADDspr
+    2650529U,	// tADR
+    985484687U,	// tAND
+    851268066U,	// tASRri
+    985485794U,	// tASRrr
+    1009363892U,	// tB
+    985484567U,	// tBIC
     4802500U,	// tBKPT
-    338284388U,	// tBL
-    808047199U,	// tBLXNSr
-    338286000U,	// tBLXi
-    808048048U,	// tBLXr
-    2733322U,	// tBX
-    2732634U,	// tBXNS
-    1009363911U,	// tBcc
+    338284369U,	// tBL
+    808047180U,	// tBLXNSr
+    338285981U,	// tBLXi
+    808048029U,	// tBLXr
+    2733303U,	// tBX
+    2732615U,	// tBXNS
+    1009363892U,	// tBcc
     3962652676U,	// tCBNZ
     3962652671U,	// tCBZ
-    2650292U,	// tCMNz
-    2650405U,	// tCMPhir
-    2650405U,	// tCMPi8
-    2650405U,	// tCMPr
-    1409471080U,	// tCPS
-    985485795U,	// tEOR
-    2732827U,	// tHINT
+    2650273U,	// tCMNz
+    2650386U,	// tCMPhir
+    2650386U,	// tCMPi8
+    2650386U,	// tCMPr
+    1409471061U,	// tCPS
+    985485776U,	// tEOR
+    2732808U,	// tHINT
     4802495U,	// tHLT
     0U,	// tInt_WIN_eh_sjlj_longjmp
     0U,	// tInt_eh_sjlj_longjmp
     0U,	// tInt_eh_sjlj_setjmp
-    2732126U,	// tLDMIA
-    2681997U,	// tLDRBi
-    2681997U,	// tLDRBr
-    2682515U,	// tLDRHi
-    2682515U,	// tLDRHr
-    2682016U,	// tLDRSB
-    2682554U,	// tLDRSH
-    2683321U,	// tLDRi
-    2650553U,	// tLDRpci
-    2683321U,	// tLDRr
-    2683321U,	// tLDRspi
-    851267633U,	// tLSLri
-    985485361U,	// tLSLrr
-    851268092U,	// tLSRri
-    985485820U,	// tLSRrr
+    2732107U,	// tLDMIA
+    2681978U,	// tLDRBi
+    2681978U,	// tLDRBr
+    2682496U,	// tLDRHi
+    2682496U,	// tLDRHr
+    2681997U,	// tLDRSB
+    2682535U,	// tLDRSH
+    2683302U,	// tLDRi
+    2650534U,	// tLDRpci
+    2683302U,	// tLDRr
+    2683302U,	// tLDRspi
+    851267614U,	// tLSLri
+    985485342U,	// tLSLrr
+    851268073U,	// tLSRri
+    985485801U,	// tLSRrr
     875644857U,	// tMOVSr
-    1187337310U,	// tMOVi8
-    2651230U,	// tMOVr
-    851267649U,	// tMUL
-    1187336453U,	// tMVN
-    985485809U,	// tORR
+    1187337291U,	// tMOVi8
+    2651211U,	// tMOVr
+    851267630U,	// tMUL
+    1187336434U,	// tMVN
+    985485790U,	// tORR
     0U,	// tPICADD
-    2821312809U,	// tPOP
-    2821312192U,	// tPUSH
-    2651181U,	// tREV
+    2821312790U,	// tPOP
+    2821312173U,	// tPUSH
+    2651162U,	// tREV
     2648569U,	// tREV16
-    2649797U,	// tREVSH
-    985485799U,	// tROR
-    2126859426U,	// tRSB
-    985484568U,	// tSBC
+    2649778U,	// tREVSH
+    985485780U,	// tROR
+    2126859407U,	// tRSB
+    985484549U,	// tSBC
     280399U,	// tSETEND
-    875065473U,	// tSTMIA_UPD
-    2682003U,	// tSTRBi
-    2682003U,	// tSTRBr
-    2682521U,	// tSTRHi
-    2682521U,	// tSTRHr
-    2683411U,	// tSTRi
-    2683411U,	// tSTRr
-    2683411U,	// tSTRspi
-    851266776U,	// tSUBi3
-    985484504U,	// tSUBi8
-    851266776U,	// tSUBrr
-    2682072U,	// tSUBspi
-    2731337U,	// tSVC
-    2649292U,	// tSXTB
-    2649803U,	// tSXTH
-    4374U,	// tTRAP
-    2651019U,	// tTST
+    875065454U,	// tSTMIA_UPD
+    2681984U,	// tSTRBi
+    2681984U,	// tSTRBr
+    2682502U,	// tSTRHi
+    2682502U,	// tSTRHr
+    2683392U,	// tSTRi
+    2683392U,	// tSTRr
+    2683392U,	// tSTRspi
+    851266757U,	// tSUBi3
+    985484485U,	// tSUBi8
+    851266757U,	// tSUBrr
+    2682053U,	// tSUBspi
+    2731318U,	// tSVC
+    2649273U,	// tSXTB
+    2649784U,	// tSXTH
+    4355U,	// tTRAP
+    2651000U,	// tTST
     4802395U,	// tUDF
-    2649297U,	// tUXTB
-    2649808U,	// tUXTH
+    2649278U,	// tUXTB
+    2649789U,	// tUXTH
     2298U,	// t__brkdiv0
   };
 
@@ -5211,6 +5219,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// PATCHABLE_EVENT_CALL
     0U,	// PATCHABLE_TYPED_EVENT_CALL
     0U,	// ICALL_BRANCH_FUNNEL
+    0U,	// MEMBARRIER
     0U,	// G_ASSERT_SEXT
     0U,	// G_ASSERT_ZEXT
     0U,	// G_ASSERT_ALIGN
@@ -5272,6 +5281,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// G_ATOMICRMW_FSUB
     0U,	// G_ATOMICRMW_FMAX
     0U,	// G_ATOMICRMW_FMIN
+    0U,	// G_ATOMICRMW_UINC_WRAP
+    0U,	// G_ATOMICRMW_UDEC_WRAP
     0U,	// G_FENCE
     0U,	// G_BRCOND
     0U,	// G_BRINDIRECT
@@ -5445,7 +5456,6 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// CMP_SWAP_8
     0U,	// CONSTPOOL_ENTRY
     0U,	// COPY_STRUCT_BYVAL_I32
-    0U,	// CompilerBarrier
     0U,	// ITasm
     0U,	// Int_eh_sjlj_dispatchsetup
     0U,	// Int_eh_sjlj_longjmp
@@ -6497,7 +6507,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     147456U,	// MVE_VMOV_from_lane_s8
     147456U,	// MVE_VMOV_from_lane_u16
     147456U,	// MVE_VMOV_from_lane_u8
-    10650376U,	// MVE_VMOV_q_rr
+    164616U,	// MVE_VMOV_q_rr
     167772160U,	// MVE_VMOV_rr_q
     32U,	// MVE_VMOV_to_lane_16
     32U,	// MVE_VMOV_to_lane_32
@@ -7077,10 +7087,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2838U,	// STC_PRE
     128U,	// STL
     128U,	// STLB
-    11010048U,	// STLEX
-    11010048U,	// STLEXB
+    10485760U,	// STLEX
+    10485760U,	// STLEXB
     5376U,	// STLEXD
-    11010048U,	// STLEXH
+    10485760U,	// STLEXH
     128U,	// STLH
     18560U,	// STMDA
     532U,	// STMDA_UPD
@@ -7101,10 +7111,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     6291456U,	// STRD
     40371712U,	// STRD_POST
     7341568U,	// STRD_PRE
-    11010048U,	// STREX
-    11010048U,	// STREXB
+    10485760U,	// STREX
+    10485760U,	// STREXB
     5376U,	// STREXD
-    11010048U,	// STREXH
+    10485760U,	// STREXH
     3456U,	// STRH
     7867008U,	// STRHTi
     8391296U,	// STRHTr
@@ -7123,8 +7133,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1572864U,	// SUBrsi
     0U,	// SUBrsr
     2U,	// SVC
-    11010048U,	// SWP
-    11010048U,	// SWPB
+    10485760U,	// SWP
+    10485760U,	// SWPB
     268435456U,	// SXTAB
     268435456U,	// SXTAB16
     268435456U,	// SXTAH
@@ -7287,10 +7297,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VBSLq
     0U,	// VBSPd
     0U,	// VBSPq
-    11535872U,	// VCADDv2f32
-    11535872U,	// VCADDv4f16
-    11535872U,	// VCADDv4f32
-    11535872U,	// VCADDv8f16
+    11011584U,	// VCADDv2f32
+    11011584U,	// VCADDv4f16
+    11011584U,	// VCADDv4f32
+    11011584U,	// VCADDv8f16
     0U,	// VCEQfd
     0U,	// VCEQfq
     0U,	// VCEQhd
@@ -7395,13 +7405,13 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// VCLZv4i32
     16384U,	// VCLZv8i16
     16384U,	// VCLZv8i8
-    12059008U,	// VCMLAv2f32
+    11534720U,	// VCMLAv2f32
     262528U,	// VCMLAv2f32_indexed
-    12059008U,	// VCMLAv4f16
+    11534720U,	// VCMLAv4f16
     262528U,	// VCMLAv4f16_indexed
-    12059008U,	// VCMLAv4f32
+    11534720U,	// VCMLAv4f32
     262528U,	// VCMLAv4f32_indexed
-    12059008U,	// VCMLAv8f16
+    11534720U,	// VCMLAv8f16
     262528U,	// VCMLAv8f16_indexed
     528U,	// VCMPD
     528U,	// VCMPED
@@ -7624,12 +7634,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     518U,	// VLD1DUPq8
     676U,	// VLD1DUPq8wb_fixed
     2687780U,	// VLD1DUPq8wb_register
-    12883366U,	// VLD1LNd16
-    13407782U,	// VLD1LNd16_UPD
-    12883366U,	// VLD1LNd32
-    13407782U,	// VLD1LNd32_UPD
-    12883366U,	// VLD1LNd8
-    13407782U,	// VLD1LNd8_UPD
+    5542U,	// VLD1LNd16
+    5670U,	// VLD1LNd16_UPD
+    5542U,	// VLD1LNd32
+    5670U,	// VLD1LNd32_UPD
+    5542U,	// VLD1LNd8
+    5670U,	// VLD1LNd8_UPD
     0U,	// VLD1LNq16Pseudo
     0U,	// VLD1LNq16Pseudo_UPD
     0U,	// VLD1LNq32Pseudo
@@ -7762,26 +7772,26 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VLD2DUPq8OddPseudo
     0U,	// VLD2DUPq8OddPseudoWB_fixed
     0U,	// VLD2DUPq8OddPseudoWB_register
-    13948454U,	// VLD2LNd16
+    347897856U,	// VLD2LNd16
     0U,	// VLD2LNd16Pseudo
     0U,	// VLD2LNd16Pseudo_UPD
-    349869734U,	// VLD2LNd16_UPD
-    13948454U,	// VLD2LNd32
+    12877824U,	// VLD2LNd16_UPD
+    347897856U,	// VLD2LNd32
     0U,	// VLD2LNd32Pseudo
     0U,	// VLD2LNd32Pseudo_UPD
-    349869734U,	// VLD2LNd32_UPD
-    13948454U,	// VLD2LNd8
+    12877824U,	// VLD2LNd32_UPD
+    347897856U,	// VLD2LNd8
     0U,	// VLD2LNd8Pseudo
     0U,	// VLD2LNd8Pseudo_UPD
-    349869734U,	// VLD2LNd8_UPD
-    13948454U,	// VLD2LNq16
+    12877824U,	// VLD2LNd8_UPD
+    347897856U,	// VLD2LNq16
     0U,	// VLD2LNq16Pseudo
     0U,	// VLD2LNq16Pseudo_UPD
-    349869734U,	// VLD2LNq16_UPD
-    13948454U,	// VLD2LNq32
+    12877824U,	// VLD2LNq16_UPD
+    347897856U,	// VLD2LNq32
     0U,	// VLD2LNq32Pseudo
     0U,	// VLD2LNq32Pseudo_UPD
-    349869734U,	// VLD2LNq32_UPD
+    12877824U,	// VLD2LNq32_UPD
     518U,	// VLD2b16
     676U,	// VLD2b16wb_fixed
     2687780U,	// VLD2b16wb_register
@@ -7818,53 +7828,53 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VLD2q8PseudoWB_register
     676U,	// VLD2q8wb_fixed
     2687780U,	// VLD2q8wb_register
-    333608U,	// VLD3DUPd16
+    317096U,	// VLD3DUPd16
     0U,	// VLD3DUPd16Pseudo
     0U,	// VLD3DUPd16Pseudo_UPD
-    15030056U,	// VLD3DUPd16_UPD
-    333608U,	// VLD3DUPd32
+    13440680U,	// VLD3DUPd16_UPD
+    317096U,	// VLD3DUPd32
     0U,	// VLD3DUPd32Pseudo
     0U,	// VLD3DUPd32Pseudo_UPD
-    15030056U,	// VLD3DUPd32_UPD
-    333608U,	// VLD3DUPd8
+    13440680U,	// VLD3DUPd32_UPD
+    317096U,	// VLD3DUPd8
     0U,	// VLD3DUPd8Pseudo
     0U,	// VLD3DUPd8Pseudo_UPD
-    15030056U,	// VLD3DUPd8_UPD
-    333608U,	// VLD3DUPq16
+    13440680U,	// VLD3DUPd8_UPD
+    317096U,	// VLD3DUPq16
     0U,	// VLD3DUPq16EvenPseudo
     0U,	// VLD3DUPq16OddPseudo
     0U,	// VLD3DUPq16OddPseudo_UPD
-    15030056U,	// VLD3DUPq16_UPD
-    333608U,	// VLD3DUPq32
+    13440680U,	// VLD3DUPq16_UPD
+    317096U,	// VLD3DUPq32
     0U,	// VLD3DUPq32EvenPseudo
     0U,	// VLD3DUPq32OddPseudo
     0U,	// VLD3DUPq32OddPseudo_UPD
-    15030056U,	// VLD3DUPq32_UPD
-    333608U,	// VLD3DUPq8
+    13440680U,	// VLD3DUPq32_UPD
+    317096U,	// VLD3DUPq8
     0U,	// VLD3DUPq8EvenPseudo
     0U,	// VLD3DUPq8OddPseudo
     0U,	// VLD3DUPq8OddPseudo_UPD
-    15030056U,	// VLD3DUPq8_UPD
-    383424166U,	// VLD3LNd16
+    13440680U,	// VLD3DUPq8_UPD
+    369098752U,	// VLD3LNd16
     0U,	// VLD3LNd16Pseudo
     0U,	// VLD3LNd16Pseudo_UPD
-    15505318U,	// VLD3LNd16_UPD
-    383424166U,	// VLD3LNd32
+    369098752U,	// VLD3LNd16_UPD
+    369098752U,	// VLD3LNd32
     0U,	// VLD3LNd32Pseudo
     0U,	// VLD3LNd32Pseudo_UPD
-    15505318U,	// VLD3LNd32_UPD
-    383424166U,	// VLD3LNd8
+    369098752U,	// VLD3LNd32_UPD
+    369098752U,	// VLD3LNd8
     0U,	// VLD3LNd8Pseudo
     0U,	// VLD3LNd8Pseudo_UPD
-    15505318U,	// VLD3LNd8_UPD
-    383424166U,	// VLD3LNq16
+    369098752U,	// VLD3LNd8_UPD
+    369098752U,	// VLD3LNq16
     0U,	// VLD3LNq16Pseudo
     0U,	// VLD3LNq16Pseudo_UPD
-    15505318U,	// VLD3LNq16_UPD
-    383424166U,	// VLD3LNq32
+    369098752U,	// VLD3LNq16_UPD
+    369098752U,	// VLD3LNq32
     0U,	// VLD3LNq32Pseudo
     0U,	// VLD3LNq32Pseudo_UPD
-    15505318U,	// VLD3LNq32_UPD
+    369098752U,	// VLD3LNq32_UPD
     402653184U,	// VLD3d16
     0U,	// VLD3d16Pseudo
     0U,	// VLD3d16Pseudo_UPD
@@ -7892,53 +7902,53 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     402653184U,	// VLD3q8_UPD
     0U,	// VLD3q8oddPseudo
     0U,	// VLD3q8oddPseudo_UPD
-    2971688U,	// VLD4DUPd16
+    2955048U,	// VLD4DUPd16
     0U,	// VLD4DUPd16Pseudo
     0U,	// VLD4DUPd16Pseudo_UPD
-    366632U,	// VLD4DUPd16_UPD
-    2971688U,	// VLD4DUPd32
+    349992U,	// VLD4DUPd16_UPD
+    2955048U,	// VLD4DUPd32
     0U,	// VLD4DUPd32Pseudo
     0U,	// VLD4DUPd32Pseudo_UPD
-    366632U,	// VLD4DUPd32_UPD
-    2971688U,	// VLD4DUPd8
+    349992U,	// VLD4DUPd32_UPD
+    2955048U,	// VLD4DUPd8
     0U,	// VLD4DUPd8Pseudo
     0U,	// VLD4DUPd8Pseudo_UPD
-    366632U,	// VLD4DUPd8_UPD
-    2971688U,	// VLD4DUPq16
+    349992U,	// VLD4DUPd8_UPD
+    2955048U,	// VLD4DUPq16
     0U,	// VLD4DUPq16EvenPseudo
     0U,	// VLD4DUPq16OddPseudo
     0U,	// VLD4DUPq16OddPseudo_UPD
-    366632U,	// VLD4DUPq16_UPD
-    2971688U,	// VLD4DUPq32
+    349992U,	// VLD4DUPq16_UPD
+    2955048U,	// VLD4DUPq32
     0U,	// VLD4DUPq32EvenPseudo
     0U,	// VLD4DUPq32OddPseudo
     0U,	// VLD4DUPq32OddPseudo_UPD
-    366632U,	// VLD4DUPq32_UPD
-    2971688U,	// VLD4DUPq8
+    349992U,	// VLD4DUPq32_UPD
+    2955048U,	// VLD4DUPq8
     0U,	// VLD4DUPq8EvenPseudo
     0U,	// VLD4DUPq8OddPseudo
     0U,	// VLD4DUPq8OddPseudo_UPD
-    366632U,	// VLD4DUPq8_UPD
-    440194982U,	// VLD4LNd16
+    349992U,	// VLD4DUPq8_UPD
+    33554432U,	// VLD4LNd16
     0U,	// VLD4LNd16Pseudo
     0U,	// VLD4LNd16Pseudo_UPD
-    6310U,	// VLD4LNd16_UPD
-    440194982U,	// VLD4LNd32
+    33554432U,	// VLD4LNd16_UPD
+    33554432U,	// VLD4LNd32
     0U,	// VLD4LNd32Pseudo
     0U,	// VLD4LNd32Pseudo_UPD
-    6310U,	// VLD4LNd32_UPD
-    440194982U,	// VLD4LNd8
+    33554432U,	// VLD4LNd32_UPD
+    33554432U,	// VLD4LNd8
     0U,	// VLD4LNd8Pseudo
     0U,	// VLD4LNd8Pseudo_UPD
-    6310U,	// VLD4LNd8_UPD
-    440194982U,	// VLD4LNq16
+    33554432U,	// VLD4LNd8_UPD
+    33554432U,	// VLD4LNq16
     0U,	// VLD4LNq16Pseudo
     0U,	// VLD4LNq16Pseudo_UPD
-    6310U,	// VLD4LNq16_UPD
-    440194982U,	// VLD4LNq32
+    33554432U,	// VLD4LNq16_UPD
+    33554432U,	// VLD4LNq32
     0U,	// VLD4LNq32Pseudo
     0U,	// VLD4LNq32Pseudo_UPD
-    6310U,	// VLD4LNq32_UPD
+    33554432U,	// VLD4LNq32_UPD
     33554432U,	// VLD4d16
     0U,	// VLD4d16Pseudo
     0U,	// VLD4d16Pseudo_UPD
@@ -7973,9 +7983,9 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     532U,	// VLDMSDB_UPD
     18560U,	// VLDMSIA
     532U,	// VLDMSIA_UPD
-    6400U,	// VLDRD
-    6528U,	// VLDRH
-    6400U,	// VLDRS
+    6016U,	// VLDRD
+    6144U,	// VLDRH
+    6016U,	// VLDRS
     0U,	// VLDR_FPCXTNS_off
     42U,	// VLDR_FPCXTNS_post
     0U,	// VLDR_FPCXTNS_pre
@@ -8030,10 +8040,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VMINuv8i8
     49944U,	// VMLAD
     3671552U,	// VMLAH
-    473433600U,	// VMLALslsv2i32
-    473433600U,	// VMLALslsv4i16
-    473433600U,	// VMLALsluv2i32
-    473433600U,	// VMLALsluv4i16
+    439879168U,	// VMLALslsv2i32
+    439879168U,	// VMLALslsv4i16
+    439879168U,	// VMLALsluv2i32
+    439879168U,	// VMLALsluv4i16
     3671552U,	// VMLALsv2i64
     3671552U,	// VMLALsv4i32
     3671552U,	// VMLALsv8i16
@@ -8045,14 +8055,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VMLAfq
     3671552U,	// VMLAhd
     3671552U,	// VMLAhq
-    473433600U,	// VMLAslfd
-    473433600U,	// VMLAslfq
-    473433600U,	// VMLAslhd
-    473433600U,	// VMLAslhq
-    473433600U,	// VMLAslv2i32
-    473433600U,	// VMLAslv4i16
-    473433600U,	// VMLAslv4i32
-    473433600U,	// VMLAslv8i16
+    439879168U,	// VMLAslfd
+    439879168U,	// VMLAslfq
+    439879168U,	// VMLAslhd
+    439879168U,	// VMLAslhq
+    439879168U,	// VMLAslv2i32
+    439879168U,	// VMLAslv4i16
+    439879168U,	// VMLAslv4i32
+    439879168U,	// VMLAslv8i16
     3671552U,	// VMLAv16i8
     3671552U,	// VMLAv2i32
     3671552U,	// VMLAv4i16
@@ -8061,10 +8071,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VMLAv8i8
     49944U,	// VMLSD
     3671552U,	// VMLSH
-    473433600U,	// VMLSLslsv2i32
-    473433600U,	// VMLSLslsv4i16
-    473433600U,	// VMLSLsluv2i32
-    473433600U,	// VMLSLsluv4i16
+    439879168U,	// VMLSLslsv2i32
+    439879168U,	// VMLSLslsv4i16
+    439879168U,	// VMLSLsluv2i32
+    439879168U,	// VMLSLsluv4i16
     3671552U,	// VMLSLsv2i64
     3671552U,	// VMLSLsv4i32
     3671552U,	// VMLSLsv8i16
@@ -8076,14 +8086,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VMLSfq
     3671552U,	// VMLShd
     3671552U,	// VMLShq
-    473433600U,	// VMLSslfd
-    473433600U,	// VMLSslfq
-    473433600U,	// VMLSslhd
-    473433600U,	// VMLSslhq
-    473433600U,	// VMLSslv2i32
-    473433600U,	// VMLSslv4i16
-    473433600U,	// VMLSslv4i32
-    473433600U,	// VMLSslv8i16
+    439879168U,	// VMLSslfd
+    439879168U,	// VMLSslfq
+    439879168U,	// VMLSslhd
+    439879168U,	// VMLSslhq
+    439879168U,	// VMLSslv2i32
+    439879168U,	// VMLSslv4i16
+    439879168U,	// VMLSslv4i32
+    439879168U,	// VMLSslv8i16
     3671552U,	// VMLSv16i8
     3671552U,	// VMLSv2i32
     3671552U,	// VMLSv4i16
@@ -8282,12 +8292,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VQADDuv4i32
     0U,	// VQADDuv8i16
     0U,	// VQADDuv8i8
-    473433600U,	// VQDMLALslv2i32
-    473433600U,	// VQDMLALslv4i16
+    439879168U,	// VQDMLALslv2i32
+    439879168U,	// VQDMLALslv4i16
     3671552U,	// VQDMLALv2i64
     3671552U,	// VQDMLALv4i32
-    473433600U,	// VQDMLSLslv2i32
-    473433600U,	// VQDMLSLslv4i16
+    439879168U,	// VQDMLSLslv2i32
+    439879168U,	// VQDMLSLslv4i16
     3671552U,	// VQDMLSLv2i64
     3671552U,	// VQDMLSLv4i32
     167772160U,	// VQDMULHslv2i32
@@ -8317,18 +8327,18 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// VQNEGv4i32
     16384U,	// VQNEGv8i16
     16384U,	// VQNEGv8i8
-    473433600U,	// VQRDMLAHslv2i32
-    473433600U,	// VQRDMLAHslv4i16
-    473433600U,	// VQRDMLAHslv4i32
-    473433600U,	// VQRDMLAHslv8i16
+    439879168U,	// VQRDMLAHslv2i32
+    439879168U,	// VQRDMLAHslv4i16
+    439879168U,	// VQRDMLAHslv4i32
+    439879168U,	// VQRDMLAHslv8i16
     3671552U,	// VQRDMLAHv2i32
     3671552U,	// VQRDMLAHv4i16
     3671552U,	// VQRDMLAHv4i32
     3671552U,	// VQRDMLAHv8i16
-    473433600U,	// VQRDMLSHslv2i32
-    473433600U,	// VQRDMLSHslv4i16
-    473433600U,	// VQRDMLSHslv4i32
-    473433600U,	// VQRDMLSHslv8i16
+    439879168U,	// VQRDMLSHslv2i32
+    439879168U,	// VQRDMLSHslv4i16
+    439879168U,	// VQRDMLSHslv4i32
+    439879168U,	// VQRDMLSHslv8i16
     3671552U,	// VQRDMLSHv2i32
     3671552U,	// VQRDMLSHv4i16
     3671552U,	// VQRDMLSHv4i32
@@ -8695,12 +8705,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VSRIv4i32
     3671552U,	// VSRIv8i16
     3671552U,	// VSRIv8i8
-    6694U,	// VST1LNd16
-    516201126U,	// VST1LNd16_UPD
-    6694U,	// VST1LNd32
-    516201126U,	// VST1LNd32_UPD
-    6694U,	// VST1LNd8
-    516201126U,	// VST1LNd8_UPD
+    6310U,	// VST1LNd16
+    6438U,	// VST1LNd16_UPD
+    6310U,	// VST1LNd32
+    6438U,	// VST1LNd32_UPD
+    6310U,	// VST1LNd8
+    6438U,	// VST1LNd8_UPD
     0U,	// VST1LNq16Pseudo
     0U,	// VST1LNq16Pseudo_UPD
     0U,	// VST1LNq32Pseudo
@@ -8803,26 +8813,26 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VST1q8LowTPseudo_UPD
     0U,	// VST1q8wb_fixed
     0U,	// VST1q8wb_register
-    440194470U,	// VST2LNd16
+    13926784U,	// VST2LNd16
     0U,	// VST2LNd16Pseudo
     0U,	// VST2LNd16Pseudo_UPD
-    440718886U,	// VST2LNd16_UPD
-    440194470U,	// VST2LNd32
+    482122112U,	// VST2LNd16_UPD
+    13926784U,	// VST2LNd32
     0U,	// VST2LNd32Pseudo
     0U,	// VST2LNd32Pseudo_UPD
-    440718886U,	// VST2LNd32_UPD
-    440194470U,	// VST2LNd8
+    482122112U,	// VST2LNd32_UPD
+    13926784U,	// VST2LNd8
     0U,	// VST2LNd8Pseudo
     0U,	// VST2LNd8Pseudo_UPD
-    440718886U,	// VST2LNd8_UPD
-    440194470U,	// VST2LNq16
+    482122112U,	// VST2LNd8_UPD
+    13926784U,	// VST2LNq16
     0U,	// VST2LNq16Pseudo
     0U,	// VST2LNq16Pseudo_UPD
-    440718886U,	// VST2LNq16_UPD
-    440194470U,	// VST2LNq32
+    482122112U,	// VST2LNq16_UPD
+    13926784U,	// VST2LNq32
     0U,	// VST2LNq32Pseudo
     0U,	// VST2LNq32Pseudo_UPD
-    440718886U,	// VST2LNq32_UPD
+    482122112U,	// VST2LNq32_UPD
     0U,	// VST2b16
     0U,	// VST2b16wb_fixed
     0U,	// VST2b16wb_register
@@ -8859,98 +8869,98 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VST2q8PseudoWB_register
     0U,	// VST2q8wb_fixed
     0U,	// VST2q8wb_register
-    440195750U,	// VST3LNd16
+    369623424U,	// VST3LNd16
     0U,	// VST3LNd16Pseudo
     0U,	// VST3LNd16Pseudo_UPD
-    6950U,	// VST3LNd16_UPD
-    440195750U,	// VST3LNd32
+    383261056U,	// VST3LNd16_UPD
+    369623424U,	// VST3LNd32
     0U,	// VST3LNd32Pseudo
     0U,	// VST3LNd32Pseudo_UPD
-    6950U,	// VST3LNd32_UPD
-    440195750U,	// VST3LNd8
+    383261056U,	// VST3LNd32_UPD
+    369623424U,	// VST3LNd8
     0U,	// VST3LNd8Pseudo
     0U,	// VST3LNd8Pseudo_UPD
-    6950U,	// VST3LNd8_UPD
-    440195750U,	// VST3LNq16
+    383261056U,	// VST3LNd8_UPD
+    369623424U,	// VST3LNq16
     0U,	// VST3LNq16Pseudo
     0U,	// VST3LNq16Pseudo_UPD
-    6950U,	// VST3LNq16_UPD
-    440195750U,	// VST3LNq32
+    383261056U,	// VST3LNq16_UPD
+    369623424U,	// VST3LNq32
     0U,	// VST3LNq32Pseudo
     0U,	// VST3LNq32Pseudo_UPD
-    6950U,	// VST3LNq32_UPD
+    383261056U,	// VST3LNq32_UPD
     403177856U,	// VST3d16
     0U,	// VST3d16Pseudo
     0U,	// VST3d16Pseudo_UPD
-    383872U,	// VST3d16_UPD
+    416815488U,	// VST3d16_UPD
     403177856U,	// VST3d32
     0U,	// VST3d32Pseudo
     0U,	// VST3d32Pseudo_UPD
-    383872U,	// VST3d32_UPD
+    416815488U,	// VST3d32_UPD
     403177856U,	// VST3d8
     0U,	// VST3d8Pseudo
     0U,	// VST3d8Pseudo_UPD
-    383872U,	// VST3d8_UPD
+    416815488U,	// VST3d8_UPD
     403177856U,	// VST3q16
     0U,	// VST3q16Pseudo_UPD
-    383872U,	// VST3q16_UPD
+    416815488U,	// VST3q16_UPD
     0U,	// VST3q16oddPseudo
     0U,	// VST3q16oddPseudo_UPD
     403177856U,	// VST3q32
     0U,	// VST3q32Pseudo_UPD
-    383872U,	// VST3q32_UPD
+    416815488U,	// VST3q32_UPD
     0U,	// VST3q32oddPseudo
     0U,	// VST3q32oddPseudo_UPD
     403177856U,	// VST3q8
     0U,	// VST3q8Pseudo_UPD
-    383872U,	// VST3q8_UPD
+    416815488U,	// VST3q8_UPD
     0U,	// VST3q8oddPseudo
     0U,	// VST3q8oddPseudo_UPD
-    440194598U,	// VST4LNd16
+    34079104U,	// VST4LNd16
     0U,	// VST4LNd16Pseudo
     0U,	// VST4LNd16Pseudo_UPD
-    399014U,	// VST4LNd16_UPD
-    440194598U,	// VST4LNd32
+    47716736U,	// VST4LNd16_UPD
+    34079104U,	// VST4LNd32
     0U,	// VST4LNd32Pseudo
     0U,	// VST4LNd32Pseudo_UPD
-    399014U,	// VST4LNd32_UPD
-    440194598U,	// VST4LNd8
+    47716736U,	// VST4LNd32_UPD
+    34079104U,	// VST4LNd8
     0U,	// VST4LNd8Pseudo
     0U,	// VST4LNd8Pseudo_UPD
-    399014U,	// VST4LNd8_UPD
-    440194598U,	// VST4LNq16
+    47716736U,	// VST4LNd8_UPD
+    34079104U,	// VST4LNq16
     0U,	// VST4LNq16Pseudo
     0U,	// VST4LNq16Pseudo_UPD
-    399014U,	// VST4LNq16_UPD
-    440194598U,	// VST4LNq32
+    47716736U,	// VST4LNq16_UPD
+    34079104U,	// VST4LNq32
     0U,	// VST4LNq32Pseudo
     0U,	// VST4LNq32Pseudo_UPD
-    399014U,	// VST4LNq32_UPD
+    47716736U,	// VST4LNq32_UPD
     34079104U,	// VST4d16
     0U,	// VST4d16Pseudo
     0U,	// VST4d16Pseudo_UPD
-    15735680U,	// VST4d16_UPD
+    47716736U,	// VST4d16_UPD
     34079104U,	// VST4d32
     0U,	// VST4d32Pseudo
     0U,	// VST4d32Pseudo_UPD
-    15735680U,	// VST4d32_UPD
+    47716736U,	// VST4d32_UPD
     34079104U,	// VST4d8
     0U,	// VST4d8Pseudo
     0U,	// VST4d8Pseudo_UPD
-    15735680U,	// VST4d8_UPD
+    47716736U,	// VST4d8_UPD
     34079104U,	// VST4q16
     0U,	// VST4q16Pseudo_UPD
-    15735680U,	// VST4q16_UPD
+    47716736U,	// VST4q16_UPD
     0U,	// VST4q16oddPseudo
     0U,	// VST4q16oddPseudo_UPD
     34079104U,	// VST4q32
     0U,	// VST4q32Pseudo_UPD
-    15735680U,	// VST4q32_UPD
+    47716736U,	// VST4q32_UPD
     0U,	// VST4q32oddPseudo
     0U,	// VST4q32oddPseudo_UPD
     34079104U,	// VST4q8
     0U,	// VST4q8Pseudo_UPD
-    15735680U,	// VST4q8_UPD
+    47716736U,	// VST4q8_UPD
     0U,	// VST4q8oddPseudo
     0U,	// VST4q8oddPseudo_UPD
     532U,	// VSTMDDB_UPD
@@ -8960,9 +8970,9 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     532U,	// VSTMSDB_UPD
     18560U,	// VSTMSIA
     532U,	// VSTMSIA_UPD
-    6400U,	// VSTRD
-    6528U,	// VSTRH
-    6400U,	// VSTRS
+    6016U,	// VSTRD
+    6144U,	// VSTRH
+    6016U,	// VSTRS
     0U,	// VSTR_FPCXTNS_off
     42U,	// VSTR_FPCXTNS_post
     0U,	// VSTR_FPCXTNS_pre
@@ -9015,17 +9025,17 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     520U,	// VSUDOTQI
     16384U,	// VSWPd
     16384U,	// VSWPq
-    7168U,	// VTBL1
-    7296U,	// VTBL2
-    7424U,	// VTBL3
+    6656U,	// VTBL1
+    6784U,	// VTBL2
+    6912U,	// VTBL3
     0U,	// VTBL3Pseudo
-    7552U,	// VTBL4
+    7040U,	// VTBL4
     0U,	// VTBL4Pseudo
-    7680U,	// VTBX1
-    7808U,	// VTBX2
-    7936U,	// VTBX3
+    7168U,	// VTBX1
+    7296U,	// VTBX2
+    7424U,	// VTBX3
     0U,	// VTBX3Pseudo
-    8064U,	// VTBX4
+    7552U,	// VTBX4
     0U,	// VTBX4Pseudo
     0U,	// VTOSHD
     72U,	// VTOSHH
@@ -9092,50 +9102,50 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// VZIPq16
     16384U,	// VZIPq32
     16384U,	// VZIPq8
-    411776U,	// sysLDMDA
-    8212U,	// sysLDMDA_UPD
-    411776U,	// sysLDMDB
-    8212U,	// sysLDMDB_UPD
-    411776U,	// sysLDMIA
-    8212U,	// sysLDMIA_UPD
-    411776U,	// sysLDMIB
-    8212U,	// sysLDMIB_UPD
-    411776U,	// sysSTMDA
-    8212U,	// sysSTMDA_UPD
-    411776U,	// sysSTMDB
-    8212U,	// sysSTMDB_UPD
-    411776U,	// sysSTMIA
-    8212U,	// sysSTMIA_UPD
-    411776U,	// sysSTMIB
-    8212U,	// sysSTMIB_UPD
+    362624U,	// sysLDMDA
+    7700U,	// sysLDMDA_UPD
+    362624U,	// sysLDMDB
+    7700U,	// sysLDMDB_UPD
+    362624U,	// sysLDMIA
+    7700U,	// sysLDMIA_UPD
+    362624U,	// sysLDMIB
+    7700U,	// sysLDMIB_UPD
+    362624U,	// sysSTMDA
+    7700U,	// sysSTMDA_UPD
+    362624U,	// sysSTMDB
+    7700U,	// sysSTMDB_UPD
+    362624U,	// sysSTMIA
+    7700U,	// sysSTMIA_UPD
+    362624U,	// sysSTMIB
+    7700U,	// sysSTMIB_UPD
     0U,	// t2ADCri
     0U,	// t2ADCrr
-    16252928U,	// t2ADCrs
+    14680064U,	// t2ADCrs
     0U,	// t2ADDri
     0U,	// t2ADDri12
     0U,	// t2ADDrr
-    16252928U,	// t2ADDrs
+    14680064U,	// t2ADDrs
     0U,	// t2ADDspImm
     0U,	// t2ADDspImm12
     1280U,	// t2ADR
     0U,	// t2ANDri
     0U,	// t2ANDrr
-    16252928U,	// t2ANDrs
-    16777216U,	// t2ASRri
+    14680064U,	// t2ANDrs
+    15204352U,	// t2ASRri
     0U,	// t2ASRrr
     0U,	// t2AUT
     524672U,	// t2AUTG
     2U,	// t2B
     1408U,	// t2BFC
     2098688U,	// t2BFI
-    8320U,	// t2BFLi
+    7808U,	// t2BFLi
     16384U,	// t2BFLr
-    8320U,	// t2BFi
-    17306624U,	// t2BFic
+    7808U,	// t2BFi
+    15733760U,	// t2BFic
     16384U,	// t2BFr
     0U,	// t2BICri
     0U,	// t2BICrr
-    16252928U,	// t2BICrs
+    14680064U,	// t2BICrs
     0U,	// t2BTI
     524672U,	// t2BXAUT
     2U,	// t2BXJ
@@ -9160,10 +9170,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     17920U,	// t2CRC32CW
     17920U,	// t2CRC32H
     17920U,	// t2CRC32W
-    17303040U,	// t2CSEL
-    17303040U,	// t2CSINC
-    17303040U,	// t2CSINV
-    17303040U,	// t2CSNEG
+    15730176U,	// t2CSEL
+    15730176U,	// t2CSINC
+    15730176U,	// t2CSINV
+    15730176U,	// t2CSNEG
     2U,	// t2DBG
     0U,	// t2DCPS1
     0U,	// t2DCPS2
@@ -9173,7 +9183,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// t2DSB
     0U,	// t2EORri
     0U,	// t2EORrr
-    16252928U,	// t2EORrs
+    14680064U,	// t2EORrs
     2U,	// t2HINT
     0U,	// t2HVC
     0U,	// t2ISB
@@ -9184,7 +9194,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     128U,	// t2LDAB
     128U,	// t2LDAEX
     128U,	// t2LDAEXB
-    11010048U,	// t2LDAEXD
+    10485760U,	// t2LDAEXD
     128U,	// t2LDAEXH
     128U,	// t2LDAH
     2582U,	// t2LDC2L_OFFSET
@@ -9212,48 +9222,48 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     4480U,	// t2LDRB_PRE
     3200U,	// t2LDRBi12
     4096U,	// t2LDRBi8
-    8448U,	// t2LDRBpci
-    8576U,	// t2LDRBs
-    543686656U,	// t2LDRD_POST
-    17825792U,	// t2LDRD_PRE
-    18350080U,	// t2LDRDi8
-    8704U,	// t2LDREX
+    7936U,	// t2LDRBpci
+    8064U,	// t2LDRBs
+    510132224U,	// t2LDRD_POST
+    16252928U,	// t2LDRD_PRE
+    16777216U,	// t2LDRDi8
+    8192U,	// t2LDREX
     128U,	// t2LDREXB
-    11010048U,	// t2LDREXD
+    10485760U,	// t2LDREXD
     128U,	// t2LDREXH
     4096U,	// t2LDRHT
     133760U,	// t2LDRH_POST
     4480U,	// t2LDRH_PRE
     3200U,	// t2LDRHi12
     4096U,	// t2LDRHi8
-    8448U,	// t2LDRHpci
-    8576U,	// t2LDRHs
+    7936U,	// t2LDRHpci
+    8064U,	// t2LDRHs
     4096U,	// t2LDRSBT
     133760U,	// t2LDRSB_POST
     4480U,	// t2LDRSB_PRE
     3200U,	// t2LDRSBi12
     4096U,	// t2LDRSBi8
-    8448U,	// t2LDRSBpci
-    8576U,	// t2LDRSBs
+    7936U,	// t2LDRSBpci
+    8064U,	// t2LDRSBs
     4096U,	// t2LDRSHT
     133760U,	// t2LDRSH_POST
     4480U,	// t2LDRSH_PRE
     3200U,	// t2LDRSHi12
     4096U,	// t2LDRSHi8
-    8448U,	// t2LDRSHpci
-    8576U,	// t2LDRSHs
+    7936U,	// t2LDRSHpci
+    8064U,	// t2LDRSHs
     4096U,	// t2LDRT
     133760U,	// t2LDR_POST
     4480U,	// t2LDR_PRE
     3200U,	// t2LDRi12
     4096U,	// t2LDRi8
-    8448U,	// t2LDRpci
-    8576U,	// t2LDRs
+    7936U,	// t2LDRpci
+    8064U,	// t2LDRs
     0U,	// t2LE
     0U,	// t2LEUpdate
     0U,	// t2LSLri
     0U,	// t2LSLrr
-    16777216U,	// t2LSRri
+    15204352U,	// t2LSRri
     0U,	// t2LSRrr
     103908112U,	// t2MCR
     103908112U,	// t2MCR2
@@ -9265,14 +9275,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// t2MOVi
     16384U,	// t2MOVi16
     16384U,	// t2MOVr
-    425984U,	// t2MOVsra_flag
-    425984U,	// t2MOVsrl_flag
+    376832U,	// t2MOVsra_flag
+    376832U,	// t2MOVsrl_flag
     115480U,	// t2MRC
     115480U,	// t2MRC2
     0U,	// t2MRRC
     0U,	// t2MRRC2
     26U,	// t2MRS_AR
-    8832U,	// t2MRS_M
+    8320U,	// t2MRS_M
     3840U,	// t2MRSbanked
     28U,	// t2MRSsys_AR
     528U,	// t2MSR_AR
@@ -9284,10 +9294,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1024U,	// t2MVNs
     0U,	// t2ORNri
     0U,	// t2ORNrr
-    16252928U,	// t2ORNrs
+    14680064U,	// t2ORNrs
     0U,	// t2ORRri
     0U,	// t2ORRrr
-    16252928U,	// t2ORRrs
+    14680064U,	// t2ORRrs
     0U,	// t2PAC
     0U,	// t2PACBTI
     524672U,	// t2PACG
@@ -9327,14 +9337,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// t2RRX
     0U,	// t2RSBri
     0U,	// t2RSBrr
-    16252928U,	// t2RSBrs
+    14680064U,	// t2RSBrs
     0U,	// t2SADD16
     0U,	// t2SADD8
     0U,	// t2SASX
     0U,	// t2SB
     0U,	// t2SBCri
     0U,	// t2SBCrr
-    16252928U,	// t2SBCrs
+    14680064U,	// t2SBCrs
     33554432U,	// t2SBFX
     0U,	// t2SDIV
     0U,	// t2SEL
@@ -9410,10 +9420,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2838U,	// t2STC_PRE
     128U,	// t2STL
     128U,	// t2STLB
-    11010048U,	// t2STLEX
-    11010048U,	// t2STLEXB
+    10485760U,	// t2STLEX
+    10485760U,	// t2STLEXB
     33554432U,	// t2STLEXD
-    11010048U,	// t2STLEXH
+    10485760U,	// t2STLEXH
     128U,	// t2STLH
     18560U,	// t2STMDB
     532U,	// t2STMDB_UPD
@@ -9424,31 +9434,31 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     4480U,	// t2STRB_PRE
     3200U,	// t2STRBi12
     4096U,	// t2STRBi8
-    8576U,	// t2STRBs
-    543688192U,	// t2STRD_POST
-    17827328U,	// t2STRD_PRE
-    18350080U,	// t2STRDi8
-    18874368U,	// t2STREX
-    11010048U,	// t2STREXB
+    8064U,	// t2STRBs
+    510133760U,	// t2STRD_POST
+    16254464U,	// t2STRD_PRE
+    16777216U,	// t2STRDi8
+    17301504U,	// t2STREX
+    10485760U,	// t2STREXB
     33554432U,	// t2STREXD
-    11010048U,	// t2STREXH
+    10485760U,	// t2STREXH
     4096U,	// t2STRHT
     133760U,	// t2STRH_POST
     4480U,	// t2STRH_PRE
     3200U,	// t2STRHi12
     4096U,	// t2STRHi8
-    8576U,	// t2STRHs
+    8064U,	// t2STRHs
     4096U,	// t2STRT
     133760U,	// t2STR_POST
     4480U,	// t2STR_PRE
     3200U,	// t2STRi12
     4096U,	// t2STRi8
-    8576U,	// t2STRs
+    8064U,	// t2STRs
     0U,	// t2SUBS_PC_LR
     0U,	// t2SUBri
     0U,	// t2SUBri12
     0U,	// t2SUBrr
-    16252928U,	// t2SUBrs
+    14680064U,	// t2SUBrs
     0U,	// t2SUBspImm
     0U,	// t2SUBspImm12
     268435456U,	// t2SXTAB
@@ -9510,13 +9520,13 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16768U,	// tADDi3
     2U,	// tADDi8
     0U,	// tADDrSP
-    19398656U,	// tADDrSPi
+    17825792U,	// tADDrSPi
     16768U,	// tADDrr
-    8960U,	// tADDspi
+    8448U,	// tADDspi
     17920U,	// tADDspr
-    9088U,	// tADR
+    8576U,	// tADR
     2U,	// tAND
-    9216U,	// tASRri
+    8704U,	// tASRri
     2U,	// tASRrr
     2U,	// tB
     2U,	// tBIC
@@ -9542,19 +9552,19 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// tInt_eh_sjlj_longjmp
     0U,	// tInt_eh_sjlj_setjmp
     18560U,	// tLDMIA
-    9344U,	// tLDRBi
-    9472U,	// tLDRBr
-    9600U,	// tLDRHi
-    9472U,	// tLDRHr
-    9472U,	// tLDRSB
-    9472U,	// tLDRSH
-    9728U,	// tLDRi
-    8448U,	// tLDRpci
-    9472U,	// tLDRr
-    9856U,	// tLDRspi
+    8832U,	// tLDRBi
+    8960U,	// tLDRBr
+    9088U,	// tLDRHi
+    8960U,	// tLDRHr
+    8960U,	// tLDRSB
+    8960U,	// tLDRSH
+    9216U,	// tLDRi
+    7936U,	// tLDRpci
+    8960U,	// tLDRr
+    9344U,	// tLDRspi
     16768U,	// tLSLri
     2U,	// tLSLrr
-    9216U,	// tLSRri
+    8704U,	// tLSRri
     2U,	// tLSRrr
     2U,	// tMOVSr
     0U,	// tMOVi8
@@ -9573,17 +9583,17 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2U,	// tSBC
     0U,	// tSETEND
     532U,	// tSTMIA_UPD
-    9344U,	// tSTRBi
-    9472U,	// tSTRBr
-    9600U,	// tSTRHi
-    9472U,	// tSTRHr
-    9728U,	// tSTRi
-    9472U,	// tSTRr
-    9856U,	// tSTRspi
+    8832U,	// tSTRBi
+    8960U,	// tSTRBr
+    9088U,	// tSTRHi
+    8960U,	// tSTRHr
+    9216U,	// tSTRi
+    8960U,	// tSTRr
+    9344U,	// tSTRspi
     16768U,	// tSUBi3
     2U,	// tSUBi8
     16768U,	// tSUBrr
-    8960U,	// tSUBspi
+    8448U,	// tSUBspi
     2U,	// tSVC
     16384U,	// tSXTB
     16384U,	// tSXTH
@@ -10901,7 +10911,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 19:
     // VLD1LNd16, VLD1LNd16_UPD, VLD1LNd32, VLD1LNd32_UPD, VLD1LNd8, VLD1LNd8...
-    SStream_concat1(O, '[');
+    SStream_concat0(O, "}[");
     set_mem_access(MI, true);
     break;
   case 20:
@@ -10999,7 +11009,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 4 encoded into 7 bits for 78 unique commands.
+  // Fragment 4 encoded into 7 bits for 74 unique commands.
   switch ((Bits >> 39) & 127) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -11221,243 +11231,185 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 43:
-    // VLD1LNd16, VLD1LNd32, VLD1LNd8, VST2LNd16, VST2LNd32, VST2LNd8, VST2LN...
+    // VLD1LNd16, VLD1LNd32, VLD1LNd8
     printNoHashImmediate(MI, 4, O);
-    break;
-  case 44:
-    // VLD1LNd16_UPD, VLD1LNd32_UPD, VLD1LNd8_UPD, VLD2LNd16, VLD2LNd32, VLD2...
-    printNoHashImmediate(MI, 6, O);
-    break;
-  case 45:
-    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
-    printNoHashImmediate(MI, 8, O);
     SStream_concat0(O, "], ");
     set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 1, O);
+    return;
     break;
-  case 46:
+  case 44:
+    // VLD1LNd16_UPD, VLD1LNd32_UPD, VLD1LNd8_UPD
+    printNoHashImmediate(MI, 6, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 2, O);
+    printAddrMode6OffsetOperand(MI, 4, O);
+    return;
+    break;
+  case 45:
     // VLD3DUPd16, VLD3DUPd16_UPD, VLD3DUPd32, VLD3DUPd32_UPD, VLD3DUPd8, VLD...
     SStream_concat0(O, "[]}, ");
     break;
-  case 47:
-    // VLD3LNd16_UPD, VLD3LNd32_UPD, VLD3LNd8_UPD, VLD3LNq16_UPD, VLD3LNq32_U...
-    printNoHashImmediate(MI, 10, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 1, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 10, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 2, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 10, O);
-    break;
-  case 48:
+  case 46:
     // VLD4DUPd16, VLD4DUPd16_UPD, VLD4DUPd32, VLD4DUPd32_UPD, VLD4DUPd8, VLD...
     SStream_concat0(O, "[], ");
     printOperand(MI, 3, O);
     SStream_concat0(O, "[]}, ");
     break;
-  case 49:
-    // VLD4LNd16_UPD, VLD4LNd32_UPD, VLD4LNd8_UPD, VLD4LNq16_UPD, VLD4LNq32_U...
-    printNoHashImmediate(MI, 12, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 1, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 12, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 2, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 12, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 3, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 12, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 5, O);
-    printAddrMode6OffsetOperand(MI, 7, O);
-    return;
-    break;
-  case 50:
+  case 47:
     // VLDRD, VLDRS, VSTRD, VSTRS
     printAddrMode5Operand_0(MI, 1, O);
     return;
     break;
-  case 51:
+  case 48:
     // VLDRH, VSTRH
     printAddrMode5FP16Operand_0(MI, 1, O);
     return;
     break;
-  case 52:
+  case 49:
     // VST1LNd16, VST1LNd32, VST1LNd8
     printNoHashImmediate(MI, 3, O);
-    SStream_concat0(O, "]}, ");
+    SStream_concat0(O, "], ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
     return;
     break;
-  case 53:
-    // VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8_UPD, VST3LNd16, VST3LNd32, VST3...
+  case 50:
+    // VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8_UPD
     printNoHashImmediate(MI, 5, O);
-    break;
-  case 54:
-    // VST3LNd16_UPD, VST3LNd32_UPD, VST3LNd8_UPD, VST3LNq16_UPD, VST3LNq32_U...
-    printNoHashImmediate(MI, 7, O);
     SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 5, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 7, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 6, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 7, O);
-    SStream_concat0(O, "]}, ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 1, O);
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
-  case 55:
-    // VST3d16_UPD, VST3d32_UPD, VST3d8_UPD, VST3q16_UPD, VST3q32_UPD, VST3q8...
+  case 51:
+    // VST2LNd16_UPD, VST2LNd32_UPD, VST2LNd8_UPD, VST2LNq16_UPD, VST2LNq32_U...
     printOperand(MI, 5, O);
-    SStream_concat0(O, ", ");
-    printOperand(MI, 6, O);
     break;
-  case 56:
+  case 52:
     // VTBL1
     printVectorListOne(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 57:
+  case 53:
     // VTBL2
     printVectorListTwo(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 58:
+  case 54:
     // VTBL3
     printVectorListThree(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 59:
+  case 55:
     // VTBL4
     printVectorListFour(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 60:
+  case 56:
     // VTBX1
     printVectorListOne(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 61:
+  case 57:
     // VTBX2
     printVectorListTwo(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 62:
+  case 58:
     // VTBX3
     printVectorListThree(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 63:
+  case 59:
     // VTBX4
     printVectorListFour(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 64:
+  case 60:
     // sysLDMDA_UPD, sysLDMDB_UPD, sysLDMIA_UPD, sysLDMIB_UPD, sysSTMDA_UPD, ...
     SStream_concat0(O, " ^");
     return;
     break;
-  case 65:
+  case 61:
     // t2BFLi, t2BFi
     printOperandAddr(MI, Address, 1, O);
     return;
     break;
-  case 66:
+  case 62:
     // t2LDRBpci, t2LDRHpci, t2LDRSBpci, t2LDRSHpci, t2LDRpci, tLDRpci
     printThumbLdrLabelOperand(MI, 1, O);
     return;
     break;
-  case 67:
+  case 63:
     // t2LDRBs, t2LDRHs, t2LDRSBs, t2LDRSHs, t2LDRs, t2STRBs, t2STRHs, t2STRs
     printT2AddrModeSoRegOperand(MI, 1, O);
     return;
     break;
-  case 68:
+  case 64:
     // t2LDREX
     printT2AddrModeImm0_1020s4Operand(MI, 1, O);
     return;
     break;
-  case 69:
+  case 65:
     // t2MRS_M
     printMSRMaskOperand(MI, 1, O);
     return;
     break;
-  case 70:
+  case 66:
     // tADDspi, tSUBspi
     printThumbS4ImmOperand(MI, 2, O);
     return;
     break;
-  case 71:
+  case 67:
     // tADR
     printAdrLabelOperandAddr_2(MI, Address, 1, O);
     return;
     break;
-  case 72:
+  case 68:
     // tASRri, tLSRri
     printThumbSRImm(MI, 3, O);
     return;
     break;
-  case 73:
+  case 69:
     // tLDRBi, tSTRBi
     printThumbAddrModeImm5S1Operand(MI, 1, O);
     return;
     break;
-  case 74:
+  case 70:
     // tLDRBr, tLDRHr, tLDRSB, tLDRSH, tLDRr, tSTRBr, tSTRHr, tSTRr
     printThumbAddrModeRROperand(MI, 1, O);
     return;
     break;
-  case 75:
+  case 71:
     // tLDRHi, tSTRHi
     printThumbAddrModeImm5S2Operand(MI, 1, O);
     return;
     break;
-  case 76:
+  case 72:
     // tLDRi, tSTRi
     printThumbAddrModeImm5S4Operand(MI, 1, O);
     return;
     break;
-  case 77:
+  case 73:
     // tLDRspi, tSTRspi
     printThumbAddrModeSPOperand(MI, 1, O);
     return;
@@ -11465,7 +11417,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 5 encoded into 5 bits for 27 unique commands.
+  // Fragment 5 encoded into 5 bits for 24 unique commands.
   switch ((Bits >> 46) & 31) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -11527,8 +11479,14 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 10:
-    // MVE_VMOV_q_rr, VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_U...
+    // MVE_VMOV_q_rr
     printOperand(MI, 1, O);
+    printVectorIndex(MI, 5, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 2, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 3, O);
+    return;
     break;
   case 11:
     // MVE_VSHLL_lws16bh, MVE_VSHLL_lws16th, MVE_VSHLL_lwu16bh, MVE_VSHLL_lwu...
@@ -11568,67 +11526,31 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 18:
-    // VLD1LNd16, VLD1LNd16_UPD, VLD1LNd32, VLD1LNd32_UPD, VLD1LNd8, VLD1LNd8...
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
+    // VLD2LNd16, VLD2LNd16_UPD, VLD2LNd32, VLD2LNd32_UPD, VLD2LNd8, VLD2LNd8...
+    SStream_concat0(O, "}[");
+    set_mem_access(MI, true);
     break;
   case 19:
-    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32, VLD4LNd16, VLD4L...
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    break;
-  case 20:
     // VLD3DUPd16, VLD3DUPd32, VLD3DUPd8, VLD3DUPq16, VLD3DUPq32, VLD3DUPq8
     printAddrMode6Operand(MI, 3, O);
     return;
     break;
-  case 21:
+  case 20:
     // VLD3DUPd16_UPD, VLD3DUPd32_UPD, VLD3DUPd8_UPD, VLD3DUPq16_UPD, VLD3DUP...
     printAddrMode6Operand(MI, 4, O);
     break;
-  case 22:
+  case 21:
     // VLD4DUPd16_UPD, VLD4DUPd32_UPD, VLD4DUPd8_UPD, VLD4DUPq16_UPD, VLD4DUP...
     printAddrMode6Operand(MI, 5, O);
     printAddrMode6OffsetOperand(MI, 7, O);
     return;
     break;
-  case 23:
-    // VST3d16_UPD, VST3d32_UPD, VST3d8_UPD, VST3q16_UPD, VST3q32_UPD, VST3q8...
-    SStream_concat0(O, "}, ");
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
-    return;
-    break;
-  case 24:
-    // VST4LNd16_UPD, VST4LNd32_UPD, VST4LNd8_UPD, VST4LNq16_UPD, VST4LNq32_U...
-    printOperand(MI, 5, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 6, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 7, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
-    return;
-    break;
-  case 25:
+  case 22:
     // sysLDMDA, sysLDMDB, sysLDMIA, sysLDMIB, sysSTMDA, sysSTMDB, sysSTMIA, ...
     SStream_concat0(O, " ^");
     return;
     break;
-  case 26:
+  case 23:
     // t2MOVsra_flag, t2MOVsrl_flag
     SStream_concat0(O, ", #1");
     return;
@@ -11636,7 +11558,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 6 encoded into 6 bits for 38 unique commands.
+  // Fragment 6 encoded into 6 bits for 35 unique commands.
   switch ((Bits >> 51) & 63) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -11675,8 +11597,9 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printOperand(MI, 3, O);
     break;
   case 8:
-    // CDE_VCX3A_fpdp, CDE_VCX3A_fpsp, VST2LNd16_UPD, VST2LNd32_UPD, VST2LNd8...
+    // CDE_VCX3A_fpdp, CDE_VCX3A_fpsp
     printOperand(MI, 5, O);
+    return;
     break;
   case 9:
     // LDCL_OPTION, LDC_OPTION, STCL_OPTION, STC_OPTION, t2LDC2L_OPTION, t2LD...
@@ -11736,107 +11659,84 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 20:
-    // MVE_VMOV_q_rr
-    printVectorIndex(MI, 5, O);
-    SStream_concat0(O, ", ");
-    printOperand(MI, 2, O);
-    SStream_concat0(O, ", ");
-    printOperand(MI, 3, O);
-    return;
-    break;
-  case 21:
     // STLEX, STLEXB, STLEXH, STREX, STREXB, STREXH, SWP, SWPB, t2LDAEXD, t2L...
     printAddrMode7Operand(MI, 2, O);
     return;
     break;
-  case 22:
+  case 21:
     // VCADDv2f32, VCADDv4f16, VCADDv4f32, VCADDv8f16
     printComplexRotationOp_180_90(MI, 3, O);
     return;
     break;
-  case 23:
+  case 22:
     // VCMLAv2f32, VCMLAv4f16, VCMLAv4f32, VCMLAv8f16
     printComplexRotationOp_90_0(MI, 4, O);
     return;
     break;
+  case 23:
+    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32, VST2LNd16_UPD, V...
+    printNoHashImmediate(MI, 6, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    break;
   case 24:
-    // VLD1LNd16, VLD1LNd32, VLD1LNd8, VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8...
-    printAddrMode6Operand(MI, 1, O);
+    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 3, O);
+    printAddrMode6OffsetOperand(MI, 5, O);
+    return;
     break;
   case 25:
-    // VLD1LNd16_UPD, VLD1LNd32_UPD, VLD1LNd8_UPD
-    printAddrMode6Operand(MI, 2, O);
-    printAddrMode6OffsetOperand(MI, 4, O);
-    return;
-    break;
-  case 26:
-    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32
-    printOperand(MI, 1, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 2, O);
-    return;
-    break;
-  case 27:
-    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 8, O);
-    break;
-  case 28:
     // VLD3DUPd16_UPD, VLD3DUPd32_UPD, VLD3DUPd8_UPD, VLD3DUPq16_UPD, VLD3DUP...
     printAddrMode6OffsetOperand(MI, 6, O);
     return;
     break;
-  case 29:
-    // VLD3LNd16_UPD, VLD3LNd32_UPD, VLD3LNd8_UPD, VLD3LNq16_UPD, VLD3LNq32_U...
-    printAddrMode6Operand(MI, 4, O);
-    printAddrMode6OffsetOperand(MI, 6, O);
+  case 26:
+    // VST2LNd16, VST2LNd32, VST2LNd8, VST2LNq16, VST2LNq32
+    printNoHashImmediate(MI, 4, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 0, O);
     return;
     break;
-  case 30:
-    // VST4d16_UPD, VST4d32_UPD, VST4d8_UPD, VST4q16_UPD, VST4q32_UPD, VST4q8...
-    printOperand(MI, 7, O);
-    SStream_concat0(O, "}, ");
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
-    return;
+  case 27:
+    // VST3LNd16_UPD, VST3LNd32_UPD, VST3LNd8_UPD, VST3LNq16_UPD, VST3LNq32_U...
+    printOperand(MI, 6, O);
     break;
-  case 31:
+  case 28:
     // t2ADCrs, t2ADDrs, t2ANDrs, t2BICrs, t2EORrs, t2ORNrs, t2ORRrs, t2RSBrs...
     printT2SOOperand(MI, 2, O);
     return;
     break;
-  case 32:
+  case 29:
     // t2ASRri, t2LSRri
     printThumbSRImm(MI, 2, O);
     return;
     break;
-  case 33:
+  case 30:
     // t2BFic, t2CSEL, t2CSINC, t2CSINV, t2CSNEG
     printMandatoryPredicateOperand(MI, 3, O);
     return;
     break;
-  case 34:
+  case 31:
     // t2LDRD_PRE, t2STRD_PRE
     printT2AddrModeImm8s4Operand_1(MI, 3, O);
     SStream_concat1(O, '!');
     return;
     break;
-  case 35:
+  case 32:
     // t2LDRDi8, t2STRDi8
     printT2AddrModeImm8s4Operand_0(MI, 2, O);
     return;
     break;
-  case 36:
+  case 33:
     // t2STREX
     printT2AddrModeImm0_1020s4Operand(MI, 2, O);
     return;
     break;
-  case 37:
+  case 34:
     // tADDrSPi
     printThumbS4ImmOperand(MI, 2, O);
     return;
@@ -11844,8 +11744,8 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 7 encoded into 5 bits for 17 unique commands.
-  switch ((Bits >> 57) & 31) {
+  // Fragment 7 encoded into 4 bits for 16 unique commands.
+  switch ((Bits >> 57) & 15) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // ASRi, ASRr, LSLi, LSLr, LSRi, LSRr, RORi, RORr, VLD1LNdWB_register_Asm...
@@ -11901,46 +11801,31 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 10:
-    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 3, O);
-    printAddrMode6OffsetOperand(MI, 5, O);
+    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32
+    printAddrMode6Operand(MI, 2, O);
     return;
     break;
   case 11:
-    // VLD3LNd16, VLD3LNd32, VLD3LNd8, VLD3LNq16, VLD3LNq32
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 2, O);
-    SStream_concat1(O, '[');
+    // VLD3LNd16, VLD3LNd16_UPD, VLD3LNd32, VLD3LNd32_UPD, VLD3LNd8, VLD3LNd8...
+    SStream_concat0(O, "}[");
     set_mem_access(MI, true);
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 3, O);
-    return;
     break;
   case 12:
     // VLD3d16, VLD3d16_UPD, VLD3d32, VLD3d32_UPD, VLD3d8, VLD3d8_UPD, VLD3q1...
     SStream_concat0(O, "}, ");
     break;
   case 13:
-    // VLD4LNd16, VLD4LNd32, VLD4LNd8, VLD4LNq16, VLD4LNq32, VST2LNd16, VST2L...
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    break;
-  case 14:
     // VMLALslsv2i32, VMLALslsv4i16, VMLALsluv2i32, VMLALsluv4i16, VMLAslfd, ...
     printVectorIndex(MI, 4, O);
     return;
     break;
-  case 15:
-    // VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8_UPD
+  case 14:
+    // VST2LNd16_UPD, VST2LNd32_UPD, VST2LNd8_UPD, VST2LNq16_UPD, VST2LNq32_U...
+    printAddrMode6Operand(MI, 1, O);
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
-  case 16:
+  case 15:
     // t2LDRD_POST, t2STRD_POST
     printT2AddrModeImm8s4OffsetOperand(MI, 4, O);
     return;
@@ -12258,6 +12143,29 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printVectorIndex(MI, 4, O);
     return;
     break;
+  case ARM_VLD3LNd16:
+  case ARM_VLD3LNd32:
+  case ARM_VLD3LNd8:
+  case ARM_VLD3LNq16:
+  case ARM_VLD3LNq32:
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 3, O);
+    return;
+    break;
+  case ARM_VLD3LNd16_UPD:
+  case ARM_VLD3LNd32_UPD:
+  case ARM_VLD3LNd8_UPD:
+  case ARM_VLD3LNq16_UPD:
+  case ARM_VLD3LNq32_UPD:
+    printNoHashImmediate(MI, 10, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 4, O);
+    printAddrMode6OffsetOperand(MI, 6, O);
+    return;
+    break;
   case ARM_VLD3d16_UPD:
   case ARM_VLD3d32_UPD:
   case ARM_VLD3d8_UPD:
@@ -12273,10 +12181,28 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VLD4LNd8:
   case ARM_VLD4LNq16:
   case ARM_VLD4LNq32:
+    printOperand(MI, 3, O);
+    SStream_concat0(O, "}[");
+    set_mem_access(MI, true);
     printNoHashImmediate(MI, 10, O);
-    SStream_concat0(O, "]}, ");
+    SStream_concat0(O, "], ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 4, O);
+    return;
+    break;
+  case ARM_VLD4LNd16_UPD:
+  case ARM_VLD4LNd32_UPD:
+  case ARM_VLD4LNd8_UPD:
+  case ARM_VLD4LNq16_UPD:
+  case ARM_VLD4LNq32_UPD:
+    printOperand(MI, 3, O);
+    SStream_concat0(O, "}[");
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 12, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 5, O);
+    printAddrMode6OffsetOperand(MI, 7, O);
     return;
     break;
   case ARM_VLD4d16:
@@ -12326,29 +12252,6 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VQRDMULHslv8i16:
     return;
     break;
-  case ARM_VST2LNd16:
-  case ARM_VST2LNd32:
-  case ARM_VST2LNd8:
-  case ARM_VST2LNq16:
-  case ARM_VST2LNq32:
-    printNoHashImmediate(MI, 4, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 0, O);
-    return;
-    break;
-  case ARM_VST2LNd16_UPD:
-  case ARM_VST2LNd32_UPD:
-  case ARM_VST2LNd8_UPD:
-  case ARM_VST2LNq16_UPD:
-  case ARM_VST2LNq32_UPD:
-    printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
-    return;
-    break;
   case ARM_VST3LNd16:
   case ARM_VST3LNd32:
   case ARM_VST3LNd8:
@@ -12357,13 +12260,29 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printNoHashImmediate(MI, 5, O);
     SStream_concat0(O, "], ");
     set_mem_access(MI, false);
-    printOperand(MI, 4, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 5, O);
-    SStream_concat0(O, "]}, ");
-    set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
+    return;
+    break;
+  case ARM_VST3LNd16_UPD:
+  case ARM_VST3LNd32_UPD:
+  case ARM_VST3LNd8_UPD:
+  case ARM_VST3LNq16_UPD:
+  case ARM_VST3LNq32_UPD:
+    printNoHashImmediate(MI, 7, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
+    return;
+    break;
+  case ARM_VST3d16_UPD:
+  case ARM_VST3d32_UPD:
+  case ARM_VST3d8_UPD:
+  case ARM_VST3q16_UPD:
+  case ARM_VST3q32_UPD:
+  case ARM_VST3q8_UPD:
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
   case ARM_VST4LNd16:
@@ -12371,22 +12290,28 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VST4LNd8:
   case ARM_VST4LNq16:
   case ARM_VST4LNq32:
-    printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printOperand(MI, 4, O);
-    SStream_concat1(O, '[');
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
     printOperand(MI, 5, O);
-    SStream_concat1(O, '[');
+    SStream_concat0(O, "}[");
     set_mem_access(MI, true);
     printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "]}, ");
+    SStream_concat0(O, "], ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
+    return;
+    break;
+  case ARM_VST4LNd16_UPD:
+  case ARM_VST4LNd32_UPD:
+  case ARM_VST4LNd8_UPD:
+  case ARM_VST4LNq16_UPD:
+  case ARM_VST4LNq32_UPD:
+    printOperand(MI, 7, O);
+    SStream_concat0(O, "}[");
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
   case ARM_VST4d16:
@@ -12398,6 +12323,18 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printOperand(MI, 5, O);
     SStream_concat0(O, "}, ");
     printAddrMode6Operand(MI, 0, O);
+    return;
+    break;
+  case ARM_VST4d16_UPD:
+  case ARM_VST4d32_UPD:
+  case ARM_VST4d8_UPD:
+  case ARM_VST4q16_UPD:
+  case ARM_VST4q32_UPD:
+  case ARM_VST4q8_UPD:
+    printOperand(MI, 7, O);
+    SStream_concat0(O, "}, ");
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
   }
@@ -12720,8 +12657,7 @@ bool printAliasInstr(MCInst *MI, uint64_t Address, SStream *OS) {
     {ARM_t2HINT, 45, 13 },
     {ARM_t2SUBS_PC_LR, 58, 1 },
     {ARM_tHINT, 59, 6 },
-    {0},
-  };
+  {0},  };
 
   static const AliasPattern Patterns[] = {
     // ARM_DSB - 0
@@ -12823,8 +12759,7 @@ bool printAliasInstr(MCInst *MI, uint64_t Address, SStream *OS) {
     {41, 282, 3, 3 },
     {49, 285, 3, 3 },
     {57, 288, 3, 4 },
-    {0},
-  };
+  {0},  };
 
   static const AliasPatternCond Conds[] = {
     // (DSB 0) - 0
@@ -13184,8 +13119,7 @@ bool printAliasInstr(MCInst *MI, uint64_t Address, SStream *OS) {
     {AliasPatternCond_K_Feature, ARM_ModeThumb},
     {AliasPatternCond_K_Feature, ARM_FeatureThumb2},
     {AliasPatternCond_K_Feature, ARM_HasV8Ops},
-    {0},
-  };
+  {0},  };
 
   static const char AsmStrings[] =
     /* 0 */ "ssbb\0"
