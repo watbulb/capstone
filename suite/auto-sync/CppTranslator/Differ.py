@@ -260,7 +260,7 @@ class Differ:
             identifier = self.get_diff_node_id(node).decode("utf8")
             if identifier in nodes_to_diff.keys() or identifier in duplicates:
                 # This happens if the chosen identifier is not unique.
-                print_prominent_info(f"Identifier {bold(identifier)} already added. Nodes will not be diffed!")
+                log.info(f"Duplicate {bold(identifier)}: Nodes will not be diffed!")
                 if identifier in nodes_to_diff.keys():
                     nodes_to_diff.pop(identifier)
                 duplicates.append(identifier)
