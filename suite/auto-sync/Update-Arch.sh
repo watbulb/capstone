@@ -55,14 +55,15 @@ setup_build_dir() {
 
 supported="ARM"
 
-if [ $# -ne 2 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-  echo "$0 <arch> <path-llvm-project>"
+if [ $# -ne 3 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  echo "$0 <arch> <path-llvm-project> <llvm-release-commit>"
   echo "\nCurrently supported architectures: $supported"
   exit
 fi
 
 arch="$1"
 llvm_root="$2"
+llvm_release_commit="$3"
 tblgen="$llvm_root/build/bin/llvm-tblgen"
 llvm_target_dir="$1"
 
@@ -112,6 +113,11 @@ echo "[*] Run differ..."
 cd ../build
 
 cs_root=$(git rev-parse --show-toplevel)
+
+cd $llvm_root
+llvm_release_tag=$(git describe --tag $llvm_release_commit)
+cd "$cs_root/suite/auto-sync/build"
+
 cs_arch_dir="$cs_root/arch/$arch/"
 cs_inc_dir="$cs_root/include/capstone"
 
@@ -119,7 +125,10 @@ echo "[*] Copy files to $cs_inc_dir"
 
 into_cs_include=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc"
 for f in $into_cs_include; do
+  sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
+  sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
   cp $f "$cs_inc_dir/inc"
+  echo "COPIED $f"
 done
 
 echo "[*] Copy files to $cs_arch_dir"
@@ -128,11 +137,22 @@ echo $into_cs_include
 for f in $(ls | grep "\.inc"); do
   # echo "$f"
   if ! echo $into_cs_include | grep -q -w $f ; then
+    sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
+    sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
     cp $f $cs_arch_dir
-    echo "CPIED $f"
+    echo "COPIED $f"
   fi
 done
-cp $llvm_c_inc_dir/$arch* $cs_arch_dir
-cp $diff_dir/$arch* $cs_arch_dir
+for f in $(ls $llvm_c_inc_dir/$arch*); do
+  sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
+  sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
+  cp $f $cs_arch_dir
+done
+
+for f in $(ls $diff_dir/$arch*); do
+  sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
+  sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
+  cp $f $cs_arch_dir
+done
 
 # Give advice how to fix the translated C++ files.

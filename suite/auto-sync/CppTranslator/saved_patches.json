@@ -3,13 +3,13 @@
     "AddThumb1SBit": {
       "apply_type": "OLD",
       "old_hash": "61d033b30480d2a0a3401ac41febe1745765912fab9f6f620a757a09d96fd1bd",
-      "new_hash": "058a19cb97aaf2a9178e9fbd3da4c889ef90a6a122e63c47e62c7217ab805837",
+      "new_hash": "7eb49f297b82e62c79dfbf57594649c60c7873d9d476cba0f0b503aecc771f5d",
       "edit": ""
     },
     "AddThumbPredicate": {
       "apply_type": "OLD",
       "old_hash": "cfe6f1445d7b9be90ccfe5392cdc995f01a09fb3ad40f4e2cd7df116b6de8597",
-      "new_hash": "ad3e5c1bc14983e725effffe394b3d690bd50859339f3bc10c3d0233a3d0f8f8",
+      "new_hash": "ab7221779ee34a0dee2347055922be05a55c4c030b8918fa7276078e7e316651",
       "edit": ""
     },
     "DecodeBankedReg": {
@@ -51,7 +51,7 @@
     "DecodePredicateOperand": {
       "apply_type": "OLD",
       "old_hash": "f0407faf4ba77bb21a701059bda42b883933a8b5bdd5d1e562dba2a65a255859",
-      "new_hash": "6424f3df58bf8052544e105f27aed06c83d6a7848a3f9931f3e34ae1997812f1",
+      "new_hash": "881395afc2bac02cd35e752371d9d9b1db8531f674e719f7013691cfec68a481",
       "edit": ""
     },
     "DecodeRegListOperand": {
@@ -81,7 +81,7 @@
     "UpdateThumbVFPPredicate": {
       "apply_type": "OLD",
       "old_hash": "d0f18c9b91d6353600d4eea3ff8f254467244aaa7beef0eee26a99e3ce837145",
-      "new_hash": "2cb4d9b440c936716edce5d6065667c58dc218d875b3b2c3415fc2d5420bee1b",
+      "new_hash": "2e0f59b5015534f39a5c238755e41061225d690a786e8df415446895a98d1b92",
       "edit": ""
     },
     "checkDecodedInstruction": {
@@ -93,7 +93,7 @@
     "createARMDisassembler": {
       "apply_type": "OLD",
       "old_hash": "",
-      "new_hash": "d80bc66ddad7824e610d0ec3c2736c5a5a2178dc267dbecf7c98abe1bf8dbc8f",
+      "new_hash": "1c30d5d0bb58b8a5714914960b1b311b828deab3815dc970b2086e17d06d2de4",
       "edit": ""
     },
     "endianSensitiveOpcode16": {
@@ -142,6 +142,12 @@
       "apply_type": "OLD",
       "old_hash": "2c83f84aed879e87a032e877ee8c59654764dbc5643ebdb16b9b86da6ea42d02",
       "new_hash": "71ad8455c1cc2436597516c136a2298b244eca7cbfea90640d4dab2af3fafd67",
+      "edit": ""
+    },
+    "isVectorPredicable": {
+      "apply_type": "OLD",
+      "old_hash": "830c5988f5aa7c5fd540d53dee457907503e11547561b61528dba44bbeb0019b",
+      "new_hash": "d5dd97881f4d9118faad1495a67a7e90b3d350760b84db94719b9b519076efa9",
       "edit": ""
     }
   },
@@ -269,7 +275,7 @@
     "printBitfieldInvMaskImmOperand": {
       "apply_type": "OLD",
       "old_hash": "3663aa63f76b96661eb8ca06ff6a26d2e124be3273f6ed5730378a3ad63463f7",
-      "new_hash": "538f65f613dd43cbcd1c26ecaa1f4d57d24481d96eef3f64ea750c3cc37b5e73",
+      "new_hash": "27892c9ce37597151b03b7cd7f084c4d08a26150d8edf37fc9605195b16cc5e1",
       "edit": ""
     },
     "printCImmediate": {
@@ -425,7 +431,7 @@
     "printRegName": {
       "apply_type": "OLD",
       "old_hash": "b6d4129355c127accb21c1be880cf782187fe433199a919793d18043f84fc71b",
-      "new_hash": "3b0a64dc0bd916f65a6dc8a5b3079b31444c749f81d9690ea2e0e6f27b865409",
+      "new_hash": "ed4f4b7ca11139d6a488c86d572373eada720e5302b32bb36b58dcb424b8ade8",
       "edit": ""
     },
     "printRotImmOperand": {
