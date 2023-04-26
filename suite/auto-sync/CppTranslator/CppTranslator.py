@@ -416,7 +416,7 @@ class Translator:
     def run_clang_format(self):
         for out_file in self.out_paths:
             log.info(f"Format {out_file}")
-            subprocess.run(["clang-format-13", "-style=file", "-i", out_file])
+            subprocess.run(["clang-format-15", f"-style=file:{self.conf_general['clang_format_file']}", "-i", out_file])
 
     def remark_manual_files(self) -> None:
         manual_edited = self.conf["manually_edited_files"]

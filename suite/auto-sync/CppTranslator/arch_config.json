@@ -1,5 +1,6 @@
 {
   "General": {
+    "clang_format_file": "../../../.clang-format",
     "patch_persistence_file": "./saved_patches.json",
     "cs_arch_src": "../../../arch/",
     "translation_out_dir": "../build/trans_out/",
