@@ -11,7 +11,7 @@ import sys
 from tree_sitter.binding import Query
 
 from Configurator import Configurator
-from Helper import convert_loglevel, print_prominent_warning, get_header
+from Helper import convert_loglevel, print_prominent_warning, get_header, run_clang_format
 from Patches.AddCSDetail import AddCSDetail
 from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
@@ -387,7 +387,7 @@ class Translator:
             with open(self.current_src_path_out, "w") as f:
                 f.write(get_header())
                 f.write(self.src.decode("utf8"))
-        self.run_clang_format()
+        run_clang_format(self.out_paths, Path(self.conf_general["clang_format_file"]))
 
     def collect_template_instances(self):
         search_paths = [Path(p) for p in self.conf["files_for_template_search"]]
@@ -398,11 +398,6 @@ class Translator:
         if isinstance(patch, Includes):
             return {"filename": self.current_src_path_in.name}
         return dict()
-
-    def run_clang_format(self):
-        for out_file in self.out_paths:
-            log.info(f"Format {out_file}")
-            subprocess.run(["clang-format-15", f"-style=file:{self.conf_general['clang_format_file']}", "-i", out_file])
 
     def remark_manual_files(self) -> None:
         manual_edited = self.conf["manually_edited_files"]

@@ -1,6 +1,9 @@
 import hashlib
 import logging as log
 import shutil
+import subprocess
+from pathlib import Path
+
 import termcolor
 
 from tree_sitter import Node
@@ -130,3 +133,9 @@ def get_header() -> str:
         "/* Capstone's C++ file translator: */\n"
         "/* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */\n\n"
     )
+
+
+def run_clang_format(out_paths: list[Path], clang_format_file: Path):
+    for out_file in out_paths:
+        log.info(f"Format {out_file}")
+        subprocess.run(["clang-format-15", f"-style=file:{clang_format_file.absolute().name}", "-i", out_file])

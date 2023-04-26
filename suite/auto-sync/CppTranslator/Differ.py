@@ -22,6 +22,7 @@ from Helper import (
     separator_line_2,
     print_prominent_warning,
     get_sha256,
+    run_clang_format,
 )
 
 
@@ -542,8 +543,7 @@ class Differ:
         self.patch_files(patches)
         log.info("Done")
 
-    @staticmethod
-    def patch_files(file_patches: dict[Path, list[Patch]]) -> None:
+    def patch_files(self, file_patches: dict[Path, list[Patch]]) -> None:
         log.info("Write patches...")
         for filepath, patches in file_patches.items():
             patches = sorted(patches, reverse=True)
@@ -565,6 +565,7 @@ class Differ:
                 src = src[:start_byte] + data + src[end_byte:]
             with open(filepath, "wb") as f:
                 f.write(src)
+        run_clang_format(list(file_patches.keys()), Path(self.conf_general["clang_format_file"]))
         return
 
 
