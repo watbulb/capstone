@@ -1,3 +1,17 @@
+/* Capstone Disassembly Engine, http://www.capstone-engine.org */
+/* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2022, */
+/*    Rot127 <unisono@quyllur.org> 2022-2023 */
+/* Automatically translated source file from LLVM. */
+
+/* LLVM-commit: 464bda7750a3ba9e23823fc707d7e7b6fc38438d */
+/* LLVM-tag: llvmorg-16.0.2-5-g464bda7750a3 */
+
+/* Only small edits allowed. */
+/* For multiple similiar edits, please create a Patch for the translator. */
+
+/* Capstone's C++ file translator: */
+/* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */
+
 //===-- ARMInstPrinter.cpp - Convert ARM MCInst to assembly syntax --------===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
@@ -26,6 +40,9 @@
 #include "ARMInstPrinter.h"
 #include "ARMMapping.h"
 
+#define GET_BANKEDREG_IMPL
+#include "ARMGenSystemRegister.inc"
+
 #define CONCAT(a, b) CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
 
@@ -33,9 +50,6 @@
 
 #define PRINT_ALIAS_INSTR
 #include "ARMGenAsmWriter.inc"
-
-#define GET_BANKEDREG_IMPL
-#include "ARMGenSystemRegister.inc"
 
 /// translateShiftImm - Convert shift immediate from 0-31 to 1-32 for printing.
 ///
@@ -687,7 +701,7 @@ DEFINE_printMveAddrModeRQOperand(0) DEFINE_printMveAddrModeRQOperand(3)
 		void printLdStmModeOperand(MCInst *MI, unsigned OpNum, SStream *O)
 {
 	add_cs_detail(MI, ARM_OP_GROUP_LdStmModeOperand, OpNum);
-	ARM_AM_AMSubMode Mode =
+	ARM_AM_SubMode Mode =
 		ARM_AM_getAM4SubMode(MCOperand_getImm(MCInst_getOperand(MI, (OpNum))));
 	SStream_concat0(O, ARM_AM_getAMSubModeStr(Mode));
 }

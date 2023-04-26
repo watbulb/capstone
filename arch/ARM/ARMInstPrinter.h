@@ -1,3 +1,17 @@
+/* Capstone Disassembly Engine, http://www.capstone-engine.org */
+/* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2022, */
+/*    Rot127 <unisono@quyllur.org> 2022-2023 */
+/* Automatically translated source file from LLVM. */
+
+/* LLVM-commit: 464bda7750a3ba9e23823fc707d7e7b6fc38438d */
+/* LLVM-tag: llvmorg-16.0.2-5-g464bda7750a3 */
+
+/* Only small edits allowed. */
+/* For multiple similiar edits, please create a Patch for the translator. */
+
+/* Capstone's C++ file translator: */
+/* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */
+
 //===- ARMInstPrinter.h - Convert ARM MCInst to assembly syntax -*- C++ -*-===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.

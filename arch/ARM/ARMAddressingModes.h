@@ -560,12 +560,12 @@ static inline unsigned ARM_AM_getAM3IdxMode(unsigned AM3Opc)
 //    DA - Decrement after
 //    DB - Decrement before
 // For VFP instructions, only the IA and DB modes are valid.
-static inline ARM_AM_AMSubMode ARM_AM_getAM4SubMode(unsigned Mode)
+static inline ARM_AM_SubMode ARM_AM_getAM4SubMode(unsigned Mode)
 {
-	return (ARM_AM_AMSubMode)(Mode & 0x7);
+	return (ARM_AM_SubMode)(Mode & 0x7);
 }
 
-static inline unsigned ARM_AM_getAM4ModeImm(ARM_AM_AMSubMode SubMode)
+static inline unsigned ARM_AM_getAM4ModeImm(ARM_AM_SubMode SubMode)
 {
 	return (int)SubMode;
 }
