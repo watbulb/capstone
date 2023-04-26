@@ -213,16 +213,20 @@ class Differ:
         """
         Searches in the nodes children for the identifier node and returns its text.
         """
-        id_type = ""
+        id_types = [""]
         for n in self.conf_general["nodes_to_diff"]:
             if n["node_type"] == node.type:
-                id_type = n["identifier_node_type"]
-        if not id_type:
+                id_types = n["identifier_node_type"]
+        if not id_types:
             log.fatal(f"Diffing: Node of type {node.type} has not identifier type specified.")
             exit(1)
-        identifier = find_id_by_type(node, id_type.split("/"), False)
+        identifier = ""
+        for id_type in id_types:
+            identifier = find_id_by_type(node, id_type.split("/"), False)
+            if identifier:
+                break
         if not identifier:
-            log.fatal(f'Diffing: Cannot find node type "{id_type}" in named-children.')
+            log.fatal(f'Diffing: Cannot find node type "{id_types}" in named-children.')
             exit(1)
         return identifier
 
@@ -440,7 +444,7 @@ class Differ:
 
             diff_lines = list(self.differ.compare(o, n))
             if self.no_difference(diff_lines):
-                log.debug(f"Nodes {bold(self.cur_nid)} match.")
+                log.info(f"Nodes {bold(self.cur_nid)} match.")
                 i += 1
                 continue
 
