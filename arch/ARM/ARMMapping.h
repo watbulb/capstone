@@ -15,6 +15,8 @@ typedef enum {
 // return name of regiser in friendly string
 const char *ARM_reg_name(csh handle, unsigned int reg);
 
+void ARM_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info);
+
 // given internal insn id, return public instruction ID
 void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id);
 

@@ -17,7 +17,7 @@ cs_err ARM_global_init(cs_struct *ud)
 
 	ARM_init_mri(mri);
 
-	ud->printer = printInst;
+	ud->printer = ARM_printer;
 	ud->printer_info = mri;
 	ud->reg_name = ARM_reg_name;
 	ud->insn_id = ARM_get_insn_id;

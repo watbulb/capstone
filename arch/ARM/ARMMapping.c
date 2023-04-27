@@ -35,6 +35,12 @@ void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
 	// Not used by ARM. Information is set after disassembly.
 }
 
+/// Decodes the asm string for a given instruction
+/// and fills the detail information about the instruction and its operands.
+void ARM_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */ info) {
+	printInst(MI, O, info);
+}
+
 #ifndef CAPSTONE_DIET
 static const char *const insn_name_maps[] = {
 	NULL, // ARM_INS_INVALID
