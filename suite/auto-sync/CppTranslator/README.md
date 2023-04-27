@@ -6,18 +6,46 @@ Because LLVM is written in C++ we must translate those files to C.
 The task of the `CppTranslator` is to do just that.
 The translation will not result in a completely correct C file! But it takes away most of the manual work.
 
+## The configuration file
+
+The configuration for each architecture is set in `arch_config.json`.
+
+The config values have the following meaning:
+
+- `General`: Settings valid for all architectures.
+   - `clang_format_file`: Path to Capstone's `.clang-format` file.
+   - `patch_persistent_file`: Path to the file which saves the selections from the `Differ`.
+   - `cs_arch_src`: Path to Capstone's `arch` directory.
+   - `translation_out_dir`: Path to the directory where the `CppTranslator` stores its files.
+   - `diff_out_dir`: Path to the directory where the `Differ` stores its files.
+   - `diff_color_new`: Color in the `Differ` for translated content.
+   - `diff_color_old`: Color in the `Differ` for old/current Capstone content.
+   - `diff_color_saved`: Color in the `Differ` for saved content.
+   - `diff_color_edited`: Color in the `Differ` for edited content.
+   - `nodes_to_diff`: List of parse tree nodes which get diffed - *Mind the note below*.
+      - `node_type`: The `type` of the node to be diffed.
+      - `identifier_node_type`: Types of child nodes which identify the node during diffing (the identifier must be the same in the translated and the old file!).
+- `<ARCH>`: Settings valid for a specific architecture
+   - `files_to_translate`: A list of file paths to translate.
+      - `in`: *Path* to a specific source file.
+      - `out`: The *filename* of the translated file.
+   - `files_for_template_search`: List of file paths to search for calls to template functions.
+   - `manually_edite_files`: List of files which are too complicated to translate. The user will be warned about them.
+
+_Note_: To understand the `nodes_to_diff` setting, check out `Differ.py`.
+
 ## Translation process
 
 The translation process simply searches for certain syntax and patches it.
 
 To allow searches for complicated patterns we parse the C++ file with Tree-sitter.
-Afterwards we can use [pattern queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries)
+Afterward we can use [pattern queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries)
 to find our syntax we would like to patch.
 
-Here an overview of the procedure:
+Here is an overview of the procedure:
 
 - First the source file is parsed with Tree-Sitter.
-- Afterwards the translator iterates of a number of patches.
+- Afterward the translator iterates of a number of patches.
 
 For each patch we do the following.
 
