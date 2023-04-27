@@ -370,8 +370,8 @@
     },
     "printLdStmModeOperand": {
       "apply_type": "OLD",
-      "old_hash": "088c3befbc8d33113664a35df781d07bd3f1edf9be6bc69691c1e713ce9df209",
-      "new_hash": "902da3c3a8d59c7d41784b50cc71448a409d4e6fcc8d96aedbbbd6966f5ecd67",
+      "old_hash": "4990300d297524408a55bc945388d4ce6465b1585ad2bf4b6493a0d7e3dc3e20",
+      "new_hash": "15fec9399f83d47d8ced75d1e71de628c0ec1b6a94aac0dabfeea17a2d6130f4",
       "edit": ""
     },
     "printMSRMaskOperand": {
@@ -794,13 +794,13 @@
     },
     "ARM_AM_getAM4ModeImm": {
       "apply_type": "OLD",
-      "old_hash": "c8a8be68c51dbcf729e716f046460f372dc15915d77762b29298a3a009651280",
+      "old_hash": "39dd93dc2516d2babe9cf9b1b22c6d6358e0887ac691d3a8210c7def682c1d99",
       "new_hash": "057f0b69b8885126db65609d61d7861e745f70678fc0b4cdd547517cf3781bf9",
       "edit": ""
     },
     "ARM_AM_getAM4SubMode": {
       "apply_type": "OLD",
-      "old_hash": "6e78833268c0a19ea6de6ae3d033005926f93926b57b9a58602e9c6e3a4e6d6c",
+      "old_hash": "8e23306f176900bf3b9ce26172465532d65485eeb57757b32323fd76a72b157c",
       "new_hash": "8ae0289c976949aab7de97549fb8655e285e3dd8f39b5b0077fbeacfc1ddd6cb",
       "edit": ""
     },
@@ -842,7 +842,7 @@
     },
     "ARM_AM_getAMSubModeStr": {
       "apply_type": "OLD",
-      "old_hash": "141635dd7e79de437776239d16ced56fffb66e49209b1b1b435ea0bca73fbf8f",
+      "old_hash": "ce74d91930ae0836a39773acc93f9d9af3d176fb386c03045fdce659ddafc93a",
       "new_hash": "2e559b4426dcacb7193a54663ba3e5fe0a9bb460e69538d19862c8e80c14a8c5",
       "edit": ""
     },
