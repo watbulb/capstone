@@ -122,18 +122,16 @@ cd "$cs_root/suite/auto-sync/build"
 cs_arch_dir="$cs_root/arch/$arch/"
 cs_inc_dir="$cs_root/include/capstone"
 
-into_cs_include=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc"
-for f in $into_cs_include; do
-  sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
-  sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
-  cp $f "$cs_inc_dir/inc"
-  echo "[*] Copy $f"
+into_arch_main_header=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc"
+header_file=$(echo "$arch" | awk '{print tolower($0)}')
+main_header="$cs_inc_dir/$header_file.h"
+
+for f in $into_arch_main_header; do
+  ../PatchMainHeader.py --header "$main_header" --inc "$f"
 done
 
-echo $into_cs_include
 for f in $(ls | grep "\.inc"); do
-  # echo "$f"
-  if ! echo $into_cs_include | grep -q -w $f ; then
+  if ! echo $into_arch_main_header | grep -q -w $f ; then
     sed -i "s/LLVM-commit: <commit>/LLVM-commit: $llvm_release_commit/g" $f
     sed -i "s/LLVM-tag: <tag>/LLVM-tag: $llvm_release_tag/g" $f
     cp $f $cs_arch_dir

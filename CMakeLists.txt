@@ -144,12 +144,6 @@ set(HEADERS_COMMON
     include/capstone/sh.h
 )
 
-set(HEADERS_INC
-    include/capstone/inc/ARMGenCSRegEnum.inc
-    include/capstone/inc/ARMGenCSInsnEnum.inc
-    include/capstone/inc/ARMGenCSFeatureEnum.inc
-)
-
 set(TEST_SOURCES test_basic.c test_detail.c test_skipdata.c test_iter.c)
 
 ## architecture support
