@@ -154,4 +154,10 @@ for f in $(ls $diff_dir/$arch*); do
   echo "[*] Copy $f"
 done
 
-# Give advice how to fix the translated C++ files.
+echo "[*] Apply patches to inc files"
+
+cd $cs_root
+p_dir="$cs_root/suite/auto-sync/inc_patches"
+for f in $(ls $p_dir); do
+  git apply "$p_dir/$f"
+done

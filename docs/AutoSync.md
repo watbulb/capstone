@@ -35,6 +35,9 @@ internally complicated but almost completely automated.
 
 Let's look at the update procedure for each group in detail.
 
+**Note**: The only exception to touch generated files is via git patches. This is the last resort
+if something is broken in LLVM, and we cannot generate correct files.
+
 **Generated files**
 
 Generated files always have the file extension `.inc`.
