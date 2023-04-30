@@ -79,11 +79,11 @@ fi
 setup_build_dir
 check_llvm $llvm_root $tblgen
 
-echo "[*] Generate disassembler..."
+echo "[*] Generate Disassembler tables..."
 $tblgen --printerLang=CCS --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenDisassemblerTables.inc"
 $tblgen --printerLang=C++ --gen-disassembler -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_inc_dir"/"$arch"GenDisassemblerTables.inc"
 
-echo "[*] Generate AsmWriter..."
+echo "[*] Generate AsmWriter tables..."
 $tblgen --printerLang=CCS --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_c_inc_dir"/"$arch"GenAsmWriter.inc"
 $tblgen --printerLang=C++ --gen-asm-writer -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td" > $llvm_inc_dir"/"$arch"GenAsmWriter.inc"
 
@@ -106,9 +106,21 @@ sed -i "s/##ARCH##/$arch/g" __ARCH__GenSystemRegister.inc
 cp __ARCH__GenCSSystemRegisterEnum.inc $arch"GenCSSystemRegisterEnum.inc"
 cp __ARCH__GenSystemRegister.inc $arch"GenSystemRegister.inc"
 
+if find -- "../vendor/tree-sitter-cpp/" -prune -type d -empty | grep -q '^'; then
+  echo "[*] Clone tree-sitter-cpp..."
+  git submodule update --init --recursive
+fi
+
 echo "[*] Translate LLVM source files..."
 cd ../CppTranslator/
-. ./.venv/bin/activate
+if [ ! -d "./.venv" ] ; then
+  echo "[*] Setup python3 venv and install dependencies"
+  python3 -m venv .venv
+  . ./.venv/bin/activate
+  pip3 install -r requirements.txt
+else
+  . ./.venv/bin/activate
+fi
 ./CppTranslator.py -a "$arch" -g "../vendor/tree-sitter-cpp/" -l "../build/ts_libs/ts-cpp.so"
 echo "[*] Run differ..."
 ./Differ.py -a "$arch" -g "../vendor/tree-sitter-cpp"
