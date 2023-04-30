@@ -1304,7 +1304,7 @@ void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 
 	if (!doing_mem(MI)) {
 		assert((ARM_get_detail_op(MI, -1) != NULL) &&
-			   (ARM_get_detail_op(MI, -1)->type == CS_OP_MEM));
+			   (ARM_get_detail_op(MI, -1)->type == ARM_OP_MEM));
 		MI->flat_insn->detail->arm.op_count--;
 	}
 

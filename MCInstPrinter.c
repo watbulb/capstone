@@ -148,6 +148,7 @@ const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M)
 	// either be zero or be preceded by a null byte.
 	return M->AsmStrings + AsmStrOffset;
 }
+
 // TODO Add functionality to toggle the flag.
 bool getUseMarkup() { return false; }
 

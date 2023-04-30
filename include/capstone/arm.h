@@ -172,6 +172,8 @@ inline static unsigned ARMVectorCondCodeFromString(const char CC)
 inline static const char *ARMCondCodeToString(ARMCC_CondCodes CC)
 {
   switch (CC) {
+  default:
+    assert(0 && "Unknown condition code");
   case ARMCC_EQ:
     return "eq";
   case ARMCC_NE:
@@ -203,7 +205,6 @@ inline static const char *ARMCondCodeToString(ARMCC_CondCodes CC)
   case ARMCC_AL:
     return "al";
   }
-  assert(0 && "Unknown condition code");
 }
 
 inline static unsigned ARMCondCodeFromString(const char *CC)
