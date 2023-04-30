@@ -102,6 +102,7 @@ $tblgen --printerLang=CCS --gen-asm-matcher -I "$llvm_root/llvm/include/" -I "$l
 echo "[*] Generate System Register tables..."
 $tblgen --printerLang=CCS --gen-searchable-tables -I "$llvm_root/llvm/include/" -I "$llvm_root/llvm/lib/Target/$llvm_target_dir/" "$llvm_root/llvm/lib/Target/$llvm_target_dir/$arch.td"
 sed -i "s/##ARCH##/$arch/g" __ARCH__GenCSSystemRegisterEnum.inc
+sed -i "s/##ARCH##/$arch/g" __ARCH__GenSystemRegister.inc
 cp __ARCH__GenCSSystemRegisterEnum.inc $arch"GenCSSystemRegisterEnum.inc"
 cp __ARCH__GenSystemRegister.inc $arch"GenSystemRegister.inc"
 
