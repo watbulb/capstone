@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_MCLASS, None
 0xb6,0xff,0x40,0x24 = vrintn.f16 q1, q0
 0xba,0xff,0x48,0x04 = vrintn.f32 q0, q4
 0xb6,0xff,0x42,0x05 = vrinta.f16 q0, q1

@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8, None
 0x9f,0xe8,0x0f,0x00 = clrm {r0, r1, r2, r3}
 0x9f,0xe8,0x1e,0x00 = clrm {r1, r2, r3, r4}
 0x9f,0xe8,0xff,0xdf = clrm {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, apsr}

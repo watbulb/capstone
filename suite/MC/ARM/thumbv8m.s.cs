@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8+CS_MODE_MCLASS, None
 0xbf,0xf3,0x6f,0x8f = isb sy
 0x92,0xfb,0xf3,0xf1 = sdiv r1, r2, r3
 0xb2,0xfb,0xf3,0xf1 = udiv r1, r2, r3

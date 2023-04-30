@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8+CS_MODE_MCLASS, None
 0x80,0xed,0x80,0x2f = vstr fpscr, [r0]
 0x09,0xed,0x86,0x4f = vstr fpscr_nzcvqc, [r9, #-0x18]
 0x29,0xed,0x86,0x4f = vstr fpscr_nzcvqc, [r9, #-0x18]!

@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_MCLASS, None
 0xef,0xf3,0x11,0x80 = mrs r0, basepri
 0xef,0xf3,0x12,0x80 = mrs r0, basepri_max
 0xef,0xf3,0x13,0x80 = mrs r0, faultmask

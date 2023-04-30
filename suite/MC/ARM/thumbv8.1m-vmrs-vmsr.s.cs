@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8+CS_MODE_MCLASS, None
 0xe2,0xee,0x10,0x0a = vmsr fpscr_nzcvqc, r0
 0xf2,0xee,0x10,0xaa = vmrs r10, fpscr_nzcvqc
 0xfe,0xee,0x10,0x0a = vmrs r0, fpcxtns

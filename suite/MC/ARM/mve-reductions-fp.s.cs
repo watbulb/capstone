@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8+CS_MODE_MCLASS, None
 0xee,0xfe,0x86,0xef = vminnmv.f16 lr, q3
 0xee,0xee,0x82,0xef = vminnmv.f32 lr, q1
 0xec,0xfe,0x80,0xef = vminnmav.f16 lr, q0

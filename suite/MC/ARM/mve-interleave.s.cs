@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8+CS_MODE_MCLASS, None
 0x9d,0xfc,0x00,0x1e = vld20.8 {q0, q1}, [sp]
 0x90,0xfc,0x00,0x1e = vld20.8 {q0, q1}, [r0]
 0xb0,0xfc,0x00,0x1e = vld20.8 {q0, q1}, [r0]!

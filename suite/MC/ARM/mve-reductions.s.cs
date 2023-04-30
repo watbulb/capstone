@@ -1,4 +1,4 @@
-# CS_ARCH_ARM, CS_MODE_THUMB | CS_MODE_V8 | CS_MODE_MCLASS, None
+# CS_ARCH_ARM, CS_MODE_THUMB+CS_MODE_V8+CS_MODE_MCLASS, None
 0x82,0xee,0x07,0x0f = vabav.s8 r0, q1, q3
 0x92,0xee,0x07,0x0f = vabav.s16 r0, q1, q3
 0xa2,0xee,0x07,0x0f = vabav.s32 r0, q1, q3
