@@ -40,9 +40,10 @@ void MCInst_clear(MCInst *inst)
 	inst->size = 0;
 }
 
-// do not free @Op
+// does not free @Op
 void MCInst_insert0(MCInst *inst, int index, MCOperand *Op)
 {
+	assert(index < MAX_MC_OPS);
 	int i;
 
 	for(i = inst->size; i > index; i--)
@@ -75,6 +76,7 @@ unsigned MCInst_getOpcodePub(const MCInst *inst)
 
 MCOperand *MCInst_getOperand(MCInst *inst, unsigned i)
 {
+	assert(i < MAX_MC_OPS);
 	return &inst->Operands[i];
 }
 
@@ -86,6 +88,7 @@ unsigned MCInst_getNumOperands(const MCInst *inst)
 // This addOperand2 function doesnt free Op
 void MCInst_addOperand2(MCInst *inst, MCOperand *Op)
 {
+	assert(inst->size < MAX_MC_OPS);
 	inst->Operands[inst->size] = *Op;
 
 	inst->size++;
@@ -192,6 +195,7 @@ MCOperand *MCOperand_CreateImm1(MCInst *mcInst, int64_t Val)
 
 void MCOperand_CreateImm0(MCInst *mcInst, int64_t Val)
 {
+	assert(mcInst->size < MAX_MC_OPS);
 	MCOperand *op = &(mcInst->Operands[mcInst->size]);
 	mcInst->size++;
 
