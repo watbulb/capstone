@@ -234,7 +234,7 @@ void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc) {
 			MI->tied_op_idx[i] = idx;
 
 			if (MI->flat_insn->detail)
-			MI->flat_insn->detail->writeback = true;
+				MI->flat_insn->detail->writeback = true;
 		}
 	}
 }
