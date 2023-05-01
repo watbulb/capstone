@@ -925,6 +925,7 @@ DecodeStatus AddThumbPredicate(MCInst *MI)
 			MCOperand *Op = malloc(sizeof(MCOperand));
 			memcpy(Op, MCInst_getOperand(MI, TiedOp), sizeof(MCOperand));
 			MCInst_insert0(MI, VCCPos + 3, Op);
+			free(Op);
 		}
 	} else if (VCC != ARMVCC_None) {
 		Check(&S, MCDisassembler_SoftFail);
