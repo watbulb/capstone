@@ -216,27 +216,27 @@ bool MCInst_isPredicable(const MCInstrDesc *MIDesc) {
 /// - The writeback flag in detail
 /// - Saves the indices of the tied destination operands.
 void MCInst_handleWriteback(MCInst *MI, const MCInstrDesc *InstDesc) {
-  const MCOperandInfo *OpInfo = InstDesc[MCInst_getOpcode(MI)].OpInfo;
-  unsigned short NumOps = InstDesc[MCInst_getOpcode(MI)].NumOperands;
+	const MCOperandInfo *OpInfo = InstDesc[MCInst_getOpcode(MI)].OpInfo;
+	unsigned short NumOps = InstDesc[MCInst_getOpcode(MI)].NumOperands;
 
-  unsigned i;
-  for (i = 0; i < NumOps; ++i) {
-    if (MCOperandInfo_isTiedToOp(&OpInfo[i])) {
-		int idx = MCOperandInfo_getOperandConstraint(
-			&InstDesc[MCInst_getOpcode(MI)], i, MCOI_TIED_TO);
+	unsigned i;
+	for (i = 0; i < NumOps; ++i) {
+		if (MCOperandInfo_isTiedToOp(&OpInfo[i])) {
+			int idx = MCOperandInfo_getOperandConstraint(
+				&InstDesc[MCInst_getOpcode(MI)], i, MCOI_TIED_TO);
 
-		if (idx == -1)
-			continue;
+			if (idx == -1)
+				continue;
 
-		if(i >= MAX_MC_OPS) {
-			assert(0 && "Maximum number of MC operands reached.");
+			if(i >= MAX_MC_OPS) {
+				assert(0 && "Maximum number of MC operands reached.");
+			}
+			MI->tied_op_idx[i] = idx;
+
+			if (MI->flat_insn->detail)
+			MI->flat_insn->detail->writeback = true;
 		}
-		MI->tied_op_idx[i] = idx;
-
-      if (MI->flat_insn->detail)
-		MI->flat_insn->detail->writeback = true;
 	}
-  }
 }
 
 /// Check if operand with OpNum is tied by another operand
