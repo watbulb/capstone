@@ -1338,10 +1338,8 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg,
 			ARM_get_detail_op(MI, 0)->mem.base = Val;
 		else {
 			ARM_get_detail_op(MI, 0)->mem.index = Val;
-			if (scale)
-				ARM_get_detail_op(MI, 0)->mem.scale = scale;
-			if (lshift)
-				ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
+			ARM_get_detail_op(MI, 0)->mem.scale = scale;
+			ARM_get_detail_op(MI, 0)->mem.lshift = lshift;
 		}
 
 		if (MCInst_opIsTying(MI, OpNum)) {
