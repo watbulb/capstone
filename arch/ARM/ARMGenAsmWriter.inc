@@ -4158,8 +4158,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     895545464U,	// VRSUBHNv2i32
     14217336U,	// VRSUBHNv4i16
     14741624U,	// VRSUBHNv8i8
-    2821312605U,	// VSCCLRMD
-    2821312605U,	// VSCCLRMS
+    2821304413U,	// VSCCLRMD
+    2821304413U,	// VSCCLRMS
     943285932U,	// VSDOTD
     943285932U,	// VSDOTDI
     943285932U,	// VSDOTQ
@@ -4724,7 +4724,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1277825288U,	// t2CDP
     1277823290U,	// t2CDP2
     4838725U,	// t2CLREX
-    2821312608U,	// t2CLRM
+    4029272160U,	// t2CLRM
     2651636U,	// t2CLZ
     43544737U,	// t2CMNri
     43544737U,	// t2CMNzrr
@@ -4750,14 +4750,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     4835658U,	// t2DCPS2
     4835679U,	// t2DCPS3
     875644842U,	// t2DLS
-    4029262885U,	// t2DMB
-    4029262981U,	// t2DSB
+    4096371749U,	// t2DMB
+    4096371845U,	// t2DSB
     2634192U,	// t2EORri
     43528656U,	// t2EORrr
     43586000U,	// t2EORrs
     43627272U,	// t2HINT
     4802513U,	// t2HVC
-    4096371849U,	// t2ISB
+    4163480713U,	// t2ISB
     69751512U,	// t2IT
     0U,	// t2Int_eh_sjlj_setjmp
     0U,	// t2Int_eh_sjlj_setjmp_nofp
@@ -4874,17 +4874,17 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2731512U,	// t2PACG
     2667147U,	// t2PKHBT
     2665630U,	// t2PKHTB
-    4163400801U,	// t2PLDWi12
-    4230509665U,	// t2PLDWi8
-    2684001U,	// t2PLDWs
-    4163399043U,	// t2PLDi12
-    4230507907U,	// t2PLDi8
-    69840259U,	// t2PLDpci
-    2682243U,	// t2PLDs
-    4163399428U,	// t2PLIi12
-    4230508292U,	// t2PLIi8
-    69840644U,	// t2PLIpci
-    2682628U,	// t2PLIs
+    4230509665U,	// t2PLDWi12
+    2651233U,	// t2PLDWi8
+    69792865U,	// t2PLDWs
+    4230507907U,	// t2PLDi12
+    2649475U,	// t2PLDi8
+    136949123U,	// t2PLDpci
+    69791107U,	// t2PLDs
+    4230508292U,	// t2PLIi12
+    2649860U,	// t2PLIi8
+    136949508U,	// t2PLIpci
+    69791492U,	// t2PLIs
     2682226U,	// t2QADD
     2681301U,	// t2QADD16
     2681404U,	// t2QADD8
@@ -5038,12 +5038,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     43576505U,	// t2SXTB
     2681232U,	// t2SXTB16
     43577016U,	// t2SXTH
-    136866776U,	// t2TBB
-    203976242U,	// t2TBH
+    203975640U,	// t2TBB
+    271085106U,	// t2TBH
     43544978U,	// t2TEQri
     43544978U,	// t2TEQrr
     43577746U,	// t2TEQrs
-    271166611U,	// t2TSB
+    338275475U,	// t2TSB
     43545464U,	// t2TSTri
     43545464U,	// t2TSTrr
     43578232U,	// t2TSTrs
@@ -5102,9 +5102,9 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1009363892U,	// tB
     985484567U,	// tBIC
     4802500U,	// tBKPT
-    338284369U,	// tBL
+    405393233U,	// tBL
     808047180U,	// tBLXNSr
-    338285981U,	// tBLXi
+    405394845U,	// tBLXi
     808048029U,	// tBLXr
     2733303U,	// tBX
     2732615U,	// tBXNS
@@ -5144,8 +5144,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1187336434U,	// tMVN
     985485790U,	// tORR
     0U,	// tPICADD
-    2821312790U,	// tPOP
-    2821312173U,	// tPUSH
+    4029272342U,	// tPOP
+    4029271725U,	// tPUSH
     2651162U,	// tREV
     2648569U,	// tREV16
     2649778U,	// tREVSH
@@ -9304,14 +9304,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     201326592U,	// t2PKHBT
     234881024U,	// t2PKHTB
     0U,	// t2PLDWi12
-    0U,	// t2PLDWi8
+    1U,	// t2PLDWi8
     1U,	// t2PLDWs
     0U,	// t2PLDi12
-    0U,	// t2PLDi8
+    1U,	// t2PLDi8
     1U,	// t2PLDpci
     1U,	// t2PLDs
     0U,	// t2PLIi12
-    0U,	// t2PLIi8
+    1U,	// t2PLIi8
     1U,	// t2PLIpci
     1U,	// t2PLIs
     0U,	// t2QADD
@@ -9703,7 +9703,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printPredicateOperand(MI, 1, O);
     break;
   case 14:
-    // BX_RET, ERET, FMSTAT, MOVPCLR, MVE_LCTP, VSCCLRMD, VSCCLRMS, t2AUTG, t...
+    // BX_RET, ERET, FMSTAT, MOVPCLR, MVE_LCTP, t2AUTG, t2BXAUT, t2CLREX, t2C...
     printPredicateOperand(MI, 0, O);
     break;
   case 15:
@@ -10395,7 +10395,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 2 encoded into 7 bits for 70 unique commands.
+  // Fragment 2 encoded into 7 bits for 71 unique commands.
   switch ((Bits >> 26) & 127) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -10631,8 +10631,8 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 42:
-    // VSCCLRMD, VSCCLRMS, t2CLRM, tPOP, tPUSH
-    printRegisterList(MI, 2, O);
+    // VSCCLRMD, VSCCLRMS
+    printRegisterList(MI, 0, O);
     return;
     break;
   case 43:
@@ -10764,51 +10764,56 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printOperandAddr(MI, Address, 1, O);
     break;
   case 60:
+    // t2CLRM, tPOP, tPUSH
+    printRegisterList(MI, 2, O);
+    return;
+    break;
+  case 61:
     // t2DMB, t2DSB
     printMemBOption(MI, 0, O);
     return;
     break;
-  case 61:
+  case 62:
     // t2ISB
     printInstSyncBOption(MI, 0, O);
     return;
     break;
-  case 62:
+  case 63:
     // t2PLDWi12, t2PLDi12, t2PLIi12
     printAddrModeImm12Operand_0(MI, 0, O);
     return;
     break;
-  case 63:
+  case 64:
     // t2PLDWi8, t2PLDi8, t2PLIi8
     printT2AddrModeImm8Operand_0(MI, 0, O);
     return;
     break;
-  case 64:
+  case 65:
     // t2PLDWs, t2PLDs, t2PLIs
     printT2AddrModeSoRegOperand(MI, 0, O);
     return;
     break;
-  case 65:
+  case 66:
     // t2PLDpci, t2PLIpci
     printThumbLdrLabelOperand(MI, 0, O);
     return;
     break;
-  case 66:
+  case 67:
     // t2TBB
     printAddrModeTBB(MI, 0, O);
     return;
     break;
-  case 67:
+  case 68:
     // t2TBH
     printAddrModeTBH(MI, 0, O);
     return;
     break;
-  case 68:
+  case 69:
     // t2TSB
     printTraceSyncBOption(MI, 0, O);
     return;
     break;
-  case 69:
+  case 70:
     // tBL, tBLXi
     printOperandAddr(MI, Address, 2, O);
     return;
