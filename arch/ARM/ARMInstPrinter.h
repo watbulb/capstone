@@ -24,8 +24,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef CS_ARMINSTPRINTER_H
-#define CS_ARMINSTPRINTER_H
+#ifndef CS_ARM_INSTPRINTER_H
+#define CS_ARM_INSTPRINTER_H
 
 #include <capstone/platform.h>
 #include <stdio.h>
@@ -204,4 +204,4 @@ DECLARE_printMveAddrModeRQOperand(0) DECLARE_printMveAddrModeRQOperand(3)
 
 unsigned translateShiftImm(unsigned imm);
 
-#endif // CS_ARMINSTPRINTER_H
+#endif // CS_ARM_INSTPRINTER_H

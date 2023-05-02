@@ -13,8 +13,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef ARMBASEINFO_H
-#define ARMBASEINFO_H
+#ifndef CS_ARM_BASEINFO_H
+#define CS_ARM_BASEINFO_H
 
 #include <assert.h>
 #include <stdbool.h>
@@ -566,4 +566,4 @@ enum {
 
 const char *get_pred_mask(ARM_PredBlockMask pred_mask);
 
-#endif // ARMBASEINFO_H
+#endif // CS_ARM_BASEINFO_H

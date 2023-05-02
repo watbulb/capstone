@@ -24,8 +24,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_LIB_TARGET_ARM_MCTARGETDESC_ARMADDRESSINGMODES_H
-#define LLVM_LIB_TARGET_ARM_MCTARGETDESC_ARMADDRESSINGMODES_H
+#ifndef CS_ARM_ADDRESSINGMODES_H
+#define CS_ARM_ADDRESSINGMODES_H
 
 #include <capstone/platform.h>
 #include <stdio.h>
@@ -783,4 +783,4 @@ static inline float ARM_AM_getFPImmFloat(unsigned Imm)
 	return BitsToFloat(I);
 }
 
-#endif
+#endif // CS_ARM_ADDRESSINGMODES_H
