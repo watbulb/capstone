@@ -6507,7 +6507,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     147456U,	// MVE_VMOV_from_lane_s8
     147456U,	// MVE_VMOV_from_lane_u16
     147456U,	// MVE_VMOV_from_lane_u8
-    164616U,	// MVE_VMOV_q_rr
+    10650376U,	// MVE_VMOV_q_rr
     167772160U,	// MVE_VMOV_rr_q
     32U,	// MVE_VMOV_to_lane_16
     32U,	// MVE_VMOV_to_lane_32
@@ -7087,10 +7087,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2838U,	// STC_PRE
     128U,	// STL
     128U,	// STLB
-    10485760U,	// STLEX
-    10485760U,	// STLEXB
+    11010048U,	// STLEX
+    11010048U,	// STLEXB
     5376U,	// STLEXD
-    10485760U,	// STLEXH
+    11010048U,	// STLEXH
     128U,	// STLH
     18560U,	// STMDA
     532U,	// STMDA_UPD
@@ -7111,10 +7111,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     6291456U,	// STRD
     40371712U,	// STRD_POST
     7341568U,	// STRD_PRE
-    10485760U,	// STREX
-    10485760U,	// STREXB
+    11010048U,	// STREX
+    11010048U,	// STREXB
     5376U,	// STREXD
-    10485760U,	// STREXH
+    11010048U,	// STREXH
     3456U,	// STRH
     7867008U,	// STRHTi
     8391296U,	// STRHTr
@@ -7133,8 +7133,8 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1572864U,	// SUBrsi
     0U,	// SUBrsr
     2U,	// SVC
-    10485760U,	// SWP
-    10485760U,	// SWPB
+    11010048U,	// SWP
+    11010048U,	// SWPB
     268435456U,	// SXTAB
     268435456U,	// SXTAB16
     268435456U,	// SXTAH
@@ -7297,10 +7297,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VBSLq
     0U,	// VBSPd
     0U,	// VBSPq
-    11011584U,	// VCADDv2f32
-    11011584U,	// VCADDv4f16
-    11011584U,	// VCADDv4f32
-    11011584U,	// VCADDv8f16
+    11535872U,	// VCADDv2f32
+    11535872U,	// VCADDv4f16
+    11535872U,	// VCADDv4f32
+    11535872U,	// VCADDv8f16
     0U,	// VCEQfd
     0U,	// VCEQfq
     0U,	// VCEQhd
@@ -7405,13 +7405,13 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// VCLZv4i32
     16384U,	// VCLZv8i16
     16384U,	// VCLZv8i8
-    11534720U,	// VCMLAv2f32
+    12059008U,	// VCMLAv2f32
     262528U,	// VCMLAv2f32_indexed
-    11534720U,	// VCMLAv4f16
+    12059008U,	// VCMLAv4f16
     262528U,	// VCMLAv4f16_indexed
-    11534720U,	// VCMLAv4f32
+    12059008U,	// VCMLAv4f32
     262528U,	// VCMLAv4f32_indexed
-    11534720U,	// VCMLAv8f16
+    12059008U,	// VCMLAv8f16
     262528U,	// VCMLAv8f16_indexed
     528U,	// VCMPD
     528U,	// VCMPED
@@ -7634,12 +7634,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     518U,	// VLD1DUPq8
     676U,	// VLD1DUPq8wb_fixed
     2687780U,	// VLD1DUPq8wb_register
-    5542U,	// VLD1LNd16
-    5670U,	// VLD1LNd16_UPD
-    5542U,	// VLD1LNd32
-    5670U,	// VLD1LNd32_UPD
-    5542U,	// VLD1LNd8
-    5670U,	// VLD1LNd8_UPD
+    12883366U,	// VLD1LNd16
+    13407782U,	// VLD1LNd16_UPD
+    12883366U,	// VLD1LNd32
+    13407782U,	// VLD1LNd32_UPD
+    12883366U,	// VLD1LNd8
+    13407782U,	// VLD1LNd8_UPD
     0U,	// VLD1LNq16Pseudo
     0U,	// VLD1LNq16Pseudo_UPD
     0U,	// VLD1LNq32Pseudo
@@ -7772,26 +7772,26 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VLD2DUPq8OddPseudo
     0U,	// VLD2DUPq8OddPseudoWB_fixed
     0U,	// VLD2DUPq8OddPseudoWB_register
-    347897856U,	// VLD2LNd16
+    13948454U,	// VLD2LNd16
     0U,	// VLD2LNd16Pseudo
     0U,	// VLD2LNd16Pseudo_UPD
-    12877824U,	// VLD2LNd16_UPD
-    347897856U,	// VLD2LNd32
+    349869734U,	// VLD2LNd16_UPD
+    13948454U,	// VLD2LNd32
     0U,	// VLD2LNd32Pseudo
     0U,	// VLD2LNd32Pseudo_UPD
-    12877824U,	// VLD2LNd32_UPD
-    347897856U,	// VLD2LNd8
+    349869734U,	// VLD2LNd32_UPD
+    13948454U,	// VLD2LNd8
     0U,	// VLD2LNd8Pseudo
     0U,	// VLD2LNd8Pseudo_UPD
-    12877824U,	// VLD2LNd8_UPD
-    347897856U,	// VLD2LNq16
+    349869734U,	// VLD2LNd8_UPD
+    13948454U,	// VLD2LNq16
     0U,	// VLD2LNq16Pseudo
     0U,	// VLD2LNq16Pseudo_UPD
-    12877824U,	// VLD2LNq16_UPD
-    347897856U,	// VLD2LNq32
+    349869734U,	// VLD2LNq16_UPD
+    13948454U,	// VLD2LNq32
     0U,	// VLD2LNq32Pseudo
     0U,	// VLD2LNq32Pseudo_UPD
-    12877824U,	// VLD2LNq32_UPD
+    349869734U,	// VLD2LNq32_UPD
     518U,	// VLD2b16
     676U,	// VLD2b16wb_fixed
     2687780U,	// VLD2b16wb_register
@@ -7828,53 +7828,53 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VLD2q8PseudoWB_register
     676U,	// VLD2q8wb_fixed
     2687780U,	// VLD2q8wb_register
-    317096U,	// VLD3DUPd16
+    333608U,	// VLD3DUPd16
     0U,	// VLD3DUPd16Pseudo
     0U,	// VLD3DUPd16Pseudo_UPD
-    13440680U,	// VLD3DUPd16_UPD
-    317096U,	// VLD3DUPd32
+    15030056U,	// VLD3DUPd16_UPD
+    333608U,	// VLD3DUPd32
     0U,	// VLD3DUPd32Pseudo
     0U,	// VLD3DUPd32Pseudo_UPD
-    13440680U,	// VLD3DUPd32_UPD
-    317096U,	// VLD3DUPd8
+    15030056U,	// VLD3DUPd32_UPD
+    333608U,	// VLD3DUPd8
     0U,	// VLD3DUPd8Pseudo
     0U,	// VLD3DUPd8Pseudo_UPD
-    13440680U,	// VLD3DUPd8_UPD
-    317096U,	// VLD3DUPq16
+    15030056U,	// VLD3DUPd8_UPD
+    333608U,	// VLD3DUPq16
     0U,	// VLD3DUPq16EvenPseudo
     0U,	// VLD3DUPq16OddPseudo
     0U,	// VLD3DUPq16OddPseudo_UPD
-    13440680U,	// VLD3DUPq16_UPD
-    317096U,	// VLD3DUPq32
+    15030056U,	// VLD3DUPq16_UPD
+    333608U,	// VLD3DUPq32
     0U,	// VLD3DUPq32EvenPseudo
     0U,	// VLD3DUPq32OddPseudo
     0U,	// VLD3DUPq32OddPseudo_UPD
-    13440680U,	// VLD3DUPq32_UPD
-    317096U,	// VLD3DUPq8
+    15030056U,	// VLD3DUPq32_UPD
+    333608U,	// VLD3DUPq8
     0U,	// VLD3DUPq8EvenPseudo
     0U,	// VLD3DUPq8OddPseudo
     0U,	// VLD3DUPq8OddPseudo_UPD
-    13440680U,	// VLD3DUPq8_UPD
-    369098752U,	// VLD3LNd16
+    15030056U,	// VLD3DUPq8_UPD
+    383424166U,	// VLD3LNd16
     0U,	// VLD3LNd16Pseudo
     0U,	// VLD3LNd16Pseudo_UPD
-    369098752U,	// VLD3LNd16_UPD
-    369098752U,	// VLD3LNd32
+    15505318U,	// VLD3LNd16_UPD
+    383424166U,	// VLD3LNd32
     0U,	// VLD3LNd32Pseudo
     0U,	// VLD3LNd32Pseudo_UPD
-    369098752U,	// VLD3LNd32_UPD
-    369098752U,	// VLD3LNd8
+    15505318U,	// VLD3LNd32_UPD
+    383424166U,	// VLD3LNd8
     0U,	// VLD3LNd8Pseudo
     0U,	// VLD3LNd8Pseudo_UPD
-    369098752U,	// VLD3LNd8_UPD
-    369098752U,	// VLD3LNq16
+    15505318U,	// VLD3LNd8_UPD
+    383424166U,	// VLD3LNq16
     0U,	// VLD3LNq16Pseudo
     0U,	// VLD3LNq16Pseudo_UPD
-    369098752U,	// VLD3LNq16_UPD
-    369098752U,	// VLD3LNq32
+    15505318U,	// VLD3LNq16_UPD
+    383424166U,	// VLD3LNq32
     0U,	// VLD3LNq32Pseudo
     0U,	// VLD3LNq32Pseudo_UPD
-    369098752U,	// VLD3LNq32_UPD
+    15505318U,	// VLD3LNq32_UPD
     402653184U,	// VLD3d16
     0U,	// VLD3d16Pseudo
     0U,	// VLD3d16Pseudo_UPD
@@ -7902,53 +7902,53 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     402653184U,	// VLD3q8_UPD
     0U,	// VLD3q8oddPseudo
     0U,	// VLD3q8oddPseudo_UPD
-    2955048U,	// VLD4DUPd16
+    2971688U,	// VLD4DUPd16
     0U,	// VLD4DUPd16Pseudo
     0U,	// VLD4DUPd16Pseudo_UPD
-    349992U,	// VLD4DUPd16_UPD
-    2955048U,	// VLD4DUPd32
+    366632U,	// VLD4DUPd16_UPD
+    2971688U,	// VLD4DUPd32
     0U,	// VLD4DUPd32Pseudo
     0U,	// VLD4DUPd32Pseudo_UPD
-    349992U,	// VLD4DUPd32_UPD
-    2955048U,	// VLD4DUPd8
+    366632U,	// VLD4DUPd32_UPD
+    2971688U,	// VLD4DUPd8
     0U,	// VLD4DUPd8Pseudo
     0U,	// VLD4DUPd8Pseudo_UPD
-    349992U,	// VLD4DUPd8_UPD
-    2955048U,	// VLD4DUPq16
+    366632U,	// VLD4DUPd8_UPD
+    2971688U,	// VLD4DUPq16
     0U,	// VLD4DUPq16EvenPseudo
     0U,	// VLD4DUPq16OddPseudo
     0U,	// VLD4DUPq16OddPseudo_UPD
-    349992U,	// VLD4DUPq16_UPD
-    2955048U,	// VLD4DUPq32
+    366632U,	// VLD4DUPq16_UPD
+    2971688U,	// VLD4DUPq32
     0U,	// VLD4DUPq32EvenPseudo
     0U,	// VLD4DUPq32OddPseudo
     0U,	// VLD4DUPq32OddPseudo_UPD
-    349992U,	// VLD4DUPq32_UPD
-    2955048U,	// VLD4DUPq8
+    366632U,	// VLD4DUPq32_UPD
+    2971688U,	// VLD4DUPq8
     0U,	// VLD4DUPq8EvenPseudo
     0U,	// VLD4DUPq8OddPseudo
     0U,	// VLD4DUPq8OddPseudo_UPD
-    349992U,	// VLD4DUPq8_UPD
-    33554432U,	// VLD4LNd16
+    366632U,	// VLD4DUPq8_UPD
+    440194982U,	// VLD4LNd16
     0U,	// VLD4LNd16Pseudo
     0U,	// VLD4LNd16Pseudo_UPD
-    33554432U,	// VLD4LNd16_UPD
-    33554432U,	// VLD4LNd32
+    6310U,	// VLD4LNd16_UPD
+    440194982U,	// VLD4LNd32
     0U,	// VLD4LNd32Pseudo
     0U,	// VLD4LNd32Pseudo_UPD
-    33554432U,	// VLD4LNd32_UPD
-    33554432U,	// VLD4LNd8
+    6310U,	// VLD4LNd32_UPD
+    440194982U,	// VLD4LNd8
     0U,	// VLD4LNd8Pseudo
     0U,	// VLD4LNd8Pseudo_UPD
-    33554432U,	// VLD4LNd8_UPD
-    33554432U,	// VLD4LNq16
+    6310U,	// VLD4LNd8_UPD
+    440194982U,	// VLD4LNq16
     0U,	// VLD4LNq16Pseudo
     0U,	// VLD4LNq16Pseudo_UPD
-    33554432U,	// VLD4LNq16_UPD
-    33554432U,	// VLD4LNq32
+    6310U,	// VLD4LNq16_UPD
+    440194982U,	// VLD4LNq32
     0U,	// VLD4LNq32Pseudo
     0U,	// VLD4LNq32Pseudo_UPD
-    33554432U,	// VLD4LNq32_UPD
+    6310U,	// VLD4LNq32_UPD
     33554432U,	// VLD4d16
     0U,	// VLD4d16Pseudo
     0U,	// VLD4d16Pseudo_UPD
@@ -7983,9 +7983,9 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     532U,	// VLDMSDB_UPD
     18560U,	// VLDMSIA
     532U,	// VLDMSIA_UPD
-    6016U,	// VLDRD
-    6144U,	// VLDRH
-    6016U,	// VLDRS
+    6400U,	// VLDRD
+    6528U,	// VLDRH
+    6400U,	// VLDRS
     0U,	// VLDR_FPCXTNS_off
     42U,	// VLDR_FPCXTNS_post
     0U,	// VLDR_FPCXTNS_pre
@@ -8040,10 +8040,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VMINuv8i8
     49944U,	// VMLAD
     3671552U,	// VMLAH
-    439879168U,	// VMLALslsv2i32
-    439879168U,	// VMLALslsv4i16
-    439879168U,	// VMLALsluv2i32
-    439879168U,	// VMLALsluv4i16
+    473433600U,	// VMLALslsv2i32
+    473433600U,	// VMLALslsv4i16
+    473433600U,	// VMLALsluv2i32
+    473433600U,	// VMLALsluv4i16
     3671552U,	// VMLALsv2i64
     3671552U,	// VMLALsv4i32
     3671552U,	// VMLALsv8i16
@@ -8055,14 +8055,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VMLAfq
     3671552U,	// VMLAhd
     3671552U,	// VMLAhq
-    439879168U,	// VMLAslfd
-    439879168U,	// VMLAslfq
-    439879168U,	// VMLAslhd
-    439879168U,	// VMLAslhq
-    439879168U,	// VMLAslv2i32
-    439879168U,	// VMLAslv4i16
-    439879168U,	// VMLAslv4i32
-    439879168U,	// VMLAslv8i16
+    473433600U,	// VMLAslfd
+    473433600U,	// VMLAslfq
+    473433600U,	// VMLAslhd
+    473433600U,	// VMLAslhq
+    473433600U,	// VMLAslv2i32
+    473433600U,	// VMLAslv4i16
+    473433600U,	// VMLAslv4i32
+    473433600U,	// VMLAslv8i16
     3671552U,	// VMLAv16i8
     3671552U,	// VMLAv2i32
     3671552U,	// VMLAv4i16
@@ -8071,10 +8071,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VMLAv8i8
     49944U,	// VMLSD
     3671552U,	// VMLSH
-    439879168U,	// VMLSLslsv2i32
-    439879168U,	// VMLSLslsv4i16
-    439879168U,	// VMLSLsluv2i32
-    439879168U,	// VMLSLsluv4i16
+    473433600U,	// VMLSLslsv2i32
+    473433600U,	// VMLSLslsv4i16
+    473433600U,	// VMLSLsluv2i32
+    473433600U,	// VMLSLsluv4i16
     3671552U,	// VMLSLsv2i64
     3671552U,	// VMLSLsv4i32
     3671552U,	// VMLSLsv8i16
@@ -8086,14 +8086,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VMLSfq
     3671552U,	// VMLShd
     3671552U,	// VMLShq
-    439879168U,	// VMLSslfd
-    439879168U,	// VMLSslfq
-    439879168U,	// VMLSslhd
-    439879168U,	// VMLSslhq
-    439879168U,	// VMLSslv2i32
-    439879168U,	// VMLSslv4i16
-    439879168U,	// VMLSslv4i32
-    439879168U,	// VMLSslv8i16
+    473433600U,	// VMLSslfd
+    473433600U,	// VMLSslfq
+    473433600U,	// VMLSslhd
+    473433600U,	// VMLSslhq
+    473433600U,	// VMLSslv2i32
+    473433600U,	// VMLSslv4i16
+    473433600U,	// VMLSslv4i32
+    473433600U,	// VMLSslv8i16
     3671552U,	// VMLSv16i8
     3671552U,	// VMLSv2i32
     3671552U,	// VMLSv4i16
@@ -8292,12 +8292,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VQADDuv4i32
     0U,	// VQADDuv8i16
     0U,	// VQADDuv8i8
-    439879168U,	// VQDMLALslv2i32
-    439879168U,	// VQDMLALslv4i16
+    473433600U,	// VQDMLALslv2i32
+    473433600U,	// VQDMLALslv4i16
     3671552U,	// VQDMLALv2i64
     3671552U,	// VQDMLALv4i32
-    439879168U,	// VQDMLSLslv2i32
-    439879168U,	// VQDMLSLslv4i16
+    473433600U,	// VQDMLSLslv2i32
+    473433600U,	// VQDMLSLslv4i16
     3671552U,	// VQDMLSLv2i64
     3671552U,	// VQDMLSLv4i32
     167772160U,	// VQDMULHslv2i32
@@ -8327,18 +8327,18 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// VQNEGv4i32
     16384U,	// VQNEGv8i16
     16384U,	// VQNEGv8i8
-    439879168U,	// VQRDMLAHslv2i32
-    439879168U,	// VQRDMLAHslv4i16
-    439879168U,	// VQRDMLAHslv4i32
-    439879168U,	// VQRDMLAHslv8i16
+    473433600U,	// VQRDMLAHslv2i32
+    473433600U,	// VQRDMLAHslv4i16
+    473433600U,	// VQRDMLAHslv4i32
+    473433600U,	// VQRDMLAHslv8i16
     3671552U,	// VQRDMLAHv2i32
     3671552U,	// VQRDMLAHv4i16
     3671552U,	// VQRDMLAHv4i32
     3671552U,	// VQRDMLAHv8i16
-    439879168U,	// VQRDMLSHslv2i32
-    439879168U,	// VQRDMLSHslv4i16
-    439879168U,	// VQRDMLSHslv4i32
-    439879168U,	// VQRDMLSHslv8i16
+    473433600U,	// VQRDMLSHslv2i32
+    473433600U,	// VQRDMLSHslv4i16
+    473433600U,	// VQRDMLSHslv4i32
+    473433600U,	// VQRDMLSHslv8i16
     3671552U,	// VQRDMLSHv2i32
     3671552U,	// VQRDMLSHv4i16
     3671552U,	// VQRDMLSHv4i32
@@ -8705,12 +8705,12 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     3671552U,	// VSRIv4i32
     3671552U,	// VSRIv8i16
     3671552U,	// VSRIv8i8
-    6310U,	// VST1LNd16
-    6438U,	// VST1LNd16_UPD
-    6310U,	// VST1LNd32
-    6438U,	// VST1LNd32_UPD
-    6310U,	// VST1LNd8
-    6438U,	// VST1LNd8_UPD
+    6694U,	// VST1LNd16
+    516201126U,	// VST1LNd16_UPD
+    6694U,	// VST1LNd32
+    516201126U,	// VST1LNd32_UPD
+    6694U,	// VST1LNd8
+    516201126U,	// VST1LNd8_UPD
     0U,	// VST1LNq16Pseudo
     0U,	// VST1LNq16Pseudo_UPD
     0U,	// VST1LNq32Pseudo
@@ -8813,26 +8813,26 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VST1q8LowTPseudo_UPD
     0U,	// VST1q8wb_fixed
     0U,	// VST1q8wb_register
-    13926784U,	// VST2LNd16
+    440194470U,	// VST2LNd16
     0U,	// VST2LNd16Pseudo
     0U,	// VST2LNd16Pseudo_UPD
-    482122112U,	// VST2LNd16_UPD
-    13926784U,	// VST2LNd32
+    440718886U,	// VST2LNd16_UPD
+    440194470U,	// VST2LNd32
     0U,	// VST2LNd32Pseudo
     0U,	// VST2LNd32Pseudo_UPD
-    482122112U,	// VST2LNd32_UPD
-    13926784U,	// VST2LNd8
+    440718886U,	// VST2LNd32_UPD
+    440194470U,	// VST2LNd8
     0U,	// VST2LNd8Pseudo
     0U,	// VST2LNd8Pseudo_UPD
-    482122112U,	// VST2LNd8_UPD
-    13926784U,	// VST2LNq16
+    440718886U,	// VST2LNd8_UPD
+    440194470U,	// VST2LNq16
     0U,	// VST2LNq16Pseudo
     0U,	// VST2LNq16Pseudo_UPD
-    482122112U,	// VST2LNq16_UPD
-    13926784U,	// VST2LNq32
+    440718886U,	// VST2LNq16_UPD
+    440194470U,	// VST2LNq32
     0U,	// VST2LNq32Pseudo
     0U,	// VST2LNq32Pseudo_UPD
-    482122112U,	// VST2LNq32_UPD
+    440718886U,	// VST2LNq32_UPD
     0U,	// VST2b16
     0U,	// VST2b16wb_fixed
     0U,	// VST2b16wb_register
@@ -8869,98 +8869,98 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// VST2q8PseudoWB_register
     0U,	// VST2q8wb_fixed
     0U,	// VST2q8wb_register
-    369623424U,	// VST3LNd16
+    440195750U,	// VST3LNd16
     0U,	// VST3LNd16Pseudo
     0U,	// VST3LNd16Pseudo_UPD
-    383261056U,	// VST3LNd16_UPD
-    369623424U,	// VST3LNd32
+    6950U,	// VST3LNd16_UPD
+    440195750U,	// VST3LNd32
     0U,	// VST3LNd32Pseudo
     0U,	// VST3LNd32Pseudo_UPD
-    383261056U,	// VST3LNd32_UPD
-    369623424U,	// VST3LNd8
+    6950U,	// VST3LNd32_UPD
+    440195750U,	// VST3LNd8
     0U,	// VST3LNd8Pseudo
     0U,	// VST3LNd8Pseudo_UPD
-    383261056U,	// VST3LNd8_UPD
-    369623424U,	// VST3LNq16
+    6950U,	// VST3LNd8_UPD
+    440195750U,	// VST3LNq16
     0U,	// VST3LNq16Pseudo
     0U,	// VST3LNq16Pseudo_UPD
-    383261056U,	// VST3LNq16_UPD
-    369623424U,	// VST3LNq32
+    6950U,	// VST3LNq16_UPD
+    440195750U,	// VST3LNq32
     0U,	// VST3LNq32Pseudo
     0U,	// VST3LNq32Pseudo_UPD
-    383261056U,	// VST3LNq32_UPD
+    6950U,	// VST3LNq32_UPD
     403177856U,	// VST3d16
     0U,	// VST3d16Pseudo
     0U,	// VST3d16Pseudo_UPD
-    416815488U,	// VST3d16_UPD
+    383872U,	// VST3d16_UPD
     403177856U,	// VST3d32
     0U,	// VST3d32Pseudo
     0U,	// VST3d32Pseudo_UPD
-    416815488U,	// VST3d32_UPD
+    383872U,	// VST3d32_UPD
     403177856U,	// VST3d8
     0U,	// VST3d8Pseudo
     0U,	// VST3d8Pseudo_UPD
-    416815488U,	// VST3d8_UPD
+    383872U,	// VST3d8_UPD
     403177856U,	// VST3q16
     0U,	// VST3q16Pseudo_UPD
-    416815488U,	// VST3q16_UPD
+    383872U,	// VST3q16_UPD
     0U,	// VST3q16oddPseudo
     0U,	// VST3q16oddPseudo_UPD
     403177856U,	// VST3q32
     0U,	// VST3q32Pseudo_UPD
-    416815488U,	// VST3q32_UPD
+    383872U,	// VST3q32_UPD
     0U,	// VST3q32oddPseudo
     0U,	// VST3q32oddPseudo_UPD
     403177856U,	// VST3q8
     0U,	// VST3q8Pseudo_UPD
-    416815488U,	// VST3q8_UPD
+    383872U,	// VST3q8_UPD
     0U,	// VST3q8oddPseudo
     0U,	// VST3q8oddPseudo_UPD
-    34079104U,	// VST4LNd16
+    440194598U,	// VST4LNd16
     0U,	// VST4LNd16Pseudo
     0U,	// VST4LNd16Pseudo_UPD
-    47716736U,	// VST4LNd16_UPD
-    34079104U,	// VST4LNd32
+    399014U,	// VST4LNd16_UPD
+    440194598U,	// VST4LNd32
     0U,	// VST4LNd32Pseudo
     0U,	// VST4LNd32Pseudo_UPD
-    47716736U,	// VST4LNd32_UPD
-    34079104U,	// VST4LNd8
+    399014U,	// VST4LNd32_UPD
+    440194598U,	// VST4LNd8
     0U,	// VST4LNd8Pseudo
     0U,	// VST4LNd8Pseudo_UPD
-    47716736U,	// VST4LNd8_UPD
-    34079104U,	// VST4LNq16
+    399014U,	// VST4LNd8_UPD
+    440194598U,	// VST4LNq16
     0U,	// VST4LNq16Pseudo
     0U,	// VST4LNq16Pseudo_UPD
-    47716736U,	// VST4LNq16_UPD
-    34079104U,	// VST4LNq32
+    399014U,	// VST4LNq16_UPD
+    440194598U,	// VST4LNq32
     0U,	// VST4LNq32Pseudo
     0U,	// VST4LNq32Pseudo_UPD
-    47716736U,	// VST4LNq32_UPD
+    399014U,	// VST4LNq32_UPD
     34079104U,	// VST4d16
     0U,	// VST4d16Pseudo
     0U,	// VST4d16Pseudo_UPD
-    47716736U,	// VST4d16_UPD
+    15735680U,	// VST4d16_UPD
     34079104U,	// VST4d32
     0U,	// VST4d32Pseudo
     0U,	// VST4d32Pseudo_UPD
-    47716736U,	// VST4d32_UPD
+    15735680U,	// VST4d32_UPD
     34079104U,	// VST4d8
     0U,	// VST4d8Pseudo
     0U,	// VST4d8Pseudo_UPD
-    47716736U,	// VST4d8_UPD
+    15735680U,	// VST4d8_UPD
     34079104U,	// VST4q16
     0U,	// VST4q16Pseudo_UPD
-    47716736U,	// VST4q16_UPD
+    15735680U,	// VST4q16_UPD
     0U,	// VST4q16oddPseudo
     0U,	// VST4q16oddPseudo_UPD
     34079104U,	// VST4q32
     0U,	// VST4q32Pseudo_UPD
-    47716736U,	// VST4q32_UPD
+    15735680U,	// VST4q32_UPD
     0U,	// VST4q32oddPseudo
     0U,	// VST4q32oddPseudo_UPD
     34079104U,	// VST4q8
     0U,	// VST4q8Pseudo_UPD
-    47716736U,	// VST4q8_UPD
+    15735680U,	// VST4q8_UPD
     0U,	// VST4q8oddPseudo
     0U,	// VST4q8oddPseudo_UPD
     532U,	// VSTMDDB_UPD
@@ -8970,9 +8970,9 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     532U,	// VSTMSDB_UPD
     18560U,	// VSTMSIA
     532U,	// VSTMSIA_UPD
-    6016U,	// VSTRD
-    6144U,	// VSTRH
-    6016U,	// VSTRS
+    6400U,	// VSTRD
+    6528U,	// VSTRH
+    6400U,	// VSTRS
     0U,	// VSTR_FPCXTNS_off
     42U,	// VSTR_FPCXTNS_post
     0U,	// VSTR_FPCXTNS_pre
@@ -9025,17 +9025,17 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     520U,	// VSUDOTQI
     16384U,	// VSWPd
     16384U,	// VSWPq
-    6656U,	// VTBL1
-    6784U,	// VTBL2
-    6912U,	// VTBL3
+    7168U,	// VTBL1
+    7296U,	// VTBL2
+    7424U,	// VTBL3
     0U,	// VTBL3Pseudo
-    7040U,	// VTBL4
+    7552U,	// VTBL4
     0U,	// VTBL4Pseudo
-    7168U,	// VTBX1
-    7296U,	// VTBX2
-    7424U,	// VTBX3
+    7680U,	// VTBX1
+    7808U,	// VTBX2
+    7936U,	// VTBX3
     0U,	// VTBX3Pseudo
-    7552U,	// VTBX4
+    8064U,	// VTBX4
     0U,	// VTBX4Pseudo
     0U,	// VTOSHD
     72U,	// VTOSHH
@@ -9102,50 +9102,50 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// VZIPq16
     16384U,	// VZIPq32
     16384U,	// VZIPq8
-    362624U,	// sysLDMDA
-    7700U,	// sysLDMDA_UPD
-    362624U,	// sysLDMDB
-    7700U,	// sysLDMDB_UPD
-    362624U,	// sysLDMIA
-    7700U,	// sysLDMIA_UPD
-    362624U,	// sysLDMIB
-    7700U,	// sysLDMIB_UPD
-    362624U,	// sysSTMDA
-    7700U,	// sysSTMDA_UPD
-    362624U,	// sysSTMDB
-    7700U,	// sysSTMDB_UPD
-    362624U,	// sysSTMIA
-    7700U,	// sysSTMIA_UPD
-    362624U,	// sysSTMIB
-    7700U,	// sysSTMIB_UPD
+    411776U,	// sysLDMDA
+    8212U,	// sysLDMDA_UPD
+    411776U,	// sysLDMDB
+    8212U,	// sysLDMDB_UPD
+    411776U,	// sysLDMIA
+    8212U,	// sysLDMIA_UPD
+    411776U,	// sysLDMIB
+    8212U,	// sysLDMIB_UPD
+    411776U,	// sysSTMDA
+    8212U,	// sysSTMDA_UPD
+    411776U,	// sysSTMDB
+    8212U,	// sysSTMDB_UPD
+    411776U,	// sysSTMIA
+    8212U,	// sysSTMIA_UPD
+    411776U,	// sysSTMIB
+    8212U,	// sysSTMIB_UPD
     0U,	// t2ADCri
     0U,	// t2ADCrr
-    14680064U,	// t2ADCrs
+    16252928U,	// t2ADCrs
     0U,	// t2ADDri
     0U,	// t2ADDri12
     0U,	// t2ADDrr
-    14680064U,	// t2ADDrs
+    16252928U,	// t2ADDrs
     0U,	// t2ADDspImm
     0U,	// t2ADDspImm12
     1280U,	// t2ADR
     0U,	// t2ANDri
     0U,	// t2ANDrr
-    14680064U,	// t2ANDrs
-    15204352U,	// t2ASRri
+    16252928U,	// t2ANDrs
+    16777216U,	// t2ASRri
     0U,	// t2ASRrr
     0U,	// t2AUT
     524672U,	// t2AUTG
     2U,	// t2B
     1408U,	// t2BFC
     2098688U,	// t2BFI
-    7808U,	// t2BFLi
+    8320U,	// t2BFLi
     16384U,	// t2BFLr
-    7808U,	// t2BFi
-    15733760U,	// t2BFic
+    8320U,	// t2BFi
+    17306624U,	// t2BFic
     16384U,	// t2BFr
     0U,	// t2BICri
     0U,	// t2BICrr
-    14680064U,	// t2BICrs
+    16252928U,	// t2BICrs
     0U,	// t2BTI
     524672U,	// t2BXAUT
     2U,	// t2BXJ
@@ -9170,10 +9170,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     17920U,	// t2CRC32CW
     17920U,	// t2CRC32H
     17920U,	// t2CRC32W
-    15730176U,	// t2CSEL
-    15730176U,	// t2CSINC
-    15730176U,	// t2CSINV
-    15730176U,	// t2CSNEG
+    17303040U,	// t2CSEL
+    17303040U,	// t2CSINC
+    17303040U,	// t2CSINV
+    17303040U,	// t2CSNEG
     2U,	// t2DBG
     0U,	// t2DCPS1
     0U,	// t2DCPS2
@@ -9183,7 +9183,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// t2DSB
     0U,	// t2EORri
     0U,	// t2EORrr
-    14680064U,	// t2EORrs
+    16252928U,	// t2EORrs
     2U,	// t2HINT
     0U,	// t2HVC
     0U,	// t2ISB
@@ -9194,7 +9194,7 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     128U,	// t2LDAB
     128U,	// t2LDAEX
     128U,	// t2LDAEXB
-    10485760U,	// t2LDAEXD
+    11010048U,	// t2LDAEXD
     128U,	// t2LDAEXH
     128U,	// t2LDAH
     2582U,	// t2LDC2L_OFFSET
@@ -9222,48 +9222,48 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     4480U,	// t2LDRB_PRE
     3200U,	// t2LDRBi12
     4096U,	// t2LDRBi8
-    7936U,	// t2LDRBpci
-    8064U,	// t2LDRBs
-    510132224U,	// t2LDRD_POST
-    16252928U,	// t2LDRD_PRE
-    16777216U,	// t2LDRDi8
-    8192U,	// t2LDREX
+    8448U,	// t2LDRBpci
+    8576U,	// t2LDRBs
+    543686656U,	// t2LDRD_POST
+    17825792U,	// t2LDRD_PRE
+    18350080U,	// t2LDRDi8
+    8704U,	// t2LDREX
     128U,	// t2LDREXB
-    10485760U,	// t2LDREXD
+    11010048U,	// t2LDREXD
     128U,	// t2LDREXH
     4096U,	// t2LDRHT
     133760U,	// t2LDRH_POST
     4480U,	// t2LDRH_PRE
     3200U,	// t2LDRHi12
     4096U,	// t2LDRHi8
-    7936U,	// t2LDRHpci
-    8064U,	// t2LDRHs
+    8448U,	// t2LDRHpci
+    8576U,	// t2LDRHs
     4096U,	// t2LDRSBT
     133760U,	// t2LDRSB_POST
     4480U,	// t2LDRSB_PRE
     3200U,	// t2LDRSBi12
     4096U,	// t2LDRSBi8
-    7936U,	// t2LDRSBpci
-    8064U,	// t2LDRSBs
+    8448U,	// t2LDRSBpci
+    8576U,	// t2LDRSBs
     4096U,	// t2LDRSHT
     133760U,	// t2LDRSH_POST
     4480U,	// t2LDRSH_PRE
     3200U,	// t2LDRSHi12
     4096U,	// t2LDRSHi8
-    7936U,	// t2LDRSHpci
-    8064U,	// t2LDRSHs
+    8448U,	// t2LDRSHpci
+    8576U,	// t2LDRSHs
     4096U,	// t2LDRT
     133760U,	// t2LDR_POST
     4480U,	// t2LDR_PRE
     3200U,	// t2LDRi12
     4096U,	// t2LDRi8
-    7936U,	// t2LDRpci
-    8064U,	// t2LDRs
+    8448U,	// t2LDRpci
+    8576U,	// t2LDRs
     0U,	// t2LE
     0U,	// t2LEUpdate
     0U,	// t2LSLri
     0U,	// t2LSLrr
-    15204352U,	// t2LSRri
+    16777216U,	// t2LSRri
     0U,	// t2LSRrr
     103908112U,	// t2MCR
     103908112U,	// t2MCR2
@@ -9275,14 +9275,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// t2MOVi
     16384U,	// t2MOVi16
     16384U,	// t2MOVr
-    376832U,	// t2MOVsra_flag
-    376832U,	// t2MOVsrl_flag
+    425984U,	// t2MOVsra_flag
+    425984U,	// t2MOVsrl_flag
     115480U,	// t2MRC
     115480U,	// t2MRC2
     0U,	// t2MRRC
     0U,	// t2MRRC2
     26U,	// t2MRS_AR
-    8320U,	// t2MRS_M
+    8832U,	// t2MRS_M
     3840U,	// t2MRSbanked
     28U,	// t2MRSsys_AR
     528U,	// t2MSR_AR
@@ -9294,10 +9294,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     1024U,	// t2MVNs
     0U,	// t2ORNri
     0U,	// t2ORNrr
-    14680064U,	// t2ORNrs
+    16252928U,	// t2ORNrs
     0U,	// t2ORRri
     0U,	// t2ORRrr
-    14680064U,	// t2ORRrs
+    16252928U,	// t2ORRrs
     0U,	// t2PAC
     0U,	// t2PACBTI
     524672U,	// t2PACG
@@ -9337,14 +9337,14 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16384U,	// t2RRX
     0U,	// t2RSBri
     0U,	// t2RSBrr
-    14680064U,	// t2RSBrs
+    16252928U,	// t2RSBrs
     0U,	// t2SADD16
     0U,	// t2SADD8
     0U,	// t2SASX
     0U,	// t2SB
     0U,	// t2SBCri
     0U,	// t2SBCrr
-    14680064U,	// t2SBCrs
+    16252928U,	// t2SBCrs
     33554432U,	// t2SBFX
     0U,	// t2SDIV
     0U,	// t2SEL
@@ -9420,10 +9420,10 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2838U,	// t2STC_PRE
     128U,	// t2STL
     128U,	// t2STLB
-    10485760U,	// t2STLEX
-    10485760U,	// t2STLEXB
+    11010048U,	// t2STLEX
+    11010048U,	// t2STLEXB
     33554432U,	// t2STLEXD
-    10485760U,	// t2STLEXH
+    11010048U,	// t2STLEXH
     128U,	// t2STLH
     18560U,	// t2STMDB
     532U,	// t2STMDB_UPD
@@ -9434,31 +9434,31 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     4480U,	// t2STRB_PRE
     3200U,	// t2STRBi12
     4096U,	// t2STRBi8
-    8064U,	// t2STRBs
-    510133760U,	// t2STRD_POST
-    16254464U,	// t2STRD_PRE
-    16777216U,	// t2STRDi8
-    17301504U,	// t2STREX
-    10485760U,	// t2STREXB
+    8576U,	// t2STRBs
+    543688192U,	// t2STRD_POST
+    17827328U,	// t2STRD_PRE
+    18350080U,	// t2STRDi8
+    18874368U,	// t2STREX
+    11010048U,	// t2STREXB
     33554432U,	// t2STREXD
-    10485760U,	// t2STREXH
+    11010048U,	// t2STREXH
     4096U,	// t2STRHT
     133760U,	// t2STRH_POST
     4480U,	// t2STRH_PRE
     3200U,	// t2STRHi12
     4096U,	// t2STRHi8
-    8064U,	// t2STRHs
+    8576U,	// t2STRHs
     4096U,	// t2STRT
     133760U,	// t2STR_POST
     4480U,	// t2STR_PRE
     3200U,	// t2STRi12
     4096U,	// t2STRi8
-    8064U,	// t2STRs
+    8576U,	// t2STRs
     0U,	// t2SUBS_PC_LR
     0U,	// t2SUBri
     0U,	// t2SUBri12
     0U,	// t2SUBrr
-    14680064U,	// t2SUBrs
+    16252928U,	// t2SUBrs
     0U,	// t2SUBspImm
     0U,	// t2SUBspImm12
     268435456U,	// t2SXTAB
@@ -9520,13 +9520,13 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     16768U,	// tADDi3
     2U,	// tADDi8
     0U,	// tADDrSP
-    17825792U,	// tADDrSPi
+    19398656U,	// tADDrSPi
     16768U,	// tADDrr
-    8448U,	// tADDspi
+    8960U,	// tADDspi
     17920U,	// tADDspr
-    8576U,	// tADR
+    9088U,	// tADR
     2U,	// tAND
-    8704U,	// tASRri
+    9216U,	// tASRri
     2U,	// tASRrr
     2U,	// tB
     2U,	// tBIC
@@ -9552,19 +9552,19 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     0U,	// tInt_eh_sjlj_longjmp
     0U,	// tInt_eh_sjlj_setjmp
     18560U,	// tLDMIA
-    8832U,	// tLDRBi
-    8960U,	// tLDRBr
-    9088U,	// tLDRHi
-    8960U,	// tLDRHr
-    8960U,	// tLDRSB
-    8960U,	// tLDRSH
-    9216U,	// tLDRi
-    7936U,	// tLDRpci
-    8960U,	// tLDRr
-    9344U,	// tLDRspi
+    9344U,	// tLDRBi
+    9472U,	// tLDRBr
+    9600U,	// tLDRHi
+    9472U,	// tLDRHr
+    9472U,	// tLDRSB
+    9472U,	// tLDRSH
+    9728U,	// tLDRi
+    8448U,	// tLDRpci
+    9472U,	// tLDRr
+    9856U,	// tLDRspi
     16768U,	// tLSLri
     2U,	// tLSLrr
-    8704U,	// tLSRri
+    9216U,	// tLSRri
     2U,	// tLSRrr
     2U,	// tMOVSr
     0U,	// tMOVi8
@@ -9583,17 +9583,17 @@ MnemonicBitsInfo getMnemonic(MCInst *MI, SStream *O) {
     2U,	// tSBC
     0U,	// tSETEND
     532U,	// tSTMIA_UPD
-    8832U,	// tSTRBi
-    8960U,	// tSTRBr
-    9088U,	// tSTRHi
-    8960U,	// tSTRHr
-    9216U,	// tSTRi
-    8960U,	// tSTRr
-    9344U,	// tSTRspi
+    9344U,	// tSTRBi
+    9472U,	// tSTRBr
+    9600U,	// tSTRHi
+    9472U,	// tSTRHr
+    9728U,	// tSTRi
+    9472U,	// tSTRr
+    9856U,	// tSTRspi
     16768U,	// tSUBi3
     2U,	// tSUBi8
     16768U,	// tSUBrr
-    8448U,	// tSUBspi
+    8960U,	// tSUBspi
     2U,	// tSVC
     16384U,	// tSXTB
     16384U,	// tSXTH
@@ -10911,7 +10911,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 19:
     // VLD1LNd16, VLD1LNd16_UPD, VLD1LNd32, VLD1LNd32_UPD, VLD1LNd8, VLD1LNd8...
-    SStream_concat0(O, "}[");
+    SStream_concat1(O, '[');
     set_mem_access(MI, true);
     break;
   case 20:
@@ -11009,7 +11009,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 4 encoded into 7 bits for 74 unique commands.
+  // Fragment 4 encoded into 7 bits for 78 unique commands.
   switch ((Bits >> 39) & 127) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -11231,185 +11231,243 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 43:
-    // VLD1LNd16, VLD1LNd32, VLD1LNd8
+    // VLD1LNd16, VLD1LNd32, VLD1LNd8, VST2LNd16, VST2LNd32, VST2LNd8, VST2LN...
     printNoHashImmediate(MI, 4, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 1, O);
-    return;
     break;
   case 44:
-    // VLD1LNd16_UPD, VLD1LNd32_UPD, VLD1LNd8_UPD
+    // VLD1LNd16_UPD, VLD1LNd32_UPD, VLD1LNd8_UPD, VLD2LNd16, VLD2LNd32, VLD2...
     printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 2, O);
-    printAddrMode6OffsetOperand(MI, 4, O);
-    return;
     break;
   case 45:
+    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    break;
+  case 46:
     // VLD3DUPd16, VLD3DUPd16_UPD, VLD3DUPd32, VLD3DUPd32_UPD, VLD3DUPd8, VLD...
     SStream_concat0(O, "[]}, ");
     break;
-  case 46:
+  case 47:
+    // VLD3LNd16_UPD, VLD3LNd32_UPD, VLD3LNd8_UPD, VLD3LNq16_UPD, VLD3LNq32_U...
+    printNoHashImmediate(MI, 10, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 1, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 10, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 2, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 10, O);
+    break;
+  case 48:
     // VLD4DUPd16, VLD4DUPd16_UPD, VLD4DUPd32, VLD4DUPd32_UPD, VLD4DUPd8, VLD...
     SStream_concat0(O, "[], ");
     printOperand(MI, 3, O);
     SStream_concat0(O, "[]}, ");
     break;
-  case 47:
+  case 49:
+    // VLD4LNd16_UPD, VLD4LNd32_UPD, VLD4LNd8_UPD, VLD4LNq16_UPD, VLD4LNq32_U...
+    printNoHashImmediate(MI, 12, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 1, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 12, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 2, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 12, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 3, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 12, O);
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 5, O);
+    printAddrMode6OffsetOperand(MI, 7, O);
+    return;
+    break;
+  case 50:
     // VLDRD, VLDRS, VSTRD, VSTRS
     printAddrMode5Operand_0(MI, 1, O);
     return;
     break;
-  case 48:
+  case 51:
     // VLDRH, VSTRH
     printAddrMode5FP16Operand_0(MI, 1, O);
     return;
     break;
-  case 49:
+  case 52:
     // VST1LNd16, VST1LNd32, VST1LNd8
     printNoHashImmediate(MI, 3, O);
-    SStream_concat0(O, "], ");
+    SStream_concat0(O, "]}, ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 0, O);
     return;
     break;
-  case 50:
-    // VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8_UPD
+  case 53:
+    // VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8_UPD, VST3LNd16, VST3LNd32, VST3...
     printNoHashImmediate(MI, 5, O);
+    break;
+  case 54:
+    // VST3LNd16_UPD, VST3LNd32_UPD, VST3LNd8_UPD, VST3LNq16_UPD, VST3LNq32_U...
+    printNoHashImmediate(MI, 7, O);
     SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 5, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 7, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 6, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 7, O);
+    SStream_concat0(O, "]}, ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 1, O);
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
-  case 51:
-    // VST2LNd16_UPD, VST2LNd32_UPD, VST2LNd8_UPD, VST2LNq16_UPD, VST2LNq32_U...
+  case 55:
+    // VST3d16_UPD, VST3d32_UPD, VST3d8_UPD, VST3q16_UPD, VST3q32_UPD, VST3q8...
     printOperand(MI, 5, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 6, O);
     break;
-  case 52:
+  case 56:
     // VTBL1
     printVectorListOne(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 53:
+  case 57:
     // VTBL2
     printVectorListTwo(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 54:
+  case 58:
     // VTBL3
     printVectorListThree(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 55:
+  case 59:
     // VTBL4
     printVectorListFour(MI, 1, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 2, O);
     return;
     break;
-  case 56:
+  case 60:
     // VTBX1
     printVectorListOne(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 57:
+  case 61:
     // VTBX2
     printVectorListTwo(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 58:
+  case 62:
     // VTBX3
     printVectorListThree(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 59:
+  case 63:
     // VTBX4
     printVectorListFour(MI, 2, O);
     SStream_concat0(O, ", ");
     printOperand(MI, 3, O);
     return;
     break;
-  case 60:
+  case 64:
     // sysLDMDA_UPD, sysLDMDB_UPD, sysLDMIA_UPD, sysLDMIB_UPD, sysSTMDA_UPD, ...
     SStream_concat0(O, " ^");
     return;
     break;
-  case 61:
+  case 65:
     // t2BFLi, t2BFi
     printOperandAddr(MI, Address, 1, O);
     return;
     break;
-  case 62:
+  case 66:
     // t2LDRBpci, t2LDRHpci, t2LDRSBpci, t2LDRSHpci, t2LDRpci, tLDRpci
     printThumbLdrLabelOperand(MI, 1, O);
     return;
     break;
-  case 63:
+  case 67:
     // t2LDRBs, t2LDRHs, t2LDRSBs, t2LDRSHs, t2LDRs, t2STRBs, t2STRHs, t2STRs
     printT2AddrModeSoRegOperand(MI, 1, O);
     return;
     break;
-  case 64:
+  case 68:
     // t2LDREX
     printT2AddrModeImm0_1020s4Operand(MI, 1, O);
     return;
     break;
-  case 65:
+  case 69:
     // t2MRS_M
     printMSRMaskOperand(MI, 1, O);
     return;
     break;
-  case 66:
+  case 70:
     // tADDspi, tSUBspi
     printThumbS4ImmOperand(MI, 2, O);
     return;
     break;
-  case 67:
+  case 71:
     // tADR
     printAdrLabelOperandAddr_2(MI, Address, 1, O);
     return;
     break;
-  case 68:
+  case 72:
     // tASRri, tLSRri
     printThumbSRImm(MI, 3, O);
     return;
     break;
-  case 69:
+  case 73:
     // tLDRBi, tSTRBi
     printThumbAddrModeImm5S1Operand(MI, 1, O);
     return;
     break;
-  case 70:
+  case 74:
     // tLDRBr, tLDRHr, tLDRSB, tLDRSH, tLDRr, tSTRBr, tSTRHr, tSTRr
     printThumbAddrModeRROperand(MI, 1, O);
     return;
     break;
-  case 71:
+  case 75:
     // tLDRHi, tSTRHi
     printThumbAddrModeImm5S2Operand(MI, 1, O);
     return;
     break;
-  case 72:
+  case 76:
     // tLDRi, tSTRi
     printThumbAddrModeImm5S4Operand(MI, 1, O);
     return;
     break;
-  case 73:
+  case 77:
     // tLDRspi, tSTRspi
     printThumbAddrModeSPOperand(MI, 1, O);
     return;
@@ -11417,7 +11475,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 5 encoded into 5 bits for 24 unique commands.
+  // Fragment 5 encoded into 5 bits for 27 unique commands.
   switch ((Bits >> 46) & 31) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -11479,14 +11537,8 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 10:
-    // MVE_VMOV_q_rr
+    // MVE_VMOV_q_rr, VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_U...
     printOperand(MI, 1, O);
-    printVectorIndex(MI, 5, O);
-    SStream_concat0(O, ", ");
-    printOperand(MI, 2, O);
-    SStream_concat0(O, ", ");
-    printOperand(MI, 3, O);
-    return;
     break;
   case 11:
     // MVE_VSHLL_lws16bh, MVE_VSHLL_lws16th, MVE_VSHLL_lwu16bh, MVE_VSHLL_lwu...
@@ -11526,31 +11578,67 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 18:
-    // VLD2LNd16, VLD2LNd16_UPD, VLD2LNd32, VLD2LNd32_UPD, VLD2LNd8, VLD2LNd8...
-    SStream_concat0(O, "}[");
-    set_mem_access(MI, true);
+    // VLD1LNd16, VLD1LNd16_UPD, VLD1LNd32, VLD1LNd32_UPD, VLD1LNd8, VLD1LNd8...
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
     break;
   case 19:
+    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32, VLD4LNd16, VLD4L...
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    break;
+  case 20:
     // VLD3DUPd16, VLD3DUPd32, VLD3DUPd8, VLD3DUPq16, VLD3DUPq32, VLD3DUPq8
     printAddrMode6Operand(MI, 3, O);
     return;
     break;
-  case 20:
+  case 21:
     // VLD3DUPd16_UPD, VLD3DUPd32_UPD, VLD3DUPd8_UPD, VLD3DUPq16_UPD, VLD3DUP...
     printAddrMode6Operand(MI, 4, O);
     break;
-  case 21:
+  case 22:
     // VLD4DUPd16_UPD, VLD4DUPd32_UPD, VLD4DUPd8_UPD, VLD4DUPq16_UPD, VLD4DUP...
     printAddrMode6Operand(MI, 5, O);
     printAddrMode6OffsetOperand(MI, 7, O);
     return;
     break;
-  case 22:
+  case 23:
+    // VST3d16_UPD, VST3d32_UPD, VST3d8_UPD, VST3q16_UPD, VST3q32_UPD, VST3q8...
+    SStream_concat0(O, "}, ");
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
+    return;
+    break;
+  case 24:
+    // VST4LNd16_UPD, VST4LNd32_UPD, VST4LNd8_UPD, VST4LNq16_UPD, VST4LNq32_U...
+    printOperand(MI, 5, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 6, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 7, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
+    return;
+    break;
+  case 25:
     // sysLDMDA, sysLDMDB, sysLDMIA, sysLDMIB, sysSTMDA, sysSTMDB, sysSTMIA, ...
     SStream_concat0(O, " ^");
     return;
     break;
-  case 23:
+  case 26:
     // t2MOVsra_flag, t2MOVsrl_flag
     SStream_concat0(O, ", #1");
     return;
@@ -11558,7 +11646,7 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 6 encoded into 6 bits for 35 unique commands.
+  // Fragment 6 encoded into 6 bits for 38 unique commands.
   switch ((Bits >> 51) & 63) {
   default: assert(0 && "Invalid command number.");
   case 0:
@@ -11597,9 +11685,8 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printOperand(MI, 3, O);
     break;
   case 8:
-    // CDE_VCX3A_fpdp, CDE_VCX3A_fpsp
+    // CDE_VCX3A_fpdp, CDE_VCX3A_fpsp, VST2LNd16_UPD, VST2LNd32_UPD, VST2LNd8...
     printOperand(MI, 5, O);
-    return;
     break;
   case 9:
     // LDCL_OPTION, LDC_OPTION, STCL_OPTION, STC_OPTION, t2LDC2L_OPTION, t2LD...
@@ -11659,84 +11746,107 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 20:
+    // MVE_VMOV_q_rr
+    printVectorIndex(MI, 5, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 2, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 3, O);
+    return;
+    break;
+  case 21:
     // STLEX, STLEXB, STLEXH, STREX, STREXB, STREXH, SWP, SWPB, t2LDAEXD, t2L...
     printAddrMode7Operand(MI, 2, O);
     return;
     break;
-  case 21:
+  case 22:
     // VCADDv2f32, VCADDv4f16, VCADDv4f32, VCADDv8f16
     printComplexRotationOp_180_90(MI, 3, O);
     return;
     break;
-  case 22:
+  case 23:
     // VCMLAv2f32, VCMLAv4f16, VCMLAv4f32, VCMLAv8f16
     printComplexRotationOp_90_0(MI, 4, O);
     return;
     break;
-  case 23:
-    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32, VST2LNd16_UPD, V...
-    printNoHashImmediate(MI, 6, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    break;
   case 24:
-    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 3, O);
-    printAddrMode6OffsetOperand(MI, 5, O);
-    return;
+    // VLD1LNd16, VLD1LNd32, VLD1LNd8, VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8...
+    printAddrMode6Operand(MI, 1, O);
     break;
   case 25:
+    // VLD1LNd16_UPD, VLD1LNd32_UPD, VLD1LNd8_UPD
+    printAddrMode6Operand(MI, 2, O);
+    printAddrMode6OffsetOperand(MI, 4, O);
+    return;
+    break;
+  case 26:
+    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32
+    printOperand(MI, 1, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 6, O);
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 2, O);
+    return;
+    break;
+  case 27:
+    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 8, O);
+    break;
+  case 28:
     // VLD3DUPd16_UPD, VLD3DUPd32_UPD, VLD3DUPd8_UPD, VLD3DUPq16_UPD, VLD3DUP...
     printAddrMode6OffsetOperand(MI, 6, O);
     return;
     break;
-  case 26:
-    // VST2LNd16, VST2LNd32, VST2LNd8, VST2LNq16, VST2LNq32
-    printNoHashImmediate(MI, 4, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 0, O);
+  case 29:
+    // VLD3LNd16_UPD, VLD3LNd32_UPD, VLD3LNd8_UPD, VLD3LNq16_UPD, VLD3LNq32_U...
+    printAddrMode6Operand(MI, 4, O);
+    printAddrMode6OffsetOperand(MI, 6, O);
     return;
     break;
-  case 27:
-    // VST3LNd16_UPD, VST3LNd32_UPD, VST3LNd8_UPD, VST3LNq16_UPD, VST3LNq32_U...
-    printOperand(MI, 6, O);
+  case 30:
+    // VST4d16_UPD, VST4d32_UPD, VST4d8_UPD, VST4q16_UPD, VST4q32_UPD, VST4q8...
+    printOperand(MI, 7, O);
+    SStream_concat0(O, "}, ");
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
+    return;
     break;
-  case 28:
+  case 31:
     // t2ADCrs, t2ADDrs, t2ANDrs, t2BICrs, t2EORrs, t2ORNrs, t2ORRrs, t2RSBrs...
     printT2SOOperand(MI, 2, O);
     return;
     break;
-  case 29:
+  case 32:
     // t2ASRri, t2LSRri
     printThumbSRImm(MI, 2, O);
     return;
     break;
-  case 30:
+  case 33:
     // t2BFic, t2CSEL, t2CSINC, t2CSINV, t2CSNEG
     printMandatoryPredicateOperand(MI, 3, O);
     return;
     break;
-  case 31:
+  case 34:
     // t2LDRD_PRE, t2STRD_PRE
     printT2AddrModeImm8s4Operand_1(MI, 3, O);
     SStream_concat1(O, '!');
     return;
     break;
-  case 32:
+  case 35:
     // t2LDRDi8, t2STRDi8
     printT2AddrModeImm8s4Operand_0(MI, 2, O);
     return;
     break;
-  case 33:
+  case 36:
     // t2STREX
     printT2AddrModeImm0_1020s4Operand(MI, 2, O);
     return;
     break;
-  case 34:
+  case 37:
     // tADDrSPi
     printThumbS4ImmOperand(MI, 2, O);
     return;
@@ -11744,8 +11854,8 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   }
 
 
-  // Fragment 7 encoded into 4 bits for 16 unique commands.
-  switch ((Bits >> 57) & 15) {
+  // Fragment 7 encoded into 5 bits for 17 unique commands.
+  switch ((Bits >> 57) & 31) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // ASRi, ASRr, LSLi, LSLr, LSRi, LSRr, RORi, RORr, VLD1LNdWB_register_Asm...
@@ -11801,31 +11911,46 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     return;
     break;
   case 10:
-    // VLD2LNd16, VLD2LNd32, VLD2LNd8, VLD2LNq16, VLD2LNq32
-    printAddrMode6Operand(MI, 2, O);
+    // VLD2LNd16_UPD, VLD2LNd32_UPD, VLD2LNd8_UPD, VLD2LNq16_UPD, VLD2LNq32_U...
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 3, O);
+    printAddrMode6OffsetOperand(MI, 5, O);
     return;
     break;
   case 11:
-    // VLD3LNd16, VLD3LNd16_UPD, VLD3LNd32, VLD3LNd32_UPD, VLD3LNd8, VLD3LNd8...
-    SStream_concat0(O, "}[");
+    // VLD3LNd16, VLD3LNd32, VLD3LNd8, VLD3LNq16, VLD3LNq32
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 2, O);
+    SStream_concat1(O, '[');
     set_mem_access(MI, true);
+    printNoHashImmediate(MI, 8, O);
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 3, O);
+    return;
     break;
   case 12:
     // VLD3d16, VLD3d16_UPD, VLD3d32, VLD3d32_UPD, VLD3d8, VLD3d8_UPD, VLD3q1...
     SStream_concat0(O, "}, ");
     break;
   case 13:
+    // VLD4LNd16, VLD4LNd32, VLD4LNd8, VLD4LNq16, VLD4LNq32, VST2LNd16, VST2L...
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    break;
+  case 14:
     // VMLALslsv2i32, VMLALslsv4i16, VMLALsluv2i32, VMLALsluv4i16, VMLAslfd, ...
     printVectorIndex(MI, 4, O);
     return;
     break;
-  case 14:
-    // VST2LNd16_UPD, VST2LNd32_UPD, VST2LNd8_UPD, VST2LNq16_UPD, VST2LNq32_U...
-    printAddrMode6Operand(MI, 1, O);
+  case 15:
+    // VST1LNd16_UPD, VST1LNd32_UPD, VST1LNd8_UPD
     printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
-  case 15:
+  case 16:
     // t2LDRD_POST, t2STRD_POST
     printT2AddrModeImm8s4OffsetOperand(MI, 4, O);
     return;
@@ -12143,29 +12268,6 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printVectorIndex(MI, 4, O);
     return;
     break;
-  case ARM_VLD3LNd16:
-  case ARM_VLD3LNd32:
-  case ARM_VLD3LNd8:
-  case ARM_VLD3LNq16:
-  case ARM_VLD3LNq32:
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 3, O);
-    return;
-    break;
-  case ARM_VLD3LNd16_UPD:
-  case ARM_VLD3LNd32_UPD:
-  case ARM_VLD3LNd8_UPD:
-  case ARM_VLD3LNq16_UPD:
-  case ARM_VLD3LNq32_UPD:
-    printNoHashImmediate(MI, 10, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 4, O);
-    printAddrMode6OffsetOperand(MI, 6, O);
-    return;
-    break;
   case ARM_VLD3d16_UPD:
   case ARM_VLD3d32_UPD:
   case ARM_VLD3d8_UPD:
@@ -12181,28 +12283,10 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VLD4LNd8:
   case ARM_VLD4LNq16:
   case ARM_VLD4LNq32:
-    printOperand(MI, 3, O);
-    SStream_concat0(O, "}[");
-    set_mem_access(MI, true);
     printNoHashImmediate(MI, 10, O);
-    SStream_concat0(O, "], ");
+    SStream_concat0(O, "]}, ");
     set_mem_access(MI, false);
     printAddrMode6Operand(MI, 4, O);
-    return;
-    break;
-  case ARM_VLD4LNd16_UPD:
-  case ARM_VLD4LNd32_UPD:
-  case ARM_VLD4LNd8_UPD:
-  case ARM_VLD4LNq16_UPD:
-  case ARM_VLD4LNq32_UPD:
-    printOperand(MI, 3, O);
-    SStream_concat0(O, "}[");
-    set_mem_access(MI, true);
-    printNoHashImmediate(MI, 12, O);
-    SStream_concat0(O, "], ");
-    set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 5, O);
-    printAddrMode6OffsetOperand(MI, 7, O);
     return;
     break;
   case ARM_VLD4d16:
@@ -12252,6 +12336,29 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VQRDMULHslv8i16:
     return;
     break;
+  case ARM_VST2LNd16:
+  case ARM_VST2LNd32:
+  case ARM_VST2LNd8:
+  case ARM_VST2LNq16:
+  case ARM_VST2LNq32:
+    printNoHashImmediate(MI, 4, O);
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 0, O);
+    return;
+    break;
+  case ARM_VST2LNd16_UPD:
+  case ARM_VST2LNd32_UPD:
+  case ARM_VST2LNd8_UPD:
+  case ARM_VST2LNq16_UPD:
+  case ARM_VST2LNq32_UPD:
+    printNoHashImmediate(MI, 6, O);
+    SStream_concat0(O, "]}, ");
+    set_mem_access(MI, false);
+    printAddrMode6Operand(MI, 1, O);
+    printAddrMode6OffsetOperand(MI, 3, O);
+    return;
+    break;
   case ARM_VST3LNd16:
   case ARM_VST3LNd32:
   case ARM_VST3LNd8:
@@ -12260,29 +12367,13 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printNoHashImmediate(MI, 5, O);
     SStream_concat0(O, "], ");
     set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 0, O);
-    return;
-    break;
-  case ARM_VST3LNd16_UPD:
-  case ARM_VST3LNd32_UPD:
-  case ARM_VST3LNd8_UPD:
-  case ARM_VST3LNq16_UPD:
-  case ARM_VST3LNq32_UPD:
-    printNoHashImmediate(MI, 7, O);
-    SStream_concat0(O, "], ");
+    printOperand(MI, 4, O);
+    SStream_concat1(O, '[');
+    set_mem_access(MI, true);
+    printNoHashImmediate(MI, 5, O);
+    SStream_concat0(O, "]}, ");
     set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
-    return;
-    break;
-  case ARM_VST3d16_UPD:
-  case ARM_VST3d32_UPD:
-  case ARM_VST3d8_UPD:
-  case ARM_VST3q16_UPD:
-  case ARM_VST3q32_UPD:
-  case ARM_VST3q8_UPD:
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
+    printAddrMode6Operand(MI, 0, O);
     return;
     break;
   case ARM_VST4LNd16:
@@ -12290,28 +12381,22 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   case ARM_VST4LNd8:
   case ARM_VST4LNq16:
   case ARM_VST4LNq32:
-    printOperand(MI, 5, O);
-    SStream_concat0(O, "}[");
+    printNoHashImmediate(MI, 6, O);
+    SStream_concat0(O, "], ");
+    set_mem_access(MI, false);
+    printOperand(MI, 4, O);
+    SStream_concat1(O, '[');
     set_mem_access(MI, true);
     printNoHashImmediate(MI, 6, O);
     SStream_concat0(O, "], ");
     set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 0, O);
-    return;
-    break;
-  case ARM_VST4LNd16_UPD:
-  case ARM_VST4LNd32_UPD:
-  case ARM_VST4LNd8_UPD:
-  case ARM_VST4LNq16_UPD:
-  case ARM_VST4LNq32_UPD:
-    printOperand(MI, 7, O);
-    SStream_concat0(O, "}[");
+    printOperand(MI, 5, O);
+    SStream_concat1(O, '[');
     set_mem_access(MI, true);
-    printNoHashImmediate(MI, 8, O);
-    SStream_concat0(O, "], ");
+    printNoHashImmediate(MI, 6, O);
+    SStream_concat0(O, "]}, ");
     set_mem_access(MI, false);
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
+    printAddrMode6Operand(MI, 0, O);
     return;
     break;
   case ARM_VST4d16:
@@ -12323,18 +12408,6 @@ void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     printOperand(MI, 5, O);
     SStream_concat0(O, "}, ");
     printAddrMode6Operand(MI, 0, O);
-    return;
-    break;
-  case ARM_VST4d16_UPD:
-  case ARM_VST4d32_UPD:
-  case ARM_VST4d8_UPD:
-  case ARM_VST4q16_UPD:
-  case ARM_VST4q32_UPD:
-  case ARM_VST4q8_UPD:
-    printOperand(MI, 7, O);
-    SStream_concat0(O, "}, ");
-    printAddrMode6Operand(MI, 1, O);
-    printAddrMode6OffsetOperand(MI, 3, O);
     return;
     break;
   }
