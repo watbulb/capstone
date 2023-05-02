@@ -36474,8 +36474,8 @@
 { /* ARM_tLDRBi (4375) - ARM_INS_LDRB - ldrb${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_IMM, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36483,8 +36483,8 @@
 { /* ARM_tLDRBr (4376) - ARM_INS_LDRB - ldrb${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36492,8 +36492,8 @@
 { /* ARM_tLDRHi (4377) - ARM_INS_LDRH - ldrh${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_IMM, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36501,8 +36501,8 @@
 { /* ARM_tLDRHr (4378) - ARM_INS_LDRH - ldrh${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36510,8 +36510,8 @@
 { /* ARM_tLDRSB (4379) - ARM_INS_LDRSB - ldrsb${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36519,8 +36519,8 @@
 { /* ARM_tLDRSH (4380) - ARM_INS_LDRSH - ldrsh${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36528,8 +36528,8 @@
 { /* ARM_tLDRi (4381) - ARM_INS_LDR - ldr${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_IMM, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36545,8 +36545,8 @@
 { /* ARM_tLDRr (4383) - ARM_INS_LDR - ldr${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36742,8 +36742,8 @@
 { /* ARM_tSTRBi (4406) - ARM_INS_STRB - strb${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_IMM, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36751,8 +36751,8 @@
 { /* ARM_tSTRBr (4407) - ARM_INS_STRB - strb${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36760,8 +36760,8 @@
 { /* ARM_tSTRHi (4408) - ARM_INS_STRH - strh${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_IMM, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36769,8 +36769,8 @@
 { /* ARM_tSTRHr (4409) - ARM_INS_STRH - strh${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36778,8 +36778,8 @@
 { /* ARM_tSTRi (4410) - ARM_INS_STR - str${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_IMM, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_IMM, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
@@ -36787,8 +36787,8 @@
 { /* ARM_tSTRr (4411) - ARM_INS_STR - str${p}	$Rt, $addr */
 {
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* Rt */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
-  { CS_OP_MEM | CS_OP_REG, CS_AC_INVALID, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
+  { CS_OP_MEM | CS_OP_REG, CS_AC_READ | CS_AC_WRITE, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* addr - tGPR */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* p - i32imm */
   { 0 }
