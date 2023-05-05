@@ -5,6 +5,9 @@ BraceWrapping:
   AfterFunction:   true
 BreakBeforeBraces: Custom
 AlignAfterOpenBracket: Align
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 2
 IndentWidth: 4
 TabWidth: 4
 UseTab: Always
