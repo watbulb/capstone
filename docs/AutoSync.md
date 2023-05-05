@@ -1,8 +1,10 @@
 # Auto-Sync
 
-`auto-sync` is the update tool for Capstone.
-Its purpose is to automate as many steps as possible in the update
-procedure.
+`auto-sync` is the architecture update tool for Capstone.
+Because the architecture modules of Capstone use mostly code from LLVM,
+we need to update this part with every LLVM release. `auto-sync` helps
+with this synchronization between LLVM and Capstone's modules by
+automating most of it.
 
 You can find it in `suite/auto-sync`.
 
@@ -143,7 +145,10 @@ If new instructions or operands were added, add test cases for those
 (recession tests for instructions are located in `suite/MC/`).
 
 TODO: Operand and detail tests
-<!-- TODO: Wait until `cstest` is rewritten and add description about operand testing. -->
+<!--
+TODO: Wait until `cstest` is rewritten and add description about operand testing.
+Issue: https://github.com/capstone-engine/capstone/issues/1984
+-->
 
 ## Refactor an architecture for `auto-sync`
 

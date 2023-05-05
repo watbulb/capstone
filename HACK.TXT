@@ -76,8 +76,11 @@ If a module does not support `auto-sync` yet, it is highly recommended to refact
 instead of attempting to update it manually.
 Refactoring will take less time and updates it during the procedure.
 
-The one exception is `x86`. `x86` which is not compatible with `auto-sync` and
-currently can't be refactored to use it.
+The one exception is `x86`. In LLVM we use several emitter backends to generate C code.
+One of those LLVM backends (the `DecoderEmitter`) has two versions.
+One for `x86` and another for all the other architectures.
+Until now it was not worth it to refactoring this unique `x86` backend. So `x86` is not
+supported currently.
 
 Adding an architecture
 ----------------------
