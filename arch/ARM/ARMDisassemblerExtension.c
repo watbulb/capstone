@@ -20,14 +20,11 @@ bool ITBlock_push_back(ARM_ITBlock *it, char v)
 // Returns true if the current instruction is in an IT block
 bool ITBlock_instrInITBlock(ARM_ITBlock *it)
 {
-	// return !ITStates.empty();
 	return (it->size > 0);
 }
 
 // Returns true if current instruction is the last instruction in an IT block
 bool ITBlock_instrLastInITBlock(ARM_ITBlock *it) { return (it->size == 1); }
-
-// Handles the condition code status of instructions in IT blocks
 
 // Returns the condition code for instruction in IT block
 unsigned ITBlock_getITCC(ARM_ITBlock *it)
@@ -35,7 +32,6 @@ unsigned ITBlock_getITCC(ARM_ITBlock *it)
 	unsigned CC = ARMCC_AL;
 
 	if (ITBlock_instrInITBlock(it))
-		// CC = ITStates.back();
 		CC = it->ITStates[it->size - 1];
 
 	return CC;
@@ -44,7 +40,6 @@ unsigned ITBlock_getITCC(ARM_ITBlock *it)
 // Advances the IT block state to the next T or E
 void ITBlock_advanceITState(ARM_ITBlock *it)
 {
-	// ITStates.pop_back();
 	it->size--;
 }
 
