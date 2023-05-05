@@ -204,7 +204,7 @@ void MCOperand_CreateImm0(MCInst *mcInst, int64_t Val)
 	op->ImmVal = Val;
 }
 
-/// Check if any operand of is precicable
+/// Check if any operand of the MCInstrDesc is predicable
 bool MCInst_isPredicable(const MCInstrDesc *MIDesc) {
 	const MCOperandInfo *OpInfo = MIDesc->OpInfo;
 	unsigned NumOps = MIDesc->NumOperands;

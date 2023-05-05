@@ -114,7 +114,7 @@ To update an architecture do the following:
 
 Rebase `llvm-capstone` onto the new LLVM release (if not already done).
 ```
-# 1. Clone Capstones LLVM
+# 1. Clone Capstone's LLVM
 git clone https://github.com/capstone-engine/llvm-capstone
 
 # 2. Rebase onto the new LLVM release and resolve the conflicts.
