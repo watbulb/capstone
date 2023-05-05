@@ -465,7 +465,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		break;
 	}
 	case ARM_OP_GROUP_AddrMode7Operand:
-		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, ARM_get_op_val(MI, OpNum));
+		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, ARM_get_op_val(MI, OpNum));
 		set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_SBitModifierOperand:
