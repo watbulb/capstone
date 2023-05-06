@@ -11,7 +11,7 @@
 /* Capstone's LLVM TableGen Backends: */
 /* https://github.com/capstone-engine/llvm-capstone */
 
-  "yield", // ARM_INS_YIELD
+  "invalid", // ARM_INS_INVALID
   "asr", // ARM_INS_ASR
   "it", // ARM_INS_IT
   "ldrbt", // ARM_INS_LDRBT
@@ -95,18 +95,16 @@
   "crc32w", // ARM_INS_CRC32W
   "dbg", // ARM_INS_DBG
   "dmb", // ARM_INS_DMB
-  "dfb", // ARM_INS_DFB
+  "dsb", // ARM_INS_DSB
   "eor", // ARM_INS_EOR
   "eret", // ARM_INS_ERET
-  "fconstd", // ARM_INS_FCONSTD
   "vmov", // ARM_INS_VMOV
-  "fconsts", // ARM_INS_FCONSTS
   "fldmdbx", // ARM_INS_FLDMDBX
   "fldmiax", // ARM_INS_FLDMIAX
-  "fmstat", // ARM_INS_FMSTAT
+  "vmrs", // ARM_INS_VMRS
   "fstmdbx", // ARM_INS_FSTMDBX
   "fstmiax", // ARM_INS_FSTMIAX
-  "clrbhb", // ARM_INS_CLRBHB
+  "hint", // ARM_INS_HINT
   "hlt", // ARM_INS_HLT
   "hvc", // ARM_INS_HVC
   "isb", // ARM_INS_ISB
@@ -137,6 +135,7 @@
   "mla", // ARM_INS_MLA
   "mls", // ARM_INS_MLS
   "movt", // ARM_INS_MOVT
+  "movw", // ARM_INS_MOVW
   "mrc", // ARM_INS_MRC
   "mrc2", // ARM_INS_MRC2
   "mrrc", // ARM_INS_MRRC
@@ -253,6 +252,7 @@
   "vmvn", // ARM_INS_VMVN
   "vneg", // ARM_INS_VNEG
   "vorn", // ARM_INS_VORN
+  "vorr", // ARM_INS_VORR
   "vpnot", // ARM_INS_VPNOT
   "vpsel", // ARM_INS_VPSEL
   "vpst", // ARM_INS_VPST
@@ -339,7 +339,6 @@
   "vsub", // ARM_INS_VSUB
   "wlstp", // ARM_INS_WLSTP
   "mvn", // ARM_INS_MVN
-  "orn", // ARM_INS_ORN
   "orr", // ARM_INS_ORR
   "pkhbt", // ARM_INS_PKHBT
   "pkhtb", // ARM_INS_PKHTB
@@ -364,7 +363,6 @@
   "rfedb", // ARM_INS_RFEDB
   "rfeia", // ARM_INS_RFEIA
   "rfeib", // ARM_INS_RFEIB
-  "neg", // ARM_INS_NEG
   "rsb", // ARM_INS_RSB
   "rsc", // ARM_INS_RSC
   "sadd16", // ARM_INS_SADD16
@@ -452,7 +450,6 @@
   "stlh", // ARM_INS_STLH
   "stmda", // ARM_INS_STMDA
   "stmdb", // ARM_INS_STMDB
-  "push", // ARM_INS_PUSH
   "stm", // ARM_INS_STM
   "stmib", // ARM_INS_STMIB
   "strb", // ARM_INS_STRB
@@ -516,10 +513,8 @@
   "vabdl", // ARM_INS_VABDL
   "vacge", // ARM_INS_VACGE
   "vacgt", // ARM_INS_VACGT
-  "faddd", // ARM_INS_FADDD
   "vaddhn", // ARM_INS_VADDHN
   "vaddl", // ARM_INS_VADDL
-  "fadds", // ARM_INS_FADDS
   "vaddw", // ARM_INS_VADDW
   "vfmab", // ARM_INS_VFMAB
   "vfmat", // ARM_INS_VFMAT
@@ -532,8 +527,6 @@
   "vcle", // ARM_INS_VCLE
   "vclt", // ARM_INS_VCLT
   "vcmpe", // ARM_INS_VCMPE
-  "fcmpzd", // ARM_INS_FCMPZD
-  "fcmpzs", // ARM_INS_FCMPZS
   "vcnt", // ARM_INS_VCNT
   "vdiv", // ARM_INS_VDIV
   "vext", // ARM_INS_VEXT
@@ -555,13 +548,11 @@
   "vmovx", // ARM_INS_VMOVX
   "vmovl", // ARM_INS_VMOVL
   "vmovn", // ARM_INS_VMOVN
-  "vmrs", // ARM_INS_VMRS
   "vmsr", // ARM_INS_VMSR
   "vmull", // ARM_INS_VMULL
   "vnmla", // ARM_INS_VNMLA
   "vnmls", // ARM_INS_VNMLS
   "vnmul", // ARM_INS_VNMUL
-  "vorr", // ARM_INS_VORR
   "vpadal", // ARM_INS_VPADAL
   "vpaddl", // ARM_INS_VPADDL
   "vpadd", // ARM_INS_VPADD
@@ -592,19 +583,16 @@
   "vselge", // ARM_INS_VSELGE
   "vselgt", // ARM_INS_VSELGT
   "vselvs", // ARM_INS_VSELVS
-  "fmdhr", // ARM_INS_FMDHR
   "vshll", // ARM_INS_VSHLL
   "vshrn", // ARM_INS_VSHRN
   "vsmmla", // ARM_INS_VSMMLA
   "vsqrt", // ARM_INS_VSQRT
   "vsra", // ARM_INS_VSRA
-  "vpush", // ARM_INS_VPUSH
+  "vstmdb", // ARM_INS_VSTMDB
   "vstmia", // ARM_INS_VSTMIA
   "vstr", // ARM_INS_VSTR
-  "fsubd", // ARM_INS_FSUBD
   "vsubhn", // ARM_INS_VSUBHN
   "vsubl", // ARM_INS_VSUBL
-  "fsubs", // ARM_INS_FSUBS
   "vsubw", // ARM_INS_VSUBW
   "vsudot", // ARM_INS_VSUDOT
   "vswp", // ARM_INS_VSWP
@@ -619,6 +607,7 @@
   "vusmmla", // ARM_INS_VUSMMLA
   "vuzp", // ARM_INS_VUZP
   "vzip", // ARM_INS_VZIP
+  "addw", // ARM_INS_ADDW
   "aut", // ARM_INS_AUT
   "autg", // ARM_INS_AUTG
   "bfl", // ARM_INS_BFL
@@ -630,18 +619,21 @@
   "bxaut", // ARM_INS_BXAUT
   "clrm", // ARM_INS_CLRM
   "csel", // ARM_INS_CSEL
-  "cinc", // ARM_INS_CINC
-  "cinv", // ARM_INS_CINV
-  "cneg", // ARM_INS_CNEG
+  "csinc", // ARM_INS_CSINC
+  "csinv", // ARM_INS_CSINV
+  "csneg", // ARM_INS_CSNEG
   "dcps1", // ARM_INS_DCPS1
   "dcps2", // ARM_INS_DCPS2
   "dcps3", // ARM_INS_DCPS3
   "dls", // ARM_INS_DLS
   "le", // ARM_INS_LE
+  "orn", // ARM_INS_ORN
   "pac", // ARM_INS_PAC
   "pacbti", // ARM_INS_PACBTI
   "pacg", // ARM_INS_PACG
   "sg", // ARM_INS_SG
+  "subs", // ARM_INS_SUBS
+  "subw", // ARM_INS_SUBW
   "tbb", // ARM_INS_TBB
   "tbh", // ARM_INS_TBH
   "tt", // ARM_INS_TT
@@ -654,4 +646,5 @@
   "cbnz", // ARM_INS_CBNZ
   "cbz", // ARM_INS_CBZ
   "pop", // ARM_INS_POP
+  "push", // ARM_INS_PUSH
   "__brkdiv0", // ARM_INS___BRKDIV0
