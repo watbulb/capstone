@@ -123,7 +123,7 @@
     "getThumbInstruction": {
       "apply_type": "OLD",
       "old_hash": "81b172eabb79001c03f54cab171241da27e59939f42b89245bc1aca01372ac5b",
-      "new_hash": "141c5eb0bec47d98af99b2c9c362f6d012097349dafaaee132f8f1e11640c530",
+      "new_hash": "73763b1aa82f419f2ab35287b5258b172f7d5aaab50a0830745a64aeda26adf3",
       "edit": ""
     },
     "suggestBytesToSkip": {
@@ -196,6 +196,12 @@
       "apply_type": "NEW",
       "old_hash": "",
       "new_hash": "3c4bb90e3955714234a70a4478737cd7fc9199907554d722d53a1667e5ae9266",
+      "edit": ""
+    },
+    "DecodeT2AddSubSPImm": {
+      "apply_type": "OLD",
+      "old_hash": "9892c4f47a1d4e935970a08e09ba7d1f0010f23b54248142b4add2c8b3e66ea7",
+      "new_hash": "6f5bac5b333965df6a2fdf0ef49141651dd5203966ea221d6b4744ceb034bdc3",
       "edit": ""
     }
   },

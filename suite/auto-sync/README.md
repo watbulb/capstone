@@ -25,7 +25,7 @@ cd ..
 Install clang-format
 
 ```
-sudo apt install clang-format-13
+sudo apt install clang-format-16
 ```
 
 ## Update
