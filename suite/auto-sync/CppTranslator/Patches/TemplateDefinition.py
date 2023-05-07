@@ -1,3 +1,4 @@
+import logging as log
 import re
 
 from tree_sitter import Node
@@ -72,6 +73,13 @@ class TemplateDefinition(Patch):
 
         template_instance: TemplateRefInstance
         declared_implementations = list()
+        if f_name not in self.collector.template_refs:
+            log.fatal(
+                f"Template collector has no reference for {f_name}. "
+                f"Make sure to add all source files to the config file "
+                f"which use this template function."
+            )
+            exit(1)
         for template_instance in self.collector.template_refs[f_name]:
             d = b"DEFINE_" + f_name + b"(" + b", ".join(template_instance.args_list) + b")\n"
             if d in declared_implementations:
