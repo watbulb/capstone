@@ -64,6 +64,8 @@ class TemplateDefinition(Patch):
         f_name = get_text(src, fcn_name.start_byte, fcn_name.end_byte)
         f_params = get_text(src, fcn_params.start_byte, fcn_params.end_byte)
         f_compound = get_text(src, compound.start_byte, compound.end_byte)
+        if f_name in self.collector.templates_with_arg_deduction:
+            return sc + tid + b" " + f_name + f_params + f_compound
 
         definition = b"#define DEFINE_" + f_name + b"(" + b", ".join(t_params) + b")\n"
         definition += sc + tid + b" " + TemplateCollector.get_macro_c_call(f_name, t_params, f_params) + f_compound

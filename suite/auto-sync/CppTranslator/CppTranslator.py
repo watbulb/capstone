@@ -391,7 +391,8 @@ class Translator:
 
     def collect_template_instances(self):
         search_paths = [Path(p) for p in self.conf["files_for_template_search"]]
-        self.template_collector = TemplateCollector(self.parser, self.ts_cpp_lang, search_paths)
+        temp_arg_deduction = [p.encode("utf8") for p in self.conf["templates_with_arg_deduction"]]
+        self.template_collector = TemplateCollector(self.parser, self.ts_cpp_lang, search_paths, temp_arg_deduction)
         self.template_collector.collect()
 
     def get_patch_kwargs(self, patch):

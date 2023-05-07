@@ -65,12 +65,18 @@
       },{
         "in": "../vendor/llvm_root/llvm/lib/Target/PowerPC/MCTargetDesc/PPCInstPrinter.h",
         "out": "PPCInstPrinter.h"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/PowerPC/MCTargetDesc/PPCMCTargetDesc.h",
+        "out": "PPCMCTargetDesc.h"
       }
     ],
     "files_for_template_search": [
       "../build/llvm_inc/PPCGenDisassemblerTables.inc",
       "../vendor/llvm_root/llvm/lib/Target/PowerPC/Disassembler/PPCDisassembler.cpp"
     ],
+     "templates_with_arg_deduction": [
+       "decodeRegisterClass"
+     ],
     "manually_edited_files": []
   }
 }

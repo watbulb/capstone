@@ -31,6 +31,7 @@ The config values have the following meaning:
       - `out`: The *filename* of the translated file.
    - `files_for_template_search`: List of file paths to search for calls to template functions.
    - `manually_edite_files`: List of files which are too complicated to translate. The user will be warned about them.
+   - `templates_with_arg_deduction`: Template functions which uses [argument deduction](https://en.cppreference.com/w/cpp/language/template_argument_deduction). Those templates are translated to normal functions, not macro definition.
 
 _Note_: To understand the `nodes_to_diff` setting, check out `Differ.py`.
 
