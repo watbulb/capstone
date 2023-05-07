@@ -601,7 +601,7 @@ def parse_args() -> argparse.Namespace:
         help="Do not apply saved diff resolutions. Ask for every diff again.",
         action="store_true",
     )
-    parser.add_argument("-a", dest="arch", help="Name of target architecture.", choices=["ARM"], required=True)
+    parser.add_argument("-a", dest="arch", help="Name of target architecture.", choices=["ARM", "PPC"], required=True)
     parser.add_argument(
         "-v",
         dest="verbosity",

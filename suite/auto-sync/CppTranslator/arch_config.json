@@ -53,5 +53,24 @@
     "manually_edited_files": [
       "../vendor/llvm_root/llvm/lib/Target/ARM/Disassembler/ARMBaseInfo.h"
     ]
+  },
+   "PPC": {
+    "files_to_translate": [
+      {
+        "in": "../vendor/llvm_root/llvm/lib/Target/PowerPC/Disassembler/PPCDisassembler.cpp",
+        "out": "PPCDisassembler.c"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/PowerPC/MCTargetDesc/PPCInstPrinter.cpp",
+        "out": "PPCInstPrinter.c"
+      },{
+        "in": "../vendor/llvm_root/llvm/lib/Target/PowerPC/MCTargetDesc/PPCInstPrinter.h",
+        "out": "PPCInstPrinter.h"
+      }
+    ],
+    "files_for_template_search": [
+      "../build/llvm_inc/PPCGenDisassemblerTables.inc",
+      "../vendor/llvm_root/llvm/lib/Target/PowerPC/Disassembler/PPCDisassembler.cpp"
+    ],
+    "manually_edited_files": []
   }
 }

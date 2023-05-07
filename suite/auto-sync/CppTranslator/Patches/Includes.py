@@ -47,6 +47,8 @@ class Includes(Patch):
         res = get_general_inc()
         if self.arch == "ARM":
             return res + get_ARM_includes(filename) + get_general_macros()
+        elif self.arch == "PPC":
+            return res + get_PPC_includes(filename) + get_general_macros()
         else:
             log.fatal(f"Includes of {self.arch} not handled.")
             exit(1)
@@ -59,6 +61,11 @@ def get_general_inc() -> bytes:
         + b"#include <stdlib.h>\n"
         + b"#include <capstone/platform.h>\n\n"
     )
+
+
+def get_PPC_includes(filename: str) -> bytes:
+    # For now nothing.
+    return b""
 
 
 def get_ARM_includes(filename: str) -> bytes:
