@@ -22,7 +22,8 @@ from Helper import (
     separator_line_2,
     print_prominent_warning,
     get_sha256,
-    run_clang_format, get_path,
+    run_clang_format,
+    get_path,
 )
 
 
