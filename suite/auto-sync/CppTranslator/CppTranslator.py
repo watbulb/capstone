@@ -11,7 +11,7 @@ import sys
 from tree_sitter.binding import Query
 
 from Configurator import Configurator
-from Helper import convert_loglevel, print_prominent_warning, get_header, run_clang_format
+from Helper import convert_loglevel, print_prominent_warning, get_header, run_clang_format, get_path
 from Patches.AddCSDetail import AddCSDetail
 from Patches.AddOperand import AddOperand
 from Patches.Assert import Assert
@@ -159,9 +159,9 @@ class Translator:
         self.ts_cpp_lang = self.configurator.get_cpp_lang()
         self.parser = self.configurator.get_parser()
 
-        self.src_paths: [Path] = [Path(sp["in"]) for sp in self.conf["files_to_translate"]]
-        t_out_dir = self.conf_general["translation_out_dir"]
-        self.out_paths: [Path] = [Path(t_out_dir + sp["out"]) for sp in self.conf["files_to_translate"]]
+        self.src_paths: [Path] = [get_path(sp["in"]) for sp in self.conf["files_to_translate"]]
+        t_out_dir: Path = get_path(self.conf_general["translation_out_dir"])
+        self.out_paths: [Path] = [t_out_dir.joinpath(sp["out"]) for sp in self.conf["files_to_translate"]]
 
         self.collect_template_instances()
         self.init_patches()
@@ -387,10 +387,10 @@ class Translator:
             with open(self.current_src_path_out, "w") as f:
                 f.write(get_header())
                 f.write(self.src.decode("utf8"))
-        run_clang_format(self.out_paths, Path(self.conf_general["clang_format_file"]))
+        run_clang_format(self.out_paths, get_path(self.conf_general["clang_format_file"]))
 
     def collect_template_instances(self):
-        search_paths = [Path(p) for p in self.conf["files_for_template_search"]]
+        search_paths = [get_path(p) for p in self.conf["files_for_template_search"]]
         temp_arg_deduction = [p.encode("utf8") for p in self.conf["templates_with_arg_deduction"]]
         self.template_collector = TemplateCollector(self.parser, self.ts_cpp_lang, search_paths, temp_arg_deduction)
         self.template_collector.collect()
@@ -410,8 +410,10 @@ class Translator:
                 )
                 + "\n"
             )
+        else:
+            return
         for f in manual_edited:
-            msg += f
+            msg += get_path(f)
         print_prominent_warning(msg)
 
 
