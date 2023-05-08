@@ -64,13 +64,24 @@ def get_general_inc() -> bytes:
 
 
 def get_PPC_includes(filename: str) -> bytes:
-    if filename in ["PPCDisassembler.cpp", "PPCInstPrinter.cpp"]:
+    if filename == "PPCDisassembler.cpp":
         return (
-            b'#include "../../MCInst.h"\n'
-            + b'#include "../../MCInstrDesc.h"\n'
-            + b'#include "../../MCRegisterInfo.h"\n'
-            + b'#include "../../LEB128.h"\n'
+            b'#include "../../LEB128.h"\n'
             + b'#include "../../MCDisassembler.h"\n'
+            + b'#include "../../MCInst.h"\n'
+            + b'#include "../../MCInstrDesc.h"\n'
+            + b'#include "../../MCInstPrinter.h"\n'
+            + b'#include "../../MCRegisterInfo.h"\n'
+            + b'#include "PPCMCTargetDesc.h"\n'
+            + b'#include "PPCPredicates.h"\n\n'
+        )
+    elif filename == "PPCInstPrinter.cpp":
+        return (
+            b'#include "../../LEB128.h"\n'
+            + b'#include "../../MCInst.h"\n'
+            + b'#include "../../MCInstrDesc.h"\n'
+            + b'#include "../../MCInstPrinter.h"\n'
+            + b'#include "../../MCRegisterInfo.h"\n'
             + b'#include "PPCInstPrinter.h"\n'
             + b'#include "PPCMCTargetDesc.h"\n'
             + b'#include "PPCMapping.h"\n'
@@ -88,11 +99,11 @@ def get_PPC_includes(filename: str) -> bytes:
         )
     elif filename == "PPCMCTargetDesc.h":
         return (
-            b'#include "../../MCInst.h"\n'
+            b'#include "../../LEB128.h"\n'
             + b'#include "../../MathExtras.h"\n'
+            + b'#include "../../MCInst.h"\n'
             + b'#include "../../MCInstrDesc.h"\n'
             + b'#include "../../MCRegisterInfo.h"\n'
-            + b'#include "../../LEB128.h"\n'
         )
     log.fatal(f"No includes given for PPC source file: {filename}")
     exit(1)
