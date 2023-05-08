@@ -77,12 +77,13 @@ def get_PPC_includes(filename: str) -> bytes:
         )
     elif filename == "PPCInstPrinter.h":
         return (
-            b'#include "../../MCInst.h"\n'
+            b'#include "../../LEB128.h"\n'
+            + b'#include "../../MCDisassembler.h"\n'
+            + b'#include "../../MCInst.h"\n'
             + b'#include "../../MCInstrDesc.h"\n'
             + b'#include "../../MCRegisterInfo.h"\n'
-            + b'#include "../../LEB128.h"\n'
-            + b'#include "../../MCDisassembler.h"\n'
-            + b'#include "PPCMCTargetDesc.h"\n'
+            + b'#include "../../SStream.h"\n'
+            + b'#include "PPCMCTargetDesc.h"\n\n'
         )
     elif filename == "PPCMCTargetDesc.h":
         return (
