@@ -68,6 +68,9 @@
       },{
         "in": "{AUTO_SYNC_ROOT}/vendor/llvm_root/llvm/lib/Target/PowerPC/MCTargetDesc/PPCMCTargetDesc.h",
         "out": "PPCMCTargetDesc.h"
+      },{
+        "in": "{AUTO_SYNC_ROOT}/vendor/llvm_root/llvm/lib/Target/PowerPC/MCTargetDesc/PPCPredicates.h",
+        "out": "PPCPredicates.h"
       }
     ],
     "files_for_template_search": [
