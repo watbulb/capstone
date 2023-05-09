@@ -57,7 +57,7 @@ from Patches.STIArgument import STIArgument
 from Patches.STIFeatureBits import STIFeatureBits
 from Patches.STParameter import SubtargetInfoParam
 from Patches.SetOpcode import SetOpcode
-from Patches.SignExtend32 import SignExtend32
+from Patches.SignExtend import SignExtend
 from Patches.SizeAssignments import SizeAssignment
 from Patches.StreamOperation import StreamOperations
 from Patches.TemplateDeclaration import TemplateDeclaration
@@ -115,7 +115,7 @@ class Translator:
         SetOpcode.__name__: 0,
         GetOperand.__name__: 0,
         GetOperandRegImm.__name__: 0,
-        SignExtend32.__name__: 0,
+        SignExtend.__name__: 0,
         DecoderParameter.__name__: 0,
         UsingDeclaration.__name__: 0,
         DecoderCast.__name__: 0,
@@ -207,8 +207,8 @@ class Translator:
                 patch = SetOpcode(p)
             elif ptype == GetOperand.__name__:
                 patch = GetOperand(p)
-            elif ptype == SignExtend32.__name__:
-                patch = SignExtend32(p)
+            elif ptype == SignExtend.__name__:
+                patch = SignExtend(p)
             elif ptype == TemplateDeclaration.__name__:
                 patch = TemplateDeclaration(p, self.template_collector)
             elif ptype == TemplateDefinition.__name__:
