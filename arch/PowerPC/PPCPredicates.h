@@ -68,7 +68,7 @@ typedef enum {
 	// and unset predicates.
 	PPC_PRED_BIT_SET = 1024,
 	PPC_PRED_BIT_UNSET = 1025
-} PPCPredicate ;
+} PPC_Predicate;
 
 // Bit for branch taken (plus) or not-taken (minus) hint
 enum BranchHintBit {
@@ -79,26 +79,26 @@ enum BranchHintBit {
 };
 
 /// Invert the specified predicate.  != -> ==, < -> >=.
-PPCPredicate InvertPredicate(PPCPredicate Opcode);
+PPC_Predicate InvertPredicate(PPC_Predicate Opcode);
 /// Assume the condition register is set by MI(a,b), return the predicate if
 /// we modify the instructions such that condition register is set by MI(b,a).
-PPCPredicate getSwappedPredicate(PPCPredicate Opcode);
+PPC_Predicate getSwappedPredicate(PPC_Predicate Opcode);
 /// Return the condition without hint bits.
-inline unsigned PPC_getPredicateCondition(PPCPredicate Opcode)
+inline unsigned PPC_getPredicateCondition(PPC_Predicate Opcode)
 {
 	return (unsigned)(Opcode & ~PPC_BR_HINT_MASK);
 }
 
 /// Return the hint bits of the predicate.
-inline unsigned PPC_getPredicateHint(PPCPredicate Opcode)
+inline unsigned PPC_getPredicateHint(PPC_Predicate Opcode)
 {
 	return (unsigned)(Opcode & PPC_BR_HINT_MASK);
 }
 
 /// Return predicate consisting of specified condition and hint bits.
-inline PPCPredicate PPC_getPredicate(unsigned Condition, unsigned Hint)
+inline PPC_Predicate PPC_getPredicate(unsigned Condition, unsigned Hint)
 {
-	return (PPCPredicate)((Condition & ~PPC_BR_HINT_MASK) | (Hint & PPC_BR_HINT_MASK));
+	return (PPC_Predicate)((Condition & ~PPC_BR_HINT_MASK) | (Hint & PPC_BR_HINT_MASK));
 }
 
 #endif // CS_PPC_PREDICATES_H
