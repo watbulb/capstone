@@ -651,29 +651,6 @@ DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 	return Result;
 }
 
-static inline uint32_t endianSensitiveOpcode32(MCInst *MI, const uint8_t *Bytes)
-{
-	uint32_t Insn;
-	if (MODE_IS_BIG_ENDIAN(MI->csh->mode))
-		Insn = (Bytes[3] << 0) | (Bytes[2] << 8) | (Bytes[1] << 16) |
-			   ((uint32_t)Bytes[0] << 24);
-	else
-		Insn = ((uint32_t)Bytes[3] << 24) | (Bytes[2] << 16) | (Bytes[1] << 8) |
-			   (Bytes[0] << 0);
-	return Insn;
-}
-
-static inline uint16_t endianSensitiveOpcode16(MCInst *MI, const uint8_t *Bytes)
-{
-	uint16_t Insn;
-	if (MODE_IS_BIG_ENDIAN(MI->csh->mode))
-		Insn = (Bytes[0] << 8) | Bytes[1];
-	else
-		Insn = (Bytes[1] << 8) | Bytes[0];
-
-	return Insn;
-}
-
 DecodeStatus getARMInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 							   MCInst *MI, uint16_t *Size, uint64_t Address,
 							   void *Info)
@@ -685,7 +662,7 @@ DecodeStatus getARMInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 	}
 
 	// Encoded as a 32-bit word in the stream.
-	uint32_t Insn = endianSensitiveOpcode32(MI, Bytes);
+	uint32_t Insn = readBytes32(MI, Bytes);
 
 	// Calling the auto-generated decoder function.
 	DecodeStatus Result =
@@ -981,7 +958,7 @@ DecodeStatus getThumbInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 		return MCDisassembler_Fail;
 	}
 
-	uint16_t Insn16 = endianSensitiveOpcode16(MI, Bytes);
+	uint16_t Insn16 = readBytes16(MI, Bytes);
 	DecodeStatus Result =
 		decodeInstruction_2(DecoderTableThumb16, MI, Insn16, Address);
 	if (Result != MCDisassembler_Fail) {
@@ -1034,7 +1011,7 @@ DecodeStatus getThumbInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 		return MCDisassembler_Fail;
 	}
 	uint32_t Insn32 =
-		(uint32_t)Insn16 << 16 | endianSensitiveOpcode16(MI, Bytes + 2);
+		(uint32_t)Insn16 << 16 | readBytes16(MI, Bytes + 2);
 
 	Result = decodeInstruction_4(DecoderTableMVE32, MI, Insn32, Address);
 	if (Result != MCDisassembler_Fail) {

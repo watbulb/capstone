@@ -294,3 +294,30 @@ void map_cs_id(MCInst *MI, const insn_map *imap, unsigned int imap_size) {
 	printf("ERROR: Could not find CS id for MCInst opcode: %d\n", MCInst_getOpcode(MI));
 	return;
 }
+
+/// Reads 4 bytes in the endian order specified in MI->cs->mode.
+uint32_t readBytes32(MCInst *MI, const uint8_t *Bytes)
+{
+	assert(MI && Bytes);
+	uint32_t Insn;
+	if (MODE_IS_BIG_ENDIAN(MI->csh->mode))
+		Insn = (Bytes[3] << 0) | (Bytes[2] << 8) | (Bytes[1] << 16) |
+			   ((uint32_t)Bytes[0] << 24);
+	else
+		Insn = ((uint32_t)Bytes[3] << 24) | (Bytes[2] << 16) | (Bytes[1] << 8) |
+			   (Bytes[0] << 0);
+	return Insn;
+}
+
+/// Reads 2 bytes in the endian order specified in MI->cs->mode.
+uint16_t readBytes16(MCInst *MI, const uint8_t *Bytes)
+{
+	assert(MI && Bytes);
+	uint16_t Insn;
+	if (MODE_IS_BIG_ENDIAN(MI->csh->mode))
+		Insn = (Bytes[0] << 8) | Bytes[1];
+	else
+		Insn = (Bytes[1] << 8) | Bytes[0];
+
+	return Insn;
+}

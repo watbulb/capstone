@@ -89,5 +89,8 @@ unsigned int find_cs_id(unsigned MC_Opcode, const insn_map *imap, unsigned imap_
 
 void map_cs_id(MCInst *MI, const insn_map *imap, unsigned int imap_size);
 
+uint16_t readBytes16(MCInst *MI, const uint8_t *Bytes);
+uint32_t readBytes32(MCInst *MI, const uint8_t *Bytes);
+
 #endif
 
