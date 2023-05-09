@@ -1,4 +1,3 @@
-from copy import deepcopy
 from pathlib import Path
 
 from tree_sitter import Language, Parser
