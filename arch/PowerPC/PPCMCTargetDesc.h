@@ -205,4 +205,15 @@ static inline bool isRunOfOnes64(uint64_t Val, unsigned *MB, unsigned *ME)
 	static const MCPhysReg DMRRegs[8] = PPC_REGS0_7(PPC_DMR);                 \
 	static const MCPhysReg DMRpRegs[4] = PPC_REGS0_3(PPC_DMRp);
 
+static const MCPhysReg QFRegs[] = {
+	PPC_QF0, PPC_QF1, PPC_QF2, PPC_QF3,
+	PPC_QF4, PPC_QF5, PPC_QF6, PPC_QF7,
+	PPC_QF8, PPC_QF9, PPC_QF10, PPC_QF11,
+	PPC_QF12, PPC_QF13, PPC_QF14, PPC_QF15,
+	PPC_QF16, PPC_QF17, PPC_QF18, PPC_QF19,
+	PPC_QF20, PPC_QF21, PPC_QF22, PPC_QF23,
+	PPC_QF24, PPC_QF25, PPC_QF26, PPC_QF27,
+	PPC_QF28, PPC_QF29, PPC_QF30, PPC_QF31
+};
+
 #endif // CS_PPC_MCTARGETDESC_H
