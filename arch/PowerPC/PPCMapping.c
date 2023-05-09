@@ -577,6 +577,10 @@ bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
   }
   // TODO: CS_MODE_PS
 
+	// No AIX support for now.
+	if (feature == PPC_FeatureModernAIXAs)
+		return false;
+
   // By default support everything
   return true;
 }
