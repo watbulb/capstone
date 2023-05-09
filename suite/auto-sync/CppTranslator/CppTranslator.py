@@ -36,6 +36,7 @@ from Patches.GetOperand import GetOperand
 from Patches.GetSubReg import GetSubReg
 from Patches.Includes import Includes
 from Patches.InlineToStaticInline import InlineToStaticInline
+from Patches.IsRegImm import IsOperandRegImm
 from Patches.IsOptionalDef import IsOptionalDef
 from Patches.IsPredicate import IsPredicate
 from Patches.LLVMFallThrough import LLVMFallThrough
@@ -114,6 +115,7 @@ class Translator:
         SetOpcode.__name__: 0,
         GetOperand.__name__: 0,
         GetOperandRegImm.__name__: 0,
+        IsOperandRegImm.__name__: 0,
         SignExtend.__name__: 0,
         DecoderParameter.__name__: 0,
         UsingDeclaration.__name__: 0,
@@ -284,6 +286,8 @@ class Translator:
                 patch = AddCSDetail(p, self.arch)
             elif ptype == PrintRegImmShift.__name__:
                 patch = PrintRegImmShift(p)
+            elif ptype == IsOperandRegImm.__name__:
+                patch = IsOperandRegImm(p)
             else:
                 log.fatal(f"Patch type {ptype} not in Patch init routine.")
                 exit(1)
