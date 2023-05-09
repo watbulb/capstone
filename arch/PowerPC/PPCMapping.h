@@ -7,6 +7,10 @@
 #include "../../cs_priv.h"
 #include "capstone/capstone.h"
 
+typedef enum {
+#include "PPCGenCSOpGroup.inc"
+} ppc_op_group;
+
 // return name of regiser in friendly string
 const char *PPC_reg_name(csh handle, unsigned int reg);
 
@@ -38,6 +42,19 @@ ppc_reg PPC_map_register(unsigned int r);
 bool PPC_alias_insn(const char *name, struct ppc_alias *alias);
 
 bool PPC_getFeatureBits(unsigned int mode, unsigned int feature);
+
+
+void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args);
+
+static inline void add_cs_detail(MCInst *MI, ppc_op_group op_group, ...)
+{
+	if (!MI->flat_insn->detail)
+		return;
+	va_list args;
+	va_start(args, op_group);
+	PPC_add_cs_detail(MI, op_group, args);
+	va_end(args);
+}
 
 #endif
 

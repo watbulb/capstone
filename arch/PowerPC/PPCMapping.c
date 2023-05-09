@@ -585,4 +585,57 @@ bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
   return true;
 }
 
+/// Fills cs_detail with the data of the operand.
+/// Calls to this function are should not be added by hand! Please checkout the
+/// patch `AddCSDetail` of the CppTranslator.
+void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
+{
+	if (!MI->flat_insn->detail)
+		return;
+	switch (op_group) {
+	default:
+		printf("Operand group %d not handled!\n", op_group);
+		return;
+	case ARM_OP_GROUP_RegImmShift: {
+		// ARM_AM_ShiftOpc shift_opc = va_arg(args, ARM_AM_ShiftOpc);
+		// unsigned shift_imm = va_arg(args, unsigned);
+		// add_cs_detail_RegImmShift(MI, shift_opc, shift_imm);
+		return;
+	}
+	case PPC_OP_GROUP_RegImmShift:
+	case PPC_OP_GROUP_LdStmModeOperand:
+	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
+	case PPC_OP_GROUP_Operand:
+	case PPC_OP_GROUP_MemRegReg:
+	case PPC_OP_GROUP_U6ImmOperand:
+	case PPC_OP_GROUP_U5ImmOperand:
+	case PPC_OP_GROUP_MemRegImm:
+	case PPC_OP_GROUP_S16ImmOperand:
+	case PPC_OP_GROUP_U2ImmOperand:
+	case PPC_OP_GROUP_U16ImmOperand:
+	case PPC_OP_GROUP_BranchOperand:
+	case PPC_OP_GROUP_AbsBranchOperand:
+	case PPC_OP_GROUP_PredicateOperand:
+	case PPC_OP_GROUP_U1ImmOperand:
+	case PPC_OP_GROUP_TLSCall:
+	case PPC_OP_GROUP_U3ImmOperand:
+	case PPC_OP_GROUP_S5ImmOperand:
+	case PPC_OP_GROUP_MemRegImmHash:
+	case PPC_OP_GROUP_U4ImmOperand:
+	case PPC_OP_GROUP_U10ImmOperand:
+	case PPC_OP_GROUP_crbitm:
+	case PPC_OP_GROUP_S34ImmOperand:
+	case PPC_OP_GROUP_ImmZeroOperand:
+	case PPC_OP_GROUP_MemRegImm34:
+	case PPC_OP_GROUP_MemRegImm34PCRel:
+	case PPC_OP_GROUP_U8ImmOperand:
+	case PPC_OP_GROUP_U12ImmOperand:
+	case PPC_OP_GROUP_U7ImmOperand:
+	case PPC_OP_GROUP_ATBitsAsHint: {
+		// unsigned op_num = va_arg(args, unsigned);
+		// add_cs_detail_general(MI, op_group, op_num);
+		return;
+	}
+}
+
 #endif
