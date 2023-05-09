@@ -68,10 +68,12 @@ def get_PPC_includes(filename: str) -> bytes:
         return (
             b'#include "../../LEB128.h"\n'
             + b'#include "../../MCDisassembler.h"\n'
+            + b'#include "../../MCFixedLenDisassembler.h"\n'
             + b'#include "../../MCInst.h"\n'
             + b'#include "../../MCInstrDesc.h"\n'
             + b'#include "../../MCInstPrinter.h"\n'
             + b'#include "../../MCRegisterInfo.h"\n'
+            + b'#include "../../SStream.h"\n'
             + b'#include "PPCMCTargetDesc.h"\n'
             + b'#include "PPCPredicates.h"\n\n'
         )
