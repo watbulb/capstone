@@ -4,6 +4,7 @@
 #ifndef CS_PPC_MAP_H
 #define CS_PPC_MAP_H
 
+#include "../../cs_priv.h"
 #include "capstone/capstone.h"
 
 // return name of regiser in friendly string
@@ -35,6 +36,8 @@ ppc_reg PPC_map_register(unsigned int r);
 
 // given alias mnemonic, return instruction ID & CC
 bool PPC_alias_insn(const char *name, struct ppc_alias *alias);
+
+bool PPC_getFeatureBits(unsigned int mode, unsigned int feature);
 
 #endif
 

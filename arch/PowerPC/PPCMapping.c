@@ -567,4 +567,18 @@ bool PPC_abs_branch(cs_struct *h, unsigned int id)
 	return false;
 }
 
+bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
+  if ((feature == PPC_FeatureQPX) && (mode & CS_MODE_QPX) == 0) {
+    return false;
+  } else if ((feature == PPC_FeatureSPE) && (mode & CS_MODE_SPE) == 0) {
+    return false;
+  } else if ((feature == PPC_FeatureBookE) && (mode & CS_MODE_BOOKE) == 0) {
+    return false;
+  }
+  // TODO: CS_MODE_PS
+
+  // By default support everything
+  return true;
+}
+
 #endif
