@@ -2302,6 +2302,10 @@ typedef enum ppc_insn_group {
 	// Generic groups
 	// all jump instructions (conditional+direct+indirect jumps)
 	PPC_GRP_JUMP,	///< = CS_GRP_JUMP
+	PPC_GRP_CALL,	///< = CS_GRP_CALL
+	PPC_GRP_INT = 4, ///< = CS_GRP_INT
+	PPC_GRP_PRIVILEGE = 6, ///< = CS_GRP_PRIVILEGE
+	PPC_GRP_BRANCH_RELATIVE, ///< = CS_GRP_BRANCH_RELATIVE
 
 	// Architecture-specific groups
 	// generated content <PPCGenCSFeatureEnum.inc> begin
