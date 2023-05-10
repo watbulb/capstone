@@ -2304,21 +2304,30 @@ typedef enum ppc_insn_group {
 	PPC_GRP_JUMP,	///< = CS_GRP_JUMP
 
 	// Architecture-specific groups
-	PPC_GRP_ALTIVEC = 128,
-	PPC_GRP_MODE32,
-	PPC_GRP_MODE64,
-	PPC_GRP_BOOKE,
-	PPC_GRP_NOTBOOKE,
-	PPC_GRP_SPE,
-	PPC_GRP_VSX,
-	PPC_GRP_E500,
-	PPC_GRP_PPC4XX,
-	PPC_GRP_PPC6XX,
-	PPC_GRP_ICBT,
-	PPC_GRP_P8ALTIVEC,
-	PPC_GRP_P8VECTOR,
-	PPC_GRP_QPX,
-	PPC_GRP_PS,
+	// generated content <PPCGenCSFeatureEnum.inc> begin
+	// clang-format off
+
+	PPC_FEATURE_IsNotISAFuture = 128,
+	PPC_FEATURE_IsISA3_0,
+	PPC_FEATURE_In64BitMode,
+	PPC_FEATURE_In32BitMode,
+	PPC_FEATURE_PCRelativeMemops,
+	PPC_FEATURE_HasBPERMD,
+	PPC_FEATURE_HasSPE,
+	PPC_FEATURE_IsE500,
+	PPC_FEATURE_IsPPC4xx,
+	PPC_FEATURE_HasExtDiv,
+	PPC_FEATURE_IsISAFuture,
+	PPC_FEATURE_HasFPU,
+	PPC_FEATURE_HasICBT,
+	PPC_FEATURE_HasPartwordAtomics,
+	PPC_FEATURE_IsISA2_06,
+	PPC_FEATURE_IsBookE,
+	PPC_FEATURE_HasQPX,
+	PPC_FEATURE_IsPPC6xx,
+
+	// clang-format on
+	// generated content <PPCGenCSFeatureEnum.inc> end
 
 	PPC_GRP_ENDING,   // <-- mark the end of the list of groups
 } ppc_insn_group;

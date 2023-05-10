@@ -2065,12 +2065,12 @@
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDNZAm (534) - PPC_INS_BDNZA- - bdnza- $dst */
+{ /* PPC_BDNZAm (534) - PPC_INS_BDNZAm - bdnza- $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDNZAp (535) - PPC_INS_BDNZA+ - bdnza+ $dst */
+{ /* PPC_BDNZAp (535) - PPC_INS_BDNZAp - bdnza+ $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
@@ -2085,12 +2085,12 @@
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDNZLAm (538) - PPC_INS_BDNZLA- - bdnzla- $dst */
+{ /* PPC_BDNZLAm (538) - PPC_INS_BDNZLAm - bdnzla- $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDNZLAp (539) - PPC_INS_BDNZLA+ - bdnzla+ $dst */
+{ /* PPC_BDNZLAp (539) - PPC_INS_BDNZLAp - bdnzla+ $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
@@ -2106,38 +2106,38 @@
 {
   { 0 }
 }},
-{ /* PPC_BDNZLRLm (543) - PPC_INS_BDNZLRL- - bdnzlrl- */
+{ /* PPC_BDNZLRLm (543) - PPC_INS_BDNZLRLm - bdnzlrl- */
 {
   { 0 }
 }},
-{ /* PPC_BDNZLRLp (544) - PPC_INS_BDNZLRL+ - bdnzlrl+ */
+{ /* PPC_BDNZLRLp (544) - PPC_INS_BDNZLRLp - bdnzlrl+ */
 {
   { 0 }
 }},
-{ /* PPC_BDNZLRm (545) - PPC_INS_BDNZLR- - bdnzlr- */
+{ /* PPC_BDNZLRm (545) - PPC_INS_BDNZLRm - bdnzlr- */
 {
   { 0 }
 }},
-{ /* PPC_BDNZLRp (546) - PPC_INS_BDNZLR+ - bdnzlr+ */
+{ /* PPC_BDNZLRp (546) - PPC_INS_BDNZLRp - bdnzlr+ */
 {
   { 0 }
 }},
-{ /* PPC_BDNZLm (547) - PPC_INS_BDNZL- - bdnzl- $dst */
-{
-  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
-  { 0 }
-}},
-{ /* PPC_BDNZLp (548) - PPC_INS_BDNZL+ - bdnzl+ $dst */
+{ /* PPC_BDNZLm (547) - PPC_INS_BDNZLm - bdnzl- $dst */
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDNZm (549) - PPC_INS_BDNZ- - bdnz- $dst */
+{ /* PPC_BDNZLp (548) - PPC_INS_BDNZLp - bdnzl+ $dst */
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDNZp (550) - PPC_INS_BDNZ+ - bdnz+ $dst */
+{ /* PPC_BDNZm (549) - PPC_INS_BDNZm - bdnz- $dst */
+{
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { 0 }
+}},
+{ /* PPC_BDNZp (550) - PPC_INS_BDNZp - bdnz+ $dst */
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
@@ -2155,12 +2155,12 @@
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDZAm (554) - PPC_INS_BDZA- - bdza- $dst */
+{ /* PPC_BDZAm (554) - PPC_INS_BDZAm - bdza- $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDZAp (555) - PPC_INS_BDZA+ - bdza+ $dst */
+{ /* PPC_BDZAp (555) - PPC_INS_BDZAp - bdza+ $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
@@ -2175,12 +2175,12 @@
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDZLAm (558) - PPC_INS_BDZLA- - bdzla- $dst */
+{ /* PPC_BDZLAm (558) - PPC_INS_BDZLAm - bdzla- $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDZLAp (559) - PPC_INS_BDZLA+ - bdzla+ $dst */
+{ /* PPC_BDZLAp (559) - PPC_INS_BDZLAp - bdzla+ $dst */
 {
   { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
@@ -2196,38 +2196,38 @@
 {
   { 0 }
 }},
-{ /* PPC_BDZLRLm (563) - PPC_INS_BDZLRL- - bdzlrl- */
+{ /* PPC_BDZLRLm (563) - PPC_INS_BDZLRLm - bdzlrl- */
 {
   { 0 }
 }},
-{ /* PPC_BDZLRLp (564) - PPC_INS_BDZLRL+ - bdzlrl+ */
+{ /* PPC_BDZLRLp (564) - PPC_INS_BDZLRLp - bdzlrl+ */
 {
   { 0 }
 }},
-{ /* PPC_BDZLRm (565) - PPC_INS_BDZLR- - bdzlr- */
+{ /* PPC_BDZLRm (565) - PPC_INS_BDZLRm - bdzlr- */
 {
   { 0 }
 }},
-{ /* PPC_BDZLRp (566) - PPC_INS_BDZLR+ - bdzlr+ */
+{ /* PPC_BDZLRp (566) - PPC_INS_BDZLRp - bdzlr+ */
 {
   { 0 }
 }},
-{ /* PPC_BDZLm (567) - PPC_INS_BDZL- - bdzl- $dst */
-{
-  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
-  { 0 }
-}},
-{ /* PPC_BDZLp (568) - PPC_INS_BDZL+ - bdzl+ $dst */
+{ /* PPC_BDZLm (567) - PPC_INS_BDZLm - bdzl- $dst */
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDZm (569) - PPC_INS_BDZ- - bdz- $dst */
+{ /* PPC_BDZLp (568) - PPC_INS_BDZLp - bdzl+ $dst */
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
-{ /* PPC_BDZp (570) - PPC_INS_BDZ+ - bdz+ $dst */
+{ /* PPC_BDZm (569) - PPC_INS_BDZm - bdz- $dst */
+{
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { 0 }
+}},
+{ /* PPC_BDZp (570) - PPC_INS_BDZp - bdz+ $dst */
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }

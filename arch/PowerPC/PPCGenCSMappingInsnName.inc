@@ -91,40 +91,40 @@
   "bctrl", // PPC_INS_BCTRL
   "bdnz", // PPC_INS_BDNZ
   "bdnza", // PPC_INS_BDNZA
-  "bdnza-", // PPC_INS_BDNZA-
-  "bdnza+", // PPC_INS_BDNZA+
+  "bdnza-", // PPC_INS_BDNZAm
+  "bdnza+", // PPC_INS_BDNZAp
   "bdnzl", // PPC_INS_BDNZL
   "bdnzla", // PPC_INS_BDNZLA
-  "bdnzla-", // PPC_INS_BDNZLA-
-  "bdnzla+", // PPC_INS_BDNZLA+
+  "bdnzla-", // PPC_INS_BDNZLAm
+  "bdnzla+", // PPC_INS_BDNZLAp
   "bdnzlr", // PPC_INS_BDNZLR
   "bdnzlrl", // PPC_INS_BDNZLRL
-  "bdnzlrl-", // PPC_INS_BDNZLRL-
-  "bdnzlrl+", // PPC_INS_BDNZLRL+
-  "bdnzlr-", // PPC_INS_BDNZLR-
-  "bdnzlr+", // PPC_INS_BDNZLR+
-  "bdnzl-", // PPC_INS_BDNZL-
-  "bdnzl+", // PPC_INS_BDNZL+
-  "bdnz-", // PPC_INS_BDNZ-
-  "bdnz+", // PPC_INS_BDNZ+
+  "bdnzlrl-", // PPC_INS_BDNZLRLm
+  "bdnzlrl+", // PPC_INS_BDNZLRLp
+  "bdnzlr-", // PPC_INS_BDNZLRm
+  "bdnzlr+", // PPC_INS_BDNZLRp
+  "bdnzl-", // PPC_INS_BDNZLm
+  "bdnzl+", // PPC_INS_BDNZLp
+  "bdnz-", // PPC_INS_BDNZm
+  "bdnz+", // PPC_INS_BDNZp
   "bdz", // PPC_INS_BDZ
   "bdza", // PPC_INS_BDZA
-  "bdza-", // PPC_INS_BDZA-
-  "bdza+", // PPC_INS_BDZA+
+  "bdza-", // PPC_INS_BDZAm
+  "bdza+", // PPC_INS_BDZAp
   "bdzl", // PPC_INS_BDZL
   "bdzla", // PPC_INS_BDZLA
-  "bdzla-", // PPC_INS_BDZLA-
-  "bdzla+", // PPC_INS_BDZLA+
+  "bdzla-", // PPC_INS_BDZLAm
+  "bdzla+", // PPC_INS_BDZLAp
   "bdzlr", // PPC_INS_BDZLR
   "bdzlrl", // PPC_INS_BDZLRL
-  "bdzlrl-", // PPC_INS_BDZLRL-
-  "bdzlrl+", // PPC_INS_BDZLRL+
-  "bdzlr-", // PPC_INS_BDZLR-
-  "bdzlr+", // PPC_INS_BDZLR+
-  "bdzl-", // PPC_INS_BDZL-
-  "bdzl+", // PPC_INS_BDZL+
-  "bdz-", // PPC_INS_BDZ-
-  "bdz+", // PPC_INS_BDZ+
+  "bdzlrl-", // PPC_INS_BDZLRLm
+  "bdzlrl+", // PPC_INS_BDZLRLp
+  "bdzlr-", // PPC_INS_BDZLRm
+  "bdzlr+", // PPC_INS_BDZLRp
+  "bdzl-", // PPC_INS_BDZLm
+  "bdzl+", // PPC_INS_BDZLp
+  "bdz-", // PPC_INS_BDZm
+  "bdz+", // PPC_INS_BDZp
   "bl", // PPC_INS_BL
   "bla", // PPC_INS_BLA
   "blr", // PPC_INS_BLR
