@@ -2293,6 +2293,7 @@ typedef enum ppc_insn {
 	// clang-format on
 	// generated content <PPCGenCSInsnEnum.inc> end
  // <-- mark the end of the list of instructions
+	PPC_INS_ENDING
 } ppc_insn;
 
 /// Group of PPC instructions
