@@ -80,6 +80,9 @@
      "templates_with_arg_deduction": [
        "decodeRegisterClass"
      ],
-    "manually_edited_files": []
+    "manually_edited_files": [
+      "{AUTO_SYNC_ROOT}/vendor/llvm_root/llvm/lib/Target/PowerPC/PPCInstrInfo.h",
+      "{AUTO_SYNC_ROOT}/vendor/llvm_root/llvm/lib/Target/PowerPC/PPCRegisterInfo.h"
+    ]
   }
 }

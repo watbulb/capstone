@@ -85,10 +85,12 @@ def get_PPC_includes(filename: str) -> bytes:
             + b'#include "../../MCInstrDesc.h"\n'
             + b'#include "../../MCInstPrinter.h"\n'
             + b'#include "../../MCRegisterInfo.h"\n'
+            + b'#include "PPCInstrInfo.h"\n'
             + b'#include "PPCInstPrinter.h"\n'
             + b'#include "PPCMCTargetDesc.h"\n'
             + b'#include "PPCMapping.h"\n'
             + b'#include "PPCPredicates.h"\n\n'
+            + b'#include "PPCRegisterInfo.h"\n\n'
         )
     elif filename == "PPCInstPrinter.h":
         return (
