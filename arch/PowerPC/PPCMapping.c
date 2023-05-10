@@ -6,6 +6,7 @@
 #include <stdio.h>	// debug
 #include <string.h>
 
+#include "../../MCDisassembler.h"
 #include "../../utils.h"
 
 #include "PPCMapping.h"
@@ -23,7 +24,6 @@ void PPC_init_mri(MCRegisterInfo *MRI)
 
 const char *PPC_reg_name(csh handle, unsigned int reg)
 {
-	// Not implemented yet.
 	return getRegisterName(reg);
 }
 
@@ -125,114 +125,16 @@ const char *PPC_group_name(csh handle, unsigned int id)
 #endif
 }
 
-static const struct ppc_alias alias_insn_name_maps[] = {
-	//{ PPC_INS_BTA, "bta" },
-	{ PPC_INS_B, PPC_BC_LT, "blt" },
-	{ PPC_INS_B, PPC_BC_LE, "ble" },
-	{ PPC_INS_B, PPC_BC_EQ, "beq" },
-	{ PPC_INS_B, PPC_BC_GE, "bge" },
-	{ PPC_INS_B, PPC_BC_GT, "bgt" },
-	{ PPC_INS_B, PPC_BC_NE, "bne" },
-	{ PPC_INS_B, PPC_BC_UN, "bun" },
-	{ PPC_INS_B, PPC_BC_NU, "bnu" },
-	{ PPC_INS_B, PPC_BC_SO, "bso" },
-	{ PPC_INS_B, PPC_BC_NS, "bns" },
+void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
+	printInstruction(MI, MI->address, O);
+}
 
-	{ PPC_INS_BA, PPC_BC_LT, "blta" },
-	{ PPC_INS_BA, PPC_BC_LE, "blea" },
-	{ PPC_INS_BA, PPC_BC_EQ, "beqa" },
-	{ PPC_INS_BA, PPC_BC_GE, "bgea" },
-	{ PPC_INS_BA, PPC_BC_GT, "bgta" },
-	{ PPC_INS_BA, PPC_BC_NE, "bnea" },
-	{ PPC_INS_BA, PPC_BC_UN, "buna" },
-	{ PPC_INS_BA, PPC_BC_NU, "bnua" },
-	{ PPC_INS_BA, PPC_BC_SO, "bsoa" },
-	{ PPC_INS_BA, PPC_BC_NS, "bnsa" },
+bool PPC_getInstruction(csh handle, const uint8_t *bytes, size_t bytes_len,
+						MCInst *instr, uint16_t *size, uint64_t address,
+						void *info) {
+	DecodeStatus result = getInstruction(handle, bytes, bytes_len, instr, size, address, info);
+	return result != MCDisassembler_Fail;
 
-	{ PPC_INS_BCTR, PPC_BC_LT, "bltctr" },
-	{ PPC_INS_BCTR, PPC_BC_LE, "blectr" },
-	{ PPC_INS_BCTR, PPC_BC_EQ, "beqctr" },
-	{ PPC_INS_BCTR, PPC_BC_GE, "bgectr" },
-	{ PPC_INS_BCTR, PPC_BC_GT, "bgtctr" },
-	{ PPC_INS_BCTR, PPC_BC_NE, "bnectr" },
-	{ PPC_INS_BCTR, PPC_BC_UN, "bunctr" },
-	{ PPC_INS_BCTR, PPC_BC_NU, "bnuctr" },
-	{ PPC_INS_BCTR, PPC_BC_SO, "bsoctr" },
-	{ PPC_INS_BCTR, PPC_BC_NS, "bnsctr" },
-
-	{ PPC_INS_BCTRL, PPC_BC_LT, "bltctrl" },
-	{ PPC_INS_BCTRL, PPC_BC_LE, "blectrl" },
-	{ PPC_INS_BCTRL, PPC_BC_EQ, "beqctrl" },
-	{ PPC_INS_BCTRL, PPC_BC_GE, "bgectrl" },
-	{ PPC_INS_BCTRL, PPC_BC_GT, "bgtctrl" },
-	{ PPC_INS_BCTRL, PPC_BC_NE, "bnectrl" },
-	{ PPC_INS_BCTRL, PPC_BC_UN, "bunctrl" },
-	{ PPC_INS_BCTRL, PPC_BC_NU, "bnuctrl" },
-	{ PPC_INS_BCTRL, PPC_BC_SO, "bsoctrl" },
-	{ PPC_INS_BCTRL, PPC_BC_NS, "bnsctrl" },
-
-	{ PPC_INS_BL, PPC_BC_LT, "bltl" },
-	{ PPC_INS_BL, PPC_BC_LE, "blel" },
-	{ PPC_INS_BL, PPC_BC_EQ, "beql" },
-	{ PPC_INS_BL, PPC_BC_GE, "bgel" },
-	{ PPC_INS_BL, PPC_BC_GT, "bgtl" },
-	{ PPC_INS_BL, PPC_BC_NE, "bnel" },
-	{ PPC_INS_BL, PPC_BC_UN, "bunl" },
-	{ PPC_INS_BL, PPC_BC_NU, "bnul" },
-	{ PPC_INS_BL, PPC_BC_SO, "bsol" },
-	{ PPC_INS_BL, PPC_BC_NS, "bnsl" },
-
-	{ PPC_INS_BLA, PPC_BC_LT, "bltla" },
-	{ PPC_INS_BLA, PPC_BC_LE, "blela" },
-	{ PPC_INS_BLA, PPC_BC_EQ, "beqla" },
-	{ PPC_INS_BLA, PPC_BC_GE, "bgela" },
-	{ PPC_INS_BLA, PPC_BC_GT, "bgtla" },
-	{ PPC_INS_BLA, PPC_BC_NE, "bnela" },
-	{ PPC_INS_BLA, PPC_BC_UN, "bunla" },
-	{ PPC_INS_BLA, PPC_BC_NU, "bnula" },
-	{ PPC_INS_BLA, PPC_BC_SO, "bsola" },
-	{ PPC_INS_BLA, PPC_BC_NS, "bnsla" },
-
-	{ PPC_INS_BLR, PPC_BC_LT, "bltlr" },
-	{ PPC_INS_BLR, PPC_BC_LE, "blelr" },
-	{ PPC_INS_BLR, PPC_BC_EQ, "beqlr" },
-	{ PPC_INS_BLR, PPC_BC_GE, "bgelr" },
-	{ PPC_INS_BLR, PPC_BC_GT, "bgtlr" },
-	{ PPC_INS_BLR, PPC_BC_NE, "bnelr" },
-	{ PPC_INS_BLR, PPC_BC_UN, "bunlr" },
-	{ PPC_INS_BLR, PPC_BC_NU, "bnulr" },
-	{ PPC_INS_BLR, PPC_BC_SO, "bsolr" },
-	{ PPC_INS_BLR, PPC_BC_NS, "bnslr" },
-
-	{ PPC_INS_BLRL, PPC_BC_LT, "bltlrl" },
-	{ PPC_INS_BLRL, PPC_BC_LE, "blelrl" },
-	{ PPC_INS_BLRL, PPC_BC_EQ, "beqlrl" },
-	{ PPC_INS_BLRL, PPC_BC_GE, "bgelrl" },
-	{ PPC_INS_BLRL, PPC_BC_GT, "bgtlrl" },
-	{ PPC_INS_BLRL, PPC_BC_NE, "bnelrl" },
-	{ PPC_INS_BLRL, PPC_BC_UN, "bunlrl" },
-	{ PPC_INS_BLRL, PPC_BC_NU, "bnulrl" },
-	{ PPC_INS_BLRL, PPC_BC_SO, "bsolrl" },
-	{ PPC_INS_BLRL, PPC_BC_NS, "bnslrl" },
-};
-
-// given alias mnemonic, return instruction ID & CC
-bool PPC_alias_insn(const char *name, struct ppc_alias *alias)
-{
-	size_t i;
-
-	alias->cc = PPC_BC_INVALID;
-
-	for(i = 0; i < ARR_SIZE(alias_insn_name_maps); i++) {
-		if (!strcmp(name, alias_insn_name_maps[i].mnem)) {
-			// alias->id = alias_insn_name_maps[i].id;
-			alias->cc = alias_insn_name_maps[i].cc;
-			return true;
-		}
-	}
-
-	// not found
-	return false;
 }
 
 // check if this insn is relative branch

@@ -5,6 +5,7 @@
 #define CS_PPC_MAP_H
 
 #include "../../cs_priv.h"
+#include "../../MCDisassembler.h"
 #include "capstone/capstone.h"
 
 typedef enum {
@@ -17,6 +18,16 @@ void PPC_init_mri(MCRegisterInfo *MRI);
 const char *PPC_reg_name(csh handle, unsigned int reg);
 // Declaration for PPCAsmWriter.inc::getRegisterName
 const char *getRegisterName(unsigned RegNo);
+// Declaration for PPCAsmWriter::printInstruction
+void printInstruction(MCInst *MI, uint64_t Address, SStream *O);
+DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
+							MCInst *MI, uint16_t *Size, uint64_t Address,
+							void *Info);
+
+void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info);
+bool PPC_getInstruction(csh handle, const uint8_t *code, size_t code_len,
+						MCInst *instr, uint16_t *size, uint64_t address,
+						void *info);
 
 // given internal insn id, return public instruction info
 void PPC_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id);
