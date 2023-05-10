@@ -34,10 +34,12 @@
 #include "../../MCInstPrinter.h"
 #include "../../MCInstrDesc.h"
 #include "../../MCRegisterInfo.h"
+#include "PPCInstrInfo.h"
 #include "PPCInstPrinter.h"
 #include "PPCMCTargetDesc.h"
 #include "PPCMapping.h"
 #include "PPCPredicates.h"
+#include "PPCRegisterInfo.h"
 
 #define CONCAT(a, b) CONCAT_(a, b)
 #define CONCAT_(a, b) a##_##b
@@ -628,11 +630,11 @@ void printOperand(MCInst *MI, unsigned OpNo, SStream *O)
 		unsigned Reg = MCOperand_getReg(Op);
 		if (!MI->csh->ShowVSRNumsAsVR)
 			Reg = PPCInstrInfo_getRegNumForOperand(
-				MII.get(MCInst_getOpcode(MI)), Reg, OpNo);
+				&PPCInsts[MCInst_getOpcode(MI)], Reg, OpNo);
 
 		const char *RegName;
 		RegName =
-			getVerboseConditionRegName(MI, Reg, MRI.getEncodingValue(Reg));
+			getVerboseConditionRegName(MI, Reg, MI->MRI->RegEncodingTable[Reg]);
 		if (RegName == NULL)
 			RegName = getRegisterName(Reg);
 		if (showRegistersWithPercentPrefix(MI, RegName))
