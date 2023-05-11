@@ -137,4 +137,15 @@ static inline void set_doing_mem(const MCInst *MI, bool status)
 	MI->csh->doing_mem = status;
 }
 
+/// Returns detail->arch
+#define DEFINE_get_arch_detail(arch, ARCH)                                     \
+	static inline cs_##arch *ARCH##_get_detail(const MCInst *MI)               \
+	{                                                                          \
+		assert(MI && MI->flat_insn && MI->flat_insn->detail);                  \
+		return &MI->flat_insn->detail->arch;                                   \
+	}
+
+DEFINE_get_arch_detail(arm, ARM);
+DEFINE_get_arch_detail(ppc, PPC);
+
 #endif // CS_MAPPING_H

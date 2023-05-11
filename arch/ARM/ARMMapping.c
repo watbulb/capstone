@@ -252,12 +252,12 @@ void ARM_init_cs_detail(MCInst *MI)
 		memset(MI->flat_insn->detail, 0,
 			   offsetof(cs_detail, arm) + sizeof(cs_arm));
 
-		for (i = 0; i < ARR_SIZE(MI->flat_insn->detail->arm.operands); i++) {
-			MI->flat_insn->detail->arm.operands[i].vector_index = -1;
-			MI->flat_insn->detail->arm.operands[i].neon_lane = -1;
+		for (i = 0; i < ARR_SIZE(ARM_get_detail(MI)->operands); i++) {
+			ARM_get_detail(MI)->operands[i].vector_index = -1;
+			ARM_get_detail(MI)->operands[i].neon_lane = -1;
 		}
-		MI->flat_insn->detail->arm.cc = ARMCC_UNDEF;
-		MI->flat_insn->detail->arm.vcc = ARMVCC_None;
+		ARM_get_detail(MI)->cc = ARMCC_UNDEF;
+		ARM_get_detail(MI)->vcc = ARMVCC_None;
 	}
 }
 
@@ -339,7 +339,7 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 
 #ifndef CAPSTONE_DIET
 		uint8_t access =
-			map_get_op_access(MI, MI->flat_insn->detail->arm.op_count);
+			map_get_op_access(MI, ARM_get_detail(MI)->op_count);
 		ARM_get_detail_op(MI, 0)->access = access;
 #endif
 	} else {
@@ -390,15 +390,15 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		ARMCC_CondCodes CC =
 			(ARMCC_CondCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 		if ((unsigned)CC == 15 && op_group == ARM_OP_GROUP_PredicateOperand) {
-			MI->flat_insn->detail->arm.cc = ARMCC_UNDEF;
+			ARM_get_detail(MI)->cc = ARMCC_UNDEF;
 			return;
 		}
 		if (CC == ARMCC_HS &&
 			op_group == ARM_OP_GROUP_MandatoryRestrictedPredicateOperand) {
-			MI->flat_insn->detail->arm.cc = ARMCC_HS;
+			ARM_get_detail(MI)->cc = ARMCC_HS;
 			return;
 		}
-		MI->flat_insn->detail->arm.cc = CC;
+		ARM_get_detail(MI)->cc = CC;
 		break;
 	}
 	case ARM_OP_GROUP_VPTPredicateOperand: {
@@ -406,7 +406,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			(ARMVCC_VPTCodes)MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 		assert(VCC <= ARMVCC_Else);
 		if (VCC != ARMVCC_None)
-			MI->flat_insn->detail->arm.vcc = VCC;
+			ARM_get_detail(MI)->vcc = VCC;
 		break;
 	}
 	case ARM_OP_GROUP_Operand:
@@ -458,7 +458,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		// The tablegen files often define CPSR as in-register.
 		// and not list them in implicit writes.
 		map_add_implicit_write(MI, ARM_CPSR);
-		MI->flat_insn->detail->arm.update_flags = true;
+		ARM_get_detail(MI)->update_flags = true;
 		break;
 	case ARM_OP_GROUP_VectorListOne:
 	case ARM_OP_GROUP_VectorListOneAllLanes:
@@ -549,7 +549,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			}
 		}
 		PredMask |= 1;
-		MI->flat_insn->detail->arm.pred_mask = PredMask;
+		ARM_get_detail(MI)->pred_mask = PredMask;
 		break;
 	}
 	case ARM_OP_GROUP_VPTMask: {
@@ -568,7 +568,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			}
 		}
 		PredMask |= 1;
-		MI->flat_insn->detail->arm.pred_mask = PredMask;
+		ARM_get_detail(MI)->pred_mask = PredMask;
 		break;
 	}
 	case ARM_OP_GROUP_MSRMaskOperand: {
@@ -912,12 +912,12 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 	}
 	case ARM_OP_GROUP_CPSIMod: {
 		unsigned Imm = MCInst_getOpVal(MI, OpNum);
-		MI->flat_insn->detail->arm.cps_mode = Imm;
+		ARM_get_detail(MI)->cps_mode = Imm;
 		break;
 	}
 	case ARM_OP_GROUP_CPSIFlag: {
 		unsigned IFlags = MCInst_getOpVal(MI, OpNum);
-		MI->flat_insn->detail->arm.cps_flag =
+		ARM_get_detail(MI)->cps_flag =
 			IFlags == 0 ? ARM_CPSFLAG_NONE : IFlags;
 		break;
 	}
@@ -932,7 +932,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 	case ARM_OP_GROUP_MemBOption:
 	case ARM_OP_GROUP_InstSyncBOption:
 	case ARM_OP_GROUP_TraceSyncBOption:
-		MI->flat_insn->detail->arm.mem_barrier = MCInst_getOpVal(MI, OpNum);
+		ARM_get_detail(MI)->mem_barrier = MCInst_getOpVal(MI, OpNum);
 		break;
 	case ARM_OP_GROUP_ShiftImmOperand: {
 		unsigned ShiftOp = MCInst_getOpVal(MI, OpNum);
