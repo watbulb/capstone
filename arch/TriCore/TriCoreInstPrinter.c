@@ -22,6 +22,7 @@
 #include <string.h>
 
 #include "../../MCInst.h"
+#include "../../MCInstPrinter.h"
 #include "../../MCRegisterInfo.h"
 #include "../../MathExtras.h"
 #include "../../SStream.h"
@@ -507,12 +508,6 @@ static void printOExtImm_4(MCInst *MI, int OpNum, SStream *O)
 	} else
 		printOperand(MI, OpNum, O);
 }
-
-/// Returned by getMnemonic() of the AsmPrinters.
-typedef struct {
-	const char *first; // Menmonic
-	uint64_t second; // Bits
-} MnemonicBitsInfo;
 
 void set_mem_access(MCInst *MI, unsigned int access)
 {
