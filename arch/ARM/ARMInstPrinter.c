@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../../Mapping.h"
 #include "../../MCInst.h"
 #include "../../MCInstPrinter.h"
 #include "../../MCRegisterInfo.h"

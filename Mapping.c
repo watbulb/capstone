@@ -236,3 +236,18 @@ const cs_ac_type mapping_get_op_access(MCInst *MI, unsigned OpNum,
 		access |= (access == CS_AC_READ) ? CS_AC_WRITE : CS_AC_READ;
 	return access;
 }
+
+/// Returns the operand at detail->arm.operands[op_count + offset]
+/// Or NULL if the operand does not exists at this index.
+#define DEFINE_get_detail_op(arch, ARCH)                                       \
+	cs_##arch##_op *ARCH##_get_detail_op(MCInst *MI, int offset)               \
+	{                                                                          \
+		if (!MI->flat_insn->detail)                                            \
+			return NULL;                                                       \
+		int OpIdx = MI->flat_insn->detail->arch.op_count + offset;             \
+		assert(OpIdx >= 0 && OpIdx < MAX_MC_OPS);                              \
+		return &MI->flat_insn->detail->arch.operands[OpIdx];                   \
+	}
+
+DEFINE_get_detail_op(arm, ARM);
+DEFINE_get_detail_op(ppc, PPC);
