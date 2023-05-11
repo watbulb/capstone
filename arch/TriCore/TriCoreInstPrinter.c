@@ -27,6 +27,7 @@
 #include "../../MathExtras.h"
 #include "../../SStream.h"
 #include "../../utils.h"
+#include "TriCoreLinkage.h"
 #include "TriCoreMapping.h"
 
 static const char *getRegisterName(unsigned RegNo);

@@ -27,6 +27,7 @@
 #include "../../MathExtras.h"
 
 #include "TriCoreDisassembler.h"
+#include "TriCoreLinkage.h"
 
 static bool readInstruction16(const uint8_t *code, size_t code_len,
 			      uint16_t *insn)
