@@ -36,6 +36,7 @@
 #include "../../MCRegisterInfo.h"
 #include "PPCInstrInfo.h"
 #include "PPCInstPrinter.h"
+#include "PPCLinkage.h"
 #include "PPCMCTargetDesc.h"
 #include "PPCMapping.h"
 #include "PPCPredicates.h"
@@ -46,16 +47,20 @@
 
 #define DEBUG_TYPE "asm-printer"
 
+// Static function declarations. These are functions which have the same identifiers
+// over all architectures. Therefor they need to be static.
+static void printCustomAliasOperand(MCInst *MI, uint64_t Address, unsigned OpIdx,
+							 unsigned PrintMethodIdx, SStream *O);
+static void printOperand(MCInst *MI, unsigned OpNo, SStream *O);
+static void printPredicateOperand(MCInst *MI, unsigned OpNo, SStream *O,
+						   const char *Modifier);
+static void printInst(MCInst *MI, uint64_t Address, const char *Annot,
+			   SStream *O);
+
 #define PRINT_ALIAS_INSTR
 #include "PPCGenAsmWriter.inc"
 
-void printRegName(SStream *OS, unsigned Reg)
-{
-	const char *RegName = getRegisterName(Reg);
-	SStream_concat0(OS, RegName);
-}
-
-void printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *O)
+static void printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *O)
 {
 	// Customize printing of the addis instruction on AIX. When an operand is a
 	// symbol reference, the instruction syntax is changed to look like a load
@@ -650,4 +655,12 @@ void printOperand(MCInst *MI, unsigned OpNo, SStream *O)
 		printInt64(O, MCOperand_getImm(Op));
 		return;
 	}
+}
+
+const char *PPC_LLVM_getRegisterName(unsigned RegNo) {
+	return getRegisterName(RegNo);
+}
+
+void PPC_LLVM_printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *O) {
+	printInst(MI, Address, Annot, O);
 }

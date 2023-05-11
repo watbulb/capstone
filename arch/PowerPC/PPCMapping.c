@@ -9,6 +9,7 @@
 #include "../../MCDisassembler.h"
 #include "../../utils.h"
 
+#include "PPCLinkage.h"
 #include "PPCMapping.h"
 #include "PPCMCTargetDesc.h"
 
@@ -24,7 +25,7 @@ void PPC_init_mri(MCRegisterInfo *MRI)
 
 const char *PPC_reg_name(csh handle, unsigned int reg)
 {
-	return getRegisterName(reg);
+	return PPC_LLVM_getRegisterName(reg);
 }
 
 static const insn_map insns[] = {
@@ -126,15 +127,14 @@ const char *PPC_group_name(csh handle, unsigned int id)
 }
 
 void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
-	printInstruction(MI, MI->address, O);
+	PPC_LLVM_printInst(MI, MI->address, "", O);
 }
 
 bool PPC_getInstruction(csh handle, const uint8_t *bytes, size_t bytes_len,
 						MCInst *instr, uint16_t *size, uint64_t address,
 						void *info) {
-	DecodeStatus result = getInstruction(handle, bytes, bytes_len, instr, size, address, info);
+	DecodeStatus result = PPC_LLVM_getInstruction(handle, bytes, bytes_len, instr, size, address, info);
 	return result != MCDisassembler_Fail;
-
 }
 
 // check if this insn is relative branch

@@ -34,6 +34,7 @@
 #include "../../MCRegisterInfo.h"
 #include "../../SStream.h"
 #include "../../utils.h"
+#include "PPCLinkage.h"
 #include "PPCMapping.h"
 #include "PPCMCTargetDesc.h"
 #include "PPCPredicates.h"
@@ -512,4 +513,10 @@ DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 	}
 
 	return decodeInstruction_4(DecoderTable32, MI, Inst, Address);
+}
+
+DecodeStatus PPC_LLVM_getInstruction(csh handle, const uint8_t *Bytes, size_t BytesLen,
+							MCInst *MI, uint16_t *Size, uint64_t Address,
+							void *Info) {
+	return getInstruction(handle, Bytes, BytesLen, MI, Size, Address, Info);
 }

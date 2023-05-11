@@ -74,6 +74,7 @@ def get_PPC_includes(filename: str) -> bytes:
             + b'#include "../../MCRegisterInfo.h"\n'
             + b'#include "../../SStream.h"\n'
             + b'#include "../../utils.h"\n'
+            + b'#include "PPCLinkage.h"\n'
             + b'#include "PPCMapping.h"\n'
             + b'#include "PPCMCTargetDesc.h"\n'
             + b'#include "PPCPredicates.h"\n\n'
@@ -87,6 +88,7 @@ def get_PPC_includes(filename: str) -> bytes:
             + b'#include "../../MCRegisterInfo.h"\n'
             + b'#include "PPCInstrInfo.h"\n'
             + b'#include "PPCInstPrinter.h"\n'
+            + b'#include "PPCLinkage.h"\n'
             + b'#include "PPCMCTargetDesc.h"\n'
             + b'#include "PPCMapping.h"\n'
             + b'#include "PPCPredicates.h"\n\n'
@@ -127,7 +129,7 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "../../MCDisassembler.h"\n'
             + b'#include "../../cs_priv.h"\n'
             + b'#include "../../utils.h"\n'
-            + b'#include "ARMDisassembler.h"\n'
+            + b'#include "ARMLinkage.h"\n'
             + b'#include "ARMMapping.h"\n\n'
             + b"#define GET_INSTRINFO_MC_DESC\n"
             + b'#include "ARMGenInstrInfo.inc"\n\n'
@@ -145,6 +147,7 @@ def get_ARM_includes(filename: str) -> bytes:
             + b'#include "ARMAddressingModes.h"\n'
             + b'#include "ARMBaseInfo.h"\n'
             + b'#include "ARMDisassemblerExtension.h"\n'
+            + b'#include "ARMLinkage.h"\n'
             + b'#include "ARMMapping.h"\n\n'
             + b"#define GET_BANKEDREG_IMPL\n"
             + b'#include "ARMGenSystemRegister.inc"\n\n'
