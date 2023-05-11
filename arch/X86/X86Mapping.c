@@ -15,6 +15,7 @@
 #include "X86Mapping.h"
 #include "X86DisassemblerDecoder.h"
 
+#include "../../Mapping.h"
 #include "../../utils.h"
 
 

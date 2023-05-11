@@ -98,6 +98,7 @@ endif()
 ## sources
 set(SOURCES_ENGINE
     cs.c
+    Mapping.c
     MCInst.c
     MCInstrDesc.c
     MCInstPrinter.c
@@ -109,6 +110,7 @@ set(HEADERS_ENGINE
     cs_simple_types.h
     cs_priv.h
     LEB128.h
+    Mapping.h
     MathExtras.h
     MCDisassembler.h
     MCFixedLenDisassembler.h

@@ -8,6 +8,7 @@
 #include <capstone/platform.h>
 
 #include "../../cs_priv.h"
+#include "../../Mapping.h"
 #include "../../MCInst.h"
 #include "../../SStream.h"
 #include "../../MCRegisterInfo.h"

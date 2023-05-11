@@ -23,6 +23,7 @@
 #include "../../cs_priv.h"
 #include "../../utils.h"
 
+#include "../../Mapping.h"
 #include "../../MCInst.h"
 #include "../../MCInstrDesc.h"
 #include "../../MCRegisterInfo.h"

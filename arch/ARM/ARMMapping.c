@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../../Mapping.h"
 #include "../../MCDisassembler.h"
 #include "../../cs_priv.h"
 #include "../../cs_simple_types.h"
