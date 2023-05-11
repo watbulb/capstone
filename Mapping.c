@@ -203,3 +203,36 @@ void map_cs_id(MCInst *MI, const insn_map *imap, unsigned int imap_size)
 		   MCInst_getOpcode(MI));
 	return;
 }
+
+/// Returns the operand type information from the
+/// mapping table for instruction operands.
+/// Only usable by `auto-sync` archs!
+const cs_op_type mapping_get_op_type(MCInst *MI, unsigned OpNum,
+									 const map_insn_ops *insn_ops_map,
+									 size_t map_size)
+{
+	assert(MI);
+	assert(MI->Opcode < map_size);
+	assert(OpNum < sizeof(insn_ops_map[MI->Opcode].ops) /
+					   sizeof(insn_ops_map[MI->Opcode].ops[0]));
+
+	return insn_ops_map[MI->Opcode].ops[OpNum].type;
+}
+
+/// Returns the operand access flags from the
+/// mapping table for instruction operands.
+/// Only usable by `auto-sync` archs!
+const cs_ac_type mapping_get_op_access(MCInst *MI, unsigned OpNum,
+									   const map_insn_ops *insn_ops_map,
+									   size_t map_size)
+{
+	assert(MI);
+	assert(MI->Opcode < map_size);
+	assert(OpNum < sizeof(insn_ops_map[MI->Opcode].ops) /
+					   sizeof(insn_ops_map[MI->Opcode].ops[0]));
+
+	cs_ac_type access = insn_ops_map[MI->Opcode].ops[OpNum].access;
+	if (MCInst_opIsTied(MI, OpNum) || MCInst_opIsTying(MI, OpNum))
+		access |= (access == CS_AC_READ) ? CS_AC_WRITE : CS_AC_READ;
+	return access;
+}

@@ -341,11 +341,11 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 
 #ifndef CAPSTONE_DIET
 		uint8_t access =
-			ARM_get_op_access(MI, MI->flat_insn->detail->arm.op_count);
+			map_get_op_access(MI, MI->flat_insn->detail->arm.op_count);
 		ARM_get_detail_op(MI, 0)->access = access;
 #endif
 	} else {
-		// done, create the next operand slot
+		// done, select the next operand slot
 		MI->flat_insn->detail->arm.op_count++;
 	}
 }
@@ -378,7 +378,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 {
 	if (!MI->csh->detail)
 		return;
-	cs_op_type op_type = ARM_get_op_type(MI, OpNum);
+	cs_op_type op_type = map_get_op_type(MI, OpNum);
 
 	// Fill cs_detail
 	switch (op_group) {
@@ -422,7 +422,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			}
 		} else if (op_type == CS_OP_REG)
 			if (doing_mem(MI)) {
-				bool is_index_reg = ARM_get_op_type(MI, OpNum) & CS_OP_MEM;
+				bool is_index_reg = map_get_op_type(MI, OpNum) & CS_OP_MEM;
 				ARM_set_detail_op_mem(MI, OpNum, is_index_reg, 0, 0,
 									  MCInst_getOpVal(MI, OpNum));
 			} else {
@@ -521,7 +521,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		// All operands n MI from OpNum on are registers.
 		// But the MappingInsnOps.inc has only a single entry for the whole
 		// list. So all registers in the list share those attributes.
-		unsigned access = ARM_get_op_access(MI, OpNum);
+		unsigned access = map_get_op_access(MI, OpNum);
 		for (unsigned i = OpNum, e = MCInst_getNumOperands(MI); i != e; ++i) {
 			unsigned Reg = MCOperand_getReg(MCInst_getOperand(MI, i));
 
@@ -1220,26 +1220,6 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 	add_cs_detail_general(MI, op_group, op_num);
 }
 
-const cs_op_type ARM_get_op_type(MCInst *MI, unsigned OpNum)
-{
-	assert(MI->Opcode < sizeof(insn_operands) / sizeof(insn_operands[0]));
-	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops) /
-					   sizeof(insn_operands[MI->Opcode].ops[0]));
-	return insn_operands[MI->Opcode].ops[OpNum].type;
-}
-
-const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum)
-{
-	assert(MI->Opcode < sizeof(insn_operands) / sizeof(insn_operands[0]));
-	assert(OpNum < sizeof(insn_operands[MI->Opcode].ops) /
-					   sizeof(insn_operands[MI->Opcode].ops[0]));
-
-	cs_ac_type access = insn_operands[MI->Opcode].ops[OpNum].access;
-	if (MCInst_opIsTied(MI, OpNum) || MCInst_opIsTying(MI, OpNum))
-		access |= (access == CS_AC_READ) ? CS_AC_WRITE : CS_AC_READ;
-	return access;
-}
-
 /// Returns the operand at detail->arm.operands[op_count + offset]
 /// Or NULL if the operand does not exists at this index.
 inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset)
@@ -1257,12 +1237,12 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg)
 {
 	if (!MI->flat_insn->detail)
 		return;
-	assert(!(ARM_get_op_type(MI, OpNum) & CS_OP_MEM));
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_REG);
+	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
+	assert(map_get_op_type(MI, OpNum) == CS_OP_REG);
 
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
 	ARM_get_detail_op(MI, 0)->reg = Reg;
-	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -1273,14 +1253,14 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType,
 {
 	if (!MI->flat_insn->detail)
 		return;
-	assert(!(ARM_get_op_type(MI, OpNum) & CS_OP_MEM));
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
+	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);
 	assert(ImmType == ARM_OP_IMM || ImmType == ARM_OP_PIMM ||
 		   ImmType == ARM_OP_CIMM);
 
 	ARM_get_detail_op(MI, 0)->type = ImmType;
 	ARM_get_detail_op(MI, 0)->imm = Imm;
-	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
 	MI->flat_insn->detail->arm.op_count++;
 }
 
@@ -1288,7 +1268,7 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType,
 void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 								  bool subtracted)
 {
-	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
+	assert(map_get_op_type(MI, OpNum) & CS_OP_MEM);
 
 	if (!doing_mem(MI)) {
 		assert((ARM_get_detail_op(MI, -1) != NULL) &&
@@ -1296,9 +1276,9 @@ void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 		MI->flat_insn->detail->arm.op_count--;
 	}
 
-	if ((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM)
+	if ((map_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM)
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, Val);
-	else if ((ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_REG)
+	else if ((map_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_REG)
 		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, Val);
 	else
 		assert(0 && "Memory type incorrect.");
@@ -1315,8 +1295,8 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg,
 {
 	if (!MI->flat_insn->detail)
 		return;
-	assert(ARM_get_op_type(MI, OpNum) & CS_OP_MEM);
-	cs_op_type secondary_type = ARM_get_op_type(MI, OpNum) & ~CS_OP_MEM;
+	assert(map_get_op_type(MI, OpNum) & CS_OP_MEM);
+	cs_op_type secondary_type = map_get_op_type(MI, OpNum) & ~CS_OP_MEM;
 	switch (secondary_type) {
 	default:
 		assert(0 && "Secondary type not supported yet.");
@@ -1350,7 +1330,7 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg,
 	}
 
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
-	ARM_get_detail_op(MI, 0)->access = ARM_get_op_access(MI, OpNum);
+	ARM_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
 }
 
 /// Sets the neon_lane in the previous operand to the value of
@@ -1359,7 +1339,7 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum)
 {
 	if (!MI->flat_insn->detail)
 		return;
-	assert(ARM_get_op_type(MI, OpNum) == CS_OP_IMM);
+	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);
 	unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
 	MI->flat_insn->detail->arm.op_count--;
