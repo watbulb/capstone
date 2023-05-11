@@ -356,7 +356,7 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 #endif
 	} else {
 		// done, select the next operand slot
-		MI->flat_insn->detail->arm.op_count++;
+		ARM_inc_op_count(MI);
 	}
 }
 
@@ -538,7 +538,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
 			ARM_get_detail_op(MI, 0)->reg = Reg;
 			ARM_get_detail_op(MI, 0)->access = access;
-			MI->flat_insn->detail->arm.op_count++;
+			ARM_inc_op_count(MI);
 		}
 		break;
 	}
@@ -976,7 +976,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		ARM_get_detail_op(MI, 0)->mem.scale = 1;
 		ARM_get_detail_op(MI, 0)->mem.disp = OffImm;
 		ARM_get_detail_op(MI, 0)->access = CS_AC_READ;
-		MI->flat_insn->detail->arm.op_count++;
+		ARM_inc_op_count(MI);
 		break;
 	}
 	case ARM_OP_GROUP_BankedRegOperand: {
@@ -995,7 +995,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			ARM_get_detail_op(MI, 0)->type = ARM_OP_SETEND;
 			ARM_get_detail_op(MI, 0)->setend = ARM_SETEND_LE;
 		}
-		MI->flat_insn->detail->arm.op_count++;
+		ARM_inc_op_count(MI);
 		break;
 	}
 	case ARM_OP_GROUP_MveSaturateOp: {
@@ -1120,7 +1120,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 					Op->mem.disp = -(int)ImmOffs * 4;
 			}
 		}
-		MI->flat_insn->detail->arm.op_count++;
+		ARM_inc_op_count(MI);
 		break;
 	}
 	case ARM_OP_GROUP_MveAddrModeRQOperand_0:
@@ -1242,7 +1242,7 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg)
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_REG;
 	ARM_get_detail_op(MI, 0)->reg = Reg;
 	ARM_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
-	MI->flat_insn->detail->arm.op_count++;
+	ARM_inc_op_count(MI);
 }
 
 /// Adds an immediate ARM operand at position OpNum and increases the op_count
@@ -1260,7 +1260,7 @@ void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType,
 	ARM_get_detail_op(MI, 0)->type = ImmType;
 	ARM_get_detail_op(MI, 0)->imm = Imm;
 	ARM_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
-	MI->flat_insn->detail->arm.op_count++;
+	ARM_inc_op_count(MI);
 }
 
 /// Adds the operand as to the previously added memory operand.
@@ -1272,7 +1272,7 @@ void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 	if (!doing_mem(MI)) {
 		assert((ARM_get_detail_op(MI, -1) != NULL) &&
 			   (ARM_get_detail_op(MI, -1)->type == ARM_OP_MEM));
-		MI->flat_insn->detail->arm.op_count--;
+		ARM_dec_op_count(MI);
 	}
 
 	if ((map_get_op_type(MI, OpNum) & ~CS_OP_MEM) == CS_OP_IMM)
@@ -1284,7 +1284,7 @@ void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 	ARM_get_detail_op(MI, 0)->subtracted = subtracted;
 
 	if (!doing_mem(MI))
-		MI->flat_insn->detail->arm.op_count++;
+		ARM_inc_op_count(MI);
 }
 
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increased by
@@ -1341,7 +1341,7 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum)
 	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);
 	unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
 
-	MI->flat_insn->detail->arm.op_count--;
+	ARM_dec_op_count(MI);
 	ARM_get_detail_op(MI, 0)->neon_lane = Val;
 }
 
@@ -1353,7 +1353,7 @@ void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg)
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
 	ARM_get_detail_op(MI, 0)->reg = SysReg;
 	ARM_get_detail_op(MI, 0)->access = IsOutReg ? CS_AC_WRITE : CS_AC_READ;
-	MI->flat_insn->detail->arm.op_count++;
+	ARM_inc_op_count(MI);
 }
 
 /// Transforms the immediate of the operand to a float and stores it.
@@ -1364,7 +1364,7 @@ void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm)
 		return;
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_FP;
 	ARM_get_detail_op(MI, 0)->fp = ARM_AM_getFPImmFloat(Imm);
-	MI->flat_insn->detail->arm.op_count++;
+	ARM_inc_op_count(MI);
 }
 
 /// Returns the value of the MCInstruction operand.
