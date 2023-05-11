@@ -201,7 +201,7 @@ bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
 /// patch `AddCSDetail` of the CppTranslator.
 void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	switch (op_group) {
 	default:
@@ -257,7 +257,7 @@ static const map_insn_ops insn_operands[] = {
 /// one.
 void PPC_set_detail_op_reg(MCInst *MI, unsigned OpNum, ppc_reg Reg)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
 	assert(map_get_op_type(MI, OpNum) == CS_OP_REG);
@@ -272,7 +272,7 @@ void PPC_set_detail_op_reg(MCInst *MI, unsigned OpNum, ppc_reg Reg)
 /// by one.
 void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
 	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);

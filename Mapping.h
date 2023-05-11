@@ -148,4 +148,16 @@ static inline void set_doing_mem(const MCInst *MI, bool status)
 DEFINE_get_arch_detail(arm, ARM);
 DEFINE_get_arch_detail(ppc, PPC);
 
+static inline bool detail_is_set(const MCInst *MI)
+{
+	assert(MI && MI->flat_insn);
+	return MI->flat_insn->detail != NULL;
+}
+
+static inline cs_detail *get_detail(const MCInst *MI)
+{
+	assert(MI && MI->flat_insn);
+	return MI->flat_insn->detail;
+}
+
 #endif // CS_MAPPING_H
