@@ -8,6 +8,7 @@
 
 #include "../../utils.h"
 
+#include "TriCoreLinkage.h"
 #include "TriCoreMapping.h"
 
 #define GET_INSTRINFO_ENUM
@@ -128,6 +129,20 @@ const char *TriCore_group_name(csh handle, unsigned int id)
 #else
 	return NULL;
 #endif
+}
+
+bool TriCore_getInstruction(csh handle, const uint8_t *Bytes, size_t ByteLen,
+							MCInst *MI, uint16_t *Size, uint64_t Address,
+							void *Info) {
+	return TriCore_LLVM_getInstruction(handle, Bytes, ByteLen, MI, Size, Address, Info);
+}
+
+void TriCore_printInst(MCInst *MI, SStream *O, void *Info) {
+	TriCore_LLVM_printInst(MI, MI->address, O);
+}
+
+const char *TriCore_getRegisterName(csh handle, unsigned int RegNo) {
+	return TriCore_LLVM_getRegisterName(RegNo);
 }
 
 #endif

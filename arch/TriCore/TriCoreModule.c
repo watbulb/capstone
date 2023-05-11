@@ -5,7 +5,6 @@
 
 #include "../../utils.h"
 #include "TriCoreDisassembler.h"
-#include "TriCoreInstPrinter.h"
 #include "TriCoreMapping.h"
 
 cs_err TRICORE_global_init(cs_struct *ud)
@@ -14,12 +13,12 @@ cs_err TRICORE_global_init(cs_struct *ud)
 
 	mri = cs_mem_malloc(sizeof(*mri));
 
-	TriCore_init(mri);
+	TriCore_init_mri(mri);
 	ud->printer = TriCore_printInst;
 	ud->printer_info = mri;
 	ud->getinsn_info = mri;
 	ud->disasm = TriCore_getInstruction;
-	ud->post_printer = TriCore_post_printer;
+	ud->post_printer = NULL;
 
 	ud->reg_name = TriCore_getRegisterName;
 	ud->insn_id = TriCore_get_insn_id;

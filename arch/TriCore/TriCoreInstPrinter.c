@@ -27,7 +27,6 @@
 #include "../../MathExtras.h"
 #include "../../SStream.h"
 #include "../../utils.h"
-#include "TriCoreInstPrinter.h"
 #include "TriCoreMapping.h"
 
 static const char *getRegisterName(unsigned RegNo);
@@ -35,14 +34,6 @@ static const char *getRegisterName(unsigned RegNo);
 static void printInstruction(MCInst *, uint64_t, SStream *);
 
 static void printOperand(MCInst *MI, int OpNum, SStream *O);
-
-void TriCore_post_printer(csh ud, cs_insn *insn, char *insn_asm, MCInst *mci)
-{
-	/*
-	   if (((cs_struct *)ud)->detail != CS_OPT_ON)
-	   return;
-	 */
-}
 
 #define GET_INSTRINFO_ENUM
 
@@ -509,27 +500,25 @@ static void printOExtImm_4(MCInst *MI, int OpNum, SStream *O)
 		printOperand(MI, OpNum, O);
 }
 
-void set_mem_access(MCInst *MI, unsigned int access)
-{
-	// TODO: TriCore
-}
-
 #define PRINT_ALIAS_INSTR
 
 #include "TriCoreGenAsmWriter.inc"
 
-const char *TriCore_getRegisterName(csh handle, unsigned int id)
+const char *TriCore_LLVM_getRegisterName(unsigned RegNo)
 {
 #ifndef CAPSTONE_DIET
-	return getRegisterName(id);
+	return getRegisterName(RegNo);
 #else
 	return NULL;
 #endif
 }
 
-void TriCore_printInst(MCInst *MI, SStream *O, void *Info)
+void TriCore_LLVM_printInst(MCInst *MI, uint64_t Address, SStream *O)
 {
-	printInstruction(MI, MI->address, O);
+	// printAliasInstr() does nothing for TriCore.
+	// But we call it to surpress the "unused function" warning.
+	printAliasInstr(MI, Address, O);
+	printInstruction(MI, Address, O);
 }
 
 #endif

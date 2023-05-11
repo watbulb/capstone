@@ -26,6 +26,8 @@
 #include "../../MCDisassembler.h"
 #include "../../MathExtras.h"
 
+#include "TriCoreDisassembler.h"
+
 static bool readInstruction16(const uint8_t *code, size_t code_len,
 			      uint16_t *insn)
 {
@@ -1518,7 +1520,7 @@ static inline bool tryGetInstruction32(const uint8_t *code, size_t code_len,
 	return false;
 }
 
-bool TriCore_getInstruction(csh ud, const uint8_t *code, size_t code_len,
+static bool getInstruction(csh ud, const uint8_t *code, size_t code_len,
 			    MCInst *MI, uint16_t *size, uint64_t address,
 			    void *info)
 {
@@ -1567,7 +1569,13 @@ bool TriCore_getInstruction(csh ud, const uint8_t *code, size_t code_len,
 				   DecoderTable32);
 }
 
-void TriCore_init(MCRegisterInfo *MRI)
+bool TriCore_LLVM_getInstruction(csh handle, const uint8_t *Bytes, size_t ByteLen,
+							MCInst *MI, uint16_t *Size, uint64_t Address,
+							void *Info) {
+	return getInstruction(handle, Bytes, ByteLen,	MI, Size, Address, Info);
+}
+
+void TriCore_init_mri(MCRegisterInfo *MRI)
 {
 	/*
 	InitMCRegisterInfo(TriCoreRegDesc, 45, RA, PC,

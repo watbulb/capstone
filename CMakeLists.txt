@@ -555,11 +555,11 @@ if (CAPSTONE_TRICORE_SUPPORT)
             )
     set(HEADERS_TRICORE
             arch/TriCore/TriCoreDisassembler.h
+            arch/TriCore/TriCoreLinkage.h
             arch/TriCore/TriCoreGenAsmWriter.inc
             arch/TriCore/TriCoreGenDisassemblerTables.inc
             arch/TriCore/TriCoreGenInstrInfo.inc
             arch/TriCore/TriCoreGenRegisterInfo.inc
-            arch/TriCore/TriCoreInstPrinter.h
             arch/TriCore/TriCoreMapping.h
             arch/TriCore/TriCoreModule.h
             )
