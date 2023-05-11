@@ -171,23 +171,4 @@ static inline cs_detail *get_detail(const MCInst *MI)
 	return MI->flat_insn->detail;
 }
 
-/// Increments the detail->arch.op_count by one.
-#define DEFINE_inc_detail_op_count(arch, ARCH)                                 \
-	static inline void ARCH##_inc_op_count(MCInst *MI)                         \
-	{                                                                          \
-		MI->flat_insn->detail->arch.op_count++;                                \
-	}
-
-/// Decrements the detail->arch.op_count by one.
-#define DEFINE_dec_detail_op_count(arch, ARCH)                                 \
-	static inline void ARCH##_dec_op_count(MCInst *MI)                         \
-	{                                                                          \
-		MI->flat_insn->detail->arch.op_count--;                                \
-	}
-
-DEFINE_inc_detail_op_count(arm, ARM);
-DEFINE_dec_detail_op_count(arm, ARM);
-DEFINE_inc_detail_op_count(ppc, PPC);
-DEFINE_dec_detail_op_count(ppc, PPC);
-
 #endif // CS_MAPPING_H
