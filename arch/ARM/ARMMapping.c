@@ -322,8 +322,6 @@ static uint64_t t_vmov_mod_imm(uint64_t v)
 	return Val;
 }
 
-static bool doing_mem(MCInst const *MI) { return MI->csh->doing_mem; }
-
 /// Initializes or finishes a memory operand of Capstone (depending on \p
 /// status). A memory operand in Capstone can be assembled by two LLVM operands.
 /// E.g. the base register and the immediate disponent.
@@ -331,7 +329,7 @@ void ARM_set_mem_access(MCInst *MI, bool status)
 {
 	if (!MI->flat_insn->detail)
 		return;
-	MI->csh->doing_mem = status;
+	set_doing_mem(MI, status);
 	if (status) {
 		ARM_get_detail_op(MI, 0)->type = ARM_OP_MEM;
 		ARM_get_detail_op(MI, 0)->mem.base = ARM_REG_INVALID;

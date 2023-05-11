@@ -128,4 +128,13 @@ DEFINE_dec_detail_op_count(arm, ARM);
 DEFINE_inc_detail_op_count(ppc, PPC);
 DEFINE_dec_detail_op_count(ppc, PPC);
 
+/// Returns true if a memory operand is currently edited.
+static inline bool doing_mem(const MCInst *MI) { return MI->csh->doing_mem; }
+
+/// Sets the doing_mem flag to @status.
+static inline void set_doing_mem(const MCInst *MI, bool status)
+{
+	MI->csh->doing_mem = status;
+}
+
 #endif // CS_MAPPING_H
