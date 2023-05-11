@@ -131,9 +131,9 @@ bool ARM_blx_to_arm_mode(cs_struct *h, unsigned int id)
 void ARM_check_updates_flags(MCInst *MI)
 {
 #ifndef CAPSTONE_DIET
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
-	cs_detail *detail = MI->flat_insn->detail;
+	cs_detail *detail = get_detail(MI);
 	for (int i = 0; i < detail->regs_write_count; ++i) {
 		if (detail->regs_write[i] == 0)
 			return;
@@ -245,10 +245,10 @@ void ARM_reg_access(const cs_insn *insn, cs_regs regs_read,
 
 void ARM_init_cs_detail(MCInst *MI)
 {
-	if (MI->flat_insn->detail) {
+	if (detail_is_set(MI)) {
 		unsigned int i;
 
-		memset(MI->flat_insn->detail, 0,
+		memset(get_detail(MI), 0,
 			   offsetof(cs_detail, arm) + sizeof(cs_arm));
 
 		for (i = 0; i < ARR_SIZE(ARM_get_detail(MI)->operands); i++) {
@@ -326,7 +326,7 @@ static uint64_t t_vmov_mod_imm(uint64_t v)
 /// E.g. the base register and the immediate disponent.
 void ARM_set_mem_access(MCInst *MI, bool status)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	set_doing_mem(MI, status);
 	if (status) {
@@ -1000,7 +1000,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 									 unsigned OpNum, uint64_t temp_arg_0)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	switch (op_group) {
 	default:
@@ -1147,7 +1147,7 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group,
 									 unsigned OpNum, uint64_t temp_arg_0,
 									 uint64_t temp_arg_1)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	switch (op_group) {
 	default:
@@ -1170,7 +1170,7 @@ static void add_cs_detail_template_2(MCInst *MI, arm_op_group op_group,
 void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 					   va_list args)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	switch (op_group) {
 	case ARM_OP_GROUP_RegImmShift: {
@@ -1221,7 +1221,7 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 /// one.
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
 	assert(map_get_op_type(MI, OpNum) == CS_OP_REG);
@@ -1237,7 +1237,7 @@ void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg)
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType,
 						   int64_t Imm)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
 	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);
@@ -1279,7 +1279,7 @@ void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg,
 						   int scale, int lshift, uint64_t Val)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	assert(map_get_op_type(MI, OpNum) & CS_OP_MEM);
 	cs_op_type secondary_type = map_get_op_type(MI, OpNum) & ~CS_OP_MEM;
@@ -1323,7 +1323,7 @@ void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg,
 /// MI->operands[OpNum] Decrements op_count by 1.
 void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);
 	unsigned Val = MCOperand_getImm(MCInst_getOperand(MI, OpNum));
@@ -1335,7 +1335,7 @@ void ARM_set_detail_op_neon_lane(MCInst *MI, unsigned OpNum)
 /// Adds a System Register and increments op_count by one.
 void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_SYSREG;
 	ARM_get_detail_op(MI, 0)->reg = SysReg;
@@ -1347,7 +1347,7 @@ void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg)
 /// Increments the op_counter by one.
 void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm)
 {
-	if (!MI->flat_insn->detail)
+	if (!detail_is_set(MI))
 		return;
 	ARM_get_detail_op(MI, 0)->type = ARM_OP_FP;
 	ARM_get_detail_op(MI, 0)->fp = ARM_AM_getFPImmFloat(Imm);
