@@ -37,7 +37,24 @@ unsigned short insn_find(const insn_map *m, unsigned int max, unsigned int id,
 unsigned int find_cs_id(unsigned MC_Opcode, const insn_map *imap,
 						unsigned imap_size);
 
-// map id to string
+#define MAX_NO_DATA_TYPES 10
+
+///< A LLVM<->CS Mapping entry of an MCOperand.
+typedef struct {
+	uint8_t /* cs_op_type */ type;	 ///< Operand type (e.g.: reg, imm, mem)
+	uint8_t /* cs_ac_type */ access; ///< The access type (read, write)
+	uint8_t /* cs_data_type */
+		dtypes[MAX_NO_DATA_TYPES]; ///< List of op types. Terminated by CS_DATA_TYPE_LAST
+} mapping_op;
+
+#define MAX_NO_INSN_MAP_OPS 16
+
+///< MCOperands of an instruction.
+typedef struct {
+	mapping_op ops[MAX_NO_INSN_MAP_OPS]; ///< NULL terminated array of insn_op.
+} map_insn_ops;
+
+///< Map for ids to their string
 typedef struct name_map {
 	unsigned int id;
 	const char *name;
