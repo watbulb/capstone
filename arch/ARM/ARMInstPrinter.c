@@ -48,6 +48,15 @@
 
 #define DEBUG_TYPE "asm-printer"
 
+// Static function declarations. These are functions which have the same identifiers
+// over all architectures. Therefor they need to be static.
+static void printCustomAliasOperand(MCInst *MI, uint64_t Address, unsigned OpIdx,
+							 unsigned PrintMethodIdx, SStream *O);
+static void printOperand(MCInst *MI, unsigned OpNo, SStream *O);
+static void printPredicateOperand(MCInst *MI, unsigned OpNum, SStream *O);
+static void printRegName(SStream *OS, unsigned RegNo);
+static void printInst(MCInst *MI, SStream *O, void *info);
+
 #define PRINT_ALIAS_INSTR
 #include "ARMGenAsmWriter.inc"
 
@@ -85,14 +94,14 @@ static void printRegImmShift(MCInst *MI, SStream *O, ARM_AM_ShiftOpc ShOpc,
 	}
 }
 
-void printRegName(SStream *OS, unsigned RegNo)
+static void printRegName(SStream *OS, unsigned RegNo)
 {
 	SStream_concat(OS, "%s%s", markup("<reg:"),
 				   getRegisterName(RegNo, ARM_NoRegAltName));
 	SStream_concat0(OS, markup(">"));
 }
 
-void printInst(MCInst *MI, SStream *O, void *info)
+static void printInst(MCInst *MI, SStream *O, void *info)
 {
 	unsigned Opcode = MCInst_getOpcode(MI);
 	MCRegisterInfo *MRI = (MCRegisterInfo *)info;
@@ -338,7 +347,7 @@ void printInst(MCInst *MI, SStream *O, void *info)
 	;
 }
 
-void printOperand(MCInst *MI, unsigned OpNo, SStream *O)
+static void printOperand(MCInst *MI, unsigned OpNo, SStream *O)
 {
 	add_cs_detail(MI, ARM_OP_GROUP_Operand, OpNo);
 	MCOperand *Op = MCInst_getOperand(MI, (OpNo));
@@ -1052,7 +1061,7 @@ void printBankedRegOperand(MCInst *MI, unsigned OpNum, SStream *O)
 	SStream_concat0(O, Name);
 }
 
-void printPredicateOperand(MCInst *MI, unsigned OpNum, SStream *O)
+static void printPredicateOperand(MCInst *MI, unsigned OpNum, SStream *O)
 {
 	add_cs_detail(MI, ARM_OP_GROUP_PredicateOperand, OpNum);
 	ARMCC_CondCodes CC =
@@ -1848,4 +1857,12 @@ void printMveSaturateOp(MCInst *MI, unsigned OpNum, SStream *O)
 	uint32_t Val = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
 
 	printUInt32Bang(O, (Val == 1 ? 48 : 64));
+}
+
+const char *ARM_LLVM_getRegisterName(unsigned RegNo, unsigned AltIdx) {
+	return getRegisterName(RegNo, AltIdx);
+}
+
+void ARM_LLVM_printInstruction(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */ info) {
+	printInst(MI, O, info);
 }

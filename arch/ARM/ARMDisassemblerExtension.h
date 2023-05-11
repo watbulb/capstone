@@ -10,7 +10,6 @@
 #include "../../MathExtras.h"
 #include "../../cs_priv.h"
 #include "ARMAddressingModes.h"
-#include "ARMDisassembler.h"
 #include "capstone/capstone.h"
 
 unsigned ARM_AM_getAM5FP16Opc(ARM_AM_AddrOpc Opc, unsigned char Offset);

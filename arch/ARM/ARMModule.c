@@ -6,7 +6,6 @@
 #include "ARMModule.h"
 #include "../../MCRegisterInfo.h"
 #include "../../cs_priv.h"
-#include "ARMDisassembler.h"
 #include "ARMInstPrinter.h"
 #include "ARMMapping.h"
 
