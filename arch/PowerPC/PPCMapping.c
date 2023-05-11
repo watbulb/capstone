@@ -6,6 +6,7 @@
 #include <stdio.h>	// debug
 #include <string.h>
 
+#include "../../cs_simple_types.h"
 #include "../../Mapping.h"
 #include "../../MCDisassembler.h"
 #include "../../utils.h"
@@ -246,6 +247,40 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 		return;
 	}
 	}
+}
+
+static const map_insn_ops insn_operands[] = {
+#include "PPCGenCSMappingInsnOp.inc"
+};
+
+/// Adds a register PPC operand at position OpNum and increases the op_count by
+/// one.
+void PPC_set_detail_op_reg(MCInst *MI, unsigned OpNum, ppc_reg Reg)
+{
+	if (!MI->flat_insn->detail)
+		return;
+	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
+	assert(map_get_op_type(MI, OpNum) == CS_OP_REG);
+
+	PPC_get_detail_op(MI, 0)->type = PPC_OP_REG;
+	PPC_get_detail_op(MI, 0)->reg = Reg;
+	PPC_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
+	PPC_inc_op_count(MI);
+}
+
+/// Adds an immediate PPC operand at position OpNum and increases the op_count
+/// by one.
+void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm)
+{
+	if (!MI->flat_insn->detail)
+		return;
+	assert(!(map_get_op_type(MI, OpNum) & CS_OP_MEM));
+	assert(map_get_op_type(MI, OpNum) == CS_OP_IMM);
+
+	PPC_get_detail_op(MI, 0)->type = PPC_OP_IMM;
+	PPC_get_detail_op(MI, 0)->imm = Imm;
+	PPC_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
+	PPC_inc_op_count(MI);
 }
 
 #endif

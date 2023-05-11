@@ -4,6 +4,7 @@
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2015 */
 
+#include "capstone/capstone.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -612,6 +613,7 @@ typedef struct cs_ppc_op {
 		ppc_op_mem mem;		///< base/disp value for MEM operand
 		ppc_op_crx crx;		///< operand with condition register
 	};
+	cs_ac_type access;
 } cs_ppc_op;
 
 #define PPC_NUM_OPS 8
