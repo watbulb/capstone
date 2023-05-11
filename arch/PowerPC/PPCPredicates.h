@@ -7,7 +7,7 @@
 /* LLVM-tag: <tag> */
 
 /* Only small edits allowed. */
-/* For multiple similiar edits, please create a Patch for the translator. */
+/* For multiple similar edits, please create a Patch for the translator. */
 
 /* Capstone's C++ file translator: */
 /* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */

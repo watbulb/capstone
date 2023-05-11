@@ -130,7 +130,7 @@ def get_header() -> str:
         "/* LLVM-commit: <commit> */\n"
         "/* LLVM-tag: <tag> */\n\n"
         "/* Only small edits allowed. */\n"
-        "/* For multiple similiar edits, please create a Patch for the translator. */\n\n"
+        "/* For multiple similar edits, please create a Patch for the translator. */\n\n"
         "/* Capstone's C++ file translator: */\n"
         "/* https://github.com/capstone-engine/capstone/tree/next/suite/auto-sync */\n\n"
     )
