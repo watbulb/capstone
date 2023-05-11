@@ -185,14 +185,14 @@ bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
   } else if ((feature == PPC_FeatureBookE) && (mode & CS_MODE_BOOKE) == 0) {
     return false;
   }
-  // TODO: CS_MODE_PS
+	// TODO: CS_MODE_PS
 
 	// No AIX support for now.
 	if (feature == PPC_FeatureModernAIXAs)
 		return false;
 
-  // By default support everything
-  return true;
+	// By default support everything
+	return true;
 }
 
 /// Fills cs_detail with the data of the operand.
