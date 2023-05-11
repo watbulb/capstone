@@ -84,19 +84,19 @@ PPC_Predicate InvertPredicate(PPC_Predicate Opcode);
 /// we modify the instructions such that condition register is set by MI(b,a).
 PPC_Predicate getSwappedPredicate(PPC_Predicate Opcode);
 /// Return the condition without hint bits.
-inline unsigned PPC_getPredicateCondition(PPC_Predicate Opcode)
+static inline unsigned PPC_getPredicateCondition(PPC_Predicate Opcode)
 {
 	return (unsigned)(Opcode & ~PPC_BR_HINT_MASK);
 }
 
 /// Return the hint bits of the predicate.
-inline unsigned PPC_getPredicateHint(PPC_Predicate Opcode)
+static inline unsigned PPC_getPredicateHint(PPC_Predicate Opcode)
 {
 	return (unsigned)(Opcode & PPC_BR_HINT_MASK);
 }
 
 /// Return predicate consisting of specified condition and hint bits.
-inline PPC_Predicate PPC_getPredicate(unsigned Condition, unsigned Hint)
+static inline PPC_Predicate PPC_getPredicate(unsigned Condition, unsigned Hint)
 {
 	return (PPC_Predicate)((Condition & ~PPC_BR_HINT_MASK) | (Hint & PPC_BR_HINT_MASK));
 }
