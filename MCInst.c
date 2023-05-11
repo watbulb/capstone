@@ -261,3 +261,15 @@ bool MCInst_opIsTying(const MCInst *MI, unsigned OpNum) {
 	return MI->tied_op_idx[OpNum] != -1;
 }
 
+/// Returns the value of the @MCInst operand at index @OpNum.
+uint64_t MCInst_getOpVal(MCInst *MI, unsigned OpNum)
+{
+	assert(OpNum < MAX_MC_OPS);
+	MCOperand *op = MCInst_getOperand(MI, OpNum);
+	if (MCOperand_isReg(op))
+		return MCOperand_getReg(op);
+	else if (MCOperand_isImm(op))
+		return MCOperand_getImm(op);
+	else
+		assert(0 && "Operand type not handled in this getter.");
+}
