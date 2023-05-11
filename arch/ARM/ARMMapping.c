@@ -1230,17 +1230,6 @@ void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 	add_cs_detail_general(MI, op_group, op_num);
 }
 
-/// Returns the operand at detail->arm.operands[op_count + offset]
-/// Or NULL if the operand does not exists at this index.
-inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset)
-{
-	if (!MI->flat_insn->detail)
-		return NULL;
-	int OpIdx = MI->flat_insn->detail->arm.op_count + offset;
-	assert(OpIdx >= 0 && OpIdx < MAX_MC_OPS);
-	return &MI->flat_insn->detail->arm.operands[OpIdx];
-}
-
 /// Adds a register ARM operand at position OpNum and increases the op_count by
 /// one.
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg)

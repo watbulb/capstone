@@ -62,8 +62,6 @@ static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 	va_end(args);
 }
 
-cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset);
-
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg);
 void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg);
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType,
