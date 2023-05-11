@@ -2,8 +2,6 @@
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2019 */
 /*    Rot127 <unisono@quyllur.org>, 2022-2023 */
 
-#include "ARMAddressingModes.h"
-#include "ARMDisassemblerExtension.h"
 #ifdef CAPSTONE_HAS_ARM
 
 #include <stdio.h>
@@ -13,17 +11,19 @@
 #include "../../cs_priv.h"
 #include "../../cs_simple_types.h"
 
+#include "ARMAddressingModes.h"
+#include "ARMDisassemblerExtension.h"
 #include "ARMBaseInfo.h"
-#include "ARMDisassembler.h"
+#include "ARMLinkage.h"
 #include "ARMInstPrinter.h"
 #include "ARMMapping.h"
 
 const char *ARM_reg_name(csh handle, unsigned int reg)
 {
 	if (((cs_struct *)(uintptr_t)handle)->syntax & CS_OPT_SYNTAX_NOREGNAME) {
-		return getRegisterName(reg, ARM_NoRegAltName);
+		return ARM_LLVM_getRegisterName(reg, ARM_NoRegAltName);
 	}
-	return getRegisterName(reg, ARM_RegNamesRaw);
+	return ARM_LLVM_getRegisterName(reg, ARM_RegNamesRaw);
 }
 
 const insn_map arm_insns[] = {
@@ -38,7 +38,7 @@ void ARM_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
 /// Decodes the asm string for a given instruction
 /// and fills the detail information about the instruction and its operands.
 void ARM_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */ info) {
-	printInst(MI, O, info);
+	ARM_LLVM_printInstruction(MI, O, info);
 }
 
 #ifndef CAPSTONE_DIET
@@ -161,7 +161,7 @@ bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len,
 						void *info)
 {
 	ARM_init_cs_detail(instr);
-	bool Result = getInstruction(handle, code, code_len, instr, size, address,
+	bool Result = ARM_LLVM_getInstruction(handle, code, code_len, instr, size, address,
 								 info) != MCDisassembler_Fail;
 	ARM_set_instr_map_data(instr);
 	return Result;

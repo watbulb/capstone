@@ -36,7 +36,6 @@
 #include "../../utils.h"
 #include "ARMAddressingModes.h"
 #include "ARMBaseInfo.h"
-#include "ARMDisassembler.h"
 #include "ARMDisassemblerExtension.h"
 #include "ARMMapping.h"
 
@@ -54,7 +53,7 @@
 ;
 
 /// ARM disassembler for all ARM platforms.;
-DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t ByteLen,
+static DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t ByteLen,
 							MCInst *MI, uint16_t *Size, uint64_t Address,
 							void *Info);
 DecodeStatus getARMInstruction(csh ud, const uint8_t *Bytes, size_t ByteLen,
@@ -636,7 +635,7 @@ static DecodeStatus checkDecodedInstruction(MCInst *MI, uint32_t Insn,
 	}
 }
 
-DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
+static DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 							MCInst *MI, uint16_t *Size, uint64_t Address,
 							void *Info)
 {
@@ -7133,4 +7132,11 @@ static DecodeStatus DecodeT2AddSubSPImm(MCInst *Inst, unsigned Insn,
 	}
 
 	return DS;
+}
+
+DecodeStatus ARM_LLVM_getInstruction(csh handle, const uint8_t *code, size_t code_len,
+						MCInst *instr, uint16_t *size, uint64_t address,
+						void *info) {
+	return getInstruction(handle, code, code_len, instr, size, address,
+								 info);
 }

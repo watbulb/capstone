@@ -42,8 +42,6 @@ void ARM_set_instr_map_data(MCInst *MI);
 
 void ARM_init_mri(MCRegisterInfo *MRI);
 
-const char *getRegisterName(unsigned RegNo, unsigned AltIdx);
-
 // cs_detail related functions
 void ARM_init_cs_detail(MCInst *MI);
 void ARM_set_mem_access(MCInst *MI, bool status);
