@@ -129,6 +129,7 @@ const char *PPC_group_name(csh handle, unsigned int id)
 }
 
 void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
+	MI->MRI = (MCRegisterInfo*) info;
 	PPC_LLVM_printInst(MI, MI->address, "", O);
 }
 
