@@ -12,6 +12,7 @@ extern "C" {
 #include <assert.h>
 #include <string.h>
 
+#include "../../cs_operand.h"
 #include "platform.h"
 
 #ifdef _MSC_VER
@@ -396,18 +397,18 @@ typedef enum {
 
 /// Operand type for instruction's operands
 typedef enum arm_op_type {
-	ARM_OP_INVALID = 0, ///< = CS_OP_INVALID (Uninitialized).
-	ARM_OP_REG, ///< = CS_OP_REG (Register operand).
-	ARM_OP_IMM, ///< = CS_OP_IMM (Immediate operand).
-	ARM_OP_FP,  ///< = CS_OP_FP (Floating-Point operand).
-	ARM_OP_PRED, ///< CS_OP_PRED (Predicate operand).
-	ARM_OP_CIMM = 64, ///< C-Immediate (coprocessor registers)
-	ARM_OP_PIMM, ///< P-Immediate (coprocessor registers)
-	ARM_OP_SETEND,	///< operand for SETEND instruction
-	ARM_OP_SYSREG,	///< MSR/MRS special register operand
-	ARM_OP_VPRED_R, ///< Vector predicate. Leaves inactive lanes of output vector register unchanged.
-	ARM_OP_VPRED_N, ///< Vector predicate. Don't preserved inactive lanes of output register.
-	ARM_OP_MEM = 0x80, ///< = CS_OP_MEM (Memory operand).
+	ARM_OP_INVALID = CS_OP_INVALID, ///< Invalid
+	ARM_OP_REG = CS_OP_REG, ///< Register operand
+	ARM_OP_IMM = CS_OP_IMM, ///< Immediate operand
+	ARM_OP_FP = CS_OP_FP,  ///< Floating-Point operand
+	ARM_OP_PRED = CS_OP_PRED, ///< Predicate
+	ARM_OP_CIMM = CS_OP_SPECIAL + 0, ///< C-Immediate (coprocessor registers)
+	ARM_OP_PIMM = CS_OP_SPECIAL + 1, ///< P-Immediate (coprocessor registers)
+	ARM_OP_SETEND = CS_OP_SPECIAL + 2,	///< operand for SETEND instruction
+	ARM_OP_SYSREG = CS_OP_SPECIAL + 3,	///< MSR/MRS special register operand
+	ARM_OP_VPRED_R = CS_OP_SPECIAL + 4, ///< Vector predicate. Leaves inactive lanes of output vector register unchanged.
+	ARM_OP_VPRED_N = CS_OP_SPECIAL + 5, ///< Vector predicate. Don't preserved inactive lanes of output register.
+	ARM_OP_MEM = CS_OP_MEM, ///< Memory operand
 } arm_op_type;
 
 /// Operand type for SETEND instruction
