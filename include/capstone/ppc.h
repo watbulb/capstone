@@ -4,11 +4,11 @@
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2015 */
 
-#include "capstone/capstone.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include "../../cs_operand.h"
 #include "platform.h"
 
 #ifdef _MSC_VER
@@ -88,11 +88,11 @@ typedef enum {
 
 /// Operand type for instruction's operands
 typedef enum ppc_op_type {
-	PPC_OP_INVALID = 0, ///< = CS_OP_INVALID (Uninitialized).
-	PPC_OP_REG, ///< = CS_OP_REG (Register operand).
-	PPC_OP_IMM, ///< = CS_OP_IMM (Immediate operand).
-	PPC_OP_MEM, ///< = CS_OP_MEM (Memory operand).
-	PPC_OP_CRX = 64,	///< Condition Register field
+	PPC_OP_INVALID = CS_OP_INVALID, ///< Uninitialized.
+	PPC_OP_REG = CS_OP_REG, ///< Register operand.
+	PPC_OP_IMM = CS_OP_IMM, ///< Immediate operand.
+	PPC_OP_CRX = CS_OP_SPECIAL + 0,	///< Condition Register field
+	PPC_OP_MEM = CS_OP_MEM, ///< Memory operand.
 } ppc_op_type;
 
 /// PPC registers
