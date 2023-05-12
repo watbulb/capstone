@@ -15,28 +15,75 @@ extern "C" {
 #pragma warning(disable:4201)
 #endif
 
-/// PPC branch codes for some branch instructions
+/// Predicate - These are "(BI << 5) | BO"  for various predicates.
+///
+/// BI encoding:
+///
+/// CR idx: |   0   |    1    |   2   |     3    |
+///         |-------|---------|-------|----------|
+/// Meaning | Less  | Greater | Zero  | Summary  |
+///         | Then  | Then    |       | Overflow |
+///
+/// BO encoding
+///
+/// Bit     |   0    |     1       |   2   |      3     |     4      |
+///         |--------|-------------|-------|------------|------------|
+/// If      | Test   | Test        | Decr. | test       |            |
+/// unset:  | CR(BI) | CR(BI) == 1 | CTR   | CTR != 0   |            |
+///         |--------|-------------|-------|------------|------------|
+/// If      | Don't  | Test        | Don't | test       |            |
+/// set:    | Test   | CR(BI) == 0 | decr. | CTR == 0   |            |
+///         | CR(BI) |             | CTR   |            |            |
+///         |--------|-------------|-------|------------|------------|
+/// Alter-  |        | Hint bit:   |       | Hint bit:  | Hint bit:  |
+/// native  | None   |   a         | None  |    a       |    t       |
+/// meaning |        | or ingored  |       | or ignored | or ignored |
+///
+/// The bits "at" are both present if:
+/// 		- CTR is decremented, but CR is not checked.
+///     - CR is checked, but CTR is not decremented.
 typedef enum ppc_bc {
-	PPC_BC_INVALID  = 0,
-	PPC_BC_LT       = (0 << 5) | 12,
-	PPC_BC_LE       = (1 << 5) |  4,
-	PPC_BC_EQ       = (2 << 5) | 12,
-	PPC_BC_GE       = (0 << 5) |  4,
-	PPC_BC_GT       = (1 << 5) | 12,
-	PPC_BC_NE       = (2 << 5) |  4,
-	PPC_BC_UN       = (3 << 5) | 12,
-	PPC_BC_NU       = (3 << 5) |  4,
+	// Name     | BI     | BO
+	PPC_BC_LT = (0 << 5) | 12,
+	PPC_BC_LE = (1 << 5) | 4,
+	PPC_BC_EQ = (2 << 5) | 12,
+	PPC_BC_GE = (0 << 5) | 4,
+	PPC_BC_GT = (1 << 5) | 12,
+	PPC_BC_NE = (2 << 5) | 4,
+	PPC_BC_UN = (3 << 5) | 12,
+	PPC_BC_NU = (3 << 5) | 4,
+	// Likely not taken
+	PPC_BC_LT_MINUS = (0 << 5) | 14,
+	PPC_BC_LE_MINUS = (1 << 5) | 6,
+	PPC_BC_EQ_MINUS = (2 << 5) | 14,
+	PPC_BC_GE_MINUS = (0 << 5) | 6,
+	PPC_BC_GT_MINUS = (1 << 5) | 14,
+	PPC_BC_NE_MINUS = (2 << 5) | 6,
+	PPC_BC_UN_MINUS = (3 << 5) | 14,
+	PPC_BC_NU_MINUS = (3 << 5) | 6,
+	// Likely taken
+	PPC_BC_LT_PLUS = (0 << 5) | 15,
+	PPC_BC_LE_PLUS = (1 << 5) | 7,
+	PPC_BC_EQ_PLUS = (2 << 5) | 15,
+	PPC_BC_GE_PLUS = (0 << 5) | 7,
+	PPC_BC_GT_PLUS = (1 << 5) | 15,
+	PPC_BC_NE_PLUS = (2 << 5) | 7,
+	PPC_BC_UN_PLUS = (3 << 5) | 15,
+	PPC_BC_NU_PLUS = (3 << 5) | 7,
 
 	// extra conditions
 	PPC_BC_SO = (4 << 5) | 12,	///< summary overflow
 	PPC_BC_NS = (4 << 5) | 4,	///< not summary overflow
 } ppc_bc;
 
-/// PPC branch hint for some branch instructions
-typedef enum ppc_bh {
-	PPC_BH_INVALID = 0,	///< no hint
-	PPC_BH_PLUS,	///< PLUS hint
-	PPC_BH_MINUS,	///< MINUS hint
+/// Encodes the meaning of the branch hint bits.
+/// Bit:  | 0 | 1 |
+/// Name: | a | t |
+typedef enum {
+	PPC_BH_NOT_GIVEN = 0b00,
+	PPC_BH_RESERVED = 0b01,
+	PPC_BH_NOT_TAKEN = 0b10, ///< Minus
+	PPC_BH_TAKEN = 0b11, ///< Plus
 } ppc_bh;
 
 /// Operand type for instruction's operands

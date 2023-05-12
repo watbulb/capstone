@@ -32,7 +32,6 @@ static const char* get_bc_name(int bc)
 {
 	switch(bc) {
 		default:
-		case PPC_BC_INVALID:
 			return ("invalid");
 		case PPC_BC_LT:
 			return ("lt");
