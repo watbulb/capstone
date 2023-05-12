@@ -196,13 +196,76 @@ bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
 	return true;
 }
 
+static const map_insn_ops insn_operands[] = {
+#include "PPCGenCSMappingInsnOp.inc"
+};
+
+static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
+								  unsigned OpNum) {
+	if (!detail_is_set(MI))
+		return;
+
+	switch (op_group) {
+	default:
+		printf("General operand group %d not handled!\n", op_group);
+		return;
+	case PPC_OP_GROUP_Operand:
+		if (doing_mem(MI)) {
+			PPC_set_detail_op_mem(MI, OpNum, MCInst_getOpVal(MI, OpNum));
+			break;
+		}
+
+		cs_op_type op_type = map_get_op_type(MI, OpNum);
+		assert((op_type & CS_OP_MEM) == 0); // doing_mem should have been true.
+
+		if (op_type == CS_OP_REG)
+			PPC_set_detail_op_reg(MI, OpNum, MCInst_getOpVal(MI, OpNum));
+		else if (op_type == CS_OP_IMM)
+			PPC_set_detail_op_imm(MI, OpNum, MCInst_getOpVal(MI, OpNum));
+		else
+			assert(0 && "Operand type not handled.");
+		break;
+	case PPC_OP_GROUP_PredicateOperand:
+	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
+	case PPC_OP_GROUP_ImmZeroOperand:
+	case PPC_OP_GROUP_U1ImmOperand:
+	case PPC_OP_GROUP_U2ImmOperand:
+	case PPC_OP_GROUP_U3ImmOperand:
+	case PPC_OP_GROUP_U4ImmOperand:
+	case PPC_OP_GROUP_U5ImmOperand:
+	case PPC_OP_GROUP_U6ImmOperand:
+	case PPC_OP_GROUP_U7ImmOperand:
+	case PPC_OP_GROUP_U8ImmOperand:
+	case PPC_OP_GROUP_U10ImmOperand:
+	case PPC_OP_GROUP_U12ImmOperand:
+	case PPC_OP_GROUP_U16ImmOperand:
+	case PPC_OP_GROUP_S5ImmOperand:
+	case PPC_OP_GROUP_S16ImmOperand:
+	case PPC_OP_GROUP_S34ImmOperand:
+	case PPC_OP_GROUP_LdStmModeOperand:
+	case PPC_OP_GROUP_MemRegReg:
+	case PPC_OP_GROUP_MemRegImm:
+	case PPC_OP_GROUP_MemRegImmHash:
+	case PPC_OP_GROUP_MemRegImm34:
+	case PPC_OP_GROUP_MemRegImm34PCRel:
+	case PPC_OP_GROUP_BranchOperand:
+	case PPC_OP_GROUP_AbsBranchOperand:
+	case PPC_OP_GROUP_TLSCall:
+	case PPC_OP_GROUP_crbitm:
+	case PPC_OP_GROUP_ATBitsAsHint:
+		printf("Operand group %d not implemented.\n", op_group);
+		return;
+	}
+}
+
 /// Fills cs_detail with the data of the operand.
-/// Calls to this function are should not be added by hand! Please checkout the
+/// Calls to this function should not be added by hand! Please checkout the
 /// patch `AddCSDetail` of the CppTranslator.
 void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 {
 	if (!detail_is_set(MI))
 		return;
+
 	switch (op_group) {
 	default:
 		printf("Operand group %d not handled!\n", op_group);
@@ -242,16 +305,36 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 	case PPC_OP_GROUP_U12ImmOperand:
 	case PPC_OP_GROUP_U7ImmOperand:
 	case PPC_OP_GROUP_ATBitsAsHint: {
-		// unsigned op_num = va_arg(args, unsigned);
-		// add_cs_detail_general(MI, op_group, op_num);
+		unsigned OpNum = va_arg(args, unsigned);
+		add_cs_detail_general(MI, op_group, OpNum);
 		return;
 	}
 	}
 }
 
-static const map_insn_ops insn_operands[] = {
-#include "PPCGenCSMappingInsnOp.inc"
-};
+void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val)
+{
+	if (!detail_is_set(MI))
+		return;
+
+	assert(map_get_op_type(MI, OpNum) & CS_OP_MEM);
+	cs_op_type secondary_type = map_get_op_type(MI, OpNum) & ~CS_OP_MEM;
+	switch (secondary_type) {
+	default:
+		assert(0 && "Secondary type not supported yet.");
+	case CS_OP_REG:
+		PPC_get_detail_op(MI, 0)->mem.base = Val;
+		if (MCInst_opIsTying(MI, OpNum))
+			map_add_implicit_write(MI, MCInst_getOpVal(MI, OpNum));
+		break;
+	case CS_OP_IMM:
+		PPC_get_detail_op(MI, 0)->mem.disp = Val;
+		break;
+	}
+
+	PPC_get_detail_op(MI, 0)->type = PPC_OP_MEM;
+	PPC_get_detail_op(MI, 0)->access = map_get_op_access(MI, OpNum);
+}
 
 /// Adds a register PPC operand at position OpNum and increases the op_count by
 /// one.

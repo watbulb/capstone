@@ -62,6 +62,7 @@ static inline void add_cs_detail(MCInst *MI, ppc_op_group op_group, ...)
 
 void PPC_set_detail_op_reg(MCInst *MI, unsigned OpNum, ppc_reg Reg);
 void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm);
+void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val);
 
 #endif
 
