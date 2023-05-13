@@ -305,10 +305,11 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 	case PPC_OP_GROUP_PredicateOperand: {
 		unsigned OpNum = va_arg(args, unsigned);
 		const char *Modifier = va_arg(args, const char *);
-		if (strcmp(Modifier, "cc") == 0)
-			PPC_get_detail(MI)->bc = MCInst_getOpVal(MI, OpNum);
-		else if (strcmp(Modifier, "pm") == 0)
+		if ((strcmp(Modifier, "cc") == 0) ||
+				(strcmp(Modifier, "pm") == 0)) {
+			PPC_get_detail(MI)->bc = PPC_get_no_hint_bc(MCInst_getOpVal(MI, OpNum));
 			PPC_get_detail(MI)->bh = PPC_get_bh(MCInst_getOpVal(MI, OpNum));
+		}
 		return;
 	}
 	case PPC_OP_GROUP_LdStmModeOperand:
@@ -400,6 +401,7 @@ void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm)
 	PPC_inc_op_count(MI);
 }
 
+/// Returns the branch hint of the given predicate.
 ppc_bh PPC_get_bh(ppc_bc Code) {
 		switch (Code) {
 		default:
@@ -431,6 +433,49 @@ ppc_bh PPC_get_bh(ppc_bc Code) {
 		case PPC_PRED_UN_PLUS:
 		case PPC_PRED_NU_PLUS:
 			return PPC_BR_TAKEN;
+		case PPC_PRED_BIT_SET:
+		case PPC_PRED_BIT_UNSET:
+			assert(0 && "Invalid use of bit predicate code");
+		}
+}
+
+/// Returns the predicate wihtout branch hint information.
+ppc_bc PPC_get_no_hint_bc(ppc_bc Code) {
+		switch (Code) {
+		default:
+			assert(0 && "Invalid predicate code");
+		case PPC_PRED_LT:
+		case PPC_PRED_LT_MINUS:
+		case PPC_PRED_LT_PLUS:
+			return PPC_PRED_LT;
+		case PPC_PRED_LE:
+		case PPC_PRED_LE_MINUS:
+		case PPC_PRED_LE_PLUS:
+			return PPC_PRED_LE;
+		case PPC_PRED_EQ:
+		case PPC_PRED_EQ_MINUS:
+		case PPC_PRED_EQ_PLUS:
+			return PPC_PRED_EQ;
+		case PPC_PRED_GE:
+		case PPC_PRED_GE_MINUS:
+		case PPC_PRED_GE_PLUS:
+			return PPC_PRED_GE;
+		case PPC_PRED_GT:
+		case PPC_PRED_GT_MINUS:
+		case PPC_PRED_GT_PLUS:
+			return PPC_PRED_GT;
+		case PPC_PRED_NE:
+		case PPC_PRED_NE_MINUS:
+		case PPC_PRED_NE_PLUS:
+			return PPC_PRED_NE;
+		case PPC_PRED_UN:
+		case PPC_PRED_UN_MINUS:
+		case PPC_PRED_UN_PLUS:
+			return PPC_PRED_UN;
+		case PPC_PRED_NU:
+		case PPC_PRED_NU_MINUS:
+		case PPC_PRED_NU_PLUS:
+			return PPC_PRED_NU;
 		case PPC_PRED_BIT_SET:
 		case PPC_PRED_BIT_UNSET:
 			assert(0 && "Invalid use of bit predicate code");

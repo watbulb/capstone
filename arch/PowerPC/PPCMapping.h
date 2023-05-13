@@ -65,6 +65,7 @@ void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm);
 void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val);
 
 ppc_bh PPC_get_bh(ppc_bc Code);
+ppc_bc PPC_get_no_hint_bc(ppc_bc Code);
 
 #endif
 
