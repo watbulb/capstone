@@ -283,15 +283,28 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 	case PPC_OP_GROUP_TLSCall:
 		// Handled in PPCInstPrinter and printOperand.
 		return;
+	case PPC_OP_GROUP_crbitm: {
+		unsigned CCReg = MCInst_getOpVal(MI, OpNum);
+		PPC_set_detail_op_reg(MI, OpNum, CCReg);
+		break;
+	}
+	case PPC_OP_GROUP_BranchOperand: {
+		if (!MCOperand_isImm(MCInst_getOperand(MI, (OpNum))))
+			// Handled in printOperand()
+			return;
+		uint64_t Address = MI->address + MCInst_getOpVal(MI, OpNum);
+		if (IS_32BIT(MI->csh->mode))
+			Address &= 0xffffffff;
+		PPC_set_detail_op_imm(MI, OpNum, Address);
+		break;
+	}
 	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
-	case PPC_OP_GROUP_LdStmModeOperand:
 	case PPC_OP_GROUP_MemRegReg:
 	case PPC_OP_GROUP_MemRegImm:
 	case PPC_OP_GROUP_MemRegImmHash:
 	case PPC_OP_GROUP_MemRegImm34:
 	case PPC_OP_GROUP_MemRegImm34PCRel:
-	case PPC_OP_GROUP_BranchOperand:
-	case PPC_OP_GROUP_crbitm:
+	case PPC_OP_GROUP_LdStmModeOperand:
 		printf("Operand group %d not implemented.\n", op_group);
 		return;
 	}
