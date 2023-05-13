@@ -28,55 +28,15 @@
 #define CS_PPC_PREDICATES_H
 
 // GCC #defines PPC on Linux but we use it as our namespace name
+#include "capstone/ppc.h"
 #undef PPC
 
 // Generated files will use "namespace PPC". To avoid symbol clash,
 // undefine PPC here. PPC may be predefined on some hosts.
 #undef PPC
 
-/// Predicate - These are "(BI << 5) | BO"  for various predicates.
-typedef enum {
-	PPC_PRED_LT = (0 << 5) | 12,
-	PPC_PRED_LE = (1 << 5) | 4,
-	PPC_PRED_EQ = (2 << 5) | 12,
-	PPC_PRED_GE = (0 << 5) | 4,
-	PPC_PRED_GT = (1 << 5) | 12,
-	PPC_PRED_NE = (2 << 5) | 4,
-	PPC_PRED_UN = (3 << 5) | 12,
-	PPC_PRED_NU = (3 << 5) | 4,
-	PPC_PRED_LT_MINUS = (0 << 5) | 14,
-	PPC_PRED_LE_MINUS = (1 << 5) | 6,
-	PPC_PRED_EQ_MINUS = (2 << 5) | 14,
-	PPC_PRED_GE_MINUS = (0 << 5) | 6,
-	PPC_PRED_GT_MINUS = (1 << 5) | 14,
-	PPC_PRED_NE_MINUS = (2 << 5) | 6,
-	PPC_PRED_UN_MINUS = (3 << 5) | 14,
-	PPC_PRED_NU_MINUS = (3 << 5) | 6,
-	PPC_PRED_LT_PLUS = (0 << 5) | 15,
-	PPC_PRED_LE_PLUS = (1 << 5) | 7,
-	PPC_PRED_EQ_PLUS = (2 << 5) | 15,
-	PPC_PRED_GE_PLUS = (0 << 5) | 7,
-	PPC_PRED_GT_PLUS = (1 << 5) | 15,
-	PPC_PRED_NE_PLUS = (2 << 5) | 7,
-	PPC_PRED_UN_PLUS = (3 << 5) | 15,
-	PPC_PRED_NU_PLUS = (3 << 5) | 7,
-
-	// SPE scalar compare instructions always set the GT bit.
-	PPC_PRED_SPE = PPC_PRED_GT,
-
-	// When dealing with individual condition-register bits, we have simple set
-	// and unset predicates.
-	PPC_PRED_BIT_SET = 1024,
-	PPC_PRED_BIT_UNSET = 1025
-} PPC_Predicate;
-
-// Bit for branch taken (plus) or not-taken (minus) hint
-enum BranchHintBit {
-	PPC_BR_NO_HINT = 0x0,
-	PPC_BR_NONTAKEN_HINT = 0x2,
-	PPC_BR_TAKEN_HINT = 0x3,
-	PPC_BR_HINT_MASK = 0x3
-};
+// Predicates moved to ppc.h
+typedef ppc_bc PPC_Predicate;
 
 /// Invert the specified predicate.  != -> ==, < -> >=.
 PPC_Predicate InvertPredicate(PPC_Predicate Opcode);

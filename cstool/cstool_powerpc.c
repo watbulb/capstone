@@ -11,25 +11,25 @@ static const char* get_bc_name(int bc)
 	switch(bc) {
 		default:
 			return ("invalid");
-		case PPC_BC_LT:
+		case PPC_PRED_LT:
 			return ("lt");
-		case PPC_BC_LE:
+		case PPC_PRED_LE:
 			return ("le");
-		case PPC_BC_EQ:
+		case PPC_PRED_EQ:
 			return ("eq");
-		case PPC_BC_GE:
+		case PPC_PRED_GE:
 			return ("ge");
-		case PPC_BC_GT:
+		case PPC_PRED_GT:
 			return ("gt");
-		case PPC_BC_NE:
+		case PPC_PRED_NE:
 			return ("ne");
-		case PPC_BC_UN:
+		case PPC_PRED_UN:
 			return ("un");
-		case PPC_BC_NU:
+		case PPC_PRED_NU:
 			return ("nu");
-		case PPC_BC_SO:
+		case PPC_PRED_SO:
 			return ("so");
-		case PPC_BC_NS:
+		case PPC_PRED_NS:
 			return ("ns");
 	}
 }

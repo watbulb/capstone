@@ -15,6 +15,7 @@ extern "C" {
 #pragma warning(disable:4201)
 #endif
 
+/// Predicate enums were moved from PPCPredicates.h so we do not have duplicates.
 /// Predicate - These are "(BI << 5) | BO"  for various predicates.
 ///
 /// BI encoding:
@@ -44,46 +45,56 @@ extern "C" {
 ///     - CR is checked, but CTR is not decremented.
 typedef enum ppc_bc {
 	// Name     | BI     | BO
-	PPC_BC_LT = (0 << 5) | 12,
-	PPC_BC_LE = (1 << 5) | 4,
-	PPC_BC_EQ = (2 << 5) | 12,
-	PPC_BC_GE = (0 << 5) | 4,
-	PPC_BC_GT = (1 << 5) | 12,
-	PPC_BC_NE = (2 << 5) | 4,
-	PPC_BC_UN = (3 << 5) | 12,
-	PPC_BC_NU = (3 << 5) | 4,
+	PPC_PRED_LT = (0 << 5) | 12,
+	PPC_PRED_LE = (1 << 5) | 4,
+	PPC_PRED_EQ = (2 << 5) | 12,
+	PPC_PRED_GE = (0 << 5) | 4,
+	PPC_PRED_GT = (1 << 5) | 12,
+	PPC_PRED_NE = (2 << 5) | 4,
+	PPC_PRED_UN = (3 << 5) | 12,
+	PPC_PRED_NU = (3 << 5) | 4,
 	// Likely not taken
-	PPC_BC_LT_MINUS = (0 << 5) | 14,
-	PPC_BC_LE_MINUS = (1 << 5) | 6,
-	PPC_BC_EQ_MINUS = (2 << 5) | 14,
-	PPC_BC_GE_MINUS = (0 << 5) | 6,
-	PPC_BC_GT_MINUS = (1 << 5) | 14,
-	PPC_BC_NE_MINUS = (2 << 5) | 6,
-	PPC_BC_UN_MINUS = (3 << 5) | 14,
-	PPC_BC_NU_MINUS = (3 << 5) | 6,
+	PPC_PRED_LT_MINUS = (0 << 5) | 14,
+	PPC_PRED_LE_MINUS = (1 << 5) | 6,
+	PPC_PRED_EQ_MINUS = (2 << 5) | 14,
+	PPC_PRED_GE_MINUS = (0 << 5) | 6,
+	PPC_PRED_GT_MINUS = (1 << 5) | 14,
+	PPC_PRED_NE_MINUS = (2 << 5) | 6,
+	PPC_PRED_UN_MINUS = (3 << 5) | 14,
+	PPC_PRED_NU_MINUS = (3 << 5) | 6,
 	// Likely taken
-	PPC_BC_LT_PLUS = (0 << 5) | 15,
-	PPC_BC_LE_PLUS = (1 << 5) | 7,
-	PPC_BC_EQ_PLUS = (2 << 5) | 15,
-	PPC_BC_GE_PLUS = (0 << 5) | 7,
-	PPC_BC_GT_PLUS = (1 << 5) | 15,
-	PPC_BC_NE_PLUS = (2 << 5) | 7,
-	PPC_BC_UN_PLUS = (3 << 5) | 15,
-	PPC_BC_NU_PLUS = (3 << 5) | 7,
+	PPC_PRED_LT_PLUS = (0 << 5) | 15,
+	PPC_PRED_LE_PLUS = (1 << 5) | 7,
+	PPC_PRED_EQ_PLUS = (2 << 5) | 15,
+	PPC_PRED_GE_PLUS = (0 << 5) | 7,
+	PPC_PRED_GT_PLUS = (1 << 5) | 15,
+	PPC_PRED_NE_PLUS = (2 << 5) | 7,
+	PPC_PRED_UN_PLUS = (3 << 5) | 15,
+	PPC_PRED_NU_PLUS = (3 << 5) | 7,
 
 	// extra conditions
-	PPC_BC_SO = (4 << 5) | 12,	///< summary overflow
-	PPC_BC_NS = (4 << 5) | 4,	///< not summary overflow
+	PPC_PRED_SO = (4 << 5) | 12,	///< summary overflow
+	PPC_PRED_NS = (4 << 5) | 4,	///< not summary overflow
+
+	// SPE scalar compare instructions always set the GT bit.
+	PPC_PRED_SPE = PPC_PRED_GT,
+
+	// When dealing with individual condition-register bits, we have simple set
+	// and unset predicates.
+	PPC_PRED_BIT_SET = 1024,
+	PPC_PRED_BIT_UNSET = 1025
 } ppc_bc;
 
+/// Bit for branch taken (plus) or not-taken (minus) hint
 /// Encodes the meaning of the branch hint bits.
 /// Bit:  | 0 | 1 |
 /// Name: | a | t |
 typedef enum {
-	PPC_BH_NOT_GIVEN = 0b00,
-	PPC_BH_RESERVED = 0b01,
-	PPC_BH_NOT_TAKEN = 0b10, ///< Minus
-	PPC_BH_TAKEN = 0b11, ///< Plus
+	PPC_BR_NOT_GIVEN = 0b00,
+	PPC_BR_RESERVED = 0b01,
+	PPC_BR_NOT_TAKEN = 0b10, ///< Minus
+	PPC_BR_TAKEN = 0b11, ///< Plus
+	PPC_BR_HINT_MASK = 0b11
 } ppc_bh;
 
 /// Operand type for instruction's operands

@@ -367,4 +367,41 @@ void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm)
 	PPC_inc_op_count(MI);
 }
 
+ppc_bh PPC_get_bh(ppc_bc Code) {
+		switch (Code) {
+		default:
+			assert(0 && "Invalid predicate code");
+		case PPC_PRED_LT:
+		case PPC_PRED_LE:
+		case PPC_PRED_EQ:
+		case PPC_PRED_GE:
+		case PPC_PRED_GT:
+		case PPC_PRED_NE:
+		case PPC_PRED_UN:
+		case PPC_PRED_NU:
+			return PPC_BR_NOT_GIVEN;
+		case PPC_PRED_LT_MINUS:
+		case PPC_PRED_LE_MINUS:
+		case PPC_PRED_EQ_MINUS:
+		case PPC_PRED_GE_MINUS:
+		case PPC_PRED_GT_MINUS:
+		case PPC_PRED_NE_MINUS:
+		case PPC_PRED_UN_MINUS:
+		case PPC_PRED_NU_MINUS:
+			return PPC_BR_NOT_TAKEN;
+		case PPC_PRED_LT_PLUS:
+		case PPC_PRED_LE_PLUS:
+		case PPC_PRED_EQ_PLUS:
+		case PPC_PRED_GE_PLUS:
+		case PPC_PRED_GT_PLUS:
+		case PPC_PRED_NE_PLUS:
+		case PPC_PRED_UN_PLUS:
+		case PPC_PRED_NU_PLUS:
+			return PPC_BR_TAKEN;
+		case PPC_PRED_BIT_SET:
+		case PPC_PRED_BIT_UNSET:
+			assert(0 && "Invalid use of bit predicate code");
+		}
+}
+
 #endif

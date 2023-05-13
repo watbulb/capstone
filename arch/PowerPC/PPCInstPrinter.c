@@ -206,11 +206,13 @@ static void printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *
 void printPredicateOperand(MCInst *MI, unsigned OpNo, SStream *O,
 						   const char *Modifier)
 {
-	add_cs_detail(MI, PPC_OP_GROUP_PredicateOperand, OpNo);
+	add_cs_detail(MI, PPC_OP_GROUP_PredicateOperand, OpNo, Modifier);
 	unsigned Code = MCOperand_getImm(MCInst_getOperand(MI, (OpNo)));
 
 	if (strcmp(Modifier, "cc") == 0) {
 		switch ((PPC_Predicate)Code) {
+		default:
+			assert(0 && "Invalid predicate code");
 		case PPC_PRED_LT_MINUS:
 		case PPC_PRED_LT_PLUS:
 		case PPC_PRED_LT:
@@ -260,6 +262,8 @@ void printPredicateOperand(MCInst *MI, unsigned OpNo, SStream *O,
 
 	if (strcmp(Modifier, "pm") == 0) {
 		switch ((PPC_Predicate)Code) {
+		default:
+			assert(0 && "Invalid predicate code");
 		case PPC_PRED_LT:
 		case PPC_PRED_LE:
 		case PPC_PRED_EQ:
