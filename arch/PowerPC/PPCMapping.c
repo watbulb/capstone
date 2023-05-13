@@ -298,13 +298,29 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		PPC_set_detail_op_imm(MI, OpNum, Address);
 		break;
 	}
-	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
-	case PPC_OP_GROUP_MemRegReg:
+	// Memory operands have their `set_mem_access()` calls
+	// in PPCInstPrinter.
 	case PPC_OP_GROUP_MemRegImm:
+	case PPC_OP_GROUP_MemRegReg: {
+		// These cases print 0 if the register is R0.
+		// So no printOperand() function is called.
+		// We must handle the zero case here.
+		unsigned OpNumReg;
+		if (op_group == PPC_OP_GROUP_MemRegImm)
+			OpNumReg = OpNumReg + 1;
+		else
+			OpNumReg = OpNum;
+		if (MCOperand_getReg(MCInst_getOperand(MI, (OpNumReg))) == PPC_R0)
+			PPC_set_detail_op_reg(MI, OpNum, PPC_R0);
+		break;
+	}
 	case PPC_OP_GROUP_MemRegImmHash:
 	case PPC_OP_GROUP_MemRegImm34:
 	case PPC_OP_GROUP_MemRegImm34PCRel:
+		// Handled in other printOperand functions.
+		break;
 	case PPC_OP_GROUP_LdStmModeOperand:
+	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 		printf("Operand group %d not implemented.\n", op_group);
 		return;
 	}

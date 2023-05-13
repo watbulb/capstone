@@ -518,6 +518,7 @@ void printcrbitm(MCInst *MI, unsigned OpNo, SStream *O)
 
 void printMemRegImm(MCInst *MI, unsigned OpNo, SStream *O)
 {
+	set_mem_access(MI, true);
 	add_cs_detail(MI, PPC_OP_GROUP_MemRegImm, OpNo);
 	printS16ImmOperand(MI, OpNo, O);
 	SStream_concat0(O, "(");
@@ -527,40 +528,48 @@ void printMemRegImm(MCInst *MI, unsigned OpNo, SStream *O)
 	else
 		printOperand(MI, OpNo + 1, O);
 	SStream_concat0(O, ")");
+	set_mem_access(MI, false);
 }
 
 void printMemRegImmHash(MCInst *MI, unsigned OpNo, SStream *O)
 {
+	set_mem_access(MI, true);
 	add_cs_detail(MI, PPC_OP_GROUP_MemRegImmHash, OpNo);
 	printInt32(O, MCOperand_getImm(MCInst_getOperand(MI, (OpNo))));
 	SStream_concat0(O, "(");
 
 	printOperand(MI, OpNo + 1, O);
 	SStream_concat0(O, ")");
+	set_mem_access(MI, false);
 }
 
 void printMemRegImm34PCRel(MCInst *MI, unsigned OpNo, SStream *O)
 {
+	set_mem_access(MI, true);
 	add_cs_detail(MI, PPC_OP_GROUP_MemRegImm34PCRel, OpNo);
 	printS34ImmOperand(MI, OpNo, O);
 	SStream_concat0(O, "(");
 
 	printImmZeroOperand(MI, OpNo + 1, O);
 	SStream_concat0(O, ")");
+	set_mem_access(MI, false);
 }
 
 void printMemRegImm34(MCInst *MI, unsigned OpNo, SStream *O)
 {
+	set_mem_access(MI, true);
 	add_cs_detail(MI, PPC_OP_GROUP_MemRegImm34, OpNo);
 	printS34ImmOperand(MI, OpNo, O);
 	SStream_concat0(O, "(");
 
 	printOperand(MI, OpNo + 1, O);
 	SStream_concat0(O, ")");
+	set_mem_access(MI, false);
 }
 
 void printMemRegReg(MCInst *MI, unsigned OpNo, SStream *O)
 {
+	set_mem_access(MI, true);
 	add_cs_detail(MI, PPC_OP_GROUP_MemRegReg, OpNo);
 	// When used as the base register, r0 reads constant zero rather than
 	// the value contained in the register.  For this reason, the darwin
@@ -571,6 +580,7 @@ void printMemRegReg(MCInst *MI, unsigned OpNo, SStream *O)
 		printOperand(MI, OpNo, O);
 	SStream_concat0(O, ", ");
 	printOperand(MI, OpNo + 1, O);
+	set_mem_access(MI, false);
 }
 
 void printTLSCall(MCInst *MI, unsigned OpNo, SStream *O)
