@@ -59,6 +59,10 @@ static const name_map group_name_maps[] = {
 	// generic groups
 	{ PPC_GRP_INVALID, NULL },
 	{ PPC_GRP_JUMP,	"jump" },
+	{ PPC_GRP_CALL, "call" },
+	{ PPC_GRP_INT, "int" },
+	{ PPC_GRP_PRIVILEGE, "privilege" },
+	{ PPC_GRP_BRANCH_RELATIVE, "branch_relative" },
 
 	// architecture-specific groups
 	#include "PPCGenCSFeatureName.inc"
