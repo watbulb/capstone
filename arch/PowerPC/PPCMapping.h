@@ -71,6 +71,8 @@ void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm);
 void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val);
 
 ppc_pred PPC_get_no_hint_pred(unsigned Code);
+void PPC_check_updates_cr0(MCInst *MI);
+void PPC_set_instr_map_data(MCInst *MI);
 
 #endif
 

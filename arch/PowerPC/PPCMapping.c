@@ -129,6 +129,36 @@ const char *PPC_group_name(csh handle, unsigned int id)
 #endif
 }
 
+const insn_map ppc_insns[] = {
+#include "PPCGenCSMappingInsn.inc"
+};
+
+void PPC_check_updates_cr0(MCInst *MI)
+{
+#ifndef CAPSTONE_DIET
+	if (!detail_is_set(MI))
+		return;
+	cs_detail *detail = get_detail(MI);
+	for (int i = 0; i < detail->regs_write_count; ++i) {
+		if (detail->regs_write[i] == 0)
+			return;
+		if (detail->regs_write[i] == PPC_REG_CR0) {
+			PPC_get_detail(MI)->update_cr0 = true;
+			return;
+		}
+	}
+#endif // CAPSTONE_DIET
+}
+
+void PPC_set_instr_map_data(MCInst *MI)
+{
+	map_cs_id(MI, ppc_insns, ARR_SIZE(ppc_insns));
+	map_implicit_reads(MI, ppc_insns);
+	map_implicit_writes(MI, ppc_insns);
+	map_groups(MI, ppc_insns);
+	PPC_check_updates_cr0(MI);
+}
+
 void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
 	MI->MRI = (MCRegisterInfo*) info;
 	PPC_LLVM_printInst(MI, MI->address, "", O);
@@ -138,6 +168,7 @@ bool PPC_getInstruction(csh handle, const uint8_t *bytes, size_t bytes_len,
 						MCInst *instr, uint16_t *size, uint64_t address,
 						void *info) {
 	DecodeStatus result = PPC_LLVM_getInstruction(handle, bytes, bytes_len, instr, size, address, info);
+	PPC_set_instr_map_data(instr);
 	return result != MCDisassembler_Fail;
 }
 
