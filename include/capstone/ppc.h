@@ -83,7 +83,25 @@ typedef enum ppc_bc {
 	// and unset predicates.
 	PPC_PRED_BIT_SET = 1024,
 	PPC_PRED_BIT_UNSET = 1025
-} ppc_bc;
+} ppc_pred;
+
+/// Values for the BI field.
+typedef enum {
+	PPC_BI_LT = 0, ///< CR bit Less Then
+	PPC_BI_GT = 1, ///< CR bit Greater Then
+	PPC_BI_Z = 2, ///< CR bit Zero
+	PPC_BI_SO = 3, ///< CR bit Summary Overflow
+	PPC_BI_INVALID = 4, ///< CR bit was not set/invalid
+} ppc_bi;
+
+/// Masks of flags in the BO field.
+typedef enum {
+	PPC_BO_TEST_CR = 0b10000, ///< Flag: Test CR bit.
+	PPC_BO_CR_CMP = 0b01000, ///< Flag: Compare CR bit to 0 or 1.
+	PPC_BO_DECR_CTR = 0xb00100, ///< Flag: Decrement counter.
+	PPC_BO_CTR_CMP = 0b00010, ///< Flag: Compare CTR to 0 or 1.
+	PPC_BO_T = 0b00001, ///< Either ignored (z) or hint bit t
+} ppc_bo_mask;
 
 /// Bit for branch taken (plus) or not-taken (minus) hint
 /// Encodes the meaning of the branch hint bits.
@@ -95,7 +113,27 @@ typedef enum {
 	PPC_BR_NOT_TAKEN = 0b10, ///< Minus
 	PPC_BR_TAKEN = 0b11, ///< Plus
 	PPC_BR_HINT_MASK = 0b11
-} ppc_bh;
+} ppc_br_hint;
+
+typedef struct {
+	ppc_bi bi; ///< BI field of branch condition.
+	uint8_t bo; ///< BO field of branch condition.
+	ppc_br_hint hint; ///< The encoded hint.
+	ppc_pred pred; ///< Resulting branch predicate.
+} ppc_bc;
+
+/// Returns the hint encoded in the BO bits a and t.
+static inline ppc_br_hint PPC_get_hint(uint8_t bo) {
+	bool DecrCTR = !(bo & PPC_BO_DECR_CTR);
+	bool TestCR = !(bo & PPC_BO_TEST_CR);
+	if (!DecrCTR && !TestCR)
+		return PPC_BR_NOT_GIVEN;
+	else if (DecrCTR && !TestCR)
+		return ((bo & PPC_BO_CR_CMP) >> 2) | (bo & PPC_BO_T);
+	else if (!DecrCTR && TestCR)
+		return (bo & PPC_BO_CTR_CMP) | (bo & PPC_BO_T);
+	return PPC_BR_NOT_GIVEN;
+}
 
 /// Operand type for instruction's operands
 typedef enum ppc_op_type {
@@ -659,7 +697,7 @@ typedef struct ppc_op_mem {
 typedef struct ppc_op_crx {
 	unsigned int scale;
 	ppc_reg reg;
-	ppc_bc cond;
+	ppc_pred cond;
 } ppc_op_crx;
 
 /// Instruction operand
@@ -680,9 +718,6 @@ typedef struct cs_ppc_op {
 typedef struct cs_ppc {
 	/// branch code for branch instructions
 	ppc_bc bc;
-
-	/// branch hint for branch instructions
-	ppc_bh bh;
 
 	/// if update_cr0 = True, then this 'dot' insn updates CR0
 	bool update_cr0;

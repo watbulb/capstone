@@ -75,11 +75,10 @@ char *get_detail_ppc(csh *handle, cs_mode mode, cs_insn *ins)
 		}
 	}
 
-	if (ppc->bc != 0)
-		add_str(&result, " ; Branch code: %u", ppc->bc);
+	add_str(&result, " ; Branch code: %u", ppc->bc.pred);
 
-	if (ppc->bh != 0)
-		add_str(&result, " ; Branch hint: %u", ppc->bh);
+	if (ppc->bc.hint != PPC_BR_NOT_GIVEN)
+		add_str(&result, " ; Branch hint: %u", ppc->bc.hint);
 
 	if (ppc->update_cr0)
 		add_str(&result, " ; Update-CR0: True");

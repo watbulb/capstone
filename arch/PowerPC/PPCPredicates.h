@@ -36,7 +36,7 @@
 #undef PPC
 
 // Predicates moved to ppc.h
-typedef ppc_bc PPC_Predicate;
+typedef ppc_pred PPC_Predicate;
 
 /// Invert the specified predicate.  != -> ==, < -> >=.
 PPC_Predicate InvertPredicate(PPC_Predicate Opcode);

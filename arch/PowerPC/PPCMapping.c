@@ -1,6 +1,7 @@
 /* Capstone Disassembly Engine */
 /* By Nguyen Anh Quynh <aquynh@gmail.com>, 2013-2015 */
 
+#include "capstone/ppc.h"
 #ifdef CAPSTONE_HAS_POWERPC
 
 #include <stdio.h>	// debug
@@ -268,7 +269,7 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		break;
 	}
 	case PPC_OP_GROUP_ATBitsAsHint: {
-		PPC_get_detail(MI)->bh = (ppc_bh) MCInst_getOpVal(MI, OpNum);
+		PPC_get_detail(MI)->bc.hint = (ppc_br_hint) MCInst_getOpVal(MI, OpNum);
 		break;
 	}
 	case PPC_OP_GROUP_AbsBranchOperand: {
@@ -349,8 +350,11 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 		const char *Modifier = va_arg(args, const char *);
 		if ((strcmp(Modifier, "cc") == 0) ||
 				(strcmp(Modifier, "pm") == 0)) {
-			PPC_get_detail(MI)->bc = PPC_get_no_hint_bc(MCInst_getOpVal(MI, OpNum));
-			PPC_get_detail(MI)->bh = PPC_get_bh(MCInst_getOpVal(MI, OpNum));
+			unsigned Val = MCInst_getOpVal(MI, OpNum);
+			PPC_get_detail(MI)->bc.pred = PPC_get_no_hint_pred(Val);
+			PPC_get_detail(MI)->bc.bo = (Val & 0x1f);
+			PPC_get_detail(MI)->bc.bi = (Val & 0x1e0) >> 5;
+			PPC_get_detail(MI)->bc.hint = PPC_get_hint(Val & 0x1f);
 		}
 		return;
 	}
@@ -443,46 +447,8 @@ void PPC_set_detail_op_imm(MCInst *MI, unsigned OpNum, int64_t Imm)
 	PPC_inc_op_count(MI);
 }
 
-/// Returns the branch hint of the given predicate.
-ppc_bh PPC_get_bh(ppc_bc Code) {
-		switch (Code) {
-		default:
-			assert(0 && "Invalid predicate code");
-		case PPC_PRED_LT:
-		case PPC_PRED_LE:
-		case PPC_PRED_EQ:
-		case PPC_PRED_GE:
-		case PPC_PRED_GT:
-		case PPC_PRED_NE:
-		case PPC_PRED_UN:
-		case PPC_PRED_NU:
-			return PPC_BR_NOT_GIVEN;
-		case PPC_PRED_LT_MINUS:
-		case PPC_PRED_LE_MINUS:
-		case PPC_PRED_EQ_MINUS:
-		case PPC_PRED_GE_MINUS:
-		case PPC_PRED_GT_MINUS:
-		case PPC_PRED_NE_MINUS:
-		case PPC_PRED_UN_MINUS:
-		case PPC_PRED_NU_MINUS:
-			return PPC_BR_NOT_TAKEN;
-		case PPC_PRED_LT_PLUS:
-		case PPC_PRED_LE_PLUS:
-		case PPC_PRED_EQ_PLUS:
-		case PPC_PRED_GE_PLUS:
-		case PPC_PRED_GT_PLUS:
-		case PPC_PRED_NE_PLUS:
-		case PPC_PRED_UN_PLUS:
-		case PPC_PRED_NU_PLUS:
-			return PPC_BR_TAKEN;
-		case PPC_PRED_BIT_SET:
-		case PPC_PRED_BIT_UNSET:
-			assert(0 && "Invalid use of bit predicate code");
-		}
-}
-
 /// Returns the predicate wihtout branch hint information.
-ppc_bc PPC_get_no_hint_bc(ppc_bc Code) {
+ppc_pred PPC_get_no_hint_pred(unsigned Code) {
 		switch (Code) {
 		default:
 			assert(0 && "Invalid predicate code");

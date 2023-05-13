@@ -98,11 +98,10 @@ static void print_insn_detail(cs_insn *ins)
 		}
 	}
 
-	if (ppc->bc != 0)
-		printf("\tBranch code: %u\n", ppc->bc);
+	printf("\tBranch code: %u\n", ppc->bc.pred);
 
-	if (ppc->bh != 0)
-		printf("\tBranch hint: %u\n", ppc->bh);
+	if (ppc->bc.hint != PPC_BR_NOT_GIVEN)
+		printf("\tBranch hint: %u\n", ppc->bc.hint);
 
 	if (ppc->update_cr0)
 		printf("\tUpdate-CR0: True\n");
