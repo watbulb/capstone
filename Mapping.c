@@ -238,7 +238,7 @@ const cs_ac_type mapping_get_op_access(MCInst *MI, unsigned OpNum,
 }
 
 /// Returns the operand at detail->arch.operands[op_count + offset]
-/// Or NULL if the operand does not exists at this index.
+/// Or NULL if detail is not set.
 #define DEFINE_get_detail_op(arch, ARCH)                                       \
 	cs_##arch##_op *ARCH##_get_detail_op(MCInst *MI, int offset)               \
 	{                                                                          \

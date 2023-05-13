@@ -108,6 +108,15 @@ void PPC_set_instr_map_data(MCInst *MI)
 	PPC_check_updates_cr0(MI);
 }
 
+/// Inialize PPCs detail.
+void PPC_init_cs_detail(MCInst *MI)
+{
+	if (!detail_is_set(MI))
+		return;
+	memset(get_detail(MI), 0,
+		   offsetof(cs_detail, arm) + sizeof(cs_arm));
+}
+
 void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
 	MI->MRI = (MCRegisterInfo*) info;
 	PPC_LLVM_printInst(MI, MI->address, "", O);
@@ -116,6 +125,7 @@ void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
 bool PPC_getInstruction(csh handle, const uint8_t *bytes, size_t bytes_len,
 						MCInst *instr, uint16_t *size, uint64_t address,
 						void *info) {
+	PPC_init_cs_detail(instr);
 	DecodeStatus result = PPC_LLVM_getInstruction(handle, bytes, bytes_len, instr, size, address, info);
 	PPC_set_instr_map_data(instr);
 	return result != MCDisassembler_Fail;
@@ -247,9 +257,9 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		// These cases print 0 if the register is R0.
 		// So no printOperand() function is called.
 		// We must handle the zero case here.
-		unsigned OpNumReg;
+		unsigned OpNumReg = 0;
 		if (op_group == PPC_OP_GROUP_MemRegImm)
-			OpNumReg = OpNumReg + 1;
+			OpNumReg = OpNum + 1;
 		else
 			OpNumReg = OpNum;
 		if (MCOperand_getReg(MCInst_getOperand(MI, (OpNumReg))) == PPC_R0)
