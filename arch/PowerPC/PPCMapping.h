@@ -40,12 +40,6 @@ static inline void set_mem_access(MCInst *MI, bool status)
 	PPC_set_mem_access(MI, status);
 }
 
-// map instruction name to public instruction ID
-ppc_insn PPC_map_insn(const char *name);
-
-// check if this insn is relative branch
-bool PPC_abs_branch(cs_struct *h, unsigned int id);
-
 // map internal raw register to 'public' register
 ppc_reg PPC_map_register(unsigned int r);
 

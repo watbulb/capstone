@@ -31,51 +31,10 @@ const char *PPC_reg_name(csh handle, unsigned int reg)
 	return PPC_LLVM_getRegisterName(reg);
 }
 
-static const insn_map insns[] = {
-	// dummy item
-	{
-		0, 0,
-#ifndef CAPSTONE_DIET
-		{ 0 }, { 0 }, { 0 }, 0, 0
-#endif
-	},
-
-#include "PPCGenCSMappingInsn.inc"
-};
-
 // given internal insn id, return public instruction info
 void PPC_get_insn_id(cs_struct *h, cs_insn *insn, unsigned int id)
 {
-	int i;
-
-	i = insn_find(insns, ARR_SIZE(insns), id, &h->insn_cache);
-	if (i != 0) {
-		insn->id = insns[i].mapid;
-
-		if (h->detail) {
-#ifndef CAPSTONE_DIET
-			cs_struct handle;
-			handle.detail = h->detail;
-
-			memcpy(insn->detail->regs_read, insns[i].regs_use, sizeof(insns[i].regs_use));
-			insn->detail->regs_read_count = (uint8_t)count_positive(insns[i].regs_use);
-
-			memcpy(insn->detail->regs_write, insns[i].regs_mod, sizeof(insns[i].regs_mod));
-			insn->detail->regs_write_count = (uint8_t)count_positive(insns[i].regs_mod);
-
-			memcpy(insn->detail->groups, insns[i].groups, sizeof(insns[i].groups));
-			insn->detail->groups_count = (uint8_t)count_positive8(insns[i].groups);
-
-			if (insns[i].branch || insns[i].indirect_branch) {
-				// this insn also belongs to JUMP group. add JUMP group
-				insn->detail->groups[insn->detail->groups_count] = PPC_GRP_JUMP;
-				insn->detail->groups_count++;
-			}
-
-			insn->detail->ppc.update_cr0 = cs_reg_write((csh)&handle, insn, PPC_REG_CR0);
-#endif
-		}
-	}
+	// We do this after Instruction disassembly.
 }
 
 static const char * const insn_name_maps[] = {
@@ -93,20 +52,6 @@ const char *PPC_insn_name(csh handle, unsigned int id)
 #else
 	return NULL;
 #endif
-}
-
-// map instruction name to public instruction ID
-ppc_insn PPC_map_insn(const char *name)
-{
-	unsigned int i;
-
-	for(i = 1; i < ARR_SIZE(insn_name_maps); i++) {
-		if (!strcmp(name, insn_name_maps[i]))
-			return i;
-	}
-
-	// not found
-	return PPC_INS_INVALID;
 }
 
 #ifndef CAPSTONE_DIET
@@ -170,45 +115,6 @@ bool PPC_getInstruction(csh handle, const uint8_t *bytes, size_t bytes_len,
 	DecodeStatus result = PPC_LLVM_getInstruction(handle, bytes, bytes_len, instr, size, address, info);
 	PPC_set_instr_map_data(instr);
 	return result != MCDisassembler_Fail;
-}
-
-// check if this insn is relative branch
-bool PPC_abs_branch(cs_struct *h, unsigned int id)
-{
-	unsigned int i;
-	// list all absolute branch instructions
-	static const unsigned int insn_abs[] = {
-		PPC_BA,
-		PPC_BCCA,
-		PPC_BCCLA,
-		PPC_BDNZA,
-		PPC_BDNZAm,
-		PPC_BDNZAp,
-		PPC_BDNZLA,
-		PPC_BDNZLAm,
-		PPC_BDNZLAp,
-		PPC_BDZA,
-		PPC_BDZAm,
-		PPC_BDZAp,
-		PPC_BDZLAm,
-		PPC_BDZLAp,
-		PPC_BLA,
-		PPC_gBCA,
-		PPC_gBCLA,
-		PPC_BDZLA,
-		0
-	};
-
-	// printf("opcode: %u\n", id);
-
-	for (i = 0; insn_abs[i]; i++) {
-		if (id == insn_abs[i]) {
-			return true;
-		}
-	}
-
-	// not found
-	return false;
 }
 
 bool PPC_getFeatureBits(unsigned int mode, unsigned int feature) {
