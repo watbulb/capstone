@@ -579,10 +579,12 @@ void printTLSCall(MCInst *MI, unsigned OpNo, SStream *O)
 
 	// Expresion logic removed.
 
+	set_mem_access(MI, true);
 	SStream_concat0(O, "(");
 
 	printOperand(MI, OpNo + 1, O);
 	SStream_concat0(O, ")");
+	set_mem_access(MI, false);
 }
 
 /// showRegistersWithPercentPrefix - Check if this register name should be

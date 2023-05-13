@@ -280,6 +280,9 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		PPC_set_detail_op_imm(MI, OpNum, Imm);
 		break;
 	}
+	case PPC_OP_GROUP_TLSCall:
+		// Handled in PPCInstPrinter and printOperand.
+		return;
 	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case PPC_OP_GROUP_LdStmModeOperand:
 	case PPC_OP_GROUP_MemRegReg:
@@ -288,7 +291,6 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 	case PPC_OP_GROUP_MemRegImm34:
 	case PPC_OP_GROUP_MemRegImm34PCRel:
 	case PPC_OP_GROUP_BranchOperand:
-	case PPC_OP_GROUP_TLSCall:
 	case PPC_OP_GROUP_crbitm:
 		printf("Operand group %d not implemented.\n", op_group);
 		return;
@@ -491,6 +493,26 @@ ppc_bc PPC_get_no_hint_bc(ppc_bc Code) {
 		case PPC_PRED_BIT_UNSET:
 			assert(0 && "Invalid use of bit predicate code");
 		}
+}
+
+void PPC_set_mem_access(MCInst *MI, bool status) {
+	if (!detail_is_set(MI))
+		return;
+	set_doing_mem(MI, status);
+	if (status) {
+		PPC_get_detail_op(MI, 0)->type = PPC_OP_MEM;
+		PPC_get_detail_op(MI, 0)->mem.base = PPC_REG_INVALID;
+		PPC_get_detail_op(MI, 0)->mem.disp = 0;
+
+#ifndef CAPSTONE_DIET
+		uint8_t access =
+			map_get_op_access(MI, PPC_get_detail(MI)->op_count);
+		PPC_get_detail_op(MI, 0)->access = access;
+#endif
+	} else {
+		// done, select the next operand slot
+		PPC_inc_op_count(MI);
+	}
 }
 
 #endif

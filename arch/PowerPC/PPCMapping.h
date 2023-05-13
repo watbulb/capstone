@@ -34,6 +34,12 @@ struct ppc_alias {
 	const char *mnem;
 };
 
+void PPC_set_mem_access(MCInst *MI, bool status);
+static inline void set_mem_access(MCInst *MI, bool status)
+{
+	PPC_set_mem_access(MI, status);
+}
+
 // map instruction name to public instruction ID
 ppc_insn PPC_map_insn(const char *name);
 
