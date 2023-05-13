@@ -226,7 +226,6 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		else
 			assert(0 && "Operand type not handled.");
 		break;
-	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case PPC_OP_GROUP_ImmZeroOperand:
 	case PPC_OP_GROUP_U1ImmOperand:
 	case PPC_OP_GROUP_U2ImmOperand:
@@ -238,10 +237,37 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 	case PPC_OP_GROUP_U8ImmOperand:
 	case PPC_OP_GROUP_U10ImmOperand:
 	case PPC_OP_GROUP_U12ImmOperand:
+		PPC_set_detail_op_imm(MI, OpNum, (uint32_t) MCInst_getOpVal(MI, OpNum));
+		break;
 	case PPC_OP_GROUP_U16ImmOperand:
-	case PPC_OP_GROUP_S5ImmOperand:
-	case PPC_OP_GROUP_S16ImmOperand:
-	case PPC_OP_GROUP_S34ImmOperand:
+		if (!MCOperand_isImm(MCInst_getOperand(MI, OpNum)))
+			// Handled in printOperand()
+			return;
+		PPC_set_detail_op_imm(MI, OpNum, (uint32_t) MCInst_getOpVal(MI, OpNum));
+		break;
+	case PPC_OP_GROUP_S5ImmOperand: {
+		int Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
+		Imm = SignExtend32((Imm), 5);
+		PPC_set_detail_op_imm(MI, OpNum, Imm);
+		break;
+	}
+	case PPC_OP_GROUP_S16ImmOperand: {
+		if (!MCOperand_isImm(MCInst_getOperand(MI, OpNum)))
+			// Handled in printOperand()
+			return;
+		int16_t Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
+		PPC_set_detail_op_imm(MI, OpNum, Imm);
+		break;
+	}
+	case PPC_OP_GROUP_S34ImmOperand: {
+		if (!MCOperand_isImm(MCInst_getOperand(MI, OpNum)))
+			// Handled in printOperand()
+			return;
+		int64_t Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
+		PPC_set_detail_op_imm(MI, OpNum, Imm);
+		break;
+	}
+	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case PPC_OP_GROUP_LdStmModeOperand:
 	case PPC_OP_GROUP_MemRegReg:
 	case PPC_OP_GROUP_MemRegImm:
