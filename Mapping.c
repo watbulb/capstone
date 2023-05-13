@@ -148,7 +148,7 @@ void map_groups(MCInst *MI, const insn_map *imap)
 	unsigned i = 0;
 	uint16_t group = imap[Opcode].groups[i];
 	while (group != 0) {
-		if (i >= MAX_NUM_GROUPS || detail->regs_write_count >= MAX_NUM_GROUPS) {
+		if (detail->groups_count >= MAX_NUM_GROUPS) {
 			printf("ERROR: Too many groups defined in instruction mapping.\n");
 			return;
 		}
