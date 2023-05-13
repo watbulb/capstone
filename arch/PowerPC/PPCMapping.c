@@ -267,6 +267,19 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		PPC_set_detail_op_imm(MI, OpNum, Imm);
 		break;
 	}
+	case PPC_OP_GROUP_ATBitsAsHint: {
+		PPC_get_detail(MI)->bh = (ppc_bh) MCInst_getOpVal(MI, OpNum);
+		break;
+	}
+	case PPC_OP_GROUP_AbsBranchOperand: {
+		if (!MCOperand_isImm(MCInst_getOperand(MI, OpNum)))
+			// Handled in printOperand()
+			return;
+		unsigned Val = MCInst_getOpVal(MI, OpNum) << 2;
+		int32_t Imm = SignExtend32(Val, 32);
+		PPC_set_detail_op_imm(MI, OpNum, Imm);
+		break;
+	}
 	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case PPC_OP_GROUP_LdStmModeOperand:
 	case PPC_OP_GROUP_MemRegReg:
@@ -275,10 +288,8 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 	case PPC_OP_GROUP_MemRegImm34:
 	case PPC_OP_GROUP_MemRegImm34PCRel:
 	case PPC_OP_GROUP_BranchOperand:
-	case PPC_OP_GROUP_AbsBranchOperand:
 	case PPC_OP_GROUP_TLSCall:
 	case PPC_OP_GROUP_crbitm:
-	case PPC_OP_GROUP_ATBitsAsHint:
 		printf("Operand group %d not implemented.\n", op_group);
 		return;
 	}
