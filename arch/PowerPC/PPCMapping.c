@@ -226,7 +226,6 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		else
 			assert(0 && "Operand type not handled.");
 		break;
-	case PPC_OP_GROUP_PredicateOperand:
 	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case PPC_OP_GROUP_ImmZeroOperand:
 	case PPC_OP_GROUP_U1ImmOperand:
@@ -277,6 +276,15 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 		// add_cs_detail_RegImmShift(MI, shift_opc, shift_imm);
 		return;
 	}
+	case PPC_OP_GROUP_PredicateOperand: {
+		unsigned OpNum = va_arg(args, unsigned);
+		const char *Modifier = va_arg(args, const char *);
+		if (strcmp(Modifier, "cc") == 0)
+			PPC_get_detail(MI)->bc = MCInst_getOpVal(MI, OpNum);
+		else if (strcmp(Modifier, "pm") == 0)
+			PPC_get_detail(MI)->bh = PPC_get_bh(MCInst_getOpVal(MI, OpNum));
+		return;
+	}
 	case PPC_OP_GROUP_LdStmModeOperand:
 	case PPC_OP_GROUP_MandatoryInvertedPredicateOperand:
 	case PPC_OP_GROUP_Operand:
@@ -289,7 +297,6 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 	case PPC_OP_GROUP_U16ImmOperand:
 	case PPC_OP_GROUP_BranchOperand:
 	case PPC_OP_GROUP_AbsBranchOperand:
-	case PPC_OP_GROUP_PredicateOperand:
 	case PPC_OP_GROUP_U1ImmOperand:
 	case PPC_OP_GROUP_TLSCall:
 	case PPC_OP_GROUP_U3ImmOperand:
