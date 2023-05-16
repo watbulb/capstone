@@ -138,7 +138,7 @@ cd "$cs_root/suite/auto-sync/build"
 cs_arch_dir="$cs_root/arch/$llvm_target_dir/"
 cs_inc_dir="$cs_root/include/capstone"
 
-into_arch_main_header=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc"
+into_arch_main_header=$arch"GenCSInsnEnum.inc "$arch"GenCSFeatureEnum.inc "$arch"GenCSRegEnum.inc "$arch"GenCSSystemRegisterEnum.inc "$arch"GenCSInsnFormatsEnum.inc "
 header_file=$(echo "$arch" | awk '{print tolower($0)}')
 main_header="$cs_inc_dir/$header_file.h"
 
