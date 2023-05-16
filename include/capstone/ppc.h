@@ -44,6 +44,11 @@ extern "C" {
 /// 		- CTR is decremented, but CR is not checked.
 ///     - CR is checked, but CTR is not decremented.
 typedef enum ppc_bc {
+	// Technically this could be read as a valid predicate
+	// But the ISA recommends to set the z bits to 0,
+	// so it shouldn't come to conflicts.
+	PPC_PRED_INVALID = 0xffff,
+
 	// Name     | BI     | BO
 	PPC_PRED_LT = (0 << 5) | 12,
 	PPC_PRED_LE = (1 << 5) | 4,

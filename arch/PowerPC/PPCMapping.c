@@ -115,6 +115,7 @@ void PPC_init_cs_detail(MCInst *MI)
 		return;
 	memset(get_detail(MI), 0,
 		   offsetof(cs_detail, arm) + sizeof(cs_arm));
+	PPC_get_detail(MI)->bc.pred = PPC_PRED_INVALID;
 }
 
 void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
