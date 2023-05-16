@@ -245,7 +245,9 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		if (!MCOperand_isImm(MCInst_getOperand(MI, (OpNum))))
 			// Handled in printOperand()
 			return;
-		uint64_t Address = MI->address + MCInst_getOpVal(MI, OpNum);
+		int32_t Imm = SignExtend32(
+			((unsigned)MCInst_getOpVal(MI, (OpNum)) << 2), 32);
+		uint64_t Address = MI->address + Imm;
 		if (IS_32BIT(MI->csh->mode))
 			Address &= 0xffffffff;
 		PPC_set_detail_op_imm(MI, OpNum, Address);
