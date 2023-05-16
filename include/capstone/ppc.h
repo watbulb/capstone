@@ -697,6 +697,7 @@ typedef enum ppc_reg {
 typedef struct ppc_op_mem {
 	ppc_reg base;	///< base register
 	int32_t disp;	///< displacement/offset value
+	ppc_reg offset;	///< Offset register
 } ppc_op_mem;
 
 typedef struct ppc_op_crx {

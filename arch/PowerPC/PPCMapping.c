@@ -154,6 +154,16 @@ static const map_insn_ops insn_operands[] = {
 #include "PPCGenCSMappingInsnOp.inc"
 };
 
+/// @brief Handles memory operands.
+/// @param MI The MCInst.
+/// @param OpNum The operand index.
+static void handle_memory_operand(MCInst *MI, unsigned OpNum) {
+	cs_op_type op_type = map_get_op_type(MI, OpNum);
+	bool is_disp_offset = op_type == CS_OP_IMM ||
+		(PPC_get_detail_op(MI, 0)->mem.base != PPC_REG_INVALID);
+	PPC_set_detail_op_mem(MI, OpNum, MCInst_getOpVal(MI, OpNum), is_disp_offset);
+}
+
 static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 								  unsigned OpNum) {
 	if (!detail_is_set(MI))
@@ -163,13 +173,15 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 	default:
 		printf("General operand group %d not handled!\n", op_group);
 		return;
-	case PPC_OP_GROUP_Operand:
+	case PPC_OP_GROUP_Operand: {
+		cs_op_type op_type = map_get_op_type(MI, OpNum);
 		if (doing_mem(MI)) {
-			PPC_set_detail_op_mem(MI, OpNum, MCInst_getOpVal(MI, OpNum));
-			break;
+			// The memory operands use printOperand() to
+			// emit their register and immediates.
+			handle_memory_operand(MI, OpNum);
+			return;
 		}
 
-		cs_op_type op_type = map_get_op_type(MI, OpNum);
 		assert((op_type & CS_OP_MEM) == 0); // doing_mem should have been true.
 
 		if (op_type == CS_OP_REG)
@@ -179,6 +191,7 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 		else
 			assert(0 && "Operand type not handled.");
 		break;
+	}
 	case PPC_OP_GROUP_ImmZeroOperand:
 	case PPC_OP_GROUP_U1ImmOperand:
 	case PPC_OP_GROUP_U2ImmOperand:
@@ -265,8 +278,10 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 			OpNumReg = OpNum + 1;
 		else
 			OpNumReg = OpNum;
-		if (MCOperand_getReg(MCInst_getOperand(MI, (OpNumReg))) == PPC_R0)
-			PPC_set_detail_op_reg(MI, OpNum, PPC_R0);
+
+		MCOperand *Op = MCInst_getOperand(MI, OpNumReg);
+		if (MCOperand_isReg(Op) && MCOperand_getReg(Op) == PPC_R0)
+			PPC_set_detail_op_mem(MI, OpNum, PPC_R0, false);
 		break;
 	}
 	case PPC_OP_GROUP_MemRegImmHash:
@@ -347,7 +362,7 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 	}
 }
 
-void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val)
+void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val, bool is_off_reg)
 {
 	if (!detail_is_set(MI))
 		return;
@@ -358,7 +373,10 @@ void PPC_set_detail_op_mem(MCInst *MI, unsigned OpNum, uint64_t Val)
 	default:
 		assert(0 && "Secondary type not supported yet.");
 	case CS_OP_REG:
-		PPC_get_detail_op(MI, 0)->mem.base = Val;
+		if (is_off_reg)
+			PPC_get_detail_op(MI, 0)->mem.offset = Val;
+		else
+			PPC_get_detail_op(MI, 0)->mem.base = Val;
 		if (MCInst_opIsTying(MI, OpNum))
 			map_add_implicit_write(MI, MCInst_getOpVal(MI, OpNum));
 		break;
@@ -451,6 +469,7 @@ void PPC_set_mem_access(MCInst *MI, bool status) {
 	if (status) {
 		PPC_get_detail_op(MI, 0)->type = PPC_OP_MEM;
 		PPC_get_detail_op(MI, 0)->mem.base = PPC_REG_INVALID;
+		PPC_get_detail_op(MI, 0)->mem.offset = PPC_REG_INVALID;
 		PPC_get_detail_op(MI, 0)->mem.disp = 0;
 
 #ifndef CAPSTONE_DIET

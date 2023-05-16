@@ -63,6 +63,9 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 				if (op->mem.base != PPC_REG_INVALID)
 					printf("\t\t\toperands[%u].mem.base: REG = %s\n",
 							i, cs_reg_name(handle, op->mem.base));
+				if (op->mem.offset != PPC_REG_INVALID)
+					printf("\t\t\toperands[%u].mem.offset: REG = %s\n", i,
+						cs_reg_name(handle, op->mem.offset));
 				if (op->mem.disp != 0)
 					printf("\t\t\toperands[%u].mem.disp: 0x%x\n", i, op->mem.disp);
 

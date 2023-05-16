@@ -161,10 +161,11 @@ static void printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *
 			SStream_concat(O, "%s", (unsigned int)TH);
 			SStream_concat0(O, ", ");
 		}
-
+		set_mem_access(MI, true);
 		printOperand(MI, 1, O);
 		SStream_concat0(O, ", ");
 		printOperand(MI, 2, O);
+		set_mem_access(MI, false);
 
 		if (!IsBookE && TH != 0 && TH != 16) {
 			SStream_concat(O, "%s", ", ");
