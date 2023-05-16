@@ -120,11 +120,22 @@ typedef enum {
 	PPC_BR_HINT_MASK = 0b11
 } ppc_br_hint;
 
+/// Encodes the different meanings of the BH field.
+/// The enum values does NOT match the BH field values!
+typedef enum {
+	PPC_BH_INVALID = 0,
+	PPC_BH_SUBROUTINE_RET,
+	PPC_BH_NO_SUBROUTINE_RET,
+	PPC_BH_NOT_PREDICTABLE,
+	PPC_BH_RESERVED,
+} ppc_bh;
+
 typedef struct {
 	ppc_bi bi; ///< BI field of branch condition.
 	uint8_t bo; ///< BO field of branch condition.
 	ppc_br_hint hint; ///< The encoded hint.
 	ppc_pred pred; ///< Resulting branch predicate.
+	ppc_bh bh; ///< The BH field hint if any is present.
 } ppc_bc;
 
 /// Returns the hint encoded in the BO bits a and t.

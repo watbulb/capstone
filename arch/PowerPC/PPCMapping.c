@@ -99,12 +99,72 @@ void PPC_check_updates_cr0(MCInst *MI)
 #endif // CAPSTONE_DIET
 }
 
-void PPC_set_instr_map_data(MCInst *MI)
+/// Parses and adds the branch predicate information and the BH field.
+static void PPC_add_branch_predicates(MCInst *MI, const uint8_t *Bytes, size_t BytesLen) {
+#ifndef CAPSTONE_DIET
+	assert(MI && Bytes);
+	if (BytesLen < 4)
+		return;
+
+	ppc_insn_form form = ppc_insns[MI->Opcode].suppl_info.ppc.form;
+	bool b_form = ppc_is_b_form(form);
+	if (!(b_form || form == PPC_INSN_FORM_XLFORM_2))
+		return;
+
+	uint32_t Inst = readBytes32(MI, Bytes);
+	printf("0x%x\n", Inst);
+
+	uint8_t bi = 0;
+	if (b_form)
+		bi = (Inst & PPC_INSN_FORM_B_BI_MASK) >> 16;
+	else
+		bi = (Inst & PPC_INSN_FORM_XL_BI_MASK) >> 16;
+
+	uint8_t bo = 0;
+	if (b_form)
+		bo = (Inst & PPC_INSN_FORM_B_BO_MASK) >> 21;
+	else
+		bo = (Inst & PPC_INSN_FORM_XL_BO_MASK) >> 21;
+
+	PPC_get_detail(MI)->bc.bi = bi;
+	PPC_get_detail(MI)->bc.bo = bo;
+	PPC_get_detail(MI)->bc.hint = PPC_get_hint(bo);
+	PPC_get_detail(MI)->bc.pred = (bi << 5) | bo;
+	if (ppc_is_b_form(form))
+		return;
+
+	uint8_t bh = (Inst & PPC_INSN_FORM_XL_BH_MASK) >> 11;
+	uint16_t xo = (Inst & PPC_INSN_FORM_XL_XO_MASK) >> 1;
+	// Pre-defined values for XO fields (PowerISA v3.1B)
+	uint16_t bcctr_xo_field = 528;
+	uint16_t bctar_xo_field = 560;
+	bool cond = (xo == bcctr_xo_field || xo == bctar_xo_field);
+	switch (bh) {
+	default:
+		assert(0 && "Invalid BH value.");
+	case 0b00:
+		PPC_get_detail(MI)->bc.bh = cond ? PPC_BH_NO_SUBROUTINE_RET : PPC_BH_SUBROUTINE_RET;
+		break;
+	case 0b01:
+		PPC_get_detail(MI)->bc.bh = cond ? PPC_BH_RESERVED : PPC_BH_NO_SUBROUTINE_RET;
+		break;
+	case 0b10:
+		PPC_get_detail(MI)->bc.bh = PPC_BH_RESERVED;
+		break;
+	case 0b11:
+		PPC_get_detail(MI)->bc.bh = PPC_BH_NOT_PREDICTABLE;
+		break;
+	}
+#endif // CAPSTONE_DIET
+}
+
+void PPC_set_instr_map_data(MCInst *MI, const uint8_t *Bytes, size_t BytesLen)
 {
 	map_cs_id(MI, ppc_insns, ARR_SIZE(ppc_insns));
 	map_implicit_reads(MI, ppc_insns);
 	map_implicit_writes(MI, ppc_insns);
 	map_groups(MI, ppc_insns);
+	PPC_add_branch_predicates(MI, Bytes, BytesLen);
 	PPC_check_updates_cr0(MI);
 }
 
@@ -128,7 +188,7 @@ bool PPC_getInstruction(csh handle, const uint8_t *bytes, size_t bytes_len,
 						void *info) {
 	PPC_init_cs_detail(instr);
 	DecodeStatus result = PPC_LLVM_getInstruction(handle, bytes, bytes_len, instr, size, address, info);
-	PPC_set_instr_map_data(instr);
+	PPC_set_instr_map_data(instr, bytes, bytes_len);
 	return result != MCDisassembler_Fail;
 }
 
