@@ -2062,17 +2062,17 @@
 }}},
 { /* PPC_BDNZA (533) - PPC_INS_BDNZA - bdnza $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDNZAm (534) - PPC_INS_BDNZAm - bdnza- $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDNZAp (535) - PPC_INS_BDNZAp - bdnza+ $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDNZL (536) - PPC_INS_BDNZL - bdnzl $dst */
@@ -2082,17 +2082,17 @@
 }},
 { /* PPC_BDNZLA (537) - PPC_INS_BDNZLA - bdnzla $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDNZLAm (538) - PPC_INS_BDNZLAm - bdnzla- $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDNZLAp (539) - PPC_INS_BDNZLAp - bdnzla+ $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDNZLR (540) - PPC_INS_BDNZLR - bdnzlr */
@@ -2152,17 +2152,17 @@
 }}},
 { /* PPC_BDZA (553) - PPC_INS_BDZA - bdza $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDZAm (554) - PPC_INS_BDZAm - bdza- $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDZAp (555) - PPC_INS_BDZAp - bdza+ $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDZL (556) - PPC_INS_BDZL - bdzl $dst */
@@ -2172,17 +2172,17 @@
 }},
 { /* PPC_BDZLA (557) - PPC_INS_BDZLA - bdzla $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDZLAm (558) - PPC_INS_BDZLAm - bdzla- $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDZLAp (559) - PPC_INS_BDZLAp - bdzla+ $dst */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_BDZLR (560) - PPC_INS_BDZLR - bdzlr */
@@ -2275,7 +2275,7 @@
 }},
 { /* PPC_BLA (582) - PPC_INS_BLA - bla $func */
 {
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_iPTR, CS_DATA_TYPE_LAST } }, /* func */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_iPTR, CS_DATA_TYPE_LAST } }, /* func */
   { 0 }
 }},
 {{{ /* PPC_BLA8 (583) - PPC_INS_INVALID - bla $func */
@@ -15635,7 +15635,7 @@
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* bo */
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i1, CS_DATA_TYPE_LAST } }, /* bi */
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_gBCAat (2796) - PPC_INS_BCA - bca$at $bo, $bi, $dst */
@@ -15643,7 +15643,7 @@
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* bo */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* at */
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i1, CS_DATA_TYPE_LAST } }, /* bi */
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_gBCCTR (2797) - PPC_INS_BCCTR - bcctr $bo, $bi, $bh */
@@ -15671,7 +15671,7 @@
 {
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* bo */
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i1, CS_DATA_TYPE_LAST } }, /* bi */
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_gBCLAat (2801) - PPC_INS_BCLA - bcla$at $bo, $bi, $dst */
@@ -15679,7 +15679,7 @@
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* bo */
   { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_i32, CS_DATA_TYPE_LAST } }, /* at */
   { CS_OP_REG, CS_AC_READ, { CS_DATA_TYPE_i1, CS_DATA_TYPE_LAST } }, /* bi */
-  { CS_OP_INVALID, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
+  { CS_OP_IMM, CS_AC_READ, { CS_DATA_TYPE_Other, CS_DATA_TYPE_LAST } }, /* dst */
   { 0 }
 }},
 { /* PPC_gBCLR (2802) - PPC_INS_BCLR - bclr $bo, $bi, $bh */
