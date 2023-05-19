@@ -416,7 +416,7 @@ class Translator:
         else:
             return
         for f in manual_edited:
-            msg += get_path(f)
+            msg += get_path(f).name + "\n"
         print_prominent_warning(msg)
 
 
