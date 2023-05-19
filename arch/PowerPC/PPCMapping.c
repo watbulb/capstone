@@ -282,6 +282,10 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 			// Handled in printOperand()
 			return;
 		int16_t Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
+		if (doing_mem(MI)) {
+			PPC_set_detail_op_mem(MI, OpNum, Imm, true);
+			break;
+		}
 		PPC_set_detail_op_imm(MI, OpNum, Imm);
 		break;
 	}
@@ -290,6 +294,10 @@ static void add_cs_detail_general(MCInst *MI, ppc_op_group op_group,
 			// Handled in printOperand()
 			return;
 		int64_t Imm = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
+		if (doing_mem(MI)) {
+			PPC_set_detail_op_mem(MI, OpNum, Imm, true);
+			break;
+		}
 		PPC_set_detail_op_imm(MI, OpNum, Imm);
 		break;
 	}
