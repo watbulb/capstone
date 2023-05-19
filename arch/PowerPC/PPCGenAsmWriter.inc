@@ -10637,124 +10637,124 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 1:
     // BUILD_UACC, CLRLSLDI, CLRLSLDI_rec, CLRLSLWI, CLRLSLWI_rec, CLRRDI, CL...
-    printOperand(MI, 0, STI, O);
+    printOperand(MI, 0, O);
     break;
   case 2:
     // DCBFL, DCBFLP, DCBFPS, DCBFx, DCBSTPS, DCBTCT, DCBTDS, DCBTSTCT, DCBTS...
-    printMemRegReg(MI, 0, STI, O);
+    printMemRegReg(MI, 0, O);
     break;
   case 3:
     // ADJCALLSTACKDOWN, ADJCALLSTACKUP
-    printU16ImmOperand(MI, 0, STI, O);
-    O << ' ';
-    printU16ImmOperand(MI, 1, STI, O);
+    printU16ImmOperand(MI, 0, O);
+    SStream_concat1(O, ' ');
+    printU16ImmOperand(MI, 1, O);
     return;
     break;
   case 4:
     // B, BCLalways, BDNZ, BDNZ8, BDNZL, BDNZLm, BDNZLp, BDNZm, BDNZp, BDZ, B...
-    printBranchOperand(MI, Address, 0, STI, O);
+    (MI, Address, 0, O);
     break;
   case 5:
     // BA, BDNZA, BDNZAm, BDNZAp, BDNZLA, BDNZLAm, BDNZLAp, BDZA, BDZAm, BDZA...
-    printAbsBranchOperand(MI, 0, STI, O);
+    printAbsBranchOperand(MI, 0, O);
     break;
   case 6:
     // BCC, BCCA, BCCCTR, BCCCTR8, BCCCTRL, BCCCTRL8, BCCL, BCCLA, BCCLR, BCC...
-    printPredicateOperand(MI, 0, STI, O, "cc");
+    printPredicateOperand(MI, 0, O, "cc");
     break;
   case 7:
     // BCTRL8_LDinto_toc, BCTRL8_LDinto_toc_RM, BCTRL_LWZinto_toc, BCTRL_LWZi...
-    printMemRegImm(MI, 0, STI, O);
+    printMemRegImm(MI, 0, O);
     return;
     break;
   case 8:
     // BL8_NOP_TLS, BL8_NOTOC_TLS, BL8_TLS, BL8_TLS_, BL_TLS
-    printTLSCall(MI, 0, STI, O);
+    printTLSCall(MI, 0, O);
     break;
   case 9:
     // DCBF, DCBT, DCBTST
-    printMemRegReg(MI, 1, STI, O);
-    O << ", ";
+    printMemRegReg(MI, 1, O);
+    SStream_concat0(O, ", ");
     break;
   case 10:
     // DCBTEP, DCBTSTEP
-    printU5ImmOperand(MI, 2, STI, O);
-    O << ", ";
-    printMemRegReg(MI, 0, STI, O);
+    printU5ImmOperand(MI, 2, O);
+    SStream_concat0(O, ", ");
+    printMemRegReg(MI, 0, O);
     return;
     break;
   case 11:
     // DMXXEXTFDMR256, DST, DST64, DSTST, DSTST64, DSTSTT, DSTSTT64, DSTT, DS...
-    printOperand(MI, 1, STI, O);
+    printOperand(MI, 1, O);
     break;
   case 12:
     // DMXXEXTFDMR512, DMXXEXTFDMR512_HI
-    printOperand(MI, 2, STI, O);
-    O << ", ";
-    printOperand(MI, 0, STI, O);
-    O << ", ";
-    printOperand(MI, 1, STI, O);
+    printOperand(MI, 2, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 0, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 1, O);
     break;
   case 13:
     // DSS, MBAR, MTFSB0, MTFSB1, TABORTDC, TABORTDCI, TABORTWC, TABORTWCI, T...
-    printU5ImmOperand(MI, 0, STI, O);
+    printU5ImmOperand(MI, 0, O);
     break;
   case 14:
     // ICBLC, ICBLQ, ICBT, ICBTLS
-    printU4ImmOperand(MI, 0, STI, O);
-    O << ", ";
-    printMemRegReg(MI, 1, STI, O);
+    printU4ImmOperand(MI, 0, O);
+    SStream_concat0(O, ", ");
+    printMemRegReg(MI, 1, O);
     return;
     break;
   case 15:
     // MTFSFI, MTFSFI_rec, MTFSFIb
-    printU3ImmOperand(MI, 0, STI, O);
-    O << ", ";
-    printU4ImmOperand(MI, 1, STI, O);
+    printU3ImmOperand(MI, 0, O);
+    SStream_concat0(O, ", ");
+    printU4ImmOperand(MI, 1, O);
     break;
   case 16:
     // MTOCRF, MTOCRF8
-    printcrbitm(MI, 0, STI, O);
-    O << ", ";
-    printOperand(MI, 1, STI, O);
+    printcrbitm(MI, 0, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 1, O);
     return;
     break;
   case 17:
     // MTSR
-    printU4ImmOperand(MI, 1, STI, O);
-    O << ", ";
-    printOperand(MI, 0, STI, O);
+    printU4ImmOperand(MI, 1, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 0, O);
     return;
     break;
   case 18:
     // RFEBB, TBEGIN, TEND, TSR
-    printU1ImmOperand(MI, 0, STI, O);
+    printU1ImmOperand(MI, 0, O);
     return;
     break;
   case 19:
     // SYNC, WAIT
-    printU2ImmOperand(MI, 0, STI, O);
+    printU2ImmOperand(MI, 0, O);
     return;
     break;
   case 20:
     // XSRQPI, XSRQPIX, XSRQPXP
-    printU1ImmOperand(MI, 1, STI, O);
-    O << ", ";
-    printOperand(MI, 0, STI, O);
-    O << ", ";
-    printOperand(MI, 2, STI, O);
-    O << ", ";
-    printU2ImmOperand(MI, 3, STI, O);
+    printU1ImmOperand(MI, 1, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 0, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 2, O);
+    SStream_concat0(O, ", ");
+    printU2ImmOperand(MI, 3, O);
     return;
     break;
   case 21:
     // gBCAat, gBCLAat, gBCLat, gBCat
-    printATBitsAsHint(MI, 1, STI, O);
-    O << ' ';
-    printU5ImmOperand(MI, 0, STI, O);
-    O << ", ";
-    printOperand(MI, 2, STI, O);
-    O << ", ";
+    printATBitsAsHint(MI, 1, O);
+    SStream_concat1(O, ' ');
+    printU5ImmOperand(MI, 0, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 2, O);
+    SStream_concat0(O, ", ");
     break;
   }
 
@@ -10764,7 +10764,7 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // BUILD_UACC, CLRLSLDI, CLRLSLDI_rec, CLRLSLWI, CLRLSLWI_rec, CLRRDI, CL...
-    O << ", ";
+    SStream_concat0(O, ", ");
     break;
   case 1:
     // DCBFL, DCBFLP, DCBFPS, DCBFx, DCBSTPS, DCBTSTT, DCBTSTx, DCBTT, DCBTx,...
@@ -10772,142 +10772,142 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 2:
     // ATOMIC_CMP_SWAP_I16, ATOMIC_CMP_SWAP_I32, TCRETURNai, TCRETURNai8, TCR...
-    O << ' ';
+    SStream_concat1(O, ' ');
     break;
   case 3:
     // BCC, CTRL_DEP
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
-    O << ", ";
-    printBranchOperand(MI, Address, 2, STI, O);
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
+    SStream_concat0(O, ", ");
+    (MI, Address, 2, O);
     return;
     break;
   case 4:
     // BCCA
-    O << 'a';
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
-    O << ", ";
-    printAbsBranchOperand(MI, 2, STI, O);
+    SStream_concat1(O, 'a');
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
+    SStream_concat0(O, ", ");
+    printAbsBranchOperand(MI, 2, O);
     return;
     break;
   case 5:
     // BCCCTR, BCCCTR8
-    O << "ctr";
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
+    SStream_concat0(O, "ctr");
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
     return;
     break;
   case 6:
     // BCCCTRL, BCCCTRL8
-    O << "ctrl";
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
+    SStream_concat0(O, "ctrl");
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
     return;
     break;
   case 7:
     // BCCL
-    O << 'l';
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
-    O << ", ";
-    printBranchOperand(MI, Address, 2, STI, O);
+    SStream_concat1(O, 'l');
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
+    SStream_concat0(O, ", ");
+    (MI, Address, 2, O);
     return;
     break;
   case 8:
     // BCCLA
-    O << "la";
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
-    O << ", ";
-    printAbsBranchOperand(MI, 2, STI, O);
+    SStream_concat0(O, "la");
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
+    SStream_concat0(O, ", ");
+    printAbsBranchOperand(MI, 2, O);
     return;
     break;
   case 9:
     // BCCLR
-    O << "lr";
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
+    SStream_concat0(O, "lr");
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
     return;
     break;
   case 10:
     // BCCLRL
-    O << "lrl";
-    printPredicateOperand(MI, 0, STI, O, "pm");
-    O << ' ';
-    printPredicateOperand(MI, 0, STI, O, "reg");
+    SStream_concat0(O, "lrl");
+    printPredicateOperand(MI, 0, O, "pm");
+    SStream_concat1(O, ' ');
+    printPredicateOperand(MI, 0, O, "reg");
     return;
     break;
   case 11:
     // BCCTR, BCCTR8, BCCTR8n, BCCTRL, BCCTRL8, BCCTRL8n, BCCTRLn, BCCTRn, BC...
-    O << ", 0";
+    SStream_concat0(O, ", 0");
     return;
     break;
   case 12:
     // BL8_NOP, BL8_NOP_RM, BL8_NOP_TLS, BLA8_NOP, BLA8_NOP_RM, BL_NOP, BL_NO...
-    O << "\n\tnop";
+    SStream_concat0(O, "\n\tnop");
     return;
     break;
   case 13:
     // DCBF
-    printU3ImmOperand(MI, 0, STI, O);
+    printU3ImmOperand(MI, 0, O);
     return;
     break;
   case 14:
     // DCBT, DCBTST
-    printU5ImmOperand(MI, 0, STI, O);
+    printU5ImmOperand(MI, 0, O);
     return;
     break;
   case 15:
     // DMXXEXTFDMR512_HI
-    O << ", 1";
+    SStream_concat0(O, ", 1");
     return;
     break;
   case 16:
     // EVSEL, TLBIE
-    O << ',';
+    SStream_concat1(O, ',');
     break;
   case 17:
     // MFTB8
-    O << ", 268";
+    SStream_concat0(O, ", 268");
     return;
     break;
   case 18:
     // MFUDSCR
-    O << ", 3";
+    SStream_concat0(O, ", 3");
     return;
     break;
   case 19:
     // MFVRSAVE, MFVRSAVEv
-    O << ", 256";
+    SStream_concat0(O, ", 256");
     return;
     break;
   case 20:
     // QVLPCLSXint
-    O << ", 0, ";
-    printOperand(MI, 1, STI, O);
+    SStream_concat0(O, ", 0, ");
+    printOperand(MI, 1, O);
     return;
     break;
   case 21:
     // V_SETALLONES, V_SETALLONESB, V_SETALLONESH
-    O << ", -1";
+    SStream_concat0(O, ", -1");
     return;
     break;
   case 22:
     // gBCAat, gBCLAat
-    printAbsBranchOperand(MI, 3, STI, O);
+    printAbsBranchOperand(MI, 3, O);
     return;
     break;
   case 23:
     // gBCLat, gBCat
-    printBranchOperand(MI, Address, 3, STI, O);
+    (MI, Address, 3, O);
     return;
     break;
   }
@@ -10918,157 +10918,157 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // BUILD_UACC, CLRLSLDI, CLRLSLDI_rec, CLRLSLWI, CLRLSLWI_rec, CLRRDI, CL...
-    printOperand(MI, 1, STI, O);
+    printOperand(MI, 1, O);
     break;
   case 1:
     // DCBTCT, DCBTDS, DCBTSTCT, DCBTSTDS, EVADDIW
-    printU5ImmOperand(MI, 2, STI, O);
+    printU5ImmOperand(MI, 2, O);
     break;
   case 2:
     // LAx, EVLDD, EVLDH, EVLDW, EVLHHESPLAT, EVLHHOSSPLAT, EVLHHOUSPLAT, EVL...
-    printMemRegImm(MI, 1, STI, O);
+    printMemRegImm(MI, 1, O);
     break;
   case 3:
     // SUBPCIS, LI, LI8, LIS, LIS8
-    printS16ImmOperand(MI, 1, STI, O);
+    printS16ImmOperand(MI, 1, O);
     return;
     break;
   case 4:
     // ATOMIC_CMP_SWAP_I16, ATOMIC_CMP_SWAP_I32, EVLDDX, EVLDHX, EVLDWX, EVLH...
-    printMemRegReg(MI, 1, STI, O);
+    printMemRegReg(MI, 1, O);
     break;
   case 5:
     // BC, BCL, BCLn, BCn
-    printBranchOperand(MI, Address, 1, STI, O);
+    (MI, Address, 1, O);
     return;
     break;
   case 6:
     // CMPRB, CMPRB8, MTMSR, MTMSRD
-    printU1ImmOperand(MI, 1, STI, O);
+    printU1ImmOperand(MI, 1, O);
     break;
   case 7:
     // CRSET, CRUNSET, DMXXEXTFDMR256, MTDCR, TLBIE, V_SET0, V_SET0B, V_SET0H...
-    printOperand(MI, 0, STI, O);
+    printOperand(MI, 0, O);
     break;
   case 8:
     // DARN, MFFSCRNI
-    printU2ImmOperand(MI, 1, STI, O);
+    printU2ImmOperand(MI, 1, O);
     return;
     break;
   case 9:
     // DMXOR, DST, DST64, DSTST, DSTST64, DSTSTT, DSTSTT64, DSTT, DSTT64, MTF...
-    printOperand(MI, 2, STI, O);
+    printOperand(MI, 2, O);
     break;
   case 10:
     // EVSPLATFI, EVSPLATI, VSPLTISB, VSPLTISH, VSPLTISW
-    printS5ImmOperand(MI, 1, STI, O);
+    printS5ImmOperand(MI, 1, O);
     return;
     break;
   case 11:
     // EVSUBIFW, LXVKQ
-    printU5ImmOperand(MI, 1, STI, O);
+    printU5ImmOperand(MI, 1, O);
     break;
   case 12:
     // HASHCHK, HASHCHK8, HASHCHKP, HASHCHKP8, HASHST, HASHST8, HASHSTP, HASH...
-    printMemRegImmHash(MI, 1, STI, O);
+    printMemRegImmHash(MI, 1, O);
     return;
     break;
   case 13:
     // LA, LA8
-    printS16ImmOperand(MI, 2, STI, O);
-    O << '(';
-    printOperand(MI, 1, STI, O);
-    O << ')';
+    printS16ImmOperand(MI, 2, O);
+    SStream_concat1(O, '(');
+    printOperand(MI, 1, O);
+    SStream_concat1(O, ')');
     return;
     break;
   case 14:
     // LBZU, LBZU8, LDU, LFDU, LFSU, LHAU, LHAU8, LHZU, LHZU8, LWZU, LWZU8, S...
-    printMemRegImm(MI, 2, STI, O);
+    printMemRegImm(MI, 2, O);
     return;
     break;
   case 15:
     // LBZUX, LBZUX8, LDUX, LFDUX, LFSUX, LHAUX, LHAUX8, LHZUX, LHZUX8, LWAUX...
-    printMemRegReg(MI, 2, STI, O);
+    printMemRegReg(MI, 2, O);
     return;
     break;
   case 16:
     // MFBHRBE
-    printU10ImmOperand(MI, 1, STI, O);
+    printU10ImmOperand(MI, 1, O);
     return;
     break;
   case 17:
     // MFFSCDRNI
-    printU3ImmOperand(MI, 1, STI, O);
+    printU3ImmOperand(MI, 1, O);
     return;
     break;
   case 18:
     // MFOCRF, MFOCRF8
-    printcrbitm(MI, 1, STI, O);
+    printcrbitm(MI, 1, O);
     return;
     break;
   case 19:
     // MFSR
-    printU4ImmOperand(MI, 1, STI, O);
+    printU4ImmOperand(MI, 1, O);
     return;
     break;
   case 20:
     // MTFSFI_rec, XXSPLTI32DX
-    printU1ImmOperand(MI, 2, STI, O);
+    printU1ImmOperand(MI, 2, O);
     break;
   case 21:
     // MTVSRBMI
-    printU16ImmOperand(MI, 1, STI, O);
+    printU16ImmOperand(MI, 1, O);
     return;
     break;
   case 22:
     // PADDI8pc, PADDIpc
-    printImmZeroOperand(MI, 1, STI, O);
-    O << ", ";
-    printS34ImmOperand(MI, 2, STI, O);
-    O << ", 1";
+    printImmZeroOperand(MI, 1, O);
+    SStream_concat0(O, ", ");
+    printS34ImmOperand(MI, 2, O);
+    SStream_concat0(O, ", 1");
     return;
     break;
   case 23:
     // PLBZ, PLBZ8, PLD, PLFD, PLFS, PLHA, PLHA8, PLHZ, PLHZ8, PLWA, PLWA8, P...
-    printMemRegImm34(MI, 1, STI, O);
-    O << ", 0";
+    printMemRegImm34(MI, 1, O);
+    SStream_concat0(O, ", 0");
     return;
     break;
   case 24:
     // PLBZ8pc, PLBZpc, PLDpc, PLFDpc, PLFSpc, PLHA8pc, PLHApc, PLHZ8pc, PLHZ...
-    printMemRegImm34PCRel(MI, 1, STI, O);
-    O << ", 1";
+    printMemRegImm34PCRel(MI, 1, O);
+    SStream_concat0(O, ", 1");
     return;
     break;
   case 25:
     // PLI, PLI8
-    printS34ImmOperand(MI, 1, STI, O);
+    printS34ImmOperand(MI, 1, O);
     return;
     break;
   case 26:
     // QVGPCI
-    printU12ImmOperand(MI, 1, STI, O);
+    printU12ImmOperand(MI, 1, O);
     return;
     break;
   case 27:
     // SUBFUS, SUBFUS_rec
-    printU1ImmOperand(MI, 3, STI, O);
-    O << ", ";
-    printOperand(MI, 1, STI, O);
-    O << ", ";
-    printOperand(MI, 2, STI, O);
+    printU1ImmOperand(MI, 3, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 1, O);
+    SStream_concat0(O, ", ");
+    printOperand(MI, 2, O);
     return;
     break;
   case 28:
     // VINSD, VINSERTB, VINSERTH, VINSW
-    printOperand(MI, 3, STI, O);
-    O << ", ";
-    printU4ImmOperand(MI, 2, STI, O);
+    printOperand(MI, 3, O);
+    SStream_concat0(O, ", ");
+    printU4ImmOperand(MI, 2, O);
     return;
     break;
   case 29:
     // XXSPLTIB
-    printU8ImmOperand(MI, 1, STI, O);
+    printU8ImmOperand(MI, 1, O);
     return;
     break;
   }
@@ -11083,30 +11083,30 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 1:
     // CLRLSLDI, CLRLSLDI_rec, CLRLSLWI, CLRLSLWI_rec, CLRRDI, CLRRDI_rec, CL...
-    O << ", ";
+    SStream_concat0(O, ", ");
     break;
   case 2:
     // ATOMIC_CMP_SWAP_I16, ATOMIC_CMP_SWAP_I32
-    O << ' ';
-    printOperand(MI, 3, STI, O);
-    O << ' ';
-    printOperand(MI, 4, STI, O);
+    SStream_concat1(O, ' ');
+    printOperand(MI, 3, O);
+    SStream_concat1(O, ' ');
+    printOperand(MI, 4, O);
     return;
     break;
   case 3:
     // EVSEL
-    O << ',';
-    printOperand(MI, 2, STI, O);
+    SStream_concat1(O, ',');
+    printOperand(MI, 2, O);
     return;
     break;
   case 4:
     // LBARXL, LDARXL, LHARXL, LQARXL, LWARXL
-    O << ", 1";
+    SStream_concat0(O, ", 1");
     return;
     break;
   case 5:
     // VCFSX_0, VCFUX_0, VCTSXS_0, VCTUXS_0
-    O << ", 0";
+    SStream_concat0(O, ", 0");
     return;
     break;
   }
@@ -11117,125 +11117,125 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // CLRLSLDI, CLRLSLDI_rec, CLRRDI, CLRRDI_rec, EXTLDI, EXTLDI_rec, EXTRDI...
-    printU6ImmOperand(MI, 2, STI, O);
+    printU6ImmOperand(MI, 2, O);
     break;
   case 1:
     // CLRLSLWI, CLRLSLWI_rec, CLRRWI, CLRRWI_rec, EXTLWI, EXTLWI_rec, EXTRWI...
-    printU5ImmOperand(MI, 2, STI, O);
+    printU5ImmOperand(MI, 2, O);
     break;
   case 2:
     // SUBI, SUBIC, SUBIC_rec, SUBIS, ADDI, ADDI8, ADDIC, ADDIC8, ADDIC_rec, ...
-    printS16ImmOperand(MI, 2, STI, O);
+    printS16ImmOperand(MI, 2, O);
     return;
     break;
   case 3:
     // ADD4, ADD4O, ADD4O_rec, ADD4TLS, ADD4_rec, ADD8, ADD8O, ADD8O_rec, ADD...
-    printOperand(MI, 2, STI, O);
+    printOperand(MI, 2, O);
     break;
   case 4:
     // ANDI8_rec, ANDIS8_rec, ANDIS_rec, ANDI_rec, CMPLDI, CMPLWI, ORI, ORI8,...
-    printU16ImmOperand(MI, 2, STI, O);
+    printU16ImmOperand(MI, 2, O);
     return;
     break;
   case 5:
     // BCDCFN_rec, BCDCFSQ_rec, BCDCFZ_rec, BCDCTZ_rec, BCDSETSGN_rec, CP_PAS...
-    printU1ImmOperand(MI, 2, STI, O);
+    printU1ImmOperand(MI, 2, O);
     break;
   case 6:
     // CRSET, CRUNSET, V_SET0, V_SET0B, V_SET0H, XXLEQVOnes, XXLXORdpz, XXLXO...
-    printOperand(MI, 0, STI, O);
+    printOperand(MI, 0, O);
     return;
     break;
   case 7:
     // DMXXEXTFDMR256, DMXXINSTFDMR256, QVESPLATI, QVESPLATIb, QVESPLATIs, XX...
-    printU2ImmOperand(MI, 2, STI, O);
+    printU2ImmOperand(MI, 2, O);
     return;
     break;
   case 8:
     // DST, DST64, DSTST, DSTST64, DSTSTT, DSTSTT64, DSTT, DSTT64
-    printU5ImmOperand(MI, 0, STI, O);
+    printU5ImmOperand(MI, 0, O);
     return;
     break;
   case 9:
     // EVADDIW, XXPERMDIs, XXSLDWIs
-    printOperand(MI, 1, STI, O);
+    printOperand(MI, 1, O);
     break;
   case 10:
     // PADDI, PADDI8
-    printS34ImmOperand(MI, 2, STI, O);
-    O << ", 0";
+    printS34ImmOperand(MI, 2, O);
+    SStream_concat0(O, ", 0");
     return;
     break;
   case 11:
     // PMXVBF16GER2NN, PMXVBF16GER2NP, PMXVBF16GER2PN, PMXVBF16GER2PP, PMXVBF...
-    printOperand(MI, 3, STI, O);
+    printOperand(MI, 3, O);
     break;
   case 12:
     // PSQ_L, PSQ_LU, PSQ_ST, PSQ_STU
-    printU1ImmOperand(MI, 3, STI, O);
-    O << ", ";
-    printU3ImmOperand(MI, 4, STI, O);
+    printU1ImmOperand(MI, 3, O);
+    SStream_concat0(O, ", ");
+    printU3ImmOperand(MI, 4, O);
     return;
     break;
   case 13:
     // RLDIMI, RLDIMI_rec
-    printU6ImmOperand(MI, 3, STI, O);
-    O << ", ";
-    printU6ImmOperand(MI, 4, STI, O);
+    printU6ImmOperand(MI, 3, O);
+    SStream_concat0(O, ", ");
+    printU6ImmOperand(MI, 4, O);
     return;
     break;
   case 14:
     // RLWIMI, RLWIMI8, RLWIMI8_rec, RLWIMI_rec
-    printU5ImmOperand(MI, 3, STI, O);
-    O << ", ";
-    printU5ImmOperand(MI, 4, STI, O);
-    O << ", ";
-    printU5ImmOperand(MI, 5, STI, O);
+    printU5ImmOperand(MI, 3, O);
+    SStream_concat0(O, ", ");
+    printU5ImmOperand(MI, 4, O);
+    SStream_concat0(O, ", ");
+    printU5ImmOperand(MI, 5, O);
     return;
     break;
   case 15:
     // VCFSX, VCFUX, VCTSXS, VCTUXS, VSPLTB, VSPLTBs, VSPLTH, VSPLTHs, VSPLTW
-    printU5ImmOperand(MI, 1, STI, O);
+    printU5ImmOperand(MI, 1, O);
     return;
     break;
   case 16:
     // VEXTRACTD, VEXTRACTUB, VEXTRACTUH, VEXTRACTUW, VINSERTD, VINSERTW
-    printU4ImmOperand(MI, 1, STI, O);
+    printU4ImmOperand(MI, 1, O);
     return;
     break;
   case 17:
     // VGNB
-    printU3ImmOperand(MI, 2, STI, O);
+    printU3ImmOperand(MI, 2, O);
     return;
     break;
   case 18:
     // XSTSTDCDP, XSTSTDCQP, XSTSTDCSP, XVTSTDCDP, XVTSTDCSP
-    printU7ImmOperand(MI, 1, STI, O);
+    printU7ImmOperand(MI, 1, O);
     return;
     break;
   case 19:
     // XXEXTRACTUW
-    printU4ImmOperand(MI, 2, STI, O);
+    printU4ImmOperand(MI, 2, O);
     return;
     break;
   case 20:
     // XXGENPCVBM, XXGENPCVDM, XXGENPCVHM, XXGENPCVWM
-    printS5ImmOperand(MI, 2, STI, O);
+    printS5ImmOperand(MI, 2, O);
     return;
     break;
   case 21:
     // XXINSERTW
-    printU4ImmOperand(MI, 3, STI, O);
+    printU4ImmOperand(MI, 3, O);
     return;
     break;
   case 22:
     // gBC, gBCL
-    printBranchOperand(MI, Address, 2, STI, O);
+    (MI, Address, 2, O);
     return;
     break;
   case 23:
     // gBCA, gBCLA
-    printAbsBranchOperand(MI, 2, STI, O);
+    printAbsBranchOperand(MI, 2, O);
     return;
     break;
   }
@@ -11246,7 +11246,7 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // CLRLSLDI, CLRLSLDI_rec, CLRLSLWI, CLRLSLWI_rec, EXTLDI, EXTLDI_rec, EX...
-    O << ", ";
+    SStream_concat0(O, ", ");
     break;
   case 1:
     // CLRRDI, CLRRDI_rec, CLRRWI, CLRRWI_rec, ROTRDI, ROTRDI_rec, ROTRWI, RO...
@@ -11254,12 +11254,12 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 2:
     // DMXXINSTFDMR512
-    O << ", 0";
+    SStream_concat0(O, ", 0");
     return;
     break;
   case 3:
     // DMXXINSTFDMR512_HI
-    O << ", 1";
+    SStream_concat0(O, ", 1");
     return;
     break;
   }
@@ -11270,53 +11270,53 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // CLRLSLDI, CLRLSLDI_rec, EXTLDI, EXTLDI_rec, EXTRDI, EXTRDI_rec, INSRDI...
-    printU6ImmOperand(MI, 3, STI, O);
+    printU6ImmOperand(MI, 3, O);
     return;
     break;
   case 1:
     // CLRLSLWI, CLRLSLWI_rec, EXTLWI, EXTLWI_rec, EXTRWI, EXTRWI_rec, INSLWI...
-    printU5ImmOperand(MI, 3, STI, O);
+    printU5ImmOperand(MI, 3, O);
     break;
   case 2:
     // RLWIMIbm, RLWIMIbm_rec, RLWINMbm, RLWINMbm_rec, RLWNMbm, RLWNMbm_rec, ...
-    printOperand(MI, 3, STI, O);
+    printOperand(MI, 3, O);
     break;
   case 3:
     // ADDEX, ADDEX8, QVALIGNI, QVALIGNIb, QVALIGNIs, XXPERMDI, XXSLDWI
-    printU2ImmOperand(MI, 3, STI, O);
+    printU2ImmOperand(MI, 3, O);
     return;
     break;
   case 4:
     // BCDADD_rec, BCDSR_rec, BCDSUB_rec, BCDS_rec, BCDTRUNC_rec, PSQ_LUX, PS...
-    printU1ImmOperand(MI, 3, STI, O);
+    printU1ImmOperand(MI, 3, O);
     break;
   case 5:
     // PMXVBF16GER2, PMXVBF16GER2W, PMXVF16GER2, PMXVF16GER2W, PMXVF32GER, PM...
-    printU4ImmOperand(MI, 3, STI, O);
+    printU4ImmOperand(MI, 3, O);
     break;
   case 6:
     // PMXVBF16GER2NN, PMXVBF16GER2NP, PMXVBF16GER2PN, PMXVBF16GER2PP, PMXVBF...
-    printU4ImmOperand(MI, 4, STI, O);
-    O << ", ";
+    printU4ImmOperand(MI, 4, O);
+    SStream_concat0(O, ", ");
     break;
   case 7:
     // QVFLOGICAL, QVFLOGICALb, QVFLOGICALs
-    printU12ImmOperand(MI, 3, STI, O);
+    printU12ImmOperand(MI, 3, O);
     return;
     break;
   case 8:
     // QVFMADDS, QVFMSUBS, QVFNMADDS, QVFNMSUBS, QVFSEL, QVFSELb, QVFSELbb, Q...
-    printOperand(MI, 2, STI, O);
+    printOperand(MI, 2, O);
     return;
     break;
   case 9:
     // VSLDBI, VSRDBI
-    printU3ImmOperand(MI, 3, STI, O);
+    printU3ImmOperand(MI, 3, O);
     return;
     break;
   case 10:
     // XXPERMDIs, XXSLDWIs
-    printU2ImmOperand(MI, 2, STI, O);
+    printU2ImmOperand(MI, 2, O);
     return;
     break;
   }
@@ -11331,15 +11331,15 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 1:
     // PMXVBF16GER2, PMXVBF16GER2W, PMXVF16GER2, PMXVF16GER2W, PMXVF32GER, PM...
-    O << ", ";
+    SStream_concat0(O, ", ");
     break;
   case 2:
     // PMXVBF16GER2NN, PMXVBF16GER2NP, PMXVBF16GER2PN, PMXVBF16GER2PP, PMXVBF...
-    printU4ImmOperand(MI, 5, STI, O);
+    printU4ImmOperand(MI, 5, O);
     break;
   case 3:
     // PMXVF64GERNN, PMXVF64GERNP, PMXVF64GERPN, PMXVF64GERPP, PMXVF64GERWNN,...
-    printU2ImmOperand(MI, 5, STI, O);
+    printU2ImmOperand(MI, 5, O);
     return;
     break;
   }
@@ -11350,11 +11350,11 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // PMXVBF16GER2, PMXVBF16GER2W, PMXVF16GER2, PMXVF16GER2W, PMXVF32GER, PM...
-    printU4ImmOperand(MI, 4, STI, O);
+    printU4ImmOperand(MI, 4, O);
     break;
   case 1:
     // PMXVBF16GER2NN, PMXVBF16GER2NP, PMXVBF16GER2PN, PMXVBF16GER2PP, PMXVBF...
-    O << ", ";
+    SStream_concat0(O, ", ");
     break;
   case 2:
     // PMXVF32GERNN, PMXVF32GERNP, PMXVF32GERPN, PMXVF32GERPP, PMXVF32GERWNN,...
@@ -11362,22 +11362,22 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 3:
     // PMXVF64GER, PMXVF64GERW
-    printU2ImmOperand(MI, 4, STI, O);
+    printU2ImmOperand(MI, 4, O);
     return;
     break;
   case 4:
     // PSQ_LUX, PSQ_LX, PSQ_STUX, PSQ_STX, XXPERMX
-    printU3ImmOperand(MI, 4, STI, O);
+    printU3ImmOperand(MI, 4, O);
     return;
     break;
   case 5:
     // RLWINM, RLWINM8, RLWINM8_rec, RLWINM_rec, RLWNM, RLWNM8, RLWNM8_rec, R...
-    printU5ImmOperand(MI, 4, STI, O);
+    printU5ImmOperand(MI, 4, O);
     return;
     break;
   case 6:
     // XXEVAL
-    printU8ImmOperand(MI, 4, STI, O);
+    printU8ImmOperand(MI, 4, O);
     return;
     break;
   }
@@ -11388,11 +11388,11 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // PMXVBF16GER2, PMXVBF16GER2W, PMXVF16GER2, PMXVF16GER2W, PMXVI16GER2, P...
-    O << ", ";
+    SStream_concat0(O, ", ");
     break;
   case 1:
     // PMXVBF16GER2NN, PMXVBF16GER2NP, PMXVBF16GER2PN, PMXVBF16GER2PP, PMXVBF...
-    printU2ImmOperand(MI, 6, STI, O);
+    printU2ImmOperand(MI, 6, O);
     return;
     break;
   case 2:
@@ -11401,12 +11401,12 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
     break;
   case 3:
     // PMXVI4GER8PP, PMXVI4GER8WPP
-    printU8ImmOperand(MI, 6, STI, O);
+    printU8ImmOperand(MI, 6, O);
     return;
     break;
   case 4:
     // PMXVI8GER4PP, PMXVI8GER4SPP, PMXVI8GER4WPP, PMXVI8GER4WSPP
-    printU4ImmOperand(MI, 6, STI, O);
+    printU4ImmOperand(MI, 6, O);
     return;
     break;
   }
@@ -11417,17 +11417,17 @@ static void printInstruction(MCInst *MI, uint64_t Address, SStream *O) {
   default: assert(0 && "Invalid command number.");
   case 0:
     // PMXVBF16GER2, PMXVBF16GER2W, PMXVF16GER2, PMXVF16GER2W, PMXVI16GER2, P...
-    printU2ImmOperand(MI, 5, STI, O);
+    printU2ImmOperand(MI, 5, O);
     return;
     break;
   case 1:
     // PMXVI4GER8, PMXVI4GER8W
-    printU8ImmOperand(MI, 5, STI, O);
+    printU8ImmOperand(MI, 5, O);
     return;
     break;
   case 2:
     // PMXVI8GER4, PMXVI8GER4W
-    printU4ImmOperand(MI, 5, STI, O);
+    printU4ImmOperand(MI, 5, O);
     return;
     break;
   }
