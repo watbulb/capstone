@@ -77,6 +77,19 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 				printf("\t\t\toperands[%u].crx.cond: %s\n", i, get_bc_name(op->crx.cond));
 				break;
 		}
+		switch(op->access) {
+			default:
+				break;
+			case CS_AC_READ:
+				printf("\t\toperands[%u].access: READ\n", i);
+				break;
+			case CS_AC_WRITE:
+				printf("\t\toperands[%u].access: WRITE\n", i);
+				break;
+			case CS_AC_READ | CS_AC_WRITE:
+				printf("\t\toperands[%u].access: READ | WRITE\n", i);
+				break;
+		}
 	}
 
 	if (ppc->bc.pred != PPC_PRED_INVALID) {
