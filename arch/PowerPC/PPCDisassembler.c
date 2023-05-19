@@ -510,7 +510,7 @@ DecodeStatus getInstruction(csh ud, const uint8_t *Bytes, size_t BytesLen,
 			decodeInstruction_4(DecoderTableSPE32, MI, Inst, Address);
 		if (result != MCDisassembler_Fail)
 			return result;
-	} else if (MI->csh->mode & CS_MODE_PS) {
+	} else if (PPC_getFeatureBits(MI->csh->mode, PPC_FeaturePS)) {
 		DecodeStatus result = decodeInstruction_4(DecoderTablePS32, MI, Inst, Address);
 		if (result != MCDisassembler_Fail)
 			return result;
