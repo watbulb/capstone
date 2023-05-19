@@ -116,5 +116,17 @@ For details about the C++ to C translation of the LLVM files refer to `CppTransl
 **Generated .inc files**
 
 <!-- TODO Update link to (currently non existing) documentation -->
-To understand the TableGen backends and the generation of `.inc` files,
-please refer to our [backend syntax printer](https://github.com/Rot127/llvm-capstone/blob/tblgen_capstone_backends/llvm/utils/TableGen/PrinterCapstone.cpp)
+- To understand the TableGen backends and the generation of `.inc` files,
+please refer to our [backend syntax printer](https://github.com/capstone-engine/llvm-capstone/blob/auto-sync/llvm/utils/TableGen/PrinterCapstone.cpp)
+
+- If some features were not generated and are missing in the `.inc` files, make sure they are defined as `AssemblerPredicate` in the `.td` files.
+
+  Correct:
+  ```
+  def In32BitMode  : Predicate<"!Subtarget->isPPC64()">,
+    AssemblerPredicate<(all_of (not Feature64Bit)), "64bit">;
+  ```
+  Incorrect:
+  ```
+  def In32BitMode  : Predicate<"!Subtarget->isPPC64()">;
+  ```
