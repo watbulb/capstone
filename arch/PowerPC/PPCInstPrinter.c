@@ -625,7 +625,7 @@ bool showRegistersWithPercentPrefix(const MCInst *MI, const char *RegName)
 const char *getVerboseConditionRegName(const MCInst *MI, unsigned RegNum,
 									   unsigned RegEncoding)
 {
-	if (!MI->csh->FullRegNames)
+	if (MI->csh->notFullRegNames)
 		return NULL;
 	if (RegNum < PPC_CR0EQ || RegNum > PPC_CR7UN)
 		return NULL;
@@ -643,7 +643,7 @@ const char *getVerboseConditionRegName(const MCInst *MI, unsigned RegNum,
 // should be number-only or include the prefix.
 bool showRegistersWithPrefix(const MCInst *MI)
 {
-	return MI->csh->FullRegNamesWithPercent || MI->csh->FullRegNames;
+	return MI->csh->FullRegNamesWithPercent || !MI->csh->notFullRegNames;
 }
 
 void printOperand(MCInst *MI, unsigned OpNo, SStream *O)

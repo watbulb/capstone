@@ -70,7 +70,7 @@ struct cs_struct {
 	ARM_VPTBlock VPTBlock;  // for ARM only
 	bool PrintBranchImmNotAsAddress;
 	bool FullRegNamesWithPercent;
-	bool FullRegNames;
+	bool notFullRegNames;
 	bool ShowVSRNumsAsVR;
 	cs_opt_value detail, imm_unsigned;
 	int syntax;	// asm syntax for simple printer such as ARM, Mips & PPC
