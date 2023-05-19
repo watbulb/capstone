@@ -160,6 +160,7 @@ static void printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *
 		if (IsBookE && TH != 0 && TH != 16) {
 			SStream_concat(O, "%s", (unsigned int)TH);
 			SStream_concat0(O, ", ");
+			PPC_set_detail_op_imm(MI, 0, TH);
 		}
 		set_mem_access(MI, true);
 		printOperand(MI, 1, O);
@@ -170,6 +171,7 @@ static void printInst(MCInst *MI, uint64_t Address, const char *Annot, SStream *
 		if (!IsBookE && TH != 0 && TH != 16) {
 			SStream_concat(O, "%s", ", ");
 			printUInt32(O, (unsigned int)TH);
+			PPC_set_detail_op_imm(MI, 0, TH);
 		}
 
 		return;
