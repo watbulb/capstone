@@ -28,34 +28,6 @@ static void print_string_hex(const char *comment, unsigned char *str, size_t len
 	printf("\n");
 }
 
-static const char* get_bc_name(int bc)
-{
-	switch(bc) {
-		default:
-			return ("invalid");
-		case PPC_PRED_LT:
-			return ("lt");
-		case PPC_PRED_LE:
-			return ("le");
-		case PPC_PRED_EQ:
-			return ("eq");
-		case PPC_PRED_GE:
-			return ("ge");
-		case PPC_PRED_GT:
-			return ("gt");
-		case PPC_PRED_NE:
-			return ("ne");
-		case PPC_PRED_UN:
-			return ("un");
-		case PPC_PRED_NU:
-			return ("nu");
-		case PPC_PRED_SO:
-			return ("so");
-		case PPC_PRED_NS:
-			return ("ns");
-	}
-}
-
 static void print_insn_detail(cs_insn *ins)
 {
 	cs_ppc *ppc;
@@ -88,12 +60,6 @@ static void print_insn_detail(cs_insn *ins)
 				if (op->mem.disp != 0)
 					printf("\t\t\toperands[%u].mem.disp: 0x%x\n", i, op->mem.disp);
 
-				break;
-			case PPC_OP_CRX:
-				printf("\t\toperands[%u].type: CRX\n", i);
-				printf("\t\t\toperands[%u].crx.scale: %d\n", i, op->crx.scale);
-				printf("\t\t\toperands[%u].crx.reg: %s\n", i, cs_reg_name(handle, op->crx.reg));
-				printf("\t\t\toperands[%u].crx.cond: %s\n", i, get_bc_name(op->crx.cond));
 				break;
 		}
 	}

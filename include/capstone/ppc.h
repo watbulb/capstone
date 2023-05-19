@@ -156,7 +156,6 @@ typedef enum ppc_op_type {
 	PPC_OP_INVALID = CS_OP_INVALID, ///< Uninitialized.
 	PPC_OP_REG = CS_OP_REG, ///< Register operand.
 	PPC_OP_IMM = CS_OP_IMM, ///< Immediate operand.
-	PPC_OP_CRX = CS_OP_SPECIAL + 0,	///< Condition Register field
 	PPC_OP_MEM = CS_OP_MEM, ///< Memory operand.
 } ppc_op_type;
 
@@ -711,12 +710,6 @@ typedef struct ppc_op_mem {
 	ppc_reg offset;	///< Offset register
 } ppc_op_mem;
 
-typedef struct ppc_op_crx {
-	unsigned int scale;
-	ppc_reg reg;
-	ppc_pred cond;
-} ppc_op_crx;
-
 /// Instruction operand
 typedef struct cs_ppc_op {
 	ppc_op_type type;	///< operand type
@@ -724,7 +717,6 @@ typedef struct cs_ppc_op {
 		ppc_reg reg;	///< register value for REG operand
 		int64_t imm;		///< immediate value for IMM operand
 		ppc_op_mem mem;		///< base/disp value for MEM operand
-		ppc_op_crx crx;		///< operand with condition register
 	};
 	cs_ac_type access;
 } cs_ppc_op;

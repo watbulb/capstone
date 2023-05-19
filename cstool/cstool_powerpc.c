@@ -70,12 +70,6 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 					printf("\t\t\toperands[%u].mem.disp: 0x%x\n", i, op->mem.disp);
 
 				break;
-			case PPC_OP_CRX:
-				printf("\t\toperands[%u].type: CRX\n", i);
-				printf("\t\t\toperands[%u].crx.scale: %d\n", i, op->crx.scale);
-				printf("\t\t\toperands[%u].crx.reg: %s\n", i, cs_reg_name(handle, op->crx.reg));
-				printf("\t\t\toperands[%u].crx.cond: %s\n", i, get_bc_name(op->crx.cond));
-				break;
 		}
 		switch(op->access) {
 			default:
