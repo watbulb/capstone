@@ -27,5 +27,6 @@
 { PPC_FEATURE_HasPartwordAtomics, "HasPartwordAtomics" },
 { PPC_FEATURE_IsISA2_06, "IsISA2_06" },
 { PPC_FEATURE_IsBookE, "IsBookE" },
+{ PPC_FEATURE_HasPS, "HasPS" },
 { PPC_FEATURE_HasQPX, "HasQPX" },
 { PPC_FEATURE_IsPPC6xx, "IsPPC6xx" },
