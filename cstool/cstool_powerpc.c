@@ -79,8 +79,12 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 		}
 	}
 
-	if (ppc->bc.pred != PPC_PRED_INVALID)
-		printf("\tBranch code: %u\n", ppc->bc.pred);
+	if (ppc->bc.pred != PPC_PRED_INVALID) {
+		printf("\tBranch hint: %u\n", ppc->bc.hint);
+		printf("\tBranch bi: %u\n", ppc->bc.bi);
+		printf("\tBranch bo: %u\n", ppc->bc.bo);
+		printf("\tBranch bh: %u\n", ppc->bc.bh);
+	}
 
 	if (ppc->bc.hint != PPC_BR_NOT_GIVEN)
 		printf("\tBranch hint: %u\n", ppc->bc.hint);
