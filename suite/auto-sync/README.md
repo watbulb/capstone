@@ -130,3 +130,12 @@ please refer to our [backend syntax printer](https://github.com/capstone-engine/
   ```
   def In32BitMode  : Predicate<"!Subtarget->isPPC64()">;
   ```
+
+**Formatting**
+
+- If you make changes to the `CppTranslator` please format the files with `black`
+  ```
+  source ./.venv/bin/activate
+  pip3 install black
+  python3 -m black --line-length=120 CppTranslator/*/*.py
+  ```
