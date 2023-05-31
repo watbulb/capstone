@@ -141,7 +141,7 @@ void MCOperand_setReg(MCOperand *op, unsigned Reg)
 	op->RegVal = Reg;
 }
 
-int64_t MCOperand_getImm(MCOperand *op)
+int64_t MCOperand_getImm(const MCOperand *op)
 {
 	return op->ImmVal;
 }
