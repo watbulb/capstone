@@ -38,7 +38,7 @@
 #include <string.h>
 
 #include "../../utils.h"
-#include "capstone/arm.h"
+#include "capstone/arm64.h"
 
 #define GET_SUBTARGETINFO_ENUM
 #include "AArch64GenSubtargetInfo.inc"
