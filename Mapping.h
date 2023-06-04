@@ -111,7 +111,7 @@ void map_cs_id(MCInst *MI, const insn_map *imap, unsigned int imap_size);
 
 DECL_get_detail_op(arm, ARM);
 DECL_get_detail_op(ppc, PPC);
-DECL_get_detail_op(arm64, AArch64);
+DECL_get_detail_op(aarch64, AArch64);
 
 /// Increments the detail->arch.op_count by one.
 #define DEFINE_inc_detail_op_count(arch, ARCH)                                 \
@@ -131,8 +131,8 @@ DEFINE_inc_detail_op_count(arm, ARM);
 DEFINE_dec_detail_op_count(arm, ARM);
 DEFINE_inc_detail_op_count(ppc, PPC);
 DEFINE_dec_detail_op_count(ppc, PPC);
-DEFINE_inc_detail_op_count(arm64, AArch64);
-DEFINE_dec_detail_op_count(arm64, AArch64);
+DEFINE_inc_detail_op_count(aarch64, AArch64);
+DEFINE_dec_detail_op_count(aarch64, AArch64);
 
 /// Returns true if a memory operand is currently edited.
 static inline bool doing_mem(const MCInst *MI) { return MI->csh->doing_mem; }
@@ -153,7 +153,7 @@ static inline void set_doing_mem(const MCInst *MI, bool status)
 
 DEFINE_get_arch_detail(arm, ARM);
 DEFINE_get_arch_detail(ppc, PPC);
-DEFINE_get_arch_detail(arm64, AArch64);
+DEFINE_get_arch_detail(aarch64, AArch64);
 
 static inline bool detail_is_set(const MCInst *MI)
 {
