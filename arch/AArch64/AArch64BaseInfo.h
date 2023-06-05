@@ -712,6 +712,7 @@ typedef struct SysAliasImm {
 
 typedef struct SVEPREDPAT {
 	const char *Name;
+	aarch64_sysop_alias SysAlias;
 	uint16_t Encoding;
 } AArch64SVEPredPattern_SVEPREDPAT;
 
@@ -724,6 +725,7 @@ typedef struct SVEPREDPAT {
 
 typedef struct SVEVECLENSPECIFIER {
 	const char *Name;
+	aarch64_sysop_alias SysAlias;
 	uint16_t Encoding;
 } AArch64SVEVecLenSpecifier_SVEVECLENSPECIFIER;
 
@@ -817,9 +819,9 @@ typedef enum ShiftExtSpecifiers {
 
 typedef struct SysReg {
 	const char *Name;
-	aarch64_sysreg SysReg;
+	aarch64_sysop_reg SysReg;
 	const char *AltName;
-	aarch64_sysreg AliasReg;
+	aarch64_sysop_reg AliasReg;
 	unsigned Encoding;
 	bool Readable;
 	bool Writeable;
