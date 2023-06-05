@@ -37,6 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../../MCInstPrinter.h"
 #include "../../utils.h"
 #include "capstone/aarch64.h"
 

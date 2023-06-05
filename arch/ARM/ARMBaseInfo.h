@@ -21,7 +21,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "../../utils.h"
+#include "../../MCInstPrinter.h"
 #include "capstone/arm.h"
 
 #define GET_INSTRINFO_ENUM
