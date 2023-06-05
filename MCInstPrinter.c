@@ -75,8 +75,8 @@ static bool matchAliasCondition(MCInst *MI, const MCRegisterInfo *MRI,
 				   MCOperand_getReg(Opnd));
 	case AliasPatternCond_K_Custom:
 		// Operand must match some custom criteria.
-		// return M.ValidateMCOperand(Opnd, *STI, C->Value);
-		assert(0 && "Custom operand condition check not implemented.");
+		assert(M->ValidateMCOperand && "A custom validator should be set but isn't.");
+		return M->ValidateMCOperand(Opnd, C->Value);
 	case AliasPatternCond_K_Ignore:
 		// Operand can be anything.
 		return true;
