@@ -190,7 +190,7 @@ typedef struct {
 	insn_op ops[16]; ///< NULL terminated array of operands.
 } insn_ops;
 
-const insn_ops insn_operands[] = {
+static const insn_ops insn_operands[] = {
 #include "ARMGenCSMappingInsnOp.inc"
 };
 
@@ -1248,17 +1248,6 @@ const cs_ac_type ARM_get_op_access(MCInst *MI, unsigned OpNum)
 	if (MCInst_opIsTied(MI, OpNum) || MCInst_opIsTying(MI, OpNum))
 		access |= (access == CS_AC_READ) ? CS_AC_WRITE : CS_AC_READ;
 	return access;
-}
-
-/// Returns the operand at detail->arm.operands[op_count + offset]
-/// Or NULL if the operand does not exists at this index.
-inline cs_arm_op *ARM_get_detail_op(MCInst *MI, int offset)
-{
-	if (!MI->flat_insn->detail)
-		return NULL;
-	int OpIdx = MI->flat_insn->detail->arm.op_count + offset;
-	assert(OpIdx >= 0 && OpIdx < MAX_MC_OPS);
-	return &MI->flat_insn->detail->arm.operands[OpIdx];
 }
 
 /// Adds a register ARM operand at position OpNum and increases the op_count by

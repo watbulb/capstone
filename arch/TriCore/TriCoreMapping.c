@@ -136,7 +136,7 @@ typedef struct {
 	insn_op ops[16]; ///< NULL terminated array of operands.
 } insn_ops;
 
-const insn_ops insn_operands[] = {
+static const insn_ops insn_operands[] = {
 #include "TriCoreGenCSMappingInsnOp.inc"
 };
 #endif
