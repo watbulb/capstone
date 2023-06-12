@@ -98,6 +98,7 @@ endif()
 ## sources
 set(SOURCES_ENGINE
     cs.c
+    Mapping.c
     MCInst.c
     MCInstrDesc.c
     MCInstPrinter.c
@@ -109,6 +110,7 @@ set(HEADERS_ENGINE
     cs_simple_types.h
     cs_priv.h
     LEB128.h
+    Mapping.h
     MathExtras.h
     MCDisassembler.h
     MCFixedLenDisassembler.h
@@ -551,11 +553,11 @@ if (CAPSTONE_TRICORE_SUPPORT)
             )
     set(HEADERS_TRICORE
             arch/TriCore/TriCoreDisassembler.h
+            arch/TriCore/TriCoreLinkage.h
             arch/TriCore/TriCoreGenAsmWriter.inc
             arch/TriCore/TriCoreGenDisassemblerTables.inc
             arch/TriCore/TriCoreGenInstrInfo.inc
             arch/TriCore/TriCoreGenRegisterInfo.inc
-            arch/TriCore/TriCoreInstPrinter.h
             arch/TriCore/TriCoreMapping.h
             arch/TriCore/TriCoreModule.h
             )
@@ -762,15 +764,16 @@ if(CAPSTONE_BUILD_CSTOOL)
 endif()
 
 if(CAPSTONE_BUILD_CSTEST)
-    find_package(CMOCKA)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(CMOCKA REQUIRED IMPORTED_TARGET cmocka)
 
     file(GLOB CSTEST_SRC suite/cstest/src/*.c)
     add_executable(cstest ${CSTEST_SRC})
-    target_link_libraries(cstest PUBLIC capstone ${CMOCKA_LIBRARIES})
+    target_link_libraries(cstest PUBLIC capstone PkgConfig::CMOCKA)
     target_include_directories(cstest PRIVATE
             $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
             ${PROJECT_SOURCE_DIR}/suite/cstest/include
-            ${CMOCKA_INCLUDE_DIR}
+            ${CMOCKA_INCLUDE_DIRS}
             )
 
     if(CAPSTONE_INSTALL)

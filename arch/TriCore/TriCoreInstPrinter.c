@@ -26,22 +26,14 @@
 #include "../../MathExtras.h"
 #include "../../SStream.h"
 #include "../../utils.h"
-#include "TriCoreInstPrinter.h"
 #include "TriCoreMapping.h"
+#include "TriCoreLinkage.h"
 
 static const char *getRegisterName(unsigned RegNo);
 
 static void printInstruction(MCInst *, uint64_t, SStream *);
 
 static void printOperand(MCInst *MI, int OpNum, SStream *O);
-
-void TriCore_post_printer(csh ud, cs_insn *insn, char *insn_asm, MCInst *mci)
-{
-	/*
-	   if (((cs_struct *)ud)->detail != CS_OPT_ON)
-	   return;
-	 */
-}
 
 #define GET_INSTRINFO_ENUM
 
@@ -51,39 +43,47 @@ void TriCore_post_printer(csh ud, cs_insn *insn, char *insn_asm, MCInst *mci)
 
 #include "TriCoreGenRegisterInfo.inc"
 
-static inline void fill_mem(cs_tricore *tc, uint8_t base, int32_t disp);
+static bool fill_mem(MCInst *MI, unsigned int reg, int32_t disp);
 
-static bool fixup_op_mem(MCInst *pInst, unsigned int reg, int32_t disp);
-
-static inline void fill_tricore_register(MCInst *MI, uint32_t reg)
+static inline void set_mem(cs_tricore_op *op, uint8_t base, int32_t disp)
 {
-	if (!(MI->csh->detail == CS_OPT_ON && MI->flat_insn->detail))
-		return;
-	cs_tricore *tricore = &MI->flat_insn->detail->tricore;
-	tricore->operands[tricore->op_count].type = TRICORE_OP_REG;
-	tricore->operands[tricore->op_count].reg = reg;
-	tricore->op_count++;
+	op->type |= TRICORE_OP_MEM;
+	op->mem.base = base;
+	op->mem.disp = disp;
 }
 
-static inline void fill_tricore_imm(MCInst *MI, int32_t imm)
+static inline void fill_reg(MCInst *MI, uint32_t reg)
 {
-	if (!(MI->csh->detail == CS_OPT_ON && MI->flat_insn->detail))
+	if (!detail_is_set(MI))
 		return;
-	cs_tricore *tricore = &MI->flat_insn->detail->tricore;
-	if (tricore->op_count >= 1 &&
-	    tricore->operands[tricore->op_count - 1].type == TRICORE_OP_REG &&
-	    fixup_op_mem(MI, tricore->operands[tricore->op_count - 1].reg,
-			 imm)) {
+	cs_tricore_op *op = TriCore_get_detail_op(MI, 0);
+	op->type = TRICORE_OP_REG;
+	op->reg = reg;
+	TriCore_inc_op_count(MI);
+}
+
+static inline void fill_imm(MCInst *MI, int32_t imm)
+{
+	if (!detail_is_set(MI))
 		return;
+	cs_tricore *tricore = TriCore_get_detail(MI);
+	if (tricore->op_count >= 1) {
+		cs_tricore_op *op = TriCore_get_detail_op(MI, -1);
+		if (op->type == TRICORE_OP_REG && fill_mem(MI, op->reg, imm))
+			return;
 	}
-	tricore->operands[tricore->op_count].type = TRICORE_OP_IMM;
-	tricore->operands[tricore->op_count].imm = imm;
+
+	cs_tricore_op *op = TriCore_get_detail_op(MI, 0);
+	op->type = TRICORE_OP_IMM;
+	op->imm = imm;
 	tricore->op_count++;
 }
 
-static bool fixup_op_mem(MCInst *pInst, unsigned int reg, int32_t disp)
+static bool fill_mem(MCInst *MI, unsigned int reg, int32_t disp)
 {
-	switch (TriCore_map_insn_id(pInst->csh, pInst->Opcode)) {
+	if (!detail_is_set(MI))
+		return false;
+	switch (MI->flat_insn->id) {
 	case TRICORE_INS_LDMST:
 	case TRICORE_INS_LDLCX:
 	case TRICORE_INS_LD_A:
@@ -116,7 +116,7 @@ static bool fixup_op_mem(MCInst *pInst, unsigned int reg, int32_t disp)
 	case TRICORE_INS_SWAPMSK_W:
 	case TRICORE_INS_LEA:
 	case TRICORE_INS_LHA: {
-		switch (MCInst_getOpcode(pInst)) {
+		switch (MCInst_getOpcode(MI)) {
 		case TRICORE_LDMST_abs:
 		case TRICORE_LDLCX_abs:
 		case TRICORE_LD_A_abs:
@@ -144,50 +144,29 @@ static bool fixup_op_mem(MCInst *pInst, unsigned int reg, int32_t disp)
 			return false;
 		}
 		}
-		cs_tricore *tc = &pInst->flat_insn->detail->tricore;
-		fill_mem(tc, reg, disp);
+		cs_tricore_op *op = TriCore_get_detail_op(MI, -1);
+		op->type = 0;
+		set_mem(op, reg, disp);
 		return true;
 	}
 	}
 	return false;
 }
 
-static inline void fill_mem(cs_tricore *tc, uint8_t base, int32_t disp)
-{
-	cs_tricore_op *op = &tc->operands[tc->op_count - 1];
-	op->type = TRICORE_OP_MEM;
-	op->mem.base = base;
-	op->mem.disp = disp;
-}
-
 static void printOperand(MCInst *MI, int OpNum, SStream *O)
 {
-	MCOperand *Op;
 	if (OpNum >= MI->size)
 		return;
 
-	Op = MCInst_getOperand(MI, OpNum);
-
+	MCOperand *Op = MCInst_getOperand(MI, OpNum);
 	if (MCOperand_isReg(Op)) {
 		unsigned reg = MCOperand_getReg(Op);
 		SStream_concat(O, "%%%s", getRegisterName(reg));
-		fill_tricore_register(MI, reg);
+		fill_reg(MI, reg);
 	} else if (MCOperand_isImm(Op)) {
 		int64_t Imm = MCOperand_getImm(Op);
-
-		if (Imm >= 0) {
-			if (Imm > HEX_THRESHOLD)
-				SStream_concat(O, "0x%" PRIx64, Imm);
-			else
-				SStream_concat(O, "%" PRIu64, Imm);
-		} else {
-			if (Imm < -HEX_THRESHOLD)
-				SStream_concat(O, "-0x%" PRIx64, -Imm);
-			else
-				SStream_concat(O, "-%" PRIu64, -Imm);
-		}
-
-		fill_tricore_imm(MI, (int32_t)Imm);
+		printInt64(O, Imm);
+		fill_imm(MI, (int32_t)Imm);
 	}
 }
 
@@ -209,34 +188,14 @@ static inline int32_t sign_ext_n(int32_t imm, unsigned n)
 	return sign_extended;
 }
 
-static inline void SS_print_hex(SStream *O, int32_t imm)
-{
-	if (imm > HEX_THRESHOLD)
-		SStream_concat(O, "0x%x", imm);
-	else
-		SStream_concat(O, "%u", imm);
-}
-
-static inline void SS_print_sign_hex(SStream *O, int32_t imm)
-{
-	if (imm >= 0) {
-		SS_print_hex(O, imm);
-	} else {
-		if (imm < -HEX_THRESHOLD)
-			SStream_concat(O, "-0x%x", -imm);
-		else
-			SStream_concat(O, "-%u", -imm);
-	}
-}
-
 static void print_sign_ext(MCInst *MI, int OpNum, SStream *O, unsigned n)
 {
 	MCOperand *MO = MCInst_getOperand(MI, OpNum);
 	if (MCOperand_isImm(MO)) {
 		int32_t imm = (int32_t)MCOperand_getImm(MO);
 		imm = sign_ext_n(imm, n);
-		SS_print_sign_hex(O, imm);
-		fill_tricore_imm(MI, imm);
+		printInt32(O, imm);
+		fill_imm(MI, imm);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -277,18 +236,8 @@ static void print_zero_ext(MCInst *MI, int OpNum, SStream *O, unsigned n)
 			off4_fixup(MI, &imm);
 		}
 
-		if (imm >= 0) {
-			if (imm > HEX_THRESHOLD)
-				SStream_concat(O, "0x%x", imm);
-			else
-				SStream_concat(O, "%u", imm);
-		} else {
-			if (imm < -HEX_THRESHOLD)
-				SStream_concat(O, "-0x%x", -imm);
-			else
-				SStream_concat(O, "-%u", -imm);
-		}
-		fill_tricore_imm(MI, imm);
+		printInt64(O, imm);
+		fill_imm(MI, imm);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -300,32 +249,16 @@ static void printOff18Imm(MCInst *MI, int OpNum, SStream *O)
 		uint32_t imm = (uint32_t)MCOperand_getImm(MO);
 		imm = ((imm & 0x3C000) << 14) | (imm & 0x3fff);
 		SStream_concat(O, "0x%x", imm);
-		fill_tricore_imm(MI, (int32_t)imm);
+		fill_imm(MI, (int32_t)imm);
 	} else
 		printOperand(MI, OpNum, O);
-}
-
-static inline void fixup_tricore_disp(MCInst *MI, int OpNum, int32_t disp)
-{
-	if (MI->csh->detail != CS_OPT_ON)
-		return;
-
-	cs_tricore *tricore = &MI->flat_insn->detail->tricore;
-	if (OpNum <= 0) {
-		fill_tricore_imm(MI, disp);
-		return;
-	}
-
-	if (tricore->operands[tricore->op_count - 1].type != TRICORE_OP_REG)
-		return;
-	fill_mem(tricore, tricore->operands[tricore->op_count - 1].reg, disp);
 }
 
 static void printDisp24Imm(MCInst *MI, int OpNum, SStream *O)
 {
 	MCOperand *MO = MCInst_getOperand(MI, OpNum);
 	if (MCOperand_isImm(MO)) {
-		int32_t disp = (int32_t)MCOperand_getImm(MO);
+		uint32_t disp = MCOperand_getImm(MO);
 		switch (MCInst_getOpcode(MI)) {
 		case TRICORE_CALL_b:
 		case TRICORE_FCALL_b: {
@@ -346,8 +279,8 @@ static void printDisp24Imm(MCInst *MI, int OpNum, SStream *O)
 			break;
 		}
 
-		SS_print_sign_hex(O, disp);
-		fixup_tricore_disp(MI, OpNum, disp);
+		printUInt32(O, disp);
+		fill_imm(MI, disp);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -356,7 +289,7 @@ static void printDisp15Imm(MCInst *MI, int OpNum, SStream *O)
 {
 	MCOperand *MO = MCInst_getOperand(MI, OpNum);
 	if (MCOperand_isImm(MO)) {
-		int32_t disp = (int32_t)MCOperand_getImm(MO);
+		uint32_t disp = MCOperand_getImm(MO);
 		switch (MCInst_getOpcode(MI)) {
 		case TRICORE_JEQ_brc:
 		case TRICORE_JEQ_brr:
@@ -391,8 +324,8 @@ static void printDisp15Imm(MCInst *MI, int OpNum, SStream *O)
 			break;
 		}
 
-		SS_print_sign_hex(O, disp);
-		fixup_tricore_disp(MI, OpNum, disp);
+		printUInt32(O, disp);
+		fill_imm(MI, disp);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -401,7 +334,7 @@ static void printDisp8Imm(MCInst *MI, int OpNum, SStream *O)
 {
 	MCOperand *MO = MCInst_getOperand(MI, OpNum);
 	if (MCOperand_isImm(MO)) {
-		int32_t disp = (int32_t)MCOperand_getImm(MO);
+		uint32_t disp = MCOperand_getImm(MO);
 		switch (MCInst_getOpcode(MI)) {
 		case TRICORE_CALL_sb:
 			disp = (int32_t)MI->address + sign_ext_n(2 * disp, 8);
@@ -416,8 +349,8 @@ static void printDisp8Imm(MCInst *MI, int OpNum, SStream *O)
 			break;
 		}
 
-		SS_print_sign_hex(O, disp);
-		fixup_tricore_disp(MI, OpNum, disp);
+		printUInt32(O, disp);
+		fill_imm(MI, disp);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -426,7 +359,7 @@ static void printDisp4Imm(MCInst *MI, int OpNum, SStream *O)
 {
 	MCOperand *MO = MCInst_getOperand(MI, OpNum);
 	if (MCOperand_isImm(MO)) {
-		int32_t disp = (int32_t)MCOperand_getImm(MO);
+		uint32_t disp = MCOperand_getImm(MO);
 		switch (MCInst_getOpcode(MI)) {
 		case TRICORE_JEQ_sbc1:
 		case TRICORE_JEQ_sbr1:
@@ -461,8 +394,8 @@ static void printDisp4Imm(MCInst *MI, int OpNum, SStream *O)
 			break;
 		}
 
-		SS_print_sign_hex(O, disp);
-		fixup_tricore_disp(MI, OpNum, disp);
+		printUInt32(O, disp);
+		fill_imm(MI, disp);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -502,8 +435,8 @@ static void printOExtImm_4(MCInst *MI, int OpNum, SStream *O)
 		// {27b’111111111111111111111111111, disp4, 0};
 		imm = 0b11111111111111111111111111100000 | (imm << 1);
 
-		SS_print_sign_hex(O, imm);
-		fill_tricore_imm(MI, imm);
+		printInt32(O, imm);
+		fill_imm(MI, imm);
 	} else
 		printOperand(MI, OpNum, O);
 }
@@ -514,16 +447,14 @@ typedef struct {
 	uint64_t second; // Bits
 } MnemonicBitsInfo;
 
-void set_mem_access(MCInst *MI, unsigned int access)
+static void set_mem_access(MCInst *MI, unsigned int access)
 {
 	// TODO: TriCore
 }
 
-#define PRINT_ALIAS_INSTR
-
 #include "TriCoreGenAsmWriter.inc"
 
-const char *TriCore_getRegisterName(csh handle, unsigned int id)
+const char *TriCore_LLVM_getRegisterName(unsigned int id)
 {
 #ifndef CAPSTONE_DIET
 	return getRegisterName(id);
@@ -532,9 +463,10 @@ const char *TriCore_getRegisterName(csh handle, unsigned int id)
 #endif
 }
 
-void TriCore_printInst(MCInst *MI, SStream *O, void *Info)
+void TriCore_LLVM_printInst(MCInst *MI, uint64_t Address, SStream *O)
 {
-	printInstruction(MI, MI->address, O);
+	printInstruction(MI, Address, O);
+	TriCore_set_access(MI);
 }
 
-#endif
+#endif // CAPSTONE_HAS_TRICORE

@@ -62,6 +62,7 @@ static single_dict arches[] = {
 	{"CS_MODE_BPF_EXTENDED", CS_MODE_BPF_EXTENDED},
 	{"CS_MODE_RISCV32", CS_MODE_RISCV32},
 	{"CS_MODE_RISCV64", CS_MODE_RISCV64},
+	{"CS_MODE_RISCVC", CS_MODE_RISCVC},
 	{"CS_MODE_TRICORE_110", CS_MODE_TRICORE_110},
 	{"CS_MODE_TRICORE_120", CS_MODE_TRICORE_120},
 	{"CS_MODE_TRICORE_130", CS_MODE_TRICORE_130},
@@ -140,7 +141,7 @@ static int setup_state(void **state) {
 	char **list_params;	
 	int size_params;
 	int arch, mode;
-	int i, index;
+	int i, tmp_counter;
 
 	if (failed_setup) {
 		fprintf(stderr, "[  ERROR   ] --- Invalid file to setup\n");
@@ -235,8 +236,7 @@ static int setup_issue(void **state)
 	char **list_params;	
 	int size_params;
 	int arch, mode;
-	int i, index, result;
-	char *(*function)(csh *, cs_mode, cs_insn*);
+	int i, result;
 
 	getDetail = 0;
 	failed_setup = 0;
@@ -363,11 +363,10 @@ static int teardown_issue(void **state)
 
 static void test_file(const char *filename)
 {
-	int size, i;
-	char **list_str; 
+	int i;
 	char *content, *tmp;
 	struct CMUnitTest *tests;
-	int issue_num, number_of_tests;
+	int number_of_tests;
 
 	printf("[+] TARGET: %s\n", filename);
 	content = readfile(filename);
