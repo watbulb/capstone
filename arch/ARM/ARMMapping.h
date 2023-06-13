@@ -33,7 +33,7 @@ void ARM_reg_access(const cs_insn *insn, cs_regs regs_read,
 					uint8_t *regs_read_count, cs_regs regs_write,
 					uint8_t *regs_write_count);
 
-const BankedReg *lookupBankedRegByEncoding(uint8_t encoding);
+const ARMBankedReg_BankedReg *lookupBankedRegByEncoding(uint8_t encoding);
 
 bool ARM_getInstruction(csh handle, const uint8_t *code, size_t code_len,
 						MCInst *instr, uint16_t *size, uint64_t address,
@@ -63,7 +63,7 @@ static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 }
 
 void ARM_set_detail_op_reg(MCInst *MI, unsigned OpNum, arm_reg Reg);
-void ARM_set_detail_op_sysreg(MCInst *MI, arm_sysreg SysReg, bool IsOutReg);
+void ARM_set_detail_op_sysreg(MCInst *MI, int SysReg, bool IsOutReg);
 void ARM_set_detail_op_imm(MCInst *MI, unsigned OpNum, arm_op_type ImmType,
 						   int64_t Imm);
 void ARM_set_detail_op_float(MCInst *MI, unsigned OpNum, uint64_t Imm);

@@ -21,6 +21,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "../../MCInstPrinter.h"
 #include "../../utils.h"
 #include "capstone/arm.h"
 
@@ -30,22 +31,22 @@
 // System Registers
 typedef struct MClassSysReg {
 	const char *Name;
-	arm_sysreg sysreg;
+	arm_sysop_reg sysreg;
 	uint16_t M1Encoding12;
 	uint16_t M2M3Encoding8;
 	uint16_t Encoding;
 	int FeaturesRequired[2];
-} MClassSysReg;
+} ARMSysReg_MClassSysReg;
 
 // return true if FeaturesRequired are all present in ActiveFeatures
-static inline bool hasRequiredFeatures(const MClassSysReg *TheReg, int ActiveFeatures)
+static inline bool hasRequiredFeatures(const ARMSysReg_MClassSysReg *TheReg, int ActiveFeatures)
 {
 	return (TheReg->FeaturesRequired[0] == ActiveFeatures ||
 			TheReg->FeaturesRequired[1] == ActiveFeatures);
 }
 
 // returns true if TestFeatures are all present in FeaturesRequired
-static inline bool MClassSysReg_isInRequiredFeatures(const MClassSysReg *TheReg,
+static inline bool MClassSysReg_isInRequiredFeatures(const ARMSysReg_MClassSysReg *TheReg,
 													 int TestFeatures)
 {
 	return (TheReg->FeaturesRequired[0] == TestFeatures ||
@@ -57,20 +58,20 @@ static inline bool MClassSysReg_isInRequiredFeatures(const MClassSysReg *TheReg,
 
 // lookup system register using 12-bit SYSm value.
 // Note: the search is uniqued using M1 mask
-const MClassSysReg *lookupMClassSysRegBy12bitSYSmValue(unsigned SYSm);
+const ARMSysReg_MClassSysReg *ARMSysReg_lookupMClassSysRegBy12bitSYSmValue(unsigned SYSm);
 // returns APSR with _<bits> qualifier.
 // Note: ARMv7-M deprecates using MSR APSR without a _<bits> qualifier
-const MClassSysReg *lookupMClassSysRegAPSRNonDeprecated(unsigned SYSm);
+const ARMSysReg_MClassSysReg *ARMSysReg_lookupMClassSysRegAPSRNonDeprecated(unsigned SYSm);
 // lookup system registers using 8-bit SYSm value
-const MClassSysReg *lookupMClassSysRegBy8bitSYSmValue(unsigned SYSm);
+const ARMSysReg_MClassSysReg *ARMSysReg_lookupMClassSysRegBy8bitSYSmValue(unsigned SYSm);
 // end namespace ARMSysReg
 
 // Banked Registers
 typedef struct BankedReg {
 	const char *Name;
-	arm_sysreg sysreg;
+	arm_sysop_reg sysreg;
 	uint16_t Encoding;
-} BankedReg;
+} ARMBankedReg_BankedReg;
 
 #define GET_BANKEDREG_DECL
 #define GET_MCLASSSYSREG_DECL

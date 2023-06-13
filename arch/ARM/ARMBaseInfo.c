@@ -77,20 +77,20 @@ const char *get_pred_mask(ARM_PredBlockMask pred_mask)
 
 // lookup system register using 12-bit SYSm value.
 // Note: the search is uniqued using M1 mask
-const MClassSysReg *lookupMClassSysRegBy12bitSYSmValue(unsigned SYSm)
+const ARMSysReg_MClassSysReg *lookupMClassSysRegBy12bitSYSmValue(unsigned SYSm)
 {
-	return lookupMClassSysRegByM1Encoding12(SYSm);
+	return ARMSysReg_lookupMClassSysRegByM1Encoding12(SYSm);
 }
 
 // returns APSR with _<bits> qualifier.
 // Note: ARMv7-M deprecates using MSR APSR without a _<bits> qualifier
-const MClassSysReg *lookupMClassSysRegAPSRNonDeprecated(unsigned SYSm)
+const ARMSysReg_MClassSysReg *lookupMClassSysRegAPSRNonDeprecated(unsigned SYSm)
 {
-	return lookupMClassSysRegByM2M3Encoding8((1 << 9) | (SYSm & 0xFF));
+	return ARMSysReg_lookupMClassSysRegByM2M3Encoding8((1 << 9) | (SYSm & 0xFF));
 }
 
 // lookup system registers using 8-bit SYSm value
-const MClassSysReg *lookupMClassSysRegBy8bitSYSmValue(unsigned SYSm)
+const ARMSysReg_MClassSysReg *lookupMClassSysRegBy8bitSYSmValue(unsigned SYSm)
 {
-	return lookupMClassSysRegByM2M3Encoding8((1 << 8) | (SYSm & 0xFF));
+	return ARMSysReg_lookupMClassSysRegByM2M3Encoding8((1 << 8) | (SYSm & 0xFF));
 }

@@ -970,8 +970,8 @@ void printMSRMaskOperand(MCInst *MI, unsigned OpNum, SStream *O)
 		// present.
 		if (Opcode == ARM_t2MSR_M &&
 			ARM_getFeatureBits(MI->csh->mode, ARM_FeatureDSP)) {
-			const MClassSysReg *TheReg =
-				lookupMClassSysRegBy12bitSYSmValue(SYSm);
+			const ARMSysReg_MClassSysReg *TheReg =
+				ARMSysReg_lookupMClassSysRegBy12bitSYSmValue(SYSm);
 			if (TheReg &&
 				MClassSysReg_isInRequiredFeatures(TheReg, ARM_FeatureDSP)) {
 				SStream_concat0(O, TheReg->Name);
@@ -985,15 +985,15 @@ void printMSRMaskOperand(MCInst *MI, unsigned OpNum, SStream *O)
 			ARM_getFeatureBits(MI->csh->mode, ARM_HasV7Ops)) {
 			// ARMv7-M deprecates using MSR APSR without a _<bits> qualifier as
 			// an alias for MSR APSR_nzcvq.
-			const MClassSysReg *TheReg =
-				lookupMClassSysRegAPSRNonDeprecated(SYSm);
+			const ARMSysReg_MClassSysReg *TheReg =
+				ARMSysReg_lookupMClassSysRegAPSRNonDeprecated(SYSm);
 			if (TheReg) {
 				SStream_concat0(O, TheReg->Name);
 				return;
 			}
 		}
 
-		const MClassSysReg *TheReg = lookupMClassSysRegBy8bitSYSmValue(SYSm);
+		const ARMSysReg_MClassSysReg *TheReg = ARMSysReg_lookupMClassSysRegBy8bitSYSmValue(SYSm);
 		if (TheReg) {
 			SStream_concat0(O, TheReg->Name);
 			return;
@@ -1052,7 +1052,7 @@ void printBankedRegOperand(MCInst *MI, unsigned OpNum, SStream *O)
 {
 	add_cs_detail(MI, ARM_OP_GROUP_BankedRegOperand, OpNum);
 	uint32_t Banked = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
-	const BankedReg *TheReg = lookupBankedRegByEncoding(Banked);
+	const ARMBankedReg_BankedReg *TheReg = lookupBankedRegByEncoding(Banked);
 
 	const char *Name = TheReg->Name;
 

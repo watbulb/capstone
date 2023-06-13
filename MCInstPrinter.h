@@ -63,4 +63,19 @@ const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M);
 bool getUseMarkup();
 const char *markup(const char *s);
 
+struct IndexType {
+	uint16_t encoding;
+	unsigned index;
+};
+
+struct IndexTypeStr {
+	const char *name;
+	unsigned index;
+};
+
+// binary search for encoding in IndexType array
+// return -1 if not found, or index if found
+unsigned int binsearch_IndexTypeEncoding(const struct IndexType *index, size_t size, uint16_t encoding);
+unsigned int binsearch_IndexTypeStrEncoding(const struct IndexTypeStr *index, size_t size, const char *name);
+
 #endif // CS_MCINSTPRINTER_H

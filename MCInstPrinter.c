@@ -9,7 +9,7 @@ extern bool ARM_getFeatureBits(unsigned int mode, unsigned int feature);
 
 static bool testFeatureBits(const MCInst *MI, uint32_t Value)
 {
-	assert(MI);
+	assert(MI && MI->csh);
 	switch (MI->csh->arch) {
 	default:
 		assert(0 && "Not implemented for current arch.");
@@ -160,4 +160,68 @@ const char *markup(const char *s)
 		return s;
 	else
 		return no_markup;
+}
+
+// binary search for encoding in IndexType array
+// return -1 if not found, or index if found
+unsigned int binsearch_IndexTypeEncoding(const struct IndexType *index, size_t size, uint16_t encoding)
+{
+	// binary searching since the index is sorted in encoding order
+	size_t left, right, m;
+
+	right = size - 1;
+
+	if (encoding < index[0].encoding || encoding > index[right].encoding)
+		// not found
+		return -1;
+
+	left = 0;
+
+	while(left <= right) {
+		m = (left + right) / 2;
+		if (encoding == index[m].encoding) {
+			return m;
+		}
+
+		if (encoding < index[m].encoding)
+			right = m - 1;
+		else
+			left = m + 1;
+	}
+
+	// not found
+	return -1;
+}
+
+// binary search for encoding in IndexTypeStr array
+// return -1 if not found, or index if found
+unsigned int binsearch_IndexTypeStrEncoding(const struct IndexTypeStr *index, size_t size, const char *name)
+{
+	// binary searching since the index is sorted in encoding order
+	size_t left, right, m;
+
+	right = size - 1;
+
+	size_t str_left_cmp = strcmp(name, index[0].name);
+	size_t str_right_cmp = strcmp(name, index[right].name);
+	if (str_left_cmp < 0 || str_right_cmp > 0)
+		// not found
+		return -1;
+
+	left = 0;
+
+	while(left <= right) {
+		m = (left + right) / 2;
+		if (strcmp(name, index[m].name) == 0) {
+			return m;
+		}
+
+		if (strcmp(name, index[m].name) < 0)
+			right = m - 1;
+		else
+			left = m + 1;
+	}
+
+	// not found
+	return -1;
 }
