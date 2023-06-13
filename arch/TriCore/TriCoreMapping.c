@@ -7,6 +7,7 @@
 #include <string.h>
 #include <assert.h>
 
+#include "../../Mapping.h"
 #include "../../utils.h"
 #include "../../cs_simple_types.h"
 
