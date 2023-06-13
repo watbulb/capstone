@@ -969,7 +969,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 	}
 	case ARM_OP_GROUP_BankedRegOperand: {
 		uint32_t Banked = MCInst_getOpVal(MI, OpNum);
-		const ARMBankedReg_BankedReg *TheReg = lookupBankedRegByEncoding(Banked);
+		const ARMBankedReg_BankedReg *TheReg = ARMBankedReg_lookupBankedRegByEncoding(Banked);
 		bool IsOutReg = OpNum == 0;
 		ARM_set_detail_op_sysreg(MI, TheReg->sysreg.banked_reg, IsOutReg);
 		break;

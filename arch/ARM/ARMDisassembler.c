@@ -5077,7 +5077,7 @@ static DecodeStatus DecodeBankedReg(MCInst *Inst, unsigned Val,
 	// The table of encodings for these banked registers comes from B9.2.3 of
 	// the ARM ARM. There are patterns, but nothing regular enough to make this
 	// logic neater. So by fiat, these values are UNPREDICTABLE:
-	if (!lookupBankedRegByEncoding((R << 5) | SysM))
+	if (!ARMBankedReg_lookupBankedRegByEncoding((R << 5) | SysM))
 		return MCDisassembler_Fail;
 
 	MCOperand_CreateImm0(Inst, (Val));

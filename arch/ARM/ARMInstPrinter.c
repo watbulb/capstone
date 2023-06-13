@@ -1052,7 +1052,7 @@ void printBankedRegOperand(MCInst *MI, unsigned OpNum, SStream *O)
 {
 	add_cs_detail(MI, ARM_OP_GROUP_BankedRegOperand, OpNum);
 	uint32_t Banked = MCOperand_getImm(MCInst_getOperand(MI, (OpNum)));
-	const ARMBankedReg_BankedReg *TheReg = lookupBankedRegByEncoding(Banked);
+	const ARMBankedReg_BankedReg *TheReg = ARMBankedReg_lookupBankedRegByEncoding(Banked);
 
 	const char *Name = TheReg->Name;
 
