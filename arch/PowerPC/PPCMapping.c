@@ -399,7 +399,7 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 			PPC_get_detail(MI)->bc.crX = PPC_REG_CR0 + (bi / 4);
 			PPC_get_detail(MI)->bc.pred_cr = PPC_get_branch_pred(bi, bo, true);
 			PPC_get_detail(MI)->bc.pred_ctr = PPC_get_branch_pred(bi, bo, false);
-			PPC_get_detail(MI)->bc.hint = PPC_get_hint(Val & 0x1f);
+			PPC_get_detail(MI)->bc.hint = PPC_get_hint(bo);
 		}
 		return;
 	}

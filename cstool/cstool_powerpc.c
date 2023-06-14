@@ -123,9 +123,9 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 		printf("\t\tbo: %u\n", ppc->bc.bo);
 		printf("\t\tbh: %u\n", ppc->bc.bh);
 		if (ppc->bc.pred_cr != PPC_PRED_INVALID)
-			printf("\t\tpred CR-bit: %s (%#x)\n", get_pred_name(ppc->bc.pred_cr), ppc->bc.pred_cr);
+			printf("\t\tpred CR-bit: %s\n", get_pred_name(ppc->bc.pred_cr));
 		if (ppc->bc.pred_ctr != PPC_PRED_INVALID)
-			printf("\t\tpred CTR: %s (%#x)\n", get_pred_name(ppc->bc.pred_ctr), ppc->bc.pred_ctr);
+			printf("\t\tpred CTR: %s\n", get_pred_name(ppc->bc.pred_ctr));
 		printf("\t\thint: %u\n", ppc->bc.hint);
 	}
 

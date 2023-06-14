@@ -74,8 +74,8 @@ typedef enum ppc_bc {
 	PPC_PRED_NE_MINUS = (2 << 5) | 6,
 	PPC_PRED_UN_MINUS = (3 << 5) | 14,
 	PPC_PRED_NU_MINUS = (3 << 5) | 6,
-	PPC_PRED_NZ_MINUS = (0 << 5) | 20,
-	PPC_PRED_Z_MINUS  = (0 << 5) | 22,
+	PPC_PRED_NZ_MINUS = (0 << 5) | 24,
+	PPC_PRED_Z_MINUS  = (0 << 5) | 26,
 	// Likely taken
 	PPC_PRED_LT_PLUS = (0 << 5) | 15,
 	PPC_PRED_LE_PLUS = (1 << 5) | 7,
@@ -114,7 +114,7 @@ typedef enum {
 typedef enum {
 	PPC_BO_TEST_CR = 0b10000, ///< Flag: Test CR bit.
 	PPC_BO_CR_CMP = 0b01000, ///< Flag: Compare CR bit to 0 or 1.
-	PPC_BO_DECR_CTR = 0xb00100, ///< Flag: Decrement counter.
+	PPC_BO_DECR_CTR = 0b00100, ///< Flag: Decrement counter.
 	PPC_BO_CTR_CMP = 0b00010, ///< Flag: Compare CTR to 0 or 1.
 	PPC_BO_T = 0b00001, ///< Either ignored (z) or hint bit t
 } ppc_bo_mask;
@@ -143,8 +143,8 @@ typedef enum {
 
 /// Returns the hint encoded in the BO bits a and t.
 static inline ppc_br_hint PPC_get_hint(uint8_t bo) {
-	bool DecrCTR = !(bo & PPC_BO_DECR_CTR);
-	bool TestCR = !(bo & PPC_BO_TEST_CR);
+	bool DecrCTR = (bo & PPC_BO_DECR_CTR) == 0;
+	bool TestCR = (bo & PPC_BO_TEST_CR) == 0;
 	if (!DecrCTR && !TestCR)
 		return PPC_BR_NOT_GIVEN;
 	else if (DecrCTR && !TestCR)
@@ -158,8 +158,8 @@ static inline ppc_br_hint PPC_get_hint(uint8_t bo) {
 /// If get_cr_pred = true the CR-bit predicate is returned. Otherwise
 /// the CTR predicate.
 static inline ppc_pred PPC_get_branch_pred(uint8_t bi, uint8_t bo, bool get_cr_pred) {
-	bool DecrCTR = !(bo & PPC_BO_DECR_CTR);
-	bool TestCR = !(bo & PPC_BO_TEST_CR);
+	bool TestCR = ((bo & PPC_BO_TEST_CR) == 0);
+	bool DecrCTR = ((bo & PPC_BO_DECR_CTR) == 0);
 
 	if ((get_cr_pred && !TestCR) ||
 			(!get_cr_pred && !DecrCTR))
