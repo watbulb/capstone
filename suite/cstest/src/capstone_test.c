@@ -81,7 +81,7 @@ void test_single_MC(csh *handle, int mc_mode, char *line)
 	cs_arch arch = ((struct cs_struct *)(uintptr_t)*handle)->arch;
 	if ((arch != CS_ARCH_ARM) &&
 			(cs_option(*handle, CS_OPT_SYNTAX, CS_OPT_SYNTAX_NOREGNAME) == CS_ERR_OK)) {
-		count_noreg = cs_disasm(*handle, code, size_byte, offset, 0, &insn);
+		cs_disasm(*handle, code, size_byte, offset, 0, &insn);
 
 		strcpy(tmp_noreg, insn[0].mnemonic);
 		if (strlen(insn[0].op_str) > 0) {

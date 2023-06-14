@@ -148,7 +148,7 @@ static int setup_state(void **state) {
 		return -1;
 	}
 
-	int tmp_counter = 0;
+	tmp_counter = 0;
 	while (tmp_counter < size_lines && list_lines[tmp_counter][0] != '#')
 		tmp_counter++;
 
