@@ -30,10 +30,10 @@ extern "C" {
 /// Bit     |   0    |     1       |   2   |      3     |     4      |
 ///         |--------|-------------|-------|------------|------------|
 /// If      | Test   | Test        | Decr. | test       |            |
-/// unset:  | CR(BI) | CR(BI) == 1 | CTR   | CTR != 0   |            |
+/// unset:  | CR(BI) | CR(BI) == 0 | CTR   | CTR != 0   |            |
 ///         |--------|-------------|-------|------------|------------|
 /// If      | Don't  | Test        | Don't | test       |            |
-/// set:    | Test   | CR(BI) == 0 | decr. | CTR == 0   |            |
+/// set:    | Test   | CR(BI) == 1 | decr. | CTR == 0   |            |
 ///         | CR(BI) |             | CTR   |            |            |
 ///         |--------|-------------|-------|------------|------------|
 /// Alter-  |        | Hint bit:   |       | Hint bit:  | Hint bit:  |
@@ -49,7 +49,7 @@ typedef enum ppc_bc {
 	// so it shouldn't come to conflicts.
 	PPC_PRED_INVALID = 0xffff,
 
-	// Name     | BI     | BO
+	// Name       | BI     | BO
 	PPC_PRED_LT = (0 << 5) | 12,
 	PPC_PRED_LE = (1 << 5) | 4,
 	PPC_PRED_EQ = (2 << 5) | 12,
@@ -58,6 +58,8 @@ typedef enum ppc_bc {
 	PPC_PRED_NE = (2 << 5) | 4,
 	PPC_PRED_UN = (3 << 5) | 12,
 	PPC_PRED_NU = (3 << 5) | 4,
+	PPC_PRED_NZ = (0 << 5) | 16,
+	PPC_PRED_Z  = (0 << 5) | 18,
 	// Likely not taken
 	PPC_PRED_LT_MINUS = (0 << 5) | 14,
 	PPC_PRED_LE_MINUS = (1 << 5) | 6,
@@ -67,6 +69,8 @@ typedef enum ppc_bc {
 	PPC_PRED_NE_MINUS = (2 << 5) | 6,
 	PPC_PRED_UN_MINUS = (3 << 5) | 14,
 	PPC_PRED_NU_MINUS = (3 << 5) | 6,
+	PPC_PRED_NZ_MINUS = (0 << 5) | 20,
+	PPC_PRED_Z_MINUS  = (0 << 5) | 22,
 	// Likely taken
 	PPC_PRED_LT_PLUS = (0 << 5) | 15,
 	PPC_PRED_LE_PLUS = (1 << 5) | 7,
@@ -76,6 +80,8 @@ typedef enum ppc_bc {
 	PPC_PRED_NE_PLUS = (2 << 5) | 7,
 	PPC_PRED_UN_PLUS = (3 << 5) | 15,
 	PPC_PRED_NU_PLUS = (3 << 5) | 7,
+	PPC_PRED_NZ_PLUS = (0 << 5) | 17,
+	PPC_PRED_Z_PLUS  = (0 << 5) | 19,
 
 	// extra conditions
 	PPC_PRED_SO = (4 << 5) | 12,	///< summary overflow
@@ -129,14 +135,6 @@ typedef enum {
 	PPC_BH_NOT_PREDICTABLE,
 	PPC_BH_RESERVED,
 } ppc_bh;
-
-typedef struct {
-	ppc_bi bi; ///< BI field of branch condition.
-	uint8_t bo; ///< BO field of branch condition.
-	ppc_br_hint hint; ///< The encoded hint.
-	ppc_pred pred; ///< Resulting branch predicate.
-	ppc_bh bh; ///< The BH field hint if any is present.
-} ppc_bc;
 
 /// Returns the hint encoded in the BO bits a and t.
 static inline ppc_br_hint PPC_get_hint(uint8_t bo) {
@@ -720,6 +718,15 @@ typedef struct cs_ppc_op {
 	};
 	cs_ac_type access;
 } cs_ppc_op;
+
+typedef struct {
+	ppc_bi bi; ///< BI field of branch condition.
+	ppc_reg crX; ///< The CR register accessed.
+	uint8_t bo; ///< BO field of branch condition.
+	ppc_br_hint hint; ///< The encoded hint.
+	ppc_pred pred; ///< Resulting branch predicate.
+	ppc_bh bh; ///< The BH field hint if any is present.
+} ppc_bc;
 
 #define PPC_NUM_OPS 8
 

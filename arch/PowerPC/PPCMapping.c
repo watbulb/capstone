@@ -126,10 +126,11 @@ static void PPC_add_branch_predicates(MCInst *MI, const uint8_t *Bytes, size_t B
 	else
 		bo = (Inst & PPC_INSN_FORM_XL_BO_MASK) >> 21;
 
-	PPC_get_detail(MI)->bc.bi = bi;
+	PPC_get_detail(MI)->bc.bi = bi % 4;
+	PPC_get_detail(MI)->bc.crX = PPC_REG_CR0 + (bi / 4);
 	PPC_get_detail(MI)->bc.bo = bo;
 	PPC_get_detail(MI)->bc.hint = PPC_get_hint(bo);
-	PPC_get_detail(MI)->bc.pred = (bi << 5) | bo;
+	PPC_get_detail(MI)->bc.pred = ((bi % 4) << 5) | bo;
 	if (ppc_is_b_form(form))
 		return;
 
@@ -388,9 +389,12 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 		if ((strcmp(Modifier, "cc") == 0) ||
 				(strcmp(Modifier, "pm") == 0)) {
 			unsigned Val = MCInst_getOpVal(MI, OpNum);
-			PPC_get_detail(MI)->bc.pred = PPC_get_no_hint_pred(Val);
-			PPC_get_detail(MI)->bc.bo = (Val & 0x1f);
-			PPC_get_detail(MI)->bc.bi = (Val & 0x1e0) >> 5;
+			unsigned bo = Val & 0x1f;
+			unsigned bi = (Val & 0x1e0) >> 5;
+			PPC_get_detail(MI)->bc.bo = bo;
+			PPC_get_detail(MI)->bc.bi = bi % 4;
+			PPC_get_detail(MI)->bc.crX = PPC_REG_CR0 + (bi / 4);
+			PPC_get_detail(MI)->bc.pred = PPC_get_no_hint_pred((bi << 5) | bo);
 			PPC_get_detail(MI)->bc.hint = PPC_get_hint(Val & 0x1f);
 		}
 		return;

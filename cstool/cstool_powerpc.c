@@ -4,33 +4,62 @@
 #include <stdio.h>
 
 #include <capstone/capstone.h>
+#include "capstone/ppc.h"
 #include "cstool.h"
 
-static const char* get_bc_name(int bc)
+static const char* get_pred_name(ppc_pred pred)
 {
-	switch(bc) {
+	switch(pred) {
 		default:
 			return ("invalid");
 		case PPC_PRED_LT:
+		case PPC_PRED_LT_MINUS:
+		case PPC_PRED_LT_PLUS:
 			return ("lt");
 		case PPC_PRED_LE:
+		case PPC_PRED_LE_MINUS:
+		case PPC_PRED_LE_PLUS:
 			return ("le");
 		case PPC_PRED_EQ:
+		case PPC_PRED_EQ_MINUS:
+		case PPC_PRED_EQ_PLUS:
 			return ("eq");
 		case PPC_PRED_GE:
+		case PPC_PRED_GE_MINUS:
+		case PPC_PRED_GE_PLUS:
 			return ("ge");
 		case PPC_PRED_GT:
+		case PPC_PRED_GT_MINUS:
+		case PPC_PRED_GT_PLUS:
 			return ("gt");
 		case PPC_PRED_NE:
+		case PPC_PRED_NE_MINUS:
+		case PPC_PRED_NE_PLUS:
 			return ("ne");
 		case PPC_PRED_UN:
+		case PPC_PRED_UN_MINUS:
+		case PPC_PRED_UN_PLUS:
 			return ("un");
 		case PPC_PRED_NU:
+		case PPC_PRED_NU_MINUS:
+		case PPC_PRED_NU_PLUS:
 			return ("nu");
+		case PPC_PRED_NZ:
+		case PPC_PRED_NZ_MINUS:
+		case PPC_PRED_NZ_PLUS:
+			return ("nz");
+		case PPC_PRED_Z:
+		case PPC_PRED_Z_MINUS:
+		case PPC_PRED_Z_PLUS:
+			return ("z");
 		case PPC_PRED_SO:
 			return ("so");
 		case PPC_PRED_NS:
 			return ("ns");
+		case PPC_PRED_BIT_SET:
+			return "bit-set";
+		case PPC_PRED_BIT_UNSET:
+			return "bit-unset";
 	}
 }
 
@@ -87,10 +116,13 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 	}
 
 	if (ppc->bc.pred != PPC_PRED_INVALID) {
-		printf("\tBranch hint: %u\n", ppc->bc.hint);
-		printf("\tBranch bi: %u\n", ppc->bc.bi);
-		printf("\tBranch bo: %u\n", ppc->bc.bo);
-		printf("\tBranch bh: %u\n", ppc->bc.bh);
+		printf("\tBranch:\n");
+		printf("\t\tcrX: %s\n", cs_reg_name(handle, ppc->bc.crX));
+		printf("\t\tbi: %u\n", ppc->bc.bi);
+		printf("\t\tbo: %u\n", ppc->bc.bo);
+		printf("\t\tbh: %u\n", ppc->bc.bh);
+		printf("\t\tpred: %s (%#x)\n", get_pred_name(ppc->bc.pred), ppc->bc.pred);
+		printf("\t\thint: %u\n", ppc->bc.hint);
 	}
 
 	if (ppc->bc.hint != PPC_BR_NOT_GIVEN)
