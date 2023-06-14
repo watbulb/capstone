@@ -64,8 +64,10 @@ static void print_insn_detail(cs_insn *ins)
 		}
 	}
 
-	if (ppc->bc.pred != PPC_PRED_INVALID)
-		printf("\tBranch code: %u\n", ppc->bc.pred);
+	if (ppc->bc.pred_cr != PPC_PRED_INVALID)
+		printf("\t\tpred CR-bit: %d\n", ppc->bc.pred_cr);
+	if (ppc->bc.pred_ctr != PPC_PRED_INVALID)
+		printf("\t\tpred CTR: %d\n", ppc->bc.pred_ctr);
 
 	if (ppc->bc.hint != PPC_BR_NOT_GIVEN)
 		printf("\tBranch hint: %u\n", ppc->bc.hint);

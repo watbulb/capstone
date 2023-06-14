@@ -18,6 +18,11 @@ extern "C" {
 /// Predicate enums were moved from PPCPredicates.h so we do not have duplicates.
 /// Predicate - These are "(BI << 5) | BO"  for various predicates.
 ///
+/// BI is not equivalent to the BI field in the instruction bits.
+/// The instruction's BI field indicates the bit in the CR register.
+/// Here, BI indicates only the index within a crX register.
+/// So: BI_Field % 4 == BI_Index
+///
 /// BI encoding:
 ///
 /// CR idx: |   0   |    1    |   2   |     3    |
@@ -147,6 +152,30 @@ static inline ppc_br_hint PPC_get_hint(uint8_t bo) {
 	else if (!DecrCTR && TestCR)
 		return (bo & PPC_BO_CTR_CMP) | (bo & PPC_BO_T);
 	return PPC_BR_NOT_GIVEN;
+}
+
+/// Returns the branch predicate encoded in the BO and BI field.
+/// If get_cr_pred = true the CR-bit predicate is returned. Otherwise
+/// the CTR predicate.
+static inline ppc_pred PPC_get_branch_pred(uint8_t bi, uint8_t bo, bool get_cr_pred) {
+	bool DecrCTR = !(bo & PPC_BO_DECR_CTR);
+	bool TestCR = !(bo & PPC_BO_TEST_CR);
+
+	if ((get_cr_pred && !TestCR) ||
+			(!get_cr_pred && !DecrCTR))
+		return PPC_PRED_INVALID;
+
+	if (TestCR && DecrCTR) {
+		// The CR-bit condition without the CTR condition.
+		unsigned cr_bo_cond = (bo | 0b00100) & 0b11101;
+		// The CTR condition without the CR-bit condition.
+		unsigned ctr_bo_cond = (bo | 0b10000) & 0b10111;
+		if (get_cr_pred)
+			return ((bi % 4) << 5) | cr_bo_cond;
+		return ctr_bo_cond; // BI is ignored
+	}
+	// BO doesn't need any separation
+	return ((bi % 4) << 5) | bo;
 }
 
 /// Operand type for instruction's operands
@@ -724,7 +753,8 @@ typedef struct {
 	ppc_reg crX; ///< The CR register accessed.
 	uint8_t bo; ///< BO field of branch condition.
 	ppc_br_hint hint; ///< The encoded hint.
-	ppc_pred pred; ///< Resulting branch predicate.
+	ppc_pred pred_cr; ///< CR-bit branch predicate
+	ppc_pred pred_ctr; ///< CTR branch predicate
 	ppc_bh bh; ///< The BH field hint if any is present.
 } ppc_bc;
 

@@ -130,7 +130,9 @@ static void PPC_add_branch_predicates(MCInst *MI, const uint8_t *Bytes, size_t B
 	PPC_get_detail(MI)->bc.crX = PPC_REG_CR0 + (bi / 4);
 	PPC_get_detail(MI)->bc.bo = bo;
 	PPC_get_detail(MI)->bc.hint = PPC_get_hint(bo);
-	PPC_get_detail(MI)->bc.pred = ((bi % 4) << 5) | bo;
+	PPC_get_detail(MI)->bc.pred_cr = PPC_get_branch_pred(bi, bo, true);
+	PPC_get_detail(MI)->bc.pred_ctr = PPC_get_branch_pred(bi, bo, false);
+
 	if (ppc_is_b_form(form))
 		return;
 
@@ -176,7 +178,8 @@ void PPC_init_cs_detail(MCInst *MI)
 		return;
 	memset(get_detail(MI), 0,
 		   offsetof(cs_detail, arm) + sizeof(cs_arm));
-	PPC_get_detail(MI)->bc.pred = PPC_PRED_INVALID;
+	PPC_get_detail(MI)->bc.pred_cr = PPC_PRED_INVALID;
+	PPC_get_detail(MI)->bc.pred_ctr = PPC_PRED_INVALID;
 }
 
 void PPC_printer(MCInst *MI, SStream *O, void * /* MCRegisterInfo* */info) {
@@ -394,7 +397,8 @@ void PPC_add_cs_detail(MCInst *MI, ppc_op_group op_group, va_list args)
 			PPC_get_detail(MI)->bc.bo = bo;
 			PPC_get_detail(MI)->bc.bi = bi % 4;
 			PPC_get_detail(MI)->bc.crX = PPC_REG_CR0 + (bi / 4);
-			PPC_get_detail(MI)->bc.pred = PPC_get_no_hint_pred((bi << 5) | bo);
+			PPC_get_detail(MI)->bc.pred_cr = PPC_get_branch_pred(bi, bo, true);
+			PPC_get_detail(MI)->bc.pred_ctr = PPC_get_branch_pred(bi, bo, false);
 			PPC_get_detail(MI)->bc.hint = PPC_get_hint(Val & 0x1f);
 		}
 		return;

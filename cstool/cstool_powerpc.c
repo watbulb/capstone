@@ -115,13 +115,17 @@ void print_insn_detail_ppc(csh handle, cs_insn *ins)
 		}
 	}
 
-	if (ppc->bc.pred != PPC_PRED_INVALID) {
+	if (ppc->bc.pred_cr != PPC_PRED_INVALID ||
+			ppc->bc.pred_ctr != PPC_PRED_INVALID) {
 		printf("\tBranch:\n");
 		printf("\t\tcrX: %s\n", cs_reg_name(handle, ppc->bc.crX));
 		printf("\t\tbi: %u\n", ppc->bc.bi);
 		printf("\t\tbo: %u\n", ppc->bc.bo);
 		printf("\t\tbh: %u\n", ppc->bc.bh);
-		printf("\t\tpred: %s (%#x)\n", get_pred_name(ppc->bc.pred), ppc->bc.pred);
+		if (ppc->bc.pred_cr != PPC_PRED_INVALID)
+			printf("\t\tpred CR-bit: %s (%#x)\n", get_pred_name(ppc->bc.pred_cr), ppc->bc.pred_cr);
+		if (ppc->bc.pred_ctr != PPC_PRED_INVALID)
+			printf("\t\tpred CTR: %s (%#x)\n", get_pred_name(ppc->bc.pred_ctr), ppc->bc.pred_ctr);
 		printf("\t\thint: %u\n", ppc->bc.hint);
 	}
 
