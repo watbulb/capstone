@@ -51,12 +51,15 @@ typedef struct {
 	uint32_t Value;
 } AliasPatternCond;
 
+typedef bool (*ValidateMCOperandFunc)(const MCOperand *MCOp, unsigned PredicateIndex);
+
 /// Tablegenerated data structures needed to match alias patterns.
 typedef struct {
 	const PatternsForOpcode *OpToPatterns;
 	const AliasPattern *Patterns;
 	const AliasPatternCond *PatternConds;
 	const char *AsmStrings;
+	const ValidateMCOperandFunc ValidateMCOperand;
 } AliasMatchingData;
 
 const char *matchAliasPatterns(MCInst *MI, const AliasMatchingData *M);
