@@ -509,11 +509,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		ARM_set_detail_op_reg(MI, OpNum, t_qpr_to_dpr_list(MI, OpNum, 6));
 		break;
 	case ARM_OP_GROUP_NoHashImmediate:
-		if (doing_mem(MI))
-			ARM_set_detail_op_neon_lane(MI, OpNum);
-		else
-			ARM_set_detail_op_imm(MI, OpNum, ARM_OP_IMM,
-								  MCInst_getOpVal(MI, OpNum));
+		ARM_set_detail_op_neon_lane(MI, OpNum);
 		break;
 	case ARM_OP_GROUP_RegisterList: {
 		// All operands n MI from OpNum on are registers.
