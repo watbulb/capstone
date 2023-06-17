@@ -325,7 +325,7 @@ static uint64_t t_vmov_mod_imm(uint64_t v)
 /// Initializes or finishes a memory operand of Capstone (depending on \p
 /// status). A memory operand in Capstone can be assembled by two LLVM operands.
 /// E.g. the base register and the immediate disponent.
-void ARM_set_mem_access(MCInst *MI, bool status)
+static void ARM_set_mem_access(MCInst *MI, bool status)
 {
 	if (!detail_is_set(MI))
 		return;
@@ -441,7 +441,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		ARM_set_detail_op_mem(MI, OpNum, true, 0, 0, MCInst_getOpVal(MI, OpNum));
 		ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum + 1) << 3);
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_AddrMode6OffsetOperand: {
 		arm_reg reg = MCInst_getOpVal(MI, OpNum);
@@ -452,7 +452,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 	}
 	case ARM_OP_GROUP_AddrMode7Operand:
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0, MCInst_getOpVal(MI, OpNum));
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_SBitModifierOperand:
 		// The tablegen files often define CPSR as in-register.
@@ -722,7 +722,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 	}
 	case ARM_OP_GROUP_AddrModeTBB:
 	case ARM_OP_GROUP_AddrModeTBH:
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0,
@@ -732,7 +732,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			ARM_get_detail_op(MI, 0)->shift.value = 1;
 			ARM_get_detail_op(MI, 0)->mem.lshift = 1;
 		}
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_AddrMode2Operand: {
 		MCOperand *MO1 = MCInst_getOperand(MI, OpNum);
@@ -740,7 +740,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			// Handled in printOperand
 			break;
 
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		unsigned int imm3 = MCInst_getOpVal(MI, OpNum + 2);
@@ -750,7 +750,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			ARM_get_detail_op(MI, 0)->shift.type = (arm_shifter)subtracted;
 			ARM_get_detail_op(MI, 0)->shift.value = ShOff;
 			ARM_get_detail_op(MI, 0)->subtracted = subtracted == ARM_AM_sub;
-			set_mem_access(MI, false);
+			ARM_set_mem_access(MI, false);
 			break;
 		}
 		ARM_get_detail_op(MI, 0)->shift.type = subtracted == ARM_AM_sub;
@@ -758,7 +758,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 							  MCInst_getOpVal(MI, OpNum + 1));
 		add_cs_detail_RegImmShift(MI, ARM_AM_getAM2ShiftOpc(imm3),
 								  ARM_AM_getAM2Offset(imm3));
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	}
 	case ARM_OP_GROUP_AddrMode2OffsetOperand: {
@@ -799,7 +799,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			// Handled in printOperand
 			break;
 
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		unsigned ImmOffs = MCInst_getOpVal(MI, OpNum + 1);
@@ -822,7 +822,7 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			}
 			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, ImmOffs * Scale);
 		}
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	}
 	case ARM_OP_GROUP_ThumbAddrModeRROperand: {
@@ -831,13 +831,13 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 			// Handled in printOperand
 			break;
 
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		arm_reg RegNum = MCInst_getOpVal(MI, OpNum + 1);
 		if (RegNum)
 			ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0, RegNum);
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	}
 	case ARM_OP_GROUP_T2AddrModeImm8OffsetOperand:
@@ -865,13 +865,13 @@ static void add_cs_detail_general(MCInst *MI, arm_op_group op_group,
 		break;
 	}
 	case ARM_OP_GROUP_T2AddrModeImm0_1020s4Operand:
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		int64_t Imm = MCInst_getOpVal(MI, OpNum + 1);
 		if (Imm)
 			ARM_set_detail_op_mem(MI, OpNum + 1, false, 0, 0, Imm * 4);
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	case ARM_OP_GROUP_PKHLSLShiftImm: {
 		unsigned Imm = MCInst_getOpVal(MI, OpNum);
@@ -1016,7 +1016,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_0:
 	case ARM_OP_GROUP_T2AddrModeImm8Operand_1: {
 		bool AlwaysPrintImm0 = temp_arg_0;
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		int32_t Imm = MCInst_getOpVal(MI, OpNum + 1);
@@ -1026,7 +1026,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 		if (AlwaysPrintImm0)
 			map_add_implicit_write(MI, MCInst_getOpVal(MI, OpNum));
 
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	}
 	case ARM_OP_GROUP_AdrLabelOperand_0:
@@ -1046,7 +1046,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 			// Handled in printOperand
 			break;
 
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 
@@ -1057,14 +1057,14 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 			ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0,
 								  MCInst_getOpVal(MI, OpNum + 1));
 			ARM_get_detail_op(MI, 0)->subtracted = Sign == ARM_AM_sub;
-			set_mem_access(MI, false);
+			ARM_set_mem_access(MI, false);
 			break;
 		}
 		if (AlwaysPrintImm0 || Sign == ARM_AM_sub) {
 			ARM_get_detail_op(MI, 0)->mem.scale = -1;
 			ARM_get_detail_op(MI, 0)->subtracted = true;
 		}
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	}
 	case ARM_OP_GROUP_AddrMode5Operand_0:
@@ -1112,7 +1112,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 	case ARM_OP_GROUP_MveAddrModeRQOperand_2:
 	case ARM_OP_GROUP_MveAddrModeRQOperand_3: {
 		unsigned Shift = temp_arg_0;
-		set_mem_access(MI, true);
+		ARM_set_mem_access(MI, true);
 		ARM_set_detail_op_mem(MI, OpNum, false, 0, 0,
 							  MCInst_getOpVal(MI, OpNum));
 		ARM_set_detail_op_mem(MI, OpNum + 1, true, 0, 0,
@@ -1120,7 +1120,7 @@ static void add_cs_detail_template_1(MCInst *MI, arm_op_group op_group,
 		if (Shift > 0) {
 			add_cs_detail_RegImmShift(MI, ARM_AM_uxtw, Shift);
 		}
-		set_mem_access(MI, false);
+		ARM_set_mem_access(MI, false);
 		break;
 	}
 	case ARM_OP_GROUP_MVEVectorList_2:
@@ -1272,7 +1272,7 @@ void ARM_set_detail_op_mem_offset(MCInst *MI, unsigned OpNum, uint64_t Val,
 }
 
 /// Adds a memory ARM operand at position OpNum. op_count is *not* increased by
-/// one. This is done by set_mem_access().
+/// one. This is done by ARM_set_mem_access().
 void ARM_set_detail_op_mem(MCInst *MI, unsigned OpNum, bool is_index_reg,
 						   int scale, int lshift, uint64_t Val)
 {

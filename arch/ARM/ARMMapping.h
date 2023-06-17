@@ -44,11 +44,6 @@ void ARM_init_mri(MCRegisterInfo *MRI);
 
 // cs_detail related functions
 void ARM_init_cs_detail(MCInst *MI);
-void ARM_set_mem_access(MCInst *MI, bool status);
-static inline void set_mem_access(MCInst *MI, bool status)
-{
-	ARM_set_mem_access(MI, status);
-}
 void ARM_add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
 					   va_list args);
 static inline void add_cs_detail(MCInst *MI, int /* arm_op_group */ op_group,
