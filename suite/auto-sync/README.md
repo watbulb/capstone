@@ -37,22 +37,19 @@ Check if your architecture is supported.
 ```
 
 Clone Capstones LLVM fork.
-TODO: Change to capstones repo
 
 ```
-git clone https://github.com/Rot127/llvm-capstone
+git clone https://github.com/capstone-engine/llvm-capstone
 cd llvm-capstone
 ```
 
 Checkout the branch with the refactored backends
-TODO: Checkout the main branch
 
 ```
-git checkout tblgen_capstone_backends
+git checkout auto-sync
 ```
 
 Build `llvm-tblgen`
-TODO: Build release
 
 ```
 mkdir build
@@ -115,6 +112,4 @@ For details about the C++ to C translation of the LLVM files refer to `CppTransl
 
 **Generated .inc files**
 
-<!-- TODO Update link to (currently non existing) documentation -->
-To understand the TableGen backends and the generation of `.inc` files,
-please refer to our [backend syntax printer](https://github.com/Rot127/llvm-capstone/blob/tblgen_capstone_backends/llvm/utils/TableGen/PrinterCapstone.cpp)
+Documentation about the `.inc` file generation is in the [llvm-capstone](https://github.com/capstone-engine/llvm-capstone) repository.
