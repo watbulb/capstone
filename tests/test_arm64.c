@@ -66,6 +66,9 @@ static void print_insn_detail(cs_insn *ins)
 				break;
 			case ARM64_OP_MEM:
 				printf("\t\toperands[%u].type: MEM\n", i);
+				if (arm64->writeback)
+					printf("\tWrite-back: %s\n", op->mem.post_index ? "Post" : "Pre");
+
 				if (op->mem.base != ARM64_REG_INVALID)
 					printf("\t\t\toperands[%u].mem.base: REG = %s\n", i, cs_reg_name(handle, op->mem.base));
 				if (op->mem.index != ARM64_REG_INVALID)
@@ -129,9 +132,6 @@ static void print_insn_detail(cs_insn *ins)
 
 	if (arm64->update_flags)
 		printf("\tUpdate-flags: True\n");
-
-	if (arm64->writeback)
-		printf("\tWrite-back: %s\n", arm64->post_index ? "Post" : "Pre");
 
 	if (arm64->cc)
 		printf("\tCode-condition: %u\n", arm64->cc);

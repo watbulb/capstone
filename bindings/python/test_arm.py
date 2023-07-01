@@ -56,6 +56,9 @@ def print_insn_detail(insn):
                     print("\t\toperands[%u].type: SETEND = le" % c)
             if i.type == ARM_OP_MEM:
                 print("\t\toperands[%u].type: MEM" % c)
+                if insn.writeback:
+                    if i.post_index:
+                        print("\tWrite-back: Post")
                 if i.mem.base != 0:
                     print("\t\t\toperands[%u].mem.base: REG = %s" \
                         % (c, insn.reg_name(i.mem.base)))
@@ -94,11 +97,6 @@ def print_insn_detail(insn):
 
     if insn.update_flags:
         print("\tUpdate-flags: True")
-    if insn.writeback:
-        if insn.post_index:
-            print("\tWrite-back: Post")
-        else:
-            print("\tWrite-back: Pre")
     if not insn.cc in [ARM_CC_AL, ARM_CC_INVALID]:
         print("\tCode condition: %u" % insn.cc)
     if insn.cps_mode:

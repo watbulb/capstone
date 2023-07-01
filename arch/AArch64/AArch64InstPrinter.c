@@ -2977,7 +2977,13 @@ void AArch64_post_printer(csh handle, cs_insn *flat_insn, char *insn_asm, MCInst
 			case AArch64_LDRWpost:
 			case AArch64_LDRXpost:
 				flat_insn->detail->arm64.writeback = true;
-			    flat_insn->detail->arm64.post_index = true;
+				for (int i = 0; i < flat_insn->detail->arm64.op_count; ++i) {
+					cs_arm64_op op = flat_insn->detail->arm64.operands[i];
+					if (op.type == ARM64_OP_MEM) {
+						op.mem.post_index = true;
+						break;
+					}
+				}
 				break;
 			case AArch64_LDRAAwriteback:
 			case AArch64_LDRABwriteback:

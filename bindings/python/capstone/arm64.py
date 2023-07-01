@@ -10,6 +10,7 @@ class Arm64OpMem(ctypes.Structure):
         ('base', ctypes.c_uint),
         ('index', ctypes.c_uint),
         ('disp', ctypes.c_int32),
+        ('post_index', ctypes.c_bool),
     )
 
 class Arm64OpSmeIndex(ctypes.Structure):
@@ -93,11 +94,10 @@ class CsArm64(ctypes.Structure):
         ('cc', ctypes.c_uint),
         ('update_flags', ctypes.c_bool),
         ('writeback', ctypes.c_bool),
-        ('post_index', ctypes.c_bool),
         ('op_count', ctypes.c_uint8),
         ('operands', Arm64Op * 8),
     )
 
 def get_arch_info(a):
-    return (a.cc, a.update_flags, a.writeback, a.post_index, copy_ctypes_list(a.operands[:a.op_count]))
+    return (a.cc, a.update_flags, a.writeback, copy_ctypes_list(a.operands[:a.op_count]))
 

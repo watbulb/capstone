@@ -1750,6 +1750,7 @@ typedef struct arm64_op_mem {
   arm64_reg base;  ///< base register
   arm64_reg index; ///< index register
   int32_t disp;	   ///< displacement/offset value
+  bool post_index;	///< only set if writeback is 'True', if 'True' post-index, otherwise pre or other.
 } arm64_op_mem;
 
 /// SME Instruction's operand has index
@@ -1798,7 +1799,6 @@ typedef struct cs_arm64 {
   arm64_cc cc;	     ///< conditional code for this insn
   bool update_flags; ///< does this insn update flags?
   bool writeback;    ///< does this insn request writeback? 'True' means 'yes'
-  bool post_index;   ///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
 
   /// Number of operands of this instruction,
   /// or 0 when instruction has no operand.

@@ -342,7 +342,13 @@ void ARM_post_printer(csh ud, cs_insn *insn, char *insn_asm, MCInst *mci)
 			case ARM_t2STRH_POST:
 			case ARM_t2STR_POST:
 				insn->detail->arm.writeback = true;
-				insn->detail->arm.post_index = true;
+				for (int i = 0; i < insn->detail->arm.op_count; ++i) {
+					cs_arm_op op = insn->detail->arm.operands[i];
+					if (op.type == ARM_OP_MEM) {
+						op.mem.post_index = true;
+						break;
+					}
+				}
 				break;
 		}
 	} else {	// ARM mode
@@ -398,7 +404,13 @@ void ARM_post_printer(csh ud, cs_insn *insn, char *insn_asm, MCInst *mci)
 			case ARM_STR_POST_IMM:
 			case ARM_STR_POST_REG:
 				insn->detail->arm.writeback = true;
-				insn->detail->arm.post_index = true;
+				for (int i = 0; i < insn->detail->arm.op_count; ++i) {
+					cs_arm_op op = insn->detail->arm.operands[i];
+					if (op.type == ARM_OP_MEM) {
+						op.mem.post_index = true;
+						break;
+					}
+				}
 				break;
 		}
 	}

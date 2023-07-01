@@ -401,6 +401,7 @@ typedef struct arm_op_mem {
 	/// left-shift on index register, or 0 if irrelevant
 	/// NOTE: this value can also be fetched via operand.shift.value
 	int lshift;
+	bool post_index;	///< only set if writeback is 'True', if 'True' post-index, otherwise pre or other.
 } arm_op_mem;
 
 /// Instruction operand
@@ -446,7 +447,6 @@ typedef struct cs_arm {
 	arm_cc cc;			///< conditional code for this insn
 	bool update_flags;	///< does this insn update flags?
 	bool writeback;		///< does this insn write-back?
-	bool post_index;	///< only set if writeback is 'True', if 'False' pre-index, otherwise post.
 	arm_mem_barrier mem_barrier;	///< Option for some memory barrier instructions
 
 	/// Number of operands of this instruction,
