@@ -40,3 +40,66 @@ General note about breaking changes.
 | `ARM64` | `ARM64` renamed to `AArch64` everywhere |||
 | `SME` operands | `SME` operands contain more detail now and member names are closer to the docs. |||
 | System operands | System Operands are separated into different types now. |||
+
+
+## New features
+
+These features are only supported by `auto-sync` enabled architectures.
+
+**Instruction Encoding**
+
+TODO
+
+**Instruction formats for PPC**
+
+TODO
+
+**Instruction Alias**
+
+Instruction alias are now properly separated from real instructions.
+
+The `cs_insn->is_alias` flag is set, if this instruction is an alias.
+
+The real instruction `id` is still set in `cs_insn->id`.
+The alias `id` is set in `cs_insn->alias_id`.
+
+You can use as `cs_insn_name()` to retrieve the real and the alias name.
+
+Additionally, you can now choose between the alias details and the real details.
+
+You can set the option with (TODO: implement option. Otherwise, in `map_use_alias_details()` per arch).
+
+If <OPTION IS SET>, you got the alias operands:
+
+```
+./cstool -d ppc32be 7a8a20007d4d42a6
+ 0  7a 8a 20 00  	rotldi	r10, r20, 4
+	ID: 905 (rldicl)
+	Is alias: 2138 (rotldi) with ALIAS operand set
+	op_count: 4
+		operands[0].type: REG = r10
+		operands[0].access: WRITE
+		operands[1].type: REG = r20
+		operands[1].access: READ
+		operands[2].type: IMM = 0x4
+		operands[2].access: READ
+```
+
+If <OPTION IS DISABLED> you get the `real` operand set:
+
+```
+./cstool -d ppc32be 7a8a20007d4d42a6
+ 0  7a 8a 20 00  	rotldi	r10, r20, 4
+	ID: 905 (rldicl)
+	Is alias: 2138 (rotldi) with REAL operand set
+	op_count: 4
+		operands[0].type: REG = r10
+		operands[0].access: WRITE
+		operands[1].type: REG = r20
+		operands[1].access: READ
+		operands[2].type: IMM = 0x4
+		operands[2].access: READ
+		operands[3].type: IMM = 0x0
+		operands[3].access: READ
+
+```
