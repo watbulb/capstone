@@ -9,6 +9,7 @@ General note about breaking changes.
 | Keyword | Change | Justification | Possible revert |
 |---------|--------|---------------|-----------------|
 | Post-index | Post-index memory access has the disponent now set int the `MEMORY` operand! No longer as separated `reg`/`imm` operand. |||
+| Sign `mem.disp` | `mem.disp` is now always positive and the `subtracted` flag indicates if it should be subtracted. | It was inconsistent before. | Change behavior in `ARM_set_detail_op_imm()` |
 | `ARM_CC` | `ARM_CC` → `ARMCC` and value change | | |
 | System registers | System operands separated and in more detail. |||
 | System operands | System operands have now the encoding of LLVM (SYSm value mostly) |||
