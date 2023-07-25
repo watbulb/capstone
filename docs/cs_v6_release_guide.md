@@ -28,7 +28,6 @@ General note about breaking changes.
 | `PPC_BC` | The branch conditions were completely rewritten and save now all detail known about the bits. |||
 | Instruction alias | Many instruction alias (e.g. `BF`) were removed from the instruction enum. |||
 | Predicates | Predicate enums were renamed for this (values changed as well) |||
-| Memory base register | If the base register of a memory operand was r0 it is added again (wasn't present before) |||
 | `crx` | `ppc_ops_crx` was removed (because it was never set in the first place). |||
 
 
