@@ -1,4 +1,31 @@
+# V6 Release
 
+With the `v6` release we added a new update mechanism called `auto-sync`.
+This is a huge step for Capstone, because it allows for easy module updates, easier addition of new architectures, easy features addition and guarantees less faulty disassembly.
+
+For `v6` we _updated_ the following architectures: `ARM`, `AArch64` and `PPC`.
+
+These updates are significant! While in `v5` the most up-to-date module was based on `LLVM 7`,
+the refactored modules will be based on `LLVM 17`!
+
+As you see, does `auto-sync` solve the long existing problem that Capstone architecture modules were very hard to update.
+For [`auto-sync` enabled modules](https://github.com/capstone-engine/capstone/issues/2015) this is no longer the case.
+
+To achieve this we refactored some LLVM backends, so they emit directly the code we use in Capstone.
+Additionally, we implemented many scripts, which automate a great number of manual steps during the update.
+
+Because most of the update steps are automated now the architecture modules must fit this update mechanism.
+For this the modules move closer to the original LLVM code.
+On the flip site this brings many breaking changes.
+
+You can find a list below with a description, justification and a possible way to revert this change locally.
+
+With all the trouble this might bring for you, please keep in mind that this will only occur once for each architecture (when it gets refactored for `auto-sync`).
+In the long term this will guarantee more stability, more correctness, more features and on top of this makes Capstone directly comparable to `llvm-obdjdump`.
+
+We already added a handful of new features of which you can find a list below.
+
+We hope you enjoy the new release!
 
 ## Breaking changes
 
