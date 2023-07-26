@@ -37,11 +37,11 @@ General note about breaking changes.
 |---------|--------|---------------|-----------------|
 | Post-index | Post-index memory access has the disponent now set int the `MEMORY` operand! No longer as separated `reg`/`imm` operand. |||
 | Sign `mem.disp` | `mem.disp` is now always positive and the `subtracted` flag indicates if it should be subtracted. | It was inconsistent before. | Change behavior in `ARM_set_detail_op_imm()` |
-| `ARM_CC` | `ARM_CC` → `ARMCC` and value change | | |
-| System registers | System operands separated and in more detail. |||
+| `ARM_CC` | `ARM_CC` → `ARMCC` and value change | They match the same LLVM enum. Better for LLVM compatibility and code generation. | Change it manually. |
+| System registers | System registers are no longer saved in `cs_arm->reg`, but are separated and have more detail. |||
 | System operands | System operands have now the encoding of LLVM (SYSm value mostly) |||
-| Instruction enum | Multiple instructions which were only alias were removed from the instruction enum. Exceptions are `POP`, `PUSH`, `VPOP`, `VPUSH` |||
-| Instruction groups| Instruction groups, which actually were CU features, were renamed to reflect that. |||
+| Instruction enum | Multiple instructions which were only alias were removed from the instruction enum. |||
+| Instruction groups| Instruction groups, which actually were CPU features, were renamed to reflect that. | Names now match the ones in LLVM. Better for code generation. ||
 | CPU features | CPU features get checked more strictly (`MCLASS`, `V8` etc.) |||
 | `writeback` | `writeback` member was moved to detail. |||
 | Register alias | Register alias (`r15 = pc`) are not printed if LLVM doesn't do it. Can be enabled by `CS_OPT_SYNTAX_CS_REG_ALIAS` |||
@@ -53,9 +53,9 @@ General note about breaking changes.
 | Keyword | Change | Justification | Possible revert |
 |---------|--------|---------------|-----------------|
 | `PPC_BC` | The branch conditions were completely rewritten and save now all detail known about the bits. |||
-| Instruction alias | Many instruction alias (e.g. `BF`) were removed from the instruction enum. |||
-| Predicates | Predicate enums were renamed for this (values changed as well) |||
-| `crx` | `ppc_ops_crx` was removed (because it was never set in the first place). |||
+| Instruction alias | Many instruction alias (e.g. `BF`) were removed from the instruction enum (see new alias feature below). |||
+| Predicates | Predicate enums were renamed for the point above (values changed as well) |||
+| `crx` | `ppc_ops_crx` was removed. | It was never set in the first place). ||
 
 
 **AArch64**
