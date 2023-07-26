@@ -56,6 +56,7 @@ General note about breaking changes.
 | Instruction alias | Many instruction alias (e.g. `BF`) were removed from the instruction enum (see new alias feature below). |||
 | Predicates | Predicate enums were renamed for the point above (values changed as well) |||
 | `crx` | `ppc_ops_crx` was removed. | It was never set in the first place). ||
+| `(RA|0)` | The `(RA|0)` cases (see ISA for details) for which `0` is used, the `PPC_REG_ZERO` register is used. The register name of it is `0`. | Mimics LLVM behavior. ||
 
 
 **AArch64**
