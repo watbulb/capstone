@@ -67,7 +67,33 @@ General note about breaking changes.
 | `ARM64` | `ARM64` renamed to `AArch64` everywhere |||
 | `SME` operands | `SME` operands contain more detail now and member names are closer to the docs. |||
 | System operands | System Operands are separated into different types now. |||
+| `writeback` | `writeback` member was moved to detail. |||
+| `arm64_vas` | `arm64_vas` renamed to `AArch64Layout_VectorLayout` | LLVM compatibility. ||
 
+**Note:**
+
+The following `sed` commands in a sh script should ease the renaming from `ARM64` to `AArch64` a lot.
+
+```sh
+#!/bin/sh
+
+sed -i "s|CS_ARCH_ARM64|CS_ARCH_AARCH64|g" $1
+sed -i "s|ARM64_INS_|AArch64_INS_|g" $1
+sed -i "s|ARM64_REG_|AArch64_REG_|g" $1
+sed -i "s|ARM64_OP_|AArch64_OP_|g" $1
+sed -i "s|ARM64_EXT_|AArch64_EXT_|g" $1
+sed -i "s|ARM64_SFT_|AArch64_SFT_|g" $1
+sed -i "s|ARM64_CC_|AArch64CC_|g" $1
+sed -i "s|arm64_reg|aarch64_reg|g" $1
+sed -i "s|arm64_cc |AArch64CC_CondCode |g" $1
+sed -i "s|cs_arm64|cs_aarch64|g" $1
+sed -i "s|arm64_extender |aarch64_extender |g" $1
+sed -i "s|arm64_shifter |aarch64_shifter |g" $1
+sed -i "s|arm64_vas |AArch64Layout_VectorLayout |g" $1
+sed -i "s|detail->arm64|detail->aarch64|g" $1
+```
+
+Write it into `rename_arm64.sh` and run it on files with `sh rename_arm64.sh <src-file>`
 
 ## New features
 
