@@ -72,10 +72,47 @@ General note about breaking changes.
 
 **Note:**
 
+Because of the name change from `ARM64` to `AArch64` several macros for meta programming were added.
+If you need to support the previous version of Capstone you can use those macros.
+They select the right name depending on `CS_NEXT_VERSION`.
+
 The following `sed` commands in a sh script should ease the renaming from `ARM64` to `AArch64` a lot.
+
+Replacing with version sensitive macros:
 
 ```sh
 #!/bin/sh
+echo "Replace enum names"
+
+sed -i -E "s/CS_ARCH_ARM64/CS_AARCH64pre(CS_ARCH_)/g" $1
+sed -i -E "s/ARM64_INS_(\\w+)/CS_AARCH64(_INS_\\1)/g" $1
+sed -i -E "s/ARM64_REG_(\\w+)/CS_AARCH64(_REG_\\1)/g" $1
+sed -i -E "s/ARM64_OP_(\\w+)/CS_AARCH64(_OP_\\1)/g" $1
+sed -i -E "s/ARM64_EXT_(\\w+)/CS_AARCH64(_EXT_\\1)/g" $1
+sed -i -E "s/ARM64_SFT_(\\w+)/CS_AARCH64(_SFT_\\1)/g" $1
+sed -i -E "s/ARM64_VAS_(\\w+)/CS_AARCH64_VL_(\\1)/g" $1
+
+sed -i -E "s/ARM64_CC_(\\w+)/CS_AARCH64CC(_\\1)/g" $1
+
+echo "Replace type identifiers"
+
+sed -i -E "s/cs_arm64_op /CS_aarch64_op() /g" $1
+sed -i -E "s/arm64_reg /CS_aarch64_reg() /g" $1
+sed -i -E "s/arm64_cc /CS_aarch64_cc() /g" $1
+sed -i -E "s/cs_arm64 /CS_cs_aarch64() /g" $1
+sed -i -E "s/arm64_extender /CS_aarch64_extender() /g" $1
+sed -i -E "s/arm64_shifter /CS_aarch64_shifter() /g" $1
+sed -i -E "s/arm64_vas /CS_aarch64_vas() /g" $1
+
+echo "Replace detail->arm64"
+sed -i -E "s/detail->arm64/detail->CS_aarch64()/g" $1	
+```
+
+Simple renaming from `ARM64` to `AArch64`:
+
+```sh
+#!/bin/sh
+echo "Replace enum names"
 
 sed -i "s|CS_ARCH_ARM64|CS_ARCH_AARCH64|g" $1
 sed -i "s|ARM64_INS_|AArch64_INS_|g" $1
@@ -84,12 +121,18 @@ sed -i "s|ARM64_OP_|AArch64_OP_|g" $1
 sed -i "s|ARM64_EXT_|AArch64_EXT_|g" $1
 sed -i "s|ARM64_SFT_|AArch64_SFT_|g" $1
 sed -i "s|ARM64_CC_|AArch64CC_|g" $1
+
+echo "Replace type identifiers"
+
 sed -i "s|arm64_reg|aarch64_reg|g" $1
 sed -i "s|arm64_cc |AArch64CC_CondCode |g" $1
 sed -i "s|cs_arm64|cs_aarch64|g" $1
 sed -i "s|arm64_extender |aarch64_extender |g" $1
 sed -i "s|arm64_shifter |aarch64_shifter |g" $1
 sed -i "s|arm64_vas |AArch64Layout_VectorLayout |g" $1
+
+echo "Replace detail->arm64"
+
 sed -i "s|detail->arm64|detail->aarch64|g" $1
 ```
 
