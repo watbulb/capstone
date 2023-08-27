@@ -29,7 +29,11 @@ We hope you enjoy the new release!
 
 ## Breaking changes
 
-General note about breaking changes.
+**All `auto-sync` architectures**
+
+| Keyword | Change | Justification | Possible revert |
+|---------|--------|---------------|-----------------|
+| Instr. alias | Capstone now clearly separates real instructoins and their alias. Previously many alias were treated as real instructions. See [Instruction Alias](#instruction-alias) for details. | This became a simple necessity because CS operates with a copy of the LLVMs decoder without any changes. | This change is not revertable. |
 
 **ARM**
 
@@ -150,11 +154,11 @@ TODO
 
 TODO
 
-**Instruction Alias**
+### Instruction Alias
 
 Instruction alias are now properly separated from real instructions.
 
-The `cs_insn->is_alias` flag is set, if this instruction is an alias.
+The `cs_insn->is_alias` flag is set, if the decoded instruction is an alias.
 
 The real instruction `id` is still set in `cs_insn->id`.
 The alias `id` is set in `cs_insn->alias_id`.
@@ -163,16 +167,23 @@ You can use as `cs_insn_name()` to retrieve the real and the alias name.
 
 Additionally, you can now choose between the alias details and the real details.
 
-You can set the option with (TODO: implement option. Otherwise, in `map_use_alias_details()` per arch).
+If you always want the real instruction detail decoded (also for alias instructions),
+you can enable the option with
+```
+cs_option(handle, CS_OPT_DETAIL, CS_OPT_DETAIL_REAL);
+```
 
-If <OPTION IS SET>, you got the alias operands:
+For the `cstool` you can enable it with the `-r` flag.
+
+Without `-r` set you get the `alias` operand set, _if_ the instruction is an alias.
+This is the default behavior:
 
 ```
-./cstool -d ppc32be 7a8a20007d4d42a6
+./cstool -d ppc32be 7a8a2000
  0  7a 8a 20 00  	rotldi	r10, r20, 4
-	ID: 905 (rldicl)
-	Is alias: 2138 (rotldi) with ALIAS operand set
-	op_count: 4
+	ID: 867 (rldicl)
+	Is alias: 1828 (rotldi) with ALIAS operand set
+	op_count: 3
 		operands[0].type: REG = r10
 		operands[0].access: WRITE
 		operands[1].type: REG = r20
@@ -181,13 +192,13 @@ If <OPTION IS SET>, you got the alias operands:
 		operands[2].access: READ
 ```
 
-If <OPTION IS DISABLED> you get the `real` operand set:
+If `-r` is set, you got the real operands. Even if the decoded instruction is an alias:
 
 ```
-./cstool -d ppc32be 7a8a20007d4d42a6
+./cstool -d ppc32be 7a8a2000
  0  7a 8a 20 00  	rotldi	r10, r20, 4
-	ID: 905 (rldicl)
-	Is alias: 2138 (rotldi) with REAL operand set
+	ID: 867 (rldicl)
+	Is alias: 1828 (rotldi) with REAL operand set
 	op_count: 4
 		operands[0].type: REG = r10
 		operands[0].access: WRITE
