@@ -158,6 +158,9 @@ TODO
 
 Instruction alias are now properly separated from real instructions.
 
+**If you find an alias incorrectly generated as instruction, please let us know.
+Because this is a faulty defintion in LLVM. And we should upstream a fix.**
+
 The `cs_insn->is_alias` flag is set, if the decoded instruction is an alias.
 
 The real instruction `id` is still set in `cs_insn->id`.
