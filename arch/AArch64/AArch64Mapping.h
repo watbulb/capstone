@@ -31,16 +31,8 @@ void AArch64_reg_access(const cs_insn *insn, cs_regs regs_read,
 void AArch64_add_cs_detail(MCInst *MI, int /* aarch64_op_group */ op_group,
 						   va_list args);
 
-static inline void add_cs_detail(MCInst *MI,
-								 int /* aarch64_op_group */ op_group, ...)
-{
-	if (!MI->flat_insn->detail)
-		return;
-	va_list args;
-	va_start(args, op_group);
-	AArch64_add_cs_detail(MI, op_group, args);
-	va_end(args);
-}
+void add_cs_detail(MCInst *MI,
+								 int /* aarch64_op_group */ op_group, ...);
 
 void AArch64_init_mri(MCRegisterInfo *MRI);
 

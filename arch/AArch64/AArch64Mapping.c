@@ -510,6 +510,18 @@ void AArch64_set_mem_access(MCInst *MI, bool status)
 	}
 }
 
+__attribute__((noinline))
+void add_cs_detail(MCInst *MI,
+								 int /* aarch64_op_group */ op_group, ...)
+{
+	if (!MI->flat_insn->detail)
+		return;
+	va_list args;
+	va_start(args, op_group);
+	AArch64_add_cs_detail(MI, op_group, args);
+	va_end(args);
+}
+
 /// Fills cs_detail with the data of the operand.
 /// This function handles operands which's original printer function has no
 /// specialities.
