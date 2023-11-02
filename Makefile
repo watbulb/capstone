@@ -366,8 +366,6 @@ CFLAGS += -D_FORTIFY_SOURCE=0
 endif
 endif
 else
-CFLAGS += $(foreach arch,$(LIBARCHS),-arch $(arch))
-LDFLAGS += $(foreach arch,$(LIBARCHS),-arch $(arch))
 ifeq ($(OS), AIX)
 $(LIBNAME)_LDFLAGS += -qmkshrobj
 else
